@@ -1,0 +1,101 @@
+
+  /**
+   *
+      <!--    .............................................. color: special cases  -->
+
+      <color name="ds_text_hint">@color/gray</color>
+      <color name="ds_text_error">@color/red_brown</color>
+      <color name="ds_boarder_dark">@color/yellow</color>
+      <color name="ds_boarder_shadow">@color/yellow_shadow</color>
+      <color name="ds_accent">@color/orange</color>
+
+      <!--    .............................................. color: text -->
+
+      <color name="ds_text_h1">@color/yellow</color>
+
+      <color name="ds_text_h2_for_background_dark">@color/white</color>
+      <color name="ds_text_h2_for_background_light">@color/black_level_1</color>
+
+      <color name="ds_text_h2_for_background_dark_typeTitle">@color/white</color>
+      <color name="ds_text_h2_for_background_light_typeTitle">@color/black_level_1</color>
+
+      <color name="ds_text_h2_for_background_dark_typeSmall">@color/grayDark</color>
+      <color name="ds_text_h2_for_background_light_typeSmall">@color/grayDark</color>
+
+      <!--    .............................................. color: background -->
+
+      <color name="ds_background_all_screen">@color/white</color>
+      <color name="ds_background_childView_light">@color/whiteOff</color>
+      <color name="ds_background_childView_dark">@color/black_level_2</color>
+      <color name="ds_background_layoutView_level_1">@color/black_level_1</color>
+      <color name="ds_background_layoutView_level_2">@color/black_level_2</color>
+      <color name="ds_background_layoutView_level_light">@color/whiteOff</color>
+      <color name="ds_background_toolbar">@color/black_level_1</color>
+      <color name="ds_background_all_screen_shadow" >#331C201F</color>
+
+
+      <!--    .............................................. color values -->
+
+      <color name="yellow">#ffec76</color>
+      <color name="yellow_shadow">#80FFEC76</color>
+
+      <!--    <color name="white">#fafafa</color>-->
+      <color name="white">#fffffd</color>
+
+      <!--    <color name="whiteOff">#f0f4f3</color> //white -->
+      <color name="whiteOff">#fdffef</color>
+      <!--    <color name="whiteOff">#fffffd</color> //white bright -->
+      <!--    <color name="whiteOff">#f0db9c</color> //yellow-->
+      <!--    <color name="whiteOff">#61B38C49</color> -->
+
+
+      <color name="black_level_1">#1c201f</color>
+      <color name="black_level_2">#E31C201F</color>
+      <color name="black_level_3">#871C201F</color>
+      <color name="black_level_4">#343535</color>
+
+      <color name="orange">#ffd251</color>
+      <color name="shadow_orange">#ffd251</color>
+      <color name="red_brown">#7b2f18</color>
+
+      <color name="grayDark">#212727</color>
+      <color name="gray">#a6a8a7</color>
+
+
+
+      <!--    .............................................. space between views  -->
+
+      <dimen name="ds_space_to_level_parent">@dimen/ui_24px</dimen>
+      <dimen name="ds_space_to_level_1">@dimen/ui_20px</dimen>
+      <dimen name="ds_space_to_level_2">@dimen/ui_14px</dimen>
+      <dimen name="ds_space_to_level_3">@dimen/ui_8px</dimen>
+      <dimen name="ds_space_to_level_3_div2">@dimen/ui_4px</dimen>
+      <dimen name="ds_space_to_level_4">@dimen/ui_6px</dimen>
+
+
+      <!--    //fix inside boarder radius-->
+      <dimen name="ds_space_to_level_2_insideCorner">@dimen/ui_16px</dimen>
+
+      <dimen name="ds_space_to_level_2_paddingCornerVertical">@dimen/ui_16px</dimen>
+      <dimen name="ds_space_to_level_2_paddingCornerHorizontal">@dimen/ui_8px</dimen>
+
+      <!--    //........................................................ text -->
+
+      <dimen name="ds_text_level_parent">@dimen/ui_30px</dimen>
+      <dimen name="ds_text_level_1">@dimen/ui_24px</dimen>
+      <dimen name="ds_text_level_2">@dimen/ui_18px</dimen>
+      <dimen name="ds_text_level_3">@dimen/ui_14px</dimen>
+      <dimen name="ds_text_level_4">@dimen/ui_8px</dimen>
+
+
+      <dimen name="ds_size_corner_level_1">50dp</dimen>
+      <dimen name="ds_size_corner_level_2">10dp</dimen>
+      <dimen name="ds_size_corner_level_3">5dp</dimen>
+      <dimen name="ds_size_corner_level_4">1dp</dimen>
+
+      <!--    //........................................................ divider -->
+
+      <dimen name="ds_divider_height">2dp</dimen>
+
+
+   */

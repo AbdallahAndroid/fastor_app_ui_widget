@@ -1,0 +1,39 @@
+name: fastor_app_ui_widget
+description: Coding Faster By Build Fast UI Widget
+version: 1.0.122
+homepage: https://fastor-app.com
+
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #not fastor package
+  hexcolor:
+  easy_localization:
+  universal_io:
+  cached_network_image:
+  shared_preferences: ^2.0.15
+  flutter_spinkit: ^5.1.0
+  flutter_clean_calendar: ^1.1.0
+
+  #firebase
+  firebase_analytics:
+  firebase_core:
+
+  #fastor sub library
+  log_debug:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+false_secrets:
+  - /lib/firebase_options.dart
+
+
+flutter:
