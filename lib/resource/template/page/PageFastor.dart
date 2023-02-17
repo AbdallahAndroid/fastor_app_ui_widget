@@ -75,6 +75,7 @@ class PageFastor extends StatelessWidget {
 
   //scroll
   ScrollController? scrollController;
+  bool? isStopScroll;
 
   //keybaord
   bool? resizeToAvoidBottomInset;
@@ -103,7 +104,9 @@ class PageFastor extends StatelessWidget {
         this.drawer,
         this.onDrawerChanged,
         this.scrollController,
-        this.resizeToAvoidBottomInset}) {
+        this.isStopScroll,
+        this.resizeToAvoidBottomInset
+      }) {
     setDefaultValue();
   }
 
@@ -155,7 +158,9 @@ class PageFastor extends StatelessWidget {
     Widget scrollAllPage = ScrollViewPage.t(myState.context, content,
         scrollController: scrollController,
         toolbarHeight: toolbar_height,
-        footer_height: navigationBottom_height);
+        footer_height: navigationBottom_height,
+        isStopScroll: isStopScroll
+    );
 
     // choose stack of page mobile app
     Stack stack = _putEveryBarToStack(

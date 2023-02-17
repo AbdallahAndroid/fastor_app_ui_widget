@@ -1,25 +1,26 @@
 import 'dart:ui';
 
- 
+
 
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
 import 'package:flutter/material.dart';
- 
+
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
- 
- 
+
+
 
 class ScrollViewPage {
 
   static Widget t( BuildContext context,     Widget pageContent,
       {
         ScrollController? scrollController,
-     double? toolbarHeight,
+        double? toolbarHeight,
         double? footer_height,
         Color? effectScrollbar,
+        bool? isStopScroll
       }) {
 
     //default
@@ -28,7 +29,7 @@ class ScrollViewPage {
 
 
     // var statusBarHeight = StatusBarConstant.getHeight();
-   // Log.i( "statusHeight : " + statusHeight.toString() );
+    // Log.i( "statusHeight : " + statusHeight.toString() );
 
     // fix toolbar + navigation
     var tallView = Column( children: [
@@ -41,9 +42,11 @@ class ScrollViewPage {
     //validate not need
     var scroll ;
     if( DeviceTools.isBrowserIOS() ) {
-      scroll = ScrollViewPage._caseScrollMobileBrowser(  context, tallView, effectScrollbar);
+      scroll = ScrollViewPage._caseScrollMobileBrowser(  context, tallView, effectScrollbar, isStopScroll);
+    } else if ( DeviceTools.isPlatformWeb() ) {
+      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll );
     } else {
-      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, false );
+      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll );
     }
 
     return scroll;
@@ -52,14 +55,14 @@ class ScrollViewPage {
 
   //------------------------------------------------------------- cases
 
-  static  Widget _caseScrollMobileBrowser(BuildContext context, Widget child,  Color? effectScrollbar){
+  static  Widget _caseScrollMobileBrowser(BuildContext context, Widget child,  Color? effectScrollbar, bool? isStopScroll){
 
-  //  physics:   NeverScrollableScrollPhysics() ,
+    //  physics:   NeverScrollableScrollPhysics() ,
 
     //speed
     /**
         //why 4 ?
-          because iphone or  android in browser the speed of scroll is slow
+        because iphone or  android in browser the speed of scroll is slow
      */
     ScrollSpeed scrollSpeed = ScrollSpeed(context, speed: 4);
 
@@ -67,7 +70,7 @@ class ScrollViewPage {
     var scroll = ScrollViewPage._caseScrollNormal( context,
         child,
         scrollSpeed.getScrollController(),
-        effectScrollbar, true );
+        effectScrollbar, isStopScroll);
 
     //super
     return  GestureDetector(
@@ -91,10 +94,11 @@ class ScrollViewPage {
   }
 
   static Widget _caseScrollNormal(BuildContext context, Widget child,
-      ScrollController? scrollController, Color? effectScrollbar , bool isStopScroll ) {
+      ScrollController? scrollController, Color? effectScrollbar , bool? isStopScroll ) {
 
-
+    //setup isStopScroll
     ScrollPhysics physicsValue = AlwaysScrollableScrollPhysics()  ;
+    isStopScroll ??= false;
     if( isStopScroll  ) {
       physicsValue = NeverScrollableScrollPhysics();
     }

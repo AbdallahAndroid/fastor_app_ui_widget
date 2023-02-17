@@ -1,3 +1,47 @@
+## 1.0.123
+
+* Add feature "isStopScroll" in "PageFastor" this prevent motion of scrolling by touch
+
+## 1.0.120
+
+* Fix class "LanguageTools.dart" when set arabic in cache.
+
+## 1.0.119
+
+* Readme guild, how to install package in project.
+
+## 1.0.118
+
+* fix default height of "ButtonFastor" by using DSDimen.button_height
+
+## 1.0.117
+
+* fix "ButtonFastor" be optional set textFontSize
+* set default corner for "AppBarFastor"
+
+## 1.0.115
+
+* build "AppBarFastor"
+
+## 1.0.114
+
+* export "FastorMaterialApp"
+
+## 1.0.113
+
+* build "FastorScrollTheme" to fix shadow of scrollview
+* build "FastorMaterialApp" must to be instead of MaterialApp to fix "FastorPage"
+
+## 1.0.112
+
+* fix issue keyboard pad when open, call many times  build()
+* fix "ButtonFastor"  must set font text size
+* export "NotchBarConstant"
+* new widget "AppBarFastor"
+* remove plugin "EasyLocalization" from "LanguageTools.dart"
+
+## 1.0.111
+
 ## 1.0.110
 
 * remove "flutter_inappwebview" from fastor package
@@ -108,7 +152,7 @@
 
 ## 0.0.71
 
-* fix bugs 
+* fix bugs
 
 ## 0.0.70
 
@@ -173,7 +217,7 @@
 
 ## 0.0.55
 
-* attribute new "scrollController" at class "PageTemplate"  
+* attribute new "scrollController" at class "PageTemplate"
 
 ## 0.0.54
 
@@ -181,7 +225,7 @@
 
 ## 0.0.53
 
-* create "ImageViewTemplate" class, to working as StatelessWidget  
+* create "ImageViewTemplate" class, to working as StatelessWidget
 
 ## 0.0.52
 
@@ -277,7 +321,7 @@
 ## 0.0.30
 
 * fix : "PageTemplate"
-    
+
 ## 0.0.29
 
 * class "color change of toolbar"
@@ -308,7 +352,7 @@
 
 ## 0.0.22
 
-*  add "focus" and max" at class "TextFiledTemplate" 
+*  add "focus" and max" at class "TextFiledTemplate"
 
 ## 0.0.21
 
@@ -357,7 +401,7 @@
 
 ## 0.0.10
 
-* arabic direction fix bug:  scroll page when arabic, make reverse down to top 
+* arabic direction fix bug:  scroll page when arabic, make reverse down to top
 
 
 ## 0.0.9
@@ -368,7 +412,7 @@
 ## 0.0.8
 
 * edit class "PageTemplate.dart" add new feature "statusBarColor"
-* export class "LogDebug.dart" 
+* export class "LogDebug.dart"
 * export class "LevelDS.dart"
 
 ## 0.0.7
@@ -377,7 +421,7 @@
 * export class "DSColor.dart" to allow to edit design system
 * export class "DSDimen.dart" to allow to edit design system
 * export class "DSFont.dart" to allow to edit design system
-* export class "HexColor" 
+* export class "HexColor"
 * edit guide get start:  replace main file
 
 ## 0.0.6
