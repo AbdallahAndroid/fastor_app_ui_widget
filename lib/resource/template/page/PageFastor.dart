@@ -76,6 +76,7 @@ class PageFastor extends StatelessWidget {
   //scroll
   ScrollController? scrollController;
   bool? isStopScroll;
+  bool? thumbVisibility;
 
   //keybaord
   bool? resizeToAvoidBottomInset;
@@ -105,6 +106,7 @@ class PageFastor extends StatelessWidget {
         this.onDrawerChanged,
         this.scrollController,
         this.isStopScroll,
+        this.thumbVisibility,
         this.resizeToAvoidBottomInset
       }) {
     setDefaultValue();
@@ -159,7 +161,8 @@ class PageFastor extends StatelessWidget {
         scrollController: scrollController,
         toolbarHeight: toolbar_height,
         footer_height: navigationBottom_height,
-        isStopScroll: isStopScroll
+        isStopScroll: isStopScroll,
+        thumbVisibility: thumbVisibility
     );
 
     // choose stack of page mobile app
@@ -196,55 +199,6 @@ class PageFastor extends StatelessWidget {
       child: theme,
     );
   }
-
-  // @override
-  // Widget build_orginal(BuildContext context) {
-  //   //background (color or image )
-  //   var myBackground = _getBackground(myState.context, colorBackground,
-  //       assetBackground, assetBackgroundOpacity, widgetBackground);
-  //
-  //   //scroll all page
-  //   Widget scrollAllPage = ScrollViewPage.t(myState.context, content,
-  //       scrollController: scrollController,
-  //       toolbarHeight: toolbar_height,
-  //       footer_height: navigationBottom_height);
-  //
-  //   // choose stack of page mobile app
-  //   Stack stack = _putEveryBarToStack(
-  //
-  //       myBackground,
-  //       scrollAllPage,
-  //       floatBottom!,
-  //       navigationBottom!,
-  //       navigationBottom_height,
-  //       toolbar!,
-  //       onChangeProgressState);
-  //
-  //   var pageStack =
-  //   _statusBar(  stack, title, statusBarColorCustom);
-  //
-  //   //scaffold
-  //   var scaffold = Scaffold(
-  //       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-  //
-  //       //
-  //       body: pageStack,
-  //
-  //       //drawer menu
-  //       key: scaffoldKey,
-  //       drawer: drawer,
-  //       onDrawerChanged: onDrawerChanged);
-  //
-  //   var theme =  _getHomeButtonTheme(homeButtonsBackgroundColor, scaffold);
-  //
-  //
-  //   //language dirction
-  //   return Directionality(
-  //     //textDirection: TextDirection.rtl,
-  //     textDirection: LanguageTools.getTextDirection(context),
-  //     child: theme,
-  //   );
-  // }
 
   //--------------------------------------------------------------- basic
 
@@ -334,10 +288,19 @@ class PageFastor extends StatelessWidget {
       child: stack,
     );
 
+    //thumbVisibility
+    var themeDataScrollbarColored = Theme.of(context!).copyWith(
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: MaterialStateProperty.all( DSColor.scrollbar_thumb ), //grey_deep
+        )
+    );
+
     //material
     var material = MaterialApp(
         title: title!, // "Home",
         debugShowCheckedModeBanner: false,
+        theme: themeDataScrollbarColored,
+        scrollBehavior:  MyScrollThemeHidden(),
         home: statusBar);
     return material;
   }
@@ -386,5 +349,17 @@ class PageFastor extends StatelessWidget {
     );
 
     return stack;
+  }
+}
+
+
+//-------------------------------------------------------------- scroll glow color
+
+
+class MyScrollThemeHidden extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
+    return  child;
   }
 }

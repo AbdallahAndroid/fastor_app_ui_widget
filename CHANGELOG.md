@@ -1,3 +1,8 @@
+## 1.0.124
+
+* Add "thumbVisibility" in "PageFastor" to show/hide the scrollbar.
+* Hide the glow of scroll when go to top/bottom parent of screen.
+
 ## 1.0.123
 
 * Add feature "isStopScroll" in "PageFastor" this prevent motion of scrolling by touch

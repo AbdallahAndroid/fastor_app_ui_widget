@@ -20,7 +20,8 @@ class ScrollViewPage {
         double? toolbarHeight,
         double? footer_height,
         Color? effectScrollbar,
-        bool? isStopScroll
+        bool? isStopScroll,
+        bool? thumbVisibility
       }) {
 
     //default
@@ -42,11 +43,11 @@ class ScrollViewPage {
     //validate not need
     var scroll ;
     if( DeviceTools.isBrowserIOS() ) {
-      scroll = ScrollViewPage._caseScrollMobileBrowser(  context, tallView, effectScrollbar, isStopScroll);
+      scroll = ScrollViewPage._caseScrollMobileBrowser(  context, tallView, effectScrollbar, isStopScroll, thumbVisibility);
     } else if ( DeviceTools.isPlatformWeb() ) {
-      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll );
+      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll, thumbVisibility );
     } else {
-      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll );
+      scroll = ScrollViewPage._caseScrollNormal( context, tallView, scrollController, effectScrollbar, isStopScroll, thumbVisibility );
     }
 
     return scroll;
@@ -55,7 +56,9 @@ class ScrollViewPage {
 
   //------------------------------------------------------------- cases
 
-  static  Widget _caseScrollMobileBrowser(BuildContext context, Widget child,  Color? effectScrollbar, bool? isStopScroll){
+  static  Widget _caseScrollMobileBrowser(BuildContext context, Widget child,
+      Color? effectScrollbar,
+      bool? isStopScroll, bool? thumbVisibility ){
 
     //  physics:   NeverScrollableScrollPhysics() ,
 
@@ -70,7 +73,7 @@ class ScrollViewPage {
     var scroll = ScrollViewPage._caseScrollNormal( context,
         child,
         scrollSpeed.getScrollController(),
-        effectScrollbar, isStopScroll);
+        effectScrollbar, isStopScroll, thumbVisibility);
 
     //super
     return  GestureDetector(
@@ -94,7 +97,8 @@ class ScrollViewPage {
   }
 
   static Widget _caseScrollNormal(BuildContext context, Widget child,
-      ScrollController? scrollController, Color? effectScrollbar , bool? isStopScroll ) {
+      ScrollController? scrollController, Color? effectScrollbar ,
+      bool? isStopScroll, bool? thumbVisibility ) {
 
     //setup isStopScroll
     ScrollPhysics physicsValue = AlwaysScrollableScrollPhysics()  ;
@@ -104,7 +108,7 @@ class ScrollViewPage {
     }
 
     //scroll
-    var scroll = SingleChildScrollView(
+    var scrollChild = SingleChildScrollView(
       controller: scrollController,
       physics: physicsValue,
       child: child, //tallView,
@@ -112,6 +116,18 @@ class ScrollViewPage {
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_vertical(context),
     );
+
+    //thumbVisibility
+    var scrollBar = null;
+    thumbVisibility ??= false;
+    if( thumbVisibility  ) {
+      scrollBar = Scrollbar(
+        child: scrollChild,
+        isAlwaysShown: true,
+      );
+    } else {
+      scrollBar = scrollChild;
+    }
 
 
     //make touch working on web
@@ -122,7 +138,7 @@ class ScrollViewPage {
           PointerDeviceKind.touch,
         },
       ),
-      child: scroll,
+      child: scrollBar,
     );
 
     //shadow

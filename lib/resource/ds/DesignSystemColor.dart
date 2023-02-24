@@ -154,4 +154,8 @@ class DSColor extends ResourceColor {
   static var menu_background = HexColor( ResourceColor.blueDark );
   static var menu_selected = HexColor( ResourceColor.blueLight );
 
+  //----------------------------------------------------------------- scrollbar
+
+  static var scrollbar_thumb = HexColor( ResourceColor.black );
+
 }
