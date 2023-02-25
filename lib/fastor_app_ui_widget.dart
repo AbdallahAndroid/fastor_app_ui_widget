@@ -138,6 +138,8 @@ export  'package:fastor_app_ui_widget/resource/template/material_app/FastorMater
 import  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFastor.dart';
 export  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFastor.dart';
 
+import 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
+export 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
 
 ///fastor_app_ui_widget app all class
 class fastor_app_ui_widget extends fastor {
@@ -201,6 +203,8 @@ class fastor_app_ui_widget extends fastor {
   late UniqueIdTools uniqueIdTools;
   late LanguageTools language;
   late Log myLog;
+  late IFrameElement iFrameElement;
+  late CssStyleDeclaration cssStyleDeclaration;
 
   ///tools ui
   late StatusBarConstant statusBar;
@@ -212,7 +216,7 @@ class fastor_app_ui_widget extends fastor {
   late FastorStateManagement stateManagement;
 
   //constant
-late NotchBarConstant notch;
+  late NotchBarConstant notch;
 }
 
 ///fastor app all class

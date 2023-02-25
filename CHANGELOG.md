@@ -1,3 +1,17 @@
+## 1.0.127
+
+* fix bug "platformViewRegistry" not support in Mobile Platform, while support on Website
+  this is Fake Code to can run apk on emulator Mobile
+
+## 1.0.126
+
+* Fix bigs at class "html_fake.dart"
+
+## 1.0.125
+
+* Fix (import 'dart:html') not found when run project for Mobile Platform Android/ios.
+  Create the  "html_fake.dart" to can use to switch between platform Mobile or website.
+
 ## 1.0.124
 
 * Add "thumbVisibility" in "PageFastor" to show/hide the scrollbar.
