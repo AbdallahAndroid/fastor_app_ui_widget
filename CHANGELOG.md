@@ -1,3 +1,7 @@
+## 1.0.128
+
+* Update "Readme"
+
 ## 1.0.127
 
 * fix bug "platformViewRegistry" not support in Mobile Platform, while support on Website
