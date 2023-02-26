@@ -241,6 +241,36 @@ By using parameter "statusBarColorCustome" you can write hexcode color
   }
 ```
 
+## Language :
+### Arabic Right-To-Left "RTL" Layout Direction 
+How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
+```
+
+  @override
+  Widget build(BuildContext context) {
+    FastorStateManagement.instance().getCurrentContext();
+    return PageFastor(this, content: getDirection());
+  }
+  
+  Widget getDirection() {
+    return   Directionality(
+      textDirection: LanguageTools.getTextDirection(context),
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: getContent(),
+          );
+        },
+      ),
+    );
+  }
+
+
+```
+
 # At The End
 
 ## About Developer
