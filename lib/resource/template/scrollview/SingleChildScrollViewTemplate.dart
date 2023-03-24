@@ -107,6 +107,10 @@ class SingleChildScrollViewTemplate {
         dragDevices: {
           PointerDeviceKind.mouse,
           PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.trackpad,
+          PointerDeviceKind.unknown,
+          PointerDeviceKind.invertedStylus
         },
       ),
       child: scroll,

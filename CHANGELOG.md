@@ -1,3 +1,7 @@
+## 1.0.129
+
+* Add Extra "PointerDeviceKind" for touching.
+
 ## 1.0.128
 
 * Update "Readme"
