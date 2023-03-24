@@ -1,3 +1,7 @@
+## 1.0.130
+
+* Fix "ScrollViewPage.dart" in webplatform for parameter "thumbVisibility"
+
 ## 1.0.129
 
 * Add Extra "PointerDeviceKind" for touching.

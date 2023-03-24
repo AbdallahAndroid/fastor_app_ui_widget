@@ -120,10 +120,12 @@ class ScrollViewPage {
     //thumbVisibility
     var scrollBar = null;
     thumbVisibility ??= false;
-    if( thumbVisibility  ) {
+    var isNotWeb = DeviceTools.isPlatformWeb() == false;
+    if( thumbVisibility && isNotWeb ) {
       scrollBar = Scrollbar(
         child: scrollChild,
         isAlwaysShown: true,
+        trackVisibility: true,
       );
     } else {
       scrollBar = scrollChild;
