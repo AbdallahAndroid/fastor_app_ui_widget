@@ -69,18 +69,14 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 ## Tutorial : Page Shapes
 
 [Tutorial](https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md)
-<iframe src="https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md"
-height="500" width="1500"
-style="border:2px solid red;"></iframe>
 
-<div>
-  <iframe id="inlineFrameExample"
-      title="Inline Frame Example"
-      width="300"
-      height="200"
-      src="https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md">
-  </iframe>
-</div>
+
+<iframe id="inlineFrameExample"
+title="Inline Frame Example"
+width="300"
+height="200"
+src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+</iframe>
 
 
 ## Language
