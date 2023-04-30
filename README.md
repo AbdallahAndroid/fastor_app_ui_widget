@@ -66,18 +66,187 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [Table]()
 
+<hr class="solid">
+
 ## Tutorial : Page Shapes
 
-[Tutorial](https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md)
+### Get Start
+#### Full Example
+1. Create New Widget extends "StatefulWidget" .
+2. inside build() make return "PageTemplate.t()" .
+
+```
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:flutter/material.dart';
+
+class TutorialCreateFastorPage extends StatefulWidget {
+  @override
+  TutorialCreateFastorState createState() => TutorialCreateFastorState();
+}
+
+class TutorialCreateFastorState extends State<TutorialCreateFastorPage> {
+  
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+        content: getContent() );
+  }
+  
+  Widget getContent() {
+    return  TextTemplate.t( "Empty page" );
+  }
+  
+}
+```
+
+### Empty Screen
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/empty.png" height="300"/>
+
+```
+@override
+Widget build(BuildContext context) {
+return PageTemplate.t( this,
+content: getContent() );
+}
+```
+
+### Toolbar Custom Shape
+
+Create any shape of Toolbar you want in Custom shape then put it at page template by using parameter "toolbar"
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/toolbar_fastor.png" height="300"/>
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+        toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
+        toolbar_height : 70,
+        content: getContent() );
+  }
+```
+
+* The Default height of toolbar is 70
+* When the toolbar you draw different than 70 you can set height of toolbar by using "toolbar_height"
+
+### Background Feature
+
+#### Asset
+
+set Image png to background, to make all content scrolling while the background image still hold at background
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/background_image.png" height="300"/>
+
+#### Asset with Opacity
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/background_opacity.png" height="300"/>
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+        toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
+        toolbar_height : 70,
+
+        //background
+        assetBackground: const AssetImage("assets/images/background.png"),
+        assetBackgroundOpacity: 0.3,
+
+        content: getContent() );
+  }
+```
+
+#### Custom Widget
+
+set Custom Widget hold at background, to make all content scrolling while the background widget still holding while scrolling
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/background_custom.png" height="300"/>
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+        toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
+        toolbar_height : 70,
+
+        //background
+         widgetBackground: CustomWidgetBackground(),
+        
+        content: getContent() );
+  }
+```
+
+### Navigation Bottom
+
+### Custom Shape Navigation
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/navigation.png" height="300"/>
+
+set Custom Widget hold at bottom of screen to navigate between multi screens
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+
+        //toolbar
+        toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
+        toolbar_height : 70,
+
+        //navigation bottom
+        navigationBottom: NavigationFastor( context, 0),
+        navigationBottom_height: 70,
+        homeButtonsBackgroundColor: HexColor(  "#1593bc"),   //color background for home buttons
+
+        content: getContent() );
+  }
+```
+
+### Change color
+
+#### Color of Home Buttons Android Device
+
+By using parameter "homeButtonsBackgroundColor" you can write hexcode color
+
+<p align="left">
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/color_home_1.png" height="300"/>
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/color_home_2.png" height="300"/>
+</p>
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+ 
+        homeButtonsBackgroundColor: HexColor(  "#1593bc"),   //color background for home buttons
+
+        content: getContent() );
+  }
+```
 
 
-<iframe id="inlineFrameExample"
-title="Inline Frame Example"
-width="300"
-height="200"
-src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
-</iframe>
+#### Color of Status Bar
 
+By using parameter "statusBarColorCustome" you can write hexcode color
+
+<p align="left">
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/color_statusbar_1.png" height="300"/>
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/color_statusbar_2.png" height="300"/>
+</p>
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageTemplate.t( this,
+ 
+        statusBarColorCustome: HexColor(  "#595629"),
+
+        content: getContent() );
+  }
+```
+
+<hr class="solid">
 
 ## Language
 ### Arabic right-to-left "RTL" Layout Direction 
@@ -108,6 +277,201 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 
 
 ```
+
+<hr class="solid">
+
+## Tutorial : TextFastor
+
+### Why use Fastor widget ?
+
+* Reduce 28% of chars in writing code
+* Reduce 28% of lines breaks
+
+### Feature Fastor
+* Margin without use Container
+* Padding without use Container
+* Decoration background without use Container
+* Text Align without use Style
+* Text Decoration without use Style
+* Font size without use Style
+* Font family without use Style
+* On tap without use GestureDetector
+
+### Table Result : Percentage of code writing reduction
+
+Using Fastor widget reduce writing code by 28% chars when you compare with normal flutter widget
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textview/text_compare.png"
+width="1300" height="175"/>
+
+See source code compare between Fastor and Normal at this page
+
+### Get Start
+#### Full Example
+
+```
+    TextFastor(
+        "Text Fastor Simple" ,
+        textAlign: TextAlign.center,
+        textDecoration: TextDecoration.underline,
+        color:  Colors.blue,
+        fontSize: 25,
+        fontFamily: FontProject.marina,
+      margin: EdgeInsets.all( 25 ),
+      padding: EdgeInsets.all( 10),
+      decoration: BoarderHelper.cardView(
+        colorLine: Colors.red,
+        colorBackground: Colors.yellow,
+        radiusSize: 15
+      ),
+      // backgroundColor: Colors.green,
+      maxLines: 2,
+      onPressed: (){
+          Log.i( "click on fastor widget");
+      },
+    );
+```
+
+### Compare Text() Normal Vs TextFastor()
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textview/text_screen.png" height="300"/>
+
+
+```
+
+  Widget getContent() {
+    return Column( children: [
+     textview_normal(),
+      textview_fastor()
+    ],);
+  }
+
+  Widget textview_normal() {
+    return GestureDetector( child:  Container(
+      child: Text(
+      "Text Normal" ,
+      textAlign: TextAlign.center,
+      maxLines: 2,
+      style: TextStyle(
+          decoration: TextDecoration.underline,
+          decorationColor: Colors.blue,
+          color: Colors.blue,
+          fontSize: 25,
+          fontFamily: FontProject.marina
+      ),
+    ),
+      margin: EdgeInsets.all( 25 ),
+      padding: EdgeInsets.all( 10),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.red ) ,
+          borderRadius: BorderRadius.all(
+              Radius.circular( 15 )
+          ) ,
+          color: Colors.yellow     //background color
+      ),
+      // color: Colors.green,
+    ),
+    onTap: (){
+      Log.i( "click on Normal");
+    },
+    );
+  }
+
+
+  Widget textview_fastor() {
+    return TextFastor(
+        "Text Fastor" ,
+        textAlign: TextAlign.center,
+        textDecoration: TextDecoration.underline,
+        color:  Colors.blue,
+        fontSize: 25,
+        fontFamily: FontProject.marina,
+      margin: EdgeInsets.all( 25 ),
+      padding: EdgeInsets.all( 10),
+      decoration: BoarderHelper.cardView(
+        colorLine: Colors.red,
+        colorBackground: Colors.yellow,
+        radiusSize: 15
+      ),
+      // backgroundColor: Colors.green,
+      maxLines: 2,
+      onPressed: (){
+          Log.i( "click on fastor widget");
+      },
+    );
+  }
+```
+
+<hr class="solid">
+
+
+## Tutorial : ButtonFastor
+
+### Feature Fastor
+* Margin without use Container
+* Padding without use Container
+* Decoration background without use Container
+* Text Align without use Style
+* Text Decoration without use Style
+* Font size without use Style
+* Font family without use Style
+* On tap without use GestureDetector
+
+### Get Start
+
+See source code compare between Fastor and Normal at this page
+
+#### Full Example
+
+```
+    ButtonFastor(
+      "Button Fastor",
+      () {
+        print("click on btn type fastor");
+      },
+      margin: EdgeInsets.symmetric( vertical: 40),
+      textColor: Colors.blue,
+      background: Colors.black,
+      fontFamily: FontProject.marina,
+      textFontSize: 15,
+      borderLine: Colors.blue,
+      borderRadius: 15,
+    );
+  }
+```
+
+### Compare Text() Normal Vs TextFastor()
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/button/thump.png" height="300"/>
+
+```
+EdgeInsets.symmetric( vertical: 30),
+      child: ElevatedButton(
+          onPressed: () {
+            print("click on btn type normal");
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            shape: RoundedRectangleBorder (
+              borderRadius: BorderRadius.circular(15),
+              side: BorderSide(width: 1,color: Colors.blue)
+          )),
+          child: Text(
+            "Button Normal",
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            style: TextStyle(
+                color: Colors.blue,
+                fontSize: 15,
+                fontFamily: FontProject.marina
+            ),
+          )
+      ),
+      // color: Colors.green,
+    );
+```
+
+<hr class="solid">
 
 # At The End
 
@@ -166,3 +530,5 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 ```
+
+<hr class="solid">
