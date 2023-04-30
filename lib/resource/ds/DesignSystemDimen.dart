@@ -38,15 +38,16 @@ class DSDimen {
 
   //........................................................ text
 
-  static var text_level_parent = designSystem(30);
-  static var text_level_1 = designSystem(24);
-  static var text_level_2 = designSystem(18);
-  static var text_level_3 = designSystem(14);
+  static var text_level_parent = designSystem(18);
+  static var text_level_1 = designSystem(15);
+  static var text_level_2 = designSystem(13);
+  static var text_level_3 = designSystem(11);
   static var text_level_4 = designSystem(8);
+
 
   //.............................................. button
 
-  static var button_height = designSystem(50);
+  static var button_height = designSystem(35);
   static var button_padding_vertical =text_level_4;
   static var button_padding_horizontal = text_level_3;
 

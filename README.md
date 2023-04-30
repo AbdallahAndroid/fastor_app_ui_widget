@@ -40,7 +40,9 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textview/thump.png" height="300"/>
 
-[Button]()
+[Button](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button)
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/button/thump.png" height="300"/>
 
 [ImageView]()
 
@@ -241,8 +243,8 @@ By using parameter "statusBarColorCustome" you can write hexcode color
   }
 ```
 
-## Language :
-### Arabic Right-To-Left "RTL" Layout Direction 
+## Language
+### Arabic right-to-left "RTL" Layout Direction 
 How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
 ```
 
@@ -276,21 +278,28 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 ## About Developer
 
 ```
-- About Us:
-• 5 Years of experience build +20 App.
+
+• 7 Years of experience build +20 App.
 • Mobile Developer: Flutter & Native Android IOS.
 • Skills: Dart, Java, Kotlin, Swift UIKit, SwiftUI
-• Skills: PHP Laravel, Design UI/UX, AdobeXD, Photoshop
-• I have my own Library of Code.
-• Very quick person to finish Projects
 • OCA, Oracle Certified Associate.
-
 - Follow my Project on Instagram :
 
 ```
 
 [Instagram](https://instagram.com/abdallahandroid)
 
+## How to contribute
+
+Want to contribute to the project? We will be proud to highlight you as one of our collaborators. Here are some points where you can contribute and make Fastor (and Flutter) even better.
+
+Write articles or make videos teaching how to use Fastor (they will be inserted in the Readme and in the future in our Wiki).
+Offering PRs for code/tests.
+Including new functions.
+Any contribution is welcome!
+
+Contact for contribute:
+abdallah.android.app@gmail.com
 
 ## License BSD 3
 ```

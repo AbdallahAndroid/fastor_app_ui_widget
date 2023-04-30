@@ -125,7 +125,7 @@ class ButtonFastor extends StatelessWidget {
 
     //fix default size
     height ??= DSDimen.button_height;
-    width ??= 140;
+    // width ??= 140;
   }
 
   static Widget _getText(String text, TextAlign textAlign, Color textColor_ds,

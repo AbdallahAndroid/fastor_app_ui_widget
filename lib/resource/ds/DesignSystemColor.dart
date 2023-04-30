@@ -5,7 +5,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 /**
     - create  new one
-static var  = HexColor( "#" );
+    static var  = HexColor( "#" );
  */
 class DSColor extends ResourceColor {
 
@@ -29,9 +29,9 @@ class DSColor extends ResourceColor {
 
   //layout
   static var ds_background_layout_1  = HexColor(ResourceColor.white );
-  static var ds_background_layout_2  = HexColor(ResourceColor.blueLight );
-  static var ds_background_layout_3  = HexColor(ResourceColor.black );
-  static var ds_background_layout_4  = HexColor(ResourceColor.black );
+  static var ds_background_layout_2  = HexColor(ResourceColor.white );
+  static var ds_background_layout_3  = HexColor(ResourceColor.white );
+  static var ds_background_layout_4  = HexColor(ResourceColor.white );
 
   //transparent
   static var ds_background_layout_3_transparent  = HexColor(ResourceColor.blueDark_transparent );
@@ -53,19 +53,19 @@ class DSColor extends ResourceColor {
   //  .............................................. color: text
 
   //light
-  static var  text_parent = HexColor( ResourceColor.white );
-  static var  text_h1 = HexColor( ResourceColor.blue_aquamarine );
-  static var  text_h2 = HexColor( ResourceColor.blueDark_25 );
+  static var  text_parent = HexColor( ResourceColor.black );
+  static var  text_h1 = HexColor( ResourceColor.black );
+  static var  text_h2 = HexColor( ResourceColor.black );
   static var  text_h3 = HexColor( ResourceColor.black );
   static var  text_h4 = HexColor( ResourceColor.black );
 
   //dark
-  static var  ds_text_h1_for_background_dark =  HexColor( ResourceColor.white );
-  static var  ds_text_h2_for_background_dark = HexColor( ResourceColor.white );
-  static var  ds_text_h3_for_background_dark = HexColor( ResourceColor.white  );
-  static var  ds_text_h4_for_background_dark = HexColor(ResourceColor.white );
+  static var  ds_text_h1_for_background_dark =  HexColor( ResourceColor.black );
+  static var  ds_text_h2_for_background_dark = HexColor( ResourceColor.black );
+  static var  ds_text_h3_for_background_dark = HexColor( ResourceColor.black  );
+  static var  ds_text_h4_for_background_dark = HexColor(ResourceColor.black );
 
-  //Title adn small
+  //Title and small
   static var  ds_text_h2_for_background_dark_typeTitle = HexColor( ResourceColor.white );
   static var ds_text_h2_for_background_light_typeTitle = text_h2;// HexColor( "#1c201f" );
   static var ds_text_h2_for_background_dark_typeSmall = HexColor( ResourceColor.white );
@@ -78,18 +78,18 @@ class DSColor extends ResourceColor {
   //  .............................................. button
 
   //large
-  static var ds_button_large_text = HexColor( ResourceColor.white );
-  static var ds_button_large_background = HexColor( ResourceColor.blueDark_25);
+  static var ds_button_large_text = HexColor( ResourceColor.black );
+  static var ds_button_large_background = HexColor( ResourceColor.gray_dark_blue);
 
   //small
-  static var ds_button_small_text = HexColor( ResourceColor.white  );
-  static var ds_button_small_background = HexColor( ResourceColor.black);
+  static var ds_button_small_text = HexColor( ResourceColor.black  );
+  static var ds_button_small_background = HexColor( ResourceColor.gray_dark_blue);
 
   // .............................................. textfield
 
   // static var ds_text_hint =  HexColor("#75aeb9");
-  static var ds_textfield_hint = HexColor( ResourceColor.blueGreen_transparent);
-  static var ds_textfield_text = HexColor( ResourceColor.blueDark );
+  static var ds_textfield_hint = HexColor( ResourceColor.gray_dark_blue);
+  static var ds_textfield_text = HexColor( ResourceColor.black );
   static var ds_textfield_boarder_line = HexColor(ResourceColor. blueGreen_transparent);
   static var ds_textfield_boarder_background = HexColor( ResourceColor.white );
 
@@ -97,8 +97,8 @@ class DSColor extends ResourceColor {
 
   //----------------------------------------------- checkbox, radio
 
-    static var tap_active = HexColor( ResourceColor.blue_aquamarine );
-    static var tap_inactive = HexColor( ResourceColor.black );
+  static var tap_active = HexColor( ResourceColor.blue_aquamarine );
+  static var tap_inactive = HexColor( ResourceColor.black );
 
   //----------------------------------------------- switch
 
