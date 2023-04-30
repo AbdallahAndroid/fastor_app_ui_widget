@@ -248,38 +248,6 @@ By using parameter "statusBarColorCustome" you can write hexcode color
 
 <hr class="solid">
 
-## Language
-### Arabic right-to-left "RTL" Layout Direction 
-How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
-```
-
-  @override
-  Widget build(BuildContext context) {
-    FastorStateManagement.instance().getCurrentContext();
-    return PageFastor(this, content: getDirection());
-  }
-  
-  Widget getDirection() {
-    return   Directionality(
-      textDirection: LanguageTools.getTextDirection(context),
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: getContent(),
-          );
-        },
-      ),
-    );
-  }
-
-
-```
-
-<hr class="solid">
-
 ## Tutorial : TextFastor
 
 ### Why use Fastor widget ?
@@ -469,6 +437,39 @@ EdgeInsets.symmetric( vertical: 30),
       ),
       // color: Colors.green,
     );
+```
+
+<hr class="solid">
+
+## Language
+
+### Arabic right-to-left "RTL" Layout Direction
+How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
+```
+
+  @override
+  Widget build(BuildContext context) {
+    FastorStateManagement.instance().getCurrentContext();
+    return PageFastor(this, content: getDirection());
+  }
+  
+  Widget getDirection() {
+    return   Directionality(
+      textDirection: LanguageTools.getTextDirection(context),
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: getContent(),
+          );
+        },
+      ),
+    );
+  }
+
+
 ```
 
 <hr class="solid">
