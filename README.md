@@ -73,6 +73,16 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 height="500" width="1500"
 style="border:2px solid red;"></iframe>
 
+<div>
+  <iframe id="inlineFrameExample"
+      title="Inline Frame Example"
+      width="300"
+      height="200"
+      src="https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md">
+  </iframe>
+</div>
+
+
 ## Language
 ### Arabic right-to-left "RTL" Layout Direction 
 How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
