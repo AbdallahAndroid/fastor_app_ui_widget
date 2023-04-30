@@ -1,3 +1,7 @@
+## 1.0.134
+
+* edit readme for all page
+
 ## 1.0.133
  
 * edit readme for button
