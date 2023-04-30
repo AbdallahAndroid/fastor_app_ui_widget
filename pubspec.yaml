@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #not fastor package
+  #not fastor = package
   hexcolor:
   easy_localization:
   universal_io:
