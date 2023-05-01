@@ -1,9 +1,10 @@
 # Features
 
-* Helping make coding faster.
-* Rapid, scalable development and clean design.
-* Increase reliable.
-* Enables developer to build, organize, deliver, and modify different content of generic items.
+* Reduce 28% of chars in writing code & lines breaks.
+* Git ride of RenderFlex overflowed by pixels.
+* Important ui widget with extra feature not found at normal widget. Example widget: Page, TextView, ImageView, ... etc
+* Helping make coding faster by use Utils: NetworkFastor, DeviceTools, BoarderHelper... etc.
+ 
 
 ## Get Start
 1- import dependence in yaml file:
