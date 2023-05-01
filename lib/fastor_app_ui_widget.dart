@@ -139,6 +139,10 @@ import  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFasto
 export  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFastor.dart';
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
+
+import 'resource/template/row/RowScrollFastor.dart';
+export 'resource/template/row/RowScrollFastor.dart';
+
 export 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
 
 ///fastor_app_ui_widget app all class
@@ -168,6 +172,7 @@ class fastor_app_ui_widget extends fastor {
   late ProgressCircleState prgState;
   late RadioTemplate rd;
   late RowTemplate rw;
+  late RowScrollFastor rs;
   late SpinnerTemplate sp;
   late SpinnerTemplateState spSate;
   late SpinnerView spView;
