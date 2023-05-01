@@ -68,7 +68,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [Table]()
 
-<hr  style="border-top: 3px dashed #000000;">
+---
+<hr  style="border-top: 3px solid; ">
 
 ## Tutorial : Page Shapes
 
@@ -248,7 +249,8 @@ By using parameter "statusBarColorCustome" you can write hexcode color
   }
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 ## Tutorial : TextFastor
 
@@ -372,7 +374,8 @@ See source code compare between Fastor and Normal at this page
   }
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 
 ## Tutorial : ButtonFastor
@@ -441,7 +444,8 @@ EdgeInsets.symmetric( vertical: 30),
     );
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 
 ## Tutorial : ImageFastor
@@ -513,7 +517,8 @@ same code working in all platform with save the aspect ratio size of image with 
       );
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 ## Language
 
@@ -546,7 +551,8 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 # At The End
 
@@ -606,4 +612,5 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
