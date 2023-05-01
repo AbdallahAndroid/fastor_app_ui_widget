@@ -48,7 +48,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/image/landscape.png" height="300"/>
 
-[Row]()
+[Row](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row)
 
 [Column]()
 
@@ -519,6 +519,27 @@ same code working in all platform with save the aspect ratio size of image with 
 
 ---
 <hr  style="border-top: 3px solid; ">
+
+## Tutorial : RowFastor
+
+### Feature Fastor
+* "RowScrollFastor" Scroll Horizontal for get ride of RenderFlex overflowed by pixels
+
+
+### RowScrollFastor
+
+Using Fastor widget Scroll Horizontal for get ride of RenderFlex overflowed by pixels
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png"
+height="300"/>
+
+See source code compare between Fastor and Normal at this page
+
+```
+   RowScrollFastor(  children: getChildren()  );
+```
+
+<hr class="solid">
 
 ## Language
 
