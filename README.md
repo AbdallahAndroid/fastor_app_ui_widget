@@ -68,7 +68,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [Table]()
 
-<hr class="solid">
+<hr  style="border-top: 3px dashed #000000;">
 
 ## Tutorial : Page Shapes
 
