@@ -100,7 +100,13 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 
 
-<!-- [RadioButton]()
+<!-- 
+Column
+
+TextField
+
+CheckBox
+[RadioButton]()
 
 [Switch]()
 
@@ -115,36 +121,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 ---
 <hr  style="border-top: 3px solid; ">
 
-## Tutorial : Page Shapes
-
-### Get Start
-#### Full Example
-1. Create New Widget extends "StatefulWidget" .
-2. inside build() make return "PageTemplate.t()" .
-
-```
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:flutter/material.dart';
-
-class TutorialCreateFastorPage extends StatefulWidget {
-  @override
-  TutorialCreateFastorState createState() => TutorialCreateFastorState();
-}
-
-class TutorialCreateFastorState extends State<TutorialCreateFastorPage> {
-  
-  @override
-  Widget build(BuildContext context) {
-    return PageTemplate.t( this,
-        content: getContent() );
-  }
-  
-  Widget getContent() {
-    return  TextTemplate.t( "Empty page" );
-  }
-  
-}
-```
+## Tutorial : PageFastor
 
 ### Empty Screen
 
@@ -153,7 +130,7 @@ class TutorialCreateFastorState extends State<TutorialCreateFastorPage> {
 ```
 @override
 Widget build(BuildContext context) {
-return PageTemplate.t( this,
+return PageFastor(this,
 content: getContent() );
 }
 ```
@@ -167,7 +144,7 @@ Create any shape of Toolbar you want in Custom shape then put it at page templat
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
         toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
         toolbar_height : 70,
         content: getContent() );
@@ -192,7 +169,7 @@ set Image png to background, to make all content scrolling while the background 
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
         toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
         toolbar_height : 70,
 
@@ -213,7 +190,7 @@ set Custom Widget hold at background, to make all content scrolling while the ba
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
         toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
         toolbar_height : 70,
 
@@ -235,7 +212,7 @@ set Custom Widget hold at bottom of screen to navigate between multi screens
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
 
         //toolbar
         toolbar: ToolbarSimpleFastor( context, "Page Shapes"),
@@ -264,7 +241,7 @@ By using parameter "homeButtonsBackgroundColor" you can write hexcode color
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
  
         homeButtonsBackgroundColor: HexColor(  "#1593bc"),   //color background for home buttons
 
@@ -285,14 +262,14 @@ By using parameter "statusBarColorCustome" you can write hexcode color
 ```
   @override
   Widget build(BuildContext context) {
-    return PageTemplate.t( this,
+    return PageFastor(this,
  
         statusBarColorCustome: HexColor(  "#595629"),
 
         content: getContent() );
   }
 ```
-
+ 
 ---
 <hr  style="border-top: 3px solid; ">
 
