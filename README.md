@@ -33,17 +33,39 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 # Tutorial Content
 
-[Page Shapes](https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md)
+<table>
+  <tr>
+    <td>
+      <a 
+      href="https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md">Page Shapes
+      </a> 
+    </td>
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textview">TextView
+      </a> 
+    </td>
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button">Button
+      </a> 
+    </td>
+  </tr>
 
-<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/thump.png" height="300"/>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/thump.png" height="300"/>
+    </td>
+    <td>
+     <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textview/thump.png" height="300"/>
+    </td>
+    <td>
+     <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/button/thump.png" height="300"/>
+    </td>
+  </tr>
 
-[TextView](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textview)
+  <tr>
+  </tr>
+</table> 
 
-<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textview/thump.png" height="300"/>
-
-[Button](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button)
-
-<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/button/thump.png" height="300"/>
 
 [ImageView](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/image)
 
