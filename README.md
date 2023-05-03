@@ -32,6 +32,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 [https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T](https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T)
 
 # Tutorial Content
+
 <table>  
   <tr>  
     <td>  
@@ -79,11 +80,20 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
     </td>  
   </tr>  
 
- <tr> <td>            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png" height="300"/>  
- </td> <td>            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png" height="300"/>  
- </td> <td>            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>  
- </td> <td>            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/checkbox/thump.png" height="300"/>  
- </td> </tr>
+ <tr> 
+    <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png" height="300"/>  
+    </td> 
+    <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png" height="300"/>  
+    </td>
+    <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>  
+    </td>
+    <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/checkbox/thump.png" height="300"/>  
+    </td>
+</tr>
 </table>
  
 
