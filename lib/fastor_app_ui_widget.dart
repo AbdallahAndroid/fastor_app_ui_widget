@@ -71,6 +71,9 @@ import 'resource/state/FastorStateManagement.dart';
 export 'resource/state/FastorStateManagement.dart';
 
 
+import 'resource/template/column/ColumnFastor.dart';
+export 'resource/template/column/ColumnFastor.dart';
+
 import 'resource/template/image/ImageCircleView.dart';
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.dart';
 
@@ -154,6 +157,7 @@ class fastor_app_ui_widget extends fastor {
   late CheckboxTemplate ch;
   late GestureDetectorTemplate gs;
   late ColumnTemplate col;
+  late ColumnFastor colFastor;
   late ContainerTemplate cont;
   late EdgeInsetsTools edge ;
   late ElevationTemplate elv;

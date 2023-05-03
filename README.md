@@ -51,6 +51,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [Row](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row)
 
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png" height="300"/>
+
 [Column]()
 
 [TextField]()
@@ -540,7 +542,8 @@ See source code compare between Fastor and Normal at this page
    RowScrollFastor(  children: getChildren()  );
 ```
 
-<hr class="solid">
+---
+<hr  style="border-top: 3px solid; ">
 
 ## Language
 
@@ -634,5 +637,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 ```
 
+ 
 ---
 <hr  style="border-top: 3px solid; ">
