@@ -45,7 +45,10 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
       </a> 
     </td>
     <td>
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button">Button
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button">Button </a> 
+    </td>
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/image">ImageView
       </a> 
     </td>
   </tr>
@@ -60,16 +63,41 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
     <td>
      <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/button/thump.png" height="300"/>
     </td>
+    <td>
+     <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/image/landscape.png" height="300"/>
+    </td>
   </tr>
 
   <tr>
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row">Row</a> 
+    </td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/column">Column</a> 
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textfield">TextField</a> 
+    </td>
+    <td>
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/checkbox">CheckBox</a> 
+    </td>
   </tr>
+
+    <tr>
+        <td> 
+            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png" height="300"/>
+        </td>
+        <td> 
+            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png" height="300"/>
+        </td>
+        <td> 
+            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>
+        </td>
+        <td> 
+            <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/checkbox/thump.png" height="300"/>
+        </td>
+    </tr>
 </table> 
+ 
 
-
-[ImageView](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/image)
-
-<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/image/landscape.png" height="300"/>
 
 [Row](https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row)
 
