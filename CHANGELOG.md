@@ -1,3 +1,8 @@
+## 1.0.142
+
+* Add Feature "NetworkManager" by using class "NetworkManagerDio" and class "NetworkManagerHttp"
+
+
 ## 1.0.141
 ## 1.0.140
 
