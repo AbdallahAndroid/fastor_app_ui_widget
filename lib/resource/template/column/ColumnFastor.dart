@@ -14,55 +14,55 @@ class ColumnFastor extends StatelessWidget {
   EdgeInsets? margin;
   EdgeInsets? padding;
   Decoration? decoration; // pages: decoration: BorderHelper.top_line()
-  Alignment? alignGravity;
+  Alignment? alignment;
 
   ColumnFastor({
 
-  //found before at flutter v2.8
-  required List<Widget> this.children ,
-  MainAxisAlignment? this.mainAxisAlignment, // = MainAxisAlignment.start,
-  MainAxisSize? this.mainAxisSize, // = MainAxisSize.min,
-  CrossAxisAlignment? this.crossAxisAlignment, // = CrossAxisAlignment.start,
-  double? this.width,
-  double? this.height,
+    //found before at flutter v2.8
+    required List<Widget> this.children ,
+    MainAxisAlignment? this.mainAxisAlignment, // = MainAxisAlignment.start,
+    MainAxisSize? this.mainAxisSize, // = MainAxisSize.min,
+    CrossAxisAlignment? this.crossAxisAlignment, // = CrossAxisAlignment.start,
+    double? this.width,
+    double? this.height,
 
-  //new feature not found at flutter v2.8
+    //new feature not found at flutter v2.8
     Color? this.colorBackground ,
     EdgeInsets? this.margin,
     EdgeInsets? this.padding,
     Decoration? this.decoration, // pages: decoration: BorderHelper.top_line()
-    Alignment? this.alignGravity
+    Alignment? this.alignment
   });
 
   @override
   Widget build(BuildContext context) {
 
-  //default gravity layout
-  alignGravity ??= Alignment.topLeft;
-  mainAxisAlignment ??= MainAxisAlignment.start;
-  mainAxisSize ??= MainAxisSize.min;
-  crossAxisAlignment ??= CrossAxisAlignment.start;
+    //default gravity layout
+    // alignGravity ??= Alignment.topLeft;
+    mainAxisAlignment ??= MainAxisAlignment.start;
+    mainAxisSize ??= MainAxisSize.min;
+    crossAxisAlignment ??= CrossAxisAlignment.start;
 
-  var col = Column(
-  mainAxisAlignment: mainAxisAlignment!,
-  mainAxisSize: mainAxisSize!,
-  crossAxisAlignment: crossAxisAlignment!,
-  children: children ,
-  );
+    var col = Column(
+      mainAxisAlignment: mainAxisAlignment!,
+      mainAxisSize: mainAxisSize!,
+      crossAxisAlignment: crossAxisAlignment!,
+      children: children ,
+    );
 
-  var sizeBox = SizedBox(child: col, width: width, height: height );
+    var sizeBox = SizedBox(child: col, width: width, height: height );
 
-  var cont = Container(
-  alignment: alignGravity,
-  padding: padding,
-  width: width,
-  height: height,
-  margin: margin,
-  decoration: decoration,
-  child: sizeBox,
-  color: colorBackground,
-  );
+    var cont = Container(
+      alignment: alignment,
+      padding: padding,
+      width: width,
+      height: height,
+      margin: margin,
+      decoration: decoration,
+      child: sizeBox,
+      color: colorBackground,
+    );
 
-  return cont;
+    return cont;
   }
 }

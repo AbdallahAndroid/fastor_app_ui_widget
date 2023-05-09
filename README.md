@@ -3,7 +3,7 @@
 * Reduce 28% of chars in writing code & lines breaks.
 * Git ride of RenderFlex overflowed by pixels.
 * Important ui widget with extra feature not found at normal widget. Example widget: Page, TextView, ImageView, ... etc
-* Helping make coding faster by use Utils: NetworkFastor, DeviceTools, BoarderHelper... etc.
+* Helping make coding faster by use Utils: NetworkManager, DeviceTools, BoarderHelper... etc.
  
 
 ## Get Start

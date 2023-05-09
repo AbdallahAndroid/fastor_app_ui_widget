@@ -1,4 +1,7 @@
 ## 1.0.143
+
+* ColumnFastor, make alignment default is null like the Widget Column
+
 ## 1.0.142
 
 * Add Feature "NetworkManager" by using class "NetworkManagerDio" and class "NetworkManagerHttp"
