@@ -1,3 +1,4 @@
+## 1.0.144
 ## 1.0.143
 
 * ColumnFastor, make alignment default is null like the Widget Column
