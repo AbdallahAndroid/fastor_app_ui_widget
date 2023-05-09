@@ -71,30 +71,18 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
     <td>  
       <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row">Row</a>   
     </td>  
-    <!-- <td> 
+    <td>  
       <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/column">Column</a>   
-      </td>  
-    <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textfield">TextField</a>   
     </td>  
-    <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/checkbox">CheckBox</a>   
-    </td>   -->
   </tr>  
 
  <tr> 
     <td>
         <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/row/scroll.png" height="300"/>  
     </td> 
-    <!-- <td>
+     <td>
         <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png" height="300"/>  
-    </td>
-    <td>
-        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>  
-    </td>
-    <td>
-        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/checkbox/thump.png" height="300"/>  
-    </td> -->
+    </td> 
 </tr>
 </table>
 
