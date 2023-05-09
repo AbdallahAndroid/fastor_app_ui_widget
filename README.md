@@ -597,67 +597,6 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 ---
 <hr  style="border-top: 3px solid; ">
 
-# At The End
-
-## About Developer
-
-```
-
-• 7 Years of experience build +20 App.
-• Mobile Developer: Flutter & Native Android IOS.
-• Skills: Dart, Java, Kotlin, Swift UIKit, SwiftUI
-• OCA, Oracle Certified Associate.
-- Follow my Project on Instagram :
-
-```
-
-[Instagram](https://instagram.com/abdallahandroid)
-
-## How to contribute
-
-Want to contribute to the project? We will be proud to highlight you as one of our collaborators. Here are some points where you can contribute and make Fastor (and Flutter) even better.
-
-Write articles or make videos teaching how to use Fastor (they will be inserted in the Readme and in the future in our Wiki).
-Offering PRs for code/tests.
-Including new functions.
-Any contribution is welcome!
-
-Contact for contribute:
-abdallah.android.app@gmail.com
-
-## License BSD 3
-```
-Copyright (c) 2022, Abdallah Mahmoud Ahmed Shehata
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice,
-  this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright
-  notice, this list of conditions and the following disclaimer in the
-  documentation and/or other materials provided with the distribution.
-* Neither the name of fastor-app.com nor the names of its contributors
-  may be used to endorse or promote products derived from this software
-  without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
-```
-
- 
----
-<hr  style="border-top: 3px solid; ">
 
 ## NetworkManager
 
@@ -921,6 +860,74 @@ this class used to set the path of file of "xFile" and set the key/value of file
 ### Types Of Webservice Network Dependence
 * dio : use class "NetworkManagerDio.dart"
 * http : use class "NetworkManagerHttp.dart"
+
+---
+<hr  style="border-top: 3px solid; ">
+
+---
+
+---
+
+# At The End
+
+## About Developer
+
+```
+
+• 7 Years of experience build +20 App.
+• Mobile Developer: Flutter & Native Android IOS.
+• Skills: Dart, Java, Kotlin, Swift UIKit, SwiftUI
+• OCA, Oracle Certified Associate.
+- Follow my Project on Instagram :
+
+```
+
+[Instagram](https://instagram.com/abdallahandroid)
+
+## How to contribute
+
+Want to contribute to the project? We will be proud to highlight you as one of our collaborators. Here are some points where you can contribute and make Fastor (and Flutter) even better.
+
+Write articles or make videos teaching how to use Fastor (they will be inserted in the Readme and in the future in our Wiki).
+Offering PRs for code/tests.
+Including new functions.
+Any contribution is welcome!
+
+Contact for contribute:
+abdallah.android.app@gmail.com
+
+## License BSD 3
+```
+Copyright (c) 2022, Abdallah Mahmoud Ahmed Shehata
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+* Neither the name of fastor-app.com nor the names of its contributors
+  may be used to endorse or promote products derived from this software
+  without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+```
+
  
 ---
 <hr  style="border-top: 3px solid; ">
+
+[//]: # (Congiratulation You Are Complete)
