@@ -33,6 +33,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 # Tutorial Content
 
+## Content: Widget
+
 <table>  
   <tr>  
     <td>  
@@ -92,8 +94,6 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 </tr>
 </table>
 
-
-
 <!-- 
  
 CheckBox
@@ -109,8 +109,15 @@ CheckBox
 
 [Table]() -->
 
+## Content: Classes Helper
+
+[NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
+
+[Language](https://pub.dev/packages/fastor_app_ui_widget#Language)
+
 ---
-<hr  style="border-top: 3px solid; ">
+
+---
 
 ## Tutorial : PageFastor
 
@@ -551,40 +558,10 @@ See source code compare between Fastor and Normal at this page
    RowScrollFastor(  children: getChildren()  );
 ```
 
+
 ---
-<hr  style="border-top: 3px solid; ">
 
-## Language
-
-### Arabic right-to-left "RTL" Layout Direction
-How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
-```
-
-  @override
-  Widget build(BuildContext context) {
-    FastorStateManagement.instance().getCurrentContext();
-    return PageFastor(this, content: getDirection());
-  }
-  
-  Widget getDirection() {
-    return   Directionality(
-      textDirection: LanguageTools.getTextDirection(context),
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: getContent(),
-          );
-        },
-      ),
-    );
-  }
-
-
-```
-
+---
 
 ## Tutorial : ColumnFastor
 
@@ -1049,6 +1026,41 @@ this class used to set the path of file of "xFile" and set the key/value of file
 ### Types Of Webservice Network Dependence
 * dio : use class "NetworkManagerDio.dart"
 * http : use class "NetworkManagerHttp.dart"
+
+---
+
+---
+
+## Language
+
+### Arabic right-to-left "RTL" Layout Direction
+How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
+```
+
+  @override
+  Widget build(BuildContext context) {
+    FastorStateManagement.instance().getCurrentContext();
+    return PageFastor(this, content: getDirection());
+  }
+  
+  Widget getDirection() {
+    return   Directionality(
+      textDirection: LanguageTools.getTextDirection(context),
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: getContent(),
+          );
+        },
+      ),
+    );
+  }
+
+
+```
 
 ---
 
