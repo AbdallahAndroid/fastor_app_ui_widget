@@ -11,7 +11,7 @@ import '../TextFieldTemplateBase.dart';
 
 
 
-class TextFieldStateLessFastor extends StatelessWidget {
+class TextFieldFastor extends StatelessWidget {
 
   // validate
   FormFieldValidator<String>? validator;
@@ -56,7 +56,7 @@ class TextFieldStateLessFastor extends StatelessWidget {
   FocusNode? focusNode;
   Widget? prefixIcon;
 
-  TextFieldStateLessFastor( {
+  TextFieldFastor( {
     // validate
     this.validator,
     this.autovalidateMode,

@@ -74,6 +74,9 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
     <td>  
       <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/column">Column</a>   
     </td>  
+    <td>  
+      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textfield">TextField</a>   
+    </td>  
   </tr>  
 
  <tr> 
@@ -83,16 +86,16 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
      <td>
         <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png" height="300"/>  
     </td> 
+     <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>  
+    </td> 
 </tr>
 </table>
 
 
 
 <!-- 
-Column
-
-TextField
-
+ 
 CheckBox
 [RadioButton]()
 
@@ -582,9 +585,207 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 
 ```
 
----
-<hr  style="border-top: 3px solid; ">
 
+## Tutorial : ColumnFastor
+
+### Feature Fastor
+* Have Decoration
+* Have Space : Margin, Padding
+* Have Alignment
+* Can Set Fixed size width/height
+
+
+### ColumnFastor
+
+Using Fastor widget Scroll Horizontal for get ride of RenderFlex overflowed by pixels
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png"
+height="300"/>
+
+See source code compare between Fastor and Normal at this page
+
+```
+    ColumnFastor(
+        children: getChildren(),
+        margin: EdgeInsets.only(top: 20, bottom: 20, left: 60, right: 60),
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.red),
+            borderRadius: BorderRadius.all(Radius.circular(15)),
+            color: Colors.yellow //background color
+        ),
+    );
+```
+
+---
+
+---
+
+## Tutorial : TextFieldFastor
+
+### Feature Fastor
++  Call from constructor of class
+
+```
+    // validate
+    this.validator,
+    this.autovalidateMode,
+    this.error_text = "Missed",
+
+    //text and hint
+    this.hint_text,
+    this.text_color,
+    this.fontSize,
+    this.hint_color,
+
+    //boarder and underline
+    this.isRemoveUnderline = false,
+    this.isShowBoarder,
+
+    //background
+    this.background_color,
+    this.decoration,              //at the Container
+
+    //spaces
+    this.padding,
+    this.margin,
+
+    //controller
+    this.controller,
+    this.onChanged,
+
+    //input content type
+    this.keyboardType,
+    this.obscureText = false,
+
+    //size and max/min
+    this.width,
+    this.maxLength,
+    this.maxLines,
+    this.minLines,
+
+    //other
+    this.textAlign  ,
+    this.focusNode,
+    this.prefixIcon
+```
+
+### Get Start
+
+<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png"
+height="300"/>
+
+#### Simple Example
+* Create Variable at class
+```
+  var email_txt = "";
+  var email_valid = AutovalidateMode.disabled;
+```
+
+* Create Widget
+```
+    return TextFieldFastor(
+        autovalidateMode: email_valid,
+        margin: EdgeInsets.only( top: 10 ),
+        padding: EdgeInsets.all( 5),
+        background_color: Colors.white,
+        validator: ValidatorTemplate.email( ),
+        keyboardType: TextInputType.emailAddress,
+        onChanged: (s){
+          email_txt = s;
+          Log.i( "tf_email() - change s: $s ");
+        }
+    );
+```
+
+* Validate Form after click of button
+```
+          if(validateEmailAfterClick())  {
+            ///TO-DO : After success success field
+          }
+```
+
+```
+  bool validateEmailAfterClick() {
+    var result = true; //default good
+    //email
+    if ( ToolsValidation.isEmail( email_txt ) == false  ){
+      Log.i( "missed email");
+      result  = false;
+      setState(() {
+        email_valid = AutovalidateMode.always;
+      });
+    }
+    return result;
+  }
+```
+
+#### Full Example
+
+```
+
+//----------------------------------------------------- variable validate textField
+
+  var email_txt = "";
+  var email_valid = AutovalidateMode.disabled;
+
+  //---------------------------------------------------------------- textfield
+
+  Widget tf_email() {
+    return TextFieldFastor(
+        autovalidateMode: email_valid,
+        margin: EdgeInsets.only( top: 10 ),
+        padding: EdgeInsets.all( 5),
+        background_color: Colors.white,
+        validator: ValidatorTemplate.email( ),
+        keyboardType: TextInputType.emailAddress,
+        onChanged: (s){
+          email_txt = s;
+          Log.i( "tf_email() - change s: $s ");
+        }
+    );
+  }
+
+  //---------------------------------------------------------- button validate
+
+  Widget bt_send_otp() {
+    var bt =  ButtonFastor( "SEND",
+        background: Colors.black,
+        textColor: Colors.white,
+        width: 200,
+        margin: EdgeInsets.only(top: 40), () {
+          if(validateEmailAfterClick())  {
+            ///TO-DO : After success success field
+          }
+    });
+
+    return Container( child:  bt,
+      alignment: Alignment.center,
+      width: double.infinity,
+    );
+  }
+
+
+  bool validateEmailAfterClick() {
+    var result = true; //default good
+    //email
+    if ( ToolsValidation.isEmail( email_txt ) == false  ){
+      Log.i( "missed email");
+      result  = false;
+      setState(() {
+        email_valid = AutovalidateMode.always;
+      });
+    }
+    return result;
+  }
+
+```
+
+---
+
+---
+ 
+# Helper Classes
 
 ## NetworkManager
 
@@ -848,40 +1049,6 @@ this class used to set the path of file of "xFile" and set the key/value of file
 ### Types Of Webservice Network Dependence
 * dio : use class "NetworkManagerDio.dart"
 * http : use class "NetworkManagerHttp.dart"
-
----
-<hr  style="border-top: 3px solid; ">
-
-## Tutorial : ColumnFastor
-
-### Feature Fastor
-* Have Decoration
-* Have Space : Margin, Padding
-* Have Alignment
-* Can Set Fixed size width/height
-
-
-### ColumnFastor
-
-Using Fastor widget Scroll Horizontal for get ride of RenderFlex overflowed by pixels
-
-<img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/column/thump.png"
-height="300"/>
-
-See source code compare between Fastor and Normal at this page
-
-```
-    ColumnFastor(
-        children: getChildren(),
-        margin: EdgeInsets.only(top: 20, bottom: 20, left: 60, right: 60),
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.red),
-            borderRadius: BorderRadius.all(Radius.circular(15)),
-            color: Colors.yellow //background color
-        ),
-    );
-```
 
 ---
 

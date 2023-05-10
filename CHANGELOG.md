@@ -1,7 +1,8 @@
+## 1.0.148
 ## 1.0.147
 ## 1.0.146
 
-+ Add Type "TextFieldStateLessFastor"
++ Add Type "TextFieldFastor"
 
 ## 1.0.145
 

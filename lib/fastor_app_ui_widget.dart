@@ -67,8 +67,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
-import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldStateLessFastor.dart';
-export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldStateLessFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 
 import 'resource/boarder/BorderRadiusTools.dart';
 export 'resource/boarder/BorderRadiusTools.dart';
@@ -223,7 +223,7 @@ class fastor_app_ui_widget extends fastor {
   ///text and TextField
   late TextTemplate tx;
   late TextFieldTemplate tf;
-  late TextFieldStateLessFastor tfStateLess;
+  late TextFieldFastor tfStateLess;
   late ValidatorTemplate validatorTemplate;
 
   ///resources
