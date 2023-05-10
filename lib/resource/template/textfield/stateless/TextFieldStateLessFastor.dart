@@ -129,11 +129,7 @@ class TextFieldStateLessFastor extends StatelessWidget {
 
 
     //get tf
-    TextFormField tf = _getTextFourmField(obscureText, autovalidateMode, error_text,
-        validator, text_color!, fontSize!, hint_color!, isShowBoarder,
-        padding!, hint_text, keyboardType, controller, onChanged,
-        textAlign!, maxLength, focusNode, maxLines , minLines,
-        isRemoveUnderline, prefixIcon);
+    TextFormField tf = _getTextFourmField( );
 
 
     //fix textfield not materail
@@ -144,19 +140,21 @@ class TextFieldStateLessFastor extends StatelessWidget {
 
 
     //ct
-    var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
-    return ct;
+    // var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
+    var container = Container(
+      child: materialApp,
+      width: width,
+      // height: height,
+      margin: margin,
+      // padding: padding,
+      decoration: decoration,
+    );
+    return container;
   }
 
 
 
-  static TextFormField _getTextFourmField(bool obscureText,
-      AutovalidateMode? autovalidateMode, String? error_text, FormFieldValidator<String>? validator,
-      Color text_color, double fontSize, Color hint_color, bool? isShowBoarder,
-      EdgeInsets padding, String? hint_text, TextInputType? keyboardType,
-      TextEditingController? controller, ValueChanged<String>? onChanged,
-      TextAlign  textAlign, int? maxLength, FocusNode? focusNode,
-      int? maxLine , int? minLines , bool isRemoveUnderline, Widget? prefixIcon){
+  TextFormField _getTextFourmField( ){
 
     //textfield
     var tf = TextFormField (
@@ -165,7 +163,7 @@ class TextFieldStateLessFastor extends StatelessWidget {
       obscureText : obscureText,
       autovalidateMode: autovalidateMode,
 
-      textAlign: textAlign ,
+      textAlign: textAlign! ,
 
       //validate error
       validator:  TextFieldTemplateBase.getTextValidator(error_text!, validator),
@@ -176,8 +174,10 @@ class TextFieldStateLessFastor extends StatelessWidget {
       //cursor color
       cursorColor: hint_color,
 
+      //  static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding, String? hint_text,
+      //       Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
       //padding + hint + underline
-      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder, padding, hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon),
+      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text, hint_color!, fontSize!, isRemoveUnderline!, prefixIcon),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number
@@ -196,7 +196,7 @@ class TextFieldStateLessFastor extends StatelessWidget {
       buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
 
       //lines
-      maxLines: maxLine,
+      maxLines: maxLines,
       minLines: minLines,
 
       focusNode: focusNode,
