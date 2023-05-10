@@ -113,7 +113,7 @@ CheckBox
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
 
-[Language](https://pub.dev/packages/fastor_app_ui_widget#Language)
+[Language](https://pub.dev/packages/fastor_app_ui_widget#language)
 
 ---
 
