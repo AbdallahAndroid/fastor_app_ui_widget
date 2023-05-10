@@ -769,11 +769,10 @@ height="300"/>
 ---
 
 ### Simple Example
+* There is many steps to call API, you need to prepare: Body, Url, Header, token.
+* Here is guide
 
-
-#### Request Information
-
-#### Generate Body
+#### 1- Generate Body
 
 ```
     Map<String, dynamic> body = Map();
@@ -782,13 +781,13 @@ height="300"/>
 ```
 
 
-#### Generate Bearer Token in Header
+#### 2- Generate Bearer Token in Header
 ```
     var token = await UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken( token );
 ```
 
-###  Call Class "NetworkManagerDio.dart"
+### 3- Call Class "NetworkManagerDio.dart"
 We will return the response in format JSON
 ```
     NetworkManagerDio(url, headers:  header, body: body, callback: (status, msg, json){
