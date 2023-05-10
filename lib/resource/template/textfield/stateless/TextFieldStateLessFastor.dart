@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/ds/LevelDS.dart';
 
 
@@ -6,96 +7,99 @@ import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
 
-import 'TextFieldTemplateBase.dart';
-
-///How to use TextFieldTemplate
-/**
-    "1- declare varaible :
-
-    var email_txt = """";
-    var email_valid = AutovalidateMode.disabled;
-
-    2- return widget :
-    Widget tf_email() {
-    return TextFieldTemplate.t(
-
-    autovalidateMode: email_valid,
-    margin: EdgeInsets.only(top: DSDimen.space_level_3),
-    validator: ValidatorTemplate.email( ),
-    keyboardType: TextInputType.emailAddress,
-    padding: EdgeInsets.all( DSDimen.textfield_auto_padding),
-    onChanged: (s){ email_txt = s; }
-    // margin: EdgeInsets.only( top: DesignSystemDimen.ds_space_to_level_2)
-    );
-    }"
-    "3-  valdiate on click on button ""next"" :
-
-    bool validate() {
-    var result = true; //default good
-
-    //email
-    if ( ToolsValidation.isEmail( email_txt ) == false  ){
-    Log.i( ""missed email"");
-    result  = false;
-    setState(() {
-    email_valid = AutovalidateMode.always;
-    });
-    }
-    return result;
-    } "
-
- */
-
-/// use class "ValidatorTemplate" to change type of input field "name, email,..etc"
-@Deprecated( "Used class `TextFieldStateLessFastor()`  instead")
-class TextFieldTemplate   {
+import '../TextFieldTemplateBase.dart';
 
 
 
-  static Widget t(
-      {
-        // validate
-        FormFieldValidator<String>? validator,
-        AutovalidateMode? autovalidateMode,
-        String? error_text = "Missed",
+class TextFieldStateLessFastor extends StatelessWidget {
 
-        //text and hint
-        String? hint_text,
-        Color? text_color,
-        double? fontSize,
-        Color? hint_color,
+  // validate
+  FormFieldValidator<String>? validator;
+  AutovalidateMode? autovalidateMode;
+  String? error_text = "Missed";
 
-        //boarder and underline
-        bool isRemoveUnderline = false,
-        bool? isShowBoarder,
+  //text and hint
+  String? hint_text;
+  Color? text_color;
+  double? fontSize;
+  Color? hint_color;
 
-        //background
-        Color? background_color,
-        Decoration? decoration,              //at the Container
+  //boarder and underline
+  bool isRemoveUnderline = false;
+  bool? isShowBoarder;
 
-        //spaces
-        EdgeInsets? padding,
-        EdgeInsets? margin,
+  //background
+  Color? background_color;
+  Decoration? decoration; //at the Container
 
-        //controller
-        TextEditingController? controller,
-        ValueChanged<String>? onChanged,
+  //spaces
+  EdgeInsets? padding;
+  EdgeInsets? margin;
 
-        //input content type
-        TextInputType? keyboardType,
-        bool obscureText = false,
+  //controller
+  TextEditingController? controller;
+  ValueChanged<String>? onChanged;
 
-        //size and max/min
-        double? width,
-        int? maxLength,
-        int? maxLines,
-        int? minLines,
+  //input content type
+  TextInputType? keyboardType;
+  bool obscureText = false;
 
-        //other
-        TextAlign? textAlign  ,
-        FocusNode? focusNode,
-        Widget? prefixIcon         //example "icon" left of textField
-      }) {
+  //size and max/min
+  double? width;
+  int? maxLength;
+  int? maxLines;
+  int? minLines;
+
+  //other
+  TextAlign? textAlign;
+
+  FocusNode? focusNode;
+  Widget? prefixIcon;
+
+  TextFieldStateLessFastor( {
+    // validate
+    this.validator,
+    this.autovalidateMode,
+    this.error_text = "Missed",
+
+    //text and hint
+    this.hint_text,
+    this.text_color,
+    this.fontSize,
+    this.hint_color,
+
+    //boarder and underline
+    this.isRemoveUnderline = false,
+    this.isShowBoarder,
+
+    //background
+    this.background_color,
+    this.decoration,              //at the Container
+
+    //spaces
+    this.padding,
+    this.margin,
+
+    //controller
+    this.controller,
+    this.onChanged,
+
+    //input content type
+    this.keyboardType,
+    this.obscureText = false,
+
+    //size and max/min
+    this.width,
+    this.maxLength,
+    this.maxLines,
+    this.minLines,
+
+    //other
+    this.textAlign  ,
+    this.focusNode,
+    this.prefixIcon         //example "icon" left of textField
+  }) {
+
 
     //padding default
     padding ??= EdgeInsets.zero;
@@ -117,12 +121,18 @@ class TextFieldTemplate   {
     if(  isPass) {
       obscureText = true;
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+
 
     //get tf
     TextFormField tf = _getTextFourmField(obscureText, autovalidateMode, error_text,
-        validator, text_color, fontSize, hint_color, isShowBoarder,
-        padding, hint_text, keyboardType, controller, onChanged,
-        textAlign , maxLength, focusNode, maxLines , minLines,
+        validator, text_color!, fontSize!, hint_color!, isShowBoarder,
+        padding!, hint_text, keyboardType, controller, onChanged,
+        textAlign!, maxLength, focusNode, maxLines , minLines,
         isRemoveUnderline, prefixIcon);
 
 
@@ -137,6 +147,7 @@ class TextFieldTemplate   {
     var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
     return ct;
   }
+
 
 
   static TextFormField _getTextFourmField(bool obscureText,
@@ -194,5 +205,6 @@ class TextFieldTemplate   {
 
     return tf;
   }
+
 
 }

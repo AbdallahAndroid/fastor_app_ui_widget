@@ -1,3 +1,7 @@
+## 1.0.146
+
++ Add Type "TextFieldStateLessFastor"
+
 ## 1.0.145
 
 * Edit Readme ColumnFastor

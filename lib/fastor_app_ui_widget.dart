@@ -51,6 +51,7 @@ import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/TextFieldTemplate.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
@@ -65,6 +66,9 @@ import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConsta
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+
+import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldStateLessFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldStateLessFastor.dart';
 
 import 'resource/boarder/BorderRadiusTools.dart';
 export 'resource/boarder/BorderRadiusTools.dart';
@@ -216,9 +220,10 @@ class fastor_app_ui_widget extends fastor {
   late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
 
-  ///text field
+  ///text and TextField
   late TextTemplate tx;
   late TextFieldTemplate tf;
+  late TextFieldStateLessFastor tfStateLess;
   late ValidatorTemplate validatorTemplate;
 
   ///resources
