@@ -1,9 +1,11 @@
 # Features
 
 * Reduce 28% of chars in writing code & lines breaks.
-* Git ride of RenderFlex overflowed by pixels.
-* Important ui widget with extra feature not found at normal widget. Example widget: Page, TextView, ImageView, ... etc
-* Helping make coding faster by use Utils: NetworkManager, DeviceTools, BoarderHelper... etc.
+* Get ride of RenderFlex overflowed by pixels.
+* Basics ui widget with extra feature not found at normal widget. Example widget:
+    * PageFastor, TextFastor, ImageFastor, RowFastor, ColumnFastor, TextFieldFastor ..etc
+* Helping make coding faster by use Utils. Example Classes: 
+  * NetworkManager, LanguageTools, ... etc.
  
 
 ## Get Start
@@ -113,7 +115,7 @@ CheckBox
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
 
-[Language](https://pub.dev/packages/fastor_app_ui_widget#language)
+[Language](https://pub.dev/packages/fastor_app_ui_widget#languagetools)
 
 ---
 
@@ -1030,7 +1032,7 @@ this class used to set the path of file of "xFile" and set the key/value of file
 
 ---
 
-## Language
+## LanguageTools
 
 ### Arabic right-to-left "RTL" Layout Direction
 How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
@@ -1075,11 +1077,11 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 • Mobile Developer: Flutter & Native Android IOS.
 • Skills: Dart, Java, Kotlin, Swift UIKit, SwiftUI
 • OCA, Oracle Certified Associate.
-- Follow my Project on Instagram :
+
 
 ```
-
-[Instagram](https://instagram.com/abdallahandroid)
+### Follow my Project on Instagram :
+[Instagram](https://instagram.com/abdallahabtkar)
 
 ## How to contribute
 
@@ -1090,8 +1092,9 @@ Offering PRs for code/tests.
 Including new functions.
 Any contribution is welcome!
 
-Contact for contribute:
-abdallah.android.app@gmail.com
+### Contact for contribute:
+<a href = "mailto:abdallah.android.app@gmail.com?subject=Contribute Request&body=Contribute For Fastor-UI-Widget&body">Send Email</a>
+
 
 ## License BSD 3
 ```
