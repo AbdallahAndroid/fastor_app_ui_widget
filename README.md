@@ -40,18 +40,18 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 <table>  
   <tr>  
     <td>  
-      <a     href="https://github.com/AbdallahAndroid/fastor_app/blob/master/tutorial/page/README_page.md"  >Page Shapes  
+      <a     href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--pagefastor"  >Page Shapes  
       </a>   
     </td>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textview">TextView  
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--textfastor">TextView  
       </a>   
     </td>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/button">Button </a>   
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--buttonfastor">Button</a>   
     </td>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/image">ImageView  
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--imagefastor">ImageView  
       </a>   
     </td>  
   </tr>  
@@ -73,13 +73,13 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
   <tr>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/row">Row</a>   
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--rowfastor">Row</a>   
     </td>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/column">Column</a>   
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--columnfastor">Column</a>   
     </td>  
     <td>  
-      <a href="https://github.com/AbdallahAndroid/fastor_app/tree/master/tutorial/textfield">TextField</a>   
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--textfieldfastor">TextField</a>   
     </td>  
   </tr>  
 
