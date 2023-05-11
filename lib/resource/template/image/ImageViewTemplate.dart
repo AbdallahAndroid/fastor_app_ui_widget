@@ -12,7 +12,8 @@ import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart'
 import 'package:log_debug/log_debug.dart';
 
 
-@Deprecated( "ImageFastor")
+
+@Deprecated( "use class 'ImageFastor()'")
 class ImageViewTemplate extends StatelessWidget  {
 
 

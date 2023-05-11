@@ -14,7 +14,7 @@ class SingleChildScrollViewTemplate {
 
 
   /**
-   * "t" means choose
+   * "t" symbole for "template" means choose the axis
    */
   static Widget t(BuildContext context, Axis axis, List<Widget> children, double minesMargin) {
     if( axis == Axis.horizontal ) {

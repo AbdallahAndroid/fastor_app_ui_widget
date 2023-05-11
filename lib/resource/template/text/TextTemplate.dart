@@ -12,7 +12,7 @@ import 'BaseTextTemplate.dart';
 
 
  /// text view
-@Deprecated( "TextFastor")
+@Deprecated( "use instead class 'TextFastor()'")
 class TextTemplate extends BaseTextTemplate {
 
   //------------------------------------------------------------------ normal

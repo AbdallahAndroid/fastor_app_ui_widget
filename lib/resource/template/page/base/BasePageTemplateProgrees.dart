@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
-import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressPage.dart';
+import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
 
 class BasePageTemplateProgress {
 

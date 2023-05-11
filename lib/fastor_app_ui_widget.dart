@@ -35,7 +35,7 @@ import 'package:fastor_app_ui_widget/resource/template/page/PageFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/page/PageFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/page/PageTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/placeholder/PlaceholderTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressPage.dart';
+import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressSpinkit.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/radio/RadioTemplate.dart';
@@ -104,7 +104,7 @@ export 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
 export 'package:fastor_app_ui_widget/resource/template/listview/ListViewTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/page/PageTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/placeholder/PlaceholderTemplate.dart';
-export 'package:fastor_app_ui_widget/resource/template/progressView/ProgressPage.dart';
+export 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
 export 'package:fastor_app_ui_widget/resource/template/radio/RadioTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';

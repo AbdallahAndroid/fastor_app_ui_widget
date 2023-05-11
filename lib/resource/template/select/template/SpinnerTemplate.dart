@@ -1,8 +1,4 @@
 
-
-
-
-
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
@@ -15,7 +11,7 @@ typedef SpinnerCallBack = void Function( int position, bool isRemoveSelected );
 
 //--------------------------------------------------------------------- class
 
-@Deprecated( "use 'SpinnerView' instead")
+@Deprecated( "use 'SpinnerView()' instead")
 class SpinnerTemplate extends StatefulWidget {
 
   List<Widget> childers;

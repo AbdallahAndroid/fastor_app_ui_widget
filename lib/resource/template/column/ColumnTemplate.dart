@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+@Deprecated( "use instead 'ColumnFastor()'")
 class ColumnTemplate {
 
 

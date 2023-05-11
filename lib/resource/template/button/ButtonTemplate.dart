@@ -13,7 +13,7 @@ import '../../ds/LevelDS.dart';
  
 
 ///class button ui
-@Deprecated( "ButtonFastor")
+@Deprecated( "use instead 'ButtonFastor()'")
 class ButtonTemplate {
   //------------------------------------------------------------------ normal
 

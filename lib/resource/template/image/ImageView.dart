@@ -12,7 +12,7 @@ import 'package:log_debug/log_debug.dart';
 
 
 
-@Deprecated( "ImageFastor")
+@Deprecated( "use class 'ImageFastor()'")
 class ImageView extends StatefulWidget {
 
   static String tag = "ImageView";

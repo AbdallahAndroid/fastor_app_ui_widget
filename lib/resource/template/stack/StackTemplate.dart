@@ -2,6 +2,7 @@
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:flutter/material.dart';
 
+@Deprecated( "Under Testing")
 class StackTemplate {
 
   //------------------------------------------------------------------------------ two item

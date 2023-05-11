@@ -11,7 +11,7 @@ import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
 
-
+@Deprecated( "use instead 'PageFastor()'")
 class ScrollViewPage {
 
   static Widget t( BuildContext context,     Widget pageContent,

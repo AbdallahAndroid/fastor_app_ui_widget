@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 
-
+@Deprecated( "Under Development")
 class GestureDetectorTemplate  {
 
 
