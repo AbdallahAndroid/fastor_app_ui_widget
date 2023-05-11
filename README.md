@@ -25,7 +25,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [https://pub.dev/documentation/fastor_app_ui_widget/latest/index.html](https://pub.dev/documentation/fastor_app_ui_widget/latest/index.html)
 
-### Tutorial Source Code
+### tutorial Source Code
 
 [https://github.com/AbdallahAndroid/fastor_app](https://github.com/AbdallahAndroid/fastor_app)
 
