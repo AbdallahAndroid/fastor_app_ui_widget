@@ -129,6 +129,7 @@ CheckBox
 
 <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/page/scroll.png" height="300"/>
 
+* Simple Example Create "PageFastor"
 ```
 @override
 Widget build(BuildContext context) {
@@ -136,6 +137,29 @@ return PageFastor(this,
 content: getContent() );
 }
 ```
+
+* Example For Content Long Data 
+```
+  Widget getContent() {
+    return Column( children: getLongDataForTestScroll() ,);
+  }
+
+  List<Widget> getLongDataForTestScroll() {
+    List<Widget> data = [];
+    for (int i = 1; i <= 70; i++) {
+      var w = TextFastor(
+        "Get ride of RenderFlex, data number $i",
+        fontSize: 15,
+        width: 300,
+        color: Colors.yellow,
+        margin: EdgeInsets.all(5),
+      );
+      data.add(w);
+    }
+    return data;
+  }
+```
+
 
 ### Toolbar Custom Shape
 
