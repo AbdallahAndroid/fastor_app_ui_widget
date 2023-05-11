@@ -29,9 +29,10 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [https://github.com/AbdallahAndroid/fastor_app](https://github.com/AbdallahAndroid/fastor_app)
 
-### Tutorial Youtube
+[//]: # (### Tutorial Youtube)
 
-[https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T](https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T)
+[//]: # ()
+[//]: # ([https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T]&#40;https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T&#41;)
 
 # Tutorial Content
 
