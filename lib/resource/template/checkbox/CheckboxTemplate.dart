@@ -7,7 +7,7 @@ import 'package:fastor_app_ui_widget/resource/ds/DesignSystemFont.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 
-
+@Deprecated( "use instead 'CheckboxFastor()'")
 class CheckboxTemplate {
 
 
@@ -29,6 +29,7 @@ class CheckboxTemplate {
     var ch = Checkbox(
       value: value,
       onChanged: onChanged,
+      activeColor: DSColor.tap_active,  //background color when it's active
     );
 
     //theme

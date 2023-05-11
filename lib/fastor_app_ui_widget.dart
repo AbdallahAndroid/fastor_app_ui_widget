@@ -76,6 +76,8 @@ import 'resource/state/FastorStateManagement.dart';
 export 'resource/state/FastorStateManagement.dart';
 
 
+import 'resource/template/checkbox/CheckboxFastor.dart';
+export 'resource/template/checkbox/CheckboxFastor.dart';
 import 'resource/template/column/ColumnFastor.dart';
 export 'resource/template/column/ColumnFastor.dart';
 
@@ -182,6 +184,7 @@ class fastor_app_ui_widget extends fastor {
   late ButtonTemplate b;
   late CardViewTemplate card;
   late CheckboxTemplate ch;
+  late CheckboxFastor chFastor;
   late GestureDetectorTemplate gs;
   late ColumnTemplate col;
   late ColumnFastor colFastor;

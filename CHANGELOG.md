@@ -1,3 +1,7 @@
+## 1.0.152
+
++ Add CheckboxFastor
+
 ## 1.0.151
 
 * README EDIT

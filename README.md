@@ -82,6 +82,9 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
     <td>  
       <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--textfieldfastor">TextField</a>   
     </td>  
+    <td>  
+      <a href="https://pub.dev/packages/fastor_app_ui_widget#tutorial--checkboxfastor">CheckboxFastor</a>   
+    </td>  
   </tr>  
 
  <tr> 
@@ -94,83 +97,13 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
      <td>
         <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/textfield/thump.png" height="300"/>  
     </td> 
+     <td>
+        <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/tutorial/checkbox/thump.png" height="300"/>  
+    </td> 
+
 </tr>
 </table>
 
-<!-- 
-## basic 11 
-
-CheckBox
-[RadioTemplate]()
-
-[Switch]()
-
-[Calender]()
-
-[SpinnerView]()
-
-[ListViewTemplate]()
-GridViewFastor
-[Table]() 
-
-EmptyView or PlaceholderTemplate
-
-ImageCircleView
-
-ProgressCircle and ProgressSpinkit
-
-## Content : Classes Tools Helper 7
-
-DeviceTools
-
-ValidatorTemplate  for textfield validator
-
-FastorStateManagement
-
-Log
-
-ToolsValidation rename to "InputValidation"
-
-Price Tools
-
-UniqueIdTools
-
-
-## Content: Classes UI Helper  8
-
-CardViewTemplate
-CropTemplate
-EdgeInsetsTools
-ElevationTemplate
-ShadowContainer
-BorderRadiusTools
-BoarderHelper
-FastorScrollTheme
-
-## Content: Theme Widget  9
-
-make 4 constructor: ThemeColorFastor(), ThemeDimenFastor(), ThemeFontFastor(), ThemeFontFastor()
-
-## Content: Web Platform
-
-- DeviceTools methods browser
-
--Fix Laptop Touch Pad not working with some device
-
-        dragDevices: {
-          PointerDeviceKind.mouse,
-          PointerDeviceKind.touch,
-          PointerDeviceKind.stylus,
-          PointerDeviceKind.trackpad,
-          PointerDeviceKind.unknown,
-          PointerDeviceKind.invertedStylus
-        },
-
-- Fix html import can not run on android
-  see detail on stackoverflow
-
-- 
--->
 
 ## Content: Classes Helper
 
