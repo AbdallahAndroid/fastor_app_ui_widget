@@ -1,6 +1,5 @@
 ## basic widget 11 
 
-CheckBox
 [RadioTemplate]()
 
 [Switch]()
