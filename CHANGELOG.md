@@ -1,3 +1,4 @@
+## 1.0.154
 ## 1.0.153
 
 + Add 'color_inactive' in 'CheckboxFastor'
