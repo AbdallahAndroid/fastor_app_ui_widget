@@ -25,11 +25,17 @@ class CheckboxFastor  extends StatelessWidget {
   Color? text_color;
   String? fontFamily;
 
+  //input color
+  Color? color_inactive;
+  Color? color_active;
+
   CheckboxFastor({
     required this.context,
     required this.value,
     required this.onChanged,
     this.removePaddingClick = true,
+    this.color_inactive,
+    this.color_active,
     this.size_scale = 1.0,
     this.margin,
     this.padding,
@@ -39,7 +45,11 @@ class CheckboxFastor  extends StatelessWidget {
     this.text_dimen = 0,
     this.text_color,
     this.fontFamily,
-  }) ;
+  })  {
+
+    color_active ??= DSColor.tap_active;
+    color_inactive ??= DSColor.tap_inactive;
+  }
 
 
   @override
@@ -48,14 +58,14 @@ class CheckboxFastor  extends StatelessWidget {
     var ch = Checkbox(
       value: value,
       onChanged: onChanged,
-      activeColor: DSColor.tap_active, //background color when it's active
+      activeColor: color_active!!, //background color when it's active
     );
 
     //theme
     var theme = Theme(
       data: Theme.of(context).copyWith(
-          unselectedWidgetColor: DSColor.tap_inactive, //inactive color
-          toggleableActiveColor: DSColor.tap_active //active color
+          unselectedWidgetColor: color_inactive!!, //inactive color
+          toggleableActiveColor: color_active!! //active color
       ),
       child: ch,
     );
@@ -79,10 +89,10 @@ class CheckboxFastor  extends StatelessWidget {
         height: paddingCheckBoxClick);
 
     //fix material
-    var material = Material(child: sizeBox);
+    // var material = Material(child: sizeBox);
 
     //size by scale
-    var scale = Transform.scale(scale: size_scale, child: material);
+    var scale = Transform.scale(scale: size_scale, child: sizeBox);
 
     /////////////////////////////////////// text
 

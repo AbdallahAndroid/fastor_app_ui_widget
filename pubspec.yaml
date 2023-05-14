@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.0.152
+version: 1.0.153
 homepage: https://fastor-app.com
 
 environment:
@@ -21,8 +21,8 @@ dependencies:
   flutter_clean_calendar: ^1.1.0
 
   #firebase
-  firebase_analytics:
-  firebase_core:
+#  firebase_analytics:
+#  firebase_core:
 
   #fastor sub library
   log_debug:
