@@ -162,6 +162,9 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
+import 'resource/toolsFastor/navigate/NavigationTools.dart';
+export 'resource/toolsFastor/navigate/NavigationTools.dart';
+
 import 'resource/toolsFastor/cache/Save.dart';
 export 'resource/toolsFastor/cache/Save.dart';
 
@@ -255,6 +258,7 @@ class fastor_app_ui_widget extends fastor {
   late ListenerChangeDeviceSize listenerChangeDeviceSize;
   late CropTemplate cropTemplate;
   late FastorScrollTheme scrollTheme;
+  late NavigationTools navigationTools;
 
   ///state managmetn
   late FastorStateManagement stateManagement;

@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.0.156
+version: 1.0.157
 homepage: https://fastor-app.com
 
 environment:
@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_spinkit: ^5.1.0
   flutter_clean_calendar: ^1.1.0
+  need_resume:
 
   #firebase
 #  firebase_analytics:

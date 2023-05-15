@@ -36,6 +36,8 @@ UniqueIdTools
 
 Save
 
+NavigationTools
+
 ## Content: Classes UI Helper  8
 
 CardViewTemplate

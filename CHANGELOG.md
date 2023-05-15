@@ -1,3 +1,7 @@
+## 1.0.157
+
++ add class "NavigationTools" for push() or pushAndRemove() or pushWithResumeLifecycle()
+
 ## 1.0.156
 
 * add class "Save" for save in cache
