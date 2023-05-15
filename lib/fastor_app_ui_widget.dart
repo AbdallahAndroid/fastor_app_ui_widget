@@ -162,6 +162,9 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
+import 'resource/toolsFastor/cache/Save.dart';
+export 'resource/toolsFastor/cache/Save.dart';
+
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkHeaderTools.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerDio.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerHttp.dart';
@@ -245,6 +248,7 @@ class fastor_app_ui_widget extends fastor {
   late Log myLog;
   late IFrameElement iFrameElement;
   late CssStyleDeclaration cssStyleDeclaration;
+  late Save saveFastor;
 
   ///tools ui
   late StatusBarConstant statusBar;

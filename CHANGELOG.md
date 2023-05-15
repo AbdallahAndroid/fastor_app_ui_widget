@@ -1,3 +1,11 @@
+## 1.0.156
+
+* add class "Save" for save in cache
+
+## 1.0.155
+
++ Edit class "NetworkManagerHttp" methods "getFutureResponse()"
+
 ## 1.0.154
 ## 1.0.153
 

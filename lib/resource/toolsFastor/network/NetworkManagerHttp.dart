@@ -47,12 +47,16 @@ class NetworkManagerHttp {
     if( callback != null ) this.callback = callback;
 
     //constructor
-    _initConstructor();
+    _initParameter();
+
+    if( callback != null ) {
+      _chooseTypeNetworkThenStartService( );
+    }
   }
 
   //-------------------------------------------------------------------- init constructor
 
-  void _initConstructor(){
+  void _initParameter(){
     //edit headers
     headers = setDefaultHeader(headers);
 
@@ -76,26 +80,30 @@ class NetworkManagerHttp {
         }
 
      */
-
-
-    //choose type
-    chooseTypeToStart( );
   }
+
+  //----------------------------------------------------------------------- future
+
+  Future<http.Response> getFutureResponse( ) async {
+    return await _chooseTypeNetworkThenStartService();
+  }
+
+
   //----------------------------------------------------------------------- start
 
-  void chooseTypeToStart( ){
+  Future<http.Response> _chooseTypeNetworkThenStartService( ) async {
     if( type == NetworkType.post ) {
       /**
        * test here choose type of network
        */
 
-      _post_http();
+      return await _post_http();
     } else {
-      _get( );
+      return await _get( );
     }
   }
 
-  Future<String> _post_http( ) async {
+  Future<http.Response> _post_http( ) async {
     var myBody = jsonEncode( body);
     Log.k( tag, "_post_http() - myBody: "  + myBody  );
 
@@ -120,11 +128,11 @@ class NetworkManagerHttp {
     }
 
     //return
-    return response.body;
+    return response ;
   }
   //--------------------------------------------------------------------------- get
 
-  Future<String> _get(   ) async {
+  Future<http.Response> _get(   ) async {
 
     //http
     Uri uri = Uri.parse(url);
@@ -147,7 +155,7 @@ class NetworkManagerHttp {
     }
 
     //return
-    return response.body;
+    return response ;
   }
 
   //------------------------------------------------------------------------- header
