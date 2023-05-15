@@ -1,3 +1,4 @@
+## 1.0.158
 ## 1.0.157
 
 + add class "NavigationTools" for push() or pushAndRemove() or pushWithResumeLifecycle()

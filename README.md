@@ -111,6 +111,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [Language](https://pub.dev/packages/fastor_app_ui_widget#languagetools)
 
+[NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
+
 ---
 
 ---
@@ -1123,6 +1125,46 @@ How To User Class "LanguageTools.dart" to auto change direction from (  English 
 
 ```
 
+---
+
+---
+
+## NavigationTools
+
++ add class "NavigationTools" for push() or pushAndRemove() or pushWithResumeLifecycle()
+
+```
+
+class NavigationTools {
+
+
+  //---------------------------------------------------------------------- tools general
+
+  static void push(BuildContext context, Widget page ) {
+    var materialPageRoute = MaterialPageRoute(builder: (context) => page);
+    Navigator.push(context ,  materialPageRoute  );
+  }
+
+  /**
+   * this make librasry "need_resume" working with push to next page
+   */
+  static void pushResume(BuildContext context, Widget page, ResumableState resume ) {
+    var materialPageRoute = MaterialPageRoute(builder: (context) => page);
+    resume.push( context, materialPageRoute );
+  }
+
+
+  /**
+   *  clearPrevious pages
+   */
+  static void pushAndRemoveUntil(BuildContext context, Widget page ) {
+    var materialPageRoute = MaterialPageRoute(builder: (ctx) => page);
+    Navigator.pushAndRemoveUntil(context, materialPageRoute, (e) => false);
+  }
+
+
+}
+```
 ---
 
 ---
