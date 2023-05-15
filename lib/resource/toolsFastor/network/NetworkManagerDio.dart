@@ -1,19 +1,11 @@
-import 'dart:convert';
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
-// import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
-// import 'package:image_picker/image_picker.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-// import 'package:scuba/resource/tools/constant/EnvironmentConstant.dart';
-// import 'package:scuba/resource/tools/network/NetworkManagerHttp.dart';
 
 import 'NetworkRequestFile.dart';
 import 'NetworkType.dart';
-// import 'package:http/http.dart';
 
 typedef NetworkDiocallback_dio = void Function(
     bool status, String msg, Map<String, dynamic> mapJson);
@@ -63,7 +55,8 @@ class NetworkManagerDio {
     //type call back listener
     if (callback != null) {
       this.callback_dio = callback;
-      _initConstructor();
+      _initParameterValues();
+      chooseTypeNetworkThenStartService();
     } else {
       /**
           callback not need, now you need to call "getFutureData()" to take feature of "Future"
@@ -77,7 +70,7 @@ class NetworkManagerDio {
       call this if use "Future" in your page
    */
 
-  Future getFutureData() async {
+  Future<Response> getFutureData() async {
     //set values
     this.url = url;
     this.type = type;
@@ -87,12 +80,15 @@ class NetworkManagerDio {
     if (headers != null) this.headers = headers;
 
     //constructor
-    await _initConstructor();
+    _initParameterValues();
+
+    //choose type
+    return await chooseTypeNetworkThenStartService();
   }
 
   //-------------------------------------------------------------------- init constructor
 
-  Future _initConstructor() async {
+  void _initParameterValues() async {
     //edit headers
     headers = setDefaultHeader(headers);
 
@@ -110,13 +106,10 @@ class NetworkManagerDio {
     //Log.k( tag, "start() body: " + this.body.toString()  );
     // Log.k( tag, "start() method.type: " + type.toString()  );
     // Log.k( tag, "start() header: " + this.headers.toString()  );
-
-    //choose type
-    await chooseTypeToStart();
   }
   //----------------------------------------------------------------------- start
 
-  Future chooseTypeToStart() async {
+  Future<Response> chooseTypeNetworkThenStartService() async {
     if (type == NetworkType.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
@@ -125,20 +118,25 @@ class NetworkManagerDio {
         return _fileTypeXFile();
       } else {
         callback_dio!(false, "filePath not found or XFile not found", Map());
-        return false;
+        return getFailedResponse();
       }
     } else if (type == NetworkType.post) {
-      _post_dio();
+      return await _post_dio();
     } else if (type == NetworkType.put) {
-      _put();
+      return await _put();
     } else {
-      _get();
+      return await  _get();
     }
   }
 
+  Response getFailedResponse() {
+    return Response(requestOptions:  new RequestOptions(path:  "not-found"));
+  }
   //--------------------------------------------------------------------------- post
 
-  Future _post_dio() async {
+  Future<Response> _post_dio() async {
+    Response? response ;
+
     try {
       FormData form = FormData.fromMap(body);
 
@@ -154,15 +152,14 @@ class NetworkManagerDio {
       }
 
 
-      Response response =
-      await _dio.post(url, options: Options(headers: headers), data: form);
+      response = await _dio.post(url, options: Options(headers: headers), data: form);
       //Log.k(tag, "_post_dio() - success: " + response.toString());
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
 
       //return
-      return response.data;
+      return response;
     } catch (e) {
       String msg = e.toString();
       if( isEnableLogDioPretty ) {
@@ -171,12 +168,13 @@ class NetworkManagerDio {
       if (callback_dio != null) callback_dio!(false, msg, Map());
     }
 
-    return Map();
+    return response!;
   }
 
   //--------------------------------------------------------------------------- put
 
-  Future _put() async {
+  Future<Response> _put() async {
+    Response? response ;
     try {
       // FormData form = FormData.fromMap(body);
 
@@ -192,27 +190,27 @@ class NetworkManagerDio {
       }
 
 
-      Response response =
-      await _dio.put(url, options: Options(headers: headers), data: body);
+        response =   await _dio.put(url, options: Options(headers: headers), data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
 
       //return
-      return response.data;
+      return response;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_put() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
     }
 
-    return Map();
+    return response!;
   }
 
   //---------------------------------------------------------------------------- file
 
-  Future _file() async {
+  Future<Response> _file() async {
+    Response? response ;
     try {
       Log.k(tag, "_file() - requestFile: " + requestFile.toString() );
       // Log.k(tag, "_file() - body: " + body.toString());
@@ -221,7 +219,7 @@ class NetworkManagerDio {
       if (ToolsValidation.isEmpty(requestFile!.filePath)) {
         if (callback_dio != null)
           callback_dio!(false, "filePath not found", Map());
-        return;
+        return getFailedResponse();
       }
 
 
@@ -249,7 +247,7 @@ class NetworkManagerDio {
         responseBody: isEnableLogDioPretty,
       ));
 
-      Response response = await _dio.post(url,
+        response = await _dio.post(url,
           options: Options(headers: headers), data: formData);
       Log.k(tag, "_file() - success: " + response.toString());
 
@@ -257,17 +255,18 @@ class NetworkManagerDio {
       if (callback_dio != null) callback_dio!(true, "success", response.data);
 
       //return
-      return response.data;
+      return response;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_file() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
     }
-    return Map();
+    return response!;
   }
 
 
-  Future _fileTypeXFile() async {
+  Future<Response > _fileTypeXFile() async {
+    Response? response ;
     try {
       Log.k(tag, "_fileTypeXFile() - xFile: " + requestFile!.xFile!.path.toString() );
 
@@ -276,7 +275,7 @@ class NetworkManagerDio {
       if (ToolsValidation.isEmpty(requestFile!.xFile!.path)) {
         if (callback_dio != null)
           callback_dio!(false, "filePath not found", Map());
-        return;
+        return getFailedResponse();
       }
 
       //byte
@@ -307,7 +306,7 @@ class NetworkManagerDio {
         responseBody: isEnableLogDioPretty,
       ));
 
-      Response response = await _dio.post(url,
+       response = await _dio.post(url,
           options: Options(headers: headers), data: formData);
       // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
 
@@ -315,19 +314,20 @@ class NetworkManagerDio {
       if (callback_dio != null) callback_dio!(true, "success", response.data);
 
       //return
-      return response.data;
+      return response;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_fileTypeXFile() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, "Falied to Upload File", Map());
     }
-    return Map();
+    return response!;
   }
 
 
   //--------------------------------------------------------------------------- get
 
-  Future _get() async {
+  Future<Response> _get() async {
+    Response? response;
     var _dio = Dio();
 
     //show request and response in beatful log
@@ -341,19 +341,19 @@ class NetworkManagerDio {
 
     try {
 
-      Response response = await _dio.get(url, options: Options(headers: headers));
+      response = await _dio.get(url, options: Options(headers: headers));
       // Log.k( tag, "_get() - success: "  + response.toString()  );
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
       //return
-      return response.data;
+      return response;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_get() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
     }
-    return Map();
+    return response!;
   }
 
   //------------------------------------------------------------------------- header
