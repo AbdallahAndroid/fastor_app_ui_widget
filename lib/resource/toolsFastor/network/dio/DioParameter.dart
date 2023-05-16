@@ -26,8 +26,8 @@ extension DioParameter on NetworkManagerDio {
   }
 
 
-  Response  getFailedResponse() {
-    return Response(requestOptions:  new RequestOptions(path:  "not-found"));
-  }
+   Response  getFailedResponse( {String? msg }) {
+     return Response(requestOptions:  new RequestOptions(path:  msg != null ? msg : "failed request"));
+   }
 
 }

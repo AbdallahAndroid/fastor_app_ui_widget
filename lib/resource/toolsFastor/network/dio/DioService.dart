@@ -5,8 +5,49 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'DioParameter.dart';
 
- extension DioService on NetworkManagerDio {
+extension DioService on NetworkManagerDio {
 
+
+  //--------------------------------------------------------------------------- get
+
+  Future<Response> get_dio() async {
+    Response? response;
+    var _dio = Dio();
+
+    //show request and response in beatful log
+    if( isEnableLogDioPretty ) {
+      _dio.interceptors.add(PrettyDioLogger(
+        requestHeader: isEnableLogDioPretty,
+        requestBody: isEnableLogDioPretty,
+        responseBody: isEnableLogDioPretty,
+      ));
+    }
+
+    try {
+
+      response = await _dio.get(url, options: Options(headers: headers));
+      // Log.k( tag, "_get() - success: "  + response.toString()  );
+
+      //call back
+      if (callback_dio != null) callback_dio!(true, "success", response.data);
+      //return
+      return response;
+    } on DioError catch (dioError) {
+      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
+      Response responseFailed = dioError.response!;
+      Log.k(tag, "_get_dio() - statusCode: " + responseFailed.statusCode.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+      return responseFailed;
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_get() - e: " + msg);
+      if (callback_dio != null) callback_dio!(false, msg, Map());
+      return getFailedResponse(msg: e.toString() );
+    }
+
+  }
 
   //--------------------------------------------------------------------------- post
 
@@ -36,15 +77,28 @@ import 'DioParameter.dart';
 
       //return
       return response;
-    } catch (e) {
+    } on DioError catch (dioError) {
+      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
+      Response responseFailed = dioError.response!;
+      Log.k(tag, "_post_dio() - statusCode: " + responseFailed.statusCode.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+      return responseFailed;
+
+    } catch (e,s) {
       String msg = e.toString();
       if( isEnableLogDioPretty ) {
         Log.k(tag, "_post_dio() - e: " + msg);
       }
+      Log.k(tag, "_post_dio() - response: " + response.toString() );
+      Log.k(tag, "_post_dio() - s: " + s.toString() );
       if (callback_dio != null) callback_dio!(false, msg, Map());
+      if( response != null ) {
+        return response;
+      }
+      return getFailedResponse(msg: e.toString() );
     }
-
-    return response!;
   }
 
   //--------------------------------------------------------------------------- put
@@ -74,13 +128,21 @@ import 'DioParameter.dart';
 
       //return
       return response;
+    } on DioError catch (dioError) {
+      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
+      Response responseFailed = dioError.response!;
+      Log.k(tag, "_put_dio() - statusCode: " + responseFailed.statusCode.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+      return responseFailed;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_put() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
+      return getFailedResponse(msg: e.toString() );
     }
 
-    return response!;
   }
 
   //---------------------------------------------------------------------------- file
@@ -132,12 +194,21 @@ import 'DioParameter.dart';
 
       //return
       return response;
+    } on DioError catch (dioError) {
+      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
+      Response responseFailed = dioError.response!;
+      Log.k(tag, "_file_dio() - statusCode: " + responseFailed.statusCode.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+      return responseFailed;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_file() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
+      return getFailedResponse(msg: e.toString() );
     }
-    return response!;
+
   }
 
 
@@ -191,44 +262,22 @@ import 'DioParameter.dart';
 
       //return
       return response;
+    } on DioError catch (dioError) {
+      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
+      Response responseFailed = dioError.response!;
+      Log.k(tag, "_fileTypeXFile_dio() - statusCode: " + responseFailed.statusCode.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+      return responseFailed;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_fileTypeXFile() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, "Falied to Upload File", Map());
+
+      return getFailedResponse(msg: e.toString() );
     }
-    return response!;
   }
 
 
-  //--------------------------------------------------------------------------- get
-
-  Future<Response> get_dio() async {
-    Response? response;
-    var _dio = Dio();
-
-    //show request and response in beatful log
-    if( isEnableLogDioPretty ) {
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty,
-        requestBody: isEnableLogDioPretty,
-        responseBody: isEnableLogDioPretty,
-      ));
-    }
-
-    try {
-
-      response = await _dio.get(url, options: Options(headers: headers));
-      // Log.k( tag, "_get() - success: "  + response.toString()  );
-
-      //call back
-      if (callback_dio != null) callback_dio!(true, "success", response.data);
-      //return
-      return response;
-    } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_get() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-    }
-    return response!;
-  }
 }
