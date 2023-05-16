@@ -95,7 +95,7 @@ import 'DioParameter.dart';
       if (ToolsValidation.isEmpty(requestFile!.filePath)) {
         if (callback_dio != null)
           callback_dio!(false, "filePath not found", Map());
-        return _getFailedResponse();
+        return getFailedResponse();
       }
 
 
@@ -151,7 +151,7 @@ import 'DioParameter.dart';
       if (ToolsValidation.isEmpty(requestFile!.xFile!.path)) {
         if (callback_dio != null)
           callback_dio!(false, "filePath not found", Map());
-        return _getFailedResponse();
+        return getFailedResponse();
       }
 
       //byte
