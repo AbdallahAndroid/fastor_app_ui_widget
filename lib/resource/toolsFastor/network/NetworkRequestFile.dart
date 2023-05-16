@@ -4,6 +4,9 @@ import 'package:cross_file/cross_file.dart';
 
 class NetworkRequestFile  {
 
+  //--------------------------------------------------------------- variable
+
+  String  parameterFile = "file";
 
   /***
   ///////////choose type of request
@@ -11,6 +14,8 @@ class NetworkRequestFile  {
    */
   String? filePath;
   XFile? xFile;
+
+
 
   /**
    Why make this way of carry parameter body ?
@@ -38,52 +43,50 @@ class NetworkRequestFile  {
   String body_keyMoreThan7 = "extraBodyValue";
   String body_valueMoreThan7 = "";
 
-
-  @override
+   @override
   String toString() {
     return 'NetworkRequestFile{filePath: $filePath, body_key1: $body_key1, body_value1: $body_value1, body_key2: $body_key2, body_value2: $body_value2, body_key3: $body_key3, body_value3: $body_value3, body_key4: $body_key4, body_value4: $body_value4, body_key5: $body_key5, body_value5: $body_value5, body_key6: $body_key6, body_value6: $body_value6, body_key7: $body_key7, body_value7: $body_value7}';
   }
 
-  static NetworkRequestFile fromFilePath(String filePath) {
-    NetworkRequestFile obj = new NetworkRequestFile();
-    obj.filePath = filePath;
-    return obj;
+  //-------------------------------------------------------------- factory
+
+
+  NetworkRequestFile.fromFilePath(String filePath) {
+    this.filePath = filePath;
   }
 
+  NetworkRequestFile.fromXFileAndBody(XFile xFile, Map<String, String>? body) {
 
-  static NetworkRequestFile fromXFileAndBody(XFile xFile, Map<String, String>? body) {
+    this.xFile = xFile;
 
-    NetworkRequestFile obj = new NetworkRequestFile();
-    obj.xFile = xFile;
-
-    if( body == null ) return obj;
+    if( body == null ) return  ;
 
     int index = 1;
     body.forEach((k,v) {
-      setByIndex(obj, index, k, v);
+      setByIndex(this, index, k, v);
       index = index + 1;
     });
-    return obj;
+
   }
 
-  static NetworkRequestFile fromFilePathAndBody(String filePath, Map<String, String>? body) {
+  NetworkRequestFile.fromFilePathAndBody(String filePath, Map<String, String>? body) {
     if( body == null ) {
-      return NetworkRequestFile.fromFilePath( filePath);
+       NetworkRequestFile.fromFilePath( filePath);
+       return ;
     }
 
-    NetworkRequestFile obj = new NetworkRequestFile();
-    obj.filePath = filePath;
+
+    this.filePath = filePath;
 
     int index = 1;
     body.forEach((k,v) {
-      setByIndex(obj, index, k, v);
+      setByIndex(this, index, k, v);
       index = index + 1;
     });
-    return obj;
   }
 
 
-  static void setByIndex(NetworkRequestFile obj, int index, String k, String v) {
+   void setByIndex(NetworkRequestFile obj, int index, String k, String v) {
     switch( index ) {
       case 1 : { obj.body_key1 = k; obj.body_value1 = v; } break;
       case 2 : { obj.body_key2 = k; obj.body_value2 = v; } break;

@@ -14,6 +14,8 @@ import 'NetworkType.dart';
 
 typedef NetworkHttpCallback = void Function(  bool status, String msg, String json_string );
 
+enum NetworkTypeHttp { get, post }
+
 class NetworkManagerHttp {
 
   static final tag = "NetworkManage";
@@ -25,7 +27,7 @@ class NetworkManagerHttp {
   String url = "";
   Map<String, dynamic> body = Map();
   Map<String, String>  headers = Map();
-  NetworkType type = NetworkType.post;
+  NetworkTypeHttp type = NetworkTypeHttp.post;
   NetworkHttpCallback? callback;
 
   //------------------------------------------------------------------------- types constructor
@@ -33,7 +35,7 @@ class NetworkManagerHttp {
   NetworkManagerHttp( String url, {
     Map<String, dynamic>? body,
     Map<String, String>?  headers,
-    NetworkType type = NetworkType.post,
+    NetworkTypeHttp type = NetworkTypeHttp.post,
     NetworkHttpCallback? callback}  ) {
 
     //set url
@@ -62,7 +64,7 @@ class NetworkManagerHttp {
 
     //set method type "GET" when no body
     if( type == null &&  this.body.length == 0  ) {
-      this.type = NetworkType.get;
+      this.type = NetworkTypeHttp.get;
     } else {
       this.type = type;
     }
@@ -92,7 +94,7 @@ class NetworkManagerHttp {
   //----------------------------------------------------------------------- start
 
   Future<http.Response> _chooseTypeNetworkThenStartService( ) async {
-    if( type == NetworkType.post ) {
+    if( type == NetworkTypeDio.post ) {
       /**
        * test here choose type of network
        */

@@ -156,7 +156,7 @@ export 'resource/template/row/RowScrollFastor.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkHeaderTools.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerDio.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerHttp.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequestFile.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
@@ -169,7 +169,7 @@ import 'resource/toolsFastor/cache/Save.dart';
 export 'resource/toolsFastor/cache/Save.dart';
 
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkHeaderTools.dart';
-export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerDio.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerHttp.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequestFile.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
@@ -183,7 +183,7 @@ class fastor_app_ui_widget extends fastor {
   late NetworkManagerHttp http;
   late NetworkHeaderTools networkTools;
   late NetworkRequestFile requestFile;
-  late NetworkType networkType;
+  late NetworkTypeDio networkType;
   late ValidateResponse validateResponse;
 
   ///widget

@@ -1,5 +1,5 @@
 
-enum NetworkType{
+enum NetworkTypeDio{
   get,
   post,
   put,
