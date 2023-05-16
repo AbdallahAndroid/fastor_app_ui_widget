@@ -203,7 +203,7 @@ class NetworkManagerDio  {
         return  fileTypeXFile_dio();
       } else {
         callback_dio!(false, "filePath not found or XFile not found", Map());
-        return _getFailedResponse();
+        return  getFailedResponse();
       }
     } else if (type == NetworkTypeDio.post) {
       return await  post_dio();
