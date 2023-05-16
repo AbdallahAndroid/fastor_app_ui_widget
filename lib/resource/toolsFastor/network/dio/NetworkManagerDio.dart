@@ -13,7 +13,7 @@ import 'DioParameter.dart';
 typedef NetworkDiocallback_dio = void Function(
     bool status, String msg, Map<String, dynamic> mapJson);
 
-class NetworkManagerDio {
+class NetworkManagerDio  {
 
     final tag = "NetworkManagerDio";
 
@@ -198,19 +198,19 @@ class NetworkManagerDio {
     if (type == NetworkTypeDio.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
-        return _file();
+        return  file_dio();
       }  else if ( requestFile!.xFile != null ) {
-        return _fileTypeXFile();
+        return  fileTypeXFile_dio();
       } else {
         callback_dio!(false, "filePath not found or XFile not found", Map());
         return _getFailedResponse();
       }
     } else if (type == NetworkTypeDio.post) {
-      return await _post_dio();
+      return await  post_dio();
     } else if (type == NetworkTypeDio.put) {
-      return await _put();
+      return await  put_dio();
     } else {
-      return await  _get();
+      return await  get_dio();
     }
   }
 

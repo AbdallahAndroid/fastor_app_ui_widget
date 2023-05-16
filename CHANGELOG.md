@@ -1,3 +1,4 @@
+## 1.0.160
 ## 1.0.159
 
 * class "NetworkManagerDio" create method "any()" take any type of network type

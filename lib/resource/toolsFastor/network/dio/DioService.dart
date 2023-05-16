@@ -5,12 +5,12 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'DioParameter.dart';
 
-extension DioService on NetworkManagerDio {
+ extension DioService on NetworkManagerDio {
 
 
   //--------------------------------------------------------------------------- post
 
-  Future<Response> _post_dio() async {
+  Future<Response>  post_dio() async {
     Response? response ;
 
     try {
@@ -49,7 +49,7 @@ extension DioService on NetworkManagerDio {
 
   //--------------------------------------------------------------------------- put
 
-  Future<Response> _put() async {
+  Future<Response>  put_dio() async {
     Response? response ;
     try {
       // FormData form = FormData.fromMap(body);
@@ -85,7 +85,7 @@ extension DioService on NetworkManagerDio {
 
   //---------------------------------------------------------------------------- file
 
-  Future<Response> _file() async {
+  Future<Response>  file_dio() async {
     Response? response ;
     try {
       Log.k(tag, "_file() - requestFile: " + requestFile.toString() );
@@ -141,7 +141,7 @@ extension DioService on NetworkManagerDio {
   }
 
 
-  Future<Response > _fileTypeXFile() async {
+  Future<Response >  fileTypeXFile_dio() async {
     Response? response ;
     try {
       Log.k(tag, "_fileTypeXFile() - xFile: " + requestFile!.xFile!.path.toString() );
@@ -202,7 +202,7 @@ extension DioService on NetworkManagerDio {
 
   //--------------------------------------------------------------------------- get
 
-  Future<Response> _get() async {
+  Future<Response> get_dio() async {
     Response? response;
     var _dio = Dio();
 
