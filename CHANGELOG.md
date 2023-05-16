@@ -1,3 +1,8 @@
+## 1.0.159
+
+* class "NetworkManagerDio" create method "any()" take any type of network type
+* class "NetworkManagerDio" choose one method  name "get()/put()/delete()/post()/file()" 
+
 ## 1.0.158
 ## 1.0.157
 
