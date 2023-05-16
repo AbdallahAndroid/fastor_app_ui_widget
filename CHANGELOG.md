@@ -1,12 +1,8 @@
-## 1.0.161
-## 1.0.160
-## 1.0.159
-
+## 1.0.162
 * class "NetworkManagerDio" create method "any()" take any type of network type
 * class "NetworkManagerDio" choose one method  name "get()/put()/delete()/post()/file()" 
 
 ## 1.0.158
-## 1.0.157
 
 + add class "NavigationTools" for push() or pushAndRemove() or pushWithResumeLifecycle()
 
@@ -19,7 +15,6 @@
 + Edit class "NetworkManagerHttp" methods "getFutureResponse()"
 
 ## 1.0.154
-## 1.0.153
 
 + Add 'color_inactive' in 'CheckboxFastor'
 + Add 'color_active' in 'CheckboxFastor' 
@@ -33,14 +28,11 @@
 * README EDIT
 
 ## 1.0.150
-## 1.0.149
 
 * Language Readme
 * NetworkManage Readme
 
 ## 1.0.148
-## 1.0.147
-## 1.0.146
 
 + Add Type "TextFieldFastor"
 
@@ -49,7 +41,6 @@
 * Edit Readme ColumnFastor
 
 ## 1.0.144
-## 1.0.143
 
 * ColumnFastor, make alignment default is null like the Widget Column
 
@@ -57,20 +48,15 @@
 
 * Add Feature "NetworkManager" by using class "NetworkManagerDio" and class "NetworkManagerHttp"
 
-
 ## 1.0.141
-## 1.0.140
 
 + BUILD "ColumnFastor"
 
 ## 1.0.139
-## 1.0.138
-## 1.0.137
 
 + BUILD "RowScrollFastor"
 
 ## 1.0.136
-## 1.0.135
 
 * edit readme for image fastor
 
