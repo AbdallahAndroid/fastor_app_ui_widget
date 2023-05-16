@@ -1,4 +1,4 @@
-## 1.0.163
+## 1.0.164
 
 * class "NetworkManagerDio" handle status "404" or any status not 200, by using class "DioError"
 * class "NetworkManagerDio" create method "any()" take any type of network type
