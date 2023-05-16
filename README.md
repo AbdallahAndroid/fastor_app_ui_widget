@@ -845,16 +845,10 @@ height="300"/>
 ```
 
 
-#### 2- Generate Bearer Token in Header
-```
-    var token = await UserSingleTone.instance().getToken();
-    Map<String, String> header = NetworkHeaderTools.bearerToken( token );
-```
-
-### 3- Call Class "NetworkManagerDio.dart"
+### 2- Call Class "NetworkManagerDio.dart"
 We will return the response in format JSON
 ```
-      Response response = await NetworkManagerDio().post( url , body: bodyParameter  );
+      Response response = await NetworkManagerDio().post( url , body: bodyParameter   );
       if (response.statusCode == 200) {
         var result = CityResponse.fromJson( response.data);
           return result;
