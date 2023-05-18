@@ -1,6 +1,9 @@
-## 1.0.165
+## 1.0.166
 
 * Readme Fro How To Use "Cubit/BLoc" with "TextFieldFastor"
+* TextFieldFastor handle error backend, by call from parameter constructor:
+  * String? errorBackendKeyJson;
+  * Map<String, dynamic>? errorBackendJson;
 
 ## 1.0.164
 

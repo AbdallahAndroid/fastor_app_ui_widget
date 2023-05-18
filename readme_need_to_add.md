@@ -71,5 +71,9 @@ make 4 constructor: ThemeColorFastor(), ThemeDimenFastor(), ThemeFontFastor(), T
 - Fix html import can not run on android
   see detail on stackoverflow
 
+## Content: Advanced
+
+- Automator see "Readme" i write for login page
+
 - 
 -->

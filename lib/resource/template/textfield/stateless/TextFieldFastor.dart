@@ -50,9 +50,12 @@ class TextFieldFastor extends StatelessWidget {
   int? maxLines;
   int? minLines;
 
+  //handle error backend
+  String? errorBackendKeyJson;
+  Map<String, dynamic>? errorBackendJson;
+
   //other
   TextAlign? textAlign;
-
   FocusNode? focusNode;
   Widget? prefixIcon;
 
@@ -60,7 +63,7 @@ class TextFieldFastor extends StatelessWidget {
     // validate
     this.validator,
     this.autovalidateMode,
-    this.error_text = "Missed",
+
 
     //text and hint
     this.hint_text,
@@ -94,6 +97,11 @@ class TextFieldFastor extends StatelessWidget {
     this.maxLines,
     this.minLines,
 
+    //errors handler
+    this.error_text = "Missed",  //fixed
+    this.errorBackendJson,
+    this.errorBackendKeyJson,
+
     //other
     this.textAlign  ,
     this.focusNode,
@@ -121,16 +129,16 @@ class TextFieldFastor extends StatelessWidget {
     if(  isPass) {
       obscureText = true;
     }
+
+    //error message
+    error_text = _getErrorText();
   }
 
   @override
   Widget build(BuildContext context) {
 
-
-
     //get tf
     TextFormField tf = _getTextFourmField( );
-
 
     //fix textfield not materail
     var materialApp = Material(
@@ -206,5 +214,11 @@ class TextFieldFastor extends StatelessWidget {
     return tf;
   }
 
-
+  String  _getErrorText( ) {
+    final defaultErrorMessage = error_text!;
+    if( errorBackendKeyJson == null ) return defaultErrorMessage;
+    if( errorBackendJson == null ) return defaultErrorMessage;
+    if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return defaultErrorMessage;
+    return errorBackendJson!["" + errorBackendKeyJson!][0];
+  }
 }
