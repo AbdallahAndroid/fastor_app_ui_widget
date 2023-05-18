@@ -14,25 +14,30 @@ class TextFieldTemplateBase    {
 
   //--------------------------------------------------------------- tools
 
-  static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding, String? hint_text,
-      Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
+  static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding,
+      String? hint_text, Color hint_color, double fontSize,
+      bool isRemoveUnderline, Widget? prefixIcon,
+      Color  errorColor, String errorText) {
 
     //default
     isShowBoarder ??= false;
 
     if( isShowBoarder ) {
       return getDecorationInput_outlineInput( isShowBoarder, padding, hint_text,
-          hint_color, fontSize, isRemoveUnderline, prefixIcon);
+          hint_color, fontSize, isRemoveUnderline,
+          prefixIcon, errorColor,   errorText);
     } else {
       return getDecorationInput_underLine( isShowBoarder, padding, hint_text,
-          hint_color, fontSize, isRemoveUnderline, prefixIcon);
+          hint_color, fontSize, isRemoveUnderline,
+          prefixIcon, errorColor,   errorText);
     }
   }
 
 
   static InputDecoration getDecorationInput_outlineInput(bool isShowBoarder,
       EdgeInsets padding, String? hint_text,
-      Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
+      Color hint_color, double fontSize, bool isRemoveUnderline,
+      Widget? prefixIcon, Color  errorColor, String errorText) {
 
 
     //check is need to remove underline
@@ -72,6 +77,9 @@ class TextFieldTemplateBase    {
       enabledBorder: enabledBorder,
       focusedBorder: focusedBorder,
 
+        //error
+        errorText: errorText,
+        errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
         //other
         prefixIcon: prefixIcon
@@ -80,7 +88,8 @@ class TextFieldTemplateBase    {
 
 
   static InputDecoration getDecorationInput_underLine(bool  isShowBoarder, EdgeInsets padding, String? hint_text,
-      Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
+      Color hint_color, double fontSize, bool isRemoveUnderline,
+      Widget? prefixIcon, Color  errorColor, String errorText) {
 
 
     //check is need to remove underline
@@ -113,6 +122,10 @@ class TextFieldTemplateBase    {
       // underline customer color
       enabledBorder: enabledBorder,
       focusedBorder: focusedBoarder,
+
+        //error
+        errorText: errorText,
+        errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
       //other
         prefixIcon: prefixIcon

@@ -166,7 +166,8 @@ class TextFieldTemplate   {
       cursorColor: hint_color,
 
       //padding + hint + underline
-      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder, padding, hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon),
+      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder, padding,
+          hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon, Colors.red, error_text!),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number

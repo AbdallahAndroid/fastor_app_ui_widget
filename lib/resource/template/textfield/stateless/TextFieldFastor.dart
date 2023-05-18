@@ -16,7 +16,7 @@ class TextFieldFastor extends StatelessWidget {
   // validate
   FormFieldValidator<String>? validator;
   AutovalidateMode? autovalidateMode;
-  String? error_text = "Missed";
+
 
   //text and hint
   String? hint_text;
@@ -50,9 +50,11 @@ class TextFieldFastor extends StatelessWidget {
   int? maxLines;
   int? minLines;
 
-  //handle error backend
+  //error
   String? errorBackendKeyJson;
   Map<String, dynamic>? errorBackendJson;
+  String? error_text = "Missed";
+  Color? errorColor ;
 
   //other
   TextAlign? textAlign;
@@ -101,6 +103,7 @@ class TextFieldFastor extends StatelessWidget {
     this.error_text = "Missed",  //fixed
     this.errorBackendJson,
     this.errorBackendKeyJson,
+    this.errorColor,
 
     //other
     this.textAlign  ,
@@ -130,8 +133,9 @@ class TextFieldFastor extends StatelessWidget {
       obscureText = true;
     }
 
-    //error message
+    //error
     error_text = _getErrorText();
+    errorColor ??= Colors.red;
   }
 
   @override
@@ -185,7 +189,8 @@ class TextFieldFastor extends StatelessWidget {
       //  static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding, String? hint_text,
       //       Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
       //padding + hint + underline
-      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text, hint_color!, fontSize!, isRemoveUnderline!, prefixIcon),
+      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text,
+          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!, error_text!),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number

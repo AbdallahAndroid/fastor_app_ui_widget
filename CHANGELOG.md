@@ -1,5 +1,6 @@
-## 1.0.166
+## 1.0.167
 
+* Error Style For "TextFieldFastor"
 * Readme Fro How To Use "Cubit/BLoc" with "TextFieldFastor"
 * TextFieldFastor handle error backend, by call from parameter constructor:
   * String? errorBackendKeyJson;
