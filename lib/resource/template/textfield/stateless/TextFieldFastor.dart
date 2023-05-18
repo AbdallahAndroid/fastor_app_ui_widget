@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/ds/LevelDS.dart';
 
@@ -8,15 +9,18 @@ import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
 
 import '../TextFieldTemplateBase.dart';
+import '../validator/MapValidatorTypeToForm.dart';
+import '../validator/ValidatorType.dart';
 
 
 
 class TextFieldFastor extends StatelessWidget {
 
   // validate
-  FormFieldValidator<String>? validator;
+  FormFieldValidator<String>? validatorCustom;
+  FormFieldValidator<String>  validatorChosen = ValidatorTemplate.d( "Missed");
   AutovalidateMode? autovalidateMode;
-
+  ValidatorType? validatorType;
 
   //text and hint
   String? hint_text;
@@ -63,7 +67,8 @@ class TextFieldFastor extends StatelessWidget {
 
   TextFieldFastor( {
     // validate
-    this.validator,
+    this.validatorCustom,
+    this.validatorType,
     this.autovalidateMode,
 
 
@@ -133,9 +138,12 @@ class TextFieldFastor extends StatelessWidget {
       obscureText = true;
     }
 
-    //error
+    //error message
     error_text = _getErrorText();
     errorColor ??= Colors.red;
+
+    //choose validator
+    _setValidator();
   }
 
   @override
@@ -178,7 +186,7 @@ class TextFieldFastor extends StatelessWidget {
       textAlign: textAlign! ,
 
       //validate error
-      validator:  TextFieldTemplateBase.getTextValidator(error_text!, validator),
+      validator:  TextFieldTemplateBase.getTextValidator(error_text!, validatorChosen),
 
       //text style
       style: TextStyle( color: text_color, fontSize: fontSize),
@@ -224,6 +232,35 @@ class TextFieldFastor extends StatelessWidget {
     if( errorBackendKeyJson == null ) return defaultErrorMessage;
     if( errorBackendJson == null ) return defaultErrorMessage;
     if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return defaultErrorMessage;
-    return errorBackendJson!["" + errorBackendKeyJson!][0];
+    var messageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
+    if( messageBackend != null ) return defaultErrorMessage;
+    return messageBackend;
+  }
+
+  //--------------------------------------------------------------- validator
+
+  void _setValidator() {
+    //set default
+    validatorChosen = ValidatorTemplate.d( error_text! ) ;
+
+    //priority for custom
+    if( validatorCustom != null ) {
+      validatorChosen = validatorCustom! ;
+      return;
+    }
+
+    //priority for error message backend
+    _setValidatorFromBackend();
+  }
+
+  void _setValidatorFromBackend() {
+
+    if( errorBackendKeyJson == null ) return;
+    if( errorBackendJson == null ) return;
+    if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return;
+    var messageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
+    if( messageBackend == null ) return ;
+    if( validatorType == null ) return ;
+    validatorChosen = MapValidatorTypeToForm.map(validatorType!, messageBackend);
   }
 }

@@ -1,5 +1,6 @@
-## 1.0.167
+## 1.0.168
 
+* Use "ValidatorType" in Form "TextFieldFastor"
 * Error Style For "TextFieldFastor"
 * Readme Fro How To Use "Cubit/BLoc" with "TextFieldFastor"
 * TextFieldFastor handle error backend, by call from parameter constructor:

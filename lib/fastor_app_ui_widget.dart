@@ -162,6 +162,8 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
+import 'resource/template/textfield/validator/ValidatorType.dart';
+export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
 
@@ -242,6 +244,7 @@ class fastor_app_ui_widget extends fastor {
   late TextFieldTemplate tf;
   late TextFieldFastor tfStateLess;
   late ValidatorTemplate validatorTemplate;
+  late ValidatorType validatorType;
 
   ///resources
   late DSDimen dimen;
