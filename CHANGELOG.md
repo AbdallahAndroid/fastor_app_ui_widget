@@ -1,3 +1,7 @@
+## 1.0.165
+
+* Readme Fro How To Use "Cubit/BLoc" with "TextFieldFastor"
+
 ## 1.0.164
 
 * class "NetworkManagerDio" handle status "404" or any status not 200, by using class "DioError"

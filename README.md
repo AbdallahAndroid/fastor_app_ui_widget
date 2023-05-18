@@ -676,7 +676,8 @@ See source code compare between Fastor and Normal at this page
 <img src="https://raw.githubusercontent.com/AbdallahAndroid/fastor_app/master/lib/tutorial/textfield/thump.png"
 height="300"/>
 
-#### Simple Example
+#### Tutorial : Without Use Any State Management 
+* use "setState()"
 * Create Variable at class
 ```
   var email_txt = "";
@@ -721,67 +722,156 @@ height="300"/>
   }
 ```
 
-#### Full Example
+#### Tutorial : Use State Management Type "Cubit" like using "BLoc"
+
+* Using "Cubit" it similar as Using "BLoc"
+
+* Create Cubit
+```
+
+class AuthCubit extends Cubit<AuthState> {
+  final LogInUseCase logInUseCase;
+
+  AuthCubit( ) : super(AuthInitialState()) {}
+
+  static AuthCubit get(context) => BlocProvider.of(context);
+
+  AuthResponse authResponse = AuthResponse();
+
+  Future login(String email_txt, String pass_txt) async {
+    //....
+  }
+  
+  void resetError() {
+    emit( AuthInitialState() );
+  }
+ 
+}
+```
+
+* Create Cubit State
+```
+abstract class AuthState {}
+
+class AuthInitialState extends AuthState {}
+
+class AuthLoadingState extends AuthState {}
+
+class AuthSuccessState extends AuthState  { 
+//.....
+}
+
+class AuthErrorState extends AuthState
+{
+ //.....
+}
 
 ```
 
-//----------------------------------------------------- variable validate textField
 
-  var email_txt = "";
-  var email_valid = AutovalidateMode.disabled;
+* Declare Variable at class
+```
 
-  //---------------------------------------------------------------- textfield
+  AuthState? stateCurrent;
+  
+  var emailValid = AutovalidateMode.disabled;
+  var emailController = TextEditingController();
 
-  Widget tf_email() {
-    return TextFieldFastor(
-        autovalidateMode: email_valid,
-        margin: EdgeInsets.only( top: 10 ),
-        padding: EdgeInsets.all( 5),
-        background_color: Colors.white,
-        validator: ValidatorTemplate.email( ),
-        keyboardType: TextInputType.emailAddress,
-        onChanged: (s){
-          email_txt = s;
-          Log.i( "tf_email() - change s: $s ");
-        }
-    );
-  }
+  var passValid = AutovalidateMode.disabled;
+  var passController = TextEditingController();
+```
 
-  //---------------------------------------------------------- button validate
+* This Way You Can Set Error Message To UI
+```
 
-  Widget bt_send_otp() {
-    var bt =  ButtonFastor( "SEND",
-        background: Colors.black,
-        textColor: Colors.white,
-        width: 200,
-        margin: EdgeInsets.only(top: 40), () {
-          if(validateEmailAfterClick())  {
-            ///TO-DO : After success success field
-          }
-    });
-
-    return Container( child:  bt,
-      alignment: Alignment.center,
-      width: double.infinity,
-    );
-  }
-
-
-  bool validateEmailAfterClick() {
-    var result = true; //default good
+  void setErrorToInputFields() {
     //email
-    if ( ToolsValidation.isEmail( email_txt ) == false  ){
-      Log.i( "missed email");
-      result  = false;
-      setState(() {
-        email_valid = AutovalidateMode.always;
-      });
+    if (ToolsValidation.isEmail(emailController.text) == false) {
+      Log.i("missed email");
+      emailValid = AutovalidateMode.always;
     }
-    return result;
+    //pass
+    if (ToolsValidation.isPasswordValid(passController.text) == false) {
+      Log.i("missed pass");
+      passValid = AutovalidateMode.always;
+    }
   }
 
+```
+
+* Listener Cubit State
 ```
  
+  Widget getContent() {
+    return BlocConsumer<AuthCubit, AuthState>(
+      listener: (context, state) {
+        stateCurrent = state;
+
+        if (state is AuthSuccessState) {
+          RouterPage.home(context);
+        }
+      },
+      builder: (context, state) {
+
+
+        if (state is AuthErrorState) {
+          setErrorToInputFields();
+          printMessageError();
+        }
+
+        return  Column(children: [
+              tfEmail(),
+              tfPass(),
+        ]);
+    );
+  }
+ 
+```
+ 
+* Create Widget TextFieldFastor
+```
+
+  Widget tfEmail() {
+    return TextFieldFastor(
+        hint_text: "Email",
+        controller: emailController,
+        autovalidateMode: emailValid,
+        margin: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.all(5),
+        background_color: Colors.white,
+        validator: ValidatorTemplate.email(),
+        keyboardType: TextInputType.emailAddress,
+        onChanged: (s) {
+          // Log.i("tfEmail() - change s: $s ");
+
+          bool isNotInit = stateCurrent! is AuthInitialState;
+          if (isNotInit) {
+            AuthCubit.get(context).resetError();
+          }
+        });
+  }
+
+  Widget tfPass() {
+    return TextFieldFastor(
+        hint_text: "Password",
+        controller: passController,
+        autovalidateMode: passValid,
+        margin: EdgeInsets.only(top: 10),
+        padding: EdgeInsets.all(5),
+        background_color: Colors.white,
+        validator: ValidatorTemplate.pass(),
+        keyboardType: TextInputType.number,
+        onChanged: (s) {
+          // Log.i("tf_pass() - change s: $s ");
+        });
+  }
+
+```
+
+### Class Utils For TextField
+* class ValidatorTemplate : This have methods utils used at parameter "validator"
+
+
 ---
 
 ---
