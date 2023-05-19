@@ -8,9 +8,9 @@ class ValidatorTemplate {
   /**
    * "d" means default
    */
-  static FormFieldValidator<String> d( String error_text){
+  static FormFieldValidator<String> d({String? error_text}){
 
-
+    error_text ??= "Missed";
 
     return ( textValidator) {
       if ( textValidator == null || textValidator.isEmpty) {
@@ -21,9 +21,9 @@ class ValidatorTemplate {
   }
 
 
-  static FormFieldValidator<String> error(String error_text){
+  static FormFieldValidator<String> error( {String? error_text} ){
 
-    // error_text ??= "Missed";
+    error_text ??= "Missed";
 
     return ( textValidator) {
       if ( textValidator == null || textValidator.isEmpty) {
@@ -35,9 +35,9 @@ class ValidatorTemplate {
 
   //------------------------------------------------------------------- special
 
-  static FormFieldValidator<String> mobile( String error_text){
+  static FormFieldValidator<String> mobile( {String? error_text}){
 
-    // String error_text = "Missed Phone";
+    error_text ??= "Missed";
 
     return ( text ) {
 
@@ -51,9 +51,9 @@ class ValidatorTemplate {
 
 
 
-  static FormFieldValidator<String> pass( String error_text){
+  static FormFieldValidator<String> pass( {String? error_text} ){
 
-    // String error_text = "Missed Password";
+    error_text ??= "Missed";
 
     return ( text ) {
 
@@ -66,9 +66,9 @@ class ValidatorTemplate {
   }
 
 
-  static FormFieldValidator<String> name(String error_text ){
+  static FormFieldValidator<String> name( {String? error_text} ){
 
-    // String error_text = "Missed Name";
+    error_text ??= "Missed";
 
     return ( text ) {
 
@@ -81,9 +81,9 @@ class ValidatorTemplate {
   }
 
 
-  static FormFieldValidator<String> nameFull(String error_text ){
+  static FormFieldValidator<String> nameFull( {String? error_text} ){
 
-    // String error_text = "Missed Name";
+    error_text ??= "Missed";
 
     return ( text ) {
 
@@ -96,9 +96,9 @@ class ValidatorTemplate {
   }
 
 
-  static FormFieldValidator<String> moreThan2( String error_text){
+  static FormFieldValidator<String> moreThan2( {String? error_text}){
 
-    // String error_text = "Missed";
+    error_text ??= "Missed";
 
     return ( text ) {
 
@@ -110,8 +110,9 @@ class ValidatorTemplate {
     };
   }
 
-  static FormFieldValidator<String> email(String error_text) {
-    // String error_text = "Missed";
+  static FormFieldValidator<String> email( {String? error_text}){
+
+    error_text ??= "Missed";
 
     return ( text ) {
 

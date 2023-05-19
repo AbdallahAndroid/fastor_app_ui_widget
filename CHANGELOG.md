@@ -1,3 +1,8 @@
+## 1.0.170
+
+* Make "ValidatorTemplate" take optional parameter "error_text"
+* class "NetworkManagerDio" make method "callBack"
+
 ## 1.0.168
 
 * Use "ValidatorType" in Form "TextFieldFastor"
