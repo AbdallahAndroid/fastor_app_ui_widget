@@ -157,9 +157,9 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkHeaderTools.dart';
 
-import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerHttp.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/http/NetworkManagerHttp.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequestFile.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
 import 'resource/template/textfield/validator/ValidatorType.dart';
@@ -173,9 +173,9 @@ export 'resource/toolsFastor/cache/Save.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkHeaderTools.dart';
 
 
-export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkManagerHttp.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/http/NetworkManagerHttp.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequestFile.dart';
-export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkType.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
 //dio
@@ -191,6 +191,7 @@ class fastor_app_ui_widget extends fastor {
   ///network
   late NetworkManagerDio dio;
   late NetworkManagerHttp http;
+  late NetworkTypeHttp networkTypeHttp;
   late NetworkHeaderTools networkTools;
   late NetworkRequestFile requestFile;
   late NetworkTypeDio networkType;

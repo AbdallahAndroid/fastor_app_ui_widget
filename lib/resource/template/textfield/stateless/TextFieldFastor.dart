@@ -18,7 +18,7 @@ class TextFieldFastor extends StatelessWidget {
 
   // validate
   FormFieldValidator<String>? validatorCustom;
-  FormFieldValidator<String>  validatorChosen = ValidatorTemplate.d( "Missed");
+  FormFieldValidator<String>  validatorChosen = ValidatorTemplate.d( error_text: "Missed");
   AutovalidateMode? autovalidateMode;
   ValidatorType? validatorType;
 
@@ -241,7 +241,7 @@ class TextFieldFastor extends StatelessWidget {
 
   void _setValidator() {
     //set default
-    validatorChosen = ValidatorTemplate.d( error_text! ) ;
+    validatorChosen = ValidatorTemplate.d( error_text: error_text  ) ;
 
     //priority for custom
     if( validatorCustom != null ) {

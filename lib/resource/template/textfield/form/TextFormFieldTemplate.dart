@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/resource/template/textfield/validator/Valid
 class TextFormFieldTemplate {
 
   static TextFormField mobile(){
-    return TextFormField( validator: ValidatorTemplate.mobile("Missed Phone"));
+    return TextFormField( validator: ValidatorTemplate.mobile(error_text: "Missed Phone"));
   }
 
 

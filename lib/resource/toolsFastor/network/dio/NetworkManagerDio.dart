@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import '../NetworkRequestFile.dart';
-import '../NetworkType.dart';
+import '../NetworkTypeDio.dart';
 
 import 'DioService.dart';
 import 'DioParameter.dart';

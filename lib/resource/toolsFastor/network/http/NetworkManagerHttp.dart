@@ -1,10 +1,12 @@
 import 'dart:convert';
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
+// import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-
-import 'NetworkType.dart';
+// import 'package:http/http.dart';
 
 /**
     1- in navigate write
@@ -14,7 +16,19 @@ import 'NetworkType.dart';
 
 typedef NetworkHttpCallback = void Function(  bool status, String msg, String json_string );
 
-enum NetworkTypeHttp { get, post }
+enum NetworkTypeHttp{
+  get,
+  post,
+  put,
+  delete,
+  file,
+
+  /**
+      Access to XMLHttpRequest  has been blocked by CORS policy: Response to preflight request doesn't
+      pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+   */
+  htmlContent
+}
 
 class NetworkManagerHttp {
 
@@ -26,7 +40,7 @@ class NetworkManagerHttp {
 
   String url = "";
   Map<String, dynamic> body = Map();
-  Map<String, String>  headers = Map();
+  Map<String, String>?  headers = Map();
   NetworkTypeHttp type = NetworkTypeHttp.post;
   NetworkHttpCallback? callback;
 
@@ -49,22 +63,24 @@ class NetworkManagerHttp {
     if( callback != null ) this.callback = callback;
 
     //constructor
-    _initParameter();
-
-    if( callback != null ) {
-      _chooseTypeNetworkThenStartService( );
-    }
+    _initConstructor();
   }
 
   //-------------------------------------------------------------------- init constructor
 
-  void _initParameter(){
+  void _initConstructor(){
     //edit headers
     headers = setDefaultHeader(headers);
 
+    if( type == NetworkTypeHttp.htmlContent ) {
+      headers = null;
+    }
+
     //set method type "GET" when no body
     if( type == null &&  this.body.length == 0  ) {
-      this.type = NetworkTypeHttp.get;
+      if( type != NetworkTypeHttp.htmlContent ) {
+        this.type = NetworkTypeHttp.get;
+      }
     } else {
       this.type = type;
     }
@@ -82,30 +98,26 @@ class NetworkManagerHttp {
         }
 
      */
+
+
+    //choose type
+    chooseTypeToStart( );
   }
-
-  //----------------------------------------------------------------------- future
-
-  Future<http.Response> getFutureResponse( ) async {
-    return await _chooseTypeNetworkThenStartService();
-  }
-
-
   //----------------------------------------------------------------------- start
 
-  Future<http.Response> _chooseTypeNetworkThenStartService( ) async {
+  void chooseTypeToStart( ){
     if( type == NetworkTypeDio.post ) {
       /**
        * test here choose type of network
        */
 
-      return await _post_http();
+      _post_http();
     } else {
-      return await _get( );
+      _get( );
     }
   }
 
-  Future<http.Response> _post_http( ) async {
+  Future<String> _post_http( ) async {
     var myBody = jsonEncode( body);
     Log.k( tag, "_post_http() - myBody: "  + myBody  );
 
@@ -130,11 +142,15 @@ class NetworkManagerHttp {
     }
 
     //return
-    return response ;
+    return response.body;
   }
   //--------------------------------------------------------------------------- get
 
-  Future<http.Response> _get(   ) async {
+  Future<String> _get(   ) async {
+    //edit headers
+    if( type == NetworkTypeHttp.htmlContent ) {
+      headers = null;
+    }
 
     //http
     Uri uri = Uri.parse(url);
@@ -157,7 +173,7 @@ class NetworkManagerHttp {
     }
 
     //return
-    return response ;
+    return response.body;
   }
 
   //------------------------------------------------------------------------- header
