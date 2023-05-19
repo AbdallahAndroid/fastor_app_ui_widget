@@ -33,8 +33,9 @@ class NetworkManagerDio  {
 
   //------------------------------------------------------------------------- types  call
 
-  callBack(String url, NetworkDiocallback_dio  callback,
-      {Map<String, dynamic>? body,
+  callBack(String url,
+      { required NetworkDiocallback_dio  callback,
+        Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         NetworkTypeDio? type,
