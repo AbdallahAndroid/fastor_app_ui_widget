@@ -33,37 +33,38 @@ class NetworkManagerDio  {
 
   //------------------------------------------------------------------------- types  call
 
-  callBack(String url,
-      { required NetworkDiocallback_dio  callback,
-        Map<String, dynamic>? body,
-        Map<String, String>? headers,
-        NetworkRequestFile? requestFile,
-        NetworkTypeDio? type,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
-        }) {
+    Future<Response> callBack(String url,
+        { required NetworkDiocallback_dio  callback,
+          Map<String, dynamic>? body,
+          Map<String, String>? headers,
+          NetworkRequestFile? requestFile,
+          NetworkTypeDio? type,
+          bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        }) async {
 
-    //set values
-    this.url = url;
-    this.type = type;
-    this.requestFile = requestFile;
+      //set values
+      this.url = url;
+      this.type = type;
+      this.requestFile = requestFile;
 
 
-    //log
-    isEnableLogDioPretty ??= true  ; //default take test enviroment
-    this.isEnableLogDioPretty = isEnableLogDioPretty;
+      //log
+      isEnableLogDioPretty ??= true  ; //default take test enviroment
+      this.isEnableLogDioPretty = isEnableLogDioPretty;
 
-    //set body and header
-    if (body != null) this.body = body;
-    if (headers != null) this.headers = headers;
+      //set body and header
+      if (body != null) this.body = body;
+      if (headers != null) this.headers = headers;
 
-    //edit headers
-    this.headers = setDefaultHeader(headers);
+      //edit headers
+      this.headers = setDefaultHeader(headers);
 
-    _setupNetworkType();
-    this.callback_dio = callback;
+      _setupNetworkType();
+      this.callback_dio = callback;
 
-  _chooseTypeNetworkThenStartService();
-  }
+      return await _chooseTypeNetworkThenStartService();
+    }
+
 
   //------------------------------------------------------------------------- type Future listener
 

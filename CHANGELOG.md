@@ -1,5 +1,6 @@
-## 1.0.173
+## 1.0.174
 
+* class "NetworkManagerDio" make method "callBack" return "Future<Response>"
 * Class "NetworkHeaderTools" check for valid token/username/password before generate header
 
 ## 1.0.172
