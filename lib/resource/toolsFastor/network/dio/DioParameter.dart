@@ -4,9 +4,10 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 extension DioParameter on NetworkManagerDio {
 
 
-  //------------------------------------------------------------------------- header
+  Map<String, String> setDefaultHeader(Map<String, String>? custome) {
 
-   Map<String, String> setDefaultHeader(Map<String, String>? custome) {
+    custome ??= Map();
+
     /**
      * check already write another "Content-Type"
      */
@@ -15,14 +16,20 @@ extension DioParameter on NetworkManagerDio {
       if (containAlready) return custome;
     }
 
+    /** - in web platform print error:
+        Error: DioError [DioErrorType.response]: XMLHttpRequest error.
+     */
+    if(DeviceTools.isPlatformWeb() ) {
+      return custome!;
+    }
+
     //default
     /**
      * the "POSTMAN" already found content-type hidden header already send by default
      * so we need here to pass this "Content-Type"
      */
-    custome ??= Map();
     custome["Content-Type"] = "application/json";
-    return custome;
+    return custome!;
   }
 
 
