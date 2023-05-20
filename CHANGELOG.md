@@ -1,3 +1,7 @@
+## 1.0.173
+
+* Class "NetworkHeaderTools" check for valid token/username/password before generate header
+
 ## 1.0.172
 
 * Make "ValidatorTemplate" take optional parameter "error_text"
