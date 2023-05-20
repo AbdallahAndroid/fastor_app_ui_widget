@@ -26,23 +26,27 @@ extension DioService on NetworkManagerDio {
     try {
 
       response = await _dio.get(url, options: Options(headers: headers));
-      // Log.k( tag, "_get() - success: "  + response.toString()  );
+      // Log.k( tag, "_get_dio() - success: "  + response.toString()  );
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
       //return
       return response;
     } on DioError catch (dioError) {
-      // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
-      Response responseFailed = dioError.response!;
-      Log.k(tag, "_get_dio() - statusCode: " + responseFailed.statusCode.toString());
+      // Log.k(tag, "_get_dio() - dioError: " + dioError.toString());
+      // Log.k(tag, "_get_dio() - statusCode: " + responseFailed.statusCode.toString());
+      if( dioError.response != null ) {
+        Response responseFailed = dioError.response!;
+        if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+        return responseFailed;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
 
-      //call back
-      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
-      return responseFailed;
     } catch (e) {
       String msg = e.toString();
-      Log.k(tag, "_get() - e: " + msg);
+      Log.k(tag, "_get_dio() - e: " + msg);
       if (callback_dio != null) callback_dio!(false, msg, Map());
       return getFailedResponse(msg: e.toString() );
     }
@@ -79,12 +83,14 @@ extension DioService on NetworkManagerDio {
       return response;
     } on DioError catch (dioError) {
       // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
-      Response responseFailed = dioError.response!;
-      Log.k(tag, "_post_dio() - statusCode: " + responseFailed.statusCode.toString());
-
-      //call back
-      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
-      return responseFailed;
+      if( dioError.response != null ) {
+        Response responseFailed = dioError.response!;
+        if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+        return responseFailed;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
 
     } catch (e,s) {
       String msg = e.toString();
@@ -130,12 +136,14 @@ extension DioService on NetworkManagerDio {
       return response;
     } on DioError catch (dioError) {
       // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
-      Response responseFailed = dioError.response!;
-      Log.k(tag, "_put_dio() - statusCode: " + responseFailed.statusCode.toString());
-
-      //call back
-      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
-      return responseFailed;
+      if( dioError.response != null ) {
+        Response responseFailed = dioError.response!;
+        if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+        return responseFailed;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_put() - e: " + msg);
@@ -196,12 +204,15 @@ extension DioService on NetworkManagerDio {
       return response;
     } on DioError catch (dioError) {
       // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
-      Response responseFailed = dioError.response!;
-      Log.k(tag, "_file_dio() - statusCode: " + responseFailed.statusCode.toString());
+      if( dioError.response != null ) {
+        Response responseFailed = dioError.response!;
+        if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+        return responseFailed;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
 
-      //call back
-      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
-      return responseFailed;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_file() - e: " + msg);
@@ -264,12 +275,15 @@ extension DioService on NetworkManagerDio {
       return response;
     } on DioError catch (dioError) {
       // Log.k(tag, "_post_dio() - dioError: " + dioError.toString());
-      Response responseFailed = dioError.response!;
-      Log.k(tag, "_fileTypeXFile_dio() - statusCode: " + responseFailed.statusCode.toString());
+      if( dioError.response != null ) {
+        Response responseFailed = dioError.response!;
+        if (callback_dio != null) callback_dio!(false, "failed", response!.data);
+        return responseFailed;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
 
-      //call back
-      if (callback_dio != null) callback_dio!(false, "failed", response!.data);
-      return responseFailed;
     } catch (e) {
       String msg = e.toString();
       Log.k(tag, "_fileTypeXFile() - e: " + msg);

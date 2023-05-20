@@ -1,4 +1,4 @@
-## 1.0.171
+## 1.0.172
 
 * Make "ValidatorTemplate" take optional parameter "error_text"
 * class "NetworkManagerDio" make method "callBack"
