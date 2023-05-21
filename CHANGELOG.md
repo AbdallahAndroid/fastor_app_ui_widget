@@ -1,5 +1,6 @@
-## 1.0.175
+## 1.0.176
 
+* class "NetworkManagerDio" handle error.
 * class "NetworkManagerDio" make method "callBack" return "Future<Response>"
 * Class "NetworkHeaderTools" check for valid token/username/password before generate header
 
