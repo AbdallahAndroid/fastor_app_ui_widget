@@ -922,6 +922,13 @@ height="300"/>
 
 ---
 
+### Feature 
+
+* Fix Error "XMLHttpRequest" found in platform Web.
+* Feature "CallBack()" return value like interface.
+* Feature NetworkType.file : to upload file in all platform( Android/IPhone/Web).
+* Class "NetworkHeaderTools" to generate "bearerToken()" and "basicAuth_usernameAndPassword()" easily.
+
 ### Simple Example
 * There is many steps to call API, you need to prepare: Body, Url, Header, token.
 * Here is guide
@@ -996,8 +1003,7 @@ this class used to set the path of file of "xFile" and set the key/value of file
     var token = await UserSingleTone.instance().getToken();
     Map<String, String> header = NetworkHeaderTools.bearerToken( token );
 
-    NetworkManagerDio(urlApiLink,
-        type: NetworkType.file ,
+    NetworkManagerDio().file(urlApiLink,
         requestFile: requestFile,
         headers:  header,
         callback: (status, msg, json){

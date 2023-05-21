@@ -1,3 +1,7 @@
+## 1.0.177
+
+* class "NetworkManagerDio" fix error "XMLHttpRequest" found at web platform.
+
 ## 1.0.176
 
 * class "NetworkManagerDio" handle error.

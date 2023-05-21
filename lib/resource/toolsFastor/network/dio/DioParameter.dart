@@ -20,6 +20,15 @@ extension DioParameter on NetworkManagerDio {
         Error: DioError [DioErrorType.response]: XMLHttpRequest error.
      */
     if(DeviceTools.isPlatformWeb() ) {
+      if(!custome.containsKey( "Access-Control-Allow-Origin")) {
+        custome["Access-Control-Allow-Origin"]  = "*";
+      }
+      if(!custome.containsKey( "Content-Type")) {
+        custome["Content-Type"]  = "application/json";
+      }
+      if(!custome.containsKey( "Accept")) {
+        custome["Accept"]  = "*/*";
+      }
       return custome!;
     }
 
