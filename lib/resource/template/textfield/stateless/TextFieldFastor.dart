@@ -227,7 +227,7 @@ class TextFieldFastor extends StatelessWidget {
     return tf;
   }
 
-  String  _getErrorText( ) {
+  String  _getErrorText() {
     final defaultErrorMessage = error_text!;
     if( errorBackendKeyJson == null ) return defaultErrorMessage;
     if( errorBackendJson == null ) return defaultErrorMessage;

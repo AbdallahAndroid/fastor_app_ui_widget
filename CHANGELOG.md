@@ -1,4 +1,4 @@
-## 1.0.177
+## 1.0.178
 
 * class "NetworkManagerDio" fix error "XMLHttpRequest" found at web platform.
 
