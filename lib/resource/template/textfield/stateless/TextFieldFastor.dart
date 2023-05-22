@@ -57,7 +57,7 @@ class TextFieldFastor extends StatelessWidget {
   //error
   String? errorBackendKeyJson;
   Map<String, dynamic>? errorBackendJson;
-  String? error_text = "Missed";
+  // String? error_text ;
   Color? errorColor ;
 
   //other
@@ -105,7 +105,6 @@ class TextFieldFastor extends StatelessWidget {
     this.minLines,
 
     //errors handler
-    this.error_text = "Missed",  //fixed
     this.errorBackendJson,
     this.errorBackendKeyJson,
     this.errorColor,
@@ -139,10 +138,10 @@ class TextFieldFastor extends StatelessWidget {
     }
 
     //error message
-    error_text = _getErrorText();
     errorColor ??= Colors.red;
 
     //choose validator
+    autovalidateMode ??= AutovalidateMode.disabled;
     _setValidator();
   }
 
@@ -158,7 +157,6 @@ class TextFieldFastor extends StatelessWidget {
       color: background_color,
     );
 
-
     //ct
     // var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
     var container = Container(
@@ -169,7 +167,7 @@ class TextFieldFastor extends StatelessWidget {
       // padding: padding,
       decoration: decoration,
     );
-    return container;
+    return tf;
   }
 
 
@@ -178,27 +176,25 @@ class TextFieldFastor extends StatelessWidget {
 
     //textfield
     var tf = TextFormField (
+      //validate error
+      autovalidateMode: autovalidateMode,
+      validator:  validatorChosen ,
+
+      //text align
+      textAlign: textAlign! ,
+
+      // //text size
+      style: TextStyle( color: text_color, fontSize: fontSize),
 
       //password keyboard
       obscureText : obscureText,
-      autovalidateMode: autovalidateMode,
 
-      textAlign: textAlign! ,
-
-      //validate error
-      validator:  TextFieldTemplateBase.getTextValidator(error_text!, validatorChosen),
-
-      //text style
-      style: TextStyle( color: text_color, fontSize: fontSize),
-
-      //cursor color
+      // cursor color
       cursorColor: hint_color,
 
-      //  static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding, String? hint_text,
-      //       Color hint_color, double fontSize, bool isRemoveUnderline, Widget? prefixIcon) {
       //padding + hint + underline
       decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text,
-          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!, error_text!),
+          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!,  autovalidateMode!),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number
@@ -227,25 +223,16 @@ class TextFieldFastor extends StatelessWidget {
     return tf;
   }
 
-  String  _getErrorText() {
-    final defaultErrorMessage = error_text!;
-    if( errorBackendKeyJson == null ) return defaultErrorMessage;
-    if( errorBackendJson == null ) return defaultErrorMessage;
-    if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return defaultErrorMessage;
-    var messageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
-    if( messageBackend != null ) return defaultErrorMessage;
-    return messageBackend;
-  }
-
   //--------------------------------------------------------------- validator
 
   void _setValidator() {
     //set default
-    validatorChosen = ValidatorTemplate.d( error_text: error_text  ) ;
+    validatorChosen = ValidatorTemplate.d( ) ;
 
     //priority for custom
     if( validatorCustom != null ) {
       validatorChosen = validatorCustom! ;
+      // print("_setValidator() - type (validatorChosen)");
       return;
     }
 
@@ -254,13 +241,15 @@ class TextFieldFastor extends StatelessWidget {
   }
 
   void _setValidatorFromBackend() {
-
     if( errorBackendKeyJson == null ) return;
     if( errorBackendJson == null ) return;
     if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return;
     var messageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
     if( messageBackend == null ) return ;
     if( validatorType == null ) return ;
+    //print("_setValidator() - type (_setValidatorFromBackend)");
     validatorChosen = MapValidatorTypeToForm.map(validatorType!, messageBackend);
   }
+
+
 }

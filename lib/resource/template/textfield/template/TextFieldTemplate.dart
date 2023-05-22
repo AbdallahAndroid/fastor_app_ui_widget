@@ -6,45 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
 
-import 'TextFieldTemplateBase.dart';
+import '../TextFieldTemplateBase.dart';
 
-///How to use TextFieldTemplate
-/**
-    "1- declare varaible :
-
-    var email_txt = """";
-    var email_valid = AutovalidateMode.disabled;
-
-    2- return widget :
-    Widget tf_email() {
-    return TextFieldTemplate.t(
-
-    autovalidateMode: email_valid,
-    margin: EdgeInsets.only(top: DSDimen.space_level_3),
-    validator: ValidatorTemplate.email( ),
-    keyboardType: TextInputType.emailAddress,
-    padding: EdgeInsets.all( DSDimen.textfield_auto_padding),
-    onChanged: (s){ email_txt = s; }
-    // margin: EdgeInsets.only( top: DesignSystemDimen.ds_space_to_level_2)
-    );
-    }"
-    "3-  valdiate on click on button ""next"" :
-
-    bool validate() {
-    var result = true; //default good
-
-    //email
-    if ( ToolsValidation.isEmail( email_txt ) == false  ){
-    Log.i( ""missed email"");
-    result  = false;
-    setState(() {
-    email_valid = AutovalidateMode.always;
-    });
-    }
-    return result;
-    } "
-
- */
 
 /// use class "ValidatorTemplate" to change type of input field "name, email,..etc"
 @Deprecated( "Used class `TextFieldStateLessFastor()`  instead")
@@ -167,7 +130,8 @@ class TextFieldTemplate   {
 
       //padding + hint + underline
       decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder, padding,
-          hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon, Colors.red, error_text!),
+          hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon, Colors.red,
+          autovalidateMode!),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number

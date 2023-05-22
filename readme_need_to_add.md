@@ -38,6 +38,10 @@ Save
 
 NavigationTools
 
+ToolsInternet
+
+ToolsAPI
+
 ## Content: Classes UI Helper  8
 
 CardViewTemplate

@@ -113,6 +113,10 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
 
+[NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
+
+[InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
+
 ---
 
 ---
@@ -1094,6 +1098,20 @@ class NavigationTools {
 
 }
 ```
+
+
+---
+
+---
+
+## InternetTools
+
++ add class "InternetTools" for check for internet connection.
+
+```
+ bool status = await InternetTools.isConnected();
+```
+
 ---
 
 ---

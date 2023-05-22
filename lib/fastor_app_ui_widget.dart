@@ -50,12 +50,16 @@ import 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/template/textfield/TextFieldTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
 
 export  'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 
@@ -115,7 +119,7 @@ export 'package:fastor_app_ui_widget/resource/template/stack/StackTemplate.dart'
 export 'package:fastor_app_ui_widget/resource/template/switch/SwitchTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
-export 'package:fastor_app_ui_widget/resource/template/textfield/TextFieldTemplate.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/values/UniqueIdTools.dart';
@@ -196,6 +200,8 @@ class fastor_app_ui_widget extends fastor {
   late NetworkRequestFile requestFile;
   late NetworkTypeDio networkType;
   late ValidateResponse validateResponse;
+  late ApiTools toolsAPI;
+  late InternetTools internetTools;
 
   ///widget
   late ButtonTemplate b;

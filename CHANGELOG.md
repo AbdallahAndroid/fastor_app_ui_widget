@@ -1,3 +1,8 @@
+## 1.0.180
+
+* class "InternetTools" for check internet connection.
+* class "FastorTextField" remove "error_text" just use "ValidatorCustom" message.
+
 ## 1.0.178
 
 * class "NetworkManagerDio" fix error "XMLHttpRequest" found at web platform.

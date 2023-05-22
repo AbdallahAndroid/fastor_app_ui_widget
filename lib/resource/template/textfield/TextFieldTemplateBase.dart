@@ -17,7 +17,7 @@ class TextFieldTemplateBase    {
   static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding,
       String? hint_text, Color hint_color, double fontSize,
       bool isRemoveUnderline, Widget? prefixIcon,
-      Color  errorColor, String errorText) {
+      Color  errorColor, AutovalidateMode autovalidateMode) {
 
     //default
     isShowBoarder ??= false;
@@ -25,11 +25,11 @@ class TextFieldTemplateBase    {
     if( isShowBoarder ) {
       return getDecorationInput_outlineInput( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,   errorText);
+          prefixIcon, errorColor,   autovalidateMode);
     } else {
       return getDecorationInput_underLine( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,   errorText);
+          prefixIcon, errorColor,     autovalidateMode);
     }
   }
 
@@ -37,7 +37,7 @@ class TextFieldTemplateBase    {
   static InputDecoration getDecorationInput_outlineInput(bool isShowBoarder,
       EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor, String errorText) {
+      Widget? prefixIcon, Color  errorColor,   AutovalidateMode autovalidateMode) {
 
 
     //check is need to remove underline
@@ -55,30 +55,31 @@ class TextFieldTemplateBase    {
       borderSide:    boarderSide,
     );
 
-   var  focusedBorder  = OutlineInputBorder(
+    var  focusedBorder  = OutlineInputBorder(
       borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2), //32.0
       borderSide:  boarderSide  ,
     );
+
+
 
     //return value
     return InputDecoration(
 
       //remove default padding and set custom
-      isDense: true,
-      contentPadding: padding,
+        isDense: true,
+        contentPadding: padding,
 
-      //hint text
-      hintText: hint_text,
+        //hint text
+        hintText: hint_text,
 
-      //hint color
-      hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+        //hint color
+        hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
 
-      // underline customer color
-      enabledBorder: enabledBorder,
-      focusedBorder: focusedBorder,
+        // underline customer color
+        enabledBorder: enabledBorder,
+        focusedBorder: focusedBorder,
 
         //error
-        errorText: errorText,
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
         //other
@@ -89,7 +90,7 @@ class TextFieldTemplateBase    {
 
   static InputDecoration getDecorationInput_underLine(bool  isShowBoarder, EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor, String errorText) {
+      Widget? prefixIcon, Color  errorColor,  AutovalidateMode autovalidateMode) {
 
 
     //check is need to remove underline
@@ -106,28 +107,29 @@ class TextFieldTemplateBase    {
       borderSide: BorderSide(color: hint_color, width: widthUnderLine),
     );
 
+
     //return value
     return InputDecoration(
 
       //remove default padding and set custom
-      isDense: true,
-      contentPadding: padding,
+        isDense: true,
+        contentPadding: padding,
 
-      //hint text
-      hintText: hint_text,
+        //hint text
+        hintText: hint_text,
 
-      //hint color
-      hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+        //hint color
+        hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
 
-      // underline customer color
-      enabledBorder: enabledBorder,
-      focusedBorder: focusedBoarder,
+        // underline customer color
+        enabledBorder: enabledBorder,
+        focusedBorder: focusedBoarder,
 
         //error
-        errorText: errorText,
+
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
-      //other
+        //other
         prefixIcon: prefixIcon
     );
   }
