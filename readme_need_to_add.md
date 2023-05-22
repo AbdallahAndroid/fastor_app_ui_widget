@@ -18,6 +18,10 @@ ImageCircleView
 
 ProgressCircle and ProgressSpinkit
 
+ToolbarSimpleFastor
+
+progress persentage 
+
 ## Content : Classes Tools Helper 7
 
 DeviceTools

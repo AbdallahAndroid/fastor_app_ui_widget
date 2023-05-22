@@ -168,9 +168,10 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateRespon
 
 import 'resource/template/textfield/validator/ValidatorType.dart';
 export 'resource/template/textfield/validator/ValidatorType.dart';
+import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
-
+export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/cache/Save.dart';
 export 'resource/toolsFastor/cache/Save.dart';
 
@@ -277,6 +278,9 @@ class fastor_app_ui_widget extends fastor {
   late CropTemplate cropTemplate;
   late FastorScrollTheme scrollTheme;
   late NavigationTools navigationTools;
+
+  //toolbar
+  late ToolbarSimpleFastor toolbarSimpleFastor;
 
   ///state managmetn
   late FastorStateManagement stateManagement;
