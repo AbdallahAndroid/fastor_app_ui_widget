@@ -1,4 +1,4 @@
-## 1.0.182
+## 1.0.183
 
 * class "ToolbarSimpleFastor" features change color of icon and title.
 

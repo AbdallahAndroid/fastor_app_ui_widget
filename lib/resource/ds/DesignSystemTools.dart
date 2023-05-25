@@ -219,13 +219,14 @@ class DesignSystemTools {
   static Size? getFixedSize(double? width, double? height, double dimen) {
     //fixed size
     Size? fixedSize = null;
-    // Log.i( "width: " + width.toString() + " /h:" + height.toString() );
+    //print( "fastor - getFixedSize() - width: " + width.toString() + " /h: " + height.toString() );
     bool haveBoth = (width != null) & (height != null);
     bool haveWidthOnly = width != null;
+    //print( "fastor - getFixedSize() - haveBoth: " + haveBoth.toString() + " /haveWidthOnly: " + haveWidthOnly.toString() );
     if (haveBoth) {
       fixedSize = Size(width!, height!);
     } else if ( haveWidthOnly ) {
-      double heightCal = getHeightOfText( dimen);
+      double heightCal = calculateHeightOfText( dimen);
       fixedSize = Size(width,  heightCal);
     } else {
       fixedSize = null;
@@ -234,8 +235,9 @@ class DesignSystemTools {
   }
 
 
-  static double getHeightOfText(double dimen ) {
-    return dimen * 1.5 ;
+  static double calculateHeightOfText(double dimenFont ) {
+    //print("fastor - calculateHeightOfText() - dimenFont: $dimenFont");
+    return dimenFont * 2.2 ;
   }
 
 }

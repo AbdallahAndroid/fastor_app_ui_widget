@@ -31,6 +31,7 @@ class ToolbarSimpleFastor extends StatefulWidget {
         bool hideBackButton = false,
         Widget? buttonLeft,
         Widget? buttonRight,
+        this.titleColor,
         this.iconSize,
         this.iconColorBack
       } ) {

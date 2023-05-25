@@ -124,7 +124,7 @@ class ButtonFastor extends StatelessWidget {
     margin = EdgeInsetsTools.fixDefaultSpace(margin, 6);
 
     //fix default size
-    height ??= DSDimen.button_height;
+    // height ??= DSDimen.button_height;
     // width ??= 140;
   }
 
