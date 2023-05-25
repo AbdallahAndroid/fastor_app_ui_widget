@@ -9,7 +9,10 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 class ToolbarSimpleFastor extends StatefulWidget {
 
-  String myTitle;
+  //title
+  String title;
+  Color? titleColor;
+
   bool hideBackButton = false;
   ValueChanged<bool>? onClickListener;
 
@@ -23,7 +26,7 @@ class ToolbarSimpleFastor extends StatefulWidget {
   BuildContext pageContext;
 
   ToolbarSimpleFastor(
-      this.pageContext, this.myTitle ,{
+      this.pageContext, this.title ,{
         ValueChanged<bool>? this.onClickListener,
         bool hideBackButton = false,
         Widget? buttonLeft,
@@ -40,14 +43,16 @@ class ToolbarSimpleFastor extends StatefulWidget {
     iconSize ??= 20;
 
     //translate
-    this.myTitle = myTitle.tr();
+    this.title = title.tr();
     //  Log.i( "ToolbarSimple - myTitle: $myTitle /onClickListener: $onClickListener");
+
+    titleColor ??= DSColor.toolbar_title;
   }
 
 
   @override
   _ToolbarSimple createState()  {
-    return  _ToolbarSimple(pageContext, myTitle, onClickListener:onClickListener, hideBackButton:  hideBackButton );
+    return  _ToolbarSimple(  );
   }
 
 
@@ -55,18 +60,6 @@ class ToolbarSimpleFastor extends StatefulWidget {
 
 class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
 
-  String myTitle;
-  bool  hideBackButton = false;
-  ValueChanged<bool>? onClickListener;
-  BuildContext pageContext;
-
-  _ToolbarSimple(this.pageContext, this.myTitle ,{
-    ValueChanged<bool>? this.onClickListener,
-    bool hideBackButton = false
-  } ) {
-    this.hideBackButton = hideBackButton;
-    //  Log.i( "ToolbarSimple - myTitle: $myTitle /onClickListener: $onClickListener");
-  }
 
   //--------------------------------------------------------------------------- build stacks
 
@@ -84,7 +77,8 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
   Widget content(){
     return Stack( children: [
 
-      EmptyView.colored( DeviceTools.getWidth( context), ToolbarSimpleFastor.frameHeight, DSColor.ds_background_toolbar),
+      EmptyView.colored( DeviceTools.getWidth( context),
+          ToolbarSimpleFastor.frameHeight, DSColor.ds_background_toolbar),
 
       //title
       Positioned( child:  tv_title(), left: 0, right: 0 , top: 6 ),
@@ -107,11 +101,11 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
   //---------------------------------------------------------------------------- title
 
   Widget tv_title(){
-    var txt =  Text( myTitle,
+    var txt =  Text( widget.title,
         textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: DSDimen.text_level_1,
-            color: DSColor.toolbar_title,
+            color: widget.titleColor,
             decoration:  TextDecoration.none
         )
     );
@@ -126,7 +120,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
 
   Widget bt_back() {
     //check hide
-    if( hideBackButton ) {
+    if( widget.hideBackButton ) {
       return EmptyView.zero();
     }
 
@@ -151,14 +145,14 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
 
     // Log.i( "backClick()");
     //check found customer listener
-    if ( onClickListener != null) {
+    if ( widget.onClickListener != null) {
       //   Log.i( "onClickListener needed");
-      onClickListener!(true);
+      widget.onClickListener!(true);
       return;
     }
 
     //finish class
-    Navigator.pop( pageContext  );
+    Navigator.pop( widget.pageContext  );
   }
 
   //---------------------------------------------------------------------- button left/right

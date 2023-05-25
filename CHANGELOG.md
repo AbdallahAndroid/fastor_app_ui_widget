@@ -1,3 +1,7 @@
+## 1.0.182
+
+* class "ToolbarSimpleFastor" features change color of icon and title.
+
 ## 1.0.180
 
 * class "InternetTools" for check internet connection.
