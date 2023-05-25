@@ -38,7 +38,11 @@ extension DioService on NetworkManagerDio {
         Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
         Map<String,dynamic> data = Map();
         if( dioError!.response!.data != null ) {
-          data = dioError!.response!.data;
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
         }
         if (callback_dio != null) callback_dio!(false, "failed", data);
         return dioError!.response!;
@@ -90,7 +94,11 @@ extension DioService on NetworkManagerDio {
         Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
         Map<String,dynamic> data = Map();
         if( dioError!.response!.data != null ) {
-          data = dioError!.response!.data;
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
         }
         if (callback_dio != null) callback_dio!(false, "failed", data);
         return dioError!.response!;
@@ -147,7 +155,11 @@ extension DioService on NetworkManagerDio {
         Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
         Map<String,dynamic> data = Map();
         if( dioError!.response!.data != null ) {
-          data = dioError!.response!.data;
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
         }
         if (callback_dio != null) callback_dio!(false, "failed", data);
         return dioError!.response!;
@@ -220,7 +232,11 @@ extension DioService on NetworkManagerDio {
         Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
         Map<String,dynamic> data = Map();
         if( dioError!.response!.data != null ) {
-          data = dioError!.response!.data;
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
         }
         if (callback_dio != null) callback_dio!(false, "failed", data);
         return dioError!.response!;
@@ -295,7 +311,11 @@ extension DioService on NetworkManagerDio {
         Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
         Map<String,dynamic> data = Map();
         if( dioError!.response!.data != null ) {
-          data = dioError!.response!.data;
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
         }
         if (callback_dio != null) callback_dio!(false, "failed", data);
         return dioError!.response!;
