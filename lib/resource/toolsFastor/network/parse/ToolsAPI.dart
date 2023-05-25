@@ -92,18 +92,25 @@ class ApiTools {
     return result;
   }
 
-
   /// fix when api return value someTime in "Int" and sometimes in "Double"
   ///  like: { "data": 15 }  or some times return { "data": 13.5 }
+  ///  remove command "," if found in at big numbers come from backend
   static double parseDoubleOrInt(dynamic data ) {
     String check = data.toString();
     double result = 0.0;
-    if(ToolsString.isContainSingleCharacter(mainString:  check, charSingle:  ".") ) {
-      result = data;
-    } else {
-      String addDotZero =  check + ".0";
-      result =  double.parse(addDotZero);
+
+    //fix missed "." dot
+    bool isNeedToAddDotCharecter = ToolsString.isContainSingleCharacter(mainString:  check, charSingle:  ".")  == false;
+    if(isNeedToAddDotCharecter)  {
+      check =  check + ".0";
     }
+    String addedDots = check.toString();
+
+    //fix remove all comma ","
+    String removedComma = addedDots.replaceAll(RegExp(r','), '');
+
+    result =  double.parse(removedComma);
     return result;
   }
+
 }
