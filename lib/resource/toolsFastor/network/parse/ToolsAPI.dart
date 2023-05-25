@@ -92,4 +92,18 @@ class ApiTools {
     return result;
   }
 
+
+  /// fix when api return value someTime in "Int" and sometimes in "Double"
+  ///  like: { "data": 15 }  or some times return { "data": 13.5 }
+  static double parseDoubleOrInt(dynamic data ) {
+    String check = data.toString();
+    double result = 0.0;
+    if(ToolsString.isContainSingleCharacter(mainString:  check, charSingle:  ".") ) {
+      result = data;
+    } else {
+      String addDotZero =  check + ".0";
+      result =  double.parse(addDotZero);
+    }
+    return result;
+  }
 }

@@ -44,7 +44,7 @@ NavigationTools
 
 ToolsInternet
 
-ToolsAPI
+ToolsAPI + like parseDoubleOrInt()
 
 ## Content: Classes UI Helper  8
 
