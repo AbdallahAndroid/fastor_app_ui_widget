@@ -172,6 +172,7 @@ import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
+
 import 'resource/toolsFastor/cache/Save.dart';
 export 'resource/toolsFastor/cache/Save.dart';
 
@@ -186,6 +187,10 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateRespon
 //dio
 // import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/DioService.dart' hide post_dio ;
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'  hide DioService ;
+
+import 'resource/toolsFastor/values/ToolsString.dart';
+export 'resource/toolsFastor/values/ToolsString.dart';
+
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart' hide DioService ;
 
 ///fastor_app_ui_widget app all class
@@ -271,6 +276,7 @@ class fastor_app_ui_widget extends fastor {
   late IFrameElement iFrameElement;
   late CssStyleDeclaration cssStyleDeclaration;
   late Save saveFastor;
+  late ToolsString toolsString;
 
   ///tools ui
   late StatusBarConstant statusBar;
