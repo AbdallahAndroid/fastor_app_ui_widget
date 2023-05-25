@@ -1,26 +1,26 @@
 ## basic widget 11 
 
-[RadioTemplate]()
+[RadioTemplate]() + add feature : colors
 
-[Switch]()
+[Switch]()  + add feature : colors
 
-[Calender]()
+[Calender]()  + add feature : colors
 
-[SpinnerView]()
+[SpinnerView]()  + add feature : colors
 
-[ListViewTemplate]()
+[ListViewTemplate]() 
 GridViewFastor
-[Table]() 
+[Table]()   + add feature : colors
 
 EmptyView or PlaceholderTemplate
 
 ImageCircleView
 
-ProgressCircle and ProgressSpinkit
+ProgressCircle and ProgressSpinkit + add feature : colors
 
-ToolbarSimpleFastor
+ToolbarSimpleFastor  add feature : colors
 
-progress persentage 
+progress persentage  + add feature : colors
 
 ## Content : Classes Tools Helper 7
 
