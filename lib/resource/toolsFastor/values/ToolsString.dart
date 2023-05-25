@@ -16,4 +16,15 @@ class ToolsString {
     return r;
   }
 
+
+  static String  removeLastChar(String str ){
+    //print( "_removeLastChar() - check: $str ");
+    if (str != null && str.length > 0) {
+      str = str.substring(0, str.length - 1);
+    }
+    //print( "_removeLastChar() - result: $str ");
+    return str;
+  }
+
+
 }

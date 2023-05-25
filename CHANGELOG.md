@@ -1,5 +1,6 @@
-## 1.0.185
+## 1.0.186
 
+* class "ToolsString" add methods "removeLastChar()" and method "isContainSingleCharacter()"
 * class "ToolbarSimpleFastor" features change color of icon and title.
 
 ## 1.0.180
