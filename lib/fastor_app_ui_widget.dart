@@ -50,6 +50,8 @@ import 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
@@ -256,6 +258,7 @@ class fastor_app_ui_widget extends fastor {
   late TextTemplate tx;
   late TextFieldTemplate tf;
   late TextFieldFastor tfStateLess;
+  late TextFieldBackendErrorFastor tfError;
   late ValidatorTemplate validatorTemplate;
   late ValidatorType validatorType;
 
