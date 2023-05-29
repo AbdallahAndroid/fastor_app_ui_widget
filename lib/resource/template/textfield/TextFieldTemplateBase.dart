@@ -17,7 +17,7 @@ class TextFieldTemplateBase    {
   static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding,
       String? hint_text, Color hint_color, double fontSize,
       bool isRemoveUnderline, Widget? prefixIcon,
-      Color  errorColor, AutovalidateMode autovalidateMode) {
+      Color  errorColor, AutovalidateMode autovalidateMode, String? messageBackend) {
 
     //default
     isShowBoarder ??= false;
@@ -25,11 +25,11 @@ class TextFieldTemplateBase    {
     if( isShowBoarder ) {
       return getDecorationInput_outlineInput( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,   autovalidateMode);
+          prefixIcon, errorColor,   autovalidateMode,  messageBackend);
     } else {
       return getDecorationInput_underLine( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,     autovalidateMode);
+          prefixIcon, errorColor,     autovalidateMode,  messageBackend);
     }
   }
 
@@ -37,7 +37,8 @@ class TextFieldTemplateBase    {
   static InputDecoration getDecorationInput_outlineInput(bool isShowBoarder,
       EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor,   AutovalidateMode autovalidateMode) {
+      Widget? prefixIcon, Color  errorColor,
+      AutovalidateMode autovalidateMode, String? messageBackend) {
 
 
     //check is need to remove underline
@@ -81,6 +82,7 @@ class TextFieldTemplateBase    {
 
         //error
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
+        errorText : messageBackend,
 
         //other
         prefixIcon: prefixIcon
@@ -90,7 +92,8 @@ class TextFieldTemplateBase    {
 
   static InputDecoration getDecorationInput_underLine(bool  isShowBoarder, EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor,  AutovalidateMode autovalidateMode) {
+      Widget? prefixIcon, Color  errorColor,
+      AutovalidateMode autovalidateMode, String? messageBackend) {
 
 
     //check is need to remove underline
@@ -126,7 +129,7 @@ class TextFieldTemplateBase    {
         focusedBorder: focusedBoarder,
 
         //error
-
+        errorText : messageBackend,
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
         //other

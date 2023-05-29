@@ -1,3 +1,7 @@
+## 1.0.189
+
+* class "TextFieldBackendErrorFastor" for handle error come from backend
+
 ## 1.0.188
 
 * class "ToolsString" add methods "removeLastChar()" and method "isContainSingleCharacter()"

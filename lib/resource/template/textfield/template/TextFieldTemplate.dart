@@ -131,7 +131,7 @@ class TextFieldTemplate   {
       //padding + hint + underline
       decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder, padding,
           hint_text, hint_color, fontSize, isRemoveUnderline, prefixIcon, Colors.red,
-          autovalidateMode!),
+          autovalidateMode!, null ),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number

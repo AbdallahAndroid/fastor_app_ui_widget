@@ -635,7 +635,7 @@ See source code compare between Fastor and Normal at this page
     // validate
     this.validator,
     this.autovalidateMode,
-    this.error_text = "Missed",
+    
 
     //text and hint
     this.hint_text,
@@ -875,6 +875,48 @@ class AuthErrorState extends AuthState
 ### Class Utils For TextField
 * class ValidatorTemplate : This have methods utils used at parameter "validator"
 
+### Class "TextFieldBackendErrorFastor" :
+
+* This Class used for handle error from backend for every input fields.
+* Example error array backend response :
+```
+{
+    "errors": {
+        "email": [
+            "The email provided is incorrect."
+        ]
+    }
+}
+```
+
+#### Handle Error Array
+
+* We need in UI to handle every error array and to show to message error under every textfields
+
+* Example :
+```
+return TextFieldFastor(
+        hint_text: "Email",
+        controller: emailController,
+        autovalidateMode: emailValid,
+        validatorCustom: ValidatorTemplate.email(),
+        errorBackendJson: errorState?.errors,
+        errorBackendKeyJson:  "email",
+        // errorBackendKeyJson2:  "role",
+        margin: EdgeInsets.only(top: 10),
+        padding:  EdgeInsets.all(5),
+        background_color: Colors.white,
+        keyboardType: TextInputType.emailAddress,
+        onChanged: (s) {
+        // Log.i("tfEmail() - change s: $s ");
+
+        bool isNotInit = stateCurrent! is AuthInitialState;
+        if (isNotInit) {
+        AuthCubit.get(context).resetError();
+        }
+        });
+
+```
 
 ---
 

@@ -12,15 +12,7 @@ import '../TextFieldTemplateBase.dart';
 import '../validator/MapValidatorTypeToForm.dart';
 import '../validator/ValidatorType.dart';
 
-
-
-class TextFieldFastor extends StatelessWidget {
-
-  // validate
-  FormFieldValidator<String>? validatorCustom;
-  FormFieldValidator<String>  validatorChosen = ValidatorTemplate.d( error_text: "Missed");
-  AutovalidateMode? autovalidateMode;
-  ValidatorType? validatorType;
+class TextFieldBackendErrorFastor extends StatelessWidget {
 
   //text and hint
   String? hint_text;
@@ -55,6 +47,9 @@ class TextFieldFastor extends StatelessWidget {
   int? minLines;
 
   //error
+  String? errorBackendKeyJson;
+  Map<String, dynamic>? errorBackendJson;
+  String? errorMessageBackend ;
   Color? errorColor ;
 
   //other
@@ -62,12 +57,8 @@ class TextFieldFastor extends StatelessWidget {
   FocusNode? focusNode;
   Widget? prefixIcon;
 
-  TextFieldFastor( {
-    // validate
-    this.validatorCustom,
-    this.validatorType,
-    this.autovalidateMode,
 
+  TextFieldBackendErrorFastor( {
 
     //text and hint
     this.hint_text,
@@ -101,7 +92,9 @@ class TextFieldFastor extends StatelessWidget {
     this.maxLines,
     this.minLines,
 
-    //errors
+    //errors handler
+    this.errorBackendJson,
+    this.errorBackendKeyJson,
     this.errorColor,
 
     //other
@@ -135,9 +128,9 @@ class TextFieldFastor extends StatelessWidget {
     //error message
     errorColor ??= Colors.red;
 
-    //choose validator
-    autovalidateMode ??= AutovalidateMode.disabled;
-    _setValidator();
+
+    //priority for error message backend
+    _setValidatorFromBackend();
   }
 
   @override
@@ -171,9 +164,6 @@ class TextFieldFastor extends StatelessWidget {
 
     //textfield
     var tf = TextFormField (
-      //validate error
-      autovalidateMode: autovalidateMode,
-      validator:  validatorChosen ,
 
       //text align
       textAlign: textAlign! ,
@@ -189,7 +179,7 @@ class TextFieldFastor extends StatelessWidget {
 
       //padding + hint + underline
       decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text,
-          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!,  autovalidateMode!, null ),
+          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!,  AutovalidateMode.disabled, errorMessageBackend),
 
       //keyboard
       keyboardType: keyboardType, //TextInputType.number
@@ -220,18 +210,12 @@ class TextFieldFastor extends StatelessWidget {
 
   //--------------------------------------------------------------- validator
 
-  void _setValidator() {
-    //set default
-    validatorChosen = ValidatorTemplate.d( ) ;
-
-    //priority for custom
-    if( validatorCustom != null ) {
-      validatorChosen = validatorCustom! ;
-      // print("_setValidator() - type (validatorChosen)");
-      return;
-    }
+  void _setValidatorFromBackend() {
+    if( errorBackendKeyJson == null ) return;
+    if( errorBackendJson == null ) return;
+    if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return;
+    errorMessageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
   }
-
 
 
 }
