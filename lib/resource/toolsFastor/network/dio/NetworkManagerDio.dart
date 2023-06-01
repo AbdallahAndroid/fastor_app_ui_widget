@@ -15,7 +15,7 @@ typedef NetworkDiocallback_dio = void Function(
 
 class NetworkManagerDio  {
 
-    final tag = "NetworkManagerDio";
+  final tag = "NetworkManagerDio";
 
   //--------------------------------------------------------------------------- variable
 
@@ -33,108 +33,108 @@ class NetworkManagerDio  {
 
   //------------------------------------------------------------------------- types  call
 
-    Future<Response> callBack(String url,
-        { required NetworkDiocallback_dio  callback,
-          Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-        }) async {
+  Future<Response> callBack(String url,
+      { required NetworkDiocallback_dio  callback,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+      }) async {
 
-      //set values
-      this.url = url;
-      this.type = type;
-      this.requestFile = requestFile;
+    //set values
+    this.url = url;
+    this.type = type;
+    this.requestFile = requestFile;
 
 
-      //log
-      isEnableLogDioPretty ??= true  ; //default take test enviroment
-      this.isEnableLogDioPretty = isEnableLogDioPretty;
+    //log
+    isEnableLogDioPretty ??= true  ; //default take test enviroment
+    this.isEnableLogDioPretty = isEnableLogDioPretty;
 
-      //set body and header
-      if (body != null) this.body = body;
-      if (headers != null) this.headers = headers;
+    //set body and header
+    if (body != null) this.body = body;
+    if (headers != null) this.headers = headers;
 
-      //edit headers
-      this.headers = setDefaultHeader(headers);
+    //edit headers
+    this.headers = setDefaultHeader(headers);
 
-      _setupNetworkType();
-      this.callback_dio = callback;
+    _setupNetworkType();
+    this.callback_dio = callback;
 
-      return await _chooseTypeNetworkThenStartService();
-    }
+    return await _chooseTypeNetworkThenStartService();
+  }
 
 
   //------------------------------------------------------------------------- type Future listener
 
-    Future<Response> get(String url,
-        {Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-          NetworkDiocallback_dio? callback}) async {
+  Future<Response> get(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
 
-      return await any( url,  NetworkTypeDio.get,
-          body: body, headers: headers, requestFile: requestFile,
+    return await any( url,  NetworkTypeDio.get,
+        body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
-    }
+  }
 
 
-    Future<Response> post(String url,
-        {Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-          NetworkDiocallback_dio? callback}) async {
+  Future<Response> post(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
 
-      return await any( url,  NetworkTypeDio.post,
-          body: body, headers: headers, requestFile: requestFile,
-          isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
-    }
-
-
-    Future<Response> put(String url,
-        {Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-          NetworkDiocallback_dio? callback}) async {
-
-      return await any( url,  NetworkTypeDio.put,
-          body: body, headers: headers, requestFile: requestFile,
-          isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
-    }
+    return await any( url,  NetworkTypeDio.post,
+        body: body, headers: headers, requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+  }
 
 
-    Future<Response> delete(String url,
-        {Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-          NetworkDiocallback_dio? callback}) async {
+  Future<Response> put(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
 
-      return await any( url,  NetworkTypeDio.delete,
-          body: body, headers: headers, requestFile: requestFile,
-          isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
-    }
+    return await any( url,  NetworkTypeDio.put,
+        body: body, headers: headers, requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+  }
 
-    Future<Response> file(String url,
-        {Map<String, dynamic>? body,
-          Map<String, String>? headers,
-          NetworkRequestFile? requestFile,
-          NetworkTypeDio? type,
-          bool? isEnableLogDioPretty ,  //PrettyDioLogger
-          NetworkDiocallback_dio? callback}) async {
 
-      return await any( url,  NetworkTypeDio.delete,
-          body: body, headers: headers, requestFile: requestFile,
-          isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
-    }
+  Future<Response> delete(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
+
+    return await any( url,  NetworkTypeDio.delete,
+        body: body, headers: headers, requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+  }
+
+  Future<Response> file(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
+
+    return await any( url,  NetworkTypeDio.file,
+        body: body, headers: headers, requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+  }
 
   Future<Response> any(String url,
       NetworkTypeDio  type,

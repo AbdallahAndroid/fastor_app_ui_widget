@@ -1,5 +1,6 @@
-## 1.0.189
+## 1.0.190
 
+* Fix bug of Network Uploading File.
 * class "TextFieldBackendErrorFastor" for handle error come from backend
 
 ## 1.0.188
