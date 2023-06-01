@@ -57,6 +57,20 @@ BorderRadiusTools
 BoarderHelper
 FastorScrollTheme
 
+------------------------------------ icons
+
+1- icons apply to ImageViewFastor()
+
+---------------------------------  AppBarFastor
+
+1- button dismiss and back. Optional also can hide
+
+
+-------------------------------- dialog
+
+Dialog transaperent
+
+
 ## Content: Theme Widget  9
 
 make 4 constructor: ThemeColorFastor(), ThemeDimenFastor(), ThemeFontFastor(), ThemeFontFastor()
