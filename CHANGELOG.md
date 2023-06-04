@@ -1,3 +1,7 @@
+## 1.0.191
+
+* add widget "ChartMultiLineFastor"
+
 ## 1.0.190
 
 * Fix bug of Network Uploading File.

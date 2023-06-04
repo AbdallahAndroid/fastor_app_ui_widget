@@ -22,6 +22,8 @@ ToolbarSimpleFastor  add feature : colors
 
 progress persentage  + add feature : colors
 
+chart multi line : easy to use
+
 ## Content : Classes Tools Helper 7
 
 DeviceTools
@@ -56,6 +58,7 @@ ShadowContainer
 BorderRadiusTools
 BoarderHelper
 FastorScrollTheme
+
 
 ------------------------------------ icons
 

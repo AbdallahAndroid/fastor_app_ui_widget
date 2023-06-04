@@ -82,6 +82,9 @@ import 'resource/state/FastorStateManagement.dart';
 export 'resource/state/FastorStateManagement.dart';
 
 
+import 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
+export 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
+
 import 'resource/template/checkbox/CheckboxFastor.dart';
 export 'resource/template/checkbox/CheckboxFastor.dart';
 import 'resource/template/column/ColumnFastor.dart';
@@ -253,6 +256,7 @@ class fastor_app_ui_widget extends fastor {
   late ImageFastor imageFastor;
   late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
+  late ChartMultiLineFastor chartMultiLineFastor;
 
   ///text and TextField
   late TextTemplate tx;
