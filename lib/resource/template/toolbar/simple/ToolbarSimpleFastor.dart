@@ -1,5 +1,4 @@
 
-import 'package:easy_localization/src/public_ext.dart';
 
 
 import 'package:flutter/material.dart';
@@ -43,8 +42,6 @@ class ToolbarSimpleFastor extends StatefulWidget {
     iconColorBack ??= Colors.grey;
     iconSize ??= 20;
 
-    //translate
-    this.title = title.tr();
     //  Log.i( "ToolbarSimple - myTitle: $myTitle /onClickListener: $onClickListener");
 
     titleColor ??= DSColor.toolbar_title;

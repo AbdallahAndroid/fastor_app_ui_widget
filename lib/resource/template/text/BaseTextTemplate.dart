@@ -4,7 +4,6 @@ import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/ds/LevelDS.dart';
 
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemTools.dart';
@@ -54,11 +53,7 @@ abstract class BaseTextTemplate  {
     //fix null
     s ??= "";
 
-    //langauge
-    /**
-     * pub:  easy_localization: ^3.0.0
-     */
-    s  = s.tr();
+
 
     //set default dimen
     var myDimen = DSDimen.text_level_1;

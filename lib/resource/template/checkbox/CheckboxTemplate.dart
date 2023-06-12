@@ -1,4 +1,4 @@
-import 'package:easy_localization/src/public_ext.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
@@ -72,8 +72,6 @@ class CheckboxTemplate {
     String paddingLeftCheckBoxTap = "  ";
     String s = paddingLeftCheckBoxTap +  text;
 
-    //language
-    s  = s.tr();
 
     //dimen
     var myDimen = DSDimen.text_level_3;

@@ -1,3 +1,7 @@
+## 1.0.192
+
+* remove support plugin "easy_localization" at plugin fastor
+
 ## 1.0.191
 
 * add widget "ChartMultiLineFastor"

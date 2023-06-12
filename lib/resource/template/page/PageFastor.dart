@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+
 import 'package:fastor_app_ui_widget/resource/state/FastorStateManagement.dart';
 import 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
@@ -120,7 +120,7 @@ class PageFastor extends StatelessWidget {
 
     // check null
     title ??= "";
-    title = title!.tr();
+
 
     //step 1 - toolbar height
     if (toolbar != null) {
