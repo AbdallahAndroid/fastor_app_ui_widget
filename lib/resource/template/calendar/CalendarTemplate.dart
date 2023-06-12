@@ -1,6 +1,9 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
+
+import 'plugin_not_support/flutter_clean_calendar/clean_calendar_event.dart';
+import 'plugin_not_support/flutter_clean_calendar/flutter_clean_calendar.dart';
+// import 'package:flutter_clean_calendar/flutter_clean_calendar.dart';
 
 class CalendarTemplate extends StatefulWidget {
 

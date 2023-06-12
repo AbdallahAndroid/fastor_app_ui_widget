@@ -1,3 +1,7 @@
+## 1.0.194
+
+* fix not supported "flutter_clean_calendar" plugin while using "CalenderTemplate" widget.
+
 ## 1.0.193
 
 * fix  "ChartMultiLineFastor"

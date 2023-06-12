@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.0.193
+version: 1.0.194
 homepage: https://fastor-app.com
 
 environment:
@@ -18,7 +18,6 @@ dependencies:
   cached_network_image:
   shared_preferences: #^2.0.15
   flutter_spinkit: #^5.1.0
-  flutter_clean_calendar: # ^1.1.0
   need_resume:
   internet_connection_checker:
 
@@ -37,6 +36,10 @@ dependencies:
   dio:
   pretty_dio_logger: ^1.1.1
   cross_file: # ^0.3.3+4
+
+  # plugin stop supported, so copied to fastor hard copy
+  # flutter_clean_calendar: # ^1.1.0
+  intl: # ^0.18.1
 
 dev_dependencies:
   flutter_test:
