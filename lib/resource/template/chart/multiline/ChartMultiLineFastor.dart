@@ -92,7 +92,7 @@ class ChartMultiLineFastor extends StatelessWidget {
   LineTouchData get lineTouchData1 => LineTouchData(
     handleBuiltInTouches: true,
     touchTooltipData: LineTouchTooltipData(
-      tooltipBgColor: colorTouchWindows,
+      tooltipBgColor: colorTouchWindows!,
     ),
   );
 
@@ -249,7 +249,7 @@ class ChartMultiLineFastor extends StatelessWidget {
   //--------------------------------------------------------------- theme chart
 
   FlGridData get gridData =>   FlGridData(
-    show: showGridData,
+    show: showGridData!,
   );
 
   FlBorderData get borderData => FlBorderData(
