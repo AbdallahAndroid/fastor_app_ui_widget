@@ -1,3 +1,8 @@
+## 1.0.195
+
+* class "SpinnerView()" add feature: decoration
+* class "SpinnerView()" add feature: colors
+* 
 ## 1.0.194
 
 * fix not supported "flutter_clean_calendar" plugin while using "CalenderTemplate" widget.

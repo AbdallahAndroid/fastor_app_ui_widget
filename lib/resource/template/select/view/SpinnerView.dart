@@ -14,10 +14,10 @@ class SpinnerView extends StatefulWidget {
 
   List<Widget> childers;
   Widget? iconDropdown;
-  InputDecoration? decoration;
+  Decoration? decorationOutlineDropdown;
   Color? dropdownColor;
+  Color? underlineColor;
   SpinnerViewCallBack onSelectPosition;
-
   Widget hintWidget;
   double width_frame  ;
   double height_frame ;
@@ -28,16 +28,39 @@ class SpinnerView extends StatefulWidget {
     required double this.width_frame,
     required double this.height_frame,
     required SpinnerViewCallBack this.onSelectPosition,
-    this.decoration,
+    this.decorationOutlineDropdown,
     this.iconDropdown,
     this.dropdownColor,
+    this.underlineColor
 
-  });
+  }){
+    setDefaultValue();
+    fixWidthWithIconSpinner();
+  }
 
 
   @override
   SpinnerViewState createState() {
     return SpinnerViewState();
+  }
+
+  void setDefaultValue() {
+    //  Log.i("setDefaultValue()");
+
+    //icon triangle
+    iconDropdown ??= Icon(Icons.arrow_drop_down);
+
+    underlineColor ??= Colors.transparent;
+  }
+
+
+
+  void fixWidthWithIconSpinner() {
+    /**
+     * the icon spinner with is 24 px, so need to decrease the width of frame
+     */
+    final widthArrow = 30 ;
+    width_frame = width_frame +widthArrow;
   }
 
 }
@@ -52,8 +75,12 @@ class SpinnerViewState extends State<SpinnerView> {
   String dropdownValue = '';
 
   SpinnerViewState(  ) {
-    setDefaultValue();
-    fixWidthWithIconSpinner();
+    /**
+        "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
+     */
+    dropdownValue = key_position_hint;// listChildWidget[0];
+
+
   }
 
   //------------------------------------------------------------------ set position
@@ -93,52 +120,58 @@ class SpinnerViewState extends State<SpinnerView> {
     mapListWidgetToUnSelectedMenu();
     var dropBox = getDropBoxWidget();
 
+    //decoration
+    var container = Container( child:  dropBox, decoration: widget.decorationOutlineDropdown ,);
+
     //size
-    var material = Material(child: dropBox ) ;
+    var material = Material(child: container ) ;
     var sizeBox =  SizedBox( child: material,
         width: widget.width_frame,
         height: widget.height_frame );
     return sizeBox;
   }
 
-
   Widget getDropBoxWidget(){
-    // var  drop =  DropdownButton<String>(
-    //   value: dropdownValue,
-    //   icon: Icon(Icons.arrow_drop_down),
-    //   iconSize: 24,
-    //   elevation: 16,
-    //   dropdownColor: DSColor.spinner_background,
-    //   focusColor: DSColor.spinner_background,
-    //
-    //   underline: Container(
-    //     height: 2,
-    //     color: DSColor.spinner_underline,
-    //   ),
-    //
-    //
-    //   //change
-    //   onChanged: (String? newValue) {
-    //     // Log.i( "getDropBoxWidget() - change: " + newValue.toString() );
-    //     updateSelected(newValue??"0");
-    //   },
-    //
-    //   items: listDrop, // mapListWidgetToListMenuItem(),
-    //
-    // );
-    return DropdownButtonFormField(
-      items: listDrop,
+    return DropdownButton<String>(
+      value: dropdownValue,
+      icon: widget.iconDropdown,
+      iconSize: 24,
+      elevation: 16,
+      dropdownColor: widget.dropdownColor,
+      focusColor: widget.dropdownColor,
+
+      underline: Container(
+        height: 2,
+        color: widget.underlineColor!,
+      ),
+
+
+      //change
       onChanged: (String? newValue) {
         // Log.i( "getDropBoxWidget() - change: " + newValue.toString() );
         updateSelected(newValue??"0");
       },
-      iconSize: 24,
-      elevation: 16,
-      decoration : widget.decoration,
-      dropdownColor : widget.dropdownColor,
-      focusColor: widget.dropdownColor,
-      icon: widget.iconDropdown!,
+
+      items: listDrop, // mapListWidgetToListMenuItem(),
+
     );
+
+    /** not working
+        return DropdownButtonFormField(
+        items: listDrop,
+        onChanged: (String? newValue) {
+        // Log.i( "getDropBoxWidget() - change: " + newValue.toString() );
+        updateSelected(newValue??"0");
+        },
+        iconSize: 24,
+        elevation: 16,
+        decoration : widget.decoration,
+        dropdownColor : widget.dropdownColor,
+        focusColor: widget.dropdownColor,
+        icon: widget.iconDropdown!,
+        );
+     */
+
 
   }
 
@@ -183,6 +216,12 @@ class SpinnerViewState extends State<SpinnerView> {
     //  return listDrop;
   }
 
+  void setHintWidget() {
+    // var hintWid = TextTemplate.t( "hint here"  , color: Colors.yellow);
+    _addToDrop( widget.hintWidget, key_position_hint );
+  }
+
+
   void _addToDrop(Widget wid, String position ){
     //drop
     DropdownMenuItem<String> drop = DropdownMenuItem<String>(
@@ -194,31 +233,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
   }
 
-  //----------------------------------------------------------------------- init values
-
-  void setDefaultValue() {
-    //  Log.i("setDefaultValue()");
-    /**
-        "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
-     */
-    dropdownValue = key_position_hint;// listChildWidget[0];
-
-    //icon triangle
-    widget.iconDropdown ??= Icon(Icons.arrow_drop_down);
-  }
-
-  void fixWidthWithIconSpinner() {
-    /**
-     * the icon spinner with is 24 px, so need to decrease the width of frame
-     */
-    final widthArrow = 30 ;
-    widget.width_frame = widget.width_frame +widthArrow;
-  }
-
-  void setHintWidget() {
-    // var hintWid = TextTemplate.t( "hint here"  , color: Colors.yellow);
-    _addToDrop( widget.hintWidget, key_position_hint );
-  }
+//----------------------------------------------------------------------- init values
 
 
 }
