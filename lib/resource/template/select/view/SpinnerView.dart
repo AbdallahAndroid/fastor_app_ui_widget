@@ -13,8 +13,11 @@ typedef SpinnerViewCallBack = void Function( int position, bool isRemoveSelected
 class SpinnerView extends StatefulWidget {
 
   List<Widget> childers;
-  final SpinnerViewCallBack onSelectPosition;
-  ValueChanged<SpinnerViewState>? changeState;
+  Widget? iconDropdown;
+  InputDecoration? decoration;
+  Color? dropdownColor;
+  SpinnerViewCallBack onSelectPosition;
+
   Widget hintWidget;
   double width_frame  ;
   double height_frame ;
@@ -25,25 +28,17 @@ class SpinnerView extends StatefulWidget {
     required double this.width_frame,
     required double this.height_frame,
     required SpinnerViewCallBack this.onSelectPosition,
-    ValueChanged<SpinnerViewState>? this.changeState
+    this.decoration,
+    this.iconDropdown,
+    this.dropdownColor,
+
   });
 
 
   @override
   SpinnerViewState createState() {
-    var state =  SpinnerViewState  (
-        childers: childers,
-        hintWidget: hintWidget,
-        width_frame: width_frame,
-        height_frame: height_frame,
-        onSelectPosition: onSelectPosition
-    );
-    if(changeState != null ) changeState!(state);
-    return state;
+    return SpinnerViewState();
   }
-
-
-
 
 }
 
@@ -52,28 +47,11 @@ class SpinnerViewState extends State<SpinnerView> {
   //------------------------------------------------------------------ variable
 
   static final  key_position_hint = "-1" ;
-
   int selected_position = 0;
-
   List<DropdownMenuItem<String>> listDrop = [];
-  List<Widget> childers;
-  Widget hintWidget;
-  final SpinnerViewCallBack onSelectPosition;
-  double width_frame  ;
-  double height_frame ;
-
   String dropdownValue = '';
 
-  //view
-  // DropdownButton? drop;
-
-  SpinnerViewState(  {
-    required  List<Widget> this.childers ,
-    required Widget this.hintWidget,
-    required double this.width_frame,
-    required double this.height_frame,
-    required SpinnerViewCallBack this.onSelectPosition,
-  }) {
+  SpinnerViewState(  ) {
     setDefaultValue();
     fixWidthWithIconSpinner();
   }
@@ -91,7 +69,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
 
     //callback
-    onSelectPosition(selected_position, false);
+    widget.onSelectPosition(selected_position, false);
   }
 
   void clearSelected() {
@@ -104,7 +82,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
 
     //callback
-    onSelectPosition(selected_position, true);
+    widget.onSelectPosition(selected_position, true);
   }
 
   //-------------------------------------------------------------------- build
@@ -117,37 +95,51 @@ class SpinnerViewState extends State<SpinnerView> {
 
     //size
     var material = Material(child: dropBox ) ;
-    var sizeBox =  SizedBox( child: material, width: width_frame, height: height_frame );
+    var sizeBox =  SizedBox( child: material,
+        width: widget.width_frame,
+        height: widget.height_frame );
     return sizeBox;
   }
 
 
   Widget getDropBoxWidget(){
-    var  drop =  DropdownButton<String>(
-      value: dropdownValue,
-      icon: Icon(Icons.arrow_drop_down),
-      iconSize: 24,
-      elevation: 16,
-      dropdownColor: DSColor.spinner_background,
-      focusColor: DSColor.spinner_background,
-
-      underline: Container(
-        height: 2,
-        color: DSColor.spinner_underline,
-      ),
-
-
-      //change
+    // var  drop =  DropdownButton<String>(
+    //   value: dropdownValue,
+    //   icon: Icon(Icons.arrow_drop_down),
+    //   iconSize: 24,
+    //   elevation: 16,
+    //   dropdownColor: DSColor.spinner_background,
+    //   focusColor: DSColor.spinner_background,
+    //
+    //   underline: Container(
+    //     height: 2,
+    //     color: DSColor.spinner_underline,
+    //   ),
+    //
+    //
+    //   //change
+    //   onChanged: (String? newValue) {
+    //     // Log.i( "getDropBoxWidget() - change: " + newValue.toString() );
+    //     updateSelected(newValue??"0");
+    //   },
+    //
+    //   items: listDrop, // mapListWidgetToListMenuItem(),
+    //
+    // );
+    return DropdownButtonFormField(
+      items: listDrop,
       onChanged: (String? newValue) {
         // Log.i( "getDropBoxWidget() - change: " + newValue.toString() );
         updateSelected(newValue??"0");
       },
-
-      items: listDrop, // mapListWidgetToListMenuItem(),
-
+      iconSize: 24,
+      elevation: 16,
+      decoration : widget.decoration,
+      dropdownColor : widget.dropdownColor,
+      focusColor: widget.dropdownColor,
+      icon: widget.iconDropdown!,
     );
 
-    return drop;
   }
 
   //-------------------------------------------------------------------------- update
@@ -168,7 +160,7 @@ class SpinnerViewState extends State<SpinnerView> {
     bool isRemoveSelected   =   newValue == key_position_hint;
 
     //callback
-    onSelectPosition(selected_position, isRemoveSelected);
+    widget.onSelectPosition(selected_position, isRemoveSelected);
   }
   //----------------------------------------------------------------------- map data (string)
 
@@ -181,9 +173,9 @@ class SpinnerViewState extends State<SpinnerView> {
     setHintWidget();
 
     //for
-    for( int position = 0 ; position < childers.length; position++ ) {
+    for( int position = 0 ; position < widget.childers.length; position++ ) {
 
-      Widget wid = childers[position];
+      Widget wid = widget.childers[position];
       String key = "$position";
       _addToDrop(wid, key );
     }
@@ -210,6 +202,9 @@ class SpinnerViewState extends State<SpinnerView> {
         "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
      */
     dropdownValue = key_position_hint;// listChildWidget[0];
+
+    //icon triangle
+    widget.iconDropdown ??= Icon(Icons.arrow_drop_down);
   }
 
   void fixWidthWithIconSpinner() {
@@ -217,12 +212,12 @@ class SpinnerViewState extends State<SpinnerView> {
      * the icon spinner with is 24 px, so need to decrease the width of frame
      */
     final widthArrow = 30 ;
-    width_frame = width_frame +widthArrow;
+    widget.width_frame = widget.width_frame +widthArrow;
   }
 
   void setHintWidget() {
     // var hintWid = TextTemplate.t( "hint here"  , color: Colors.yellow);
-    _addToDrop( hintWidget, key_position_hint );
+    _addToDrop( widget.hintWidget, key_position_hint );
   }
 
 
