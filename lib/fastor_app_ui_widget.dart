@@ -177,6 +177,8 @@ export 'resource/template/switch/SwitchFastor.dart';
 import 'resource/template/textfield/validator/ValidatorType.dart';
 export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
+import 'resource/toolsFastor/initialize_app/Fastor.dart';
+export 'resource/toolsFastor/initialize_app/Fastor.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
@@ -304,6 +306,9 @@ class fastor_app_ui_widget extends fastor {
 
   //constant
   late NotchBarConstant notch;
+
+  // plugin main
+  late Fastor fastorMain;
 }
 
 ///fastor app all class

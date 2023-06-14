@@ -19,6 +19,16 @@ fastor_app_ui_widget:
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 ```
 
+3- under MyApp() class write 
+```
+class MyApp extends StatelessWidget {
+ 
+  @override
+  Widget build(BuildContext context) {
+     Fastor.initializeApp(context);     //init Fastor Plugin here
+ }
+```
+
 ## Reference 
 
 ### documentation

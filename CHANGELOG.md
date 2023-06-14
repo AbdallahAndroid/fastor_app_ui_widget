@@ -1,3 +1,7 @@
+## 1.0.198
+
+* class "Fastor" for call "Fastor.initializeApp()"
+
 ## 1.0.197
 
 * class "SwitchFastor()"
