@@ -1,4 +1,4 @@
-## 1.0.196
+## 1.0.197
 
 * class "SwitchFastor()"
 
