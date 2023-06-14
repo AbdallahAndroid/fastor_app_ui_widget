@@ -1,3 +1,7 @@
+## 1.0.196
+
+* class "SwitchFastor()"
+
 ## 1.0.195
 
 * class "SpinnerView()" add feature: decoration

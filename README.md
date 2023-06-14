@@ -104,6 +104,9 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 </tr>
 </table>
 
+## Content: Other Fastor UI Widget
+
+[SwitchFastor](https://pub.dev/packages/fastor_app_ui_widget#switchfastor)
 
 ## Content: Classes Helper
 
@@ -962,6 +965,57 @@ height="300"/>
 
 ---
  
+## SwitchFastor
+
+* Feature Padding, Margin.
+* Feature send "TextStyle" in parameter constructor.
+* Feature Color action active and dis-active in parameter constructor.
+
+
+### Example Using with "Cubit" StateManagment
+
+* ui :
+```
+  Widget _switchVipButton(){
+    return SwitchFastor(defaultValue: cubit!.createReservation.isVip,
+        onChange: (updateStatus){
+      Log.i( "_switchVipButton() updateStatus: $updateStatus");
+      cubit!.switchVipStatus(updateStatus);
+    });
+  }
+```
+
+
+* Save the last updated status of change in variable
+- when calling 
+```agsl
+cubit!.createReservation.isVip
+```
+
+it just boolean varaible to carry data of switch status
+```
+  bool isVip = false;
+```
+
+* create new state for class Cubit state
+```
+class ReservationCreateVipStatusChangeState extends ReservationState {}
+```
+
+* call the change of switch value by calling "State Cubit" 
+```
+  void switchVipStatus(bool updateStatus) {
+    createReservation.isVip = updateStatus;
+
+    emit(ReservationCreateVipStatusChangeState());
+  }
+
+```
+
+---
+
+---
+
 # Helper Classes
 
 ## NetworkManager
