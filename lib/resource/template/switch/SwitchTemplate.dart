@@ -7,6 +7,7 @@ import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart'
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 
+@Deprecated( "instead use \"SwitchFastor()\" ")
 class SwitchTemplate {
 
 

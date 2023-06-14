@@ -171,6 +171,9 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
+import 'resource/template/switch/SwitchFastor.dart';
+export 'resource/template/switch/SwitchFastor.dart';
+
 import 'resource/template/textfield/validator/ValidatorType.dart';
 export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
@@ -247,6 +250,7 @@ class fastor_app_ui_widget extends fastor {
   late SpinnerViewState spStateView;
   late StackTemplate st;
   late SwitchTemplate sw;
+  late SwitchFastor switchFastor;
   late TableView tb;
   late TableState tbState;
   late CalendarTemplate calendar;
