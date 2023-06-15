@@ -159,6 +159,8 @@ export  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFasto
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake.dart' hide Navigator;
 
+import 'resource/template/progressView/ProgressSpinFastor.dart';
+export 'resource/template/progressView/ProgressSpinFastor.dart';
 import 'resource/template/row/RowScrollFastor.dart';
 export 'resource/template/row/RowScrollFastor.dart';
 
@@ -246,6 +248,7 @@ class fastor_app_ui_widget extends fastor {
   late ProgressCircle prg;
   late ProgressSpinkit prgSpin;
   late ProgressCircleState prgState;
+  late ProgressSpinFastor progressSpinFastor;
   late RadioTemplate rd;
   late RowTemplate rw;
   late RowScrollFastor rs;

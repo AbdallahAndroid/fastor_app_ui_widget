@@ -120,6 +120,8 @@ class MyApp extends StatelessWidget {
 
 [ScrollFastor](https://pub.dev/packages/fastor_app_ui_widget#scrollfastor)
 
+[ProgressSpinFastor](https://pub.dev/packages/fastor_app_ui_widget#progressspinfastor)
+
 ## Content: Classes Helper
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
@@ -1078,6 +1080,19 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
   }
 
+```
+
+---
+
+---
+
+# ProgressSpinFastor
+
+```
+  ProgressSpinFastor( {
+    this.color,
+    this.size
+})
 ```
 
 ---

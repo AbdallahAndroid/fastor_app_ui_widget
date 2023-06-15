@@ -1,6 +1,11 @@
+## 1.0.200
+
+* add class "ProgressSpinFastor()"
+
 ## 1.0.199
 
 * add class "ScrollFastor"
+* use ThemeData() default.
 
 ## 1.0.198
 
