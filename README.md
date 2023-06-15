@@ -122,6 +122,7 @@ class MyApp extends StatelessWidget {
 
 [Progress](https://pub.dev/packages/fastor_app_ui_widget#progress)
 
+ 
 ## Content: Classes Helper
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)

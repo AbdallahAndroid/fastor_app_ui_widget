@@ -1,3 +1,7 @@
+## 1.0.202
+
++ spinnerview add error parse.
+
 ## 1.0.201
 
 * add class "ProgressCircleFastor()"
