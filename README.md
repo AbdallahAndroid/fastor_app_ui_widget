@@ -118,6 +118,8 @@ class MyApp extends StatelessWidget {
 
 [SwitchFastor](https://pub.dev/packages/fastor_app_ui_widget#switchfastor)
 
+[ScrollFastor](https://pub.dev/packages/fastor_app_ui_widget#scrollfastor)
+
 ## Content: Classes Helper
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
@@ -1018,6 +1020,62 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     createReservation.isVip = updateStatus;
 
     emit(ReservationCreateVipStatusChangeState());
+  }
+
+```
+
+---
+
+---
+
+# ScrollFastor
+
+### Example 
+```
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body:  createUI() 
+    );
+  }
+ 
+  Widget createUI() {
+
+    var scrollPage =  ScrollFastor(   child:  contentFormColumn() );
+
+    var cont =  Container(
+      padding: EdgeInsets.only(top: ToolbarCustom.heigh),
+      margin:  EdgeInsets.only(   left: 16, right: 16, bottom: 16),
+      child: scrollPage ,
+    );
+ 
+    return Stack(
+      children: [
+        cont,
+
+        ToolbarCustom(pageContext: context, title:  "Add Reservation"),
+ 
+      ],
+    );
+  }
+
+  Widget contentFormColumn(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+ 
+        Text("input field 1"),
+        Text("input field 2"),
+        Text("input field 3"),
+        Text("input field 4"),
+        Text("input field 5"),
+        Text("input field 6"),
+        Text("input field 7"),
+      ],
+    );
   }
 
 ```

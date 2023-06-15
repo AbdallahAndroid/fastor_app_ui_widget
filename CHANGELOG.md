@@ -1,3 +1,7 @@
+## 1.0.199
+
+* add class "ScrollFastor"
+
 ## 1.0.198
 
 * class "Fastor" for call "Fastor.initializeApp()"

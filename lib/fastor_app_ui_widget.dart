@@ -171,6 +171,8 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
+import 'resource/template/scrollview/ScrollFastor.dart';
+export 'resource/template/scrollview/ScrollFastor.dart';
 import 'resource/template/switch/SwitchFastor.dart';
 export 'resource/template/switch/SwitchFastor.dart';
 
@@ -239,6 +241,7 @@ class fastor_app_ui_widget extends fastor {
   late PageTemplate page;
   late ScrollSpeed scrollSpeed;
   late ScrollViewPage scroll;
+  late ScrollFastor scrollFastor;
   late PlaceholderTemplate pls;
   late ProgressCircle prg;
   late ProgressSpinkit prgSpin;
