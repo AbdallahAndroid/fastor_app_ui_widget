@@ -12,7 +12,7 @@ import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
-@Deprecated( "instead use (ProgressSpinFastor)")
+@Deprecated( "instead use (ProgressCircleFastor)")
 class ProgressCircle extends StatefulWidget {
 
   ValueChanged<ProgressCircleState> changeState;

@@ -1,5 +1,6 @@
-## 1.0.200
+## 1.0.201
 
+* add class "ProgressCircleFastor()"
 * add class "ProgressSpinFastor()"
 
 ## 1.0.199

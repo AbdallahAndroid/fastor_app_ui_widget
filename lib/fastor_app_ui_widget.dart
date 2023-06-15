@@ -161,6 +161,10 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/fix_bugs_web/html_fake
 
 import 'resource/template/progressView/ProgressSpinFastor.dart';
 export 'resource/template/progressView/ProgressSpinFastor.dart';
+
+import 'resource/template/progressView/ProgressCircleFastor.dart';
+export 'resource/template/progressView/ProgressCircleFastor.dart';
+
 import 'resource/template/row/RowScrollFastor.dart';
 export 'resource/template/row/RowScrollFastor.dart';
 
@@ -245,10 +249,6 @@ class fastor_app_ui_widget extends fastor {
   late ScrollViewPage scroll;
   late ScrollFastor scrollFastor;
   late PlaceholderTemplate pls;
-  late ProgressCircle prg;
-  late ProgressSpinkit prgSpin;
-  late ProgressCircleState prgState;
-  late ProgressSpinFastor progressSpinFastor;
   late RadioTemplate rd;
   late RowTemplate rw;
   late RowScrollFastor rs;
@@ -269,6 +269,14 @@ class fastor_app_ui_widget extends fastor {
   late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
   late ChartMultiLineFastor chartMultiLineFastor;
+
+
+  ///progress view
+  late ProgressSpinkit prgSpin;
+  late ProgressCircleState prgState;
+  late ProgressCircle prg;
+  late ProgressSpinFastor progressSpinFastor;
+  late ProgressCircleFastor progressCircleFastor;
 
   ///text and TextField
   late TextTemplate tx;

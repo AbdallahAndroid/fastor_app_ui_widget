@@ -120,7 +120,7 @@ class MyApp extends StatelessWidget {
 
 [ScrollFastor](https://pub.dev/packages/fastor_app_ui_widget#scrollfastor)
 
-[ProgressSpinFastor](https://pub.dev/packages/fastor_app_ui_widget#progressspinfastor)
+[Progress](https://pub.dev/packages/fastor_app_ui_widget#progress)
 
 ## Content: Classes Helper
 
@@ -1086,8 +1086,17 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ---
 
-# ProgressSpinFastor
+# Progress
 
+* shape Circle
+```
+  ProgressCircleFastor( {
+    this.color,
+    this.size
+})
+```
+
+* shape Spin Plugin "package:flutter_spinkit"
 ```
   ProgressSpinFastor( {
     this.color,
