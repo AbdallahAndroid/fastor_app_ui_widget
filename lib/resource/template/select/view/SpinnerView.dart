@@ -64,14 +64,13 @@ class SpinnerView extends StatefulWidget {
   //--------------------------------------------------------------- set default values
 
   void _setValidatorFromBackend() {
-    print("fastor - _setValidatorFromBackend() - errorBackendKeyJson: $errorBackendKeyJson");
-    print("fastor - _setValidatorFromBackend() - errorBackendJson: $errorBackendJson");
-
+    // print("fastor - _setValidatorFromBackend() - errorBackendKeyJson: $errorBackendKeyJson");
+    // print("fastor - _setValidatorFromBackend() - errorBackendJson: $errorBackendJson");
     if( errorBackendKeyJson == null ) return;
     if( errorBackendJson == null ) return;
     if( errorBackendJson!.containsKey(errorBackendKeyJson!) == false ) return;
     errorMessageBackend =  errorBackendJson!["" + errorBackendKeyJson!][0];
-    print("fastor - _setValidatorFromBackend() - errorMessageBackend: $errorMessageBackend");
+    // print("fastor - _setValidatorFromBackend() - errorMessageBackend: $errorMessageBackend");
   }
 
   void setDefaultValue() {
