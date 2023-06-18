@@ -1,3 +1,7 @@
+## 1.0.205
+
+* default iconwidget in spinnerview is alighment to right.
+
 ## 1.0.204
 
 * Spinnerview make it take error decoration "  Decoration? errorOutlineDropdownDropdown;"

@@ -47,7 +47,6 @@ class SpinnerView extends StatefulWidget {
     //error
     this.errorBackendKeyJson,
     this.errorBackendJson,
-    this.errorOutlineDropdownDropdown,
     // this.errorColor,
     this.errorTextStyle
 
@@ -187,7 +186,10 @@ class SpinnerViewState extends State<SpinnerView> {
     var dropBox = getDropBoxWidget();
 
     //decoration
-    var container = Container( child:  dropBox, decoration: chooseDecorationNormalOrError() ,);
+    var container = Container( child:  dropBox,
+        // color: Colors.green,
+        decoration: chooseDecorationNormalOrError()
+    );
 
     //size
     var material = Material(child: container ) ;
@@ -198,7 +200,7 @@ class SpinnerViewState extends State<SpinnerView> {
   }
 
   Decoration? chooseDecorationNormalOrError(){
-    print("fastor - chooseDecorationNormalOrError() - errorMessageBackend:  ${widget.errorMessageBackend}" );
+    // print("fastor - chooseDecorationNormalOrError() - errorMessageBackend:  ${widget.errorMessageBackend}" );
 
     //case : not have error
     if( widget.errorMessageBackend == null  ) {
@@ -291,8 +293,13 @@ class SpinnerViewState extends State<SpinnerView> {
   }
 
   void setHintWidget() {
-    // var hintWid = TextTemplate.t( "hint here"  , color: Colors.yellow);
-    _addToDrop( widget.hintWidget, key_position_hint );
+    var removeSpace = 60;
+    var hintTextAnIcon = Stack( children: [
+      EmptyView.empty( widget.width_frame - removeSpace  , widget.height_frame ),
+      Align( child: widget.hintWidget!, alignment: Alignment.centerLeft,),
+      Positioned( child: EmptyView.zero(), right: 0 )
+    ],);
+    _addToDrop( hintTextAnIcon, key_position_hint );
   }
 
 
