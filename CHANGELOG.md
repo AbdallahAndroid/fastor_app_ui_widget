@@ -1,3 +1,7 @@
+## 1.0.204
+
+* Spinnerview make it take error decoration "  Decoration? errorOutlineDropdownDropdown;"
+
 ## 1.0.203
 
 + spinnerview add error parse.

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
-
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 //------------------------------------------------------------------ callback
 
 typedef SpinnerViewCallBack = void Function( int position, bool isRemoveSelected );
@@ -29,6 +29,7 @@ class SpinnerView extends StatefulWidget {
   String? errorBackendKeyJson;
   Map<String, dynamic>? errorBackendJson;
   // Color? errorColor ;
+  Decoration? errorOutlineDropdownDropdown;
   String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
@@ -46,6 +47,7 @@ class SpinnerView extends StatefulWidget {
     //error
     this.errorBackendKeyJson,
     this.errorBackendJson,
+    this.errorOutlineDropdownDropdown,
     // this.errorColor,
     this.errorTextStyle
 
@@ -84,7 +86,8 @@ class SpinnerView extends StatefulWidget {
     //error
     // errorColor ??= Colors.red;
     errorTextStyle = const TextStyle(
-        color: Colors.red ,
+        color: Colors.redAccent ,
+        fontWeight: FontWeight.w500,
         fontSize: 14
     );
   }
@@ -184,7 +187,7 @@ class SpinnerViewState extends State<SpinnerView> {
     var dropBox = getDropBoxWidget();
 
     //decoration
-    var container = Container( child:  dropBox, decoration: widget.decorationOutlineDropdown ,);
+    var container = Container( child:  dropBox, decoration: chooseDecorationNormalOrError() ,);
 
     //size
     var material = Material(child: container ) ;
@@ -194,6 +197,31 @@ class SpinnerViewState extends State<SpinnerView> {
     return sizeBox;
   }
 
+  Decoration? chooseDecorationNormalOrError(){
+    print("fastor - chooseDecorationNormalOrError() - errorMessageBackend:  ${widget.errorMessageBackend}" );
+
+    //case : not have error
+    if( widget.errorMessageBackend == null  ) {
+      return widget.decorationOutlineDropdown;
+    }
+
+    //case already found decoration error
+    if( widget.errorOutlineDropdownDropdown != null ) {
+      return widget.errorOutlineDropdownDropdown;
+    }
+
+    //case : user not draw design outlineDropdown, now it's ux not need to show outline error red
+    if( widget.decorationOutlineDropdown == null ) {
+      return null;
+    }
+
+    //case : the ux is outline while now there is error message need to be shown
+    return BoarderHelper.cardView(
+        colorBackground: Colors.transparent,
+        radiusSize: 8,
+        colorLine: Colors.redAccent
+    );
+  }
 
   Widget getDropBoxWidget(){
     return DropdownButton<String>(
