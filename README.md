@@ -130,9 +130,7 @@ class MyApp extends StatelessWidget {
 [Language](https://pub.dev/packages/fastor_app_ui_widget#languagetools)
 
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
-
-[NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
-
+ 
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
 
 ---
