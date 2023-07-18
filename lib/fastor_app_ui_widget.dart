@@ -72,6 +72,8 @@ import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConsta
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkConfigDio.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkConfigDio.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
@@ -223,6 +225,7 @@ class fastor_app_ui_widget extends fastor {
   late NetworkHeaderTools networkTools;
   late NetworkRequestFile requestFile;
   late NetworkTypeDio networkType;
+  late NetworkConfigDio configDio;
   late ValidateResponse validateResponse;
   late ApiTools toolsAPI;
   late InternetTools internetTools;

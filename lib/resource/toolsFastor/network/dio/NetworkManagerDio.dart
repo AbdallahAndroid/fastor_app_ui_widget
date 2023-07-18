@@ -1,6 +1,7 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:dio/dio.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkConfigDio.dart';
 
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -27,11 +28,17 @@ class NetworkManagerDio  {
   //file
   NetworkRequestFile? requestFile;
 
-  bool isEnableLogDioPretty = true;
+  bool? isEnableLogDioPretty;
 
   NetworkDiocallback_dio? callback_dio;
 
-  //------------------------------------------------------------------------- types  call
+  NetworkConfigDio? config;
+
+  //------------------------------------------------------------------------- constructor
+
+  NetworkManagerDio( { this.config });
+
+  //------------------------------------------------------------------------- types  callback not future
 
   Future<Response> callBack(String url,
       { required NetworkDiocallback_dio  callback,
@@ -59,14 +66,16 @@ class NetworkManagerDio  {
     //edit headers
     this.headers = setDefaultHeader(headers);
 
-    _setupNetworkType();
+    _setupNetworkTypeDefault();
     this.callback_dio = callback;
+
+    _configureSetup();
 
     return await _chooseTypeNetworkThenStartService();
   }
 
 
-  //------------------------------------------------------------------------- type Future listener
+  //------------------------------------------------------------------------- types
 
   Future<Response> get(String url,
       {Map<String, dynamic>? body,
@@ -136,6 +145,8 @@ class NetworkManagerDio  {
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
+  //------------------------------------------------------------------------- any type
+
   Future<Response> any(String url,
       NetworkTypeDio  type,
       {Map<String, dynamic>? body,
@@ -150,7 +161,6 @@ class NetworkManagerDio  {
     this.requestFile = requestFile;
 
     //log
-    isEnableLogDioPretty ??= true  ; //default take test enviroment
     this.isEnableLogDioPretty = isEnableLogDioPretty;
 
     //set body and header
@@ -168,16 +178,42 @@ class NetworkManagerDio  {
     //edit headers
     this.headers = setDefaultHeader(headers);
 
-    _setupNetworkType();
+    _setupNetworkTypeDefault();
+
+    _configureSetup();
 
     //choose type
     return await _chooseTypeNetworkThenStartService();
   }
 
-  //-------------------------------------------------------------------- init constructor
+  //-------------------------------------------------------------------- default values
 
-  void _setupNetworkType() async {
+  void _configureSetup()   {
+    if( config == null ) return;
 
+    //base url
+    if( config?.baseUrl != null  ) {
+      if( url.startsWith( "http") == false  ) {
+        url = config!.baseUrl + url;
+      }
+    }
+
+    //header
+    if( config?.headers != null ) {
+      headers.addAll( headers );
+    }
+
+    //beauty log
+    if( config?.isEnableLogDioPretty != null ) {
+      ///check already there is instance varible found for current request
+      isEnableLogDioPretty ??= config?.isEnableLogDioPretty;
+    }
+
+
+  }
+
+
+  void _setupNetworkTypeDefault() async {
     //set method type "POST" when have body
     if (type == null && this.body.length > 0) {
       this.type = NetworkTypeDio.post;
@@ -194,7 +230,6 @@ class NetworkManagerDio  {
     // Log.k( tag, "start() header: " + this.headers.toString()  );
   }
 
-  //----------------------------------------------------------------------- start
 
   Future<Response> _chooseTypeNetworkThenStartService() async {
     if (type == NetworkTypeDio.file ||

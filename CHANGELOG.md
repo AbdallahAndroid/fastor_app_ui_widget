@@ -1,3 +1,7 @@
+## 1.0.206
+
+* add class "NetworkConfigDio" for constructor "NetworkManagerDio"
+
 ## 1.0.205
 
 * default iconwidget in spinnerview is alighment to right.

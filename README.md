@@ -1121,6 +1121,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 * Class "NetworkHeaderTools" to generate "bearerToken()" and "basicAuth_usernameAndPassword()" easily.
 
 ### Simple Example
+
 * There is many steps to call API, you need to prepare: Body, Url, Header, token.
 * Here is guide
 
@@ -1133,7 +1134,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 ```
 
 
-### 2- Call Class "NetworkManagerDio.dart"
+#### 2- Call Class "NetworkManagerDio.dart"
 We will return the response in format JSON
 ```
       Response response = await NetworkManagerDio().post( url , body: bodyParameter   );
@@ -1144,7 +1145,22 @@ We will return the response in format JSON
 
 ```
 
- 
+### NetworkConfigDio
+
+* This class responsible for add "BaseUrl" to all EndPoint apis.
+```
+ var config =  NetworkConfigDio( baseUrl: "http://example.com");
+ NetworkManagerDio( { config: config})
+```
+
+* This Class responsible for add header in all apis like token 
+```
+ var config =  NetworkConfigDio( 
+                  baseUrl: "http://example.com",
+                  headers : myHeader
+                  );
+ NetworkManagerDio( { config: config})
+```
 
 ###  NetworkType
 

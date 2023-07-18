@@ -15,11 +15,11 @@ extension DioService on NetworkManagerDio {
     var _dio = Dio();
 
     //show request and response in beatful log
-    if( isEnableLogDioPretty ) {
+    if( isEnableLogDioPretty! ) {
       _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty,
-        requestBody: isEnableLogDioPretty,
-        responseBody: isEnableLogDioPretty,
+        requestHeader: isEnableLogDioPretty!,
+        requestBody: isEnableLogDioPretty!,
+        responseBody: isEnableLogDioPretty!,
       ));
     }
 
@@ -71,11 +71,11 @@ extension DioService on NetworkManagerDio {
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty ) {
+      if( isEnableLogDioPretty! ) {
         _dio.interceptors.add(PrettyDioLogger(
-          requestHeader: isEnableLogDioPretty,
-          requestBody: isEnableLogDioPretty,
-          responseBody: isEnableLogDioPretty,
+          requestHeader: isEnableLogDioPretty!,
+          requestBody: isEnableLogDioPretty!,
+          responseBody: isEnableLogDioPretty!,
         ));
       }
 
@@ -109,7 +109,7 @@ extension DioService on NetworkManagerDio {
 
     } catch (e,s) {
       String msg = e.toString();
-      if( isEnableLogDioPretty ) {
+      if( isEnableLogDioPretty! ) {
         Log.k(tag, "_post_dio() - e: " + msg);
       }
       Log.k(tag, "_post_dio() - response: " + response.toString() );
@@ -132,11 +132,11 @@ extension DioService on NetworkManagerDio {
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty ) {
+      if( isEnableLogDioPretty! ) {
         _dio.interceptors.add(PrettyDioLogger(
-          requestHeader: isEnableLogDioPretty,
-          requestBody: isEnableLogDioPretty,
-          responseBody: isEnableLogDioPretty,
+          requestHeader: isEnableLogDioPretty!,
+          requestBody: isEnableLogDioPretty!,
+          responseBody: isEnableLogDioPretty!,
         ));
       }
 
@@ -212,9 +212,9 @@ extension DioService on NetworkManagerDio {
       Dio _dio = Dio();
       //show request and response in beatful log
       _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty,
-        requestBody: isEnableLogDioPretty,
-        responseBody: isEnableLogDioPretty,
+        requestHeader: isEnableLogDioPretty!,
+        requestBody: isEnableLogDioPretty!,
+        responseBody: isEnableLogDioPretty!,
       ));
 
       response = await _dio.post(url,
@@ -291,9 +291,9 @@ extension DioService on NetworkManagerDio {
 
       //show request and response in beatful log
       _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty,
-        requestBody: isEnableLogDioPretty,
-        responseBody: isEnableLogDioPretty,
+        requestHeader: isEnableLogDioPretty!,
+        requestBody: isEnableLogDioPretty!,
+        responseBody: isEnableLogDioPretty!,
       ));
 
       response = await _dio.post(url,
