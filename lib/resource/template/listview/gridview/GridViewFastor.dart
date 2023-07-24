@@ -93,7 +93,7 @@ class GridViewFastor extends StatelessWidget {
 
     }while( remain_row > 0);
 
-    LogDebug.i( "ListViewTemplate result: " + listRow.length.toString() );
+    //LogDebug.i( "ListViewTemplate result: " + listRow.length.toString() );
   }
 
   void updateValuesWhenCurrentLoopFinish(){
@@ -101,7 +101,7 @@ class GridViewFastor extends StatelessWidget {
     current_startIndex = current_startIndex + span;
     remain_row--;  //decrement
     remain_child = remain_child - span;
-    LogDebug.i( "remain_row: " + remain_row.toString() );
+   // LogDebug.i( "remain_row: " + remain_row.toString() );
 
   }
 
@@ -124,10 +124,10 @@ class GridViewFastor extends StatelessWidget {
     Widget rowSingle  = RowTemplate.wrapChildren( listExpanded);
 
     //log
-    LogDebug.i( "current_startIndex: " + current_startIndex.toString() );
-    LogDebug.i( "indexEndSpitRow: " + getIndexEndSpitRow().toString() );
-    LogDebug.i( "splitRowLoop: " + splitRowLoop.length.toString());
-    LogDebug.i( "currentLoop_itemSize: " + currentLoop_itemSize.toString());
+    // LogDebug.i( "current_startIndex: " + current_startIndex.toString() );
+    // LogDebug.i( "indexEndSpitRow: " + getIndexEndSpitRow().toString() );
+    // LogDebug.i( "splitRowLoop: " + splitRowLoop.length.toString());
+    // LogDebug.i( "currentLoop_itemSize: " + currentLoop_itemSize.toString());
 
 
     return rowSingle;
@@ -195,7 +195,7 @@ class GridViewFastor extends StatelessWidget {
     if( fraction > 0.0 ) {
       row_counter = row_counter + 1 - fraction;
     }
-    LogDebug.i("gridview - t() - row_counter: $row_counter ");
+    //LogDebug.i("gridview - t() - row_counter: $row_counter ");
     return row_counter.toInt();
   }
 

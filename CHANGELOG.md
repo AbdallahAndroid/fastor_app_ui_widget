@@ -1,3 +1,11 @@
+## 1.0.208
+
+* remove log from widget "GridViewFastor"
+
+## 1.0.207
+
+* add network type "patch" in class "NetworkManagerDio"
+
 ## 1.0.206
 
 * add class "NetworkConfigDio" for constructor "NetworkManagerDio"

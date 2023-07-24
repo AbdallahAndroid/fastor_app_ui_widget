@@ -118,6 +118,19 @@ class NetworkManagerDio  {
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
+  Future<Response> patch(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        NetworkRequestFile? requestFile,
+        // NetworkTypeDio? type,
+        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        NetworkDiocallback_dio? callback}) async {
+
+    return await any( url,  NetworkTypeDio.patch,
+        body: body, headers: headers, requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+  }
+
 
   Future<Response> delete(String url,
       {Map<String, dynamic>? body,
@@ -246,6 +259,8 @@ class NetworkManagerDio  {
       return await  post_dio();
     } else if (type == NetworkTypeDio.put) {
       return await  put_dio();
+    } else if (type == NetworkTypeDio.patch) {
+      return await  patch_dio();
     } else {
       return await  get_dio();
     }
