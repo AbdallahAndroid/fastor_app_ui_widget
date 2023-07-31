@@ -1,3 +1,7 @@
+## 1.0.209
+
+* animation - fade in "NavigationTools" class
+
 ## 1.0.208
 
 * remove log from widget "GridViewFastor"
