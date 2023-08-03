@@ -174,6 +174,7 @@ class NetworkManagerDio  {
     this.requestFile = requestFile;
 
     //log
+    isEnableLogDioPretty ??= true;
     this.isEnableLogDioPretty = isEnableLogDioPretty;
 
     //set body and header
