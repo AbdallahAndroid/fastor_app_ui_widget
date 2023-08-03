@@ -41,6 +41,9 @@ import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressSpin
 import 'package:fastor_app_ui_widget/resource/template/radio/RadioTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/DropdownFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/select/fastor/DropdownFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/select/template/SpinnerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.dart';
 
@@ -259,6 +262,7 @@ class fastor_app_ui_widget extends fastor {
   late SpinnerTemplateState spSate;
   late SpinnerView spView;
   late SpinnerViewState spStateView;
+  late DropdownFastor dropdownFastor;
   late StackTemplate st;
   late SwitchTemplate sw;
   late SwitchFastor switchFastor;

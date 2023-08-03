@@ -1,3 +1,7 @@
+## 1.0.210
+
+* add class "DropdownFastor"
+
 ## 1.0.209
 
 * animation - fade in "NavigationTools" class
