@@ -21,6 +21,9 @@ import 'package:fastor_app_ui_widget/resource/template/click/GestureDetectorTemp
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/crop/CropTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/date/textfield/DateTextFieldFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/date/textfield/DateTextFieldFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/elevation/ElevationTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/image/ImageFastor.dart';
@@ -95,6 +98,8 @@ export 'resource/template/checkbox/CheckboxFastor.dart';
 import 'resource/template/column/ColumnFastor.dart';
 export 'resource/template/column/ColumnFastor.dart';
 
+import 'resource/template/date/range/DateRangeTextFieldFastor.dart';
+export 'resource/template/date/range/DateRangeTextFieldFastor.dart';
 import 'resource/template/image/ImageCircleView.dart';
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.dart';
 
@@ -242,6 +247,8 @@ class fastor_app_ui_widget extends fastor {
   late ColumnTemplate col;
   late ColumnFastor colFastor;
   late ContainerTemplate cont;
+  late DateRangeTextFieldFastor dateRangeTextFieldFastor;
+  late DateTextFieldFastor dateTextFieldFastor;
   late EdgeInsetsTools edge ;
   late ElevationTemplate elv;
   late EmptyView em;

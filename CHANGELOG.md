@@ -1,3 +1,8 @@
+## 1.0.212
+
+* add class "DateTextFieldFastor"
+* add class "DateRangeTextFieldFastor"
+
 ## 1.0.211
 
 * add class "DropdownFastor"

@@ -122,6 +122,12 @@ class MyApp extends StatelessWidget {
 
 [Progress](https://pub.dev/packages/fastor_app_ui_widget#progress)
 
+[DropdownFastor](https://pub.dev/packages/fastor_app_ui_widget#dropdownfastor)
+
+[DateTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#datetextfieldfastor)
+
+[DateRangeTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#daterangetextfieldfastor)
+
  
 ## Content: Classes Helper
 
@@ -1101,6 +1107,65 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     this.color,
     this.size
 })
+```
+
+---
+
+---
+
+# DropdownFastor
+
+* simple string[] array
+```
+    return DropdownFastor(
+      width: widget.width - 16 -16 ,
+      names: HelperEumCrypto.getListNameEnumCrypto(),
+      hintText: "select one",
+      previousSelectedText: selectedCrypto?.name,
+      listener: (name, position ) {
+
+
+        setState(() {
+          selectedCrypto = HelperEumCrypto.mapNameToEnum(name);
+          Log.i("dropdownCrypto() - currentCryptoReading: $selectedCrypto /position: $position");
+
+          widget.listener(selectedCrypto);
+        });
+      },
+    );
+```
+
+# DateTextFieldFastor
+
+* simple date picker one day in shape textfield boarder
+```
+    return DateTextFieldFastor(
+      width: DeviceTools.getHalfWidth(context),
+        boarderColor: Colors.transparent,
+        boarderRadius: 0,
+        fontSize: 12,
+        iconColor: HexColor(ColorProject.blue_fish_front),
+        callback: (date){
+      dateSearchSelected = date;
+    });
+```
+
+---
+
+---
+
+# DateRangeTextFieldFastor
+
+* simple date picker for range between two days in shape textfield boarder
+```
+    return DateRangeTextFieldFastor(
+        width: DeviceTools.getWidth(context),
+      boarderRadius: 0,
+      dateStart : dateRangeSelected?.start,
+      dateEnd : dateRangeSelected?.end,
+      callback: (dateSelected){
+        dateRangeSelected = dateSelected;
+      });
 ```
 
 ---
