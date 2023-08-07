@@ -1,7 +1,8 @@
-## 1.0.212
+## 1.0.213
 
 * add class "DateTextFieldFastor"
 * add class "DateRangeTextFieldFastor"
+* add listener "DateRangePickerResult" for range picker date.
 
 ## 1.0.211
 

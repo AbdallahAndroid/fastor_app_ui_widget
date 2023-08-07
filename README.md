@@ -1157,6 +1157,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 # DateRangeTextFieldFastor
 
 * simple date picker for range between two days in shape textfield boarder
+* class "DateRangePickerResult" to handle callback listener of date picker range
 ```
     return DateRangeTextFieldFastor(
         width: DeviceTools.getWidth(context),
@@ -1167,6 +1168,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
         dateRangeSelected = dateSelected;
       });
 ```
+
 
 ---
 

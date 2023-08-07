@@ -98,6 +98,9 @@ export 'resource/template/checkbox/CheckboxFastor.dart';
 import 'resource/template/column/ColumnFastor.dart';
 export 'resource/template/column/ColumnFastor.dart';
 
+import 'resource/template/date/range/DateRangePickerResult.dart';
+export 'resource/template/date/range/DateRangePickerResult.dart';
+
 import 'resource/template/date/range/DateRangeTextFieldFastor.dart';
 export 'resource/template/date/range/DateRangeTextFieldFastor.dart';
 import 'resource/template/image/ImageCircleView.dart';
@@ -249,6 +252,8 @@ class fastor_app_ui_widget extends fastor {
   late ContainerTemplate cont;
   late DateRangeTextFieldFastor dateRangeTextFieldFastor;
   late DateTextFieldFastor dateTextFieldFastor;
+  late DateRangePickerResult dateRangePickerResult;
+
   late EdgeInsetsTools edge ;
   late ElevationTemplate elv;
   late EmptyView em;
