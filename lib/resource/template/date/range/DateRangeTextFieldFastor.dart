@@ -52,7 +52,7 @@ class DateRangeTextFieldFastor extends StatefulWidget {
   //range
   String? dateStart;
   String? dateEnd;
-  DateRangePickerResult?  selectedDateRange ;
+  // DateRangePickerResult?  selectedDateRange ;
 
   DateRangeTextFieldFastor({
 
@@ -238,7 +238,7 @@ class _DateTextFieldFastorState extends State<DateRangeTextFieldFastor> {
 
 
   Widget textHintOrSelected() {
-    if (widget.selectedDateRange != null ) {
+    if (widget.dateStart != null && widget.dateEnd != null  ) {
       return showSelectedText();
     } else {
       return hintText();
@@ -246,7 +246,7 @@ class _DateTextFieldFastorState extends State<DateRangeTextFieldFastor> {
   }
 
   Widget showSelectedText() {
-    String msg = widget.selectedDateRange!.start +  " - " + widget.selectedDateRange!.end;
+    String msg = widget.dateStart! +  " - " + widget.dateEnd!;
     return TextFastor(
         "$msg",
         color: widget.colorText,
@@ -281,25 +281,29 @@ class _DateTextFieldFastorState extends State<DateRangeTextFieldFastor> {
 
   Future  showDialogPickerDate( ) async {
     // Log.i( "showDialogPickerDate( )");
+    DateRangePickerResult? selectedDateRange ;
 
     //case found previous selected
-    if( widget.selectedDateRange != null ) {
-      widget.selectedDateRange = await DatePickerHelper.dateRange( context,
-          widget.selectedDateRange!.start,
-          widget.selectedDateRange!.end);
+    if( widget.dateEnd != null ) {
+       selectedDateRange = await DatePickerHelper.dateRange( context,
+          widget.dateStart!,
+          widget.dateEnd!);
     }  else {
-      widget.selectedDateRange = await DatePickerHelper.dateRange( context, null, null );
+      selectedDateRange = await DatePickerHelper.dateRange( context, null, null );
     }
 
+    //save result
+    widget.dateStart = selectedDateRange!.start;
+    widget.dateEnd = selectedDateRange!.end;
 
-    refreshCallbackListener( );
+    refreshCallbackListener(selectedDateRange );
   }
 
 
 
-  Future refreshCallbackListener() async {
+  Future refreshCallbackListener(DateRangePickerResult? selectedDateRange) async {
     setState(() {
-      widget.callback( widget.selectedDateRange);
+      widget.callback(  selectedDateRange);
     });
   }
 
