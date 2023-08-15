@@ -1,4 +1,4 @@
-## 1.0.215
+## 1.0.216
 
 * add suffix icon to TextFieldFastor
 * error underline boarder for "isRemoveBoarder" equal true

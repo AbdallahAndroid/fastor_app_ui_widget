@@ -98,7 +98,8 @@ class TextFieldTemplateBase    {
         focusedErrorBorder: focusedErrorBorder,
 
         //other
-        prefixIcon: prefixIcon
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
     );
   }
 
@@ -162,7 +163,7 @@ class TextFieldTemplateBase    {
 
       //other
       prefixIcon: prefixIcon,
-      suffixIcon: prefixIcon ,
+      suffixIcon: suffixIcon
     );
   }
 
