@@ -301,9 +301,9 @@ class fastor_app_ui_widget extends fastor {
   late TextTemplate tx;
   late TextFieldTemplate tf;
   late TextFieldFastor tfStateLess;
-  late TextFieldBackendErrorFastor tfError;
+  // late TextFieldBackendErrorFastor tfError;
   late ValidatorTemplate validatorTemplate;
-  late ValidatorType validatorType;
+  // late ValidatorType validatorType;
 
   ///resources
   late DSDimen dimen;

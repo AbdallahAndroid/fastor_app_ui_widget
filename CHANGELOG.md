@@ -1,3 +1,9 @@
+## 1.0.215
+
+* add suffix icon to TextFieldFastor
+* error underline boarder for "isRemoveBoarder" equal true
+* add in class "ValidatorTemplate" method "isEmailOrPhone()"
+
 ## 1.0.214
 
 * add class "DateTextFieldFastor"

@@ -13,14 +13,14 @@ import '../validator/MapValidatorTypeToForm.dart';
 import '../validator/ValidatorType.dart';
 
 
-
 class TextFieldFastor extends StatelessWidget {
 
   // validate
   FormFieldValidator<String>? validatorCustom;
-  FormFieldValidator<String>  validatorChosen = ValidatorTemplate.d( error_text: "Missed");
+  FormFieldValidator<String> validatorChosen = ValidatorTemplate.d(
+      error_text: "Missed");
   AutovalidateMode? autovalidateMode;
-  ValidatorType? validatorType;
+  // ValidatorType? validatorType;
 
   //text and hint
   String? hint_text;
@@ -55,17 +55,20 @@ class TextFieldFastor extends StatelessWidget {
   int? minLines;
 
   //error
-  Color? errorColor ;
+  Color? errorColor;
 
   //other
   TextAlign? textAlign;
   FocusNode? focusNode;
-  Widget? prefixIcon;
 
-  TextFieldFastor( {
+  //icon
+  Widget? prefixIcon;
+  Widget? suffixIcon;
+
+  TextFieldFastor({
     // validate
     this.validatorCustom,
-    this.validatorType,
+    // this.validatorType,
     this.autovalidateMode,
 
 
@@ -81,7 +84,7 @@ class TextFieldFastor extends StatelessWidget {
 
     //background
     this.background_color,
-    this.decoration,              //at the Container
+    this.decoration, //at the Container
 
     //spaces
     this.padding,
@@ -105,12 +108,14 @@ class TextFieldFastor extends StatelessWidget {
     this.errorColor,
 
     //other
-    this.textAlign  ,
+    this.textAlign,
     this.focusNode,
-    this.prefixIcon         //example "icon" left of textField
+
+    //icon
+    this.prefixIcon, //example "icon" left of textField
+    this.suffixIcon
+
   }) {
-
-
     //padding default
     padding ??= EdgeInsets.zero;
 
@@ -127,8 +132,9 @@ class TextFieldFastor extends StatelessWidget {
     textAlign ??= TextAlign.start;
 
     //password
-    bool isPass = keyboardType != null && keyboardType == TextInputType.visiblePassword;
-    if(  isPass) {
+    bool isPass = keyboardType != null &&
+        keyboardType == TextInputType.visiblePassword;
+    if (isPass) {
       obscureText = true;
     }
 
@@ -142,9 +148,8 @@ class TextFieldFastor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //get tf
-    TextFormField tf = _getTextFourmField( );
+    TextFormField tf = _getTextFourmField();
 
     //fix textfield not materail
     var materialApp = Material(
@@ -166,33 +171,42 @@ class TextFieldFastor extends StatelessWidget {
   }
 
 
-
-  TextFormField _getTextFourmField( ){
-
+  TextFormField _getTextFourmField() {
     //textfield
-    var tf = TextFormField (
+    var tf = TextFormField(
       //validate error
       autovalidateMode: autovalidateMode,
-      validator:  validatorChosen ,
+      validator: validatorChosen,
 
       //text align
-      textAlign: textAlign! ,
+      textAlign: textAlign!,
 
       // //text size
-      style: TextStyle( color: text_color, fontSize: fontSize),
+      style: TextStyle(color: text_color, fontSize: fontSize),
 
       //password keyboard
-      obscureText : obscureText,
+      obscureText: obscureText,
 
       // cursor color
       cursorColor: hint_color,
 
       //padding + hint + underline
-      decoration: TextFieldTemplateBase.getDecorationInput(isShowBoarder , padding!, hint_text,
-          hint_color!, fontSize!, isRemoveUnderline!, prefixIcon, errorColor!,  autovalidateMode!, null ),
+      decoration: TextFieldTemplateBase.getDecorationInput(
+          isShowBoarder,
+          padding!,
+          hint_text,
+          hint_color!,
+          fontSize!,
+          isRemoveUnderline!,
+          prefixIcon,
+          suffixIcon,
+          errorColor!,
+          autovalidateMode!,
+          null),
 
       //keyboard
-      keyboardType: keyboardType, //TextInputType.number
+      keyboardType: keyboardType,
+      //TextInputType.number
 
       //controller
       controller: controller,
@@ -205,13 +219,15 @@ class TextFieldFastor extends StatelessWidget {
 
       //max length
       maxLength: maxLength,
-      buildCounter: (BuildContext context, {int? currentLength, int? maxLength, bool? isFocused}) => null,
+      buildCounter: (BuildContext context,
+          {int? currentLength, int? maxLength, bool? isFocused}) => null,
 
       //lines
       maxLines: maxLines,
       minLines: minLines,
 
       focusNode: focusNode,
+
 
     );
 
@@ -222,16 +238,15 @@ class TextFieldFastor extends StatelessWidget {
 
   void _setValidator() {
     //set default
-    validatorChosen = ValidatorTemplate.d( ) ;
+    validatorChosen = ValidatorTemplate.d();
 
     //priority for custom
-    if( validatorCustom != null ) {
-      validatorChosen = validatorCustom! ;
+    if (validatorCustom != null) {
+      validatorChosen = validatorCustom!;
       // print("_setValidator() - type (validatorChosen)");
       return;
     }
   }
-
 
 
 }

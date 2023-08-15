@@ -14,6 +14,7 @@ class MapValidatorTypeToForm {
       case ValidatorType.name : return ValidatorTemplate.name( error_text: error_text );
       case ValidatorType.nameFull : return ValidatorTemplate.nameFull( error_text: error_text );
       case ValidatorType.moreThan2Char : return ValidatorTemplate.moreThan2( error_text: error_text );
+      case ValidatorType.emailOrPhone : return ValidatorTemplate.moreThan2( error_text: error_text );
     }
     return  ValidatorTemplate.d( error_text : error_text );
   }

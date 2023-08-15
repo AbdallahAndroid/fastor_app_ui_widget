@@ -124,7 +124,20 @@ class ValidatorTemplate {
     };
   }
 
+  static FormFieldValidator<String> emailOrPhone( {String? error_text}){
 
+    error_text ??= "Missed";
+
+    return ( text ) {
+
+      bool isPhoneOrEmail = ToolsValidation.isEmail( text) || ToolsValidation.isPhoneMobileValid( text);
+      if ( isPhoneOrEmail == false ) {
+        return error_text;
+      }
+
+      return null;
+    };
+  }
   //-----------------------------------------------------------------------  by lengh
 
   static FormFieldValidator<String> min(int len ){

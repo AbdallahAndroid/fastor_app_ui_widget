@@ -16,7 +16,7 @@ class TextFieldTemplateBase    {
 
   static InputDecoration getDecorationInput(bool?  isShowBoarder, EdgeInsets padding,
       String? hint_text, Color hint_color, double fontSize,
-      bool isRemoveUnderline, Widget? prefixIcon,
+      bool isRemoveUnderline, Widget? prefixIcon, Widget? suffixIcon,
       Color  errorColor, AutovalidateMode autovalidateMode, String? messageBackend) {
 
     //default
@@ -25,11 +25,11 @@ class TextFieldTemplateBase    {
     if( isShowBoarder ) {
       return getDecorationInput_outlineInput( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,   autovalidateMode,  messageBackend);
+          prefixIcon, suffixIcon, errorColor,   autovalidateMode,  messageBackend);
     } else {
       return getDecorationInput_underLine( isShowBoarder, padding, hint_text,
           hint_color, fontSize, isRemoveUnderline,
-          prefixIcon, errorColor,     autovalidateMode,  messageBackend);
+          prefixIcon, suffixIcon, errorColor,     autovalidateMode,  messageBackend);
     }
   }
 
@@ -37,7 +37,7 @@ class TextFieldTemplateBase    {
   static InputDecoration getDecorationInput_outlineInput(bool isShowBoarder,
       EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor,
+      Widget? prefixIcon,  Widget? suffixIcon, Color  errorColor,
       AutovalidateMode autovalidateMode, String? messageBackend) {
 
 
@@ -61,7 +61,16 @@ class TextFieldTemplateBase    {
       borderSide:  boarderSide  ,
     );
 
-
+    //error
+    var errorBorder =  OutlineInputBorder(
+      borderSide: BorderSide(
+        color: errorColor, // Customize the error underline color
+      ),
+    );
+    var focusedErrorBorder =  OutlineInputBorder(
+        borderSide: BorderSide(
+          color: errorColor, // Customize the focused error underline color
+        ));
 
     //return value
     return InputDecoration(
@@ -80,9 +89,13 @@ class TextFieldTemplateBase    {
         enabledBorder: enabledBorder,
         focusedBorder: focusedBorder,
 
-        //error
+        //error text
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
         errorText : messageBackend,
+
+        //error boarder
+        errorBorder: errorBorder,
+        focusedErrorBorder: focusedErrorBorder,
 
         //other
         prefixIcon: prefixIcon
@@ -92,7 +105,7 @@ class TextFieldTemplateBase    {
 
   static InputDecoration getDecorationInput_underLine(bool  isShowBoarder, EdgeInsets padding, String? hint_text,
       Color hint_color, double fontSize, bool isRemoveUnderline,
-      Widget? prefixIcon, Color  errorColor,
+      Widget? prefixIcon, Widget? suffixIcon, Color  errorColor,
       AutovalidateMode autovalidateMode, String? messageBackend) {
 
 
@@ -111,29 +124,45 @@ class TextFieldTemplateBase    {
     );
 
 
+    //error
+    var errorBorder =  UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: errorColor, // Customize the error underline color
+      ),
+    );
+    var focusedErrorBorder =  UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: errorColor, // Customize the focused error underline color
+        ));
+
     //return value
     return InputDecoration(
 
       //remove default padding and set custom
-        isDense: true,
-        contentPadding: padding,
+      isDense: true,
+      contentPadding: padding,
 
-        //hint text
-        hintText: hint_text,
+      //hint text
+      hintText: hint_text,
 
-        //hint color
-        hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+      //hint color
+      hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
 
-        // underline customer color
-        enabledBorder: enabledBorder,
-        focusedBorder: focusedBoarder,
+      // underline customer color
+      enabledBorder: enabledBorder,
+      focusedBorder: focusedBoarder,
 
-        //error
-        errorText : messageBackend,
-        errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
+      //error text
+      errorText : messageBackend,
+      errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
-        //other
-        prefixIcon: prefixIcon
+      //error boarder
+      errorBorder: errorBorder,
+      focusedErrorBorder: focusedErrorBorder,
+
+      //other
+      prefixIcon: prefixIcon,
+      suffixIcon: prefixIcon ,
     );
   }
 
