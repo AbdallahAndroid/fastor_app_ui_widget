@@ -13,6 +13,16 @@ class ValidateResponse {
     return true;
   }
 
+  static bool isStatusCredentialWrong(Response response ) {
+    if( response.statusCode == null ) return false;
+    return response.statusCode! ==  403;
+  }
+
+
+  static bool isStatusBadRequest(Response response ) {
+    if( response.statusCode == null ) return false;
+    return response.statusCode! ==  400;
+  }
 
   /**
       - example success:

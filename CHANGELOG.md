@@ -1,3 +1,8 @@
+## 1.0222
+
+* add method "ValidateResponse.isStatusBadRequest()" when status equal 400
+* add method "ValidateResponse.isStatusCredentialWrong()" when status equal 403
+
 ## 1.0221 
 
 * add class "ToolsWait" to make any action after waiting some time. Juse method "ToolsWait.waitToDo()"
