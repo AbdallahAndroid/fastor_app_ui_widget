@@ -1,3 +1,7 @@
+## 1.0220 
+
+* add class "ToolsWait" to make any action after waiting some time. Juse method "ToolsWait.waitToDo()"
+
 ## 1.0.219
 
 * add method "ValidateResponse.isStatusFrom200To210()"

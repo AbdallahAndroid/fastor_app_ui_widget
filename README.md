@@ -136,8 +136,11 @@ class MyApp extends StatelessWidget {
 [Language](https://pub.dev/packages/fastor_app_ui_widget#languagetools)
 
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
- 
+
+[ToolsWait](https://pub.dev/packages/fastor_app_ui_widget#toolswait)
+
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
+
 
 ---
 
@@ -1367,6 +1370,23 @@ class NavigationTools {
 
 
 }
+```
+
+
+---
+
+---
+
+## ToolsWait
+
++ Make any action after waiting some time. Juse method "ToolsWait.waitToDo()"
+
+```
+
+    //wait to remove cache
+    ToolsWait.waitToDo(100, ()  {
+      GoTo.splashApp( context);
+    });
 ```
 
 
