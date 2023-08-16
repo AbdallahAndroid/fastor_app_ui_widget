@@ -261,7 +261,7 @@ class ImageFastor extends StatelessWidget  {
 
   BoxFit getBoxFit_background(){
 
-    //check have custome
+    //check have customer
     if( boxFit_background != null ) {
       return   boxFit_background!;
     }
@@ -422,6 +422,12 @@ class ImageFastor extends StatelessWidget  {
 
 
   Widget clickOnThisArea( Widget cont ) {
+
+
+    if( onPressed == null ) {
+      return setSurroundWidget(cont);
+    }
+
     var clickView =  GestureDetector(child:  cont,
       onTap: (){
         // Log.i( "clickOnThisArea() - onPressed: " + onPressed.toString() );
