@@ -1,4 +1,4 @@
-## 1.0220 
+## 1.0221 
 
 * add class "ToolsWait" to make any action after waiting some time. Juse method "ToolsWait.waitToDo()"
 
