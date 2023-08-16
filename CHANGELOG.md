@@ -1,3 +1,7 @@
+## 1.0.217
+
+* add method "ValidateResponse.isSuccessStatusCode()" take parameter type Dio Response
+
 ## 1.0.216
 
 * add suffix icon to TextFieldFastor

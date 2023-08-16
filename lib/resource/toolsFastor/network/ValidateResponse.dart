@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 class ValidateResponse {
@@ -90,6 +91,17 @@ class ValidateResponse {
    // Log.i( "isPaginateLaravelEnd() - currentPage: " + currentPage.toString() +
    //  " /last_page: " + last_page.toString() + " /result: " + result.toString()  );
     return result;
+  }
+
+
+  /**
+   * status between 200 - 210
+   */
+  static bool isSuccessStatusCode(Response response ) {
+    if( response.statusCode == null ) return false;
+    if( response.statusCode! >  210 ) return false;
+    if( response.statusCode! <  200 ) return false;
+    return true;
   }
 
 }
