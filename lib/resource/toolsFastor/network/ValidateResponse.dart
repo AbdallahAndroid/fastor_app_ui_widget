@@ -28,6 +28,13 @@ class ValidateResponse {
       }
 
    */
+  static bool isSuccess(int? n ) {
+    if ( n == null ) return false;
+    if ( n == 0 ) return false;
+    if ( n == 1 ) return true;
+    return false;
+  }
+
   static bool isTrue(int? n ) {
     return isSuccess( n );
   }

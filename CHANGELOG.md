@@ -1,4 +1,4 @@
-## 1.0.218
+## 1.0.219
 
 * add method "ValidateResponse.isStatusFrom200To210()"
 * add method "ValidateResponse.isSuccessStatusCode()" take parameter type Dio Response
