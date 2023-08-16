@@ -4,7 +4,18 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 class ValidateResponse {
 
   /**
-   - example success:
+   * status between 200 - 210
+   */
+  static bool isStatusFrom200To210(Response response ) {
+    if( response.statusCode == null ) return false;
+    if( response.statusCode! >  210 ) return false;
+    if( response.statusCode! <  200 ) return false;
+    return true;
+  }
+
+
+  /**
+      - example success:
       {
       "status": "success",
       "code": 1,
@@ -17,13 +28,6 @@ class ValidateResponse {
       }
 
    */
-  static bool isSuccess(int? n ) {
-      if ( n == null ) return false;
-      if ( n == 0 ) return false;
-      if ( n == 1 ) return true;
-      return false;
-  }
-
   static bool isTrue(int? n ) {
     return isSuccess( n );
   }
