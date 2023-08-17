@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.0.227
+version: 1.0.228
 homepage: https://fastor-app.com
 
 environment:
@@ -20,6 +20,7 @@ dependencies:
   flutter_spinkit: #^5.1.0
   need_resume:
   internet_connection_checker:
+  country_code_picker:
 
   #chart
   fl_chart: #^0.62.0

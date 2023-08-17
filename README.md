@@ -128,6 +128,9 @@ class MyApp extends StatelessWidget {
 
 [DateRangeTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#daterangetextfieldfastor)
 
+[MobileCountryFastor](https://pub.dev/packages/fastor_app_ui_widget#mobilecountryfastor)
+
+
  
 ## Content: Classes Helper
 
@@ -1172,6 +1175,32 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
       callback: (dateSelected){
         dateRangeSelected = dateSelected;
       });
+```
+
+---
+
+---
+
+# MobileCountryFastor
+
+*  widget "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone
+
+```
+    return MobileCountryFastor(
+      width:  getWidthOfInputField(),
+      colorUnderlineInputField: ColorApp.underlineInputField,
+      textStyle: TextStyle(
+          color: ColorApp.black,
+          fontSize: 13,
+          fontFamily: ProjectFonts.DarkerGrotesque_Regular_400
+      ),
+      controller: phoneController,
+      title: "ENTER PHONE NUMBER",
+      callback: (String country_code, String phone) {
+        cubit!.requestRegister.countryCode = country_code;
+        cubit!.requestRegister.phoneNumber = phone;
+      }
+    );
 ```
 
 

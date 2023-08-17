@@ -1,3 +1,7 @@
+## 1.0.228
+
+* add new widget "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone
+
 ## 1.0.227
 
 * add method "ToolsPhone.fixEgyptAndSaudiNumber()" fix egyption people ways of enter mobile number.

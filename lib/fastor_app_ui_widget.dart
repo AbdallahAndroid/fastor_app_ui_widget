@@ -56,6 +56,9 @@ import 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
@@ -293,6 +296,9 @@ class fastor_app_ui_widget extends fastor {
   late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
   late ChartMultiLineFastor chartMultiLineFastor;
+
+  late MobileCountryFastor mobileCountryFastor;
+  late MobileCountryListener mobileCountryListener;
 
 
   ///progress view
