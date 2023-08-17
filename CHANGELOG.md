@@ -1,3 +1,7 @@
+## 1.0.226
+
+* add method "ToolsValidation.checkTextIsPhoneNumberCharsOnlyWithoutAbc()"
+
 ## 1.0.225
 
 * add some feature in style of "DropdownFastor"
