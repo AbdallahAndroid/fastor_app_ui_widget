@@ -45,7 +45,7 @@ class DropdownFastor extends StatefulWidget {
   Map<String, dynamic>? errorBackendJson;
 
   // error style
-  // Decoration? errorOutlineDropdownDropdown;
+  Decoration? errorOutlineDropdownDropdown;
   // String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
@@ -68,7 +68,7 @@ class DropdownFastor extends StatefulWidget {
     this.decorationOutlineDropdown,
     this.errorBackendKeyJson,
     this.errorBackendJson,
-    // this.errorOutlineDropdownDropdown,
+    this.errorOutlineDropdownDropdown,
     // this.errorMessageBackend,
     this.errorTextStyle
   }) {
@@ -136,6 +136,8 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorBackendKeyJson: widget.errorBackendKeyJson,
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
+      // errorMessageBackend : widget.errorMessageBackend,
+      errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
       onSelectPosition:    (p, isRemoveSelected ) {
        // Log.i( "dropdown() -  position: " + p.toString() );
 
