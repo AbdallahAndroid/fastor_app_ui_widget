@@ -1,3 +1,7 @@
+## 1.0.224
+
+* add some feature in style of "DropdownFastor"
+
 ## 1.0.223
 
 * add method "ValidateResponse.isStatusBadRequest()" when status equal 400

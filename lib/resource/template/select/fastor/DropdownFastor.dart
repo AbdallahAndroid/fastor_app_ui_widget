@@ -7,34 +7,70 @@ typedef DropDownSelectChangeListener = Function(String name, int poistion );
 
 class DropdownFastor extends StatefulWidget {
 
-  double width;
+  //required
   List<String> names;
+  DropDownSelectChangeListener listener;
+
+  //size
+  double? height_frame ;
+  double width;
 
   // hint
   String? hintText;
+  Widget? hintWidget;
   Color? colorHintText;
 
   //previous
   String? previousSelectedText;
   Color? colorPreviousSelected;
 
+  //spin
   double? spinnerTriangleWidth;
 
+  //colors
   Color? colorItemText;
+  Color? dropdownColor;
+  Color? underlineColor;
+  Widget? iconDropdown;
 
-  DropDownSelectChangeListener listener;
+  //space
+  EdgeInsets? paddingText;
+
+  //boarder
+  Decoration? decorationOutlineDropdown;
+
+
+  //error message
+  String? errorBackendKeyJson;
+  Map<String, dynamic>? errorBackendJson;
+
+  // error style
+  // Decoration? errorOutlineDropdownDropdown;
+  // String? errorMessageBackend;
+  TextStyle? errorTextStyle;
+
 
   DropdownFastor( {
     required this.width,
     required this.names ,
-
+    required this.listener,
+    this.height_frame,
     this.spinnerTriangleWidth,
     this.hintText,
     this.colorHintText,
     this.colorItemText,
+    this.dropdownColor,
+    this.underlineColor,
+    this.iconDropdown,
     this.previousSelectedText,
     this.colorPreviousSelected,
-    required this.listener,
+    this.paddingText,
+    this.decorationOutlineDropdown,
+    this.errorBackendKeyJson,
+    this.errorBackendJson,
+    // this.errorOutlineDropdownDropdown,
+    // this.errorMessageBackend,
+    this.errorTextStyle
   }) {
 
      spinnerTriangleWidth ??= 50;
@@ -76,7 +112,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
     return TextFastor(
         widget.previousSelectedText??"" ,
         levelDS: LevelDS.l4,
-        margin: EdgeInsets.only(top: DSDimen.space_level_4),
+        margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
         color: widget.colorPreviousSelected
     );
   }
@@ -92,7 +128,14 @@ class _DropdownFastorState extends State<DropdownFastor > {
     var spin =  SpinnerView(
       childers: _listItemDropDownWidget(),
       width_frame: widget.width,
-      height_frame: 40,
+      height_frame: widget.height_frame??40,
+      dropdownColor: widget.dropdownColor,
+      underlineColor: widget.underlineColor,
+      iconDropdown: widget.iconDropdown,
+      decorationOutlineDropdown: widget.decorationOutlineDropdown,
+      errorBackendKeyJson: widget.errorBackendKeyJson,
+      errorBackendJson: widget.errorBackendJson,
+      errorTextStyle: widget.errorTextStyle,
       onSelectPosition:    (p, isRemoveSelected ) {
        // Log.i( "dropdown() -  position: " + p.toString() );
 
@@ -106,7 +149,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
         widget.listener( _selected_name!, _selected_position! );
       },
-      hintWidget: _hint() ,
+      hintWidget: widget.hintWidget??_hint() ,
     );
 
     //decoration
@@ -117,7 +160,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
-        padding: EdgeInsets.all( 5),
+        padding: widget.paddingText??EdgeInsets.all( 5),
         color: widget.colorHintText,
         levelDS: LevelDS.l2);
   }
@@ -136,7 +179,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget _getItemDropdownWidget(String name){
     return TextFastor( name,
         levelDS: LevelDS.l3,
-        padding: EdgeInsets.only(top: 5, left: 5),
+        padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
         color: widget.colorItemText,
         width: widget.width - widget.spinnerTriangleWidth!
     );
