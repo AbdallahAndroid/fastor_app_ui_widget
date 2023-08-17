@@ -139,6 +139,8 @@ class MyApp extends StatelessWidget {
 
 [ToolsWait](https://pub.dev/packages/fastor_app_ui_widget#toolswait)
 
+[ToolsPhone](https://pub.dev/packages/fastor_app_ui_widget#toolsphone)
+
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
 
 
@@ -1389,6 +1391,19 @@ class NavigationTools {
     });
 ```
 
+---
+
+---
+
+## ToolsPhone
+
+* add method "ToolsPhone.fixEgyptAndSaudiNumber()" fix egyption people ways of enter mobile number.
+* add method "ToolsPhone.fixEgyptAndSaudiNumber()" fix saudi people ways of enter mobile number.
+
+```
+ bool status = await InternetTools.isConnected();
+```
+
 
 ---
 
@@ -1396,7 +1411,7 @@ class NavigationTools {
 
 ## InternetTools
 
-+ add class "InternetTools" for check for internet connection.
++  class "InternetTools" for check for internet connection.
 
 ```
  bool status = await InternetTools.isConnected();

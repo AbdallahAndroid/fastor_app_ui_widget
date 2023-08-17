@@ -1,3 +1,8 @@
+## 1.0.227
+
+* add method "ToolsPhone.fixEgyptAndSaudiNumber()" fix egyption people ways of enter mobile number.
+* add method "ToolsPhone.fixEgyptAndSaudiNumber()" fix saudi people ways of enter mobile number.
+
 ## 1.0.226
 
 * add method "ToolsValidation.checkTextIsPhoneNumberCharsOnlyWithoutAbc()"

@@ -67,6 +67,9 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/timer/ToolsWait.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsPhone.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsPhone.dart';
+
 export 'package:fastor_app_ui_widget/resource/toolsFastor/timer/ToolsWait.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
@@ -326,6 +329,7 @@ class fastor_app_ui_widget extends fastor {
   late Save saveFastor;
   late ToolsString toolsString;
   late ToolsWait toolsWait;
+  late ToolsPhone toolsPhone;
 
   ///tools ui
   late StatusBarConstant statusBar;
