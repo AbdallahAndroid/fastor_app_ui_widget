@@ -59,6 +59,9 @@ import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFieldFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFieldFastor.dart';
+
 export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 
 
@@ -263,6 +266,7 @@ class fastor_app_ui_widget extends fastor {
   late ColumnTemplate col;
   late ColumnFastor colFastor;
   late ContainerTemplate cont;
+  late OTPTextFieldFastor otpTextFieldFastor;
   late DateRangeTextFieldFastor dateRangeTextFieldFastor;
   late DateTextFieldFastor dateTextFieldFastor;
   late DateRangePickerResult dateRangePickerResult;

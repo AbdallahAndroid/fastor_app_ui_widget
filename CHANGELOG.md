@@ -1,3 +1,8 @@
+## 1.0.232
+
+* add "fontFamily" in class "TextFieldFastor"
+* build new widget "OTPTextFieldFastor"
+
 ## 1.0.231
 
 * add class "ZoneTools" return current country code.

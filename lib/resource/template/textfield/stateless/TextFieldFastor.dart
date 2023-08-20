@@ -26,6 +26,7 @@ class TextFieldFastor extends StatelessWidget {
   String? hint_text;
   Color? text_color;
   double? fontSize;
+  String? fontFamily;
   Color? hint_color;
 
   //boarder and underline
@@ -77,6 +78,7 @@ class TextFieldFastor extends StatelessWidget {
     this.text_color,
     this.fontSize,
     this.hint_color,
+    this.fontFamily,
 
     //boarder and underline
     this.isRemoveUnderline = false,
@@ -151,16 +153,16 @@ class TextFieldFastor extends StatelessWidget {
     //get tf
     TextFormField tf = _getTextFourmField();
 
-    //fix textfield not materail
-    var materialApp = Material(
-      child: tf,
-      color: background_color,
-    );
+    // //fix textfield not materail
+    // var materialApp = Material(
+    //   child: tf,
+    //   color: background_color,
+    // );
 
     //ct
     // var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
     var container = Container(
-      child: materialApp,
+      child: tf,
       width: width,
       // height: height,
       margin: margin,
@@ -182,7 +184,7 @@ class TextFieldFastor extends StatelessWidget {
       textAlign: textAlign!,
 
       // //text size
-      style: TextStyle(color: text_color, fontSize: fontSize),
+      style: TextStyle(color: text_color, fontSize: fontSize, fontFamily: fontFamily),
 
       //password keyboard
       obscureText: obscureText,

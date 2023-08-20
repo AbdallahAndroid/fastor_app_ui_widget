@@ -124,6 +124,8 @@ class MyApp extends StatelessWidget {
 
 [DropdownFastor](https://pub.dev/packages/fastor_app_ui_widget#dropdownfastor)
 
+[OTPTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#otptextfieldfastor)
+
 [DateTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#datetextfieldfastor)
 
 [DateRangeTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#daterangetextfieldfastor)
@@ -1146,6 +1148,59 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
       },
     );
 ```
+
+
+---
+
+---
+
+
+# OTPTextFieldFastor
+
+* you can listener when user complete write "OTP CODE"
+* Listener while user still writing the OTP Code
+* write how many fields otp needed 4 or 5 or 6. maximue is 6 otp code
+* choose style from constructor
+```
+
+  //size
+  double? widthOTP  ;
+  double? heightByPadding  ;
+  double? margin ;
+
+  //color
+  Color? colorText;
+  Color? colorHint;
+  String? fontFamily;
+  double? fontSize;
+  Decoration? decoration;
+```
+
+* example
+```
+    var otpWidget =  OTPTextFieldFastor(
+      countNumber: 5,
+      decoration: BoarderHelper.box(
+        colorLine: ColorApp.black,
+        colorBackground: Colors.transparent
+      ),
+      fontFamily: ProjectFonts.DarkerGrotesque_Black_900,
+      fontSize: 13,
+      // colorHint: ColorApp.gray,
+      colorText: ColorApp.black,
+      onComplete: ( isComplete ){
+        Log.i("otpFields() - isComplete: $isComplete");
+      },
+      onChangeCode: (codeUpdate ) {
+        Log.i("otpFields() - onChangeCode: $codeUpdate");
+      },
+    );
+```
+
+---
+
+---
+
 
 # DateTextFieldFastor
 
