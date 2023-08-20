@@ -146,6 +146,8 @@ class MyApp extends StatelessWidget {
 
 [ToolsPhone](https://pub.dev/packages/fastor_app_ui_widget#toolsphone)
 
+[ZoneTools](https://pub.dev/packages/fastor_app_ui_widget#zonetools)
+
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
 
 
@@ -1468,6 +1470,16 @@ class NavigationTools {
  bool status = await InternetTools.isConnected();
 ```
 
+----
+
+---
+
+## ZoneTools
+
+* method "ZoneTools.getZoneCountryDialCode()"
+* method "ZoneTools.getCountryISOCode()"
+ 
+```
 
 ---
 

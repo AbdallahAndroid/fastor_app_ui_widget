@@ -83,6 +83,9 @@ export  'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/values/UniqueIdTools.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
+
 import 'package:fastor_app_ui_widget/resource/uiFastor/language/LanguageTools.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 import 'package:flutter/cupertino.dart';
@@ -342,6 +345,7 @@ class fastor_app_ui_widget extends fastor {
   late ToolsString toolsString;
   late ToolsWait toolsWait;
   late ToolsPhone toolsPhone;
+  late ZoneTools zoneTools;
 
   ///tools ui
   late StatusBarConstant statusBar;

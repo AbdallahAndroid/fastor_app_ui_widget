@@ -1,6 +1,9 @@
-## 1.0.230
+## 1.0.231
 
 * add class "ZoneTools" return current country code.
+
+## 1.0.230
+
 * set the countryCode of current country to widget "MobileCountryFastor"
 
 ## 1.0.229
