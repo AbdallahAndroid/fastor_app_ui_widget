@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.0.228
+version: 1.0.230
 homepage: https://fastor-app.com
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #not fastor = package
+  #other
   hexcolor:
   #easy_localization: cause null safty error
   universal_io:
@@ -20,7 +20,11 @@ dependencies:
   flutter_spinkit: #^5.1.0
   need_resume:
   internet_connection_checker:
+
+  # phone mobile country
   country_code_picker:
+  timezone_to_country:
+  country_dial_code:
 
   #chart
   fl_chart: #^0.62.0

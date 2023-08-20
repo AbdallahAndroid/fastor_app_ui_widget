@@ -13,6 +13,8 @@ import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart'
 export 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/calendar/CalendarTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/calendar/offical_sdk/CalenderFastor.dart' ;
+export 'package:fastor_app_ui_widget/resource/template/calendar/offical_sdk/CalenderFastor.dart' ;
 export 'package:fastor_app_ui_widget/resource/template/calendar/CalendarTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/cardview/fixedSize/CardViewTemplate.dart';
@@ -59,7 +61,7 @@ import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
+
 export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
@@ -288,7 +290,11 @@ class fastor_app_ui_widget extends fastor {
   late SwitchFastor switchFastor;
   late TableView tb;
   late TableState tbState;
+
+  ///calender
   late CalendarTemplate calendar;
+  late CalenderFastor calenderFastor;
+  late CalenderTypeFastor calenderTypeFastor;
   late TextFastor textFastor;
   late ButtonFastor buttonFastor;
   late PageFastor pageFastor;

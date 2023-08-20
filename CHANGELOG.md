@@ -1,3 +1,12 @@
+## 1.0.230
+
+* add class "ZoneTools" return current country code.
+* set the countryCode of current country to widget "MobileCountryFastor"
+
+## 1.0.229
+
+* add new widget "CalenderFastor" 
+
 ## 1.0.228
 
 * add new widget "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone

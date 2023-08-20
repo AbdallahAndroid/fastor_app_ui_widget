@@ -7,6 +7,7 @@ import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,6 +28,7 @@ class MobileCountryFastor extends StatefulWidget {
   TextEditingController? controller;
   Color? colorUnderlineInputField;
   TextInputType? textInputType;
+  String? initialSelection; //example: "+20"
 
   MobileCountryFastor( {
     required this.width,
@@ -37,7 +39,8 @@ class MobileCountryFastor extends StatefulWidget {
     this.textInputType,
     this.title,
     this.colorUnderlineInputField,
-    this.favoriteCountryCodeArray
+    this.favoriteCountryCodeArray,
+    this.initialSelection
   }) {
   }
 
@@ -72,26 +75,26 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // setCountryCodeCurrent();
+    setCountryCodeCurrent();
   }
 
 
-  // void setCountryCodeCurrent() {
-  //   ZoneTools.getZoneCountryDialCode("+966").then((value)   {
-  //      //Log.i( "MobileVerificationController - setCurrentCountryDial() - value: " + value );
-  //
-  //     setState(() {
-  //       countryCode_text = value;
-  //
-  //       //check
-  //       if( widget.countryCodeDefault != null ) {
-  //         countryCode_text = widget.countryCodeDefault!; //example "+20";
-  //       }
-  //     //  Log.i( "setCountryCodeCurrent() - countryCode_text: " + countryCode_text );
-  //     });
-  //
-  //   });
-  // }
+  void setCountryCodeCurrent() {
+    ZoneTools.getZoneCountryDialCode(widget.initialSelection??"+966").then((value)   {
+       //Log.i( "MobileVerificationController - setCurrentCountryDial() - value: " + value );
+
+      setState(() {
+        countryCode_text = value;
+
+        //check
+        if( widget.initialSelection != null ) {
+          countryCode_text = widget.initialSelection!; //example "+20";
+        }
+      //  Log.i( "setCountryCodeCurrent() - countryCode_text: " + countryCode_text );
+      });
+
+    });
+  }
 
 
   //---------------------------------------------------------------- build

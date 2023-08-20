@@ -128,6 +128,8 @@ class MyApp extends StatelessWidget {
 
 [DateRangeTextFieldFastor](https://pub.dev/packages/fastor_app_ui_widget#daterangetextfieldfastor)
 
+[CalenderFastor](https://pub.dev/packages/fastor_app_ui_widget#calenderfastor)
+
 [MobileCountryFastor](https://pub.dev/packages/fastor_app_ui_widget#mobilecountryfastor)
 
 
@@ -1203,6 +1205,39 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
 ```
 
+
+---
+
+---
+
+## CalenderFastor
+
+* example type birthday picker
+```
+      var calender =  CalenderFastor(
+        title:  "ENTER DOB" ,
+        decoration: BoarderHelper.cardView(
+            colorLine: ColorApp.grayOpacity,
+            radiusSize: 3,
+            colorBackground: ColorApp.pinkOpacity
+        ),
+        calenderTypeFastor: CalenderTypeFastor.birthday,
+        dateSelected: cubit!.requestRegister.birthday,
+        colorTextTitle: ColorApp.black,
+        colorTextSelected: ColorApp.black,
+        colorTextUnSelected: ColorApp.gray,
+        fontFamily: ProjectFonts.DarkerGrotesque_Bold_700,
+        callback: (date ) {
+            cubit!.requestRegister.birthday = date;
+        },
+      );
+```
+
+* type of calender "CalenderTypeFastor" see Enum
+
+```
+enum CalenderTypeFastor { dateStartFromToday, birthday }
+```
 
 ---
 
