@@ -1280,7 +1280,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     var imageEmail = Image.asset( "assets/images/email.png", width: 28, height: 28,);
     var iconEmail = Padding(child: imageEmail , padding: EdgeInsets.only(bottom: 18, right: 8) );
 
-    var mobile =  TextFieldEmailOrPhoneWidget(
+    var mobile =  TextFieldEmailOrPhoneFastor(
       width: ProjectDimen.allDeviceWidthMinesMarginLeftRight(context),
       colorUnderlineInputField: ColorApp.underlineInputField,
       textStyle: TextStyle(

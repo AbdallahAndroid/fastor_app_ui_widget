@@ -1,4 +1,4 @@
-## 1.0.235
+## 1.0.236
 
 * build new widget "TextFieldEmailOrPhoneFastor"
 
