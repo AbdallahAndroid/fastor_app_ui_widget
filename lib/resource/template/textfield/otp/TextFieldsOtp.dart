@@ -73,6 +73,11 @@ extension TextFieldsOtp on OTPFastorState  {
             FocusScope.of(context).requestFocus(tf3_node);
           }
 
+          //focus to previous
+          if( s == "" ) {
+            FocusScope.of(context).requestFocus(tf1_node);
+          }
+
           //call back
           updateCallBack();
         },
@@ -105,6 +110,11 @@ extension TextFieldsOtp on OTPFastorState  {
           //focus to after check have value
           if( s.length >= 1 ) {
             FocusScope.of(context).requestFocus(tf4_node);
+          }
+
+          //focus to previous
+          if( s == "" ) {
+            FocusScope.of(context).requestFocus(tf2_node);
           }
 
           //call back
@@ -141,6 +151,11 @@ extension TextFieldsOtp on OTPFastorState  {
             FocusScope.of(context).requestFocus(tf5_node);
           }
 
+          //focus to previous
+          if( s == "" ) {
+            FocusScope.of(context).requestFocus(tf3_node);
+          }
+
           //call back
           updateCallBack();
         },
@@ -175,6 +190,12 @@ extension TextFieldsOtp on OTPFastorState  {
             FocusScope.of(context).requestFocus(tf6_node);
           }
 
+          //focus to previous
+          if( s == "" ) {
+            FocusScope.of(context).requestFocus(tf4_node);
+          }
+
+
           //call back
           updateCallBack();
         },
@@ -206,6 +227,12 @@ extension TextFieldsOtp on OTPFastorState  {
 
         //call back
         updateCallBack();
+
+        //focus to previous
+        if( s == "" ) {
+          FocusScope.of(context).requestFocus(tf5_node);
+        }
+
       },
       //  margin: EdgeInsets.only( right: DSDimen.space_level_3)
     );

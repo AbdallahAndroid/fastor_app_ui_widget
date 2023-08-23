@@ -1,3 +1,7 @@
+## 1.0.233
+
+* make "OTPTextFieldFastor" focus to previous field when user remove character.
+
 ## 1.0.232
 
 * add "fontFamily" in class "TextFieldFastor"
