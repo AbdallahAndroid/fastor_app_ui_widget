@@ -25,10 +25,13 @@ class MobileCountryFastor extends StatefulWidget {
   TextStyle? textStyle;
   List<String>? favoriteCountryCodeArray;
   String? title;
+  String? hint;
   TextEditingController? controller;
   Color? colorUnderlineInputField;
   TextInputType? textInputType;
   String? initialSelection; //example: "+20"
+  Widget? suffixIcon;
+  bool? isHideCountryPicker;
 
   MobileCountryFastor( {
     required this.width,
@@ -38,11 +41,16 @@ class MobileCountryFastor extends StatefulWidget {
     this.decoration,
     this.textInputType,
     this.title,
+    this.hint,
     this.colorUnderlineInputField,
     this.favoriteCountryCodeArray,
-    this.initialSelection
+    this.initialSelection,
+    this.suffixIcon,
+    this.isHideCountryPicker
   }) {
+    isHideCountryPicker ??= false;
   }
+
 
   @override
   _MobileCountryFastorState createState()  => _MobileCountryFastorState();
@@ -81,7 +89,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   void setCountryCodeCurrent() {
     ZoneTools.getZoneCountryDialCode(widget.initialSelection??"+966").then((value)   {
-       //Log.i( "MobileVerificationController - setCurrentCountryDial() - value: " + value );
+      //Log.i( "MobileVerificationController - setCurrentCountryDial() - value: " + value );
 
       setState(() {
         countryCode_text = value;
@@ -90,7 +98,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
         if( widget.initialSelection != null ) {
           countryCode_text = widget.initialSelection!; //example "+20";
         }
-      //  Log.i( "setCountryCodeCurrent() - countryCode_text: " + countryCode_text );
+        //  Log.i( "setCountryCodeCurrent() - countryCode_text: " + countryCode_text );
       });
 
     });
@@ -102,7 +110,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   @override
   Widget build(BuildContext context) {
     debugMode();
-      return mobile();
+    return mobile();
   }
 
 
@@ -126,23 +134,29 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   //----------------------------------------------------------------------- stack
 
   Widget countryWithPhoneWithBoarder(){
+
+    return ColumnFastor(children: [
+      rowCountryAndSpinAndPhone(),
+      underLine()
+    ] );
+  }
+
+  Widget rowCountryAndSpinAndPhone(){
     // var row =  RowTemplate.child1_WrapWidth_child2_expanded( country(), tf_phone(),
     //     gravityLayout: Alignment.topLeft );
 
     var row = RowScrollFastor(children: [
-        country(),
-      spinBar(),
+      if(widget.isHideCountryPicker! == false ) country(),
+      if(widget.isHideCountryPicker! == false ) spinBar(),
       tf_phone()
     ] );
 
     return Container( child:  row ,
         // margin: EdgeInsets.only(top: DSDimen.space_level_3 ),
         // color: Colors.red,
-    decoration: widget.decoration
+        decoration: widget.decoration
     );
-    // return tf_phone();
   }
-
 
   Widget spinBar(){
     return Container( width: 0.5,
@@ -155,7 +169,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   Widget tx_mobile() {
     return Text(  widget.title??"Mobile",
-      style: widget.textStyle
+        style: widget.textStyle
     );
   }
 
@@ -164,7 +178,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   Widget country(){
     var country =  CountryCodePicker(
         onChanged: (countryCode) {
-        // Log.i( "c: " + countryCode.toString() );
+          // Log.i( "c: " + countryCode.toString() );
           countryCode_text = countryCode.dialCode!;
 
           updateCallback();
@@ -179,45 +193,51 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
         // optional. aligns the flag and the Text left
         alignLeft: false,
 
-      //remove default padding
+        //remove default padding
         padding: EdgeInsets.zero
     );
-    
+
     var scale = Transform.scale(scale: 1, child:  country );
-
-
     var sizeBoxCountry = SizedBox(  height: 40, child:  scale, width:  _width_country_view,);
+    return sizeBoxCountry;
+  }
 
-    var underLine = Container(
-      width: _width_country_view,
+//----------------------------------------------------------------------- underLine
+
+  Widget underLine(){
+    return Container(
+      width: widget.width,
       color:  widget.colorUnderlineInputField,
       height: 1,
     );
-
-    return ColumnFastor(children: [
-      sizeBoxCountry,
-      underLine
-    ] );
   }
 
   //----------------------------------------------------------------------- textfield
 
   Widget tf_phone(){
-  //  Log.i( "_MobileCountryState - tf_phone() ");
     return TextFieldFastor(
-      margin: EdgeInsets.only( top:  5.5),
-      isRemoveUnderline: true,
-      controller: widget.controller,
-        width: widget.width - _width_country_view,
+        margin: EdgeInsets.only( top:  5.5),
+        isRemoveUnderline: true,
+        controller: widget.controller,
+        width: chooseWidthAfterVisibleOrHideTheCountryPicker(),
         validatorCustom: ValidatorTemplate.emailOrPhone( ),
-        padding: EdgeInsets.all( DSDimen.textfield_auto_padding),
+        padding: EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 13),
         autovalidateMode: autovalidateMode,
         keyboardType: widget.textInputType??TextInputType.number,
-   //     hint_text: "ex: 01012345678" ,
+        suffixIcon: widget.suffixIcon,
+        hint_text: widget.hint ,
         onChanged: (phone){
           phone_text = phone;
           updateCallback();
         });
+  }
+
+
+  double chooseWidthAfterVisibleOrHideTheCountryPicker(){
+    if( widget.isHideCountryPicker! ) {
+      return widget.width  ;
+    }
+    return widget.width - _width_country_view;
   }
 
   //---------------------------------------------------------------- call back

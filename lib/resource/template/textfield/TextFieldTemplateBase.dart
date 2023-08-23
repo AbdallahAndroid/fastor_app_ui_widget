@@ -114,6 +114,7 @@ class TextFieldTemplateBase    {
     double widthUnderLine = 1;
     if( isRemoveUnderline ) {
       widthUnderLine = 0;
+      hint_color = Colors.transparent;
     }
 
     var enabledBorder = UnderlineInputBorder(

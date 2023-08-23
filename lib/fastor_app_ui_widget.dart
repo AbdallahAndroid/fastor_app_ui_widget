@@ -65,7 +65,7 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFiel
 export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 
 
-export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
+// export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';

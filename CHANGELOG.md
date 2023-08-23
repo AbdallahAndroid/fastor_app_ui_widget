@@ -1,3 +1,10 @@
+## 1.0.234
+
+* in class "MobileCountryFastor" add feature "hint"
+* in class "MobileCountryFastor" add feature "suffixIcon"
+* in class "MobileCountryFastor" add feature "isHideCountryCode"
+* in class "TextFieldFastor" when "isRemoveUnderLine" is true, remove from both focus and normal decoration.
+
 ## 1.0.233
 
 * make "OTPTextFieldFastor" focus to previous field when user remove character.
