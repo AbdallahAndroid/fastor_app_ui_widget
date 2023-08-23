@@ -211,6 +211,11 @@ export 'resource/template/scrollview/ScrollFastor.dart';
 import 'resource/template/switch/SwitchFastor.dart';
 export 'resource/template/switch/SwitchFastor.dart';
 
+import 'resource/template/textfield/email_or_phone/TextFieldEmailOrPhoneFastor.dart';
+export 'resource/template/textfield/email_or_phone/TextFieldEmailOrPhoneFastor.dart';
+
+
+
 import 'resource/template/textfield/validator/ValidatorType.dart';
 export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
@@ -267,6 +272,8 @@ class fastor_app_ui_widget extends fastor {
   late ColumnFastor colFastor;
   late ContainerTemplate cont;
   late OTPTextFieldFastor otpTextFieldFastor;
+  late TextFieldEmailOrPhoneFastor textFieldEmailOrPhoneFastor;
+  late TextFieldEmailListener textFieldEmailListener;
   late DateRangeTextFieldFastor dateRangeTextFieldFastor;
   late DateTextFieldFastor dateTextFieldFastor;
   late DateRangePickerResult dateRangePickerResult;

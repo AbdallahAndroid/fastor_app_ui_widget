@@ -1,3 +1,7 @@
+## 1.0.235
+
+* build new widget "TextFieldEmailOrPhoneFastor"
+
 ## 1.0.234
 
 * in class "MobileCountryFastor" add feature "hint"

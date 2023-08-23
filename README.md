@@ -134,6 +134,8 @@ class MyApp extends StatelessWidget {
 
 [MobileCountryFastor](https://pub.dev/packages/fastor_app_ui_widget#mobilecountryfastor)
 
+[TextFieldEmailOrPhoneFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldemailorphonefastor)
+
 
  
 ## Content: Classes Helper
@@ -1262,6 +1264,55 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
 ```
 
+
+---
+
+---
+
+# TextFieldEmailOrPhoneFastor
+
+* widget "TextFieldEmailOrPhoneFastor" use plugin "country_code_picker" with some customization in phone
+* allow user to enter both email format or phone, the country code picker auto hide/show when user write phone character or not.
+
+```
+
+  Widget emailOrPhone(){
+    var imageEmail = Image.asset( "assets/images/email.png", width: 28, height: 28,);
+    var iconEmail = Padding(child: imageEmail , padding: EdgeInsets.only(bottom: 18, right: 8) );
+
+    var mobile =  TextFieldEmailOrPhoneWidget(
+      width: ProjectDimen.allDeviceWidthMinesMarginLeftRight(context),
+      colorUnderlineInputField: ColorApp.underlineInputField,
+      textStyle: TextStyle(
+          color: ColorApp.black,
+          fontSize: 13,
+          fontFamily: ProjectFonts.DarkerGrotesque_Regular_400
+      ),
+      // countryCodeDefault: ConstantEnvironment.isTestEnvironment?"+20":"+966",
+      controller: emailOrPhoneController,
+      title:  "ENTER EMAIL ADDRESS OR PHONE NUMBER",
+      hint: "Email address or phone number",
+      iconCaseEmail : iconEmail,
+      callbackEmail: ( email ) {
+        Log.i("callbackEmail - s: $email");
+        cubit!.loginRequest.emailOrPhone =   email ;
+        // cubit!.emitToInitialState( );
+      },
+      callbackPhone: (String country_code,  String phone) {
+        Log.i("callbackPhone - s: $phone");
+        cubit!.loginRequest.countryCode = country_code;
+        cubit!.loginRequest.emailOrPhone =   phone ;
+        // cubit!.emitToInitialState()  ;
+      },
+    );
+
+    return Container(
+      child: mobile,
+      margin: EdgeInsets.symmetric(horizontal: ProjectDimen.leftRightPageContent),
+    );
+  }
+
+```
 
 ---
 
