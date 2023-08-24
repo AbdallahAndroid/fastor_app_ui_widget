@@ -1,3 +1,11 @@
+## 1.0.238
+
+* fix "ScrollFastor" and "ScrollViewPage" in last flutter sdk 3.13.1 , by removing "isAlwaysShown" at scrollview material
+
+## 1.0.237
+
+* build new class "LangFastor" for handle arabic translate and arabic direction left/right 
+
 ## 1.0.236
 
 * build new widget "TextFieldEmailOrPhoneFastor"

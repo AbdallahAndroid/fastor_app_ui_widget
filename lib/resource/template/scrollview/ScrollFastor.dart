@@ -125,7 +125,7 @@ class ScrollFastor extends StatelessWidget  {
     if( thumbVisibility! && isNotWeb ) {
       scrollBar = Scrollbar(
         child: scrollChild,
-        isAlwaysShown: true,
+        // isAlwaysShown: true,  //removed from flutter sdk 3.13.1
         trackVisibility: true,
       );
     } else {

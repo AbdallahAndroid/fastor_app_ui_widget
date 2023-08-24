@@ -9,6 +9,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 // import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@Deprecated("use class LangFastor.dart instead")
 class LanguageTools {
 
   //----------------------------------------------------------------------- singel tone

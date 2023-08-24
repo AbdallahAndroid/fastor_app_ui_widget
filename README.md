@@ -135,14 +135,12 @@ class MyApp extends StatelessWidget {
 [MobileCountryFastor](https://pub.dev/packages/fastor_app_ui_widget#mobilecountryfastor)
 
 [TextFieldEmailOrPhoneFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldemailorphonefastor)
-
-
  
 ## Content: Classes Helper
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
 
-[Language](https://pub.dev/packages/fastor_app_ui_widget#languagetools)
+[LangFastor](https://pub.dev/packages/fastor_app_ui_widget#langfastor)
 
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
 
@@ -153,7 +151,6 @@ class MyApp extends StatelessWidget {
 [ZoneTools](https://pub.dev/packages/fastor_app_ui_widget#zonetools)
 
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
-
 
 ---
 
@@ -1474,35 +1471,79 @@ this class used to set the path of file of "xFile" and set the key/value of file
 
 ---
 
-## LanguageTools
+## LangFastor
+
+### Language Direction
 
 ### Arabic right-to-left "RTL" Layout Direction
-How To User Class "LanguageTools.dart" to auto change direction from (  English => Arabic )
+How to auto change direction from (  English => Arabic ) left/right
 ```
 
   @override
   Widget build(BuildContext context) {
-    FastorStateManagement.instance().getCurrentContext();
-    return PageFastor(this, content: getDirection());
+
+    return Scaffold(
+      body: SafeArea(child: getDirection()),
+      resizeToAvoidBottomInset: true,
+    );
   }
-  
   Widget getDirection() {
     return   Directionality(
-      textDirection: LanguageTools.getTextDirection(context),
+      textDirection:   Lang.getTextDirection(),
       child:   Builder(
         builder: (BuildContext context) {
           return   MediaQuery(
             data: MediaQuery.of(context).copyWith(
               textScaleFactor: 1.0,
             ),
-            child: getContent(),
+            child: blocConsumer(),
           );
         },
       ),
     );
   }
+  
+```
 
+### Arabic Translator
 
+1- from main method call:
+
+```
+  await Lang.setupFromMainMethod();
+
+```
+
+2- from MyApp() class inside build() method write :
+
+```
+class MyApp  extends StatelessWidget {
+
+ 
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    Lang.setupFromBuildMethod(context);
+      .....
+    }
+}
+```
+
+3- write json with key/value for each english word
+
+* in path project :  assets/lang/ar.json
+```
+{
+  "Login" : "تسجيل الدخول"  , 
+  "" : ""
+}
+```
+
+4- How to check anywhere lang is arabic
+
+* this return boolean
+```
+Lang.isArabic   
 ```
 
 ---

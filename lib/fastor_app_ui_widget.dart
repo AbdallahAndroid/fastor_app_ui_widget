@@ -89,7 +89,7 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/values/UniqueIdTools.d
 import 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
 
-import 'package:fastor_app_ui_widget/resource/uiFastor/language/LanguageTools.dart';
+
 import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -157,6 +157,7 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFi
 export 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/values/UniqueIdTools.dart';
+import 'package:fastor_app_ui_widget/resource/uiFastor/language/LanguageTools.dart';
 export 'package:fastor_app_ui_widget/resource/uiFastor/language/LanguageTools.dart';
 export 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 export 'package:hexcolor/hexcolor.dart';
@@ -221,6 +222,7 @@ export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/initialize_app/Fastor.dart';
 export 'resource/toolsFastor/initialize_app/Fastor.dart';
+import 'resource/toolsFastor/lang/LangFastor.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
@@ -349,6 +351,7 @@ class fastor_app_ui_widget extends fastor {
   late ToolsValidation toolsValidation;
   late UniqueIdTools uniqueIdTools;
   late LanguageTools language;
+  late LangFastor langFastor;
   late Log myLog;
   late IFrameElement iFrameElement;
   late CssStyleDeclaration cssStyleDeclaration;
