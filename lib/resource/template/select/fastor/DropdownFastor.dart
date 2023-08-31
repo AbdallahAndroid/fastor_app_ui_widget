@@ -195,6 +195,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       childers: _listItemDropDownWidget(),
       width_frame: widget.width,
       height_frame: widget.height_frame??_defaultHeight,
+      radiusButton : widget.radiusButton,
       colorDropdownMenu: widget.colorDropdownMenu,
       colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
       colorDropdownButtonOutline: widget.colorDropdownButtonOutline,

@@ -22,12 +22,16 @@ class SpinnerView extends StatefulWidget {
   Color? colorDropdownMenu;
   Color? colorDropdownButtonOutline;
   Color? colorDropdownButtonBackground;
+  Color? colorDropdownTextBackground;
 
   Color? underlineColor;
   SpinnerViewCallBack onSelectPosition;
   Widget hintWidget;
+
+  //size
   double width_frame  ;
   double height_frame ;
+  double? radiusButton;
 
   //error
   String? errorBackendKeyJson;
@@ -43,11 +47,13 @@ class SpinnerView extends StatefulWidget {
     required double this.width_frame,
     required double this.height_frame,
     required SpinnerViewCallBack this.onSelectPosition,
+    this.radiusButton,
     this.decorationOutlineDropdown,
     this.iconDropdown,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     this.colorDropdownButtonBackground,
+    this.colorDropdownTextBackground,
     this.underlineColor,
 
     //error
@@ -215,9 +221,9 @@ class SpinnerViewState extends State<SpinnerView> {
     );
 
     //size
-    var material = Material(child: container ) ;
+    // var material = Material(child: container ) ;
     var sizeBox =  SizedBox(
-        child: material,
+        child: container,
         width: widget.width_frame,
         height: widget.height_frame );
     return sizeBox;
@@ -238,7 +244,11 @@ class SpinnerViewState extends State<SpinnerView> {
     }
 
     //case : default no outline
-    return null ;
+    return BoarderHelper.cardView(
+      colorBackground: widget.colorDropdownButtonBackground ?? Colors.transparent,
+      colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
+      radiusSize: widget.radiusButton??0
+    ) ;
   }
 
 
@@ -251,7 +261,7 @@ class SpinnerViewState extends State<SpinnerView> {
       dropdownColor: widget.colorDropdownMenu,
       focusColor: widget.colorDropdownMenu,
       style: TextStyle(
-        backgroundColor: widget.colorDropdownButtonBackground, // Set the background color here
+        backgroundColor: widget.colorDropdownTextBackground, // Set the background color here
       ),
       underline: Container(
         height: 2,
