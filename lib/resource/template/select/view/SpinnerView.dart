@@ -219,20 +219,20 @@ class SpinnerViewState extends State<SpinnerView> {
         // color: Colors.green,
         decoration: chooseDecorationNormalOrError()
     );
-
-    //fix boarder button that alwasy shows
-    var containerFixBoarderButton = Container(
-      child: containerDecoration,
-      decoration: BoarderHelper.box(
-          colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
-          colorBackground: Colors.transparent
-      ),
-    );
+    //
+    // //fix boarder button that alwasy shows
+    // var containerFixBoarderButton = Container(
+    //   child: containerDecoration,
+    //   decoration: BoarderHelper.box(
+    //     colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
+    //     colorBackground: Colors.transparent
+    //   ),
+    // );
 
     //size
     // var material = Material(child: container ) ;
     var sizeBox =  SizedBox(
-        child: containerFixBoarderButton,
+        child: containerDecoration,
         width: widget.width_frame,
         height: widget.height_frame );
     return sizeBox;

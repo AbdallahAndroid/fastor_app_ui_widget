@@ -225,14 +225,12 @@ class _DropdownFastorState extends State<DropdownFastor > {
     );
 
     //decoration
-    return Container( child: spin,
-      decoration: BoarderHelper.box(),
-    );
+    return spin;
   }
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
-        padding: widget.paddingText??EdgeInsets.all( 5),
+        // padding: widget.paddingText??EdgeInsets.all( 5),
         color:  widget.colorHintText,
         levelDS: LevelDS.l2);
   }
@@ -249,11 +247,17 @@ class _DropdownFastorState extends State<DropdownFastor > {
   }
 
   Widget _getItemDropdownWidget(String name){
+    // double paddingText = 0;
+    // if( widget.paddingText != null ) {
+    //   paddingText = widget.paddingText!.left + widget.paddingText!.right;
+    //  // Log.i( "_getItemDropdownWidget() - paddingText: $paddingText" );
+    // }
+
     return TextFastor( name,
         levelDS: LevelDS.l3,
         padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
         color: widget.colorItemText,
-        width: widget.width - widget.spinnerTriangleWidth!
+        width: widget.width - widget.spinnerTriangleWidth!  //- paddingText
     );
   }
 
