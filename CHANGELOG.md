@@ -1,4 +1,4 @@
-## 1.0.241
+## 1.0.242
 
 * fix dropdown if hidden when not names[] 
 * add some feature of style of "DropdownFastor"
