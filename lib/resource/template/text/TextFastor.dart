@@ -1,13 +1,13 @@
 // TextFastor
 
+import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/resource/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
 
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemTools.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/constants/TemplateSize.dart';
 import 'package:log_debug/log_debug.dart';
 
-import '../../ds/LevelDS.dart';
 import 'BaseTextTemplate.dart';
 
 /// text view

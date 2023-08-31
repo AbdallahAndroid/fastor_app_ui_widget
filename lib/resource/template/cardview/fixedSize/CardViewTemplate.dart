@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/resource/boarder/BaseBoarderHelper.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
+import 'package:fastor_app_ui_widget/resource/resources/boarder/BaseBoarderHelper.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/template/crop/CropTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/elevation/ElevationTemplate.dart';
 

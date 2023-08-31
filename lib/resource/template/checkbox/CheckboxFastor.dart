@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemFont.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 

@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 

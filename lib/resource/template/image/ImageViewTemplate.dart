@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fastor_app_ui_widget/resource/boarder/BorderRadiusTools.dart';
+import 'package:fastor_app_ui_widget/resource/resources/boarder/BorderRadiusTools.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';

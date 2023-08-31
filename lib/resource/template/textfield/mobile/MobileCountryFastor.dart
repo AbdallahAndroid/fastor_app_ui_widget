@@ -1,7 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
-import 'package:fastor_app_ui_widget/resource/ds/LevelDS.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';

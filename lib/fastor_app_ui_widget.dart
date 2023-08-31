@@ -3,11 +3,11 @@ library fastor_app_ui_widget;
 //------------------------------------------------------------------------------ import
 
 
-import 'package:fastor_app_ui_widget/resource/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
+import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 // import 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemFont.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
@@ -100,10 +100,10 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkCon
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 
-import 'resource/boarder/BorderRadiusTools.dart';
-export 'resource/boarder/BorderRadiusTools.dart';
-import 'resource/state/FastorStateManagement.dart';
-export 'resource/state/FastorStateManagement.dart';
+import 'resource/resources/boarder/BorderRadiusTools.dart';
+export 'resource/resources/boarder/BorderRadiusTools.dart';
+import 'resource/toolsFastor/state/FastorStateManagement.dart';
+export 'resource/toolsFastor/state/FastorStateManagement.dart';
 
 
 import 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
@@ -126,11 +126,11 @@ export 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.da
 
 //------------------------------------------------------------------------------ export
 
-export 'package:fastor_app_ui_widget/resource/boarder/BoarderHelper.dart';
-export 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
+export 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
+export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 // export 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
-export 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
-export 'package:fastor_app_ui_widget/resource/ds/DesignSystemFont.dart';
+export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 export 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 export 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/cardview/fixedSize/CardViewTemplate.dart';
@@ -162,7 +162,7 @@ export 'package:fastor_app_ui_widget/resource/uiFastor/language/LanguageTools.da
 export 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 export 'package:hexcolor/hexcolor.dart';
 
-export 'package:fastor_app_ui_widget/resource/ds/LevelDS.dart';
+export 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
 export 'package:fastor_app_ui_widget/resource/template/crop/CropTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';

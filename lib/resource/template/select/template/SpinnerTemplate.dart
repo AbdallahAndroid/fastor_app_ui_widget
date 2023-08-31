@@ -1,6 +1,6 @@
 
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemDimen.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:log_debug/log_debug.dart';
 import 'package:flutter/material.dart';

@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/resource/ds/DesignSystemColor.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 

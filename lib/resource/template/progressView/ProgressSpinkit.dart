@@ -1,5 +1,6 @@
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 

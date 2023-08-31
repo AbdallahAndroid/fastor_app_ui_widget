@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/resource/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:flutter/material.dart';
