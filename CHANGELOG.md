@@ -1,3 +1,8 @@
+## 1.0.240
+
+* fix dropdown if hidden when not names[] 
+* add some feature of style of "DropdownFastor"
+
 ## 1.0.239
 
 * add "DateTime" in callback of "CalenderFastor"

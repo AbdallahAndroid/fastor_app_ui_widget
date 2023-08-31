@@ -1,7 +1,6 @@
 
 
-import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
@@ -19,7 +18,11 @@ class SpinnerView extends StatefulWidget {
   List<Widget> childers;
   Widget? iconDropdown;
   Decoration? decorationOutlineDropdown;
-  Color? dropdownColor;
+
+  Color? colorDropdownMenu;
+  Color? colorDropdownButtonOutline;
+  Color? colorDropdownButtonBackground;
+
   Color? underlineColor;
   SpinnerViewCallBack onSelectPosition;
   Widget hintWidget;
@@ -42,7 +45,9 @@ class SpinnerView extends StatefulWidget {
     required SpinnerViewCallBack this.onSelectPosition,
     this.decorationOutlineDropdown,
     this.iconDropdown,
-    this.dropdownColor,
+    this.colorDropdownMenu,
+    this.colorDropdownButtonOutline,
+    this.colorDropdownButtonBackground,
     this.underlineColor,
 
     //error
@@ -243,9 +248,11 @@ class SpinnerViewState extends State<SpinnerView> {
       icon: widget.iconDropdown,
       iconSize: 24,
       elevation: 16,
-      dropdownColor: widget.dropdownColor,
-      focusColor: widget.dropdownColor,
-
+      dropdownColor: widget.colorDropdownMenu,
+      focusColor: widget.colorDropdownMenu,
+      style: TextStyle(
+        backgroundColor: widget.colorDropdownButtonBackground, // Set the background color here
+      ),
       underline: Container(
         height: 2,
         color: widget.underlineColor!,

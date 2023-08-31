@@ -1,22 +1,21 @@
-
+// class DropdownFastor e
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
 import 'package:flutter/material.dart';
 
-typedef DropDownSelectChangeListener = Function(String name, int poistion );
+typedef DropDownSelectChangeListenerTest = Function(String name, int poistion );
 
+double _defaultHeight = 40;
 
 class DropdownFastor extends StatefulWidget {
 
   //required
   List<String> names;
-  DropDownSelectChangeListener listener;
+  DropDownSelectChangeListenerTest listener;
 
   //size
   double? height_frame ;
   double width;
+  double? radiusButton;
 
   // hint
   String? hintText;
@@ -32,7 +31,9 @@ class DropdownFastor extends StatefulWidget {
 
   //colors
   Color? colorItemText;
-  Color? dropdownColor;
+  Color? colorDropdownButtonOutline;
+  Color? colorDropdownButtonBackground;
+  Color? colorDropdownMenu;
   Color? underlineColor;
   Widget? iconDropdown;
 
@@ -58,11 +59,15 @@ class DropdownFastor extends StatefulWidget {
     required this.names ,
     required this.listener,
     this.height_frame,
+    this.radiusButton,
     this.spinnerTriangleWidth,
     this.hintText,
+    this.hintWidget,
     this.colorHintText,
     this.colorItemText,
-    this.dropdownColor,
+    this.colorDropdownMenu,
+    this.colorDropdownButtonOutline,
+    this.colorDropdownButtonBackground,
     this.underlineColor,
     this.iconDropdown,
     this.previousSelectedText,
@@ -76,9 +81,9 @@ class DropdownFastor extends StatefulWidget {
     this.errorTextStyle
   }) {
 
-     spinnerTriangleWidth ??= 50;
+    spinnerTriangleWidth ??= 50;
 
-     colorPreviousSelected ??= Colors.black;
+    colorPreviousSelected ??= Colors.black;
   }
 
   @override
@@ -90,17 +95,81 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   String? _selected_name ;
   int? _selected_position ;
+  bool userNotClickedYetOnButtonDropdown = true;
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-        child: dropdownAndPreviousSelectedText()
+      width: widget.width,
+      child: chooseShowDropdownOrPlaceholder() ,
     );
   }
 
+  //---------------------------------------------------------------------------- place holder
 
-  Widget dropdownAndPreviousSelectedText(){
+  Widget chooseShowDropdownOrPlaceholder(){
+
+    //check before create view
+    if( widget.names.length == 0 && userNotClickedYetOnButtonDropdown ) {
+      return placeHolderDropdownSameShape();
+    }
+    return showDropdownAndPreviousTitle();
+  }
+
+
+  Widget placeHolderDropdownSameShape(){
+    var placeholder = Container(
+      width: widget.width,
+      height: widget.height_frame??_defaultHeight,
+      child : _contentPlaceHolder(),
+      alignment: Alignment.centerLeft,
+      decoration: widget.decorationOutlineDropdown??defaultDecorationShapeSpinner(),
+    );
+
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          userNotClickedYetOnButtonDropdown = false;
+        });
+      },
+      child: placeholder,
+    );
+  }
+
+  Widget _contentPlaceHolder(){
+    var chooseHint = widget.hintWidget??_hint();
+    var marginTopToMakeIconSpinnerInCenter = widget.iconDropdown != null ? getHeightFrame() / 5 :  getHeightFrame() / 8;
+
+    return Stack( children: [
+      SizedBox( width: widget.width, height:  getHeightFrame() ),
+      Positioned(child:  chooseHint, top:  getHeightFrame() / 5 ,),
+      Positioned(child:  spinnerIconPlaceHolder(), top: marginTopToMakeIconSpinnerInCenter, right: 14, ),
+    ]);
+  }
+
+  Widget spinnerIconPlaceHolder(){
+    if(widget.iconDropdown != null ) {
+      return  widget.iconDropdown!;
+    } else {
+      return Icon( Icons.arrow_drop_down, size: 30, color: widget.colorItemText );
+    }
+  }
+
+  Decoration defaultDecorationShapeSpinner(){
+    return BoarderHelper.cardView(
+      radiusSize: widget.radiusButton??0,
+      colorLine: widget.colorDropdownButtonOutline??Colors.black,
+      colorBackground: widget.colorDropdownButtonBackground??Colors.transparent,
+    );
+  }
+
+  //---------------------------------------------------------------------------- dropdown
+
+  double getHeightFrame(){
+    return widget.height_frame??_defaultHeight;
+  }
+
+  Widget showDropdownAndPreviousTitle(){
     return ColumnFastor( children: [
       dropdown(),
       tv_previousSelected()
@@ -122,17 +191,13 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
 
   Widget dropdown(){
-
-    //check before create view
-    if( widget.names.length == 0 ) {
-      return EmptyView.zero();
-    }
-
     var spin =  SpinnerView(
       childers: _listItemDropDownWidget(),
       width_frame: widget.width,
-      height_frame: widget.height_frame??40,
-      dropdownColor: widget.dropdownColor,
+      height_frame: widget.height_frame??_defaultHeight,
+      colorDropdownMenu: widget.colorDropdownMenu,
+      colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
+      colorDropdownButtonOutline: widget.colorDropdownButtonOutline,
       underlineColor: widget.underlineColor,
       iconDropdown: widget.iconDropdown,
       decorationOutlineDropdown: widget.decorationOutlineDropdown,
@@ -142,7 +207,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       // errorMessageBackend : widget.errorMessageBackend,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
       onSelectPosition:    (p, isRemoveSelected ) {
-       // Log.i( "dropdown() -  position: " + p.toString() );
+        // Log.i( "dropdown() -  position: " + p.toString() );
 
         if( isRemoveSelected ){
           _selected_name =  null;
@@ -166,7 +231,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
         padding: widget.paddingText??EdgeInsets.all( 5),
-        color: widget.colorHintText,
+        color:  widget.colorHintText,
         levelDS: LevelDS.l2);
   }
 
