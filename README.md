@@ -1332,8 +1332,8 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
         colorTextSelected: ColorApp.black,
         colorTextUnSelected: ColorApp.gray,
         fontFamily: ProjectFonts.DarkerGrotesque_Bold_700,
-        callback: (date ) {
-            cubit!.requestRegister.birthday = date;
+        callback: ( dateTime, ddMMyyyy ) {
+            cubit!.requestRegister.birthday = ddMMyyyy;
         },
       );
 ```

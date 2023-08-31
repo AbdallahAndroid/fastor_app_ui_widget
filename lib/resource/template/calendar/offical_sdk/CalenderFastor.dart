@@ -5,7 +5,7 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-typedef CalenderSelectCallback = Function(String selectedDate );
+typedef CalenderSelectCallback = Function(DateTime selectedDateTime, String selectedDate );
 
 enum CalenderTypeFastor { dateStartFromToday, birthday }
 
@@ -184,8 +184,8 @@ class _CalenderCustomState extends State<CalenderFastor> {
 
 
   void changeToBackendFormatShapeThenCallback(DateTime dateTime) {
-    var backendResult = DateFormat('dd/MM/yyyy').format(dateTime );
-    widget.callback( backendResult);
+    var dateShape_ddmmyyyy = DateFormat('dd/MM/yyyy').format(dateTime );
+    widget.callback( dateTime, dateShape_ddmmyyyy);
     //Log.i( "DialogPickDateTime - listener - backendResult: " + backendResult.toString() );
   }
 
