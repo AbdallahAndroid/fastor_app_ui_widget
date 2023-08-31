@@ -26,11 +26,17 @@ class SpinnerView extends StatefulWidget {
 
   Color? underlineColor;
   SpinnerViewCallBack onSelectPosition;
+
+  //text
+  TextStyle? textStyleItemDropdown;
+
+  //hint
   Widget hintWidget;
 
   //size
   double width_frame  ;
   double height_frame ;
+  double iconSize;
   double? radiusButton;
 
   //error
@@ -46,10 +52,12 @@ class SpinnerView extends StatefulWidget {
     required Widget this.hintWidget,
     required double this.width_frame,
     required double this.height_frame,
+    required double this.iconSize,
     required SpinnerViewCallBack this.onSelectPosition,
     this.radiusButton,
     this.decorationOutlineDropdown,
     this.iconDropdown,
+    this.textStyleItemDropdown,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     // this.colorDropdownButtonBackground,
@@ -100,7 +108,7 @@ class SpinnerView extends StatefulWidget {
     //  Log.i("setDefaultValue()");
 
     //icon triangle
-    iconDropdown ??= Icon(Icons.arrow_drop_down);
+    iconDropdown ??= Icon(Icons.arrow_drop_down, size: iconSize );
 
     underlineColor ??= Colors.transparent;
 
@@ -185,8 +193,20 @@ class SpinnerViewState extends State<SpinnerView> {
     mapListWidgetToUnSelectedMenu();
 
     return Column( children: [
-      dropboxSized(),
+      stackDropDownAndIcon(),
       errorTextWidget()
+    ],);
+  }
+
+  //----------------------------------------------------------- stack icon and dropwond
+
+  Widget stackDropDownAndIcon(){
+
+    double marginTopIcon = widget.iconSize  / 4;
+
+    return Stack( children: [
+      dropboxSized(),
+      Positioned(  child: widget.iconDropdown!, right: 0, top: marginTopIcon,)
     ],);
   }
 
@@ -209,7 +229,7 @@ class SpinnerViewState extends State<SpinnerView> {
     );
   }
 
-  //---------------------------------------------------------- drop down
+  //---------------------------------------------------------- decoration and resize
 
   Widget dropboxSized(){
     var dropBox = getDropBoxWidget();
@@ -217,25 +237,11 @@ class SpinnerViewState extends State<SpinnerView> {
     //decoration
     var containerDecoration = Container( child:  dropBox,
         // color: Colors.green,
+        width: widget.width_frame  ,
+        height: widget.height_frame,
         decoration: chooseDecorationNormalOrError()
     );
-    //
-    // //fix boarder button that alwasy shows
-    // var containerFixBoarderButton = Container(
-    //   child: containerDecoration,
-    //   decoration: BoarderHelper.box(
-    //     colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
-    //     colorBackground: Colors.transparent
-    //   ),
-    // );
-
-    //size
-    // var material = Material(child: container ) ;
-    var sizeBox =  SizedBox(
-        child: containerDecoration,
-        width: widget.width_frame,
-        height: widget.height_frame );
-    return sizeBox;
+    return containerDecoration;
   }
 
 
@@ -260,16 +266,19 @@ class SpinnerViewState extends State<SpinnerView> {
     ) ;
   }
 
+//---------------------------------------------------------- dropdown
 
   Widget getDropBoxWidget(){
     return DropdownButton<String>(
       value: dropdownValue,
-      icon: widget.iconDropdown,
-      iconSize: 24,
+      // icon: widget.iconDropdown,
+      // iconSize: 24, //widget.iconSize,
+      iconSize: 0, //hide icon
+
       elevation: 16,
       dropdownColor: widget.colorDropdownMenu,
       focusColor: widget.colorDropdownMenu,
-      style: TextStyle(
+      style: widget.textStyleItemDropdown??TextStyle(
         backgroundColor: widget.colorDropdownTextBackground, // Set the background color here
       ),
       underline: Container(

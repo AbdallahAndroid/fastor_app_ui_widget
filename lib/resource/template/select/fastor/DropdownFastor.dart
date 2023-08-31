@@ -15,12 +15,16 @@ class DropdownFastor extends StatefulWidget {
   //size
   double? height_frame ;
   double width;
+  double iconSize;
   double? radiusButton;
 
   // hint
   String? hintText;
   Widget? hintWidget;
   Color? colorHintText;
+
+  //text
+  TextStyle? textStyleItemDropdown;
 
   //previous
   String? previousSelectedText;
@@ -57,12 +61,14 @@ class DropdownFastor extends StatefulWidget {
   DropdownFastor( {
     required this.width,
     required this.names ,
+    required this.iconSize,
     required this.listener,
     this.height_frame,
     this.radiusButton,
     this.spinnerTriangleWidth,
     this.hintText,
     this.hintWidget,
+    this.textStyleItemDropdown,
     this.colorHintText,
     this.colorItemText,
     this.colorDropdownMenu,
@@ -101,66 +107,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget build(BuildContext context) {
     return Container(
       width: widget.width,
-      child: chooseShowDropdownOrPlaceholder() ,
-    );
-  }
-
-  //---------------------------------------------------------------------------- place holder
-
-  Widget chooseShowDropdownOrPlaceholder(){
-
-    //check before create view
-    if( widget.names.length == 0 && userNotClickedYetOnButtonDropdown ) {
-      return placeHolderDropdownSameShape();
-    }
-    return showDropdownAndPreviousTitle();
-  }
-
-
-  Widget placeHolderDropdownSameShape(){
-    var placeholder = Container(
-      width: widget.width,
-      height: widget.height_frame??_defaultHeight,
-      child : _contentPlaceHolder(),
-      alignment: Alignment.centerLeft,
-      decoration: widget.decorationOutlineDropdown??defaultDecorationShapeSpinner(),
-    );
-
-    return GestureDetector(
-      onTap: (){
-        setState(() {
-          userNotClickedYetOnButtonDropdown = false;
-        });
-      },
-      child: placeholder,
-    );
-  }
-
-  Widget _contentPlaceHolder(){
-    var chooseHint = widget.hintWidget??_hint();
-    var marginTopToMakeIconSpinnerInCenter = widget.iconDropdown != null ? getHeightFrame() / 5 :  getHeightFrame() / 8;
-
-    return Stack( children: [
-      SizedBox( width: widget.width, height:  getHeightFrame() ),
-      Positioned(child:  chooseHint, top:  getHeightFrame() / 5 ,),
-      Positioned(child:  spinnerIconPlaceHolder(), top: marginTopToMakeIconSpinnerInCenter, right: 14, ),
-    ]);
-  }
-
-  Widget spinnerIconPlaceHolder(){
-    if(widget.iconDropdown != null ) {
-      return  widget.iconDropdown!;
-    } else {
-      return Icon( Icons.arrow_drop_down, size: 30, color: widget.colorItemText );
-    }
-  }
-
-  Decoration defaultDecorationShapeSpinner(){
-    // Log.i("fastor - defaultDecorationShapeSpinner()");
-    return BoarderHelper.cardView(
-      radiusSize: widget.radiusButton??0,
-      colorLine: widget.colorDropdownButtonOutline??Colors.black,
-      colorBackground:  Colors.transparent,
+      child: showDropdownAndPreviousTitle() ,
     );
   }
 
@@ -197,11 +144,13 @@ class _DropdownFastorState extends State<DropdownFastor > {
       width_frame: widget.width,
       height_frame: widget.height_frame??_defaultHeight,
       radiusButton : widget.radiusButton,
+      iconSize: widget.iconSize,
       colorDropdownMenu: widget.colorDropdownMenu,
       // colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
       colorDropdownButtonOutline: widget.colorDropdownButtonOutline,
       underlineColor: widget.underlineColor,
       iconDropdown: widget.iconDropdown,
+      textStyleItemDropdown: widget.textStyleItemDropdown,
       decorationOutlineDropdown: widget.decorationOutlineDropdown,
       errorBackendKeyJson: widget.errorBackendKeyJson,
       errorBackendJson: widget.errorBackendJson,
@@ -254,10 +203,10 @@ class _DropdownFastorState extends State<DropdownFastor > {
     // }
 
     return TextFastor( name,
-        levelDS: LevelDS.l3,
-        padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
-        color: widget.colorItemText,
-        width: widget.width - widget.spinnerTriangleWidth!  //- paddingText
+      levelDS: LevelDS.l3,
+      padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
+      color: widget.colorItemText,
+      // width: widget.width - widget.spinnerTriangleWidth!  //- paddingText
     );
   }
 
