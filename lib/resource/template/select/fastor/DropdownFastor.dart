@@ -32,7 +32,7 @@ class DropdownFastor extends StatefulWidget {
   //colors
   Color? colorItemText;
   Color? colorDropdownButtonOutline;
-  Color? colorDropdownButtonBackground;
+  // Color? colorDropdownButtonBackground;
   Color? colorDropdownMenu;
   Color? underlineColor;
   Widget? iconDropdown;
@@ -67,7 +67,7 @@ class DropdownFastor extends StatefulWidget {
     this.colorItemText,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
-    this.colorDropdownButtonBackground,
+    // this.colorDropdownButtonBackground,
     this.underlineColor,
     this.iconDropdown,
     this.previousSelectedText,
@@ -156,10 +156,11 @@ class _DropdownFastorState extends State<DropdownFastor > {
   }
 
   Decoration defaultDecorationShapeSpinner(){
+    // Log.i("fastor - defaultDecorationShapeSpinner()");
     return BoarderHelper.cardView(
       radiusSize: widget.radiusButton??0,
       colorLine: widget.colorDropdownButtonOutline??Colors.black,
-      colorBackground: widget.colorDropdownButtonBackground??Colors.transparent,
+      colorBackground:  Colors.transparent,
     );
   }
 
@@ -197,7 +198,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       height_frame: widget.height_frame??_defaultHeight,
       radiusButton : widget.radiusButton,
       colorDropdownMenu: widget.colorDropdownMenu,
-      colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
+      // colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
       colorDropdownButtonOutline: widget.colorDropdownButtonOutline,
       underlineColor: widget.underlineColor,
       iconDropdown: widget.iconDropdown,

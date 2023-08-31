@@ -21,7 +21,7 @@ class SpinnerView extends StatefulWidget {
 
   Color? colorDropdownMenu;
   Color? colorDropdownButtonOutline;
-  Color? colorDropdownButtonBackground;
+  // Color? colorDropdownButtonBackground;
   Color? colorDropdownTextBackground;
 
   Color? underlineColor;
@@ -52,7 +52,7 @@ class SpinnerView extends StatefulWidget {
     this.iconDropdown,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
-    this.colorDropdownButtonBackground,
+    // this.colorDropdownButtonBackground,
     this.colorDropdownTextBackground,
     this.underlineColor,
 
@@ -215,15 +215,24 @@ class SpinnerViewState extends State<SpinnerView> {
     var dropBox = getDropBoxWidget();
 
     //decoration
-    var container = Container( child:  dropBox,
+    var containerDecoration = Container( child:  dropBox,
         // color: Colors.green,
         decoration: chooseDecorationNormalOrError()
+    );
+
+    //fix boarder button that alwasy shows
+    var containerFixBoarderButton = Container(
+      child: containerDecoration,
+      decoration: BoarderHelper.box(
+          colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
+          colorBackground: Colors.transparent
+      ),
     );
 
     //size
     // var material = Material(child: container ) ;
     var sizeBox =  SizedBox(
-        child: container,
+        child: containerFixBoarderButton,
         width: widget.width_frame,
         height: widget.height_frame );
     return sizeBox;
@@ -245,9 +254,9 @@ class SpinnerViewState extends State<SpinnerView> {
 
     //case : default no outline
     return BoarderHelper.cardView(
-      colorBackground: widget.colorDropdownButtonBackground ?? Colors.transparent,
-      colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
-      radiusSize: widget.radiusButton??0
+        colorBackground:  Colors.transparent,
+        colorLine: widget.colorDropdownButtonOutline ?? Colors.transparent,
+        radiusSize: widget.radiusButton??0
     ) ;
   }
 
