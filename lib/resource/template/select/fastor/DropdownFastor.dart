@@ -33,6 +33,8 @@ class DropdownFastor extends StatefulWidget {
   //spin
   double? spinnerTriangleWidth;
 
+  Color? colorItemTextSelected;
+
   //colors
   Color? colorItemText;
   Color? colorDropdownButtonOutline;
@@ -71,6 +73,7 @@ class DropdownFastor extends StatefulWidget {
     this.textStyleItemDropdown,
     this.colorHintText,
     this.colorItemText,
+    this.colorItemTextSelected,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     // this.colorDropdownButtonBackground,
@@ -117,6 +120,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
     return widget.height_frame??_defaultHeight;
   }
 
+
   Widget showDropdownAndPreviousTitle(){
     return ColumnFastor( children: [
       dropdown(),
@@ -127,7 +131,6 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   Widget tv_previousSelected(){
     if( widget.previousSelectedText == null ) return SizedBox();
-
     // Log.i( "tv_city_previousSelected() - city_selected_name: " + city_selected_name );
     return TextFastor(
         widget.previousSelectedText??"" ,
@@ -139,14 +142,13 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
 
   Widget dropdown(){
-    var spin =  SpinnerView(
+    return  SpinnerView(
       childers: _listItemDropDownWidget(),
       width_frame: widget.width,
       height_frame: widget.height_frame??_defaultHeight,
       radiusButton : widget.radiusButton,
       iconSize: widget.iconSize,
       colorDropdownMenu: widget.colorDropdownMenu,
-      // colorDropdownButtonBackground: widget.colorDropdownButtonBackground,
       colorDropdownButtonOutline: widget.colorDropdownButtonOutline,
       underlineColor: widget.underlineColor,
       iconDropdown: widget.iconDropdown,
@@ -155,27 +157,24 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorBackendKeyJson: widget.errorBackendKeyJson,
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
-      // errorMessageBackend : widget.errorMessageBackend,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
       onSelectPosition:    (p, isRemoveSelected ) {
-        // Log.i( "dropdown() -  position: " + p.toString() );
-
         if( isRemoveSelected ){
           _selected_name =  null;
           return;
         }
 
+        //set new result
         _selected_name = widget.names[p];
         _selected_position = p;
 
+        //callback
         widget.listener( _selected_name!, _selected_position! );
       },
       hintWidget: widget.hintWidget??_hint() ,
     );
-
-    //decoration
-    return spin;
   }
+
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
@@ -187,27 +186,34 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   List<Widget> _listItemDropDownWidget() {
     List<Widget> listWidget = [];
+    int position = 0;
     widget.names.forEach((name) {
 
-      Widget w = _getItemDropdownWidget(name);
+      Widget w = _getItemDropdownWidget(name, position);
       listWidget.add( w );
+      position += 1;
     });
     return listWidget;
   }
 
-  Widget _getItemDropdownWidget(String name){
-    // double paddingText = 0;
-    // if( widget.paddingText != null ) {
-    //   paddingText = widget.paddingText!.left + widget.paddingText!.right;
-    //  // Log.i( "_getItemDropdownWidget() - paddingText: $paddingText" );
-    // }
 
+  Widget _getItemDropdownWidget(String name, int positionName){
     return TextFastor( name,
       levelDS: LevelDS.l3,
       padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
-      color: widget.colorItemText,
-      // width: widget.width - widget.spinnerTriangleWidth!  //- paddingText
+      color: getColorItemTextWhenSelectedOrNot(positionName),
     );
+  }
+
+
+  Color? getColorItemTextWhenSelectedOrNot ( int positionName){
+    var defaultColor = widget.colorItemText;
+    bool isSamePositionSelected = positionName == _selected_position;
+    if(isSamePositionSelected )  {
+      // Log.i( "fastor - getColorItemTextWhenSelectedOrNot() - isSkipChangeColorSelected");
+      return widget.colorItemTextSelected??defaultColor;
+    }
+    return defaultColor;
   }
 
 

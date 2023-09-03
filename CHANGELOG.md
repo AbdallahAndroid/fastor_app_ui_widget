@@ -1,3 +1,7 @@
+## 1.0.246
+
+* add "colorItemTextSelected" at widget "DropdownFastor"
+
 ## 1.0.245
 
 * fix dropdown if hidden when not names[] 
