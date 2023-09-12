@@ -1,3 +1,7 @@
+## 1.0.247
+
+* change name of "TableState" to "TableViewState" for class  "TableViewFastor"
+
 ## 1.0.246
 
 * add "colorItemTextSelected" at widget "DropdownFastor"

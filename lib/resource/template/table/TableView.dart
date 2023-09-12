@@ -3,19 +3,19 @@ import 'package:fastor_app_ui_widget/resource/template/listview/ListViewTemplate
 import 'package:log_debug/log_debug.dart';
 import 'package:flutter/material.dart';
 
-class TableView extends StatefulWidget {
+class TableViewFastor extends StatefulWidget {
 
   List<Widget> listRow;
-  ValueChanged<TableState>? stateListener;
+  ValueChanged< TableViewFastorState>? stateListener;
 
-  TableView( List<Widget>  this.listRow , {
-    ValueChanged<TableState>? this.stateListener
+  TableViewFastor( List<Widget>  this.listRow , {
+    ValueChanged<TableViewFastorState>? this.stateListener
   });
 
 
   @override
-  TableState createState() {
-    var state =  TableState( listRow );
+  TableViewFastorState createState() {
+    var state =  TableViewFastorState( listRow );
     if( stateListener != null ) {
       stateListener!(state);
     }
@@ -25,11 +25,11 @@ class TableView extends StatefulWidget {
 
 }
 
-class TableState extends State<TableView> {
+class TableViewFastorState extends State<TableViewFastor> {
 
   List<Widget> listRow;
 
-  TableState( List<Widget>  this.listRow );
+  TableViewFastorState( List<Widget>  this.listRow );
 
   //-------------------------------------------------------------------------- public methods
 

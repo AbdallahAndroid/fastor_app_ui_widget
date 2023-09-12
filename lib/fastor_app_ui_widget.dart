@@ -304,8 +304,8 @@ class fastor_app_ui_widget extends fastor {
   late StackTemplate st;
   late SwitchTemplate sw;
   late SwitchFastor switchFastor;
-  late TableView tb;
-  late TableState tbState;
+  late TableViewFastor tb;
+  late TableViewFastorState tbState;
 
   ///calender
   late CalendarTemplate calendar;
