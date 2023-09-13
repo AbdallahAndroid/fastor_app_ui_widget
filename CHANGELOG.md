@@ -1,3 +1,7 @@
+## 1.0.248
+
+* add new method "ValidateResponse.isValidJson()"
+
 ## 1.0.247
 
 * change name of "TableState" to "TableViewState" for class  "TableViewFastor"

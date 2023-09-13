@@ -18,6 +18,12 @@ class ValidateResponse {
     return response.statusCode! ==  403;
   }
 
+  static bool isValidJson(Response response ) {
+    if( response.data != null ) return false;
+    bool isValidJson = response.data is Map;
+    if( isValidJson == false ) return false;
+    return true;
+  }
 
   static bool isStatusBadRequest(Response response ) {
     if( response.statusCode == null ) return false;
