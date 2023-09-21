@@ -1,3 +1,7 @@
+## 1.0.249
+
+* hint and text in "CalenderFastor"
+
 ## 1.0.248
 
 * add new method "ValidateResponse.isValidJson()"

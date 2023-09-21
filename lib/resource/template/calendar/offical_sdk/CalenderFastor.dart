@@ -25,6 +25,7 @@ class CalenderFastor extends StatefulWidget {
 
   CalenderFastor( {
     this.title,
+    this.hint,
     this.dateSelected,
     required this.callback,
     required this.calenderTypeFastor,
@@ -69,7 +70,7 @@ class _CalenderCustomState extends State<CalenderFastor> {
 
   Widget fieldWidget(){
     return Container(
-      child: textDate(),
+      child: hintOrTextSelectedWidget(),
       height: 49,
       alignment: Alignment.center,
       decoration: widget.decoration ?? BoarderHelper.cardView(
@@ -83,7 +84,7 @@ class _CalenderCustomState extends State<CalenderFastor> {
   //------------------------------------------------------ text title
 
   Widget titleWidget(){
-    return Text( widget.hint??"Select Date",
+    return Text( widget.title??"Select Date",
       style: TextStyle(
         color: widget.colorTextTitle??Colors.black,  //Colors.black
         fontSize: widget.fontSize??13,
@@ -94,15 +95,15 @@ class _CalenderCustomState extends State<CalenderFastor> {
 
   //------------------------------------------------------ text date
 
-  Widget textDate(){
+  Widget hintOrTextSelectedWidget(){
     if( widget.dateSelected == null ) {
-      return textDateNotSelected();
+      return hintWidget();
     } else {
       return textDateSelected();
     }
   }
 
-  Widget textDateNotSelected(){
+  Widget hintWidget(){
     return Text( widget.hint??"Select Date",
       style: TextStyle(
           color: widget.colorTextUnSelected??Colors.grey,  //Colors.black
