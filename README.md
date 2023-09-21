@@ -1586,6 +1586,14 @@ SaveFastor.getString();
 SaveFastor.getBool();
 ```
 
+* Example Get Username From Cache In Text Widget
+```dart
+  Widget loginContentUI(){
+    return ColumnFastor(children: [
+      TextFastor( "Test get username: " + SaveFastor.getString( "username"))
+    ]);
+  }
+```
 
 ---
 ---

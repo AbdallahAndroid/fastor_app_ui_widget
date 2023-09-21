@@ -8,6 +8,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
+@Deprecated( "Instead use class (SaveFastor) and follow this link to get start: https://pub.dev/packages/fastor_app_ui_widget#savefastor" )
 class Save {
   static const tag = "Save";
 
