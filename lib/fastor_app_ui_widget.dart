@@ -69,6 +69,9 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCo
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
@@ -355,7 +358,8 @@ class fastor_app_ui_widget extends fastor {
   late Log myLog;
   late IFrameElement iFrameElement;
   late CssStyleDeclaration cssStyleDeclaration;
-  late Save saveFastor;
+  late Save save;
+  late SaveFastor saveFastor;
   late ToolsString toolsString;
   late ToolsWait toolsWait;
   late ToolsPhone toolsPhone;

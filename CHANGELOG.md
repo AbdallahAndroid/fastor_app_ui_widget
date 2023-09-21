@@ -1,3 +1,7 @@
+## 1.0.250
+
+* Add class "SaveFastor"
+
 ## 1.0.249
 
 * hint and text in "CalenderFastor"

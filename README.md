@@ -142,6 +142,8 @@ class MyApp extends StatelessWidget {
 
 [LangFastor](https://pub.dev/packages/fastor_app_ui_widget#langfastor)
 
+[SaveFastor](https://pub.dev/packages/fastor_app_ui_widget#savefastor)
+
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
 
 [ToolsWait](https://pub.dev/packages/fastor_app_ui_widget#toolswait)
@@ -1545,9 +1547,47 @@ class MyApp  extends StatelessWidget {
 ```
 Lang.isArabic   
 ```
+---
 
 ---
 
+## SaveFastor
+
+* Save In Cache By Using Plugin SharedPreference
+* Can Save Single Map() object
+* Can Save List of Map() Object
+
+* Setup 
+```
+class MyApp extends StatelessWidget {
+ 
+  @override
+  Widget build(BuildContext context) {
+     Fastor.initializeApp(context);     //init Fastor Plugin here
+ }
+```
+
+* methods to save
+```
+SaveFastor.setMap( );
+SaveFastor.setMapList( );
+SaveFastor.setInt();
+SaveFastor.setString();
+SaveFastor.setBool();
+```
+
+
+* methods to get
+```
+SaveFastor.getMap( );
+SaveFastor.getMapList( );
+SaveFastor.getInt();
+SaveFastor.getString();
+SaveFastor.getBool();
+```
+
+
+---
 ---
 
 ## NavigationTools
