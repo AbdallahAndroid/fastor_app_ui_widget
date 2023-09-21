@@ -39,6 +39,8 @@ export 'package:fastor_app_ui_widget/resource/template/listview/gridview/GridVie
 import 'package:fastor_app_ui_widget/resource/template/page/PageFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/page/PageFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/page/PageTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/page/ScaffoldFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/page/ScaffoldFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/placeholder/PlaceholderTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressSpinkit.dart';
@@ -317,6 +319,7 @@ class fastor_app_ui_widget extends fastor {
   late TextFastor textFastor;
   late ButtonFastor buttonFastor;
   late PageFastor pageFastor;
+  late ScaffoldFastor scaffoldFastor;
   late ImageFastor imageFastor;
   late FastorMaterialApp materialApp;
   late AppBarFastor appBar;

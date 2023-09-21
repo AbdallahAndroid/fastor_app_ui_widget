@@ -123,8 +123,8 @@ class SaveFastor {
   //------------------------------------------------------------------ int
 
   static Future setInt(String key, int v) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(key, v);
+    prefs = await SharedPreferences.getInstance();
+    await prefs!.setInt(key, v);
     // var box = Hive.box('myBox');
     // box.put(key, v );
   }
@@ -145,8 +145,8 @@ class SaveFastor {
   //------------------------------------------------------------------ string
 
   static Future setString(String key, String v) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(key, v);
+    prefs = await SharedPreferences.getInstance();
+    await prefs!.setString(key, v);
     //  Log.k( "save class",  "setString() - key: " + key + " /v: " + v );
   }
 
@@ -166,8 +166,8 @@ class SaveFastor {
   //------------------------------------------------------------------ bool
 
   static Future setBool(String key, bool v) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(key, v);
+    prefs = await SharedPreferences.getInstance();
+    await prefs!.setBool(key, v);
 
   }
 

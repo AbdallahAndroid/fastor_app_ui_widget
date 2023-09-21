@@ -1,5 +1,9 @@
 ## 1.0.250
 
+* Build class "ScaffoldFastor"
+
+## 1.0.250
+
 * Add class "SaveFastor"
 
 ## 1.0.249

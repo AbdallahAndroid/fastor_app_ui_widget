@@ -22,14 +22,12 @@ import 'base/BasePageTemplateProgrees.dart';
 
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
-
-/// Page Fastor like Scaffold
-class PageFastor extends StatelessWidget {
-  static const tag = "PageFastor";
+class ScaffoldFastor extends StatelessWidget {
+  static const tag = "ScaffoldFastor";
 
   //required
-  State myState; //write "this" inside any class type "StateFullWidget"
-  Widget content;
+  State? stateFullWidget; //write "this" inside any class type "StateFullWidget"
+  Widget body;
   BuildContext? context;
 
   //page info
@@ -71,21 +69,25 @@ class PageFastor extends StatelessWidget {
   Color? homeButtonsBackgroundColor;
 
   //drawer menu
-  GlobalKey? scaffoldKey; // = GlobalKey()
+  GlobalKey? scaffoldKey;
   Widget? drawer;
   DrawerCallback? onDrawerChanged;
 
   //scroll
   ScrollController? scrollController;
+  bool? isPlaceBodyInsideScroll;
   bool? isStopScroll;
   bool? thumbVisibility;
 
   //keybaord
   bool? resizeToAvoidBottomInset;
 
-  PageFastor(this.myState,
+
+  ScaffoldFastor(
       {
-        required Widget this.content,
+        required Widget this.body,
+        this.isPlaceBodyInsideScroll ,
+        this.stateFullWidget,
         this.title = "",
         this.assetBackground,
         this.assetBackgroundOpacity,
@@ -117,8 +119,10 @@ class PageFastor extends StatelessWidget {
 
   void setDefaultValue() {
     //state manager
-    FastorStateManagement.instance().addState(myState);
-
+    if(stateFullWidget != null ) {
+      FastorStateManagement.instance().addState(stateFullWidget!);
+    }
+    
     // check null
     title ??= "";
 
@@ -146,6 +150,11 @@ class PageFastor extends StatelessWidget {
 
     //floatBottom view
     floatBottom ??= EmptyView.zero();
+
+    //isPlaceBodyInsideScroll
+    if( scrollController != null ) {
+      isPlaceBodyInsideScroll = true;
+    }
   }
 
   @override
@@ -153,22 +162,14 @@ class PageFastor extends StatelessWidget {
     this.context = context;
 
     //background (color or image )
-    var myBackground = _getBackground(myState.context, colorBackground,
+    var myBackground = _getBackground( context, colorBackground,
         assetBackground, assetBackgroundOpacity, widgetBackground);
 
-    //scroll all page
-    Widget scrollAllPage = ScrollViewPage.t(myState.context, content,
-        scrollController: scrollController,
-        toolbarHeight: toolbar_height,
-        footer_height: navigationBottom_height,
-        isStopScroll: isStopScroll,
-        thumbVisibility: thumbVisibility
-    );
 
     // choose stack of page mobile app
     Stack stack = _putEveryBarToStack(
         myBackground,
-        scrollAllPage,
+        chooseScrollContentOrContentWithoutScroll(),
         floatBottom!,
         navigationBottom!,
         navigationBottom_height,
@@ -200,6 +201,44 @@ class PageFastor extends StatelessWidget {
     );
   }
 
+  //------------------------------------------------  scroll content or content without scroll
+
+  Widget chooseScrollContentOrContentWithoutScroll(){
+    //scroll all page
+    if( isPlaceBodyInsideScroll! ) {
+      return scrollAllContent();
+    } else {
+      return contentWithoutScroll();
+    }
+  }
+
+
+  Widget scrollAllContent(){
+    return ScrollViewPage.t( context!, body,
+        scrollController: scrollController,
+        toolbarHeight: toolbar_height,
+        footer_height: navigationBottom_height,
+        isStopScroll: isStopScroll,
+        thumbVisibility: thumbVisibility
+    );
+  }
+
+  Widget contentWithoutScroll(){
+
+    //default
+    toolbar_height ??= 0;
+    footer_height = navigationBottom_height;
+    footer_height ??= 0;
+
+
+    // fix toolbar + navigation
+    var tallView = Column( children: [
+      EmptyView.empty( toolbar_height!   , toolbar_height!  ),
+      body,
+      EmptyView.empty( footer_height!  , footer_height!   )
+    ]);
+    return tallView;
+  }
   //--------------------------------------------------------------- basic
 
   static AnnotatedRegion _getHomeButtonTheme(
@@ -318,12 +357,8 @@ class PageFastor extends StatelessWidget {
     //progress
     var progress = BasePageTemplateProgress.progressView(onChangeProgressState);
 
-    // var statusBarHeight = StatusBarConstant.getHeight();
-
     var stack = Stack(
       children: [
-        //expanded
-        // EmptyView.allDeviceScreen(context),
 
         //set  background (color or image or widgetBackground )
         myBackground,
@@ -342,9 +377,6 @@ class PageFastor extends StatelessWidget {
 
         // navigation
         Positioned(child: navigationBottom, bottom: 0, left: 0, right: 0),
-
-        //test
-        // Text( "4: " + StatusBarConstant.colorBackground.hexColor )
       ],
     );
 
@@ -352,14 +384,3 @@ class PageFastor extends StatelessWidget {
   }
 }
 
-
-//-------------------------------------------------------------- scroll glow color
-
-
-class MyScrollThemeHidden extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
-    return  child;
-  }
-}
