@@ -57,6 +57,9 @@ import 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.d
 import 'package:fastor_app_ui_widget/resource/template/stack/StackTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/switch/SwitchTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
+import 'package:fastor_app_ui_widget/resource/template/table/TableFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/table/TableFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';

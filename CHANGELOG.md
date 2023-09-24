@@ -1,4 +1,8 @@
-## 1.0.250
+## 1.0.252
+
+* Build class "TableFastor"
+
+## 1.0.251
 
 * Build class "ScaffoldFastor"
 
