@@ -120,6 +120,8 @@ class MyApp extends StatelessWidget {
 
 [ScrollFastor](https://pub.dev/packages/fastor_app_ui_widget#scrollfastor)
 
+[TableFastor](https://pub.dev/packages/fastor_app_ui_widget#tablefastor)
+
 [Progress](https://pub.dev/packages/fastor_app_ui_widget#progress)
 
 [DropdownFastor](https://pub.dev/packages/fastor_app_ui_widget#dropdownfastor)
@@ -135,7 +137,10 @@ class MyApp extends StatelessWidget {
 [MobileCountryFastor](https://pub.dev/packages/fastor_app_ui_widget#mobilecountryfastor)
 
 [TextFieldEmailOrPhoneFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldemailorphonefastor)
- 
+
+
+
+
 ## Content: Classes Helper
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
@@ -1101,6 +1106,16 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
   }
 
 ```
+
+
+---
+
+---
+
+# TableFastor
+
+* feature scroll both horizontal and vertical axis
+
 
 ---
 
