@@ -1328,6 +1328,42 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ```
 
+
+### Example Arabic Change Icon Direction
+
+* code use "textDirection"
+```
+    var mobile = TextFieldEmailOrPhoneFastor(
+   
+      textDirection : LanguageHelper.getTextDirection(),
+       ....
+    ); 
+
+```
+
+* user any class helper to return direction
+* you can also used helper fastor langauge class. "LangFastor.getTextDirection()"
+
+```
+class LanguageHelper {
+
+
+  static TextDirection getTextDirection() {
+    var lang = translator.activeLanguageCode;
+    var isArabic = lang == "ar";
+    if (isArabic) {
+      return TextDirection.rtl;
+    } else {
+      return TextDirection.ltr;
+    }
+  }
+
+}
+
+```
+
+
+
 ---
 
 ---

@@ -1,3 +1,7 @@
+## 1.0.253
+
+*  "TextDirection" add to "TextFieldEmailOrPhoneFastor" widget
+
 ## 1.0.252
 
 * Build class "TableFastor"
