@@ -155,6 +155,8 @@ class ScaffoldFastor extends StatelessWidget {
     if( scrollController != null ) {
       isPlaceBodyInsideScroll = true;
     }
+    isPlaceBodyInsideScroll ??= false;
+
   }
 
   @override
