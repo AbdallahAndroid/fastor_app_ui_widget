@@ -1,3 +1,8 @@
+## 1.0.255
+
+* add class "ClipboardFastor" to save/get from clipboard
+* update readme of "DeviceTools" class
+
 ## 1.0.254
 
 *  add "hint_color"  at "TextFieldEmailOrPhoneFastor" widget

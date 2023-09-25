@@ -74,6 +74,8 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCo
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/cache/ClipboardFastor.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/ClipboardFastor.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart';
 
@@ -356,6 +358,7 @@ class fastor_app_ui_widget extends fastor {
   late HexColor hexColor;
 
   ///tools util
+  late ClipboardFastor clipboardFastor;
   late DeviceTools deviceTools;
   late ToolsValidation toolsValidation;
   late UniqueIdTools uniqueIdTools;

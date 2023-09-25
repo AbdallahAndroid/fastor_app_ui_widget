@@ -149,6 +149,8 @@ class MyApp extends StatelessWidget {
 
 [SaveFastor](https://pub.dev/packages/fastor_app_ui_widget#savefastor)
 
+[ClipboardFastor](https://pub.dev/packages/fastor_app_ui_widget#clipboardfastor)
+
 [NavigationTools](https://pub.dev/packages/fastor_app_ui_widget#navigationtools)
 
 [ToolsWait](https://pub.dev/packages/fastor_app_ui_widget#toolswait)
@@ -158,6 +160,7 @@ class MyApp extends StatelessWidget {
 [ZoneTools](https://pub.dev/packages/fastor_app_ui_widget#zonetools)
 
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
+
 
 ---
 
@@ -1648,6 +1651,110 @@ SaveFastor.getBool();
 
 ---
 ---
+
+## ClipboardFastor
+
+* save and get to clipboard of mobile
+``` dart
+
+class ClipboardFastor {
+
+  static Future save(String valueToSave ) async {
+ ....
+  }
+
+  static Future<String> get() async{
+  ...
+  }
+
+}
+```
+
+----
+
+----
+
+## DeviceTools
+
+* get full device width/height
+* method for calculate percentage of device size
+* method get platform of this device "android/ios/browser/mobile"
+* method get oriantation portial/landscape
+```dart
+
+  //-------------------------------------------------------------- platform
+
+  static bool isPlatformWeb(){
+    return kIsWeb;
+  }
+
+
+  static bool isMobile() {
+  ...
+  }
+
+
+  static bool isAndroid() {
+  ...
+  }
+
+
+  static bool isIOS() {
+  ...
+  }
+
+  /**
+   * open from safari or chrome from android or ios
+   */
+  static bool isBrowserMobile() {
+  ...
+  }
+
+
+  static bool isBrowserAndroid() {
+  ...
+  }
+
+
+  static bool isBrowserIOS() {
+  ...
+  }
+
+  //----------------------------------------------------------------- orientation
+
+  static bool isPortrait(BuildContext  context ) {
+  ...
+  }
+
+
+  static bool isLandscape(BuildContext  context, ) {
+      ...
+  }
+
+
+  static bool isMobile_portrait( BuildContext  context ) {
+  ...
+  }
+
+
+  static double getWidth (BuildContext  context, { String? className  }) {
+  ...
+  }
+
+
+  static double getHeight (BuildContext  context, { String? className }) {
+  ...
+  }
+ 
+  static double getPercentageWidth(BuildContext  context, double p) {
+  ...
+  }
+
+```
+
+----
+
+----
 
 ## NavigationTools
 
