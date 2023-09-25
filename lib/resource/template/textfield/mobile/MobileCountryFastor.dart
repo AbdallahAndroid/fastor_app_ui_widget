@@ -26,6 +26,7 @@ class MobileCountryFastor extends StatefulWidget {
   List<String>? favoriteCountryCodeArray;
   String? title;
   String? hint;
+  Color? hint_color;
   TextEditingController? controller;
   Color? colorUnderlineInputField;
   TextInputType? textInputType;
@@ -42,6 +43,7 @@ class MobileCountryFastor extends StatefulWidget {
     this.textInputType,
     this.title,
     this.hint,
+    this.hint_color,
     this.colorUnderlineInputField,
     this.favoriteCountryCodeArray,
     this.initialSelection,
@@ -49,6 +51,7 @@ class MobileCountryFastor extends StatefulWidget {
     this.isHideCountryPicker
   }) {
     isHideCountryPicker ??= false;
+    // print( "fastor - MobileCountryFastor - hint_color: " + hint_color.toString() );
   }
 
 
@@ -109,7 +112,6 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   @override
   Widget build(BuildContext context) {
-    debugMode();
     return mobile();
   }
 
@@ -123,18 +125,9 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
     );
   }
 
-  //---------------------------------------------------------------------- debug
-
-  void debugMode() {
-    // if (EnvironmentConstant.isLive ) return;
-    // phone_controller.text = "01012345601";
-    // phone_text = "01012345601";
-  }
-
   //----------------------------------------------------------------------- stack
 
   Widget countryWithPhoneWithBoarder(){
-
     return ColumnFastor(children: [
       rowCountryAndSpinAndPhone(),
       underLine()
@@ -215,6 +208,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   //----------------------------------------------------------------------- textfield
 
   Widget tf_phone(){
+    // Log.i("fastor - widget.hint: " + widget.hint.toString());
     return TextFieldFastor(
         margin: EdgeInsets.only( top:  5.5),
         isRemoveUnderline: true,
@@ -226,6 +220,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
         keyboardType: widget.textInputType??TextInputType.number,
         suffixIcon: widget.suffixIcon,
         hint_text: widget.hint ,
+        hint_color : widget.hint_color,
         onChanged: (phone){
           phone_text = phone;
           updateCallback();

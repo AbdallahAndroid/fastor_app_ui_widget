@@ -1,6 +1,10 @@
+## 1.0.254
+
+*  add "hint_color"  at "TextFieldEmailOrPhoneFastor" widget
+
 ## 1.0.253
 
-*  "TextDirection" add to "TextFieldEmailOrPhoneFastor" widget
+*  add "TextDirection"  at "TextFieldEmailOrPhoneFastor" widget
 
 ## 1.0.252
 

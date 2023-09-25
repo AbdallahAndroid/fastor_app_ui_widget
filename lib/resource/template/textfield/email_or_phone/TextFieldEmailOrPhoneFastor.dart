@@ -13,6 +13,7 @@ class TextFieldEmailOrPhoneFastor extends StatefulWidget {
   List<String>? favoriteCountryCodeArray;
   String? title;
   String? hint;
+  Color? hint_color;
   TextEditingController? controller;
   Color? colorUnderlineInputField;
 
@@ -33,11 +34,14 @@ class TextFieldEmailOrPhoneFastor extends StatefulWidget {
         // this.textInputType,
         this.title,
         this.hint,
+        this.hint_color,
         this.colorUnderlineInputField,
         this.favoriteCountryCodeArray,
         this.initialSelection,
         this.iconCaseEmail,
-        this.iconCaseMobile}) {}
+        this.iconCaseMobile}) {
+    // print( "fastor - TextFieldEmailOrPhoneFastor - hint_color: " + hint_color.toString() );
+  }
 
   @override
   _TextFieldEmailOrPhoneState createState() => _TextFieldEmailOrPhoneState();
@@ -83,6 +87,7 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
         controller: widget.controller,
         title: widget.title,
         hint: widget.hint,
+        hint_color: widget.hint_color,
         callback: (country, phone) {
           updatePhoneEntryType(phone);
           chooseCallbackPhoneOrEmail(country, phone);
