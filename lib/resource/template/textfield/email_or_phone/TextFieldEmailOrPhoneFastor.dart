@@ -5,6 +5,7 @@ typedef TextFieldEmailListener = Function(String email);
 
 class TextFieldEmailOrPhoneFastor extends StatefulWidget {
   double width;
+  TextDirection textDirection;
   TextFieldEmailListener callbackEmail;
   MobileCountryListener callbackPhone;
   Decoration? decoration;
@@ -23,19 +24,20 @@ class TextFieldEmailOrPhoneFastor extends StatefulWidget {
 
   TextFieldEmailOrPhoneFastor(
       {required this.width,
-      required this.callbackPhone,
-      required this.callbackEmail,
-      this.textStyle,
-      this.controller,
-      this.decoration,
-      // this.textInputType,
-      this.title,
-      this.hint,
-      this.colorUnderlineInputField,
-      this.favoriteCountryCodeArray,
-      this.initialSelection,
-      this.iconCaseEmail,
-      this.iconCaseMobile}) {}
+        required this.callbackPhone,
+        required this.callbackEmail,
+        required this.textDirection,
+        this.textStyle,
+        this.controller,
+        this.decoration,
+        // this.textInputType,
+        this.title,
+        this.hint,
+        this.colorUnderlineInputField,
+        this.favoriteCountryCodeArray,
+        this.initialSelection,
+        this.iconCaseEmail,
+        this.iconCaseMobile}) {}
 
   @override
   _TextFieldEmailOrPhoneState createState() => _TextFieldEmailOrPhoneState();
@@ -49,15 +51,26 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
   Widget build(BuildContext context) {
     return Stack(children: [
       textFieldPhone(),
-      if (isHaveIcon())
-        Positioned(
-          child: chooseIcon()!,
-          right: 0,
-          bottom: 0,
-        )
+      if (isHaveIcon()) choosePositionIconByDirectionArabicOrEnglish()
+
     ]);
   }
 
+  Positioned choosePositionIconByDirectionArabicOrEnglish(){
+    if( widget.textDirection == TextDirection.ltr ) {
+      return  Positioned(
+        child: chooseIcon()!,
+        right: 0,
+        bottom: 0,
+      );
+    } else {
+      return  Positioned(
+        child: chooseIcon()!,
+        left: 0,
+        bottom: 0,
+      );
+    }
+  }
 
   Widget textFieldPhone() {
     var mobile = MobileCountryFastor(
