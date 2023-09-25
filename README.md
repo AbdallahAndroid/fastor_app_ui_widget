@@ -1506,7 +1506,7 @@ How to auto change direction from (  English => Arabic ) left/right
   }
   Widget getDirection() {
     return   Directionality(
-      textDirection:   Lang.getTextDirection(),
+      textDirection:   LangFastor.getTextDirection(),
       child:   Builder(
         builder: (BuildContext context) {
           return   MediaQuery(
