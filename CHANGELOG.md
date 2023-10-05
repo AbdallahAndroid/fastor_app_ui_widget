@@ -1,3 +1,7 @@
+## 1.0.256
+
+* add listener "onRemoveSelected" at "DropdownFastor"
+
 ## 1.0.255
 
 * add class "ClipboardFastor" to save/get from clipboard

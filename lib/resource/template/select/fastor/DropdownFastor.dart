@@ -3,6 +3,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
 
 typedef DropDownSelectChangeListenerTest = Function(String name, int poistion );
+typedef DropDownRemoveSelectedListener = Function( );
 
 double _defaultHeight = 40;
 
@@ -11,6 +12,7 @@ class DropdownFastor extends StatefulWidget {
   //required
   List<String> names;
   DropDownSelectChangeListenerTest listener;
+  DropDownRemoveSelectedListener onRemoveSelected;
 
   //size
   double? height_frame ;
@@ -65,6 +67,7 @@ class DropdownFastor extends StatefulWidget {
     required this.names ,
     required this.iconSize,
     required this.listener,
+    required this.onRemoveSelected,
     this.height_frame,
     this.radiusButton,
     this.spinnerTriangleWidth,
@@ -161,6 +164,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       onSelectPosition:    (p, isRemoveSelected ) {
         if( isRemoveSelected ){
           _selected_name =  null;
+          if( widget.onRemoveSelected != null ) widget.onRemoveSelected!();
           return;
         }
 
