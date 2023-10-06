@@ -1168,6 +1168,37 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
 ```
 
+# to remove the selected item from dropdown programmatically
+* example dropdown
+```dart
+
+Widget dropdownFastor(){
+  return DropdownFastor(
+          width: 150,
+          names:  ["male", "female", "prefer not answer"],
+          iconSize: 24,
+          previousPosition: previousPosition,
+          listener: (name, position){
+            Log.i( "dropdownFastor() - name: " + name.toString() + " /position: $position" );
+            previousPosition = position;
+          },
+          onRemoveSelected: (){
+            Log.i( "dropdownFastor() - onRemoveSelected "  );
+            removeSelectedDropdown();
+          });
+}
+
+```
+
+* from call back pressed of button invoke method :
+````
+  removeSelectedDropdown(){
+    setState(() {
+      previousPosition = null;
+    });
+  }
+
+````
 
 ---
 

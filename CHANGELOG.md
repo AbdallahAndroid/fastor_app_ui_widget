@@ -1,6 +1,5 @@
-## 1.0.257
+## 1.0.258
 
-* add at "DropDownFastor"  feature "removeSelected" take boolean, when  true, make remove selected from dropdown button
 * add at "DropDownFastor"  feature "previousPosition" take int position of choose one item selected programmatically, used at show previous selected item at edit form.
 * add at "SpinnerView"  feature "previousPosition" take int position of choose one item selected programmatically, used at show previous selected item at edit form.
 

@@ -89,7 +89,11 @@ class SpinnerView extends StatefulWidget {
     fixWidthWithIconSpinner();
     _setValidatorFromBackend();
 
-    setPosition( previousPosition!);
+    // print("fastor - SpinnerView - constructor() previousPosition: $previousPosition");
+    if( previousPosition != null ){
+      // previousPosition ??= int.parse( SpinnerView.key_position_hint);
+      setPosition( previousPosition!);
+    }
 
   }
 
@@ -146,8 +150,7 @@ class SpinnerView extends StatefulWidget {
     /**
         "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
      */
-    //  dropdownValue = SpinnerView.key_position_hint;// listChildWidget[0];
-    previousPosition ??= int.parse( SpinnerView.key_position_hint);
+    // dropdownValue = SpinnerView.key_position_hint;
   }
 
 
@@ -198,7 +201,7 @@ class SpinnerViewState extends State<SpinnerView> {
     double marginTopIcon = widget.iconSize  / 4;
 
     return Stack( children: [
-      dropboxSized(),
+      dropboxAndBoarder(),
       Positioned(  child: widget.iconDropdown!, right: 0, top: marginTopIcon,)
     ],);
   }
@@ -224,7 +227,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
   //---------------------------------------------------------- decoration and resize
 
-  Widget dropboxSized(){
+  Widget dropboxAndBoarder(){
     var dropBox = getDropBoxWidget();
 
     //decoration
@@ -262,6 +265,10 @@ class SpinnerViewState extends State<SpinnerView> {
 //---------------------------------------------------------- dropdown
 
   Widget getDropBoxWidget(){
+    // print("fastor - SpinnerView - getDropBoxWidget() dropdownValue: ${widget.dropdownValue}");
+    if( ToolsValidation.isEmpty( widget.dropdownValue) ) {
+      widget.dropdownValue = SpinnerView.key_position_hint;
+    }
     return DropdownButton<String>(
       value: widget.dropdownValue,
       // icon: widget.iconDropdown,

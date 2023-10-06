@@ -15,7 +15,7 @@ class DropdownFastor extends StatefulWidget {
 
   //remove
   DropDownRemoveSelectedListener onRemoveSelected;
-  bool? removeSelected;
+  // bool? removeSelected;
 
   //size
   double? height_frame ;
@@ -72,7 +72,7 @@ class DropdownFastor extends StatefulWidget {
     required this.iconSize,
     required this.listener,
     required this.onRemoveSelected,
-    this.removeSelected,
+    // this.removeSelected,
     this.height_frame,
     this.radiusButton,
     this.spinnerTriangleWidth,
@@ -100,7 +100,7 @@ class DropdownFastor extends StatefulWidget {
   }) {
 
     spinnerTriangleWidth ??= 50;
-    removeSelected ??= false;
+    // removeSelected ??= false;
     colorPreviousSelected ??= Colors.black;
 
   }
@@ -169,7 +169,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorTextStyle: widget.errorTextStyle,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
       hintWidget: widget.hintWidget??_hint() ,
-      previousPosition: getPreviousPositon(),
+      previousPosition: widget.previousPosition,
       onSelectPosition:    (p, isRemoveSelected ) {
         if( isRemoveSelected ){
           _selected_name =  null;
@@ -188,9 +188,23 @@ class _DropdownFastorState extends State<DropdownFastor > {
     );
   }
 
-  int? getPreviousPositon(){
-    return widget.removeSelected!? int.parse(SpinnerView.key_position_hint) : widget.previousPosition;
-  }
+
+  // int? getPreviousPositon(){
+  //
+  //   //first pirority : return the previous selected when found
+  //   if(widget.previousPosition != null ) {
+  //     return null;
+  //   }
+  //
+  //   //second pirority : see remove selected
+  //   if(widget.removeSelected! == true ) {
+  //     return null;
+  //   }
+  //
+  //   //third pirority default
+  //   return widget.previousPosition;
+  // }
+
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
