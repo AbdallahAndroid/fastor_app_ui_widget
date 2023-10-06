@@ -1,4 +1,4 @@
-## 1.0.259
+## 1.0.260
 
 * buttonFastor add feature progress
   bool? showProgress;

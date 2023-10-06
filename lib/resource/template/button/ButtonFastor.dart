@@ -106,6 +106,7 @@ class ButtonFastor extends StatelessWidget {
 
     showProgress ??= false;
 
+
     setDefaultProgressSize();
   }
 
@@ -167,11 +168,43 @@ class ButtonFastor extends StatelessWidget {
 
   Widget chooseButtonTextOrProgressViewInsideButton(){
     if( showProgress!){
-      return ProgressCircleFastor(size: sizeProgress, color: colorProgress);
+      return progressContainer();
     } else {
-      return _getText(
-          text, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!);
+      return _getTextWidget(text);
     }
+  }
+
+  //----------------------------------------------------------------- progress view
+
+  Widget progressContainer(){
+    return Container(
+        child: stackTextEmptyWithProgress(),
+        padding: EdgeInsets.symmetric(vertical: 0.5, horizontal: 2)
+    );
+  }
+
+
+  Widget stackTextEmptyWithProgress(){
+    return Stack(children: [
+      emptyTextWidgetWithSameWidthOfNormalText(),
+      Positioned(child: progressCircle(), left: 0, right: 0, bottom: 7,)
+    ],);
+  }
+
+
+  Widget progressCircle(){
+    var prog = ProgressCircleFastor(size: sizeProgress, color: colorProgress);
+    return SizedBox( width: sizeProgress! * 2, child: prog );
+  }
+
+
+  Widget emptyTextWidgetWithSameWidthOfNormalText(){
+    int lenghtText = text.toString().length;
+    var textSpace = " ";
+    for( int i = 0; i < lenghtText ; i++ ) {
+      textSpace += " ";
+    }
+    return _getTextWidget(textSpace);
   }
 
   //------------------------------------------------------------------- button style and text theme
@@ -183,14 +216,14 @@ class ButtonFastor extends StatelessWidget {
   }
 
 
-  static Widget _getText(String text, TextAlign textAlign, Color textColor_ds,
-      double textDimen_ds, EdgeInsets padding, String font_ds) {
+  Widget _getTextWidget(String text,) {
+    //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
     return TextTemplate.t(text,
-        textAlign: textAlign,
-        color: textColor_ds,
-        dimen: textDimen_ds,
-        padding: padding,
-        fontFamily: font_ds);
+        textAlign: textAlign!,
+        color: textColor_ds!,
+        dimen: textFontSize,
+        padding: padding!,
+        fontFamily: font_ds!);
   }
 
   static ButtonStyle _getButtonStyle(Color backgroundColor_ds, double? width,
