@@ -1,3 +1,10 @@
+## 1.0.259
+
+* buttonFastor add feature progress
+  bool? showProgress;
+  double? sizeProgress;
+  Color? colorProgress;
+
 ## 1.0.258
 
 * add at "DropDownFastor"  feature "previousPosition" take int position of choose one item selected programmatically, used at show previous selected item at edit form.

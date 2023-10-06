@@ -536,6 +536,13 @@ EdgeInsets.symmetric( vertical: 30),
     );
 ```
 
+* progress of button controle by:
+```
+  bool? showProgress;
+  double? sizeProgress;
+  Color? colorProgress;
+```
+
 ---
 <hr  style="border-top: 3px solid; ">
 

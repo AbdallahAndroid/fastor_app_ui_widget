@@ -12,6 +12,7 @@ import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 
+import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircleFastor.dart';
 
 ///class button ui
 class ButtonFastor extends StatelessWidget {
@@ -38,11 +39,25 @@ class ButtonFastor extends StatelessWidget {
   TextAlign? textAlign ; //= TextAlign.center;
   Alignment? gravityLayout; //container alignment
 
+  //progress
+  bool? showProgress;
+  double? sizeProgress;
+  Color? colorProgress;
+
+  Color? textColor_ds;
+
+  Color? backgroundColor_ds;
+  // double? textDimen_ds;
+  String? font_ds;
+
   ButtonFastor(
       this.text,
       this.onPressed,
       {
         this.textColor,
+        this.showProgress,
+        this.sizeProgress,
+        this.colorProgress,
         this.textFontSize  ,
         this.fontFamily,
         this.background,
@@ -63,44 +78,8 @@ class ButtonFastor extends StatelessWidget {
     setDefaultValue();
   }
 
-  Color? textColor_ds;
 
-  Color? backgroundColor_ds;
-  // double? textDimen_ds;
-  String? font_ds;
-
-  @override
-  Widget build(BuildContext context) {
-    //text
-    Widget txtWidget = _getText(
-        text, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!);
-
-    //style button
-    ButtonStyle style = _getButtonStyle(backgroundColor_ds!, width, height,
-        borderLine, borderRadius, textFontSize! );
-
-    //button
-    var bt = ElevatedButton(
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      child: txtWidget,
-      style: style,
-    );
-
-    //container
-    var ct = Container(
-      width: width,
-      height: height,
-      margin: margin,
-      alignment: gravityLayout,
-      child: bt,
-      decoration: decoration,
-    );
-
-    return ct;
-  }
-
-  //------------------------------------------------------------------------- base
+  //------------------------------------------------------------------------- default
 
   void setDefaultValue() {
     levelDS ??= LevelDS.l1;
@@ -125,10 +104,84 @@ class ButtonFastor extends StatelessWidget {
     //margin fix
     margin = EdgeInsetsTools.fixDefaultSpace(margin, 6);
 
-    //fix default size
-    // height ??= DSDimen.button_height;
-    // width ??= 140;
+    showProgress ??= false;
+
+    setDefaultProgressSize();
   }
+
+
+  setDefaultProgressSize(){
+
+    //case have size
+    if( sizeProgress != null ) return;
+
+    //case have height
+    if( height !=null ) {
+      sizeProgress = height! * 0.5;
+    }
+
+    //case not have height, take height of font
+    return sizeProgress = textFontSize  ;
+  }
+
+  //-----------------------------------------------------------------------------
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    //container
+    var ct = Container(
+      width: width,
+      height: height,
+      margin: margin,
+      alignment: gravityLayout,
+      child: buttonWithClickListenerValidateProgressToPreventTouch(),
+      decoration: decoration,
+    );
+
+    return ct;
+  }
+
+  //---------------------------------------------------------------------- choose progress or button
+
+  Widget buttonWithClickListenerValidateProgressToPreventTouch(){
+    return  ElevatedButton(
+      onPressed: (){
+
+        if( showProgress! == true ) return;
+        onPressed();
+      },
+      onLongPress: (){
+        if( showProgress! == true ) return;
+        if( onLongPress == null ) return;
+
+        onLongPress!();
+      },
+      child: chooseButtonTextOrProgressViewInsideButton(),
+      style: getButtonStyle(),
+    );
+
+  }
+
+
+  Widget chooseButtonTextOrProgressViewInsideButton(){
+    if( showProgress!){
+      return ProgressCircleFastor(size: sizeProgress, color: colorProgress);
+    } else {
+      return _getText(
+          text, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!);
+    }
+  }
+
+  //------------------------------------------------------------------- button style and text theme
+
+  ButtonStyle getButtonStyle(){
+    //style button
+    return _getButtonStyle(backgroundColor_ds!, width, height,
+        borderLine, borderRadius, textFontSize! );
+  }
+
 
   static Widget _getText(String text, TextAlign textAlign, Color textColor_ds,
       double textDimen_ds, EdgeInsets padding, String font_ds) {
@@ -167,4 +220,6 @@ class ButtonFastor extends StatelessWidget {
 
     return style;
   }
+
+
 }
