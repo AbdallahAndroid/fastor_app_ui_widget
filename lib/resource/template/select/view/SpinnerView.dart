@@ -13,7 +13,10 @@ typedef SpinnerViewCallBack = void Function( int position, bool isRemoveSelected
 
 //--------------------------------------------------------------------- class
 
+
 class SpinnerView extends StatefulWidget {
+
+  static final  key_position_hint = "-1" ;
 
   List<Widget> childers;
   Widget? iconDropdown;
@@ -33,6 +36,9 @@ class SpinnerView extends StatefulWidget {
   //hint
   Widget hintWidget;
 
+  //previous
+  int? previousPosition;
+
   //size
   double width_frame  ;
   double height_frame ;
@@ -46,6 +52,12 @@ class SpinnerView extends StatefulWidget {
   Decoration? errorOutlineDropdownDropdown;
   String? errorMessageBackend;
   TextStyle? errorTextStyle;
+
+  //local variable
+  int selected_position = 0;
+  List<DropdownMenuItem<String>> listDrop = [];
+  String dropdownValue = '';
+
 
   SpinnerView (  {
     required  List<Widget> this.childers ,
@@ -63,6 +75,7 @@ class SpinnerView extends StatefulWidget {
     // this.colorDropdownButtonBackground,
     this.colorDropdownTextBackground,
     this.underlineColor,
+    this.previousPosition,
 
     //error
     this.errorBackendKeyJson,
@@ -75,6 +88,9 @@ class SpinnerView extends StatefulWidget {
     setDefaultValue();
     fixWidthWithIconSpinner();
     _setValidatorFromBackend();
+
+    setPosition( previousPosition!);
+
   }
 
 
@@ -126,8 +142,13 @@ class SpinnerView extends StatefulWidget {
         colorLine: Colors.redAccent
     );
 
+    //positon dropdown
+    /**
+        "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
+     */
+    //  dropdownValue = SpinnerView.key_position_hint;// listChildWidget[0];
+    previousPosition ??= int.parse( SpinnerView.key_position_hint);
   }
-
 
 
   void fixWidthWithIconSpinner() {
@@ -138,52 +159,24 @@ class SpinnerView extends StatefulWidget {
     width_frame = width_frame +widthArrow;
   }
 
-}
-
-class SpinnerViewState extends State<SpinnerView> {
-
-  //------------------------------------------------------------------ variable
-
-  static final  key_position_hint = "-1" ;
-  int selected_position = 0;
-  List<DropdownMenuItem<String>> listDrop = [];
-  String dropdownValue = '';
-
-  SpinnerViewState(  ) {
-    /**
-        "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
-     */
-    dropdownValue = key_position_hint;// listChildWidget[0];
-  }
-
   //------------------------------------------------------------------ set position
 
 
   void setPosition(int newPosition) {
-
-    setState(() {
-      String keyDefaultPosition = "$newPosition";
-      dropdownValue = keyDefaultPosition;
-      selected_position = newPosition;
-    });
-
-
-    //callback
-    widget.onSelectPosition(selected_position, false);
+    String keyDefaultPosition = "$newPosition";
+    dropdownValue = keyDefaultPosition;
+    selected_position = newPosition;
   }
 
   void clearSelected() {
-
-    setState(() {
-      String keyDefaultPosition = key_position_hint;
-      dropdownValue = keyDefaultPosition;
-      selected_position = int.parse( key_position_hint);
-    });
-
-
-    //callback
-    widget.onSelectPosition(selected_position, true);
+    String keyDefaultPosition = SpinnerView.key_position_hint;
+    dropdownValue = keyDefaultPosition;
+    selected_position = int.parse( SpinnerView.key_position_hint);
   }
+
+}
+
+class SpinnerViewState extends State<SpinnerView> {
 
   //-------------------------------------------------------------------- build
 
@@ -270,7 +263,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
   Widget getDropBoxWidget(){
     return DropdownButton<String>(
-      value: dropdownValue,
+      value: widget.dropdownValue,
       // icon: widget.iconDropdown,
       // iconSize: 24, //widget.iconSize,
       iconSize: 0, //hide icon
@@ -292,7 +285,7 @@ class SpinnerViewState extends State<SpinnerView> {
         updateSelected(newValue??"0");
       },
 
-      items: listDrop, // mapListWidgetToListMenuItem(),
+      items: widget.listDrop, // mapListWidgetToListMenuItem(),
 
     );
   }
@@ -302,8 +295,8 @@ class SpinnerViewState extends State<SpinnerView> {
   void updateSelected(String newValue ){
 
     setState(() {
-      dropdownValue  = newValue;
-      selected_position = int.parse(dropdownValue);
+      widget.dropdownValue  = newValue;
+      widget.selected_position = int.parse(widget.dropdownValue);
       startCallback( newValue );
 
     });
@@ -311,18 +304,18 @@ class SpinnerViewState extends State<SpinnerView> {
 
   void startCallback(String newValue) {
     // is remove selected
-    // var selectKey = key_position_hint.toString();
-    bool isRemoveSelected   =   newValue == key_position_hint;
+    // var selectKey = SpinnerView.key_position_hint.toString();
+    bool isRemoveSelected   =   newValue == SpinnerView.key_position_hint;
 
     //callback
-    widget.onSelectPosition(selected_position, isRemoveSelected);
+    widget.onSelectPosition(widget.selected_position, isRemoveSelected);
   }
   //----------------------------------------------------------------------- map data (string)
 
   void  mapListWidgetToUnSelectedMenu(){       //List<DropdownMenuItem<String>>
     //Log.i( "mapListWidgetToUnSelectedMenu()");
     //remove old
-    listDrop = [];
+    widget.listDrop = [];
 
     // set hint
     setHintWidget();
@@ -335,7 +328,7 @@ class SpinnerViewState extends State<SpinnerView> {
       _addToDrop(wid, key );
     }
 
-    //  return listDrop;
+    //  return widget.listDrop;
   }
 
   void setHintWidget() {
@@ -345,7 +338,7 @@ class SpinnerViewState extends State<SpinnerView> {
       Align( child: widget.hintWidget!, alignment: Alignment.centerLeft,),
       Positioned( child: EmptyView.zero(), right: 0 )
     ],);
-    _addToDrop( hintTextAnIcon, key_position_hint );
+    _addToDrop( hintTextAnIcon, SpinnerView.key_position_hint );
   }
 
 
@@ -356,7 +349,7 @@ class SpinnerViewState extends State<SpinnerView> {
       value: position ,
       child: wid,
     );
-    listDrop.add( drop );
+    widget.listDrop.add( drop );
 
   }
 

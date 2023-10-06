@@ -12,7 +12,10 @@ class DropdownFastor extends StatefulWidget {
   //required
   List<String> names;
   DropDownSelectChangeListenerTest listener;
+
+  //remove
   DropDownRemoveSelectedListener onRemoveSelected;
+  bool? removeSelected;
 
   //size
   double? height_frame ;
@@ -29,6 +32,7 @@ class DropdownFastor extends StatefulWidget {
   TextStyle? textStyleItemDropdown;
 
   //previous
+  int? previousPosition;
   String? previousSelectedText;
   Color? colorPreviousSelected;
 
@@ -68,6 +72,7 @@ class DropdownFastor extends StatefulWidget {
     required this.iconSize,
     required this.listener,
     required this.onRemoveSelected,
+    this.removeSelected,
     this.height_frame,
     this.radiusButton,
     this.spinnerTriangleWidth,
@@ -83,6 +88,7 @@ class DropdownFastor extends StatefulWidget {
     this.underlineColor,
     this.iconDropdown,
     this.previousSelectedText,
+    this.previousPosition,
     this.colorPreviousSelected,
     this.paddingText,
     this.decorationOutlineDropdown,
@@ -94,8 +100,9 @@ class DropdownFastor extends StatefulWidget {
   }) {
 
     spinnerTriangleWidth ??= 50;
-
+    removeSelected ??= false;
     colorPreviousSelected ??= Colors.black;
+
   }
 
   @override
@@ -161,6 +168,8 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
+      hintWidget: widget.hintWidget??_hint() ,
+      previousPosition: getPreviousPositon(),
       onSelectPosition:    (p, isRemoveSelected ) {
         if( isRemoveSelected ){
           _selected_name =  null;
@@ -175,10 +184,13 @@ class _DropdownFastorState extends State<DropdownFastor > {
         //callback
         widget.listener( _selected_name!, _selected_position! );
       },
-      hintWidget: widget.hintWidget??_hint() ,
+
     );
   }
 
+  int? getPreviousPositon(){
+    return widget.removeSelected!? int.parse(SpinnerView.key_position_hint) : widget.previousPosition;
+  }
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
