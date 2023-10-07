@@ -143,10 +143,14 @@ class _DropdownFastorState extends State<DropdownFastor > {
     if( widget.previousSelectedText == null ) return SizedBox();
     // Log.i( "tv_city_previousSelected() - city_selected_name: " + city_selected_name );
     return TextFastor(
-        widget.previousSelectedText??"" ,
-        levelDS: LevelDS.l4,
-        margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
-        color: widget.colorPreviousSelected
+      widget.previousSelectedText??"" ,
+      levelDS: LevelDS.l4,
+      margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
+      color: widget.colorPreviousSelected,
+      // color:   widget.colorHintText,
+      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
+
     );
   }
 
@@ -209,7 +213,9 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
         // padding: widget.paddingText??EdgeInsets.all( 5),
-        color:  widget.colorHintText,
+        fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+        fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
+        color:   widget.colorHintText,
         levelDS: LevelDS.l2);
   }
 
@@ -232,12 +238,16 @@ class _DropdownFastorState extends State<DropdownFastor > {
       levelDS: LevelDS.l3,
       padding: widget.paddingText??EdgeInsets.only(top: 5, left: 5),
       color: getColorItemTextWhenSelectedOrNot(positionName),
+      // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
+      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
+
     );
   }
 
 
   Color? getColorItemTextWhenSelectedOrNot ( int positionName){
-    var defaultColor = widget.colorItemText;
+    var defaultColor = widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :   widget.colorItemText;
     bool isSamePositionSelected = positionName == _selected_position;
     if(isSamePositionSelected )  {
       // Log.i( "fastor - getColorItemTextWhenSelectedOrNot() - isSkipChangeColorSelected");

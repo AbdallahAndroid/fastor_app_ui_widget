@@ -1,3 +1,7 @@
+## 1.0.261
+
+* in "DropdownFastor" can change textstyle of item menu by using "textStyleItemDropdown"
+
 ## 1.0.260
 
 * buttonFastor add feature progress
