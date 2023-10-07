@@ -1,4 +1,4 @@
-## 1.0.261
+## 1.0.262
 
 * in "DropdownFastor" can change textstyle of item menu by using "textStyleItemDropdown"
 

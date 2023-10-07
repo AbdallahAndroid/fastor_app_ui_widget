@@ -53,11 +53,6 @@ class SpinnerView extends StatefulWidget {
   String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
-  //local variable
-  int selected_position = 0;
-  List<DropdownMenuItem<String>> listDrop = [];
-  String dropdownValue = '';
-
 
   SpinnerView (  {
     required  List<Widget> this.childers ,
@@ -89,11 +84,7 @@ class SpinnerView extends StatefulWidget {
     fixWidthWithIconSpinner();
     _setValidatorFromBackend();
 
-    // print("fastor - SpinnerView - constructor() previousPosition: $previousPosition");
-    if( previousPosition != null ){
-      // previousPosition ??= int.parse( SpinnerView.key_position_hint);
-      setPosition( previousPosition!);
-    }
+
 
   }
 
@@ -162,6 +153,36 @@ class SpinnerView extends StatefulWidget {
     width_frame = width_frame +widthArrow;
   }
 
+
+}
+
+class SpinnerViewState extends State<SpinnerView> {
+
+  //----------------------------------------------------------------- local variable
+
+  int selected_position = 0;
+  List<DropdownMenuItem<String>> listDrop = [];
+  String dropdownValue = '';
+
+  //--------------------------------------------------------------------- life cycle
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setPreviousPositionWhenFound();
+    });
+  }
+
+  setPreviousPositionWhenFound(){
+
+    // print("fastor - SpinnerView - constructor() previousPosition: $previousPosition");
+    if( widget.previousPosition != null ){
+      // previousPosition ??= int.parse( SpinnerView.key_position_hint);
+      setPosition( widget.previousPosition!);
+    }
+  }
+
   //------------------------------------------------------------------ set position
 
 
@@ -169,17 +190,19 @@ class SpinnerView extends StatefulWidget {
     String keyDefaultPosition = "$newPosition";
     dropdownValue = keyDefaultPosition;
     selected_position = newPosition;
+    setState(() {
+
+    });
   }
 
   void clearSelected() {
     String keyDefaultPosition = SpinnerView.key_position_hint;
     dropdownValue = keyDefaultPosition;
     selected_position = int.parse( SpinnerView.key_position_hint);
+    setState(() {
+
+    });
   }
-
-}
-
-class SpinnerViewState extends State<SpinnerView> {
 
   //-------------------------------------------------------------------- build
 
@@ -265,12 +288,12 @@ class SpinnerViewState extends State<SpinnerView> {
 //---------------------------------------------------------- dropdown
 
   Widget getDropBoxWidget(){
-    // print("fastor - SpinnerView - getDropBoxWidget() dropdownValue: ${widget.dropdownValue}");
-    if( ToolsValidation.isEmpty( widget.dropdownValue) ) {
-      widget.dropdownValue = SpinnerView.key_position_hint;
+    // print("fastor - SpinnerView - getDropBoxWidget() dropdownValue: ${dropdownValue}");
+    if( ToolsValidation.isEmpty( dropdownValue) ) {
+      dropdownValue = SpinnerView.key_position_hint;
     }
     return DropdownButton<String>(
-      value: widget.dropdownValue,
+      value: dropdownValue,
       // icon: widget.iconDropdown,
       // iconSize: 24, //widget.iconSize,
       iconSize: 0, //hide icon
@@ -292,7 +315,7 @@ class SpinnerViewState extends State<SpinnerView> {
         updateSelected(newValue??"0");
       },
 
-      items: widget.listDrop, // mapListWidgetToListMenuItem(),
+      items: listDrop, // mapListWidgetToListMenuItem(),
 
     );
   }
@@ -302,8 +325,8 @@ class SpinnerViewState extends State<SpinnerView> {
   void updateSelected(String newValue ){
 
     setState(() {
-      widget.dropdownValue  = newValue;
-      widget.selected_position = int.parse(widget.dropdownValue);
+      dropdownValue  = newValue;
+      selected_position = int.parse(dropdownValue);
       startCallback( newValue );
 
     });
@@ -315,14 +338,14 @@ class SpinnerViewState extends State<SpinnerView> {
     bool isRemoveSelected   =   newValue == SpinnerView.key_position_hint;
 
     //callback
-    widget.onSelectPosition(widget.selected_position, isRemoveSelected);
+    widget.onSelectPosition(selected_position, isRemoveSelected);
   }
   //----------------------------------------------------------------------- map data (string)
 
   void  mapListWidgetToUnSelectedMenu(){       //List<DropdownMenuItem<String>>
     //Log.i( "mapListWidgetToUnSelectedMenu()");
     //remove old
-    widget.listDrop = [];
+    listDrop = [];
 
     // set hint
     setHintWidget();
@@ -335,7 +358,7 @@ class SpinnerViewState extends State<SpinnerView> {
       _addToDrop(wid, key );
     }
 
-    //  return widget.listDrop;
+    //  return listDrop;
   }
 
   void setHintWidget() {
@@ -356,7 +379,7 @@ class SpinnerViewState extends State<SpinnerView> {
       value: position ,
       child: wid,
     );
-    widget.listDrop.add( drop );
+    listDrop.add( drop );
 
   }
 
