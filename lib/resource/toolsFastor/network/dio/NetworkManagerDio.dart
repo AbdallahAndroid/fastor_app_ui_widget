@@ -14,6 +14,19 @@ import 'DioParameter.dart';
 typedef NetworkDiocallback_dio = void Function(
     bool status, String msg, Map<String, dynamic> mapJson);
 
+
+/// Callback to listen the progress for sending/receiving data.
+///
+/// [count] is the length of the bytes have been sent/received.
+///
+/// [total] is the content length of the response/request body.
+/// 1.When receiving data:
+///   [total] is the request body length.
+/// 2.When receiving data:
+///   [total] will be -1 if the size of the response body is not known in advance,
+///   for example: response data is compressed with gzip or no content-length header.
+typedef ProgressCallbackFastor = void Function(int count, int total);
+
 class NetworkManagerDio  {
 
   final tag = "NetworkManagerDio";
@@ -44,7 +57,11 @@ class NetworkManagerDio  {
       { required NetworkDiocallback_dio  callback,
         Map<String, dynamic>? body,
         Map<String, String>? headers,
+
+      ///file
         NetworkRequestFile? requestFile,
+        ProgressCallbackFastor? onSendProgress,
+        ProgressCircleFastor? onReceiveProgress,
         NetworkTypeDio? type,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
       }) async {
@@ -71,7 +88,7 @@ class NetworkManagerDio  {
 
     _configureSetup();
 
-    return await _chooseTypeNetworkThenStartService();
+    return await _chooseTypeNetworkThenStartService( onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);
   }
 
 
@@ -149,14 +166,22 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        ProgressCallbackFastor? onSendProgress,
+        ProgressCircleFastor? onReceiveProgress,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.file,
-        body: body, headers: headers, requestFile: requestFile,
-        isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
+    return await any( url,
+        NetworkTypeDio.file,
+        body: body,
+        headers: headers,
+        requestFile: requestFile,
+        isEnableLogDioPretty: isEnableLogDioPretty,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+        callback: callback );
   }
+
 
   //------------------------------------------------------------------------- any type
 
@@ -164,7 +189,12 @@ class NetworkManagerDio  {
       NetworkTypeDio  type,
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
+
+        /// file
         NetworkRequestFile? requestFile,
+       ProgressCallbackFastor? onSendProgress,
+        ProgressCircleFastor? onReceiveProgress,
+
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
@@ -197,7 +227,7 @@ class NetworkManagerDio  {
     _configureSetup();
 
     //choose type
-    return await _chooseTypeNetworkThenStartService();
+    return await _chooseTypeNetworkThenStartService( onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress );
   }
 
   //-------------------------------------------------------------------- default values
@@ -245,13 +275,13 @@ class NetworkManagerDio  {
   }
 
 
-  Future<Response> _chooseTypeNetworkThenStartService() async {
+  Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCircleFastor? onReceiveProgress}) async {
     if (type == NetworkTypeDio.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
         return  file_dio();
       }  else if ( requestFile!.xFile != null ) {
-        return  fileTypeXFile_dio();
+        return  fileTypeXFile_dio(  onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);
       } else {
         callback_dio!(false, "filePath not found or XFile not found", Map());
         return  getFailedResponse();

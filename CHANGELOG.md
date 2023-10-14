@@ -1,3 +1,7 @@
+## 1.0.263
+
+* file upload progress using attribute "onSendProgress" in class "NetworkManagerDio"
+
 ## 1.0.262
 
 * in "DropdownFastor" can change textstyle of item menu by using "textStyleItemDropdown"

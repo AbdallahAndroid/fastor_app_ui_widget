@@ -310,7 +310,7 @@ extension DioService on NetworkManagerDio {
   }
 
 
-  Future<Response >  fileTypeXFile_dio() async {
+  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackFastor? onSendProgress, ProgressCircleFastor? onReceiveProgress  }) async {
     Response? response ;
     try {
       Log.k(tag, "_fileTypeXFile() - xFile: " + requestFile!.xFile!.path.toString() );
@@ -352,7 +352,11 @@ extension DioService on NetworkManagerDio {
       ));
 
       response = await _dio.post(url,
-          options: Options(headers: headers), data: formData);
+          options: Options(headers: headers),
+          data: formData,
+        onSendProgress: onSendProgress,
+        // onReceiveProgress: onReceiveProgress
+      );
       // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
 
       //call back
