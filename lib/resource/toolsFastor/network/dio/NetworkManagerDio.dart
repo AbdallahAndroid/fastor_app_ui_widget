@@ -61,7 +61,7 @@ class NetworkManagerDio  {
       ///file
         NetworkRequestFile? requestFile,
         ProgressCallbackFastor? onSendProgress,
-        ProgressCircleFastor? onReceiveProgress,
+        ProgressCallbackFastor? onReceiveProgress,
         NetworkTypeDio? type,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
       }) async {
@@ -168,7 +168,7 @@ class NetworkManagerDio  {
         NetworkRequestFile? requestFile,
         bool? isEnableLogDioPretty ,
         ProgressCallbackFastor? onSendProgress,
-        ProgressCircleFastor? onReceiveProgress,
+        ProgressCallbackFastor? onReceiveProgress,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,
@@ -193,7 +193,7 @@ class NetworkManagerDio  {
         /// file
         NetworkRequestFile? requestFile,
        ProgressCallbackFastor? onSendProgress,
-        ProgressCircleFastor? onReceiveProgress,
+        ProgressCallbackFastor? onReceiveProgress,
 
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
@@ -275,7 +275,7 @@ class NetworkManagerDio  {
   }
 
 
-  Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCircleFastor? onReceiveProgress}) async {
+  Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCallbackFastor? onReceiveProgress}) async {
     if (type == NetworkTypeDio.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
@@ -292,6 +292,8 @@ class NetworkManagerDio  {
       return await  put_dio();
     } else if (type == NetworkTypeDio.patch) {
       return await  patch_dio();
+    } else if (type == NetworkTypeDio.delete) {
+      return await  delete_dio();
     } else {
       return await  get_dio();
     }

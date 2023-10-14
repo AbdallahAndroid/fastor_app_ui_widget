@@ -232,6 +232,61 @@ extension DioService on NetworkManagerDio {
 
   }
 
+  //--------------------------------------------------------------------------- delete
+
+  Future<Response>  delete_dio() async {
+    Response? response ;
+    try {
+      // FormData form = FormData.fromMap(body);
+
+      Dio _dio = Dio();
+
+      //show request and response in beatful log
+      if( isEnableLogDioPretty! ) {
+        _dio.interceptors.add(PrettyDioLogger(
+          requestHeader: isEnableLogDioPretty!,
+          requestBody: isEnableLogDioPretty!,
+          responseBody: isEnableLogDioPretty!,
+        ));
+      }
+
+
+      response =   await _dio.delete(url, options: Options(headers: headers), data: body);
+      // Log.k(tag, "_put() - success: " + response.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(true, "success", response.data);
+
+      //return
+      return response;
+    } on DioError catch (dioError) {
+      Log.k(tag, "DioError - e: " + dioError.toString());
+      if( dioError.response != null && dioError!.response!.data != null ) {
+        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
+        Map<String,dynamic> data = Map();
+        if( dioError!.response!.data != null ) {
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
+        }
+        if (callback_dio != null) callback_dio!(false, "failed", data);
+        return dioError!.response!;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
+
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_delete() - e: " + msg);
+      if (callback_dio != null) callback_dio!(false, msg, Map());
+      return getFailedResponse(msg: e.toString() );
+    }
+
+  }
+
   //---------------------------------------------------------------------------- file
 
   Future<Response>  file_dio() async {
@@ -310,7 +365,9 @@ extension DioService on NetworkManagerDio {
   }
 
 
-  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackFastor? onSendProgress, ProgressCircleFastor? onReceiveProgress  }) async {
+  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackFastor? onSendProgress,
+    ProgressCallbackFastor? onReceiveProgress  }) async {
+
     Response? response ;
     try {
       Log.k(tag, "_fileTypeXFile() - xFile: " + requestFile!.xFile!.path.toString() );
@@ -352,10 +409,14 @@ extension DioService on NetworkManagerDio {
       ));
 
       response = await _dio.post(url,
-          options: Options(headers: headers),
+          options: Options(
+            headers: headers,
+            receiveTimeout: 0, //200000, //zero means not limitation
+            sendTimeout: 0, // 200000, //zero means not limitation
+          ),
           data: formData,
         onSendProgress: onSendProgress,
-        // onReceiveProgress: onReceiveProgress
+        onReceiveProgress: onReceiveProgress
       );
       // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
 

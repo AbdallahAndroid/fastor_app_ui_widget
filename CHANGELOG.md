@@ -1,3 +1,7 @@
+## 1.0.264
+
+* file upload progress using attribute "onReceiveProgress" in class "NetworkManagerDio"
+
 ## 1.0.263
 
 * file upload progress using attribute "onSendProgress" in class "NetworkManagerDio"
