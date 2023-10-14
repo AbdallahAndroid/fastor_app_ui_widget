@@ -1,3 +1,7 @@
+## 1.0.265
+
+* update "Dio" plugin to versions "dio: ^5.3.3"
+
 ## 1.0.264
 
 * file upload progress using attribute "onReceiveProgress" in class "NetworkManagerDio"

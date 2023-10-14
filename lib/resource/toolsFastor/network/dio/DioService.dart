@@ -411,8 +411,8 @@ extension DioService on NetworkManagerDio {
       response = await _dio.post(url,
           options: Options(
             headers: headers,
-            receiveTimeout: 0, //200000, //zero means not limitation
-            sendTimeout: 0, // 200000, //zero means not limitation
+            receiveTimeout: Duration(minutes: 60 ), //200000, //zero means not limitation
+            sendTimeout:  Duration(minutes: 60 ), // 200000, //zero means not limitation
           ),
           data: formData,
         onSendProgress: onSendProgress,
