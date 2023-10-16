@@ -29,13 +29,17 @@ class TextFieldFastor extends StatelessWidget {
   String? fontFamily;
   Color? hint_color;
 
-  //boarder and underline
+  //mode of textfield
   bool isRemoveUnderline = false;
   bool? isShowBoarder;
+  bool? showOutlineInput;
 
   //background
   Color? background_color;
-  Decoration? decoration; //at the Container
+
+  //decoration
+  InputDecoration? decoration; //custom decoration
+  Decoration? decorationBackground; //at the Container
 
   //spaces
   EdgeInsets? padding;
@@ -83,10 +87,12 @@ class TextFieldFastor extends StatelessWidget {
     //boarder and underline
     this.isRemoveUnderline = false,
     this.isShowBoarder,
+    this.showOutlineInput,
 
-    //background
+    //background + decoration
     this.background_color,
-    this.decoration, //at the Container
+    this.decoration,
+    this.decorationBackground, //at the Container
 
     //spaces
     this.padding,
@@ -146,6 +152,19 @@ class TextFieldFastor extends StatelessWidget {
     //choose validator
     autovalidateMode ??= AutovalidateMode.disabled;
     _setValidator();
+
+    makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
+
+  }
+
+  void makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther(){
+    //showOutlineInput
+    showOutlineInput ??= false;
+    isShowBoarder ??= false;
+    if(isShowBoarder! || showOutlineInput! ) {
+      showOutlineInput = true;
+      isShowBoarder = true;
+    }
   }
 
   @override
@@ -153,21 +172,12 @@ class TextFieldFastor extends StatelessWidget {
     //get tf
     TextFormField tf = _getTextFourmField();
 
-    // //fix textfield not materail
-    // var materialApp = Material(
-    //   child: tf,
-    //   color: background_color,
-    // );
-
-    //ct
-    // var ct = TextFieldTemplateBase.getContainer( materialApp, width, margin, decoration);
+    //containter
     var container = Container(
       child: tf,
       width: width,
-      // height: height,
       margin: margin,
-      // padding: padding,
-      decoration: decoration,
+      decoration: decorationBackground,
     );
     return container;
   }
@@ -193,7 +203,7 @@ class TextFieldFastor extends StatelessWidget {
       cursorColor: hint_color,
 
       //padding + hint + underline
-      decoration: TextFieldTemplateBase.getDecorationInput(
+      decoration: decoration != null ? decoration :  TextFieldTemplateBase.getDecorationInput(
           isShowBoarder,
           padding!,
           hint_text,

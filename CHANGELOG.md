@@ -1,3 +1,9 @@
+## 1.0.268
+
+* in "TextFieldFastor" convert "decoration" parameter to type "InputDecoration"
+* in "TextFieldFastor" build "decorationBackground" parameter to type "decoration" to set in the container
+* In "TextFieldFastor" make both parameter have same meaning "isShowBoarder"  or "showOutlineInput"
+
 ## 1.0.267
 
 * allow to use  "NetworkDiocallback_dio? callback" the response json from class "NetworkManagerDio"
