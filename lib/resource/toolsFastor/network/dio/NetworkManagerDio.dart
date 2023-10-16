@@ -202,6 +202,7 @@ class NetworkManagerDio  {
     this.url = url;
     this.type = type;
     this.requestFile = requestFile;
+    this.callback_dio = callback;
 
     //log
     isEnableLogDioPretty ??= true;

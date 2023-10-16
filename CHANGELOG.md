@@ -1,3 +1,8 @@
+## 1.0.267
+
+* allow to use  "NetworkDiocallback_dio? callback" the response json from class "NetworkManagerDio"
+  while using  "NetworkManagerDio().any()" or any method type like "NetworkManagerDio().get()"
+
 ## 1.0.266
 
 * file upload progress using attribute "onReceiveProgress" in class "NetworkManagerDio"
