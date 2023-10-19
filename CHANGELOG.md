@@ -1,6 +1,6 @@
-## 1.0.269
+## 1.2.70
 
-* make nitialize fastor plugin from main() method by writing "  await Fastor.initializeApp( );  "
+* make initialize fastor plugin from main() method by writing "  await Fastor.initializeApp( );  "
 
 ## 1.0.268
 
