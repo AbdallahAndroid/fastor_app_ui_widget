@@ -1,3 +1,7 @@
+## 1.0.269
+
+* make nitialize fastor plugin from main() method by writing "  await Fastor.initializeApp( );  "
+
 ## 1.0.268
 
 * in "TextFieldFastor" convert "decoration" parameter to type "InputDecoration"
