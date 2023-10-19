@@ -21,15 +21,15 @@ class SaveFastor {
   }
 
   static String messageThrowException(){
-    return "You Missed initialize Fastor Plugin, You Need to write the below line at MyApp class build() method: \n "
-        + "Fastor.initializeApp(context);\n"
-        + "\n"
-        + "example :\n"
-        + "class MyApp extends StatelessWidget {\n"
-        + "\t@override\n"
-        + "\tWidget build(BuildContext context) {\n"
-        + "\t\tFastor.initializeApp(context);\n"
-        + "}\n";
+    return "You Missed initialize Fastor Plugin, You Need to write the below line at the main() method: \n "
+        + "Fastor.initializeApp();\n";
+        // + "\n"
+        // + "example :\n"
+        // + "class MyApp extends StatelessWidget {\n"
+        // + "\t@override\n"
+        // + "\tWidget build(BuildContext context) {\n"
+        // + "\t\tFastor.initializeApp(context);\n"
+        // + "}\n";
   }
 
   //-----------------------------------------------------------------------  map list
@@ -100,7 +100,8 @@ class SaveFastor {
   static  Map<String, dynamic>  getMap( String key,  {   ValueChanged<Map<String, dynamic>>? callback} )   {
 
     if( prefs == null ) {
-      throw Exception(messageThrowException());
+     // throw Exception(messageThrowException());
+      return Map();
     }
 
     String jsonString = prefs!.getString(key) ?? "";
@@ -131,7 +132,8 @@ class SaveFastor {
 
   static int  getInt(String key)   {
     if( prefs == null ) {
-      throw Exception(messageThrowException());
+      // throw Exception(messageThrowException());
+      return 0;
     }
 
     var result = prefs!.getInt(key) ?? 0;
@@ -153,7 +155,8 @@ class SaveFastor {
 
   static String  getString(String key)   {
     if( prefs == null ) {
-      throw Exception(messageThrowException());
+      // throw Exception(messageThrowException());
+      return "";
     }
 
     String result = prefs!.getString(key) ?? "";
@@ -168,13 +171,13 @@ class SaveFastor {
   static Future setBool(String key, bool v) async {
     prefs = await SharedPreferences.getInstance();
     await prefs!.setBool(key, v);
-
   }
 
 
   static bool  getBool(String key)   {
     if( prefs == null ) {
-      throw Exception(messageThrowException());
+      // throw Exception(messageThrowException());
+      return false;
     }
 
     bool result = prefs!.getBool(key) ?? false;
