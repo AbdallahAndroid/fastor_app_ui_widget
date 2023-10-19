@@ -1,4 +1,8 @@
-## 1.2.70
+## 1.2.71
+
+* update readme
+
+## 1.2.0
 
 * make initialize fastor plugin from main() method by writing "  await Fastor.initializeApp( );  "
 

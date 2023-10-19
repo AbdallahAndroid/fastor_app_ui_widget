@@ -22,6 +22,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 3- In main() write 
 ```
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Fastor.initializeApp( );
   runApp(const MyApp());
 }
