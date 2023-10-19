@@ -4,6 +4,9 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:log_debug/log_debug.dart';
 
 class StatusBarConstant {
+
+  //-------------------------------------------------------------- variable
+
   //colors
   static var colorBackground =   HexColor( "#75aeb9");
 
@@ -17,12 +20,14 @@ class StatusBarConstant {
 
   static double? paddingTop ;
 
-  static void initStatusBarValues(BuildContext context) {
-    paddingTop = null;
+  //-------------------------------------------------------------- methods
 
-    //get again
-    getHeight(context);
-  }
+  // static void initStatusBarValues(BuildContext context) {
+  //   paddingTop = null;
+  //
+  //   //get again
+  //   getHeight(context);
+  // }
 
 
   //size

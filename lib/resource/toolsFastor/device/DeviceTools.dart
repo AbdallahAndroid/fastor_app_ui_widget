@@ -23,6 +23,12 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 
 class DeviceTools {
 
+
+  // /-------------------------------------------------------------- variable
+
+  static double widthFullSize = 0;
+  static double heightFullSize = 0;
+
   //-------------------------------------------------------------- platform
 
   static bool isPlatformWeb(){
@@ -109,23 +115,19 @@ class DeviceTools {
     return result;
   }
 
-  // ++++++++++++++++ full size
 
-  static double widthFullSize = 0;
-  static double heightFullSize = 0;
-
-  /**
-   call when website responsive
-   */
-  static void initFullSize(BuildContext  context ) {
-    //make it zero
-    widthFullSize = 0;
-    heightFullSize = 0;
-
-    //get again
-    getWidth(context);
-    getHeight(context);
-  }
+  // /**
+  //  call when website responsive
+  //  */
+  // static void initFullSize(BuildContext  context ) {
+  //   //make it zero
+  //   widthFullSize = 0;
+  //   heightFullSize = 0;
+  //
+  //   //get again
+  //   getWidth(context);
+  //   getHeight(context);
+  // }
 
 
   static double getWidth (BuildContext  context, { String? className  }) {

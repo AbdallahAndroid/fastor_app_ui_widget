@@ -326,7 +326,7 @@ class fastor_app_ui_widget extends fastor {
   late PageFastor pageFastor;
   late ScaffoldFastor scaffoldFastor;
   late ImageFastor imageFastor;
-  late FastorMaterialApp materialApp;
+  // late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
   late ChartMultiLineFastor chartMultiLineFastor;
 

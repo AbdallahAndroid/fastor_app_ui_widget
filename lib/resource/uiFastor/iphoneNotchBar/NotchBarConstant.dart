@@ -5,12 +5,12 @@ class NotchBarConstant {
 
   static double? paddingBottom ;
 
-  static void initNotchBarValues(BuildContext context) {
-    paddingBottom = null;
-
-    //get again
-    getHeight(context);
-  }
+  // static void initNotchBarValues(BuildContext context) {
+  //   paddingBottom = null;
+  //
+  //   //get again
+  //   getHeight(context);
+  // }
 
 
   //size
