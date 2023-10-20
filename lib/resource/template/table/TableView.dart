@@ -15,7 +15,7 @@ class TableViewFastor extends StatefulWidget {
 
   @override
   TableViewFastorState createState() {
-    var state =  TableViewFastorState( listRow );
+    var state =  TableViewFastorState(   );
     if( stateListener != null ) {
       stateListener!(state);
     }
@@ -27,14 +27,13 @@ class TableViewFastor extends StatefulWidget {
 
 class TableViewFastorState extends State<TableViewFastor> {
 
-  List<Widget> listRow;
 
-  TableViewFastorState( List<Widget>  this.listRow );
+  TableViewFastorState(  );
 
   //-------------------------------------------------------------------------- public methods
 
   void updateList(List<Widget> updateListRow ) {
-    this.listRow = updateListRow;
+    this.widget.listRow = updateListRow;
     setState(() {
 
     });
@@ -45,10 +44,10 @@ class TableViewFastorState extends State<TableViewFastor> {
   @override
   Widget build(BuildContext context) {
 
-   // LogDebug.i( "TableState() - listRow: " + listRow.length.toString()  );
+    // LogDebug.i( "TableState() - listRow: " + listRow.length.toString()  );
 
     //get listView
-    var listView =  ListViewTemplate.t(context: context, children: listRow,
+    var listView =  ListViewTemplate.t(context: context, children: widget.listRow,
         axis: Axis.vertical, axisBoth: true);
 
 

@@ -1,3 +1,7 @@
+## 1.2.73
+
+* Fix "TableViewFastor" not rebuild with new data of "listRow"
+
 ## 1.2.72
 
 * Validate "TextFieldFastor" parameter "decoration" is instance of class "InputDecoration"
