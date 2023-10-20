@@ -155,7 +155,29 @@ class TextFieldFastor extends StatelessWidget {
 
     makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
 
+    validateDecorationInputField();
+
   }
+
+
+  validateDecorationInputField(){
+
+    /// case not have decoration
+    if( decoration == null ) return;
+
+    /// case it's good type of inputDecoration, no problem here
+    if( decoration is InputDecoration ) {
+      return;
+    }
+
+    /// case decoration is type of "Decoration", now set the background to this value
+    if( decoration is Decoration ){
+      decorationBackground = decoration as Decoration;
+      decoration = null; //remove this now not good argument case exception
+    }
+
+  }
+
 
   void makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther(){
     //showOutlineInput

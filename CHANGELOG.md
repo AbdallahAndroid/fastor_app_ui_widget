@@ -1,3 +1,7 @@
+## 1.2.72
+
+* Validate "TextFieldFastor" parameter "decoration" is instance of class "InputDecoration"
+
 ## 1.2.71
 
 * update readme

@@ -1154,11 +1154,13 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 # DropdownFastor
 
+## Simple Example :
+
 * simple string[] array
 ```
     return DropdownFastor(
       width: widget.width - 16 -16 ,
-      names: HelperEumCrypto.getListNameEnumCrypto(),
+      names: HelperEumCrypto.getListNameEnumCrypto(),    //string[] array
       hintText: "select one",
       previousSelectedText: selectedCrypto?.name,
       listener: (name, position ) {
@@ -1174,7 +1176,13 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
 ```
 
-# to remove the selected item from dropdown programmatically
+## Set previous selected name
+```
+previousSelectedText: selectedCrypto?.name,
+```
+
+
+## to remove the selected item from dropdown programmatically
 * example dropdown
 ```dart
 
@@ -1196,7 +1204,7 @@ Widget dropdownFastor(){
 
 ```
 
-* from call back pressed of button invoke method :
+* After "onRemoveSelected" called, means you need to remove old selected :
 ````
   removeSelectedDropdown(){
     setState(() {
