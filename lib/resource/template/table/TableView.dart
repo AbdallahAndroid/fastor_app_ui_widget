@@ -45,7 +45,7 @@ class TableViewFastorState extends State<TableViewFastor> {
   @override
   Widget build(BuildContext context) {
 
-    LogDebug.i( "TableState() - listRow: " + listRow.length.toString()  );
+   // LogDebug.i( "TableState() - listRow: " + listRow.length.toString()  );
 
     //get listView
     var listView =  ListViewTemplate.t(context: context, children: listRow,
