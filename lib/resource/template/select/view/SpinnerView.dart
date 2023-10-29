@@ -2,6 +2,8 @@
 
 
 
+import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionDirectionTemplate.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
@@ -53,6 +55,7 @@ class SpinnerView extends StatefulWidget {
   String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
+  TextDirection? textDirection;
 
   SpinnerView (  {
     required  List<Widget> this.childers ,
@@ -78,6 +81,9 @@ class SpinnerView extends StatefulWidget {
     // this.errorColor,
     this.errorTextStyle,
     this.errorOutlineDropdownDropdown,
+
+    //arabic
+    this.textDirection,
 
   }){
     setDefaultValue();
@@ -142,6 +148,8 @@ class SpinnerView extends StatefulWidget {
         "There should be exactly one item with [DropdownButton]'s value: One. \nEither zero or 2 or more [DropdownMenuItem]s were detected with the same value"
      */
     // dropdownValue = SpinnerView.key_position_hint;
+
+    textDirection ??= TextDirection.rtl;
   }
 
 
@@ -225,7 +233,12 @@ class SpinnerViewState extends State<SpinnerView> {
 
     return Stack( children: [
       dropboxAndBoarder(),
-      Positioned(  child: widget.iconDropdown!, right: 0, top: marginTopIcon,)
+      Positioned.directional(
+        textDirection:  widget.textDirection!,
+        child: widget.iconDropdown!,
+        top: marginTopIcon,
+        start: 0  ,
+      )
     ],);
   }
 

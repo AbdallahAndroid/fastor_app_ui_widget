@@ -1611,7 +1611,7 @@ How to auto change direction from (  English => Arabic ) left/right
 1- from main method call:
 
 ```
-  await Lang.setupFromMainMethod();
+  await LangFastor.setupFromMainMethod();
 
 ```
 
@@ -1624,7 +1624,7 @@ class MyApp  extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Lang.setupFromBuildMethod(context);
+    LangFastor.setupFromBuildMethod(context);
       .....
     }
 }
@@ -1644,8 +1644,15 @@ class MyApp  extends StatelessWidget {
 
 * this return boolean
 ```
-Lang.isArabic   
+LangFastor.isArabic   
 ```
+
+### Dropdown Handle Direction Arabic 
+```
+    DropdownFastor(
+      textDirection: LangFastor.getTextDirection(),
+```
+
 ---
 
 ---

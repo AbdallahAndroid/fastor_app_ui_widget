@@ -65,6 +65,8 @@ class DropdownFastor extends StatefulWidget {
   // String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
+  TextDirection? textDirection;
+
 
   DropdownFastor( {
     required this.width,
@@ -96,7 +98,8 @@ class DropdownFastor extends StatefulWidget {
     this.errorBackendJson,
     this.errorOutlineDropdownDropdown,
     // this.errorMessageBackend,
-    this.errorTextStyle
+    this.errorTextStyle,
+    this.textDirection
   }) {
 
     spinnerTriangleWidth ??= 50;
@@ -174,6 +177,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
       hintWidget: widget.hintWidget??_hint() ,
       previousPosition: widget.previousPosition,
+      textDirection : widget.textDirection,
       onSelectPosition:    (p, isRemoveSelected ) {
         if( isRemoveSelected ){
           _selected_name =  null;

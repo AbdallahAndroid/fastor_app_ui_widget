@@ -1,3 +1,7 @@
+## 1.2.74
+
+* Handle Direction of Dropdown or SpinnerView rtl or ltr by using parameter "textDirection"
+
 ## 1.2.73
 
 * Fix "TableViewFastor" not rebuild with new data of "listRow"
