@@ -7,8 +7,8 @@ class PositionFastor  {
 
   static Positioned directional( {
 
-  required TextDirection textDirection,
-  required Widget child,
+    required TextDirection textDirection,
+    required Widget child,
     double? start,
     double? end,
     double? top,
@@ -19,15 +19,15 @@ class PositionFastor  {
       return Positioned(child: child,
         top: top,
         bottom: bottom,
-        right: start,
-        left: end,
+        right: end,
+        left: start,
       );
     } else {
       return Positioned(child: child,
         top: top,
         bottom: bottom,
-        right: end,
-        left: start,
+        right: start,
+        left: end,
       );
     }
 

@@ -89,9 +89,6 @@ class SpinnerView extends StatefulWidget {
     setDefaultValue();
     fixWidthWithIconSpinner();
     _setValidatorFromBackend();
-
-
-
   }
 
 
@@ -149,7 +146,7 @@ class SpinnerView extends StatefulWidget {
      */
     // dropdownValue = SpinnerView.key_position_hint;
 
-    textDirection ??= TextDirection.rtl;
+    textDirection ??= LangFastor.getTextDirection();
   }
 
 
@@ -219,6 +216,11 @@ class SpinnerViewState extends State<SpinnerView> {
 
     mapListWidgetToUnSelectedMenu();
 
+    return  contentUi();
+  }
+
+
+  Widget contentUi(){
     return Column( children: [
       stackDropDownAndIcon(),
       errorTextWidget()
