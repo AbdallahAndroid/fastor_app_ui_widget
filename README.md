@@ -1653,6 +1653,16 @@ LangFastor.isArabic
       textDirection: LangFastor.getTextDirection(),
 ```
 
+### Handle Stack Direction Left/Right Arabic
+```
+      PositionFastor.directional(
+        textDirection:  ,
+        child:   ,
+        top: ,
+        start: 0  ,
+      )
+```
+
 ---
 
 ---

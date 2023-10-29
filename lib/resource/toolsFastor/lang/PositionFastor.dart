@@ -1,16 +1,16 @@
 import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
 import 'package:flutter/material.dart';
 
-@Deprecated( "user class     Positioned.directional() ")
-class PositionDirectionTemplate  {
+
+class PositionFastor  {
 
 
-  static Positioned t( {
+  static Positioned directional( {
 
   required TextDirection textDirection,
   required Widget child,
-    double? right,
-    double? left,
+    double? start,
+    double? end,
     double? top,
     double? bottom,
   } ) {
@@ -19,15 +19,15 @@ class PositionDirectionTemplate  {
       return Positioned(child: child,
         top: top,
         bottom: bottom,
-        right: left,
-        left: right,
+        right: start,
+        left: end,
       );
     } else {
       return Positioned(child: child,
         top: top,
         bottom: bottom,
-        right: right,
-        left: left,
+        right: end,
+        left: start,
       );
     }
 

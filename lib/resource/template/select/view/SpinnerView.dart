@@ -3,7 +3,7 @@
 
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionDirectionTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionFastor.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
@@ -233,7 +233,9 @@ class SpinnerViewState extends State<SpinnerView> {
 
     return Stack( children: [
       dropboxAndBoarder(),
-      Positioned.directional(
+      //      Positioned.directional(
+
+      PositionFastor.directional(
         textDirection:  widget.textDirection!,
         child: widget.iconDropdown!,
         top: marginTopIcon,

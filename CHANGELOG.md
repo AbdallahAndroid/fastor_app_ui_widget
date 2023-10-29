@@ -1,3 +1,7 @@
+## 1.2.75
+
+* Build "PositionFastor.directional()" for handle left and right
+
 ## 1.2.74
 
 * Handle Direction of Dropdown or SpinnerView rtl or ltr by using parameter "textDirection"
