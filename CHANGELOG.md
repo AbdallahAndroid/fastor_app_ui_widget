@@ -1,4 +1,4 @@
-## 1.2.78
+## 1.2.79
 
 * Language arabic fix Alignment of  "Container" by using "LangFastor.getAlignmentGeometry()"
 
