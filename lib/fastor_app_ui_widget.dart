@@ -235,6 +235,7 @@ import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/initialize_app/Fastor.dart';
 export 'resource/toolsFastor/initialize_app/Fastor.dart';
 import 'resource/toolsFastor/lang/LangFastor.dart';
+export 'resource/toolsFastor/lang/LangFastor.dart';
 import 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/toolsFastor/navigate/NavigationTools.dart';
 export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';

@@ -1,3 +1,7 @@
+## 1.2.77
+
+* export "LangFastor" class while you import fastor plugin
+
 ## 1.2.76
 
 * Build "PositionFastor.directional()" for handle left and right
