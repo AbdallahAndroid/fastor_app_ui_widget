@@ -13,6 +13,12 @@ extension StringExtensions on String {
   String translateByFastor() {
      return LangFastor.searchForValue( this );
   }
+
+  /// the "trf" means  "translateByFastor"
+  String trf() {
+    return LangFastor.searchForValue( this );
+  }
+
 }
 
 class LangFastor {
@@ -106,6 +112,14 @@ class LangFastor {
       return TextDirection.rtl;
     } else {
       return TextDirection.ltr;
+    }
+  }
+
+  static AlignmentGeometry getAlignmentGeometry(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topRight;
+    } else {
+      return Alignment.topLeft;
     }
   }
 

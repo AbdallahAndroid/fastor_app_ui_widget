@@ -1,3 +1,7 @@
+## 1.2.78
+
+* Language arabic fix Alignment of  "Container" by using "LangFastor.getAlignmentGeometry()"
+
 ## 1.2.77
 
 * export "LangFastor" class while you import fastor plugin
