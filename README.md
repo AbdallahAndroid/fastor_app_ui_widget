@@ -1656,9 +1656,18 @@ LangFastor.isArabic
 ### Handle Stack Direction Left/Right Arabic
 ```
       PositionFastor.directional(
-        textDirection:  ,
-        child:   ,
-        top: ,
+        textDirection:  TextDirection.rtl,
+        child:   Text(""),
+        top: 0,
+        start: 0  ,
+      )
+```
+
+* use "PositionedFastor.langFastor()" auto choose which langauge use used when use LangFastor plugin
+```
+      PositionedFastor.langFastor(
+        child:   Text(""),
+        top: 0,
         start: 0  ,
       )
 ```

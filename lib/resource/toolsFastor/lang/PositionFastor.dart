@@ -1,7 +1,7 @@
 import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
 import 'package:flutter/material.dart';
 
-
+@Deprecated( "use class (PositionedFastor) instead ")
 class PositionFastor  {
 
 
@@ -33,45 +33,4 @@ class PositionFastor  {
 
   }
 
-/**
-    static double? stackEnglishRight(double? valueRight ) {
-    if( LangFastor.isArabic ) {
-    return valueRight;
-    } else {
-    return null;
-    }
-    }
-
-
-    static double? stackEnglishLeft(double? valueLeft ) {
-    if( LangFastor.isArabic ) {
-    return null;
-    } else {
-    return valueLeft;
-    }
-    }
-
-
-
-    static stackEnglishRightByTextDirection(TextDirection textDirection, double? valueRight ) {
-    bool isArabic = textDirection == TextDirection.rtl;
-    if( isArabic ) {
-    return valueRight;
-    } else {
-    return null;
-    }
-    }
-
-
-    static stackEnglishLeftByTextDirection(TextDirection textDirection, double? valueLeft ) {
-    bool isArabic = textDirection == TextDirection.rtl;
-    if( isArabic ) {
-    return null;
-    } else {
-    return valueLeft;
-    }
-    }
-
-
- */
 }

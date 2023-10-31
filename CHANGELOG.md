@@ -1,3 +1,8 @@
+## 1.2.80
+
+* Language arabic for stack "Positioned" used "PositionedFastor"
+* use "PositionedFastor.langFastor()" auto choose which langauge use used when use LangFastor plugin
+
 ## 1.2.79
 
 * Language arabic fix Alignment of  "Container" by using "LangFastor.getAlignmentGeometry()"

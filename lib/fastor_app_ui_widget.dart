@@ -81,6 +81,9 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart'
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionedFastor.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionedFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
@@ -320,6 +323,7 @@ class fastor_app_ui_widget extends fastor {
   late TableViewFastor tb;
   late TableViewFastorState tbState;
   late PositionFastor positionFastor;
+  late PositionedFastor positionedFastor;
 
   ///calender
   late CalendarTemplate calendar;
