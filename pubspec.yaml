@@ -1,11 +1,14 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.2.80
+version: 1.2.81
 homepage: https://fastor-app.com
 
 environment:
-  sdk: ">=2.17.3 <3.0.0"
+#  sdk: ">=2.17.3 <3.0.0"   #flutter version 3.0.2
+  sdk: ">=2.17.0 <3.0.0"   #flutter version 3.0.0
   flutter: ">=1.17.0"
+
+
 TextFieldEmailOrPhoneFastor:
   dart:
 dependencies:

@@ -1,3 +1,7 @@
+## 1.2.81
+
+* change min sdk version to be flutter 3.0.0, with dart version 2.17.0 
+
 ## 1.2.80
 
 * Language arabic for stack "Positioned" used "PositionedFastor"
