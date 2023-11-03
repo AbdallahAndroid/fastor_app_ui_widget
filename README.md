@@ -1576,14 +1576,14 @@ this class used to set the path of file of "xFile" and set the key/value of file
 
 ### Get Start Setup
 
-1- from main method call:
+1. from main method call:
 
 ```
   await LangFastor.setupFromMainMethod();
 
 ```
 
-2- from MyApp() class inside build() method write :
+2. from MyApp() class inside build() method write :
 
 ```
 class MyApp  extends StatelessWidget {
@@ -1597,6 +1597,15 @@ class MyApp  extends StatelessWidget {
     }
 }
 ```
+
+3. in yaml add path of assets
+```
+  assets:
+    - assets/lang/
+```
+
+4. create new json file named "ar.json" in path :
+   assets/lang/ar.json
 
 ### Section: How To Change Language Direction
 
