@@ -37,8 +37,8 @@ class LangFastor {
   //--------------------------------------------------------------------
 
   //force type
-  static bool isForceLanguageEnglish = false;
-  static bool isForceLanguageArabic = false;
+  // static bool isForceLanguageEnglish = false;
+  // static bool isForceLanguageArabic = false;
 
   // fix plugin "  localize_and_translate "
   static String activeLanguageCode = "en";
@@ -80,15 +80,18 @@ class LangFastor {
     LangFastor.isArabic = await _getCacheIsArabic( );
 
     //force type
-    if( LangFastor.isForceLanguageArabic) {
-      // Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageArabic ");
-      await _setCacheArabic(true);
-      LangFastor.isArabic = true;
-    } else if(  LangFastor.isForceLanguageEnglish ) {
-      //Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageEnglish ");
-      await _setCacheArabic(false);
-      LangFastor.isArabic = false;
-    }
+    /**
+        if( LangFastor.isForceLanguageArabic) {
+        // Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageArabic ");
+        await _setCacheArabic(true);
+        LangFastor.isArabic = true;
+        } else if(  LangFastor.isForceLanguageEnglish ) {
+        //Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageEnglish ");
+        await _setCacheArabic(false);
+        LangFastor.isArabic = false;
+        }
+
+     */
 
     //update code
     if(LangFastor.isArabic ) {
