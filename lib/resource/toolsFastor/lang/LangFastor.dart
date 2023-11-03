@@ -19,6 +19,17 @@ extension StringExtensions on String {
     return LangFastor.searchForValue( this );
   }
 
+  /// the "arf" means "Arabic By Fastor"
+  String arf(String arabicMeans ) {
+    if(LangFastor.isArabic ) {
+      return arabicMeans;
+    } else {
+      return this;
+    }
+  }
+
+
+
 }
 
 class LangFastor {
@@ -175,12 +186,14 @@ class LangFastor {
     return result;
   }
 
-  static void setEnglish() {
-    _setCacheArabic(false);
+
+  static Future setEnglish() async {
+    await _setCacheArabic(false);
   }
 
-  static void setArabic() {
-    _setCacheArabic(true);
+
+  static Future setArabic() async {
+    await _setCacheArabic(true);
   }
 
 

@@ -1574,9 +1574,33 @@ this class used to set the path of file of "xFile" and set the key/value of file
 
 ## LangFastor
 
-### Language Direction
+### Get Start Setup
 
-### Arabic right-to-left "RTL" Layout Direction
+1- from main method call:
+
+```
+  await LangFastor.setupFromMainMethod();
+
+```
+
+2- from MyApp() class inside build() method write :
+
+```
+class MyApp  extends StatelessWidget {
+
+ 
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    LangFastor.setupFromBuildMethod(context);
+      .....
+    }
+}
+```
+
+### Section: How To Change Language Direction
+
+###### Arabic right-to-left "RTL" Layout Direction
 How to auto change direction from (  English => Arabic ) left/right
 ```
 
@@ -1606,48 +1630,23 @@ How to auto change direction from (  English => Arabic ) left/right
   
 ```
 
-### Arabic Translator
+### Method Handle Arabic/English
 
-1- from main method call:
+##### Set/Get Arabic Value
 
+* How To Set Arabic or English
 ```
-  await LangFastor.setupFromMainMethod();
-
-```
-
-2- from MyApp() class inside build() method write :
-
-```
-class MyApp  extends StatelessWidget {
-
- 
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    LangFastor.setupFromBuildMethod(context);
-      .....
-    }
-}
+LangFastor.setArabic(context);
+LangFastor.setEnglish(context);
 ```
 
-3- write json with key/value for each english word
-
-* in path project :  assets/lang/ar.json
-```
-{
-  "Login" : "تسجيل الدخول"  , 
-  "" : ""
-}
-```
-
-4- How to check anywhere lang is arabic
-
+* How to check anywhere lang is arabic
 * this return boolean
 ```
 LangFastor.isArabic   
 ```
 
-### Dropdown Handle Direction Arabic 
+### Dropdown Handle Direction Arabic
 ```
     DropdownFastor(
       textDirection: LangFastor.getTextDirection(),
@@ -1682,6 +1681,42 @@ Container(
     child: menuFrameUI(),
 );
 ```
+
+### Section: Arabic Translation
+
+* There is Many Ways To Translate English text to Arabic Text :
+  1. First One Using json file to save english text as key while save arabic transalation as value
+  2. Second One Is Translate english to arabic In One Line.
+
+###### First Way : Using Json File To Save Translation 
+
+1. write json with key/value for each english word
+
+* in path project :  assets/lang/ar.json
+```
+{
+  "Login" : "تسجيل الدخول"  , 
+  "" : ""
+}
+```
+
+
+2. In Widget Text or Button-Text
+* Use "english-world".trf()       
+* where .trf()  means translate by fastor,  where used to translate any string Object
+```
+Text( "Login".trf()  )
+```
+
+ 
+##### Second Way : Write To Arabic In One Line
+
+* Use   "ENGLISH-WORD".arf("ARABIC-WORD")  
+* where arf()  means arabic by fastor,  where used to translate any string Object
+```
+Text(    "Login".arf("تسجيل دخول" )   )
+```
+
 
 ---
 

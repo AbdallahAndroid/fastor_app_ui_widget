@@ -1,3 +1,7 @@
+## 1.2.82
+
+* add in "LangFastor" new way to  translate english to arabic "arf" means "Arabic By Fastor"
+
 ## 1.2.81
 
 * change min sdk version to be flutter 3.0.0, with dart version 2.17.0 
