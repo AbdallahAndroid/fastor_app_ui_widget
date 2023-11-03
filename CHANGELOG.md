@@ -1,4 +1,4 @@
-## 1.2.82
+## 1.2.83
 
 * add in "LangFastor" new way to  translate english to arabic "arf" means "Arabic By Fastor"
 

@@ -12,7 +12,7 @@ class PositionedFastor {
     double? top,
     double? bottom,
   } ) {
-    bool isArabic = LangFastor.isForceLanguageArabic;
+    bool isArabic = LangFastor.isArabic;
     if( isArabic ) {
       return Positioned(child: child,
         top: top,
@@ -24,12 +24,13 @@ class PositionedFastor {
       return Positioned(child: child,
         top: top,
         bottom: bottom,
-        right: right,
+        right:  right,
         left: left,
       );
     }
 
   }
+
 
   static Positioned directional( {
 
