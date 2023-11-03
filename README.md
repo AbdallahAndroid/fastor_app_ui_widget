@@ -1726,6 +1726,24 @@ Text( "Login".trf()  )
 Text(    "Login".arf("تسجيل دخول" )   )
 ```
 
+### How To Add In Network Header The Lang Value
+
+* Add in "NetworkHeaderTools" the "LangFastor" new method "bearerTokenAndLang()" return header with "lang" = ar or en
+* the plugin code will do this step when used method "bearerTokenAndLang()"  :
+```
+    header[ "Authorization"] =  "Bearer " + token;
+    header[ "lang"] =  LangFastor.isArabic ? "ar" : "en";
+```
+
+* Example Can Use This Method     NetworkHeaderTools.bearerTokenAndLang()
+
+```
+    //header 
+    Map<String, String> header = NetworkHeaderTools.bearerTokenAndLang( tokenFromCache );
+
+    //webservice
+    var responseDio = NetworkManagerDio().get(url, headers:  header );
+```
 
 ---
 
@@ -1806,7 +1824,7 @@ class ClipboardFastor {
 * method for calculate percentage of device size
 * method get platform of this device "android/ios/browser/mobile"
 * method get oriantation portial/landscape
-```dart
+``` 
 
   //-------------------------------------------------------------- platform
 

@@ -26,4 +26,14 @@ class NetworkHeaderTools {
     return header;
   }
 
+
+  static Map<String, String > bearerTokenAndLang(String token ) {
+    Map<String, String > header = Map();
+    if(ToolsValidation.isEmpty(token) ) return header;
+    header[ "Authorization"] =  "Bearer " + token;
+    header[ "lang"] =  LangFastor.isArabic ? "ar" : "en";
+    return header;
+  }
+
+
 }

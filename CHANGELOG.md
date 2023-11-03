@@ -1,3 +1,7 @@
+## 1.2.84
+
+* Add in "NetworkHeaderTools" the "LangFastor" new method "bearerTokenAndLang()" return header with "lang" = ar or en
+
 ## 1.2.83
 
 * add in "LangFastor" new way to  translate english to arabic "arf" means "Arabic By Fastor"
