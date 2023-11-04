@@ -151,7 +151,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
         height: ToolbarSimpleFastor.frameHeight ,
         alignment: Alignment.center,
         // margin: EdgeInsets.only( top: 15 ),
-        padding: EdgeInsets.only( left: DSDimen.space_parent),
+        padding: EdgeInsets.symmetric( horizontal: DSDimen.space_parent),
         child: icon);
 
     return GestureDetector( child: ct ,

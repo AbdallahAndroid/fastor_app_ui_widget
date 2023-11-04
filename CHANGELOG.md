@@ -1,4 +1,4 @@
-## 1.2.85
+## 1.2.86
 
 * Make "ToolbarSimpleFastor" applying with "LangFastor" direction ltr or rtl .
 
