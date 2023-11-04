@@ -66,15 +66,35 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
   @override
   Widget build(BuildContext context) {
     //Log.i( "ToolbarSimple - build()");
-
-    return Container(
-      alignment: Alignment.topCenter,
-      child:  content(),
-    );
-
+    return getDirection();
   }
 
-  Widget content(){
+
+  Widget getDirection() {
+    return   Directionality(
+      textDirection:   LangFastor.getTextDirection(),
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: contentUI(),
+          );
+        },
+      ),
+    );
+  }
+
+
+  Widget contentUI(){
+    return Container(
+      alignment: Alignment.topCenter,
+      child:  stackContent(),
+    );
+  }
+
+  Widget stackContent(){
     return Stack( children: [
 
       EmptyView.colored( DeviceTools.getWidth( context),
@@ -85,13 +105,13 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
 
 
       //back
-      Positioned( child:  bt_back(), left: 0,   top: 0  ),
+      PositionedFastor.langFastor( child:  bt_back(), left: 0,   top: 0  ),
 
       //button left
-      Positioned(child: bt_left() , left: 0, top: 0 , bottom: 0 ),
+      PositionedFastor.langFastor(child: bt_left() , left: 0, top: 0 , bottom: 0 ),
 
       //button right
-      Positioned(child: bt_right() , right: 0, top: 0 , bottom: 0 ),
+      PositionedFastor.langFastor(child: bt_right() , right: 0, top: 0 , bottom: 0 ),
 
 
     ],);

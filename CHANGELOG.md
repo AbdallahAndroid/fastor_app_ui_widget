@@ -1,3 +1,7 @@
+## 1.2.85
+
+* Make "ToolbarSimpleFastor" applying with "LangFastor" direction ltr or rtl .
+
 ## 1.2.84
 
 * Add in "NetworkHeaderTools" the "LangFastor" new method "bearerTokenAndLang()" return header with "lang" = ar or en
