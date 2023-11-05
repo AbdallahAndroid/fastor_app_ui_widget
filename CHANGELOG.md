@@ -1,4 +1,4 @@
-## 1.2.90
+## 1.2.91
 
 * Add Default Padding in Item Text Of "DropdownFastor" widget.
 
