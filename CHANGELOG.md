@@ -1,3 +1,7 @@
+## 1.2.87
+
+* Add "textAlignItemDropdown" in "DropdownFastor"
+
 ## 1.2.86
 
 * Make "ToolbarSimpleFastor" applying with "LangFastor" direction ltr or rtl .

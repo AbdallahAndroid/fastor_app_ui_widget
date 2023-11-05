@@ -30,6 +30,7 @@ class DropdownFastor extends StatefulWidget {
 
   //text
   TextStyle? textStyleItemDropdown;
+  TextAlign? textAlignItemDropdown;
 
   //previous
   int? previousPosition;
@@ -81,6 +82,7 @@ class DropdownFastor extends StatefulWidget {
     this.hintText,
     this.hintWidget,
     this.textStyleItemDropdown,
+    this.textAlignItemDropdown,
     this.colorHintText,
     this.colorItemText,
     this.colorItemTextSelected,
@@ -220,6 +222,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
         fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
         fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
         color:   widget.colorHintText,
+        textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
         levelDS: LevelDS.l2);
   }
 
@@ -245,7 +248,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
       fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
       fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-
+      textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
     );
   }
 

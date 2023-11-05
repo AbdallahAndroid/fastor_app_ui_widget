@@ -68,6 +68,7 @@ class SpinnerView extends StatefulWidget {
     this.decorationOutlineDropdown,
     this.iconDropdown,
     this.textStyleItemDropdown,
+
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     // this.colorDropdownButtonBackground,
