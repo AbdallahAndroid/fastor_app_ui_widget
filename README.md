@@ -1214,6 +1214,12 @@ Widget dropdownFastor(){
 
 ````
 
+## Handle Direction ltr or rtl :
+```
+    return   DropdownFastor(
+        textDirection:  getTextDirection(),
+```
+
 ---
 
 ---
@@ -1744,6 +1750,16 @@ Text(    "Login".arf("تسجيل دخول" )   )
     //webservice
     var responseDio = NetworkManagerDio().get(url, headers:  header );
 ```
+
+
+### Dropdown:
+
+* Handle Direction ltr/rtl
+```
+    return   DropdownFastor(
+        textDirection:  LangFastor.getTextDirection(),
+```
+
 
 ---
 
