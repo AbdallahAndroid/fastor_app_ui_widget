@@ -1,4 +1,8 @@
-## 1.2.89
+## 1.2.90
+
+* Add Default Padding in Item Text Of "DropdownFastor" widget.
+
+## 1.2.88
 
 * Add "textAlignItemDropdown" at widget "DropdownFastor"
 * Make default of "textDirection" is "LangFastor.getTextDirection()" at widget "DropdownFastor"

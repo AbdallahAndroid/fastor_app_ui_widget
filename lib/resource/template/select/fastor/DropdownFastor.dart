@@ -219,7 +219,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   Widget _hint(){
     return  TextFastor( widget.hintText??"select",
-        padding: widget.paddingText??EdgeInsets.only(top: 10, left: 10),
+        padding: widget.paddingText??EdgeInsets.only(top: 10, left: 10, right: 10),
         fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
         fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
         color:   widget.colorHintText,
@@ -244,7 +244,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget _getItemDropdownWidget(String name, int positionName){
     return TextFastor( name,
       levelDS: LevelDS.l3,
-      padding: widget.paddingText??EdgeInsets.only(top: 10, left: 10),
+      padding: widget.paddingText??EdgeInsets.only(top: 10, left: 10, right: 10),
       color: getColorItemTextWhenSelectedOrNot(positionName),
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
       fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
