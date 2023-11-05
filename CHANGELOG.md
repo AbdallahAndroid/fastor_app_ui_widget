@@ -1,6 +1,7 @@
-## 1.2.87
+## 1.2.88
 
-* Add "textAlignItemDropdown" in "DropdownFastor"
+* Add "textAlignItemDropdown" at widget "DropdownFastor"
+* Make default of "textDirection" is "LangFastor.getTextDirection()" at widget "DropdownFastor"
 
 ## 1.2.86
 
