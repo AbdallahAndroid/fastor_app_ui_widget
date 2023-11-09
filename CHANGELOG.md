@@ -1,3 +1,7 @@
+## 1.2.92
+
+* Fix Align Direction With Arabic
+
 ## 1.2.91
 
 * Add Default Padding in Item Text Of "DropdownFastor" widget.

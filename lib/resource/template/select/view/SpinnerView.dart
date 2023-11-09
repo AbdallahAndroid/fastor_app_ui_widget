@@ -214,10 +214,25 @@ class SpinnerViewState extends State<SpinnerView> {
 
   @override
   Widget build(BuildContext context) {
-
     mapListWidgetToUnSelectedMenu();
+    return  getDirection();
+  }
 
-    return  contentUi();
+
+  Widget getDirection() {
+    return   Directionality(
+      textDirection:   widget.textDirection!,
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: contentUi(),
+          );
+        },
+      ),
+    );
   }
 
 
@@ -238,7 +253,7 @@ class SpinnerViewState extends State<SpinnerView> {
       dropboxAndBoarder(),
       //      Positioned.directional(
 
-      PositionFastor.directional(
+      PositionedFastor.directional(
         textDirection:  widget.textDirection!,
         child: widget.iconDropdown!,
         top: marginTopIcon,
@@ -276,6 +291,7 @@ class SpinnerViewState extends State<SpinnerView> {
         // color: Colors.green,
         width: widget.width_frame  ,
         height: widget.height_frame,
+        alignment: Alignment.center,
         decoration: chooseDecorationNormalOrError()
     );
     return containerDecoration;

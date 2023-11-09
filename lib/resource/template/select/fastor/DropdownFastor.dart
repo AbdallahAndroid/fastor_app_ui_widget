@@ -124,6 +124,27 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
   @override
   Widget build(BuildContext context) {
+    return getDirection();
+  }
+
+  Widget getDirection() {
+    return   Directionality(
+      textDirection:   widget.textDirection!,
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: contentUI(),
+          );
+        },
+      ),
+    );
+  }
+
+
+  Widget contentUI(){
     return Container(
       width: widget.width,
       child: showDropdownAndPreviousTitle() ,
