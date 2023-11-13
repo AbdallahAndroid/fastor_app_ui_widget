@@ -53,6 +53,9 @@ class TextFieldFastor extends StatelessWidget {
   TextInputType? keyboardType;
   bool obscureText = false;
 
+  //action
+  TextInputAction? textInputAction;
+
   //size and max/min
   double? width;
   int? maxLength;
@@ -104,6 +107,8 @@ class TextFieldFastor extends StatelessWidget {
 
     //input content type
     this.keyboardType,
+    this.textInputAction,
+
     this.obscureText = false,
 
     //size and max/min
@@ -157,6 +162,15 @@ class TextFieldFastor extends StatelessWidget {
 
     validateDecorationInputField();
 
+    //??TextInputAction.newline
+    if( textInputAction == null ){
+
+      if( keyboardType  == null && keyboardType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
+        if( minLines != null && minLines! > 1 ) {
+          textInputAction = TextInputAction.newline;
+        }
+      }
+    }
   }
 
 
@@ -259,6 +273,9 @@ class TextFieldFastor extends StatelessWidget {
       //lines
       maxLines: maxLines,
       minLines: minLines,
+
+      //action
+      textInputAction :  textInputAction ,
 
       focusNode: focusNode,
 

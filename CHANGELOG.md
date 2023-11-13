@@ -1,3 +1,7 @@
+## 1.2.93
+
+* Add "TextInputAction" at "TextFieldFastor"
+
 ## 1.2.92
 
 * Fix Align Direction With Arabic
