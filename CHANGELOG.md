@@ -1,3 +1,7 @@
+## 1.2.94
+
+* Add "titleMargin" at "ToolbarSimpleFastor"
+
 ## 1.2.93
 
 * Add "TextInputAction" at "TextFieldFastor"

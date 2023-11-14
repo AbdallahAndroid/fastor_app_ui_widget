@@ -13,6 +13,7 @@ class ToolbarSimpleFastor extends StatefulWidget {
   //title
   String title;
   Color? titleColor;
+  EdgeInsets? titleMargin;
 
   bool hideBackButton = false;
   ValueChanged<bool>? onClickListener;
@@ -33,6 +34,7 @@ class ToolbarSimpleFastor extends StatefulWidget {
         Widget? buttonLeft,
         Widget? buttonRight,
         this.titleColor,
+        this.titleMargin,
         this.iconSize,
         this.iconColorBack
       } ) {
@@ -101,7 +103,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
           ToolbarSimpleFastor.frameHeight, DSColor.ds_background_toolbar),
 
       //title
-      Positioned( child:  tv_title(), left: 0, right: 0 , top: 6 ),
+      Positioned( child:  tv_title(), left: 0, right: 0 , top: 0 ),
 
 
       //back
@@ -131,7 +133,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
     );
 
     return Container( child:  txt ,
-        margin: EdgeInsets.only(top: 15)
+        margin: widget.titleMargin?? EdgeInsets.only(top: 15)
     );
 
   }
