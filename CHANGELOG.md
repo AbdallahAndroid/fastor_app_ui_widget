@@ -1,6 +1,6 @@
-## 1.2.95
+## 1.2.94
 
-* Fix white background at widget "SwitchFastor" 
+* Add "titleMargin" at "ToolbarSimpleFastor"
 
 ## 1.2.93
 
