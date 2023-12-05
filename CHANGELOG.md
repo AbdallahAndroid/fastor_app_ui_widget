@@ -1,4 +1,4 @@
-## 1.2.94
+## 1.2.95
 
 * Fix white background at widget "SwitchFastor" 
 
