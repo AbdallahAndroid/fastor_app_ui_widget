@@ -83,11 +83,6 @@ class SwitchFastor extends StatefulWidget {
 
 class _SwitchFastorState extends State<SwitchFastor> {
 
-  // bool statusChecked = false;
-  //
-  // _SwitchFastorState(){
-  //   statusChecked  = widget.defaultValue;
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -114,14 +109,6 @@ class _SwitchFastorState extends State<SwitchFastor> {
         padding: widget.padding,
         child:  row );
 
-    //tab on
-    // var tab = GestureDetector( child:  ct ,
-    //   onTap: widget.onTap,
-    //   // onTap: () {
-    //   //
-    //   //   onChange(value);
-    //   // }
-    // );
     return cont;
 
   }
@@ -160,11 +147,11 @@ class _SwitchFastorState extends State<SwitchFastor> {
     //fix : remove default
     var sizeBox = SizedBox( child:  sw, width: paddingCheckBoxClick, height: paddingCheckBoxClick   );
 
-    //fix material
-    var material = Material(child:  sizeBox    );
+    //fix material >> cause background white
+    // var material = Material(child:  sizeBox    );
 
     //size by scale
-    var scale = Transform.scale(scale: widget.size_scale!, child:  material );
+    var scale = Transform.scale(scale: widget.size_scale!, child:  sizeBox );
 
     //space between title
     var spaceBetweenTitle = EmptyView.empty( 13, 5);

@@ -1,3 +1,7 @@
+## 1.2.94
+
+* Fix white background at widget "SwitchFastor" 
+
 ## 1.2.93
 
 * Add "TextInputAction" at "TextFieldFastor"
