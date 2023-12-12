@@ -22,10 +22,16 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
     }
+    //time out
+    if(timeOutSecond != null ) {
+      _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+      _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+    }
+    _dio.options.headers = headers;
 
     try {
 
-      response = await _dio.get(url, options: Options(headers: headers));
+      response = await _dio.get(url, );
       // Log.k( tag, "_get_dio() - success: "  + response.toString()  );
 
       //call back
@@ -79,8 +85,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
 
-      response = await _dio.post(url, options: Options(headers: headers), data: body);
+      response = await _dio.post(url,  data: body);
       //Log.k(tag, "_post_dio() - success: " + response.toString());
 
       //call back
@@ -140,8 +152,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
 
-      response =   await _dio.put(url, options: Options(headers: headers), data: body);
+      response =   await _dio.put(url, data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -195,8 +213,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
 
-      response =   await _dio.patch(url, options: Options(headers: headers), data: body);
+      response =   await _dio.patch(url,  data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -250,8 +274,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
 
-      response =   await _dio.delete(url, options: Options(headers: headers), data: body);
+      response =   await _dio.delete(url,  data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -327,8 +357,15 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
+
       response = await _dio.post(url,
-          options: Options(headers: headers), data: formData);
+           data: formData);
       Log.k(tag, "_file() - success: " + response.toString());
 
       //call back
@@ -408,12 +445,14 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
 
+      //time out
+      if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+      }
+      _dio.options.headers = headers;
+
       response = await _dio.post(url,
-          options: Options(
-            headers: headers,
-            // receiveTimeout: Duration(minutes: 60 ), //200000, //zero means not limitation
-            // sendTimeout:  Duration(minutes: 60 ), // 200000, //zero means not limitation
-          ),
           data: formData,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress

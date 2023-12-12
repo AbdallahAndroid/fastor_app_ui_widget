@@ -1530,6 +1530,13 @@ file
 }
 ```
 
+#### Time Out
+
+```
+NetworkManagerDio().get( timeOutSecond: 50 );
+```
+
+
 ---
 
 #### Upload File

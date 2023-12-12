@@ -47,6 +47,8 @@ class NetworkManagerDio  {
 
   NetworkConfigDio? config;
 
+  int? timeOutSecond;
+
   //------------------------------------------------------------------------- constructor
 
   NetworkManagerDio( { this.config });
@@ -62,15 +64,18 @@ class NetworkManagerDio  {
         NetworkRequestFile? requestFile,
         ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
+
+        ///other
         NetworkTypeDio? type,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        int?  timeOutSecond
       }) async {
 
     //set values
     this.url = url;
     this.type = type;
     this.requestFile = requestFile;
-
+    this.timeOutSecond = timeOutSecond;
 
     //log
     isEnableLogDioPretty ??= true  ; //default take test enviroment
@@ -98,11 +103,11 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
+        int?  timeOutSecond,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.get,
+    return await any( url,  NetworkTypeDio.get, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -112,11 +117,11 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
+        int?  timeOutSecond,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.post,
+    return await any( url,  NetworkTypeDio.post, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -126,11 +131,11 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
+        int?  timeOutSecond,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.put,
+    return await any( url,  NetworkTypeDio.put, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -139,11 +144,11 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
+        int?  timeOutSecond,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.patch,
+    return await any( url,  NetworkTypeDio.patch, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -153,11 +158,11 @@ class NetworkManagerDio  {
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
-        // NetworkTypeDio? type,
+        int?  timeOutSecond,
         bool? isEnableLogDioPretty ,  //PrettyDioLogger
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.delete,
+    return await any( url,  NetworkTypeDio.delete, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -167,6 +172,7 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         bool? isEnableLogDioPretty ,
+        int?  timeOutSecond,
         ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
         NetworkDiocallback_dio? callback}) async {
@@ -176,6 +182,7 @@ class NetworkManagerDio  {
         body: body,
         headers: headers,
         requestFile: requestFile,
+        timeOutSecond : timeOutSecond,
         isEnableLogDioPretty: isEnableLogDioPretty,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
@@ -195,7 +202,8 @@ class NetworkManagerDio  {
        ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
 
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        int?  timeOutSecond,
         NetworkDiocallback_dio? callback}) async {
 
     //set values
@@ -203,6 +211,7 @@ class NetworkManagerDio  {
     this.type = type;
     this.requestFile = requestFile;
     this.callback_dio = callback;
+    this.timeOutSecond = timeOutSecond;
 
     //log
     isEnableLogDioPretty ??= true;

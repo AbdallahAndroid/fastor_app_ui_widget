@@ -1,3 +1,7 @@
+## 1.2.96
+
+* Add "timeOutSecond" in "NetworkMangerDio"
+
 ## 1.2.95
 
 * Fix white background at widget "SwitchFastor"
