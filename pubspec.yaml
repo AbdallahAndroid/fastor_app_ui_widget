@@ -1,6 +1,6 @@
 name: fastor_app_ui_widget
 description: Coding Faster By Build Fast UI Widget
-version: 1.2.96
+version: 1.2.97
 homepage: https://fastor-app.com
 
 environment:
@@ -42,8 +42,12 @@ dependencies:
 
   #network
   http:
-  dio:
-#  dio: ^5.3.3
+
+  # dio versions
+  dio: ^5.0.0
+#  dio: ^5.0.0  # timeOut take object Duration
+  # dio: ^4.0.6 # timeOut take just integer
+
   pretty_dio_logger: ^1.1.1
   cross_file: # ^0.3.3+4
 

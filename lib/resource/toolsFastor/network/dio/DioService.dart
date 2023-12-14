@@ -87,7 +87,7 @@ extension DioService on NetworkManagerDio {
 
       //time out
       if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
         _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
       }
       _dio.options.headers = headers;
