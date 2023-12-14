@@ -1,9 +1,4 @@
-## 1.2.97
-
-* Add "timeOutSecond" in "NetworkMangerDio"
-* use dependence:   dio: ^5.0.0   at class "NetworkManagerDio"
-
-## 1.2.95
+## 1.2.98
 
 * Fix white background at widget "SwitchFastor"
 

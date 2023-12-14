@@ -44,7 +44,7 @@ dependencies:
   http:
 
   # dio versions
-  dio: ^5.0.0
+  dio:
 #  dio: ^5.0.0  # timeOut take object Duration
   # dio: ^4.0.6 # timeOut take just integer
 

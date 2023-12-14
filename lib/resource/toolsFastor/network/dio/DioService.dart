@@ -22,11 +22,14 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
     }
-    //time out
-    if(timeOutSecond != null ) {
-      _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-      _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-    }
+
+    //time out have issue between version "4 and 5"
+    /**
+        if(timeOutSecond != null ) {
+        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+        }
+     */
     _dio.options.headers = headers;
 
     try {
@@ -85,11 +88,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
+
       _dio.options.headers = headers;
 
       response = await _dio.post(url,  data: body);
@@ -152,11 +158,14 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
+
       _dio.options.headers = headers;
 
       response =   await _dio.put(url, data: body);
@@ -213,11 +222,13 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
       _dio.options.headers = headers;
 
       response =   await _dio.patch(url,  data: body);
@@ -274,11 +285,13 @@ extension DioService on NetworkManagerDio {
         ));
       }
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
       _dio.options.headers = headers;
 
       response =   await _dio.delete(url,  data: body);
@@ -357,11 +370,13 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
       _dio.options.headers = headers;
 
       response = await _dio.post(url,
@@ -445,11 +460,13 @@ extension DioService on NetworkManagerDio {
         responseBody: isEnableLogDioPretty!,
       ));
 
-      //time out
-      if(timeOutSecond != null ) {
-        _dio.options.connectTimeout = Duration( seconds: timeOutSecond! );
-        _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-      }
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
       _dio.options.headers = headers;
 
       response = await _dio.post(url,
