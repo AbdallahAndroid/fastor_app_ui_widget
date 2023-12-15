@@ -92,16 +92,19 @@ class LangFastor {
         }
 
      */
+    await updateActiveLanguageCode();
 
+    //Log.i("Lang - _updateLanguageType() - isArabic: " + LangFastor.isArabic.toString() );
+  }
+
+  static Future updateActiveLanguageCode() async  {
     //update code
     if(LangFastor.isArabic ) {
       LangFastor.activeLanguageCode = "ar";
     } else {
       LangFastor.activeLanguageCode = "en";
     }
-    //Log.i("Lang - _updateLanguageType() - isArabic: " + LangFastor.isArabic.toString() );
   }
-
   //------------------------------------------------------------------- choose direction and local
 
   static Locale getLocale(){
@@ -177,6 +180,7 @@ class LangFastor {
   static Future _setCacheArabic(  bool v) async {
     //Log.i("Lang - _setCacheArabic() - v: $v");
     LangFastor.isArabic = v;
+    await updateActiveLanguageCode();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_keyCache, v);
   }

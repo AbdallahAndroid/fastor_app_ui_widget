@@ -1,3 +1,7 @@
+## 1.2.99
+
+* easy get language code "ar" or "en" by using "LangFastor.activeLanguageCode" 
+
 ## 1.2.98
 
 * Fix white background at widget "SwitchFastor"
