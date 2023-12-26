@@ -2,6 +2,7 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/logic/TabBarController.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/size/TextWidthCalculatorFastor.dart';
 import 'package:flutter/material.dart';
 
 extension ItemTabBarFastorExtension on TabBarFastorState {
@@ -15,7 +16,7 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
           });
 
           widget.pressed( index, name );
-    });
+        });
   }
 
 
@@ -23,6 +24,8 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
     return Container(
       width: widget.widthItemTab,
       height: widget.height,
+      color: Colors.transparent,
+      padding: EdgeInsets.all( 10 ),
       child: _textAndUnderLine(name, index),
       alignment: Alignment.center,
     );
@@ -30,10 +33,14 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
 
 
   Widget _textAndUnderLine(String name, int index){
-    return ColumnFastor(children: [
-      _textTabItem(name, index ),
-      _underline( name, index )
-    ]);
+    return ColumnFastor(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _textTabItem(name, index ),
+          _underline( name, index )
+        ]);
   }
 
 
@@ -41,7 +48,7 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
     return TextFastor( name,
       padding: EdgeInsets.only( bottom: widget.spaceBetweenLabelAndUnderline??0 ),
       fontFamily: widget.fontFamily,
-      fontSize: widget.fontSize,
+      fontSize: widget.fontSize?? 18,
       textAlign: TextAlign.center,
       color: getColorBySelectedStatus( index ),
     );
@@ -50,30 +57,19 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
 
   Widget _underline(String name, int index){
     return Container(
-      child: _cloneSameTextSizeWidget( name ),
+      width: getSizeTextWidth( name ) + 20 ,
       height: widget.heightUnderline??1,
+      alignment: Alignment.center,
       color: getColorBySelectedStatus( index),
     );
   }
 
-
-  Widget _cloneSameTextSizeWidget(String name ) {
-    String cloneName = _cloneNameToGetSameSize( name );
-    var txtClone = TextFastor( cloneName,
-      // padding: EdgeInsets.only( bottom: widget.spaceBetweenLabelAndUnderline??0 ),
-      fontFamily: widget.fontFamily,
-      fontSize: widget.fontSize,
+  getSizeTextWidth(String name) {
+    return TextWidthCalculatorFastor.get(
+        context: context,
+        txt: name,
+        dimenFont: widget.fontSize ?? 18
     );
-    return txtClone;
-  }
-
-  String _cloneNameToGetSameSize(String name ){
-    int size = name.length;
-    String result = "";
-    for( int i = 0 ; i < size ; i++ ) {
-      result += " ";
-    }
-    return result;
   }
 
 

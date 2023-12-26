@@ -7,7 +7,7 @@ typedef TabBarPressedFastor = Function(int position, String title );
 class TabBarFastor extends StatefulWidget {
 
   double width;
-  double? height;
+  double height;
   double widthItemTab = 0;
   List<String> names;
   Color  indicatorColor; //colorActive;
@@ -22,7 +22,7 @@ class TabBarFastor extends StatefulWidget {
 
   TabBarFastor( {
     required this.width,
-    this.height,
+    required this.height,
     required this.names,
     required this.indicatorColor,
     required this.unselectedLabelColor,
@@ -41,7 +41,7 @@ class TabBarFastor extends StatefulWidget {
 
   void calculateItemTabWidth(){
     int sizeTabs = names.length;
-    double sizeDouble = sizeTabs as double;
+    double sizeDouble =  double.parse( sizeTabs.toString() + ".0");
     widthItemTab = width / sizeDouble;
   }
 
@@ -90,6 +90,7 @@ class TabBarFastorState extends State<TabBarFastor>  {
     widget.names.forEach(( singleName) {
       Widget tab = ItemTabBarFastor(singleName, index );
       ls.add( tab);
+      index += 1;
     });
     return ls;
   }

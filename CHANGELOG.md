@@ -1,3 +1,7 @@
+## 1.3.0
+
+* build new widget "TabBarFastor"
+
 ## 1.2.99
 
 * easy get language code "ar" or "en" by using "LangFastor.activeLanguageCode" 

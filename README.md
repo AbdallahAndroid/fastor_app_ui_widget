@@ -137,6 +137,7 @@ void main() async {
 
 [TextFieldEmailOrPhoneFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldemailorphonefastor)
 
+[TabBarFastor](https://pub.dev/packages/fastor_app_ui_widget#tabbarfastor)
 
 
 
@@ -1417,6 +1418,42 @@ class LanguageHelper {
 ```
 
 
+---
+
+---
+
+# TabBarFastor
+
+* example 
+```
+
+  int selectedTabPosition = 0 ;
+  
+  Widget tabBarFastor(){
+    return TabBarFastor(
+        width: DeviceTools.getWidth(context),
+        height: 50,
+        names:  ['UPCOMING'.trf() , 'COMPLETED'.trf(), 'CANCELLED'.trf()],
+        indicatorColor: ColorApp.primaryByVip(),
+        unselectedLabelColor: ColorApp.blackOpacity,
+        fontSize: 16,
+        fontFamily: ProjectFonts.DarkerGrotesque_Medium_500,
+        spaceBetweenLabelAndUnderline : 10,
+        decorationTabBar: BoarderHelper.box(
+            colorBackground: Colors.grey[200],
+            colorLine:  Colors.transparent
+        ),
+        pressed: (int index , String title ) {
+
+          Log.i("tabBarFastor() - pressed - index: $index /title: $title");
+          setState(() {
+            selectedTabPosition = index;
+          });
+
+        });
+  }
+  
+```
 
 ---
 
