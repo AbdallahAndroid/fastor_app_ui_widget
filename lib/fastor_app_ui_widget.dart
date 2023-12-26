@@ -9,6 +9,9 @@ import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dar
 // import 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
+import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
+export 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 export 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
@@ -324,8 +327,7 @@ class fastor_app_ui_widget extends fastor {
   late TableViewFastorState tbState;
   late PositionFastor positionFastor;
   late PositionedFastor positionedFastor;
-
-  ///calender
+  late TabBarFastor tabBarFastor;
   late CalendarTemplate calendar;
   late CalenderFastor calenderFastor;
   late CalenderTypeFastor calenderTypeFastor;
