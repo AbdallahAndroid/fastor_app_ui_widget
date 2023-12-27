@@ -1,3 +1,7 @@
+## 1.3.1
+
+* Fastor - detect orientation device change to update the cache of width and height of device in class "DeviceTools"
+
 ## 1.3.0
 
 * build new widget "TabBarFastor"

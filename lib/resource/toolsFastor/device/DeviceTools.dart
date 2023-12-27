@@ -28,6 +28,7 @@ class DeviceTools {
 
   static double widthFullSize = 0;
   static double heightFullSize = 0;
+  static Orientation? _orientationPrevous = null;
 
   //-------------------------------------------------------------- platform
 
@@ -100,7 +101,7 @@ class DeviceTools {
 
   //------------------------------------------------------------- screens size
 
-  // ++++++++++++++++ customer
+  // ++++++++++++++++ custome
 
   static double  getCostumeWidth(BuildContext  context, double d) {
     var result =  getWidth(context ) * (d/100.0);
@@ -115,35 +116,54 @@ class DeviceTools {
     return result;
   }
 
+  //++++++++++++++++++++ fix cache device size
 
-  // /**
-  //  call when website responsive
-  //  */
-  // static void initFullSize(BuildContext  context ) {
-  //   //make it zero
-  //   widthFullSize = 0;
-  //   heightFullSize = 0;
-  //
-  //   //get again
-  //   getWidth(context);
-  //   getHeight(context);
-  // }
+  static void _clearCacheDiviceSizeWhenOrientationChange(BuildContext context){
+    // case first time open app
+    if( _orientationPrevous == false ) {
+      return;
+    }
+
+    // case same orientation not change
+    var currentOrientation = MediaQuery.of(context).orientation;
+    bool isOrientationNotChange = currentOrientation == _orientationPrevous;
+    if( isOrientationNotChange ) {
+      return ;
+    }
+
+    //update oriantation
+    _orientationPrevous = currentOrientation;
+    _clearCacheSaveDeviceSizeNow();
+   // print("Fastor - detect oriantation change");
+  }
+
+  /**
+      call when website responsive
+   */
+  static void _clearCacheSaveDeviceSizeNow(  ) {
+    //make it zero
+    widthFullSize = 0;
+    heightFullSize = 0;
+  }
 
 
   static double getWidth (BuildContext  context, { String? className  }) {
     try {
+
+      _clearCacheDiviceSizeWhenOrientationChange(context);
+
       if( isMobile() &&  widthFullSize != 0 ) {
         return widthFullSize;
       }
       widthFullSize =  MediaQuery.of(context).size.width;
-     // Log.i( "DeviceTools - getScreenWidth() - result: $result ");
+      // Log.i( "DeviceTools - getScreenWidth() - result: $result ");
       return widthFullSize;
     }  catch (err) {
       if( className  != null ){
         //Log.e( "DeviceTools - getWidth() - err - className: $className ");
         return 500;
       }
-   //   LogDebug.e( "DeviceTools - getWidth() - err: $err ");
+      //   LogDebug.e( "DeviceTools - getWidth() - err: $err ");
       return 500;
     }
   }
@@ -151,6 +171,9 @@ class DeviceTools {
 
   static double getHeight (BuildContext  context, { String? className }) {
     try {
+
+      _clearCacheDiviceSizeWhenOrientationChange(context);
+
       if( isMobile() &&  heightFullSize != 0 ) {
         return heightFullSize;
       }
@@ -162,7 +185,7 @@ class DeviceTools {
         //Log.e( "DeviceTools - getHeight() - err - className: $className ");
         return 1000;
       }
-     // LogDebug.e( "DeviceTools - getHeight() - err: $err ");
+      // LogDebug.e( "DeviceTools - getHeight() - err: $err ");
       return 1000;
     }
   }
@@ -236,7 +259,7 @@ class DeviceTools {
 
   static double getQuarterHeight(BuildContext  context) {
     var result =  getHeight(context) / 4.0;
-   // Log.i( "DeviceTools - getQuarterHeight() - result: $result ");
+    // Log.i( "DeviceTools - getQuarterHeight() - result: $result ");
     return result;
   }
 
