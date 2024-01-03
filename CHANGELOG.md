@@ -1,3 +1,7 @@
+## 1.3.2
+
+* Add Class "ApiParserFastor"
+
 ## 1.3.1
 
 * Fastor - detect orientation device change to update the cache of width and height of device in class "DeviceTools"

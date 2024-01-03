@@ -161,6 +161,7 @@ void main() async {
 
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
 
+[ApiParserFastor](https://pub.dev/packages/fastor_app_ui_widget#apiparserfastor)
 
 ---
 
@@ -2036,7 +2037,6 @@ class NavigationTools {
 * method "ZoneTools.getZoneCountryDialCode()"
 * method "ZoneTools.getCountryISOCode()"
  
-```
 
 ---
 
@@ -2048,6 +2048,96 @@ class NavigationTools {
 
 ```
  bool status = await InternetTools.isConnected();
+```
+
+
+---
+
+---
+
+## ApiParserFastor
+
+  * Parse json in dynamic.
+  * example some integer return from backend as "1" or 1 this issue cause exception in parse json.
+  * Convert 0 and 1 to boolean variable
+  
+### Parse  Zero And One to Boolean
+  
+```
+
+static bool isSuccess(int? n) {
+....
+}
+
+static bool isTrue(int? n) {
+....
+}
+
+static bool isFalse(int? n) {
+....
+}
+
+static bool isFailed(int? n) {
+....
+}
+
+static bool parseBoolean_int(int? n) {
+....
+}
+
+ 
+static bool parseBoolean(String? n) {
+...
+}
+```
+
+### Parse Double Or Integer to String
+  
+* fix when api return value someTime in "Int" and sometimes in "Double" 
+  like: { "data": 15 }  or some times return { "data": 13.5 }
+  remove command "," if found in at big numbers come from backend
+
+```
+  static double parseDoubleOrInt(dynamic data) {
+     ......
+  }
+```
+
+### Parse  Integer Any Shape to String
+
+* In Api Json Return in integer like 1  or some time in string double qoutaiton like "1". to fix 
+
+```
+
+  static int parseIntDynamic(dynamic data) {
+    ....
+  }
+```
+
+### Check Pagination End
+
+* This Working when using pagingate with backend PHP Laravel
+
+ ```
+  *1- example totalBar record is 100, while pagiantor is 10
+    * current page is 9
+    * "to" is 10
+    *  >> result false
+    *
+  *2- example totalBar record is 100, while pagiantor is 10
+    * current page is 10
+    * "to" is 10
+    *  >> result true "there is no next pages"
+ 
+*3- example totalBar record is 0 zero, while pagiantor is 10
+* current page is 1
+* "to" is 0
+*  >> result true "there is no next pages"
+   */
+   static bool isPaginateLaravelEnd(int? currentPage, int? last_page) {
+   ...
+   }
+
 ```
 
 ---

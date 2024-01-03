@@ -89,14 +89,17 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionedFastor.
 
 import 'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiParserFastor.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiParserFastor.dart';
+
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/timer/ToolsWait.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsPhone.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsPhone.dart';
 
 export 'package:fastor_app_ui_widget/resource/toolsFastor/timer/ToolsWait.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/internet/InternetTools.dart';
-export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ToolsAPI.dart';
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiTools.dart';
 
 export  'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 
@@ -270,6 +273,7 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkMan
 class fastor_app_ui_widget extends fastor {
 
 
+  late ApiParserFastor apiParserFastor;
 
   ///network
   late NetworkManagerDio dio;
