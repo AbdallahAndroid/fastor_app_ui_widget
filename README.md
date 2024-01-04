@@ -163,6 +163,8 @@ void main() async {
 
 [ApiParserFastor](https://pub.dev/packages/fastor_app_ui_widget#apiparserfastor)
 
+[ResponsiveFastor](https://pub.dev/packages/fastor_app_ui_widget#responsivefastor)
+
 ---
 
 ---
@@ -2139,6 +2141,34 @@ static bool parseBoolean(String? n) {
    }
 
 ```
+
+---
+
+---
+
+## ResponsiveFastor
+
+* Choice what view will be shown here in ui, for tablet or iphone.
+* Decide the view will be show for orientation: portrait and landscape
+
+* each method will return boolean value
+## Methods
+``` 
+
+  ResponsiveFastor.isTabletPortraitOrIsPhoneNormalSize(  context );
+  
+  ResponsiveFastor.isTabletLandscape(  context );
+  
+  ResponsiveFastor.isTabletPortrait(  context );
+  
+  ResponsiveFastor.isTablet(  context );
+  
+  ResponsiveFastor.isPhoneNormalSize(  context );
+  
+  ResponsiveFastor.isPhoneSmall(  context );
+   
+```
+
 
 ---
 

@@ -1,3 +1,7 @@
+## 1.3.3
+
+* Build Class "ResponsiveFastor"
+
 ## 1.3.2
 
 * Add Class "ApiParserFastor"

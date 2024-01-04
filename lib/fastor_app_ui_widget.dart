@@ -123,6 +123,9 @@ import 'resource/resources/boarder/BorderRadiusTools.dart';
 export 'resource/resources/boarder/BorderRadiusTools.dart';
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
+import 'resource/toolsFastor/responsive/ResponsiveFastor.dart';
+export 'resource/toolsFastor/responsive/ResponsiveFastor.dart';
+
 import 'resource/toolsFastor/state/FastorStateManagement.dart';
 export 'resource/toolsFastor/state/FastorStateManagement.dart';
 
@@ -274,6 +277,7 @@ class fastor_app_ui_widget extends fastor {
 
 
   late ApiParserFastor apiParserFastor;
+  late ResponsiveFastor responsiveFastor;
 
   ///network
   late NetworkManagerDio dio;
