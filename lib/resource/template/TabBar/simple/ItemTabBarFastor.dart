@@ -60,7 +60,7 @@ extension ItemTabBarFastorExtension on TabBarFastorState {
       width: getSizeTextWidth( name ) + 20 ,
       height: widget.heightUnderline??1,
       alignment: Alignment.center,
-      color: getColorBySelectedStatus( index),
+      color: getColorUnderline( index),
     );
   }
 

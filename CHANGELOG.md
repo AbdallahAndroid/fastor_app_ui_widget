@@ -1,3 +1,7 @@
+## 1.3.4
+
+* in "TabBarFastor" default TabBar flutter sdk not show underline in case not selected
+
 ## 1.3.3
 
 * Build Class "ResponsiveFastor"

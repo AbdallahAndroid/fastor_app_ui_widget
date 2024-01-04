@@ -19,6 +19,7 @@ class TabBarFastor extends StatefulWidget {
   double? spaceBetweenLabelAndUnderline;
   Decoration? decorationTabBar;
   double? heightUnderline ;
+  bool? underlineShownBelowAllTabs;
 
   TabBarFastor( {
     required this.width,
@@ -32,7 +33,8 @@ class TabBarFastor extends StatefulWidget {
     this.fontFamily,
     this.spaceBetweenLabelAndUnderline,
     this.decorationTabBar,
-    this.heightUnderline
+    this.heightUnderline,
+    this.underlineShownBelowAllTabs
   }) {
     calculateItemTabWidth();
     initDefaultValue();
@@ -48,6 +50,7 @@ class TabBarFastor extends StatefulWidget {
   void initDefaultValue(){
     initialSelectIndex ??= 0;
     heightUnderline ??= 1;
+    underlineShownBelowAllTabs ??= false;
   }
 
 

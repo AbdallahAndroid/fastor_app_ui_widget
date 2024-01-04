@@ -1068,7 +1068,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ---
 
-# ScrollFastor
+## ScrollFastor
 
 ### Example 
 ```
@@ -1125,7 +1125,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ---
 
-# TableFastor
+## TableFastor
 
 * feature scroll both horizontal and vertical axis
 
@@ -1134,7 +1134,7 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ---
 
-# Progress
+## Progress
 
 * shape Circle
 ```
@@ -1156,9 +1156,9 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 
 ---
 
-# DropdownFastor
+## DropdownFastor
 
-## Simple Example :
+### Simple Example :
 
 * simple string[] array
 ```
@@ -1180,13 +1180,13 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
     );
 ```
 
-## Set previous selected name
+### Set previous selected name
 ```
 previousSelectedText: selectedCrypto?.name,
 ```
 
 
-## to remove the selected item from dropdown programmatically
+### to remove the selected item from dropdown programmatically
 * example dropdown
 ```dart
 
@@ -1218,7 +1218,7 @@ Widget dropdownFastor(){
 
 ````
 
-## Handle Direction ltr or rtl :
+### Handle Direction ltr or rtl :
 ```
     return   DropdownFastor(
         textDirection:  getTextDirection(),
@@ -1229,7 +1229,7 @@ Widget dropdownFastor(){
 ---
 
 
-# OTPTextFieldFastor
+## OTPTextFieldFastor
 
 * you can listener when user complete write "OTP CODE"
 * Listener while user still writing the OTP Code
@@ -1276,7 +1276,7 @@ Widget dropdownFastor(){
 ---
 
 
-# DateTextFieldFastor
+## DateTextFieldFastor
 
 * simple date picker one day in shape textfield boarder
 ```
@@ -1295,7 +1295,7 @@ Widget dropdownFastor(){
 
 ---
 
-# DateRangeTextFieldFastor
+## DateRangeTextFieldFastor
 
 * simple date picker for range between two days in shape textfield boarder
 * class "DateRangePickerResult" to handle callback listener of date picker range
@@ -1314,7 +1314,7 @@ Widget dropdownFastor(){
 
 ---
 
-# MobileCountryFastor
+## MobileCountryFastor
 
 *  widget "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone
 
@@ -1341,7 +1341,7 @@ Widget dropdownFastor(){
 
 ---
 
-# TextFieldEmailOrPhoneFastor
+## TextFieldEmailOrPhoneFastor
 
 * widget "TextFieldEmailOrPhoneFastor" use plugin "country_code_picker" with some customization in phone
 * allow user to enter both email format or phone, the country code picker auto hide/show when user write phone character or not.
@@ -1425,9 +1425,9 @@ class LanguageHelper {
 
 ---
 
-# TabBarFastor
+## TabBarFastor
 
-* example 
+### example simple
 ```
 
   int selectedTabPosition = 0 ;
@@ -1458,6 +1458,17 @@ class LanguageHelper {
   
 ```
 
+* to show the content ui for each tab item, just use if condition to show the view you want below tabbar
+
+## Some Features
+
+* feature show underline in all item  tabs
+```
+   return TabBarFastor(
+        underlineShownBelowAllTabs : true,
+        
+```
+ 
 ---
 
 ---
