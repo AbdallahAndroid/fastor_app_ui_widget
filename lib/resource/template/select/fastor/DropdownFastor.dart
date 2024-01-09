@@ -159,10 +159,11 @@ class _DropdownFastorState extends State<DropdownFastor > {
 
 
   Widget showDropdownAndPreviousTitle(){
-    return ColumnFastor( children: [
-      dropdown(),
-      tv_previousSelected()
-    ]);
+    return dropdown();
+    // return ColumnFastor( children: [
+    //   dropdown(),
+    //   tv_previousSelected()
+    // ]);
   }
 
 
@@ -199,7 +200,7 @@ class _DropdownFastorState extends State<DropdownFastor > {
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
-      hintWidget: widget.hintWidget??_hint() ,
+      hintWidget: chooseHintOrPreviousSelected(),
       previousPosition: widget.previousPosition,
       textDirection : widget.textDirection,
       onSelectPosition:    (p, isRemoveSelected ) {
@@ -221,24 +222,18 @@ class _DropdownFastorState extends State<DropdownFastor > {
   }
 
 
-  // int? getPreviousPositon(){
-  //
-  //   //first pirority : return the previous selected when found
-  //   if(widget.previousPosition != null ) {
-  //     return null;
-  //   }
-  //
-  //   //second pirority : see remove selected
-  //   if(widget.removeSelected! == true ) {
-  //     return null;
-  //   }
-  //
-  //   //third pirority default
-  //   return widget.previousPosition;
-  // }
+  Widget  chooseHintOrPreviousSelected(){
+    if( widget.previousSelectedText == null ) {
+      return _hint();
+    } else {
+      return previousSelectedWidget();
+    }
+  }
 
 
   Widget _hint(){
+    if(widget.hintWidget != null ) return widget.hintWidget!;
+
     return  TextFastor( widget.hintText??"select",
         padding: widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
         fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
@@ -246,6 +241,31 @@ class _DropdownFastorState extends State<DropdownFastor > {
         color:   widget.colorHintText,
         textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
         levelDS: LevelDS.l2);
+  }
+
+
+  Widget previousSelectedWidget(){
+    if( widget.previousSelectedText == null ) return SizedBox();
+    // Log.i( "tv_previousSelected() - city_selected_name: " + city_selected_name );
+    // return TextFastor(
+    //   widget.previousSelectedText??"" ,
+    //   levelDS: LevelDS.l4,
+    //   margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
+    //   color: widget.colorPreviousSelected,
+    //   // color:   widget.colorHintText,
+    //   fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+    //   fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
+    //
+    // );
+    return TextFastor( widget.previousSelectedText??"",
+      levelDS: LevelDS.l3,
+      padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
+      color: getColorItemTextWhenSelected( ),
+      // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
+      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
+      textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
+    );
   }
 
 
@@ -285,5 +305,9 @@ class _DropdownFastorState extends State<DropdownFastor > {
     return defaultColor;
   }
 
+  Color? getColorItemTextWhenSelected ( ){
+    var defaultColor = widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :   widget.colorItemText;
+    return widget.colorItemTextSelected??defaultColor;
+  }
 
 }

@@ -1,3 +1,7 @@
+## 1.3.5
+
+* in "DropdownFastor" make previous selected is written instead of hint
+
 ## 1.3.4
 
 * in "TabBarFastor" default TabBar flutter sdk not show underline in case not selected
