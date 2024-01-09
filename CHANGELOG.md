@@ -1,4 +1,4 @@
-## 1.3.6
+## 1.3.7
 
 * in "SpinnerView"  fix click on icon will popup dropdown 
 * in "DropdownFastor" make progress view with call attribute "showProgress"

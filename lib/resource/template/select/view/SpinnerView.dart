@@ -250,6 +250,8 @@ class SpinnerViewState extends State<SpinnerView> {
     double marginTopIcon = widget.iconSize  / 4;
 
     return Stack( children: [
+      /// content
+      dropboxAndBoarder(),
 
       /// icon
       PositionedFastor.directional(
@@ -259,8 +261,6 @@ class SpinnerViewState extends State<SpinnerView> {
         start: 0  ,
       ),
 
-      /// content
-      dropboxAndBoarder(),
     ],);
   }
 
