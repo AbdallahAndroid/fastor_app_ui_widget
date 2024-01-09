@@ -1,13 +1,17 @@
 // class DropdownFastor e
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/DropdownContent.dart';
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/PreviousSelected.dart';
 import 'package:flutter/material.dart';
 
 typedef DropDownSelectChangeListenerTest = Function(String name, int poistion );
 typedef DropDownRemoveSelectedListener = Function( );
 
-double _defaultHeight = 40;
+
 
 class DropdownFastor extends StatefulWidget {
+
+  static double defaultHeight = 40;
 
   //required
   List<String> names;
@@ -112,14 +116,14 @@ class DropdownFastor extends StatefulWidget {
   }
 
   @override
-  _DropdownFastorState createState()  => _DropdownFastorState();
+  DropdownFastorState createState()  => DropdownFastorState();
 
 }
 
-class _DropdownFastorState extends State<DropdownFastor > {
+class  DropdownFastorState extends State<DropdownFastor > {
 
-  String? _selected_name ;
-  int? _selected_position ;
+  String?  selected_name ;
+  int?  selected_position ;
   bool userNotClickedYetOnButtonDropdown = true;
 
   @override
@@ -147,157 +151,20 @@ class _DropdownFastorState extends State<DropdownFastor > {
   Widget contentUI(){
     return Container(
       width: widget.width,
-      child: showDropdownAndPreviousTitle() ,
+      child: dropdown() ,
     );
   }
 
-  //---------------------------------------------------------------------------- dropdown
+  //---------------------------------------------------------------------------- helper
 
   double getHeightFrame(){
-    return widget.height_frame??_defaultHeight;
-  }
-
-
-  Widget showDropdownAndPreviousTitle(){
-    return dropdown();
-    // return ColumnFastor( children: [
-    //   dropdown(),
-    //   tv_previousSelected()
-    // ]);
-  }
-
-
-  Widget tv_previousSelected(){
-    if( widget.previousSelectedText == null ) return SizedBox();
-    // Log.i( "tv_city_previousSelected() - city_selected_name: " + city_selected_name );
-    return TextFastor(
-      widget.previousSelectedText??"" ,
-      levelDS: LevelDS.l4,
-      margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
-      color: widget.colorPreviousSelected,
-      // color:   widget.colorHintText,
-      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
-      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-
-    );
-  }
-
-
-  Widget dropdown(){
-    return  SpinnerView(
-      childers: _listItemDropDownWidget(),
-      width_frame: widget.width,
-      height_frame: widget.height_frame??_defaultHeight,
-      radiusButton : widget.radiusButton,
-      iconSize: widget.iconSize,
-      colorDropdownMenu: widget.colorDropdownMenu,
-      colorDropdownButtonOutline: widget.colorDropdownButtonOutline,
-      underlineColor: widget.underlineColor,
-      iconDropdown: widget.iconDropdown,
-      textStyleItemDropdown: widget.textStyleItemDropdown,
-      decorationOutlineDropdown: widget.decorationOutlineDropdown,
-      errorBackendKeyJson: widget.errorBackendKeyJson,
-      errorBackendJson: widget.errorBackendJson,
-      errorTextStyle: widget.errorTextStyle,
-      errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
-      hintWidget: chooseHintOrPreviousSelected(),
-      previousPosition: widget.previousPosition,
-      textDirection : widget.textDirection,
-      onSelectPosition:    (p, isRemoveSelected ) {
-        if( isRemoveSelected ){
-          _selected_name =  null;
-          if( widget.onRemoveSelected != null ) widget.onRemoveSelected!();
-          return;
-        }
-
-        //set new result
-        _selected_name = widget.names[p];
-        _selected_position = p;
-
-        //callback
-        widget.listener( _selected_name!, _selected_position! );
-      },
-
-    );
-  }
-
-
-  Widget  chooseHintOrPreviousSelected(){
-    if( widget.previousSelectedText == null ) {
-      return _hint();
-    } else {
-      return previousSelectedWidget();
-    }
-  }
-
-
-  Widget _hint(){
-    if(widget.hintWidget != null ) return widget.hintWidget!;
-
-    return  TextFastor( widget.hintText??"select",
-        padding: widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
-        fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
-        fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-        color:   widget.colorHintText,
-        textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
-        levelDS: LevelDS.l2);
-  }
-
-
-  Widget previousSelectedWidget(){
-    if( widget.previousSelectedText == null ) return SizedBox();
-    // Log.i( "tv_previousSelected() - city_selected_name: " + city_selected_name );
-    // return TextFastor(
-    //   widget.previousSelectedText??"" ,
-    //   levelDS: LevelDS.l4,
-    //   margin: widget.paddingText??EdgeInsets.only(top: DSDimen.space_level_4),
-    //   color: widget.colorPreviousSelected,
-    //   // color:   widget.colorHintText,
-    //   fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
-    //   fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-    //
-    // );
-    return TextFastor( widget.previousSelectedText??"",
-      levelDS: LevelDS.l3,
-      padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
-      color: getColorItemTextWhenSelected( ),
-      // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
-      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
-      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-      textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
-    );
-  }
-
-
-  List<Widget> _listItemDropDownWidget() {
-    List<Widget> listWidget = [];
-    int position = 0;
-    widget.names.forEach((name) {
-
-      Widget w = _getItemDropdownWidget(name, position);
-      listWidget.add( w );
-      position += 1;
-    });
-    return listWidget;
-  }
-
-
-  Widget _getItemDropdownWidget(String name, int positionName){
-    return TextFastor( name,
-      levelDS: LevelDS.l3,
-      padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
-      color: getColorItemTextWhenSelectedOrNot(positionName),
-      // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
-      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
-      fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-      textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
-    );
+    return widget.height_frame??DropdownFastor.defaultHeight;
   }
 
 
   Color? getColorItemTextWhenSelectedOrNot ( int positionName){
     var defaultColor = widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :   widget.colorItemText;
-    bool isSamePositionSelected = positionName == _selected_position;
+    bool isSamePositionSelected = positionName ==  selected_position;
     if(isSamePositionSelected )  {
       // Log.i( "fastor - getColorItemTextWhenSelectedOrNot() - isSkipChangeColorSelected");
       return widget.colorItemTextSelected??defaultColor;
