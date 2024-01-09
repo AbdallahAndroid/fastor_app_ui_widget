@@ -1,3 +1,8 @@
+## 1.3.6
+
+* in "SpinnerView"  fix click on icon will popup dropdown 
+* in "DropdownFastor" make progress view with call attribute "showProgress"
+
 ## 1.3.5
 
 * in "DropdownFastor" make previous selected is written instead of hint

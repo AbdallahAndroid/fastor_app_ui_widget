@@ -2,6 +2,7 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/DropdownContent.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/PreviousSelected.dart';
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/ProgressDropdown.dart';
 import 'package:flutter/material.dart';
 
 typedef DropDownSelectChangeListenerTest = Function(String name, int poistion );
@@ -72,6 +73,10 @@ class DropdownFastor extends StatefulWidget {
 
   TextDirection? textDirection;
 
+  //progress
+  bool? showProgress;
+  double? sizeProgress;
+  Color? colorProgress;
 
   DropdownFastor( {
     required this.width,
@@ -105,18 +110,52 @@ class DropdownFastor extends StatefulWidget {
     this.errorOutlineDropdownDropdown,
     // this.errorMessageBackend,
     this.errorTextStyle,
-    this.textDirection
+    this.textDirection,
+    this.showProgress,
+    this.sizeProgress,
+    this.colorProgress,
   }) {
+    setDefaultValues();
+  }
 
+
+  setDefaultValues(){
     spinnerTriangleWidth ??= 50;
     // removeSelected ??= false;
     colorPreviousSelected ??= Colors.black;
 
     textDirection ??= LangFastor.getTextDirection();
+
+    //progress
+    showProgress ??= false;
+    setDefaultProgressSize();
+    setDefaultProgressColor();
+  }
+
+
+  void setDefaultProgressSize() {
+    if( sizeProgress != null ) return;
+    sizeProgress = iconSize;
+  }
+
+
+  void setDefaultProgressColor() {
+    if( colorProgress != null ) return;
+    if( colorItemTextSelected != null ) {
+      colorProgress = colorItemTextSelected;
+      return;
+    }
+    if( colorItemText != null ) {
+      colorProgress = colorItemText;
+      return;
+    }
+    colorProgress  = colorPreviousSelected;
   }
 
   @override
   DropdownFastorState createState()  => DropdownFastorState();
+
+
 
 }
 
@@ -151,8 +190,17 @@ class  DropdownFastorState extends State<DropdownFastor > {
   Widget contentUI(){
     return Container(
       width: widget.width,
-      child: dropdown() ,
+      child: chooseProgressViewOrDropdown() ,
     );
+  }
+
+
+  Widget chooseProgressViewOrDropdown(){
+    if( widget.showProgress! ) {
+      return progressWidget();
+    }
+
+    return dropdown();
   }
 
   //---------------------------------------------------------------------------- helper

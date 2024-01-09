@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 extension PreviousSelected on DropdownFastorState {
 
 
-  Widget  chooseHintOrPreviousSelected(){
+  Widget  chooseHintOrPreviousSelectedTextWidget(){
     if( widget.previousSelectedText == null ) {
       return _hint();
     } else {

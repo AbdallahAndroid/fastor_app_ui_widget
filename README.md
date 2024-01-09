@@ -1224,6 +1224,14 @@ Widget dropdownFastor(){
         textDirection:  getTextDirection(),
 ```
 
+### Show Progress View Will Loading Data
+
+```
+    this.showProgress,
+    this.sizeProgress,
+    this.colorProgress,
+```
+
 ---
 
 ---

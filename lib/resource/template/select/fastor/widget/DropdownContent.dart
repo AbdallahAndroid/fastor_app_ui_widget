@@ -24,7 +24,7 @@ extension DropdownContent on DropdownFastorState {
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
-      hintWidget: chooseHintOrPreviousSelected(),
+      hintWidget: chooseHintOrPreviousSelectedTextWidget(),
       previousPosition: widget.previousPosition,
       textDirection : widget.textDirection,
       onSelectPosition:    (p, isRemoveSelected ) {
