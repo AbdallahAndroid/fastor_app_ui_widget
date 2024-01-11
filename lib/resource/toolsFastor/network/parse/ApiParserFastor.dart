@@ -58,11 +58,20 @@ class ApiParserFastor {
   /**
    * used to change status from "favorite" to "unfavorite" and vise versa
    */
-  static int changeStatus(int? i) {
+  static int verseBooleanZeroToOneAndViseVersa(int? i) {
     if (i == null) return 0;
     if (i == 0) return 1; // change status
     else
       return 0;
+  }
+
+  static int convertBooleanToZeroAndOne(bool? b ) {
+    if( b == null ) return 0;
+    if( b ) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   //-------------------------------------------------------------------- paginate
@@ -152,6 +161,7 @@ class ApiParserFastor {
       return 0;
     }
   }
+
 
 
 }

@@ -2112,6 +2112,13 @@ static bool parseBoolean(String? n) {
 }
 ```
 
+
+### Parse Boolean to Zero And One
+
+```
+int i = ApiParserFastor.convertBooleanToZeroAndOne( booleanValue );
+```
+
 ### Parse Double Or Integer to String
   
 * fix when api return value someTime in "Int" and sometimes in "Double" 

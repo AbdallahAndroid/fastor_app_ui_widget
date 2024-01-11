@@ -1,3 +1,7 @@
+## 1.3.8
+
+* In class "ApiParserFastor" add new method "convertBooleanToZeroAndOne()"
+
 ## 1.3.7
 
 * in "SpinnerView"  fix click on icon will popup dropdown 
