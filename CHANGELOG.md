@@ -1,3 +1,8 @@
+## 1.3.9
+
+* class "ValidateResponse" add method "isResponseStatusCodeInvalidToken()"
+* class "validateResponse" write readme of methods.
+
 ## 1.3.8
 
 * In class "ApiParserFastor" add new method "convertBooleanToZeroAndOne()"

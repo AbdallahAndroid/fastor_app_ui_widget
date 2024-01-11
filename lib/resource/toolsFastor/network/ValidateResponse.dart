@@ -3,6 +3,8 @@ import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 class ValidateResponse {
 
+  //--------------------------------------------------------------- status code
+
   /**
    * status between 200 - 210
    */
@@ -12,6 +14,18 @@ class ValidateResponse {
     if( response.statusCode! <  200 ) return false;
     return true;
   }
+
+  /**
+   * 403 Forbidden status code.
+   *  401 Unauthorized.
+   */
+  static bool isResponseStatusCodeInvalidToken(Response response ) {
+    if( response.statusCode == null ) return false;
+    if( response.statusCode ==  401 ) return true;
+    if( response.statusCode ==  403 ) return true;
+    return false;
+  }
+
 
   static bool isStatusCredentialWrong(Response response ) {
     if( response.statusCode == null ) return false;
@@ -30,6 +44,8 @@ class ValidateResponse {
     return response.statusCode! ==  400;
   }
 
+  //--------------------------------------------------------------- convert boolean
+
   /**
       - example success:
       {
@@ -44,6 +60,7 @@ class ValidateResponse {
       }
 
    */
+  @Deprecated("see class (ApiParserFastor)")
   static bool isSuccess(int? n ) {
     if ( n == null ) return false;
     if ( n == 0 ) return false;
@@ -51,18 +68,22 @@ class ValidateResponse {
     return false;
   }
 
+  @Deprecated("see class (ApiParserFastor)")
   static bool isTrue(int? n ) {
     return isSuccess( n );
   }
 
+  @Deprecated("see class (ApiParserFastor)")
   static bool isFalse(int? n ) {
     return ! isSuccess( n );
   }
 
+  @Deprecated("see class (ApiParserFastor)")
   static bool isFailed(int? n ) {
     return !isSuccess(n);
   }
 
+  @Deprecated("see class (ApiParserFastor)")
   static bool parseBoolean_int(int? n) {
     return isSuccess(n);
   }
@@ -70,6 +91,7 @@ class ValidateResponse {
   /**
       "block": "0",  >> means false
    */
+  @Deprecated("see class (ApiParserFastor)")
   static bool parseBoolean(String? n) {
     if( n == null )return false;
 
@@ -83,6 +105,7 @@ class ValidateResponse {
   /**
    * used to change status from "favorite" to "unfavorite" and vise versa
    */
+  @Deprecated("see class (ApiParserFastor)")
   static int changeStatus(int? i) {
     if( i == null ) return 0;
     if( i == 0 ) return 1;// change status
@@ -107,6 +130,7 @@ class ValidateResponse {
    * "to" is 0
    *  >> result true "there is no next pages"
    */
+  @Deprecated("see class (ApiParserFastor)")
   static bool isPaginateLaravelEnd(int? currentPage, int? last_page) {
     if( currentPage == null ) return false;
     if( last_page == null ) return false;
@@ -124,6 +148,7 @@ class ValidateResponse {
   /**
    * status between 200 - 210
    */
+  @Deprecated("see class (ApiParserFastor)")
   static bool isSuccessStatusCode(Response response ) {
     if( response.statusCode == null ) return false;
     if( response.statusCode! >  210 ) return false;

@@ -163,6 +163,8 @@ void main() async {
 
 [ApiParserFastor](https://pub.dev/packages/fastor_app_ui_widget#apiparserfastor)
 
+[ValidateResponse](https://pub.dev/packages/fastor_app_ui_widget#validateresponse)
+
 [ResponsiveFastor](https://pub.dev/packages/fastor_app_ui_widget#responsivefastor)
 
 ---
@@ -2167,6 +2169,51 @@ int i = ApiParserFastor.convertBooleanToZeroAndOne( booleanValue );
    }
 
 ```
+
+---
+
+---
+
+## ValidateResponse
+
+* method check invalid token 
+```
+//dio response 
+Response response = await dio.get(url);
+if( ValidateResponse.isResponseStatusCodeInvalidToken(response) ) {
+    ///To-Do token expire or invalid, now do action for clear cache and ask user to login again 
+}
+```
+
+
+* method success request
+```
+//dio response 
+Response response = await dio.get(url);
+if( ValidateResponse.isStatusFrom200To210(response) ) {
+    ///To-Do after success request
+}
+```
+
+* method to check the string return from api network is json or html to avoid crash in parsing json
+```
+//dio response 
+Response response = await dio.get(url);
+if( ValidateResponse.isValidJson(response.data) ) {
+    ///To-Do 
+}
+```
+
+* method the response type data not found or url not found or bad request. where status code is 400
+```
+//dio response 
+Response response = await dio.get(url);
+if( ValidateResponse.isStatusBadRequest(response.data) ) {
+    ///To-Do 
+}
+```
+
+
 
 ---
 
