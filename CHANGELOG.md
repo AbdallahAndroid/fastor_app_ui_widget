@@ -1,4 +1,4 @@
-## 1.3.9
+## 1.3.10
 
 * class "ValidateResponse" add method "isResponseStatusCodeInvalidToken()"
 * class "validateResponse" write readme of methods.

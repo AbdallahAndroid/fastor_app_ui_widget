@@ -113,6 +113,9 @@ class ApiParserFastor {
   ///  like: { "data": 15 }  or some times return { "data": 13.5 }
   ///  remove command "," if found in at big numbers come from backend
   static double parseDoubleOrInt(dynamic data) {
+    if( data  ==  null  ) return 0.0;
+    if( data.toString() ==  "null" ) return 0.0;
+
     String check = data.toString();
     double result = 0.0;
 
@@ -134,6 +137,9 @@ class ApiParserFastor {
   //--------------------------------------------------------------------- parse int
 
   static int parseIntDynamic(dynamic data) {
+    if( data  ==  null  ) return 0 ;
+    if( data.toString() ==  "null" ) return 0 ;
+
     String integerString = data.toString();
     print("parseIntDynamic() - data: $data ");
     //fix missed "." dot
