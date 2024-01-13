@@ -31,6 +31,9 @@ class DateTextFieldFastor extends StatefulWidget {
   String? hintText;
   Color? hintColor;
 
+  //previous
+  String? previousSelectedText;
+
   //boarder
   double? boarderRadius;
   Color? boarderColor;
@@ -74,6 +77,9 @@ class DateTextFieldFastor extends StatefulWidget {
     //hint
     this.hintText,
     this.hintColor,
+
+    //previous
+    this.previousSelectedText,
 
     //boarder
     this.boarderRadius,
@@ -229,8 +235,12 @@ class _DateTextFieldFastorState extends State<DateTextFieldFastor> {
 
 
   Widget textHintOrSelected() {
+
+    /// case selected by button
     if (ToolsValidation.isValid(_selectedDate)) {
       return showSelectedText();
+    } else if( ToolsValidation.isValid( widget.previousSelectedText ) ) {
+      return previousSelectedWidget();
     } else {
       return hintText();
     }
@@ -238,10 +248,17 @@ class _DateTextFieldFastorState extends State<DateTextFieldFastor> {
 
   Widget showSelectedText() {
     return TextFastor(
-      "$_selectedDate",
-      color: widget.colorText,
-      fontSize: widget.fontSize
+        "$_selectedDate",
+        color: widget.colorText,
+        fontSize: widget.fontSize
+    );
+  }
 
+  Widget previousSelectedWidget(){
+    return TextFastor(
+        widget.previousSelectedText??"",
+        color: widget.colorText,
+        fontSize: widget.fontSize
     );
   }
 

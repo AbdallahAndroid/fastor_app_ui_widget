@@ -1,3 +1,7 @@
+## 1.3.11
+
+* add "previousSelectedText" parameter in class "DateTextFieldFastor"
+
 ## 1.3.10
 
 * class "ValidateResponse" add method "isResponseStatusCodeInvalidToken()"

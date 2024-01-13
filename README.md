@@ -1301,6 +1301,14 @@ Widget dropdownFastor(){
     });
 ```
 
+* add "previousSelectedText" parameter in class "DateTextFieldFastor"
+
+```
+    return DateTextFieldFastor(
+      previousSelectedText: "2024-01-20",
+    });
+```
+
 ---
 
 ---
