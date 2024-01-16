@@ -139,6 +139,7 @@ void main() async {
 
 [TabBarFastor](https://pub.dev/packages/fastor_app_ui_widget#tabbarfastor)
 
+[TableFastor](https://pub.dev/packages/fastor_app_ui_widget#tablefastor)
 
 
 ## Content: Classes Helper
@@ -1487,6 +1488,22 @@ class LanguageHelper {
         
 ```
  
+---
+
+---
+
+## TabBarFastor
+
+### Guide 
+
+```
+TableFastor(  { required  this.listRow,
+        this.showProgress,
+this.sizeProgress,
+this.colorProgress,
+} ){
+```
+
 ---
 
 ---

@@ -1,3 +1,7 @@
+## 1.3.12
+
+* add  Progress Feature in "TableFastor"
+
 ## 1.3.11
 
 * add "previousSelectedText" parameter in class "DateTextFieldFastor"

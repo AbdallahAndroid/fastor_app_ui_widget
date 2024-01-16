@@ -3,6 +3,7 @@ import 'package:fastor_app_ui_widget/resource/template/listview/ListViewTemplate
 import 'package:log_debug/log_debug.dart';
 import 'package:flutter/material.dart';
 
+@Deprecated( "deprecated instead use class (TableFastor.dart)")
 class TableViewFastor extends StatefulWidget {
 
   List<Widget> listRow;
