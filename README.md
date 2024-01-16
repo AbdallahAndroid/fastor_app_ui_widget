@@ -1366,6 +1366,27 @@ Widget dropdownFastor(){
     );
 ```
 
+* feature 
+```
+  MobileCountryFastor( {
+    required this.width,
+    required this.callback,
+    this.widthCountryCode,
+    this.textStyle,
+    this.controller,
+    this.decoration,
+    this.textInputType,
+    this.padding,
+    this.title,
+    this.hint,
+    this.hint_color,
+    this.colorUnderlineInputField,
+    this.favoriteCountryCodeArray,
+    this.initialSelection,
+    this.suffixIcon,
+    this.isHideCountryPicker
+  }) {
+```
 
 ---
 

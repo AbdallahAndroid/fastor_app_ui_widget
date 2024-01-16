@@ -1,6 +1,7 @@
-# 1.3.13
+# 1.3.14
 
 * update readme for "MobileCountryFastor" widget
+* add "widthCountryCode" and "padding" for "MobileCountryFastor" widget
 
 ## 1.3.12
 

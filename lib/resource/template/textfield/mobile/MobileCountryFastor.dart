@@ -15,10 +15,12 @@ import 'package:flutter/widgets.dart';
 
 typedef MobileCountryListener = Function(String country_code, String phone );
 
-double _width_country_view = 100;
+
 
 class MobileCountryFastor extends StatefulWidget {
 
+
+  double? widthCountryCode ; //= 100
   double width;
   MobileCountryListener callback;
   Decoration? decoration;
@@ -33,14 +35,17 @@ class MobileCountryFastor extends StatefulWidget {
   String? initialSelection; //example: "+20"
   Widget? suffixIcon;
   bool? isHideCountryPicker;
+  EdgeInsets? padding;
 
   MobileCountryFastor( {
     required this.width,
     required this.callback,
+    this.widthCountryCode,
     this.textStyle,
     this.controller,
     this.decoration,
     this.textInputType,
+    this.padding,
     this.title,
     this.hint,
     this.hint_color,
@@ -51,6 +56,8 @@ class MobileCountryFastor extends StatefulWidget {
     this.isHideCountryPicker
   }) {
     isHideCountryPicker ??= false;
+
+    widthCountryCode ??= 100;
     // print( "fastor - MobileCountryFastor - hint_color: " + hint_color.toString() );
   }
 
@@ -118,8 +125,8 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   Widget mobile(){
     return ColumnTemplate.t( children: [
-      tx_mobile(),
-      SizedBox( height: 15,),
+      if(widget.title != null ) tx_mobile(),
+      if(widget.title != null ) SizedBox( height: 15,),
       countryWithPhoneWithBoarder()
     ],
     );
@@ -176,6 +183,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
           updateCallback();
         },
+        textStyle: widget.textStyle,
         // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
         initialSelection: countryCode_text,
         favorite: widget.favoriteCountryCodeArray??[ "+966",  "+20"],
@@ -191,7 +199,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
     );
 
     var scale = Transform.scale(scale: 1, child:  country );
-    var sizeBoxCountry = SizedBox(  height: 40, child:  scale, width:  _width_country_view,);
+    var sizeBoxCountry = SizedBox(  height: 40, child:  scale, width:  widget.widthCountryCode );
     return sizeBoxCountry;
   }
 
@@ -215,12 +223,13 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
         controller: widget.controller,
         width: chooseWidthAfterVisibleOrHideTheCountryPicker(),
         validatorCustom: ValidatorTemplate.emailOrPhone( ),
-        padding: EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 13),
+        padding: widget.padding?? EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 13),
         autovalidateMode: autovalidateMode,
         keyboardType: widget.textInputType??TextInputType.number,
         suffixIcon: widget.suffixIcon,
         hint_text: widget.hint ,
         hint_color : widget.hint_color,
+        fontSize: widget.textStyle?.fontSize,
         onChanged: (phone){
           phone_text = phone;
           updateCallback();
@@ -232,7 +241,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
     if( widget.isHideCountryPicker! ) {
       return widget.width  ;
     }
-    return widget.width - _width_country_view;
+    return widget.width - widget.widthCountryCode!;
   }
 
   //---------------------------------------------------------------- call back
