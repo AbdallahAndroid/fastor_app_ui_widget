@@ -1133,6 +1133,17 @@ class ReservationCreateVipStatusChangeState extends ReservationState {}
 * feature scroll both horizontal and vertical axis
 
 
+### Progress
+
+```
+TableFastor(  { required  this.listRow,
+        this.showProgress,
+this.sizeProgress,
+this.colorProgress,
+} ){
+```
+
+
 ---
 
 ---
@@ -1335,7 +1346,7 @@ Widget dropdownFastor(){
 
 ## MobileCountryFastor
 
-*  widget "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone
+*  widget TextField "MobileCountryFastor" use plugin "country_code_picker" with some customization in phone
 
 ```
     return MobileCountryFastor(
@@ -1479,7 +1490,7 @@ class LanguageHelper {
 
 * to show the content ui for each tab item, just use if condition to show the view you want below tabbar
 
-## Some Features
+### Some Features
 
 * feature show underline in all item  tabs
 ```
@@ -1487,22 +1498,7 @@ class LanguageHelper {
         underlineShownBelowAllTabs : true,
         
 ```
- 
----
 
----
-
-## TabBarFastor
-
-### Guide 
-
-```
-TableFastor(  { required  this.listRow,
-        this.showProgress,
-this.sizeProgress,
-this.colorProgress,
-} ){
-```
 
 ---
 

@@ -1,3 +1,7 @@
+# 1.3.13
+
+* update readme for "MobileCountryFastor" widget
+
 ## 1.3.12
 
 * add  Progress Feature in "TableFastor"
