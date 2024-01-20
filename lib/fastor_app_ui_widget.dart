@@ -128,8 +128,8 @@ export 'resource/template/pager_view/PageViewFastor.dart';
 
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
-import 'resource/toolsFastor/responsive/ResponsiveFastor.dart';
-export 'resource/toolsFastor/responsive/ResponsiveFastor.dart';
+import 'resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
+export 'resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
 
 import 'resource/toolsFastor/state/FastorStateManagement.dart';
 export 'resource/toolsFastor/state/FastorStateManagement.dart';

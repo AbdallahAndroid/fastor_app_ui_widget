@@ -44,7 +44,7 @@ class ForumPortraitToLandscapeResponsiveFastor     extends StatelessWidget {
 
     //card
     return Container( child:  content,
-      width: PortraitToLandscapeUtilsResponsiveFastor.getDeviceWidthPortraitNormalWhileLandscapeCenter( context),
+      width: ResponsiveFastor.getDeviceWidthPortraitNormalWhileLandscapeCenter( context),
       decoration: BoarderHelper.cardViewShadow(
         colorBackground:  colorBackground,
         colorLine: colorBackground,

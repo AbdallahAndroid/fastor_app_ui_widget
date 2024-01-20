@@ -13,23 +13,6 @@ class PortraitToLandscapeUtilsResponsiveFastor {
 
 
 
-  static double getDeviceWidthPortraitNormalWhileLandscapeCenter(BuildContext context){
-    if( DeviceTools.isLandscape(context) ) {
-      return ResponsiveFastorConstant.widthChangeInCaseLandscape;
-    }
-    return DeviceTools.getWidth( context );
-  }
-
-
-  static double getDevicHeightPortraitNormalWhileLandscapeCenter(BuildContext context){
-    if( DeviceTools.isLandscape(context) ) {
-      return ResponsiveFastorConstant.heightChangeInCaseLandscape;
-    }
-    return DeviceTools.getHeight( context );
-  }
-
-
-
   ///  - rule:
   ///  +portrait:
   ///   child1,
@@ -40,22 +23,22 @@ class PortraitToLandscapeUtilsResponsiveFastor {
   ///    "PaginateWidget" in page type "Portrait" make the direction of axis is vertical,
   ///   while in page type is "Landscape"  make the direction of axis is vertical.
   static convertChildrenFromPortraitVerticalToBeLandscapeHorizontal(
-       {required BuildContext context,
-         required  List<Widget> children,
-         required bool isPutInsideScrollbar
-  }) {
+      {required BuildContext context,
+        required  List<Widget> children,
+        required bool isPutInsideScrollbar
+      }) {
     var listView = null;
 
-      if( DeviceTools.isPortrait( context) ) {
-        listView =  ListViewTemplate.t(context: context, children: children, axis: Axis.vertical);
-      } else {
-        listView =  ListViewTemplate.t(context: context, children: children, axis: Axis.horizontal);
-      }
+    if( DeviceTools.isPortrait( context) ) {
+      listView =  ListViewTemplate.t(context: context, children: children, axis: Axis.vertical);
+    } else {
+      listView =  ListViewTemplate.t(context: context, children: children, axis: Axis.horizontal);
+    }
 
-      if( isPutInsideScrollbar ) {
-        return SingleChildScrollView( child: listView, );
-      }
-      return listView;
+    if( isPutInsideScrollbar ) {
+      return SingleChildScrollView( child: listView, );
+    }
+    return listView;
   }
 
 
