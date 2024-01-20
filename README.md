@@ -141,6 +141,7 @@ void main() async {
 
 [TableFastor](https://pub.dev/packages/fastor_app_ui_widget#tablefastor)
 
+[PageViewFastor](https://pub.dev/packages/fastor_app_ui_widget#pageviewfastor)
 
 ## Content: Classes Helper
 
@@ -1164,6 +1165,40 @@ this.colorProgress,
     this.color,
     this.size
 })
+```
+
+---
+
+---
+
+## PageViewFastor
+
+### Features
+
+* easy to set colors of indicator selected and unselcted
+* set frame width / height.
+* indicator points clicked to navigate to child widget.
+
+
+### Example
+
+```
+
+  Widget pageView(){
+    return PageViewFastor(
+       widht: DeviceTools.isLandscape(context)? ResponsiveConstant.widthChangeInCaseLandscape: DeviceTools.getWidth(context) ,
+      height: 400,
+      colorIndicatorOn: ColorProject.primary,
+      colorIndicatorOff: ColorProject.black,
+      children: [
+        firstBoarder(),
+        secondBoarder() 
+      ],
+      onChangePage: (p){
+        Log.i( "change p : " + p.toString() );
+      },);
+  }
+
 ```
 
 ---

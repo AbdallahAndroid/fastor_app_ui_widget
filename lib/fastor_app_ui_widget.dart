@@ -121,6 +121,9 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextF
 
 import 'resource/resources/boarder/BorderRadiusTools.dart';
 export 'resource/resources/boarder/BorderRadiusTools.dart';
+import 'resource/template/pager_view/PageViewFastor.dart';
+export 'resource/template/pager_view/PageViewFastor.dart';
+
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
 import 'resource/toolsFastor/responsive/ResponsiveFastor.dart';
@@ -292,6 +295,7 @@ class fastor_app_ui_widget extends fastor {
   late InternetTools internetTools;
 
   ///widget
+  late PageViewFastor pageViewFastor;
   late ButtonTemplate b;
   late CardViewTemplate card;
   late CheckboxTemplate ch;

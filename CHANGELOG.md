@@ -1,3 +1,7 @@
+# 1.3.15
+
+* create "PageViewFastor" 
+
 # 1.3.14
 
 * update readme for "MobileCountryFastor" widget
