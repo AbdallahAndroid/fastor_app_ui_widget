@@ -1,3 +1,12 @@
+# 1.3.17
+
+
+*  responsive classes
+ ResponsiveFastorConstant ,PortraitToLandscapeUtilsResponsiveFastor , 
+ PortraitBodyToCenterPageInLandscapeResponsiveFastor,
+ ForumPortraitToLandscapeResponsiveFastor;
+
+
 # 1.3.16
 
 * add new method "DeviceTools.isLandscapeMobile()"

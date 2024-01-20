@@ -106,6 +106,8 @@ export  'package:fastor_app_ui_widget/resource/toolsFastor/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/values/UniqueIdTools.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/resource/uiFastor/responsive_views/landscape/shape_fourm_submit/ForumPortraitToLandscapeResponsiveFastor.dart';
+export 'package:fastor_app_ui_widget/resource/uiFastor/responsive_views/landscape/shape_fourm_submit/ForumPortraitToLandscapeResponsiveFastor.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
 
 
@@ -271,12 +273,25 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateRespon
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'  hide DioService ;
 
 import 'resource/toolsFastor/values/ToolsString.dart';
+import 'resource/uiFastor/responsive_views/helper/PortraitToLandscapeUtilsResponsiveFastor.dart';
+import 'resource/uiFastor/responsive_views/helper/ResponsiveFastorConstant.dart';
+import 'resource/uiFastor/responsive_views/landscape/shape_content_center_top/PortraitBodyToCenterPageInLandscapeResponsiveFastor.dart';
+export 'resource/uiFastor/responsive_views/helper/PortraitToLandscapeUtilsResponsiveFastor.dart';
+export 'resource/uiFastor/responsive_views/helper/ResponsiveFastorConstant.dart';
+export 'resource/uiFastor/responsive_views/landscape/shape_content_center_top/PortraitBodyToCenterPageInLandscapeResponsiveFastor.dart';
+
 export 'resource/toolsFastor/values/ToolsString.dart';
 
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart' hide DioService ;
 
 ///fastor_app_ui_widget app all class
 class fastor_app_ui_widget extends fastor {
+
+  /// responsive
+  late ResponsiveFastorConstant responsiveFastorConstant;
+  late PortraitToLandscapeUtilsResponsiveFastor portraitToLandscapeUtilsResponsiveFastor;
+  late PortraitBodyToCenterPageInLandscapeResponsiveFastor portraitBodyToCenterPageInLandscapeResponsiveFastor;
+  late ForumPortraitToLandscapeResponsiveFastor forumPortraitToLandscapeResponsiveFastor;
 
 
   late ApiParserFastor apiParserFastor;
