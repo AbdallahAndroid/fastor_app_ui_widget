@@ -1,3 +1,7 @@
+# 1.3.16
+
+* add new method "DeviceTools.isLandscapeMobile()"
+
 # 1.3.15
 
 * create "PageViewFastor" 

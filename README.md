@@ -1981,81 +1981,47 @@ class ClipboardFastor {
 
 ## DeviceTools
 
-* get full device width/height
+### Size
+
+* get  device width/height with some feature methods
 * method for calculate percentage of device size
-* method get platform of this device "android/ios/browser/mobile"
-* method get oriantation portial/landscape
-``` 
-
-  //-------------------------------------------------------------- platform
-
-  static bool isPlatformWeb(){
-    return kIsWeb;
-  }
-
-
-  static bool isMobile() {
-  ...
-  }
-
-
-  static bool isAndroid() {
-  ...
-  }
-
-
-  static bool isIOS() {
-  ...
-  }
-
-  /**
-   * open from safari or chrome from android or ios
-   */
-  static bool isBrowserMobile() {
-  ...
-  }
-
-
-  static bool isBrowserAndroid() {
-  ...
-  }
-
-
-  static bool isBrowserIOS() {
-  ...
-  }
-
-  //----------------------------------------------------------------- orientation
-
-  static bool isPortrait(BuildContext  context ) {
-  ...
-  }
-
-
-  static bool isLandscape(BuildContext  context, ) {
-      ...
-  }
-
-
-  static bool isMobile_portrait( BuildContext  context ) {
-  ...
-  }
-
-
-  static double getWidth (BuildContext  context, { String? className  }) {
-  ...
-  }
-
-
-  static double getHeight (BuildContext  context, { String? className }) {
-  ...
-  }
- 
-  static double getPercentageWidth(BuildContext  context, double p) {
-  ...
-  }
-
 ```
+double d = DeviceTools.getWidth(context);
+double d = DeviceTools.getHeight(context);
+double half = DeviceTools.getPercentageWidth(context, 0.5);
+double d = DeviceTools.getHeightInsideSafeArea(context);
+ 
+```
+
+* method get platform of this device "android/ios/browser/mobile"
+* method get orientation partial/landscape
+
+## PlatFrom
+
+* check type platform
+* check is mobile browser or mobile application
+ 
+``` 
+bool b = isPlatformWeb();
+bool b = isMobile();
+bool b = isAndroid();
+bool b = isIOS();
+bool b = isBrowserMobile();
+bool b = isBrowserAndroid();  // any type of platform mobile like: ios or android
+bool b = isBrowserIOS();
+bool b = isIOS();
+ 
+```
+
+## Orientation
+```
+bool b = isPortrait();
+bool b = isLandscape();
+bool b = isPortraitMobile();
+bool b = isLandscapeMobile();
+ 
+```
+
 
 ----
 

@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
+import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
 import 'package:log_debug/log_debug.dart';
 
@@ -71,15 +73,15 @@ class DeviceTools {
 
   static bool isBrowserAndroid() {
     bool isWeb = DeviceTools.isPlatformWeb();
-    bool isMobile = DeviceTools.isAndroid();
-    return isWeb && isMobile;
+    bool isAndroid = DeviceTools.isAndroid();
+    return isWeb && isAndroid;
   }
 
 
   static bool isBrowserIOS() {
     bool isWeb = DeviceTools.isPlatformWeb();
-    bool isMobile = DeviceTools.isIOS();
-    return isWeb && isMobile;
+    bool isIOS = DeviceTools.isIOS();
+    return isWeb && isIOS;
   }
 
   //----------------------------------------------------------------- orientation
@@ -94,10 +96,15 @@ class DeviceTools {
   }
 
 
-  static bool isMobile_portrait( BuildContext  context ) {
-    //check mobile
+  static bool isPortraitMobile( BuildContext  context ) {
     return isMobile( ) && isPortrait(context);
   }
+
+
+  static bool isLandscapeMobile( BuildContext  context ) {
+    return isMobile( ) && isLandscape(context);
+  }
+
 
   //------------------------------------------------------------- screens size
 
@@ -189,6 +196,17 @@ class DeviceTools {
       return 1000;
     }
   }
+
+  //+++++++++++++++++ mines safe area
+
+
+
+  double getHeightInsideSafeArea(BuildContext context){
+    return DeviceTools.getHeight(context)
+        - NotchBarConstant.getHeight(context)
+        - StatusBarConstant.getHeight(context) ;
+  }
+
 
   //++++++++++++++++ by percentage
 
