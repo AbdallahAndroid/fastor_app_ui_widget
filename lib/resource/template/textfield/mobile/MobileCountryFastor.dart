@@ -119,7 +119,16 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   @override
   Widget build(BuildContext context) {
-    return forceEnglishDirection();
+
+    return forceEnglishDirectionInCaseCountryCodeWhileInCaseNormalTextMakeIsDefaultDirection();
+  }
+
+  Widget forceEnglishDirectionInCaseCountryCodeWhileInCaseNormalTextMakeIsDefaultDirection(){
+    if(widget.isHideCountryPicker!  ) {
+      return mobile();
+    } else {
+      return forceEnglishDirection();
+    }
   }
 
 

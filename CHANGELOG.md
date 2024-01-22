@@ -1,4 +1,4 @@
-# 1.3.20
+# 1.3.21
 
 * Change SuffixIcon in widget "TextFieldEmailOrPhoneFastor" to be same place like regular "TextField"
 * widget "MobileCountryFastor" force english direction
