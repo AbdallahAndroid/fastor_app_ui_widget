@@ -53,28 +53,29 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      textFieldPhone(),
-      if (isHaveIcon()) choosePositionIconByDirectionArabicOrEnglish()
-
-    ]);
+    return textFieldPhone();
+    // return Stack(children: [
+    //   textFieldPhone(),
+    //   if (isHaveIcon()) choosePositionIconByDirectionArabicOrEnglish()
+    //
+    // ]);
   }
 
-  Positioned choosePositionIconByDirectionArabicOrEnglish(){
-    if( widget.textDirection == TextDirection.ltr ) {
-      return  Positioned(
-        child: chooseIcon()!,
-        right: 0,
-        bottom: 0,
-      );
-    } else {
-      return  Positioned(
-        child: chooseIcon()!,
-        left: 0,
-        bottom: 0,
-      );
-    }
-  }
+  // Positioned choosePositionIconByDirectionArabicOrEnglish(){
+  //   if( widget.textDirection == TextDirection.ltr ) {
+  //     return  Positioned(
+  //       child: chooseIcon()!,
+  //       right: 0,
+  //       bottom: 0,
+  //     );
+  //   } else {
+  //     return  Positioned(
+  //       child: chooseIcon()!,
+  //       left: 0,
+  //       bottom: 0,
+  //     );
+  //   }
+  // }
 
   Widget textFieldPhone() {
     var mobile = MobileCountryFastor(
@@ -96,6 +97,7 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
         decoration: widget.decoration,
         favoriteCountryCodeArray: widget.favoriteCountryCodeArray,
         initialSelection: widget.initialSelection,
+        suffixIcon: chooseIcon(),
         isHideCountryPicker: !isPhoneType);
     return mobile;
   }
@@ -115,7 +117,6 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
   Widget? chooseIcon() {
     if (isHaveIcon() == false) {
       return null;
-      ;
     }
 
     if (widget.iconCaseMobile != null) {

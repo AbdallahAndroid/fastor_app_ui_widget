@@ -1,3 +1,9 @@
+# 1.3.20
+
+* Change SuffixIcon in widget "TextFieldEmailOrPhoneFastor" to be same place like regular "TextField"
+* widget "MobileCountryFastor" force english direction
+* widget "TextFieldEmailOrPhoneFastor" force english direction
+
 # 1.3.19
 
 * add "PaginateBarFastor" for admin panel

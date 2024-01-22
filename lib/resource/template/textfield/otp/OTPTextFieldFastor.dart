@@ -83,14 +83,25 @@ class  OTPFastorState extends State<OTPTextFieldFastor> {
 
   @override
   Widget build(BuildContext context) {
-    // return Stack( children: [
-    //   EmptyView.empty( DeviceTools.getWidth(context), 50 ),
-    //
-    //   Positioned(child: rowField(), left: getExtraSpaceAtLeft() )
-    // ],);
-    return rowField();
+    return forceEnglishDirection();
   }
 
+
+  Widget forceEnglishDirection() {
+    return   Directionality(
+      textDirection:   TextDirection.ltr,
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: rowField(),
+          );
+        },
+      ),
+    );
+  }
 
   Widget rowField(){
     var row  =  RowTemplate.scroll( context,   [

@@ -119,7 +119,24 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
   @override
   Widget build(BuildContext context) {
-    return mobile();
+    return forceEnglishDirection();
+  }
+
+
+  Widget forceEnglishDirection() {
+    return   Directionality(
+      textDirection:   TextDirection.ltr,
+      child:   Builder(
+        builder: (BuildContext context) {
+          return   MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: mobile(),
+          );
+        },
+      ),
+    );
   }
 
 
