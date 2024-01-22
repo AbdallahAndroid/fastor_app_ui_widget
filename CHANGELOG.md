@@ -1,4 +1,4 @@
-# 1.3.18
+# 1.3.19
 
 * add "PaginateBarFastor" for admin panel
 

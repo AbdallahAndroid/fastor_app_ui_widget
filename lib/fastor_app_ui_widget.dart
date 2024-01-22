@@ -128,6 +128,8 @@ export 'resource/template/pager_view/PageViewFastor.dart';
 
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
+import 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
+export 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 import 'resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
 export 'resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
 
@@ -296,6 +298,8 @@ class fastor_app_ui_widget extends fastor {
 
   late ApiParserFastor apiParserFastor;
   late ResponsiveFastor responsiveFastor;
+
+  late PaginateBarFastor paginateBarFastor;
 
   ///network
   late NetworkManagerDio dio;
