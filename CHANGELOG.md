@@ -1,11 +1,13 @@
-# 1.3.17
+# 1.3.18
 
+* add "PaginateBarFastor" for admin panel
+
+# 1.3.17
 
 *  responsive classes
  ResponsiveFastorConstant ,PortraitToLandscapeUtilsResponsiveFastor , 
  PortraitBodyToCenterPageInLandscapeResponsiveFastor,
  ForumPortraitToLandscapeResponsiveFastor;
-
 
 # 1.3.16
 

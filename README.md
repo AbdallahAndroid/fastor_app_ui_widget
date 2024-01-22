@@ -169,6 +169,8 @@ void main() async {
 
 [ResponsiveFastor](https://pub.dev/packages/fastor_app_ui_widget#responsivefastor)
 
+[PaginateBarFastor](https://pub.dev/packages/fastor_app_ui_widget#paginatebarfastor)
+
 ---
 
 ---
@@ -2286,6 +2288,50 @@ if( ValidateResponse.isStatusBadRequest(response.data) ) {
 ```
 
 
+
+---
+
+---
+
+## PaginateBarFastor
+
+* Used in Admin Panel for pagingate the list of data. 
+* button: show current page
+* text: show total records - items in database - .
+* button GoTo to any page
+* button next and previous page
+
+### constructor
+```
+  PaginateBarFastor(  {
+    required this.currentPage,
+    required this.itemTotal,
+    required this.limitPerPage,
+    required this.progress,
+    required this.paginateNumberChange,
+    required this.colorPrimary,
+    required this.colorSecondary
+
+}){
+```
+
+* example:
+```
+  Widget getPaginateBar(){
+    return PaginateBarFastor(
+      currentPage:  1,   //come from response of paginate backend
+      itemTotal: 100,   //come from response of paginate backend
+      limitPerPage: 10,
+      progress: progressStatus,  
+      colorPrimary: Colors.blue,
+      colorSecondary: Colors.green,
+      paginateNumberChange: (newPage){
+        Log.i("PaginateBarFastor() - paginateNumberChange() - newPage: $newPage ");
+        provider?.tasksRefreshOrDownloadNextPage(context: context, isResetPage: false, newPage: newPage);
+      },
+    );
+  }
+```
 ---
 
 ---
