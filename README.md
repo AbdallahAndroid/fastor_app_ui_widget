@@ -1523,14 +1523,14 @@ class LanguageHelper {
 * optional validator fourm
 * optional set type of AutoValidateMode
 
-### Example
+### Example Simple : Not Used Custom Icon
 ```
     return TextFieldPasswordFastor(
       title: "ENTER PASSWORD",
       hint_text: "Enter password",
       iconPasswordShow: Icon(),   //optional: this custom icon 
       iconPasswordShow: Icon(),   //optional: this custom icon 
-      controller:  passwordController,
+      passwordController:  passwordController,
       margin: EdgeInsets.only(top: 10 ), //optional: 
       validatorCustom: ValidatorTemplate.pass(error_text: "*Enter password at least 8 char." ), //optional
       autoValidateMode: AutovalidateMode.onUserInteraction,
@@ -1539,6 +1539,68 @@ class LanguageHelper {
        },
     );
 ```
+
+### Example Use Custom Icon
+
+```
+  @override
+  Widget build(BuildContext context) {
+    return TextFieldPasswordFastor(
+        titleWidget: title(),
+        hint: "Enter password".trf(),
+        iconPasswordShow: iconEyeShow(),
+        iconPasswordHidden: iconEyeHide(),
+        passwordController: widget.passwordController,
+        margin: EdgeInsets.symmetric(horizontal: ProjectDimen.leftRightPageContent),
+        validatorCustom: ValidatorTemplate.pass(error_text: "*Enter password at least 8 char.".trf()),
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        onChanged: widget.onChanged,
+        colorIconEyePassword: ColorApp.pink,
+    );
+  }
+
+
+  Widget iconEyeShow(){
+    var img = Image.asset(
+      "assets/images/eye_show.png",
+      width: 14,
+      height: 14,
+      color: ColorApp.primary,
+    );
+    return  Container(
+      child: img,
+      color: Colors.transparent,
+      padding: EdgeInsets.only(  right: 10, left: 10),
+    );
+  }
+
+
+  Widget iconEyeHide(){
+    var img = Image.asset(
+      "assets/images/eye_hide.png",
+      width: 14,
+      height: 14,
+      color: ColorApp.primary,
+    );
+    return  Container(
+      child: img,
+      color: Colors.transparent,
+      padding: EdgeInsets.only(  right: 10, left: 10),
+    );
+  }
+
+  
+  title() {
+    return Container(
+      child: TextCustomBold("ENTER PASSWORD".trf(), fontSize: 15 ),
+      margin: EdgeInsets.only(bottom: 20),
+    );
+  }
+
+
+```
+
+
 ---
 
 ---

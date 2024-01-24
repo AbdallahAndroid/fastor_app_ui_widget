@@ -36,11 +36,11 @@ class TextFieldPasswordFastor extends StatefulWidget {
 });
 
   @override
-  _PasswordEyeTextFieldState createState()  => _PasswordEyeTextFieldState();
+  _TextFieldPasswordState createState()  => _TextFieldPasswordState();
 
 }
 
-class _PasswordEyeTextFieldState extends State<TextFieldPasswordFastor> {
+class _TextFieldPasswordState extends State<TextFieldPasswordFastor> {
 
   bool isShowCharacter = false;
 
@@ -57,6 +57,7 @@ class _PasswordEyeTextFieldState extends State<TextFieldPasswordFastor> {
       suffixIcon: iconEyeClickWidget(),
       controller: widget.passwordController,
       margin:  widget.margin,
+      maxLines: 1, // must in type password to write lines max is "1"  to fix crash
       validatorCustom: widget.validatorCustom?? ValidatorTemplate.pass(error_text: "*Enter password at least 8 char.".arf("* ادخل كلمة المرور")),
       obscureText: ! isShowCharacter,
       autovalidateMode: widget.autovalidateMode??AutovalidateMode.onUserInteraction,
