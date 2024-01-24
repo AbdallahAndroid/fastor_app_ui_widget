@@ -3,37 +3,131 @@ import 'package:flutter/material.dart';
 
 class TextFieldPasswordFastor extends StatefulWidget {
 
-  String? title;
-  Widget? titleWidget;
-  String? hint;
-  AutovalidateMode? autovalidateMode;
-  TextEditingController passwordController;
-  Color colorIconEyePassword;
-  ValueChanged<String> onChanged;
-  EdgeInsets? margin;
-  EdgeInsets? padding;
 
+  // validate
   FormFieldValidator<String>? validatorCustom;
+  FormFieldValidator<String> validatorChosen = ValidatorTemplate.d(error_text: "Missed");
+  AutovalidateMode? autovalidateMode;
+
+  //title
+  String? titleText;
+  Widget? titleWidget;
+
+  //text and hint
+  String? hint_text;
+  Color? text_color;
+  double? fontSize;
+  String? fontFamily;
+  Color? hint_color;
+
+  //mode of textfield
+  bool isRemoveUnderline = false;
+  bool? showOutlineInput;
+
+  //background
+  Color? background_color;
+
+  //decoration
+  InputDecoration? decoration; //custom decoration
+  Decoration? decorationBackground; //at the Container
+
+  //spaces
+  EdgeInsets? padding;
+  EdgeInsets? margin;
+
+  //controller
+  TextEditingController? controller;
+  ValueChanged<String>? onChanged;
+
+  //input content type
+  TextInputType? keyboardType;
+
+  //action
+  TextInputAction? textInputAction;
+
+  //size and max/min
+  double? width;
+  int? maxLength;
+
+
+  //error
+  Map<String, dynamic>? errorsMessageArray;
+  String? errorKeySearchingInErrorMessageArray;
+  String? errorMessage;
+  Color? errorColor;
+
+  //other
+  TextAlign? textAlign;
+  FocusNode? focusNode;
+
+  //icon
+  Widget? prefixIcon;
 
   //eye password
   Widget? iconPasswordShow;
   Widget? iconPasswordHidden;
-
+  Color colorIconEyePassword;
 
   TextFieldPasswordFastor({
-    required this.passwordController,
     required this.colorIconEyePassword,
-    required this.onChanged,
     this.iconPasswordShow,
     this.iconPasswordHidden,
-    this.margin,
-    this.padding,
-    this.title,
-    this.titleWidget,
-    this.autovalidateMode,
+    // validate
     this.validatorCustom,
-    this.hint,
-});
+    // this.validatorType,
+    this.autovalidateMode,
+
+    // title
+    this.titleText,
+    this.titleWidget,
+
+    //text and hint
+    this.hint_text,
+    this.text_color,
+    this.fontSize,
+    this.hint_color,
+    this.fontFamily,
+
+    //boarder and underline
+    this.isRemoveUnderline = false,
+
+    this.showOutlineInput,
+
+    //background + decoration
+    this.background_color,
+    this.decoration,
+    this.decorationBackground, //at the Container
+
+    //spaces
+    this.padding,
+    this.margin,
+
+    //controller
+    this.controller,
+    this.onChanged,
+
+    //input content type
+    this.keyboardType,
+    this.textInputAction,
+
+    //size and max/min
+    this.width,
+    this.maxLength,
+
+    //errors
+    this.errorsMessageArray,
+    this.errorKeySearchingInErrorMessageArray,
+    this.errorMessage,
+    this.errorColor,
+
+    //other
+    this.textAlign,
+    this.focusNode,
+
+    //icon
+    this.prefixIcon,
+
+  }) ;
 
   @override
   _TextFieldPasswordState createState()  => _TextFieldPasswordState();
@@ -51,16 +145,39 @@ class _TextFieldPasswordState extends State<TextFieldPasswordFastor> {
 
   Widget password() {
     return TextFieldFastor(
-      titleText: widget.title ,
+      titleText: widget.titleText ,
       titleWidget: widget.titleWidget,
-      hint_text: widget.hint?? "Enter password".arf( "كملة المرور"),
-      suffixIcon: iconEyeClickWidget(),
-      controller: widget.passwordController,
+      text_color: widget.text_color,
+      fontSize: widget.fontSize,
+      hint_color: widget.hint_color,
+      fontFamily: widget.fontFamily,
+      isRemoveUnderline: widget.isRemoveUnderline,
+      showOutlineInput: widget.showOutlineInput,
+      background_color: widget.background_color,
+      decoration: widget.decoration,
+      decorationBackground: widget.decorationBackground,
       margin:  widget.margin,
-      maxLines: 1, // must in type password to write lines max is "1"  to fix crash
+      padding: widget.padding,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
+      width: widget.width,
+      maxLength: widget.maxLength,
+      errorColor: widget.errorColor,
+      errorKeySearchingInErrorMessageArray: widget.errorKeySearchingInErrorMessageArray,
+      errorMessage: widget.errorMessage,
+      errorsMessageArray: widget.errorsMessageArray,
+      textAlign: widget.textAlign,
+      focusNode: widget.focusNode,
+      prefixIcon: widget.prefixIcon,
+      suffixIcon: iconEyeClickWidget(),
+      controller: widget.controller,
+
+      /// password config
       validatorCustom: widget.validatorCustom?? ValidatorTemplate.pass(error_text: "*Enter password at least 8 char.".arf("* ادخل كلمة المرور")),
-      obscureText: ! isShowCharacter,
       autovalidateMode: widget.autovalidateMode??AutovalidateMode.onUserInteraction,
+      hint_text: widget.hint_text?? "Enter password".arf( "كملة المرور"),
+      maxLines: 1, // must in type password to write lines max is "1"  to fix crash
+      obscureText: ! isShowCharacter,
       onChanged: widget.onChanged,
     );
   }

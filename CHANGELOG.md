@@ -1,4 +1,4 @@
-# 1.3.23
+# 1.3.24
 
 * Build "TextFieldPasswordFastor"
 

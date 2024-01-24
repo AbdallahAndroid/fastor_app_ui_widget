@@ -18,10 +18,8 @@ class TextFieldFastor extends StatelessWidget {
 
   // validate
   FormFieldValidator<String>? validatorCustom;
-  FormFieldValidator<String> validatorChosen = ValidatorTemplate.d(
-      error_text: "Missed");
+  FormFieldValidator<String> validatorChosen = ValidatorTemplate.d(error_text: "Missed");
   AutovalidateMode? autovalidateMode;
-  // ValidatorType? validatorType;
 
   //title
   String? titleText;
@@ -36,6 +34,8 @@ class TextFieldFastor extends StatelessWidget {
 
   //mode of textfield
   bool isRemoveUnderline = false;
+
+  @Deprecated("use showOutlineInput")
   bool? isShowBoarder;
   bool? showOutlineInput;
 
@@ -68,6 +68,9 @@ class TextFieldFastor extends StatelessWidget {
   int? minLines;
 
   //error
+  Map<String, dynamic>? errorsMessageArray;
+  String? errorKeySearchingInErrorMessageArray;
+  String? errorMessage;
   Color? errorColor;
 
   //other
@@ -77,6 +80,7 @@ class TextFieldFastor extends StatelessWidget {
   //icon
   Widget? prefixIcon;
   Widget? suffixIcon;
+
 
   TextFieldFastor({
     // validate
@@ -125,6 +129,9 @@ class TextFieldFastor extends StatelessWidget {
     this.minLines,
 
     //errors
+    this.errorsMessageArray,
+    this.errorKeySearchingInErrorMessageArray,
+    this.errorMessage,
     this.errorColor,
 
     //other
@@ -184,7 +191,13 @@ class TextFieldFastor extends StatelessWidget {
         }
       }
     }
+
+    //default
+    isShowBoarder ??= false;
+
+    errorMessage ??= _getErrorTextBackend();
   }
+
 
   void _setValidator() {
     //set default
@@ -200,7 +213,6 @@ class TextFieldFastor extends StatelessWidget {
 
 
   validateDecorationInputField(){
-
     /// case not have decoration
     if( decoration == null ) return;
 
@@ -214,7 +226,6 @@ class TextFieldFastor extends StatelessWidget {
       decorationBackground = decoration as Decoration;
       decoration = null; //remove this now not good argument case exception
     }
-
   }
 
 
@@ -225,6 +236,19 @@ class TextFieldFastor extends StatelessWidget {
     if(isShowBoarder! || showOutlineInput! ) {
       showOutlineInput = true;
       isShowBoarder = true;
+    }
+  }
+
+
+  String? _getErrorTextBackend( ) {
+    if (errorsMessageArray != null) {
+      // print( "abdo - _getErrorText() - keyError: keyError");
+      // print( "abdo - _getErrorText() - errors![key]: ${errors![keyError]}");
+      var result =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
+      return result;
+    } else {
+      // print( "abdo - _getErrorText() - errors is (null)");
+      return null;
     }
   }
 
@@ -292,18 +316,7 @@ class TextFieldFastor extends StatelessWidget {
       cursorColor: hint_color,
 
       //padding + hint + underline
-      decoration: decoration != null ? decoration :  TextFieldTemplateBase.getDecorationInput(
-          isShowBoarder,
-          padding!,
-          hint_text,
-          hint_color!,
-          fontSize!,
-          isRemoveUnderline!,
-          prefixIcon,
-          suffixIcon,
-          errorColor!,
-          autovalidateMode!,
-          null),
+      decoration: decoration != null ? decoration :   getDecorationInput( ),
 
       //keyboard
       keyboardType: keyboardType,
@@ -333,6 +346,144 @@ class TextFieldFastor extends StatelessWidget {
       focusNode: focusNode,
     );
   }
+
+  //--------------------------------------------------------------------- input text feild
+
+  InputDecoration getDecorationInput( ) {
+
+    if( isShowBoarder! ) {
+      return getDecorationInput_outlineInput(  );
+    } else {
+      return getDecorationInput_underLine( );
+    }
+  }
+
+  InputDecoration getDecorationInput_outlineInput( ) {
+
+
+    //check is need to remove underline
+    double widthUnderLine = 1;
+    if( isRemoveUnderline! ) {
+      widthUnderLine = 0;
+    }
+
+
+    var boarderSide = BorderSide(color: DSColor.ds_textfield_boarder_line,
+        width: widthUnderLine);
+
+    var enabledBorder =  OutlineInputBorder(
+      borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
+      borderSide:    boarderSide,
+    );
+
+    var  focusedBorder  = OutlineInputBorder(
+      borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2), //32.0
+      borderSide:  boarderSide  ,
+    );
+
+    //error
+    var errorBorder =  OutlineInputBorder(
+      borderSide: BorderSide(
+        color: errorColor!, // Customize the error underline color
+      ),
+    );
+    var focusedErrorBorder =  OutlineInputBorder(
+        borderSide: BorderSide(
+          color: errorColor!, // Customize the focused error underline color
+        ));
+
+    //return value
+    return InputDecoration(
+
+      //remove default padding and set custom
+      isDense: true,
+      contentPadding: padding,
+
+      //hint text
+      hintText: hint_text,
+
+      //hint color
+      hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+
+      // underline customer color
+      enabledBorder: enabledBorder,
+      focusedBorder: focusedBorder,
+
+      //error text
+      errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
+      errorText : errorMessage,
+
+      //error boarder
+      errorBorder: errorBorder,
+      focusedErrorBorder: focusedErrorBorder,
+
+      //other
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+    );
+  }
+
+
+    InputDecoration getDecorationInput_underLine( ) {
+
+    //check is need to remove underline
+    double widthUnderLine = 1;
+    if( isRemoveUnderline ) {
+      widthUnderLine = 0;
+    }
+
+    var enabledBorder = UnderlineInputBorder(
+      borderSide: BorderSide(color: hint_color!, width: widthUnderLine),
+    );
+
+    var focusedBoarder = UnderlineInputBorder(
+      borderSide: BorderSide(color: hint_color!, width: widthUnderLine),
+    );
+
+
+    //error
+    var errorBorder =  UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: errorColor!, // Customize the error underline color
+      ),
+    );
+    var focusedErrorBorder =  UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: errorColor!, // Customize the focused error underline color
+        ));
+
+    //return value
+    return InputDecoration(
+
+      //remove default padding and set custom
+        isDense: true,
+        contentPadding: padding,
+
+        //hint text
+        hintText: hint_text,
+
+        //hint color
+        hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+
+        // underline customer color
+        enabledBorder: enabledBorder,
+        focusedBorder: focusedBoarder,
+
+        //error text
+        errorText : errorMessage,
+        errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
+
+        //error boarder
+        errorBorder: errorBorder,
+        focusedErrorBorder: focusedErrorBorder,
+
+        //other
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon
+    );
+  }
+
+
 
 
 }
