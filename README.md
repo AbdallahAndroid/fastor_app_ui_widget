@@ -137,6 +137,8 @@ void main() async {
 
 [TextFieldEmailOrPhoneFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldemailorphonefastor)
 
+[TextFieldPasswordFastor](https://pub.dev/packages/fastor_app_ui_widget#textfieldpasswordfastor)
+
 [TabBarFastor](https://pub.dev/packages/fastor_app_ui_widget#tabbarfastor)
 
 [TableFastor](https://pub.dev/packages/fastor_app_ui_widget#tablefastor)
@@ -1508,7 +1510,35 @@ class LanguageHelper {
 
 ```
 
+---
 
+---
+
+## TextFieldPasswordFastor
+
+* icon password click to show/hide password
+* can custom iconWidget for show/hide
+* title text optional to set above TextField
+* Can send custom Title Widget
+* optional validator fourm
+* optional set type of AutoValidateMode
+
+### Example
+```
+    return TextFieldPasswordFastor(
+      title: "ENTER PASSWORD",
+      hint_text: "Enter password",
+      iconPasswordShow: Icon(),   //optional: this custom icon 
+      iconPasswordShow: Icon(),   //optional: this custom icon 
+      controller:  passwordController,
+      margin: EdgeInsets.only(top: 10 ), //optional: 
+      validatorCustom: ValidatorTemplate.pass(error_text: "*Enter password at least 8 char." ), //optional
+      autoValidateMode: AutovalidateMode.onUserInteraction,
+      onChanged: (s) {
+      
+       },
+    );
+```
 ---
 
 ---

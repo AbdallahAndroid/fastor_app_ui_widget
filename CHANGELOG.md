@@ -1,3 +1,7 @@
+# 1.3.22
+
+* Build "TextFieldPasswordFastor"
+
 # 1.3.21
 
 * Change SuffixIcon in widget "TextFieldEmailOrPhoneFastor" to be same place like regular "TextField"

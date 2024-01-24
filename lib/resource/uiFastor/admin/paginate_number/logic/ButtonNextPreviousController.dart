@@ -7,7 +7,7 @@ extension ButtonNextPreviousController on PaginateBarState {
 
   void previousButtonFunction(){
     bool minArrive = ( widget.currentPage - 1 ) == 0;
-    Log.i("PaginateNumberWidget - previousButtonFunction() - minArrive: $minArrive /currentPage: ${widget.currentPage}");
+    // Log.i("PaginateNumberWidget - previousButtonFunction() - minArrive: $minArrive /currentPage: ${widget.currentPage}");
 
     //check min zero
     if( minArrive) {
@@ -30,7 +30,7 @@ extension ButtonNextPreviousController on PaginateBarState {
 
     });
 
-    Log.i("PaginateNumberWidget - previousButtonFunction() - result currentPage: ${widget.currentPage}");
+    // Log.i("PaginateNumberWidget - previousButtonFunction() - result currentPage: ${widget.currentPage}");
 
     //call
     widget.paginateNumberChange(widget.currentPage);
@@ -40,7 +40,7 @@ extension ButtonNextPreviousController on PaginateBarState {
 
   void nextButtonFunction(){
     bool maxArrive = ( widget.currentPage   ) == widget.maxPage;
-    Log.i("PaginateNumberWidget - nextButtonFunction() - maxArrive: $maxArrive /currentPage: ${widget.currentPage}");
+    // Log.i("PaginateNumberWidget - nextButtonFunction() - maxArrive: $maxArrive /currentPage: ${widget.currentPage}");
 
     //check maxPage
     if( maxArrive ) {

@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
@@ -21,6 +22,10 @@ class TextFieldFastor extends StatelessWidget {
       error_text: "Missed");
   AutovalidateMode? autovalidateMode;
   // ValidatorType? validatorType;
+
+  //title
+  String? titleText;
+  Widget? titleWidget;
 
   //text and hint
   String? hint_text;
@@ -79,6 +84,9 @@ class TextFieldFastor extends StatelessWidget {
     // this.validatorType,
     this.autovalidateMode,
 
+    // title
+    this.titleText,
+    this.titleWidget,
 
     //text and hint
     this.hint_text,
@@ -108,7 +116,6 @@ class TextFieldFastor extends StatelessWidget {
     //input content type
     this.keyboardType,
     this.textInputAction,
-
     this.obscureText = false,
 
     //size and max/min
@@ -129,6 +136,12 @@ class TextFieldFastor extends StatelessWidget {
     this.suffixIcon
 
   }) {
+      setDefaultValues();
+  }
+
+  //--------------------------------------------------------------- default value
+
+  void setDefaultValues() {
     //padding default
     padding ??= EdgeInsets.zero;
 
@@ -173,6 +186,18 @@ class TextFieldFastor extends StatelessWidget {
     }
   }
 
+  void _setValidator() {
+    //set default
+    validatorChosen = ValidatorTemplate.d();
+
+    //priority for custom
+    if (validatorCustom != null) {
+      validatorChosen = validatorCustom!;
+      // print("_setValidator() - type (validatorChosen)");
+      return;
+    }
+  }
+
 
   validateDecorationInputField(){
 
@@ -203,25 +228,53 @@ class TextFieldFastor extends StatelessWidget {
     }
   }
 
+  //----------------------------------------------------------- build
+
   @override
   Widget build(BuildContext context) {
-    //get tf
-    TextFormField tf = _getTextFourmField();
-
-    //containter
-    var container = Container(
-      child: tf,
+    return Container(
+      child: columnTitleAndTextField(),
       width: width,
       margin: margin,
       decoration: decorationBackground,
     );
-    return container;
+  }
+
+  //-------------------------------------------------------- title
+
+  Widget columnTitleAndTextField(){
+    return ColumnFastor(children: [
+      titleWidgetIfFound(),
+    _getTextFourmField()
+    ] );
   }
 
 
+  Widget titleWidgetIfFound(){
+
+    ///case found custom widget title
+    if(titleWidget != null )  return titleWidget!;
+
+    /// case there is just "text" need to be title widget
+    if( titleText != null ) return normalTitleWidget();
+
+    ///case not need any tittle
+    return const SizedBox();
+  }
+
+
+  Widget normalTitleWidget() {
+    return TextFastor(  titleText??"",
+      color: text_color??Colors.black,
+      fontSize: fontSize??15,
+      margin: const EdgeInsets.only(bottom: 20 ),
+    );
+  }
+
+  //--------------------------------------------------------------- textfield
+
   TextFormField _getTextFourmField() {
-    //textfield
-    var tf = TextFormField(
+    return TextFormField(
       //validate error
       autovalidateMode: autovalidateMode,
       validator: validatorChosen,
@@ -278,25 +331,7 @@ class TextFieldFastor extends StatelessWidget {
       textInputAction :  textInputAction ,
 
       focusNode: focusNode,
-
-
     );
-
-    return tf;
-  }
-
-  //--------------------------------------------------------------- validator
-
-  void _setValidator() {
-    //set default
-    validatorChosen = ValidatorTemplate.d();
-
-    //priority for custom
-    if (validatorCustom != null) {
-      validatorChosen = validatorCustom!;
-      // print("_setValidator() - type (validatorChosen)");
-      return;
-    }
   }
 
 

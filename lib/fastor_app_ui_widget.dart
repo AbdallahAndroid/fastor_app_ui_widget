@@ -126,6 +126,9 @@ export 'resource/resources/boarder/BorderRadiusTools.dart';
 import 'resource/template/pager_view/PageViewFastor.dart';
 export 'resource/template/pager_view/PageViewFastor.dart';
 
+import 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
+export 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
+
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
 import 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
@@ -288,6 +291,8 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkMan
 
 ///fastor_app_ui_widget app all class
 class fastor_app_ui_widget extends fastor {
+
+  late TextFieldPasswordFastor textFieldPasswordFastor;
 
   /// responsive
   late ResponsiveFastorConstant responsiveFastorConstant;

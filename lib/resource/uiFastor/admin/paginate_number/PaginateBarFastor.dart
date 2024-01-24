@@ -34,8 +34,8 @@ class PaginateBarFastor extends StatefulWidget{
 }){
 
      _calculateMaxPage();
-    String data =    '{ currentPage: $currentPage, itemTotal: $itemTotal, limitPerPage: $limitPerPage, maxPage: $maxPage, progress: $progress}';
-    Log.i("PaginateNumberWidget - constructor - data: $data");
+    // String data =    '{ currentPage: $currentPage, itemTotal: $itemTotal, limitPerPage: $limitPerPage, maxPage: $maxPage, progress: $progress}';
+    // Log.i("PaginateNumberWidget - constructor - data: $data");
   }
 
 
