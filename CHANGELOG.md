@@ -1,3 +1,11 @@
+# 1.3.25
+
+* add methods "getAlignmentGeometryStart()" it's return  left Container( alignment ) in english, 
+ while in arabic return right Container( alignment )
+
+* add methods "getAlignmentGeometryEnd()" it's return  right Container( alignment ) in english,
+  while in arabic return left Container( alignment )
+ 
 # 1.3.24
 
 * Build "TextFieldPasswordFastor"

@@ -1927,7 +1927,7 @@ LangFastor.isArabic
 
 ### Handle The Container Alignment Left/Right Arabic
 
-* Fix Arabic Alignment of the "Container" by using "LangFastor.getAlignmentGeometry()"
+* Fix Arabic Alignment of the "Container" by using "LangFastor.getAlignmentGeometry()" return left alignment
 ```
 Container(
     width: DeviceTools.getWidth(contextPage),
@@ -1935,6 +1935,11 @@ Container(
     child: menuFrameUI(),
 );
 ```
+* add methods "getAlignmentGeometryStart()" it's return  left Container( alignment ) in english,
+  while in arabic return right Container( alignment )
+
+* add methods "getAlignmentGeometryEnd()" it's return  right Container( alignment ) in english,
+  while in arabic return left Container( alignment )
 
 ### Section: Arabic Translation
 

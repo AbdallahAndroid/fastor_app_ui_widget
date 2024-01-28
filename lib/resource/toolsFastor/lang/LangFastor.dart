@@ -140,6 +140,22 @@ class LangFastor {
     }
   }
 
+
+  static AlignmentGeometry getAlignmentGeometryStart(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topRight;
+    } else {
+      return Alignment.topLeft;
+    }
+  }
+
+  static AlignmentGeometry getAlignmentGeometryEnd(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topLeft;
+    } else {
+      return Alignment.topRight;
+    }
+  }
   // static getLocalizationDelegates() {
   //   return    [
   //     GlobalMaterialLocalizations.delegate,
