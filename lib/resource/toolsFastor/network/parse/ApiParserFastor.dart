@@ -141,7 +141,7 @@ class ApiParserFastor {
     if( data.toString() ==  "null" ) return 0 ;
 
     String integerString = data.toString();
-    print("parseIntDynamic() - data: $data ");
+    // print("parseIntDynamic() - data: $data ");
     //fix missed "." dot
     bool isDoubleValue = ToolsString.isContainSingleCharacter(
         mainString: integerString, charSingle: ".");
