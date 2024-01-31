@@ -15,7 +15,7 @@ typedef SpinnerViewCallBack = void Function( int position, bool isRemoveSelected
 
 //--------------------------------------------------------------------- class
 
-
+@Deprecated( "Use Widget (DropdownFastor.dart) class instead")
 class SpinnerView extends StatefulWidget {
 
   static final  key_position_hint = "-1" ;
@@ -57,6 +57,9 @@ class SpinnerView extends StatefulWidget {
 
   TextDirection? textDirection;
 
+  @Deprecated( "Old Way To Change The View")
+  ValueChanged<SpinnerViewState>? changeState;
+  
   SpinnerView (  {
     required  List<Widget> this.childers ,
     required Widget this.hintWidget,
@@ -86,6 +89,9 @@ class SpinnerView extends StatefulWidget {
     //arabic
     this.textDirection,
 
+    @deprecated
+    ValueChanged<SpinnerViewState>? this.changeState
+
   }){
     setDefaultValue();
     fixWidthWithIconSpinner();
@@ -95,7 +101,9 @@ class SpinnerView extends StatefulWidget {
 
   @override
   SpinnerViewState createState() {
-    return SpinnerViewState();
+    var state = SpinnerViewState();
+    if(changeState != null ) changeState!(state);
+    return state;
   }
 
   //--------------------------------------------------------------- set default values

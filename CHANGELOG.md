@@ -1,3 +1,8 @@
+# 1.3.26
+
+* add "ValueChanged<SpinnerViewState>? this.changeState" for "SpinnerView" deprecated widget.
+* Remove logs print in logcat from plugin code.
+
 # 1.3.25
 
 * add methods "getAlignmentGeometryStart()" it's return  left Container( alignment ) in english, 
