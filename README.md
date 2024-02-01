@@ -1656,6 +1656,16 @@ class LanguageHelper {
 
 ## CalenderFastor
 
+### Feature  :
+* title is optional
+* decoration background optional
+* types calender "CalenderTypeFastor.birthday" for handle picker birthday logic
+* "height" parameter to resize to specific fixed height.
+* style of font:
+  colorTextTitle, colorTextSelected, colorTextUnSelected, fontFamily, fontSize
+ 
+### Example :
+
 * example type birthday picker
 ```
       var calender =  CalenderFastor(
@@ -1676,6 +1686,8 @@ class LanguageHelper {
         },
       );
 ```
+
+### Types 
 
 * type of calender "CalenderTypeFastor" see Enum
 

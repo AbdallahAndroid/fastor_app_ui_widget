@@ -22,6 +22,7 @@ class CalenderFastor extends StatefulWidget {
   String? fontFamily;
   double? fontSize;
   Decoration? decoration;
+  double? height;
 
   CalenderFastor( {
     this.title,
@@ -33,7 +34,9 @@ class CalenderFastor extends StatefulWidget {
     this.colorTextUnSelected,
     this.colorTextTitle,
     this.fontFamily,
-    this.decoration
+    this.decoration,
+    this.fontSize,
+    this.height
 });
 
   @override
@@ -71,7 +74,7 @@ class _CalenderCustomState extends State<CalenderFastor> {
   Widget fieldWidget(){
     return Container(
       child: hintOrTextSelectedWidget(),
-      height: 49,
+      height: widget.height??49,
       alignment: Alignment.center,
       decoration: widget.decoration ?? BoarderHelper.cardView(
           colorLine: Colors.grey.withOpacity( 0.5),
@@ -118,7 +121,7 @@ class _CalenderCustomState extends State<CalenderFastor> {
     return Text( "${widget.dateSelected}",
       style: TextStyle(
           color: widget.colorTextSelected??Colors.black,// ColorApp.black,
-          fontSize: 13,
+          fontSize: widget.fontSize??13,
           fontFamily: widget.fontFamily,
       ),
     );

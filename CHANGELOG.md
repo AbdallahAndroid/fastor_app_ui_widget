@@ -1,3 +1,8 @@
+# 1.3.27
+
+* Add "height" parameter to widget "CalenderFastor"
+* Add "fontSize" parameter to widget "CalenderFastor"
+
 # 1.3.26
 
 * add "ValueChanged<SpinnerViewState>? this.changeState" for "SpinnerView" deprecated widget.
