@@ -351,7 +351,30 @@ By using parameter "statusBarColorCustome" you can write hexcode color
         content: getContent() );
   }
 ```
- 
+
+### Navigation To Transparent Page
+
+* To Navigate Need to User class "NavigationTools" found in fastor helper classes. 
+* Just Call for navigation push
+```
+NavigationTools.pushTransparent( SimpleScreen() );
+```
+
+* or for animation navigation
+```
+NavigationTools.pushTransparentAnimateFade( SimpleScreen() );
+````
+
+* In Your Screen Page set color background to be transparent
+```
+  @override
+  Widget build(BuildContext context) {
+    return PageFastor(this,
+         backgroundColor: Colors.transparent,
+        content: getContent() );
+  }
+```
+
 ---
 <hr  style="border-top: 3px solid; ">
 
@@ -2140,41 +2163,42 @@ bool b = isLandscapeMobile();
 
 ## NavigationTools
 
-+ add class "NavigationTools" for push() or pushAndRemove() or pushWithResumeLifecycle()
+* Transparent View
+* can make animation fade while push easily
+* add class "NavigationTools" for push() or pushAndRemove()
+* can use "resume" plugin to pushWithResumeLifecycle  
+
+### Navigate To Transparent Screens
+```
+NavigationTools.pushTransparentAnimateFade( SimpleScreen() ) ;
+NavigationTools.pushTransparent( SimpleScreen() ) ;
+```
+
+### Navigate With Animation Fade
+```
+NavigationTools.pushAnimateFade( SimpleScreen() ) ;
+```
+
+### Navigate With Using Plugin "resume"
+```
+NavigationTools.pushResumeAnimateFade( SimpleScreen(), this ) ;
+NavigationTools.pushResume( SimpleScreen() , this) ;
 
 ```
 
-class NavigationTools {
+* Where "this" is screen that extends "ResumableState" when using plugin "resume"
 
-
-  //---------------------------------------------------------------------- tools general
-
-  static void push(BuildContext context, Widget page ) {
-    var materialPageRoute = MaterialPageRoute(builder: (context) => page);
-    Navigator.push(context ,  materialPageRoute  );
-  }
-
-  /**
-   * this make librasry "need_resume" working with push to next page
-   */
-  static void pushResume(BuildContext context, Widget page, ResumableState resume ) {
-    var materialPageRoute = MaterialPageRoute(builder: (context) => page);
-    resume.push( context, materialPageRoute );
-  }
-
-
-  /**
-   *  clearPrevious pages
-   */
-  static void pushAndRemoveUntil(BuildContext context, Widget page ) {
-    var materialPageRoute = MaterialPageRoute(builder: (ctx) => page);
-    Navigator.pushAndRemoveUntil(context, materialPageRoute, (e) => false);
-  }
-
-
-}
+### Normal Push 
+* Push Second Screen Above First Screen
+```
+NavigationTools.push( SimpleScreen() );
 ```
 
+* Push New Screen Will Clear All Previous Screen Opening
+```
+NavigationTools.pushAndRemoveUntil( SimpleScreen() );
+```
+ 
 
 ---
 

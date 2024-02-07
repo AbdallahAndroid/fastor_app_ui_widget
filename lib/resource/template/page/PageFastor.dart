@@ -40,7 +40,7 @@ class PageFastor extends StatelessWidget {
   AssetImage?
   assetBackground; //image set to background of page pages "AssetImage"
   double? assetBackgroundOpacity;
-  Color? colorBackground;
+  Color? backgroundColor;
   Widget?
   widgetBackground; //make widget to set as fixed background while scrolling moving
 
@@ -89,7 +89,7 @@ class PageFastor extends StatelessWidget {
         this.title = "",
         this.assetBackground,
         this.assetBackgroundOpacity,
-        this.colorBackground,
+        this.backgroundColor,
         this.widgetBackground,
         this.toolbar,
         this.toolbar_height,
@@ -153,7 +153,7 @@ class PageFastor extends StatelessWidget {
     this.context = context;
 
     //background (color or image )
-    var myBackground = _getBackground(myState.context, colorBackground,
+    var myBackground = _getBackground(myState.context, backgroundColor,
         assetBackground, assetBackgroundOpacity, widgetBackground);
 
     //scroll all page
@@ -186,6 +186,7 @@ class PageFastor extends StatelessWidget {
 
     //scaffold
     var scaffold = Scaffold(
+        backgroundColor: backgroundColor,
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
 
         //

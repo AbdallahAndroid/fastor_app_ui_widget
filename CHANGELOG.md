@@ -1,3 +1,11 @@
+# 1.3.30
+
+* add new methods "NavigationTools.pushTransparentAnimateFade()"
+  add new methods "NavigationTools.pushTransparent()"
+* PageFastor rename "colorBackground" to "backgroundColor"
+* Update Readme 
+
+
 # 1.3.29
 
 * Make Optional "PageFastor" change color statusBar and navigationHomeBar

@@ -19,13 +19,24 @@ class NavigationTools {
   static final _transitionDurationFade = Duration(milliseconds: 300);
 
 
-  static void pushAnimateFade(BuildContext context, Widget page , ) {
+  static void pushAnimateFade(BuildContext context, Widget page ) {
     var materialPageRoute = PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => page,
         transitionsBuilder : _transitionsBuilderFade,
         transitionDuration : _transitionDurationFade
     );
     Navigator.push(context, materialPageRoute );
+  }
+
+
+  static void pushTransparentAnimateFade(BuildContext context, Widget page ) {
+    var transparent = PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder : _transitionsBuilderFade,
+        transitionDuration : _transitionDurationFade
+    );
+    Navigator.push(context ,  transparent  );
   }
 
   /**
@@ -55,7 +66,7 @@ class NavigationTools {
   }
 
 
-  //---------------------------------------------------------------------- normal
+  //---------------------------------------------------------------------- push types
 
   static void push(BuildContext context, Widget page ) {
     var materialPageRoute = MaterialPageRoute(builder: (context) => page);
@@ -77,6 +88,15 @@ class NavigationTools {
   static void pushAndRemoveUntil(BuildContext context, Widget page ) {
     var materialPageRoute = MaterialPageRoute(builder: (ctx) => page);
     Navigator.pushAndRemoveUntil(context, materialPageRoute, (e) => false);
+  }
+
+
+  static void pushTransparent(BuildContext context, Widget page ) {
+    var transparent = PageRouteBuilder(
+      opaque: false,
+      pageBuilder: (_, __, ___) => page,
+    );
+    Navigator.push(context ,  transparent  );
   }
 
 
