@@ -1,377 +1,223 @@
+import 'dart:convert';
 
-
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
-import 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/state/FastorStateManagement.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
-
+import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
-
-import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';
-import 'package:flutter/services.dart';
-
-import '../../template/page/base/BasePageTemplateProgrees.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
+var translatorFastor = new LangFastor();
 
-/// Page Fastor like Scaffold
-class PageFastor extends StatelessWidget {
-  static const tag = "PageFastor";
+extension StringExtensions on String {
 
-  //required
-  State myState; //write "this" inside any class type "StateFullWidget"
-  Widget content;
-  BuildContext? context;
-
-  //page info
-  String? title; //page title show when app be at recent apps in android,
-  //page title show at tab of new page in "Web"
-
-  //background
-  AssetImage?
-  assetBackground; //image set to background of page pages "AssetImage"
-  double? assetBackgroundOpacity;
-  Color? colorBackground;
-  Widget?
-  widgetBackground; //make widget to set as fixed background while scrolling moving
-
-  //toolbar (top view )
-  Widget? toolbar;
-  double? toolbar_height;
-  AppBarFastor? appBarFastor;
-
-  //float_bottom ( bottom view )
-  Widget? floatBottom;
-
-  //  navigation: is the fixed view at align parent bottom of screen
-  Widget? navigationBottom;
-  double? navigationBottom_height;
-
-  /**
-   * TODO? need to do this in future
-   */
-  //footer
-  Widget? footer; //the footer  used at web
-  double? footer_height;
-
-  //progress
-  ValueChanged<ProgressCircleState>? onChangeProgressState;
-
-  //color
-  Color? statusBarColorCustom;
-  Color? homeButtonsBackgroundColor;
-
-  //drawer menu
-  GlobalKey? scaffoldKey; // = GlobalKey()
-  Widget? drawer;
-  DrawerCallback? onDrawerChanged;
-
-  //scroll
-  ScrollController? scrollController;
-  bool? isStopScroll;
-  bool? thumbVisibility;
-
-  //keybaord
-  bool? resizeToAvoidBottomInset;
-
-  PageFastor(this.myState,
-      {
-        required Widget this.content,
-        this.title = "",
-        this.assetBackground,
-        this.assetBackgroundOpacity,
-        this.colorBackground,
-        this.widgetBackground,
-        this.toolbar,
-        this.toolbar_height,
-        this.appBarFastor,
-        this.floatBottom,
-        this.navigationBottom,
-        this.navigationBottom_height,
-        this.footer,
-        this.footer_height,
-        this.onChangeProgressState,
-        this.statusBarColorCustom,
-        this.homeButtonsBackgroundColor,
-        this.scaffoldKey,
-        this.drawer,
-        this.onDrawerChanged,
-        this.scrollController,
-        this.isStopScroll,
-        this.thumbVisibility,
-        this.resizeToAvoidBottomInset
-      }) {
-    setDefaultValue();
+  String translateByFastor() {
+    return LangFastor.searchForValue( this );
   }
 
-  //------------------------------------------------------------------------ variable
-
-  void setDefaultValue() {
-    //state manager
-    FastorStateManagement.instance().addState(myState);
-
-    // check null
-    title ??= "";
-
-    //step 1 - toolbar height
-    if (toolbar != null) {
-      toolbar_height ??= DSDimen.toolbar_height;
-    }
-
-    //step 2 - toolbar view
-    toolbar ??= EmptyView.zero();
-
-    //case appBarFastor
-    if(  appBarFastor != null ) {
-      toolbar = appBarFastor;
-      toolbar_height = DSDimen.toolbar_height;
-    }
-
-    //set default navigation height
-    if (navigationBottom != null) {
-      navigationBottom_height ??= 70;
-    }
-
-    //navigation view
-    navigationBottom ??= EmptyView.zero();
-
-    //floatBottom view
-    floatBottom ??= EmptyView.zero();
+  /// the "trf" means  "translateByFastor"
+  String trf() {
+    return LangFastor.searchForValue( this );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    this.context = context;
-
-    //background (color or image )
-    var myBackground = _getBackground(myState.context, colorBackground,
-        assetBackground, assetBackgroundOpacity, widgetBackground);
-
-    //scroll all page
-    Widget scrollAllPage = ScrollViewPage.t(myState.context, content,
-        scrollController: scrollController,
-        toolbarHeight: toolbar_height,
-        footer_height: navigationBottom_height,
-        isStopScroll: isStopScroll,
-        thumbVisibility: thumbVisibility
-    );
-
-    // choose stack of page mobile app
-    Stack stack = _putEveryBarToStack(
-        myBackground,
-        scrollAllPage,
-        floatBottom!,
-        navigationBottom!,
-        navigationBottom_height,
-        toolbar!,
-        onChangeProgressState);
-
-    //
-    Widget pageStack ;
-    if(statusBarColorCustom != null ) {
-      pageStack = _statusBarWithMaterialApp(stack, title, statusBarColorCustom);
+  /// the "arf" means "Arabic By Fastor"
+  String arf(String arabicMeans ) {
+    if(LangFastor.isArabic ) {
+      return arabicMeans;
     } else {
-      pageStack = stack;
+      return this;
     }
-
-
-    //scaffold
-    var scaffold = Scaffold(
-        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-
-        //
-        body: pageStack,
-
-        //drawer menu
-        key: scaffoldKey,
-        drawer: drawer,
-        onDrawerChanged: onDrawerChanged);
-
-    if( homeButtonsBackgroundColor != null ) {
-      return  _getHomeButtonTheme(homeButtonsBackgroundColor, scaffold);
-    } else {
-      return scaffold;
-    }
-
-
-    //language dirction
-    // return Directionality(
-    //   //textDirection: TextDirection.rtl,
-    //   textDirection: LanguageTools.getTextDirection(context),
-    //   child: theme,
-    // );
   }
 
-  //--------------------------------------------------------------- basic
 
-  static AnnotatedRegion _getHomeButtonTheme(
-      Color? homeButtonsBackgroundColor, Scaffold scaffold) {
-    //navigation bar color
-    homeButtonsBackgroundColor ??= DSColor.homeButtons_background;
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle(
-          systemNavigationBarColor: homeButtonsBackgroundColor, //
-        ),
-        child: scaffold);
-  }
 
-  //+++++++++++++++++++++++ background
-
-  static Widget _getBackground(
-      BuildContext context,
-      Color? colorBackground,
-      AssetImage? assetBackground,
-      double? assetBackgroundOpacity,
-      Widget? widgetBackground) {
-    //color background default value
-    colorBackground ??= DSColor.ds_background_all_screen;
-    // Log.i( "PagTemplate - DeviceTools.getWidth() " + DeviceTools.getWidth().toString() );
-
-    // case: widget background
-    if (widgetBackground != null) {
-      return widgetBackground;
-    }
-
-    //case : asset background
-    if (assetBackground != null) {
-      //myBackground =   ImageBackground.allDeviceScreen( assetBackground , opacity: assetBackgroundOpacity!);
-      return ImageView(
-        width: DeviceTools.getWidth(context),
-        height: DeviceTools.getHeight(context),
-        opacity: assetBackgroundOpacity,
-        colorBackground: colorBackground,
-        assetBackground: assetBackground,
-      );
-    }
-
-    //case : default background  color
-    var myBackground = EmptyView.colored(DeviceTools.getWidth(context),
-        DeviceTools.getHeight(context), colorBackground);
-    return myBackground;
-  }
-
-  //--------------------------------------------------------------------- surround
-
-  /**
-   * set "StatusBar"
-   */
-  Widget _statusBarWithMaterialApp(Stack stack, String? title, Color? statusBarColorCustome) {
-    //
-    var statusBarMobile = Colors.transparent; //website not need
-    if (DeviceTools.isMobile()) {
-      //custome color mobile
-      var mobileStatus = statusBarColorCustome;
-
-      //default mobile
-      mobileStatus ??= StatusBarConstant.colorBackground;
-
-      //set result
-      statusBarMobile = mobileStatus;
-    }
-
-    // calcluate statusbar height
-    double marginStatusBar = 0;
-    if (DeviceTools.isMobile()) {
-      marginStatusBar = StatusBarConstant.getHeight(context!);
-    }
-
-    //calculate notch bar height
-    double marginNotchBar = NotchBarConstant.getHeight(context!);
-
-    //status bar mobile + take all page
-    var statusBar = Container(
-      color: statusBarMobile,
-      // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
-      alignment: Alignment.topLeft,
-      padding: EdgeInsets.only(
-        top: marginStatusBar,
-        bottom: marginNotchBar,
-      ),
-      child: stack,
-    );
-
-    //thumbVisibility
-    var themeDataScrollbarColored = Theme.of(context!).copyWith(
-        scrollbarTheme: ScrollbarThemeData(
-          thumbColor: MaterialStateProperty.all( DSColor.scrollbar_thumb ), //grey_deep
-        )
-    );
-
-    //material
-    var material = MaterialApp(
-        title: title!, // "Home",
-        debugShowCheckedModeBanner: false,
-        theme: themeDataScrollbarColored,
-        scrollBehavior:  MyScrollThemeHidden(),
-        home: statusBar);
-    return material;
-  }
-
-  //------------------------------------------------------------------------ chosse page
-
-  Stack _putEveryBarToStack(
-      Widget myBackground,
-      Widget scrollAllPage,
-      Widget floatBottom,
-      Widget navigationBottom,
-      double? navigation_height,
-      Widget toolbar,
-      ValueChanged<ProgressCircleState>? onChangeProgressState) {
-    //progress
-    var progress = BasePageTemplateProgress.progressView(onChangeProgressState);
-
-    // var statusBarHeight = StatusBarConstant.getHeight();
-
-    var stack = Stack(
-      children: [
-        //expanded
-        // EmptyView.allDeviceScreen(context),
-
-        //set  background (color or image or widgetBackground )
-        myBackground,
-
-        //scroll here
-        scrollAllPage,
-
-        //progress center
-        Align(child: progress, alignment: Alignment.center),
-
-        // floating
-        Positioned(child: floatBottom, bottom: 0, left: 0, right: 0),
-
-        //toolbar fixed at top of the view
-        toolbar,
-
-        // navigation
-        Positioned(child: navigationBottom, bottom: 0, left: 0, right: 0),
-
-        //test
-        // Text( "4: " + StatusBarConstant.colorBackground.hexColor )
-      ],
-    );
-
-    return stack;
-  }
 }
 
+class LangFastor {
 
-//-------------------------------------------------------------- scroll glow color
+  //--------------------------------------------------------------------
+
+  //force type
+  // static bool isForceLanguageEnglish = false;
+  // static bool isForceLanguageArabic = false;
+
+  // fix plugin "  localize_and_translate "
+  static String activeLanguageCode = "en";
+
+  static Map<String, dynamic> arabicWords  = Map();
+
+  // static bool _sync = false;
+
+  static bool isArabic = false;
 
 
-class MyScrollThemeHidden extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
-    return  child;
+  //-------------------------------------------------------------------- setup
+
+  static Future setupFromMainMethod( ) async {
+    await _updateLanguageType( );
   }
+
+
+  static Future setupFromBuildMethod(BuildContext context) async {
+    //Log.i("Lang - setupFromBuildMethod() - start");
+    await _updateLanguageType( );
+    if(arabicWords.length  > 0 ) return;
+    _readWordsJsonFileArabic( context );
+    //Log.i("Lang - setupFromBuildMethod() - end");
+  }
+
+
+  static Future _readWordsJsonFileArabic(BuildContext context ) async {
+    String ar =  await DefaultAssetBundle.of( context).loadString('assets/lang/ar.json') ;
+    arabicWords = json.decode( ar  )  ;
+    // Log.i("Lang - setupArabic() - arabicWords: $arabicWords");
+    //Log.i("Lang - _readWordsJsonFileArabic() - arabicWords: ${arabicWords.length}");
+  }
+
+
+  static Future _updateLanguageType( ) async {
+
+    //default boolean
+    LangFastor.isArabic = await _getCacheIsArabic( );
+
+    //force type
+    /**
+        if( LangFastor.isForceLanguageArabic) {
+        // Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageArabic ");
+        await _setCacheArabic(true);
+        LangFastor.isArabic = true;
+        } else if(  LangFastor.isForceLanguageEnglish ) {
+        //Log.i("Lang - updateLanguageType() - EnvironmentConstant.isForceLanguageEnglish ");
+        await _setCacheArabic(false);
+        LangFastor.isArabic = false;
+        }
+
+     */
+    await updateActiveLanguageCode();
+
+    //Log.i("Lang - _updateLanguageType() - isArabic: " + LangFastor.isArabic.toString() );
+  }
+
+  static Future updateActiveLanguageCode() async  {
+    //update code
+    if(LangFastor.isArabic ) {
+      LangFastor.activeLanguageCode = "ar";
+    } else {
+      LangFastor.activeLanguageCode = "en";
+    }
+  }
+  //------------------------------------------------------------------- choose direction and local
+
+  static Locale getLocale(){
+    if(LangFastor.isArabic ) {
+      return Locale('ar' ) ;
+    } else {
+      return Locale( "en" );
+    }
+  }
+
+
+  static List<Locale> getSupportedLocales(){
+    return [
+      Locale( "en"  ),
+      Locale('ar'  )
+    ];
+  }
+
+
+  static TextDirection getTextDirection(){
+    if ( LangFastor.isArabic ) {
+      return TextDirection.rtl;
+    } else {
+      return TextDirection.ltr;
+    }
+  }
+
+  static AlignmentGeometry getAlignmentGeometry(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topRight;
+    } else {
+      return Alignment.topLeft;
+    }
+  }
+
+
+  static AlignmentGeometry getAlignmentGeometryStart(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topRight;
+    } else {
+      return Alignment.topLeft;
+    }
+  }
+
+  static AlignmentGeometry getAlignmentGeometryEnd(){
+    if ( LangFastor.isArabic ) {
+      return Alignment.topLeft;
+    } else {
+      return Alignment.topRight;
+    }
+  }
+  // static getLocalizationDelegates() {
+  //   return    [
+  //     GlobalMaterialLocalizations.delegate,
+  //     GlobalWidgetsLocalizations.delegate,
+  //     GlobalCupertinoLocalizations.delegate,
+  //   ];
+  // }
+
+  //----------------------------------------------------------- translate
+
+  static String searchForValue(String searchFor ) {
+    // Log.i( "Lang - tr() - Lang.isArabic: ${LangFastor.isArabic}");
+    // Log.i( "Lang - tr() - searchFor: $searchFor");
+    if( LangFastor.isArabic ) {
+      return _readArabicIfExist( searchFor );
+    }
+    return searchFor; ///default
+  }
+
+
+  static String _readArabicIfExist(String searchFor ) {
+    if( arabicWords.containsKey( searchFor )  ) {
+      var result =  arabicWords["$searchFor"];
+      // Log.i( "Lang - tr() - result: $result");
+      if(result != null ) {
+        return "$result";
+      }
+    } else {
+      // Log.i( "Lang - _readArabicIfExist() - not found : $searchFor");
+    }
+    return searchFor;
+  }
+
+  //------------------------------------------------------------------- cache
+
+  static const  String  _keyCache = "lang_cache_arabic";
+
+  static Future _setCacheArabic(  bool v) async {
+    //Log.i("Lang - _setCacheArabic() - v: $v");
+    LangFastor.isArabic = v;
+    await updateActiveLanguageCode();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyCache, v);
+  }
+
+
+  static Future<bool> _getCacheIsArabic(  ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool result = prefs.getBool(_keyCache) ?? false;
+    //Log.i("Lang - _getCacheIsArabic() - result: $result");
+    return result;
+  }
+
+
+  static Future setEnglish() async {
+    await _setCacheArabic(false);
+  }
+
+
+  static Future setArabic() async {
+    await _setCacheArabic(true);
+  }
+
+
 }
