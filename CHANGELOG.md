@@ -1,3 +1,7 @@
+# 1.3.28
+
+* Make Optional "PageFastor" change color statusBar and navigationHomeBar
+
 # 1.3.27
 
 * Add "height" parameter to widget "CalenderFastor"
