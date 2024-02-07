@@ -115,6 +115,9 @@ void main() async {
 
 ## Content: Other Fastor UI Widget
 
+ ScaffoldFastor
+[ScaffoldFastor](https://pub.dev/packages/fastor_app_ui_widget#scaffoldfastor)
+
 [SwitchFastor](https://pub.dev/packages/fastor_app_ui_widget#switchfastor)
 
 [ScrollFastor](https://pub.dev/packages/fastor_app_ui_widget#scrollfastor)
@@ -352,6 +355,8 @@ By using parameter "statusBarColorCustome" you can write hexcode color
   }
 ```
 
+## ScaffoldFastor
+
 ### Navigation To Transparent Page
 
 * To Navigate Need to User class "NavigationTools" found in fastor helper classes. 
@@ -365,13 +370,14 @@ NavigationTools.pushTransparent( SimpleScreen() );
 NavigationTools.pushTransparentAnimateFade( SimpleScreen() );
 ````
 
-* In Your Screen Page set color background to be transparent
+* In Your Screen Page set   "shapeTransparent: true " 
 ```
   @override
   Widget build(BuildContext context) {
-    return PageFastor(this,
-         backgroundColor: Colors.transparent,
-        content: getContent() );
+    return ScaffoldFastor( 
+      shapeTransparent: true,
+      body: directionWithPageBlocState(),
+    );
   }
 ```
 
