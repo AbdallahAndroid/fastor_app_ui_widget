@@ -381,6 +381,8 @@ NavigationTools.pushTransparentAnimateFade( SimpleScreen() );
   }
 ```
 
+* to change transparent color dialog use parameter "shapeTransparentColor"
+
 ---
 <hr  style="border-top: 3px solid; ">
 

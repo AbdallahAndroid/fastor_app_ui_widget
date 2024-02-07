@@ -24,6 +24,7 @@ class ScaffoldFastor  extends StatelessWidget {
 
   //transparent
   bool? shapeTransparent;
+  Color? shapeTransparentColor;
 
   ScaffoldFastor({
     super.key,
@@ -45,6 +46,7 @@ class ScaffoldFastor  extends StatelessWidget {
 
     //transparent
     this.shapeTransparent = false ,
+    this.shapeTransparentColor,
   }) {
 
 
@@ -79,7 +81,7 @@ class ScaffoldFastor  extends StatelessWidget {
     return Stack(
       children: [
         if( isNormalBackground() ) _decorationBackgroundCustom(),
-        if( shapeTransparent! ) _SizeBoxBackgroundShapeDialog(),
+        if( shapeTransparent! ) _SizeBoxBackgroundShapeDialogTransparent(),
         chooseBodyPutInsideScrollONot(),
         chooseShowAppBar(),
       ],
@@ -103,14 +105,16 @@ class ScaffoldFastor  extends StatelessWidget {
     );
   }
 
-  Widget _SizeBoxBackgroundShapeDialog(){
+  Widget _SizeBoxBackgroundShapeDialogTransparent(){
     double notchHeight = MediaQuery.of(context!).viewPadding.bottom;
     double statusBar = StatusBarConstant.getHeight(context!);
+
+    shapeTransparentColor ??= Colors.black.withOpacity( 0.5 );
 
     var dismissBackgroundColoredAllScreen =  Container(
       width: DeviceTools.getWidth(context!),
       height: DeviceTools.getHeight(context!) - notchHeight - statusBar,
-      color: Colors.black.withOpacity( 0.5 ),
+      color: shapeTransparentColor,
     );
 
     return GestureDetector(
