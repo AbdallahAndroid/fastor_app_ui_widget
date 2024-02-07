@@ -1,4 +1,4 @@
-# 1.3.28
+# 1.3.29
 
 * Make Optional "PageFastor" change color statusBar and navigationHomeBar
 
