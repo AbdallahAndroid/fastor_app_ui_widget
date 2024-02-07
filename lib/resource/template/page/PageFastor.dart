@@ -176,7 +176,13 @@ class PageFastor extends StatelessWidget {
         onChangeProgressState);
 
     //
-    var pageStack = _statusBar(stack, title, statusBarColorCustom);
+    Widget pageStack ;
+    if(statusBarColorCustom != null ) {
+      pageStack = _statusBarWithMaterialApp(stack, title, statusBarColorCustom);
+    } else {
+      pageStack = stack;
+    }
+
 
     //scaffold
     var scaffold = Scaffold(
@@ -190,14 +196,19 @@ class PageFastor extends StatelessWidget {
         drawer: drawer,
         onDrawerChanged: onDrawerChanged);
 
-    var theme = _getHomeButtonTheme(homeButtonsBackgroundColor, scaffold);
+    if( homeButtonsBackgroundColor != null ) {
+      return  _getHomeButtonTheme(homeButtonsBackgroundColor, scaffold);
+    } else {
+      return scaffold;
+    }
+
 
     //language dirction
-    return Directionality(
-      //textDirection: TextDirection.rtl,
-      textDirection: LanguageTools.getTextDirection(context),
-      child: theme,
-    );
+    // return Directionality(
+    //   //textDirection: TextDirection.rtl,
+    //   textDirection: LanguageTools.getTextDirection(context),
+    //   child: theme,
+    // );
   }
 
   //--------------------------------------------------------------- basic
@@ -253,7 +264,7 @@ class PageFastor extends StatelessWidget {
   /**
    * set "StatusBar"
    */
-  Widget _statusBar(Stack stack, String? title, Color? statusBarColorCustome) {
+  Widget _statusBarWithMaterialApp(Stack stack, String? title, Color? statusBarColorCustome) {
     //
     var statusBarMobile = Colors.transparent; //website not need
     if (DeviceTools.isMobile()) {
