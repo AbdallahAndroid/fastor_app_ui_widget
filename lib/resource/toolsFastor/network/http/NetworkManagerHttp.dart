@@ -44,16 +44,23 @@ class NetworkManagerHttp {
   NetworkTypeHttp type = NetworkTypeHttp.post;
   NetworkHttpCallback? callback;
 
+  bool? isLogRequest;
+  bool? isLogResponse;
+
   //------------------------------------------------------------------------- types constructor
 
   NetworkManagerHttp( String url, {
     Map<String, dynamic>? body,
     Map<String, String>?  headers,
     NetworkTypeHttp type = NetworkTypeHttp.post,
-    NetworkHttpCallback? callback}  ) {
+    NetworkHttpCallback? callback,
+    this.isLogRequest = false,
+    this.isLogResponse = false
+  }  ) {
 
     //set url
     this.url = url;
+    this.type = type;
 
     //set body and header
     if( body != null ) this.body = body;
@@ -70,81 +77,50 @@ class NetworkManagerHttp {
 
   void _initConstructor(){
     //edit headers
-    headers = setDefaultHeader(headers);
+    headers = _setDefaultHeader(headers);
 
     if( type == NetworkTypeHttp.htmlContent ) {
       headers = null;
     }
 
-    //set method type "GET" when no body
-    if( type == null &&  this.body.length == 0  ) {
-      if( type != NetworkTypeHttp.htmlContent ) {
-        this.type = NetworkTypeHttp.get;
-      }
-    } else {
-      this.type = type;
-    }
+    // //set method type "GET" when no body
+    // if( type == null &&  this.body.length == 0  ) {
+    //   if( type != NetworkTypeHttp.htmlContent ) {
+    //     this.type = NetworkTypeHttp.get;
+    //   }
+    // } else {
+    //   this.type = type;
+    // }
 
+    // when null
+    // isLogResponse ??= isLogRequest;
 
     //log now
-    Log.k( tag, "start() url: " + url  );
-    Log.k( tag, "start() body: " + this.body.toString()  );
-    Log.k( tag, "start() headers: " + headers.toString()  );
-
-    /**
-     * not to print secure data "have token'
-        if( FLConstant.isTest ) {
-        Log.k( tag, "start() headers: " + headers.toString()  );
-        }
-
-     */
-
+    if(isLogRequest!){
+      Log.k( tag, "start() url: " + url  );
+      Log.k( tag, "start() body: " + this.body.toString()  );
+      Log.k( tag, "start() headers: " + headers.toString()  );
+    }
 
     //choose type
-    chooseTypeToStart( );
+    _chooseTypeMethod( );
   }
+
   //----------------------------------------------------------------------- start
 
-  void chooseTypeToStart( ){
+  void _chooseTypeMethod( ){
     if( type == NetworkTypeDio.post ) {
-      /**
-       * test here choose type of network
-       */
-
       _post_http();
+    } else if( type == NetworkTypeHttp.put) {
+      _put();
+    } else if( type == NetworkTypeHttp.delete) {
+      _delete();
     } else {
       _get( );
     }
   }
 
-  Future<String> _post_http( ) async {
-    var myBody = jsonEncode( body);
-    Log.k( tag, "_post_http() - myBody: "  + myBody  );
-
-    //http
-    Uri uri = Uri.parse(url);
-    http.Response  response = await http.post(uri,
-      headers: headers,
-      body: myBody,
-    );
-
-    //log big data
-    Log.k( tag, "_post_http() - finish body - success: "  + response.body );
-    // Log.k( tag, "post() - finish body - success "   );
-
-    try {
-      //call back
-      if( callback != null ) callback!(true, "success", response.body  );
-    } catch (e){
-      String msg = e.toString();
-      Log.k(tag,  "post() - e: " + msg );
-      if( callback != null ) callback!(false,  msg, "" );
-    }
-
-    //return
-    return response.body;
-  }
-  //--------------------------------------------------------------------------- get
+  //--------------------------------------------------------------------------- type: get
 
   Future<String> _get(   ) async {
     //edit headers
@@ -160,7 +136,7 @@ class NetworkManagerHttp {
     );
 
     //log big data
-    Log.k( tag, "_get() - finish body - success: "  + response.body );
+    if(isLogResponse! )  Log.k( tag, "_get() - finish body - success: "  + response.body );
     // Log.k( tag, "post() - finish body - success "   );
 
     try {
@@ -176,9 +152,115 @@ class NetworkManagerHttp {
     return response.body;
   }
 
+  //------------------------------------------------------------------------- type: post
+
+  Future<String> _post_http( ) async {
+    var myBody = jsonEncode( body);
+    // Log.k( tag, "_post_http() - myBody: "  + myBody  );
+
+    //http
+    Uri uri = Uri.parse(url);
+    http.Response  response = await http.post(uri,
+      headers: headers,
+      body: myBody,
+    );
+
+    //log big data
+      if(isLogResponse! ) Log.k( tag, "_post_http() - finish body - success: "  + response.body );
+    // Log.k( tag, "post() - finish body - success "   );
+
+    try {
+      //call back
+      if( callback != null ) callback!(true, "success", response.body  );
+    } catch (e){
+      String msg = e.toString();
+      Log.k(tag,  "post() - e: " + msg );
+      if( callback != null ) callback!(false,  msg, "" );
+    }
+
+    //return
+    return response.body;
+  }
+
+  //--------------------------------------------------------------------------- type: put
+
+  Future<String> _put() async {
+    var myBody = jsonEncode( body);
+    // Log.k( tag, "_put() - myBody: "  + myBody  );
+
+    //http
+    Uri uri = Uri.parse(url);
+    http.Response  response = await http.post(uri,
+      headers: headers,
+      body: myBody,
+    );
+
+    //log big data
+    if(isLogResponse! ) Log.k( tag, "_put() - finish body - success: "  + response.body );
+    // Log.k( tag, "post() - finish body - success "   );
+
+    try {
+      //call back
+      if( callback != null ) callback!(true, "success", response.body  );
+    } catch (e){
+      String msg = e.toString();
+      Log.k(tag,  "_put() - e: " + msg );
+      if( callback != null ) callback!(false,  msg, "" );
+    }
+
+    //return
+    return response.body;
+  }
+
+
+  //--------------------------------------------------------------------------- type: delete
+
+  Future<String> _delete() async {
+    var myBody = jsonEncode( body);
+    // Log.k( tag, "_delete() - myBody: "  + myBody  );
+
+    //http
+    Uri uri = Uri.parse(url);
+    http.Response  response = await http.post(uri,
+      headers: headers,
+      body: myBody,
+    );
+
+    //log big data
+    if(isLogResponse! ) Log.k( tag, "_delete() - finish body - success: "  + response.body );
+    // Log.k( tag, "post() - finish body - success "   );
+
+    try {
+      //call back
+      if( callback != null ) callback!(true, "success", response.body  );
+    } catch (e){
+      String msg = e.toString();
+      Log.k(tag,  "_delete() - e: " + msg );
+      if( callback != null ) callback!(false,  msg, "" );
+    }
+
+    //return
+    return response.body;
+  }
+
   //------------------------------------------------------------------------- header
 
-  static Map<String, String>  setDefaultHeader(Map<String, String>? custome) {
+   Map<String, String>  _setDefaultHeader(Map<String, String>? custome) {
+
+    /// check type network
+    if(type == NetworkTypeHttp.htmlContent) {
+      custome ??= Map();
+      if(!custome.containsKey( "Access-Control-Allow-Origin")) {
+        custome["Access-Control-Allow-Origin"]  = "*";
+      }
+      if(!custome.containsKey( "Content-Type")) {
+        custome["Content-Type"]  = "application/json";
+      }
+      if(!custome.containsKey( "Accept")) {
+        custome["Accept"]  = "*/*";
+      }
+      return custome;
+    }
 
     /**
      * check already write another "Content-Type"

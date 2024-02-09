@@ -1811,6 +1811,9 @@ file
 NetworkManagerDio().get( timeOutSecond: 50 );
 ```
 
+#### Handler Errors
+
+* Handler Error XMLHttpRequest by using "NetworkManagerDio" set parameter "handleErrorXMLHttpRequest = true"
 
 ---
 
