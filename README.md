@@ -2392,6 +2392,17 @@ int i = ApiParserFastor.convertBooleanToZeroAndOne( booleanValue );
 
 ## ValidateResponse
 
+### Handle Status Code
+
+*  status code of request is between 200 - 210
+```
+Response response = await http.get(url);
+if( ValidateResponse.isStatusFrom200To210Code( response.statusCode ) ) { 
+   ///To-Do after success request
+}
+```
+### Using Dio Network 
+
 * method check invalid token 
 ```
 //dio response 
@@ -2402,7 +2413,7 @@ if( ValidateResponse.isResponseStatusCodeInvalidToken(response) ) {
 ```
 
 
-* method success request
+* example method success request
 ```
 //dio response 
 Response response = await dio.get(url);

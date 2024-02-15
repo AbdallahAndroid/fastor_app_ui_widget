@@ -1,3 +1,7 @@
+# 1.3.37
+
+* add method "isStatusFrom200To210Code()" in class "ValidateResponse"
+
 # 1.3.36
 
 * readme update for method "BoarderHelper.cardViewBlur()"

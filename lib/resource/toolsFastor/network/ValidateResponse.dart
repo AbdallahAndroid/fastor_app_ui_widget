@@ -5,13 +5,25 @@ class ValidateResponse {
 
   //--------------------------------------------------------------- status code
 
+  @Deprecated("use method isStatusFrom200To210Response() instead")
+  static bool isStatusFrom200To210(Response response ) {
+    return isStatusFrom200To210Response(response);
+  }
+
   /**
    * status between 200 - 210
    */
-  static bool isStatusFrom200To210(Response response ) {
+  static bool isStatusFrom200To210Response(Response response ) {
     if( response.statusCode == null ) return false;
     if( response.statusCode! >  210 ) return false;
     if( response.statusCode! <  200 ) return false;
+    return true;
+  }
+
+  static bool isStatusFrom200To210Code(int  statusCode) {
+    if(  statusCode == null ) return false;
+    if(  statusCode  >  210 ) return false;
+    if(  statusCode  <  200 ) return false;
     return true;
   }
 
