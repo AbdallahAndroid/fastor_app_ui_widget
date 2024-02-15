@@ -2,6 +2,13 @@
 
 * readme update for method "BoarderHelper.cardViewBlur()"
 
+# 1.3.33
+
+* class "NetworkManagerHttp" : add Type Methods ( put, delete, htmlContent)
+* class "NetworkManagerHttp" : choose type  "NetworkTypeHttp.htmlContent" to handle error "XMLHttpRequest" in network in web platform
+* class "NetworkManagerHttp" : show logs by parameter "isLogRequest = true" and "isLogResponse = true"
+* class "NetworkManagerDio"  : Handler Error XMLHttpRequest by using set parameter "handleErrorXMLHttpRequest = true"
+
 # 1.3.30
 
 * add new methods "NavigationTools.pushTransparentAnimateFade()"

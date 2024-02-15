@@ -38,6 +38,8 @@ class NetworkManagerDio  {
   Map<String, String> headers = Map();
   NetworkTypeDio? type;
 
+  bool? handleErrorXMLHttpRequest;
+
   //file
   NetworkRequestFile? requestFile;
 
@@ -68,7 +70,8 @@ class NetworkManagerDio  {
         ///other
         NetworkTypeDio? type,
         bool? isEnableLogDioPretty ,
-        int?  timeOutSecond
+        int?  timeOutSecond,
+        bool?  handleErrorXMLHttpRequest
       }) async {
 
     //set values
@@ -76,6 +79,10 @@ class NetworkManagerDio  {
     this.type = type;
     this.requestFile = requestFile;
     this.timeOutSecond = timeOutSecond;
+
+    // handler error
+    handleErrorXMLHttpRequest ??= false;
+    this.handleErrorXMLHttpRequest = handleErrorXMLHttpRequest;
 
     //log
     isEnableLogDioPretty ??= true  ; //default take test enviroment
@@ -104,11 +111,12 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         int?  timeOutSecond,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,  NetworkTypeDio.get, timeOutSecond : timeOutSecond,
-        body: body, headers: headers, requestFile: requestFile,
+        body: body, headers: headers, requestFile: requestFile, handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
@@ -118,11 +126,12 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         int?  timeOutSecond,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,  NetworkTypeDio.post, timeOutSecond : timeOutSecond,
-        body: body, headers: headers, requestFile: requestFile,
+        body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
@@ -132,11 +141,12 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         int?  timeOutSecond,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,  NetworkTypeDio.put, timeOutSecond : timeOutSecond,
-        body: body, headers: headers, requestFile: requestFile,
+        body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
@@ -145,11 +155,12 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         int?  timeOutSecond,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,  NetworkTypeDio.patch, timeOutSecond : timeOutSecond,
-        body: body, headers: headers, requestFile: requestFile,
+        body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
@@ -159,11 +170,12 @@ class NetworkManagerDio  {
         Map<String, String>? headers,
         NetworkRequestFile? requestFile,
         int?  timeOutSecond,
-        bool? isEnableLogDioPretty ,  //PrettyDioLogger
+        bool? isEnableLogDioPretty ,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,  NetworkTypeDio.delete, timeOutSecond : timeOutSecond,
-        body: body, headers: headers, requestFile: requestFile,
+        body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
@@ -175,6 +187,7 @@ class NetworkManagerDio  {
         int?  timeOutSecond,
         ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     return await any( url,
@@ -186,6 +199,7 @@ class NetworkManagerDio  {
         isEnableLogDioPretty: isEnableLogDioPretty,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
+        handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         callback: callback );
   }
 
@@ -204,6 +218,7 @@ class NetworkManagerDio  {
 
         bool? isEnableLogDioPretty ,
         int?  timeOutSecond,
+        bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
     //set values
@@ -212,6 +227,10 @@ class NetworkManagerDio  {
     this.requestFile = requestFile;
     this.callback_dio = callback;
     this.timeOutSecond = timeOutSecond;
+
+    //handleErrorXMLHttpRequest
+    handleErrorXMLHttpRequest ??= false;
+    this.handleErrorXMLHttpRequest = handleErrorXMLHttpRequest;
 
     //log
     isEnableLogDioPretty ??= true;
