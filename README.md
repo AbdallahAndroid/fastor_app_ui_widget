@@ -115,7 +115,6 @@ void main() async {
 
 ## Content: Other Fastor UI Widget
 
- ScaffoldFastor
 [ScaffoldFastor](https://pub.dev/packages/fastor_app_ui_widget#scaffoldfastor)
 
 [SwitchFastor](https://pub.dev/packages/fastor_app_ui_widget#switchfastor)
@@ -148,7 +147,12 @@ void main() async {
 
 [PageViewFastor](https://pub.dev/packages/fastor_app_ui_widget#pageviewfastor)
 
-## Content: Classes Helper
+## Content: Classes Helper UI
+
+* BoxDecoration easy to use in Container( decoration: ) 
+[BoarderHelper](https://pub.dev/packages/fastor_app_ui_widget#boarderhelper)
+
+## Content: Classes Helper Tools
 
 [NetworkManager](https://pub.dev/packages/fastor_app_ui_widget#networkmanager)
 
@@ -1730,7 +1734,30 @@ enum CalenderTypeFastor { dateStartFromToday, birthday }
 
 ---
 
-# Helper Classes
+# Classes Helper UI
+
+# BoarderHelper
+
+* BoxDecoration utils to be used in "Container()"
+```
+Container(
+  decoration: BoarderHelper.cardViewBlur(
+          colorBackground: ColorApp.greyDarkButton,  
+          colorBlur: ColorApp.greyOpacity,
+          radiusSize: 30,
+          widthShadow: 5,
+          blurStyle: BlurStyle.normal,
+          makeBlurColorDark: true,
+  )
+);
+```
+
+---
+
+---
+
+
+# Classes Helper Tools
 
 ## NetworkManager
 

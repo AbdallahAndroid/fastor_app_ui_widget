@@ -1,3 +1,7 @@
+# 1.3.34
+
+* readme update for method "BoarderHelper.cardViewBlur()"
+
 # 1.3.30
 
 * add new methods "NavigationTools.pushTransparentAnimateFade()"

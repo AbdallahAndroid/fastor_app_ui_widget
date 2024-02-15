@@ -8,6 +8,8 @@ import 'BaseBoarderHelper.dart';
 
 class BoarderHelper extends BaseBoarderHelper{
 
+  //--------------------------------------------------------------------- cardview
+
   static BoxDecoration cardView(  {
     double? radiusSize ,
     Color? colorBackground ,
@@ -35,6 +37,7 @@ class BoarderHelper extends BaseBoarderHelper{
 
     return dec_container_radius;
   }
+
 
   static BoxDecoration cardViewShadow( {
     double? radiusSize  ,
@@ -91,6 +94,57 @@ class BoarderHelper extends BaseBoarderHelper{
     );
   }
 
+
+  static BoxDecoration cardViewBlur( {
+    required Color colorBackground,
+    required Color colorBlur,
+    required double radiusBoarderSize ,
+    BorderRadius? radiusBorder,
+    double widthShadow = 5 ,
+    BlurStyle blurStyle = BlurStyle.normal,
+    bool makeBlurColorDark = false
+  }) {
+
+
+    //radius
+    radiusBoarderSize ??= DSDimen.ds_size_corner_level_2;
+    var objRadius = Radius.circular( radiusBoarderSize );
+    var radiusDefault = BorderRadius.all(  objRadius );
+    radiusBorder ??= radiusDefault;
+
+
+    List<BoxShadow> listShadow = [];
+    //shadow >> left bottom
+    var leftBottomShadow = BoxShadow(
+        color: colorBlur,
+        blurRadius: radiusBoarderSize,
+        offset: Offset(widthShadow,widthShadow),
+        blurStyle: blurStyle,
+        spreadRadius: 0
+    );
+
+    listShadow.add(leftBottomShadow);
+    if( makeBlurColorDark) {
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+      listShadow.add(leftBottomShadow);
+    }
+
+    //box
+    var box = BoxDecoration(
+        boxShadow:  listShadow,
+        borderRadius: radiusBorder ,
+        color: colorBackground
+    );
+    return box;
+  }
+
+  //--------------------------------------------------------------------------
 
   static BoxDecoration bottom_line( {
     double? radiusSize  ,
@@ -181,7 +235,7 @@ class BoarderHelper extends BaseBoarderHelper{
   static rounded({
     double? radiusSize ,
     Color? colorBackground = Colors.transparent,
-    BorderRadius? radiusBorder, //see "BorderRadiusTools"
+    BorderRadius? radiusBorder, //see class "BorderRadiusTools"
     Color? colorLine ,}) {
 
     //set default
