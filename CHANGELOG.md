@@ -1,4 +1,4 @@
-# 1.3.34
+# 1.3.35
 
 * readme update for method "BoarderHelper.cardViewBlur()"
 

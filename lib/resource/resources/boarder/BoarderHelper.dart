@@ -99,6 +99,7 @@ class BoarderHelper extends BaseBoarderHelper{
     required Color colorBackground,
     required Color colorBlur,
     required double radiusBoarderSize ,
+    required double radiusBlur,
     BorderRadius? radiusBorder,
     double widthShadow = 5 ,
     BlurStyle blurStyle = BlurStyle.normal,
@@ -117,7 +118,7 @@ class BoarderHelper extends BaseBoarderHelper{
     //shadow >> left bottom
     var leftBottomShadow = BoxShadow(
         color: colorBlur,
-        blurRadius: radiusBoarderSize,
+        blurRadius: radiusBlur,
         offset: Offset(widthShadow,widthShadow),
         blurStyle: blurStyle,
         spreadRadius: 0
