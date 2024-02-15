@@ -115,6 +115,7 @@ class ScaffoldFastor  extends StatelessWidget {
       width: DeviceTools.getWidth(context!),
       height: DeviceTools.getHeight(context!) - notchHeight - statusBar,
       color: shapeTransparentColor,
+      child: widgetBackground,
     );
 
     return GestureDetector(
