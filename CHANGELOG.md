@@ -1,3 +1,7 @@
+# 1.3.40
+
+* Add new widget "TimerCountDownFastor"
+
 # 1.3.39
 
 * add method "isStatusFrom200To210Code()" in class "ValidateResponse"

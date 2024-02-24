@@ -129,6 +129,9 @@ export 'resource/template/pager_view/PageViewFastor.dart';
 import 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 export 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 
+import 'resource/template/timer/TimerCountDownFastor.dart';
+export 'resource/template/timer/TimerCountDownFastor.dart';
+
 import 'resource/toolsFastor/lang/PositionFastor.dart';
 export 'resource/toolsFastor/lang/PositionFastor.dart';
 import 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
@@ -319,6 +322,7 @@ class fastor_app_ui_widget extends fastor {
   late InternetTools internetTools;
 
   ///widget
+  late TimerCountDownFastor timerCountDownFastor;
   late PageViewFastor pageViewFastor;
   late ButtonTemplate b;
   late CardViewTemplate card;

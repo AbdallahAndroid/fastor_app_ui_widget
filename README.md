@@ -147,6 +147,8 @@ void main() async {
 
 [PageViewFastor](https://pub.dev/packages/fastor_app_ui_widget#pageviewfastor)
 
+[TimerCountDownFastor](https://pub.dev/packages/fastor_app_ui_widget#timercountdownfastor)
+
 ## Content: Classes Helper UI
 
 * BoxDecoration easy to use in Container( decoration: ) 
@@ -1238,6 +1240,26 @@ this.colorProgress,
       },);
   }
 
+```
+
+----
+
+----
+
+## TimerCountDownFastor
+
+* count down text to shape format:   mm:ss  
+* easy to use with callback when timer complete.
+* change font size, font family, text color.
+
+```
+TimerCountDownFastor(
+  contextPage: context ,
+  second: 7,
+  callBack: () {  
+    ///TO-DO when complete timer
+   }
+)
 ```
 
 ---
