@@ -67,7 +67,7 @@ class PageFastor extends StatelessWidget {
   ValueChanged<ProgressCircleState>? onChangeProgressState;
 
   //color
-  Color? statusBarColorCustom;
+  Color  statusBarColorCustom;
   Color? homeButtonsBackgroundColor;
 
   //drawer menu
@@ -100,7 +100,7 @@ class PageFastor extends StatelessWidget {
         this.footer,
         this.footer_height,
         this.onChangeProgressState,
-        this.statusBarColorCustom,
+       required this.statusBarColorCustom,
         this.homeButtonsBackgroundColor,
         this.scaffoldKey,
         this.drawer,
@@ -179,9 +179,7 @@ class PageFastor extends StatelessWidget {
     var stackWithSafeArea = getSafeAreaWithPageContent( stack );
 
 
-    if(statusBarColorCustom != null ) {
-      stackWithSafeArea = _statusBarWithMaterialApp(stackWithSafeArea);
-    }
+    stackWithSafeArea = _statusBarWithMaterialApp(stackWithSafeArea);
 
     //scaffold
     var scaffold = Scaffold(
@@ -263,40 +261,41 @@ class PageFastor extends StatelessWidget {
 
   Widget getSafeAreaWithPageContent(Stack stack,){
 
-    // var statusBarMobile = Colors.transparent; //website not need
-    // if (DeviceTools.isMobile()) {
-    //   //custome color mobile
-    //   var mobileStatus = statusBarColorCustom;
-    //
-    //   //default mobile
-    //   mobileStatus ??=   Colors.transparent; // StatusBarConstant.colorBackground; //
-    //
-    //   //set result
-    //   statusBarMobile = mobileStatus;
-    // }
-    //
-    // // calcluate statusbar height
-    // double marginStatusBar = 0;
-    // if (DeviceTools.isMobile()) {
-    //   marginStatusBar = StatusBarConstant.getHeight(context!);
-    // }
-    //
-    // //calculate notch bar height
-    // double marginNotchBar = NotchBarConstant.getHeight(context!);
-    //
-    // //status bar mobile + take all page
-    // var safeAreaWithPageContent = Container(
-    //   color: statusBarMobile,
-    //   // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
-    //   alignment: Alignment.topLeft,
-    //   padding: EdgeInsets.only(
-    //     top: marginStatusBar,
-    //     bottom: marginNotchBar,
-    //   ),
-    //   child: stack,
-    // );
+    var statusBarMobile = Colors.transparent; //website not need
+    if (DeviceTools.isMobile()) {
+      //custome color mobile
+      // var mobileStatus = statusBarColorCustom;
 
-    return SafeArea(child: stack );
+      //default mobile
+      // mobileStatus ??=  statusBarColorCustom; // StatusBarConstant.colorBackground; //
+
+      //set result
+      statusBarMobile = statusBarColorCustom;
+    }
+
+    // calcluate statusbar height
+    double marginStatusBar = 0;
+    if (DeviceTools.isMobile()) {
+      marginStatusBar = StatusBarConstant.getHeight(context!);
+    }
+
+    //calculate notch bar height
+    double marginNotchBar = NotchBarConstant.getHeight(context!);
+
+    //status bar mobile + take all page
+    var safeAreaWithPageContent = Container(
+      color: statusBarMobile,
+      // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
+      alignment: Alignment.topLeft,
+      padding: EdgeInsets.only(
+        top: marginStatusBar,
+        bottom: marginNotchBar,
+      ),
+      child: stack,
+    );
+    return safeAreaWithPageContent;
+
+    // return SafeArea(child: stack );
   }
 
   /**
