@@ -175,14 +175,13 @@ class PageFastor extends StatelessWidget {
         toolbar!,
         onChangeProgressState);
 
-    //
-    Widget pageStack ;
-    if(statusBarColorCustom != null ) {
-      pageStack = _statusBarWithMaterialApp(stack, title, statusBarColorCustom);
-    } else {
-      pageStack = stack;
-    }
+    // safe area with statusBar size and color
+    var stackWithSafeArea = getSafeAreaWithPageContent( stack );
 
+
+    if(statusBarColorCustom != null ) {
+      stackWithSafeArea = _statusBarWithMaterialApp(stackWithSafeArea);
+    }
 
     //scaffold
     var scaffold = Scaffold(
@@ -190,7 +189,7 @@ class PageFastor extends StatelessWidget {
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
 
         //
-        body: pageStack,
+        body: stackWithSafeArea,
 
         //drawer menu
         key: scaffoldKey,
@@ -262,15 +261,12 @@ class PageFastor extends StatelessWidget {
 
   //--------------------------------------------------------------------- surround
 
-  /**
-   * set "StatusBar"
-   */
-  Widget _statusBarWithMaterialApp(Stack stack, String? title, Color? statusBarColorCustome) {
-    //
+  Widget getSafeAreaWithPageContent(Stack stack,){
+
     var statusBarMobile = Colors.transparent; //website not need
     if (DeviceTools.isMobile()) {
       //custome color mobile
-      var mobileStatus = statusBarColorCustome;
+      var mobileStatus = statusBarColorCustom;
 
       //default mobile
       mobileStatus ??= StatusBarConstant.colorBackground;
@@ -289,7 +285,7 @@ class PageFastor extends StatelessWidget {
     double marginNotchBar = NotchBarConstant.getHeight(context!);
 
     //status bar mobile + take all page
-    var statusBar = Container(
+    var safeAreaWithPageContent = Container(
       color: statusBarMobile,
       // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
       alignment: Alignment.topLeft,
@@ -299,6 +295,14 @@ class PageFastor extends StatelessWidget {
       ),
       child: stack,
     );
+
+    return safeAreaWithPageContent;
+  }
+
+  /**
+   * set "StatusBar"
+   */
+  Widget _statusBarWithMaterialApp(Widget safeAreaWithPageContent ) {
 
     //thumbVisibility
     var themeDataScrollbarColored = Theme.of(context!).copyWith(
@@ -313,7 +317,8 @@ class PageFastor extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: themeDataScrollbarColored,
         scrollBehavior:  MyScrollThemeHidden(),
-        home: statusBar);
+        home: safeAreaWithPageContent
+    );
     return material;
   }
 

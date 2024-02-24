@@ -1,6 +1,7 @@
-# 1.3.37
+# 1.3.38
 
 * add method "isStatusFrom200To210Code()" in class "ValidateResponse"
+* fix SafeArea for "PageFastor" after version 1.3.30
 
 # 1.3.36
 
