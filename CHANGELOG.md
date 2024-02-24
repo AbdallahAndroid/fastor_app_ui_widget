@@ -2,6 +2,7 @@
 
 * add method "isStatusFrom200To210Code()" in class "ValidateResponse"
 * fix SafeArea for "PageFastor" after version 1.3.30
+* fix optional set color of statusBar Mobile Platform
 
 # 1.3.36
 
