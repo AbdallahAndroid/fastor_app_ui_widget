@@ -8,7 +8,7 @@ class StatusBarConstant {
   //-------------------------------------------------------------- variable
 
   //colors
-  static var colorBackground =   HexColor( "#75aeb9");
+  static var colorBackground =   HexColor( "#000000");
 
   /**
    * //text color

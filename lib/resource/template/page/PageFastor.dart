@@ -216,7 +216,7 @@ class PageFastor extends StatelessWidget {
   static AnnotatedRegion _getHomeButtonTheme(
       Color? homeButtonsBackgroundColor, Scaffold scaffold) {
     //navigation bar color
-    homeButtonsBackgroundColor ??= DSColor.homeButtons_background;
+    // homeButtonsBackgroundColor ??= DSColor.homeButtons_background;
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
           systemNavigationBarColor: homeButtonsBackgroundColor, //
@@ -263,40 +263,40 @@ class PageFastor extends StatelessWidget {
 
   Widget getSafeAreaWithPageContent(Stack stack,){
 
-    var statusBarMobile = Colors.transparent; //website not need
-    if (DeviceTools.isMobile()) {
-      //custome color mobile
-      var mobileStatus = statusBarColorCustom;
+    // var statusBarMobile = Colors.transparent; //website not need
+    // if (DeviceTools.isMobile()) {
+    //   //custome color mobile
+    //   var mobileStatus = statusBarColorCustom;
+    //
+    //   //default mobile
+    //   mobileStatus ??=   Colors.transparent; // StatusBarConstant.colorBackground; //
+    //
+    //   //set result
+    //   statusBarMobile = mobileStatus;
+    // }
+    //
+    // // calcluate statusbar height
+    // double marginStatusBar = 0;
+    // if (DeviceTools.isMobile()) {
+    //   marginStatusBar = StatusBarConstant.getHeight(context!);
+    // }
+    //
+    // //calculate notch bar height
+    // double marginNotchBar = NotchBarConstant.getHeight(context!);
+    //
+    // //status bar mobile + take all page
+    // var safeAreaWithPageContent = Container(
+    //   color: statusBarMobile,
+    //   // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
+    //   alignment: Alignment.topLeft,
+    //   padding: EdgeInsets.only(
+    //     top: marginStatusBar,
+    //     bottom: marginNotchBar,
+    //   ),
+    //   child: stack,
+    // );
 
-      //default mobile
-      mobileStatus ??= StatusBarConstant.colorBackground;
-
-      //set result
-      statusBarMobile = mobileStatus;
-    }
-
-    // calcluate statusbar height
-    double marginStatusBar = 0;
-    if (DeviceTools.isMobile()) {
-      marginStatusBar = StatusBarConstant.getHeight(context!);
-    }
-
-    //calculate notch bar height
-    double marginNotchBar = NotchBarConstant.getHeight(context!);
-
-    //status bar mobile + take all page
-    var safeAreaWithPageContent = Container(
-      color: statusBarMobile,
-      // StatusBarConstant.colorBackground, //statusBarMobile , // HexColor("#D486A8"),  //
-      alignment: Alignment.topLeft,
-      padding: EdgeInsets.only(
-        top: marginStatusBar,
-        bottom: marginNotchBar,
-      ),
-      child: stack,
-    );
-
-    return safeAreaWithPageContent;
+    return SafeArea(child: stack );
   }
 
   /**
