@@ -1,3 +1,7 @@
+# 1.3.41
+
+* remove space in fixing phone number at method "ToolsPhone.fixEgyptAndSaudiNumber()"
+
 # 1.3.40
 
 * Add new widget "TimerCountDownFastor"

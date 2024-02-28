@@ -5,7 +5,7 @@ class ToolsPhone {
   //---------------------------------------------------------------------- full phone
 
   /**
-      I/flutter ( 3679): abdo : 04:32:25:470 : getFullPhone() - before edit: 0106340002
+      I/flutter ( 3679): abdo : 04:32:25:470 : getFullPhone() - before edit: +20010 6340 002
       I/flutter ( 3679): abdo : 04:32:25:484 : getFullPhone() - after edit: +201063400002
    */
   static String fixEgyptAndSaudiNumber(String countryCode, String phone ) {
@@ -18,6 +18,11 @@ class ToolsPhone {
     //trim space
    countryCode = countryCode.trim();
    phone = phone.trim();
+
+    // remove any space :
+    //     example 010 1234 5678 to be 01012345678
+    countryCode = countryCode.replaceAll( " ",  "");
+    phone = phone.replaceAll( " ",  "");
 
     //case : Egypt most of egyption enter phone "+20 01012345678" this is wrong way
     //       the right way to enter "+20 1012345678"
