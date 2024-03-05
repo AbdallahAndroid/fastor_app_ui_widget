@@ -214,6 +214,22 @@ class ToolsValidation {
     return true;
   }
 
+  //---------------------------------------------------------------- arabic
+
+
+  ///    isStringContainArabicNumber( "٠١٢٣٤٥٦٧٨٩")  >> return true
+  ///    isStringContainArabicNumber( "010123456789"); >> return false
+  static isStringContainArabicNumber(String check ) {
+    String fullNumberArabic = "٠١٢٣٤٥٦٧٨٩";
+    for( int i = 0 ; i < check.length ; i++ ) {
+      String c = check[i];
+      bool containArabic = check.contains( fullNumberArabic );
+      if( containArabic ) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 
 }

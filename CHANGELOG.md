@@ -1,3 +1,8 @@
+# 1.3.42
+
+* Add class "ToolsValidation" at readme 
+* add new method for check arabic number. use class "ToolsValidation.isStringContainArabicNumber()" 
+
 # 1.3.41
 
 * remove space in fixing phone number at method "ToolsPhone.fixEgyptAndSaudiNumber()"

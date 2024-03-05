@@ -174,6 +174,8 @@ void main() async {
 
 [InternetTools](https://pub.dev/packages/fastor_app_ui_widget#internettools)
 
+[ToolsValidation](https://pub.dev/packages/fastor_app_ui_widget#toolsvalidation)
+
 [ApiParserFastor](https://pub.dev/packages/fastor_app_ui_widget#apiparserfastor)
 
 [ValidateResponse](https://pub.dev/packages/fastor_app_ui_widget#validateresponse)
@@ -2311,6 +2313,84 @@ NavigationTools.pushAndRemoveUntil( SimpleScreen() );
  bool status = await InternetTools.isConnected();
 ```
 
+---
+
+---
+
+## ToolsValidation
+
+### Phone Number Checker 
+
+*   this check it's like "0101234568" to be return true, if it hase any abc it will return false
+```
+  ToolsValidation.checkTextIsPhoneNumberCharsOnlyWithoutAbc(  text);
+```
+
+* Valid Mobile
+```
+ ToolsValidation.isPhoneMobileValid(  text);
+   
+```
+ 
+* Egyptian Phone Number
+
+```
+ ToolsValidation.egyptionCodeCountry_returnByPlus(  text);
+
+```
+
+* Validate Not To Write Arabic Phone Number like   ١٢٣٤٥٦٧٨٩٠
+
+```
+ ToolsValidation.isStringContainArabicNumber(  text);
+  
+```
+
+### Password
+
+* password greater than 8 character
+```
+ ToolsValidation.isPasswordValid(  text);
+   
+```
+
+### Valid Text
+
+``` 
+ ToolsValidation.isValid(  text);
+ ToolsValidation.isEmpty(  text); 
+ ToolsValidation.isMoreThan2(  text); 
+  
+```
+
+### Name / Email
+
+``` 
+   ToolsValidation.isNameFull(  text);
+   ToolsValidation.isName(  text);
+   ToolsValidation.isEmail(  text);
+
+``` 
+
+### List
+
+``` 
+  ToolsValidation.isValidList(  listString );
+  ToolsValidation.isEmptyList(  listString );
+  ToolsValidation.isEmptyListInteger(  listInteger);
+  ToolsValidation.isValidListInteger(  listInteger );
+ 
+``` 
+
+### Zero Checker
+
+``` 
+  ToolsValidation.isZero(  numString ); 
+  ToolsValidation.isNotZeroInt(  numInteger );
+  ToolsValidation.isZeroInt(  numInteger );
+  ToolsValidation.isValidInteger(  numInteger );
+  
+```
 
 ---
 
