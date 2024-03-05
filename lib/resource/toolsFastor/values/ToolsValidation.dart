@@ -25,16 +25,31 @@ class ToolsValidation {
   }
 
 
+  /// check for arabic number :   ١٢٣٤٥٦٧٨٩٠   now return false
   static bool isPhoneMobileValid(String? str) {
     if (isEmpty( str)) {
       return false;
     }
     int len = str!.length;
-    if (len >= 8) {  //01012345678  or without countrycode "1012345678 saudi "512345678"
-      return true;
-    } else {
+    if (len  < 8) {  //01012345678  or without countrycode "1012345678 saudi "512345678"
       return false;
     }
+    return true;
+  }
+
+
+  static bool isPhoneMobileValidAndEnglishLetter(String? str) {
+    if (isEmpty( str)) {
+      return false;
+    }
+    int len = str!.length;
+    if (len  < 8) {  //01012345678  or without countrycode "1012345678 saudi "512345678"
+      return false;
+    }
+    if( ToolsValidation.isStringContainArabicNumber(str!) ) {
+      return false;
+    }
+    return true;
   }
 
   static bool isPasswordValid(String? str)
@@ -223,13 +238,13 @@ class ToolsValidation {
     String fullNumberArabic = "٠١٢٣٤٥٦٧٨٩";
     for( int i = 0 ; i < check.length ; i++ ) {
       String c = check[i];
-      bool containArabic = check.contains( fullNumberArabic );
+      bool containArabic = fullNumberArabic.contains( c );
+      // print("isStringContainArabicNumber() - c: $c /contain: $containArabic");
       if( containArabic ) {
         return true;
       }
     }
     return false;
   }
-
 
 }

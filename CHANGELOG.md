@@ -1,3 +1,7 @@
+# 1.3.43
+
+* add new method  "ToolsValidation.isPhoneMobileValidAndEnglishLetter" , check contain arabic letter
+
 # 1.3.42
 
 * Add class "ToolsValidation" at readme 

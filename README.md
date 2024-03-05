@@ -2343,6 +2343,7 @@ NavigationTools.pushAndRemoveUntil( SimpleScreen() );
 
 ```
  ToolsValidation.isStringContainArabicNumber(  text);
+ ToolsValidation.isPhoneMobileValidAndEnglishLetter( text );
   
 ```
 
