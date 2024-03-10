@@ -189,7 +189,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
       height: 20,
       margin: EdgeInsets.only(top: 5),
       alignment: Alignment.center,
-      color: Colors.black,
+      color: widget.textStyle?.color??Colors.black,
     );
   }
 
@@ -234,7 +234,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
   Widget underLine(){
     return Container(
       width: widget.width,
-      color:  widget.colorUnderlineInputField,
+      color:  widget.colorUnderlineInputField??widget.hint_color,
       height: 1,
     );
   }
@@ -253,6 +253,7 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
         autovalidateMode: autovalidateMode,
         keyboardType: widget.textInputType??TextInputType.number,
         suffixIcon: widget.suffixIcon,
+        text_color: widget.textStyle?.color,
         hint_text: widget.hint ,
         hint_color : widget.hint_color,
         fontSize: widget.textStyle?.fontSize,

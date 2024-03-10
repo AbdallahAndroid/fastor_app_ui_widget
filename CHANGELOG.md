@@ -1,3 +1,7 @@
+# 1.3.44
+
+* Fix Colors of "MobileCountryFastor"
+
 # 1.3.43
 
 * add new method  "ToolsValidation.isPhoneMobileValidAndEnglishLetter" , check contain arabic letter
