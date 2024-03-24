@@ -131,13 +131,23 @@ class ToolsValidation {
   }
 
 
+  /// check have "@" and "." and anyThingAfter last dot
   static isEmail(String? s) {
-    if( ToolsValidation.isEmpty(s )) return false;
+    if( s == null ) return false;
+    if( s == "" ) return false;
     bool haveAt = s!.contains( "@");
     //Log.i("haveAt: " +  haveAt.toString() );
     if( haveAt  == false  ) return false;
+    bool haveDot = s!.contains( ".");
+    if( haveDot  == false  ) return false;
+
+    int indexOfLastDot = s!.lastIndexOf( ".");
+    bool thereIsDotAnyThing = s!.length > (indexOfLastDot + 1);
+    print("index?OfLastDot: " +  indexOfLastDot.toString()  + " /size: " + s.length.toString());
+    if( thereIsDotAnyThing == false  ) return false;
     return true;
   }
+
 
   static String egyptionCodeCountry_returnByPlus(String? str)
   {
