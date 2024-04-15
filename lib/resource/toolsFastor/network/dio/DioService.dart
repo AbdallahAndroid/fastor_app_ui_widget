@@ -357,10 +357,19 @@ extension DioService on NetworkManagerDio {
         "${requestFile!.body_key5}": "${requestFile!.body_value5}",
         "${requestFile!.body_key6}": "${requestFile!.body_value6}",
         "${requestFile!.body_key7}": "${requestFile!.body_value7}",
-        "${requestFile!.body_keyMoreThan7}": requestFile!.body_valueMoreThan7,
+
+        "${requestFile!.body_key8}": "${requestFile!.body_value8}",
+        "${requestFile!.body_key9}": "${requestFile!.body_value9}",
+        "${requestFile!.body_key10}": "${requestFile!.body_value10}",
+        "${requestFile!.body_key11}": "${requestFile!.body_value11}",
+        "${requestFile!.body_key12}": "${requestFile!.body_value12}",
+        "${requestFile!.body_key13}": "${requestFile!.body_value13}",
+        "${requestFile!.body_key14}": "${requestFile!.body_value14}"
+
+      //  "${requestFile!.body_keyMoreThan7}": requestFile!.body_valueMoreThan7,
       });
 
-      Log.k(tag, "_file() - formData: " + formData.toString());
+     Log.k(tag, "_file() - formData: " + formData.toString());
 
       Dio _dio = Dio();
       //show request and response in beatful log
@@ -379,9 +388,17 @@ extension DioService on NetworkManagerDio {
        */
       _dio.options.headers = headers;
 
-      response = await _dio.post(url,
-           data: formData);
-      Log.k(tag, "_file() - success: " + response.toString());
+      if( requestFile!.isTypeMethodPUT ) {
+        response = await _dio.put(url,
+            data: formData);
+
+      } else {
+        response = await _dio.post(url,
+            data: formData);
+
+      }
+
+     Log.k(tag, "_file() - success: " + response.toString());
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);

@@ -1,3 +1,7 @@
+# 1.3.45
+
+* Allow To Upload File With Method Type "PUT"
+
 # 1.3.44
 
 * Fix Colors of "MobileCountryFastor"

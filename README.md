@@ -1904,6 +1904,10 @@ this class used to set the path of file of "xFile" and set the key/value of file
         });
 ```
 
+* You Can Make Type Method PUT by call method
+```
+requestFile.setTypeMethodPut();
+```
 ---
 
 ### Types Of Webservice Network Dependence

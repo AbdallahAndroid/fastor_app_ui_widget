@@ -40,12 +40,34 @@ class NetworkRequestFile  {
   String? body_key7;
   String? body_value7;
 
-  String body_keyMoreThan7 = "extraBodyValue";
-  String body_valueMoreThan7 = "";
+  String? body_key8 ;
+  String? body_value8;
+  String? body_key9;
+  String? body_value9;
+  String? body_key10;
+  String? body_value10;
+  String? body_key11;
+  String? body_value11;
+  String? body_key12;
+  String? body_value12;
+  String? body_key13;
+  String? body_value13;
+  String? body_key14;
+  String? body_value14;
+
+  bool  isTypeMethodPUT = false;
+
+
 
    @override
   String toString() {
     return 'NetworkRequestFile{filePath: $filePath, body_key1: $body_key1, body_value1: $body_value1, body_key2: $body_key2, body_value2: $body_value2, body_key3: $body_key3, body_value3: $body_value3, body_key4: $body_key4, body_value4: $body_value4, body_key5: $body_key5, body_value5: $body_value5, body_key6: $body_key6, body_value6: $body_value6, body_key7: $body_key7, body_value7: $body_value7}';
+  }
+
+  //------------------------------------------------ type method
+
+  void setTypeMethodPut(){
+    isTypeMethodPUT = true;
   }
 
   //-------------------------------------------------------------- factory
@@ -95,8 +117,16 @@ class NetworkRequestFile  {
       case 5 : { obj.body_key5 = k; obj.body_value5 = v; } break;
       case 6 : { obj.body_key6 = k; obj.body_value6 = v; } break;
       case 7 : { obj.body_key7 = k; obj.body_value7 = v; } break;
+
+      case 8 : { obj.body_key8 = k; obj.body_value8 = v; } break;
+      case 9 : { obj.body_key9 = k; obj.body_value9 = v; } break;
+      case 10 : { obj.body_key10 = k; obj.body_value10 = v; } break;
+      case 11 : { obj.body_key11 = k; obj.body_value11 = v; } break;
+      case 12 : { obj.body_key12 = k; obj.body_value12 = v; } break;
+      case 13 : { obj.body_key13 = k; obj.body_value13 = v; } break;
+      case 14 : { obj.body_key14 = k; obj.body_value14 = v; } break;
       default: {
-        obj.body_valueMoreThan7 += v + " ,";
+       // obj.body_valueMoreThan7 += v + " ,";
       }
     }
   }
