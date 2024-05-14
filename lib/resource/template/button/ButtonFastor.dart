@@ -248,6 +248,8 @@ class ButtonFastor extends StatelessWidget {
 
        //need to fix [ANALYSIS ISSUE] instead of "primary"
         foregroundColor: backgroundColor_ds,
+        backgroundColor: backgroundColor_ds,
+
         side: side,
         shape: shape
       // elevation: 10
