@@ -1,3 +1,7 @@
+# 1.3.50
+
+* Fixing Analytics Issue
+
 # 1.3.49
 
 * remove plugin "fl_cart" due to have error

@@ -1,22 +1,22 @@
 import '../../values/ToolsString.dart';
 
+/// api parse status, or boolean, or double as string format
 class ApiParserFastor {
 
 //------------------------------------------------------------------ boolean read
-  /**
-      - example success:
-      {
-      "status": "success",
-      "code": 1,
 
-      - example faild:
-      {
-      "status": "error",
-      "code": 0,
-      "message": "Unauthorized"
-      }
-
-   */
+      ///  - example success:
+      ///   {
+      ///  "status": "success",
+      /// "code": 1,
+      ///
+      ///  - example faild:
+      ///  {
+      ///  "status": "error",
+      ///  "code": 0,
+      ///   "message": "Unauthorized"
+      ///  }
+      ///
   static bool isSuccess(int? n) {
     if (n == null) return false;
     if (n == 0) return false;
@@ -24,25 +24,27 @@ class ApiParserFastor {
     return false;
   }
 
+  /// is True
   static bool isTrue(int? n) {
     return isSuccess(n);
   }
 
+  /// is isFalse
   static bool isFalse(int? n) {
     return !isSuccess(n);
   }
 
+  /// is isFailed
   static bool isFailed(int? n) {
     return !isSuccess(n);
   }
 
+  /// parseBoolean, parameter int
   static bool parseBoolean_int(int? n) {
     return isSuccess(n);
   }
 
-  /**
-      "block": "0",  >> means false
-   */
+   /// "block": "0",  >> means false
   static bool parseBoolean(String? n) {
     if (n == null) return false;
 
@@ -55,9 +57,7 @@ class ApiParserFastor {
 
   //------------------------------------------------------------------ boolean change
 
-  /**
-   * used to change status from "favorite" to "unfavorite" and vise versa
-   */
+   ///used to change status from "favorite" to "unfavorite" and vise versa
   static int verseBooleanZeroToOneAndViseVersa(int? i) {
     if (i == null) return 0;
     if (i == 0) return 1; // change status
@@ -65,6 +65,7 @@ class ApiParserFastor {
       return 0;
   }
 
+  /// convert Boolean To ZeroAndOne
   static int convertBooleanToZeroAndOne(bool? b ) {
     if( b == null ) return 0;
     if( b ) {
@@ -76,24 +77,24 @@ class ApiParserFastor {
 
   //-------------------------------------------------------------------- paginate
 
-  /**
-   *1- example totalBar record is 100, while pagiantor is 10
-   * current page is 9
-   * "to" is 10
-   *  >> result false
-   *
-   *2- example totalBar record is 100, while pagiantor is 10
-   * current page is 10
-   * "to" is 10
-   *  >> result true "there is no next pages"
 
-
-   *
-   *3- example totalBar record is 0 zero, while pagiantor is 10
-   * current page is 1
-   * "to" is 0
-   *  >> result true "there is no next pages"
-   */
+  ///1- example totalBar record is 100, while pagiantor is 10
+  /// current page is 9
+  /// "to" is 10
+  ///  >> result false
+  ///
+  ///2- example totalBar record is 100, while pagiantor is 10
+  /// current page is 10
+  /// "to" is 10
+  ///  >> result true "there is no next pages"
+  ///
+  ///
+  ///
+  ///3- example totalBar record is 0 zero, while pagiantor is 10
+  /// current page is 1
+  /// "to" is 0
+   ///  >> result true "there is no next pages"
+   ///
   static bool isPaginateLaravelEnd(int? currentPage, int? last_page) {
     if (currentPage == null) return false;
     if (last_page == null) return false;
@@ -136,6 +137,7 @@ class ApiParserFastor {
 
   //--------------------------------------------------------------------- parse int
 
+  /// parse IntDynamic
   static int parseIntDynamic(dynamic data) {
     if( data  ==  null  ) return 0 ;
     if( data.toString() ==  "null" ) return 0 ;
