@@ -132,8 +132,8 @@ class ButtonTemplate {
         padding: EdgeInsets.zero,
         fixedSize: fixedSize,
 
-        //fix [ANALYSIS ISSUE]
-        // primary: backgroundColor_ds,
+        //need to fix [ANALYSIS ISSUE] instead of "primary"
+        foregroundColor: backgroundColor_ds,
 
         side: side,
         shape: shape
