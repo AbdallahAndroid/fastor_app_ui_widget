@@ -432,11 +432,11 @@ class _CalendarState extends State<Calendar> {
                                   Text(start,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1),
+                                          .bodyLarge),
                                   Text(end,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1),
+                                          .bodyLarge),
                                 ],
                               ),
                             ),
