@@ -33,21 +33,21 @@ class ImageViewTemplate extends StatelessWidget  {
   String? urlAspectRation;
   String? urlBackground;
 
-  double? radius_all = 0 ;
-  double? radius_topLeft;
-  double? radius_topRight ;
-  double? radius_bottomLeft;
-  double? radius_bottomRight;
+  double? radiusAll = 0 ;
+  double? radiusTopLeft;
+  double? radiusTopRight ;
+  double? radiusBottomLeft;
+  double? radiusBottomRight;
 
   Color? colorBackground;
   EdgeInsets? padding;
   EdgeInsets? margin;
   double? opacity   ;
-  bool? responsive_auto = false ;
-  BoxFit? boxFit_background;
+  bool? responsiveAuto = false ;
+  BoxFit? boxFitBackground;
 
   //gravity
-  Alignment? gravityLayout_alignment = Alignment.center;
+  Alignment? gravityLayoutAlignment = Alignment.center;
 
   //radius
   late BorderRadius boarderRadius;
@@ -74,18 +74,18 @@ class ImageViewTemplate extends StatelessWidget  {
     AssetImage? this.assetBackground,
     String? this.urlAspectRation, //src
     String? this.urlBackground,
-    double? this.radius_all ,
-    double? this.radius_topLeft ,
-    double? this.radius_topRight ,
-    double? this.radius_bottomLeft ,
-    double? this.radius_bottomRight ,
+    double? this.radiusAll ,
+    double? this.radiusTopLeft ,
+    double? this.radiusTopRight ,
+    double? this.radiusBottomLeft ,
+    double? this.radiusBottomRight ,
     Color? this.colorBackground,
     EdgeInsets? this.padding,
     EdgeInsets? this.margin,
     double? this.opacity,
-    Alignment? this.gravityLayout_alignment,
-    bool? this.responsive_auto,
-    BoxFit? this.boxFit_background
+    Alignment? this.gravityLayoutAlignment,
+    bool? this.responsiveAuto,
+    BoxFit? this.boxFitBackground
   }) {
 
     // set value
@@ -160,7 +160,7 @@ class ImageViewTemplate extends StatelessWidget  {
       Align( child: getViewMode_aspectRatio(), alignment: Alignment.center  ),
 
       //image
-      getViewMode_background()
+      getViewModeBackground()
 
 
     ],);
@@ -173,7 +173,7 @@ class ImageViewTemplate extends StatelessWidget  {
 
   void _autoResponsive(){
     //check not need
-    if( responsive_auto == false ){
+    if( responsiveAuto == false ){
       return;
     }
 
@@ -210,13 +210,13 @@ class ImageViewTemplate extends StatelessWidget  {
     margin ??= EdgeInsets.zero;
 
     //radius
-    radius_all ??= 0;
+    radiusAll ??= 0;
     boarderRadius = BorderRadiusTools.get(
-      radius_all: radius_all,
-      radius_topLeft: radius_topLeft,
-      radius_topRight: radius_topRight,
-      radius_bottomLeft: radius_bottomLeft,
-      radius_bottomRight: radius_bottomRight,
+      radius_all: radiusAll,
+      radius_topLeft: radiusTopLeft,
+      radius_topRight: radiusTopRight,
+      radius_bottomLeft: radiusBottomLeft,
+      radius_bottomRight: radiusBottomRight,
     );
   }
 
@@ -232,18 +232,18 @@ class ImageViewTemplate extends StatelessWidget  {
 
   //-------------------------------------------------------  Widget
 
-  Widget getViewMode_background() {
+  Widget getViewModeBackground() {
     //check not found background
     if( isModeBackground == false  ) {
       return EmptyView.zero();
     }
 
     //init type
-    _setImageProvider_mode_background();
+    _setImageProviderModeBackground();
 
     //return view
     var cont =   Container(
-      alignment: gravityLayout_alignment,
+      alignment: gravityLayoutAlignment,
       padding: padding,
       // margin: margin,
       width: width,
@@ -254,7 +254,7 @@ class ImageViewTemplate extends StatelessWidget  {
           color: colorBackground,
           image: DecorationImage(
               image: imageProviderChoosed,
-              fit: getBoxFit_background()
+              fit: getBoxFitBackground()
             //fit:  BoxFit.fill, // like android not crop
             //fit:  BoxFit.cover,  //make crop the image to be good quality , even it crop
           )
@@ -265,11 +265,11 @@ class ImageViewTemplate extends StatelessWidget  {
   }
 
 
-  BoxFit getBoxFit_background(){
+  BoxFit getBoxFitBackground(){
 
     //check have custome
-    if( boxFit_background != null ) {
-      return   boxFit_background!;
+    if( boxFitBackground != null ) {
+      return   boxFitBackground!;
     }
 
     return BoxFit.fill;
@@ -282,13 +282,13 @@ class ImageViewTemplate extends StatelessWidget  {
     }
 
     //init type
-    _setImageProvider_mode_aspectRatio();
+    _setImageProviderModeAspectRatio();
 
     //Log.k(tag,  "getViewMode_aspectRatio() - boarderRadius: " + boarderRadius.toString() );
 
     //return view
     var cont =   Container(
-      alignment: gravityLayout_alignment,
+      alignment: gravityLayoutAlignment,
       padding: padding,
       // margin: margin,
       width: width,
@@ -317,18 +317,18 @@ class ImageViewTemplate extends StatelessWidget  {
 
   //------------------------------------------------------------- setter image provider
 
-  void _setImageProvider_mode_aspectRatio() {
+  void _setImageProviderModeAspectRatio() {
     if( urlAspectRation != null   ) {
-      imageProviderChoosed =  _getImageProvider_url_aspectRatio();
+      imageProviderChoosed =  _getImageProviderUrlAspectRatio();
     } else  {
       imageProviderChoosed =  assetAspectRatio!;
     }
   }
 
 
-  void _setImageProvider_mode_background() {
+  void _setImageProviderModeBackground() {
     if( urlBackground != null   ) {
-      imageProviderChoosed =  _getImageProvider_url_background();
+      imageProviderChoosed =  _getImageProviderUrlBackground();
     } else {
       imageProviderChoosed =  assetBackground!;
     }
@@ -336,12 +336,12 @@ class ImageViewTemplate extends StatelessWidget  {
 
   //------------------------------------------------------------ ImageProvider getter
 
-  ImageProvider _getImageProvider_url_aspectRatio() {
+  ImageProvider _getImageProviderUrlAspectRatio() {
     return  CachedNetworkImageProvider(urlAspectRation!);
   }
 
 
-  ImageProvider _getImageProvider_url_background( ){
+  ImageProvider _getImageProviderUrlBackground( ){
     return CachedNetworkImageProvider(urlBackground!);
   }
 
