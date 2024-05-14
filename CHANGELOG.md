@@ -1,3 +1,7 @@
+# 1.3.47
+
+* remove plugin "fl_cart" due to have error
+
 # 1.3.45
 
 * Allow To Upload File With Method Type "PUT"

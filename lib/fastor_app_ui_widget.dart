@@ -143,8 +143,8 @@ import 'resource/toolsFastor/state/FastorStateManagement.dart';
 export 'resource/toolsFastor/state/FastorStateManagement.dart';
 
 
-import 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
-export 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
+// import 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
+// export 'resource/template/chart/multiline/ChartMultiLineFastor.dart';
 
 import 'resource/template/checkbox/CheckboxFastor.dart';
 export 'resource/template/checkbox/CheckboxFastor.dart';
@@ -378,7 +378,7 @@ class fastor_app_ui_widget extends fastor {
   late ImageFastor imageFastor;
   // late FastorMaterialApp materialApp;
   late AppBarFastor appBar;
-  late ChartMultiLineFastor chartMultiLineFastor;
+  // late ChartMultiLineFastor chartMultiLineFastor;
 
   late MobileCountryFastor mobileCountryFastor;
   late MobileCountryListener mobileCountryListener;
