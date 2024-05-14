@@ -64,8 +64,8 @@ class CheckboxFastor  extends StatelessWidget {
     //theme
     var theme = Theme(
       data: Theme.of(context).copyWith(
-          unselectedWidgetColor: color_inactive!!, //inactive color
-          toggleableActiveColor: color_active!! //active color
+          unselectedWidgetColor: color_inactive! , //inactive color
+     //     toggleableActiveColor: color_active!! //active color
       ),
       child: ch,
     );

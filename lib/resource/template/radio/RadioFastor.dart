@@ -78,7 +78,7 @@ class RadioFastor extends StatelessWidget {
     var theme = Theme(
       data: Theme.of( context).copyWith(
           unselectedWidgetColor: DSColor.tap_inactive,       //inactive color
-          toggleableActiveColor: DSColor.tap_active      //active color
+         // toggleableActiveColor: DSColor.tap_active      //active color
       ),
       child: rd ,
     );
