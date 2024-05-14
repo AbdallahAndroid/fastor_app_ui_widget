@@ -245,7 +245,9 @@ class ButtonFastor extends StatelessWidget {
         minimumSize: Size.zero,
         padding: EdgeInsets.zero,
         fixedSize: fixedSize,
-        primary: backgroundColor_ds,
+
+       //fix [ANALYSIS ISSUE]
+       // primary: backgroundColor_ds,
         side: side,
         shape: shape
       // elevation: 10
