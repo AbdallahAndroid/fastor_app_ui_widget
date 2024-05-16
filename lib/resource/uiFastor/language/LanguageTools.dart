@@ -1,12 +1,6 @@
 
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
-// import 'package:easy_localization/easy_localization.dart' hide TextDirection;
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-// import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @Deprecated("use class LangFastor.dart instead")
