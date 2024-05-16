@@ -5,7 +5,7 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkCon
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 
-import 'DioService.dart';
+import 'DioServiceFastor.dart';
 import 'DioParameter.dart';
 
 typedef NetworkDiocallback_dio = void Function(

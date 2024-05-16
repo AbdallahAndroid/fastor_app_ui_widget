@@ -5,7 +5,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'DioParameter.dart';
 
-extension DioService on NetworkManagerDio {
+extension DioServiceFastor on NetworkManagerDio {
 
 
   //--------------------------------------------------------------------------- get

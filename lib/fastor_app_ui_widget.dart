@@ -269,7 +269,7 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
-import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'  hide DioService ;
+import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'   ;
 
 import 'resource/toolsFastor/values/ToolsString.dart';
 import 'resource/uiFastor/responsive_views/helper/PortraitToLandscapeUtilsResponsiveFastor.dart';
@@ -281,7 +281,7 @@ export 'resource/uiFastor/responsive_views/landscape/shape_content_center_top/Po
 
 export 'resource/toolsFastor/values/ToolsString.dart';
 
-export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart' hide DioService ;
+export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'  ;
 
 ///fastor_app_ui_widget app all class
 class fastor_app_ui_widget extends fastor {
