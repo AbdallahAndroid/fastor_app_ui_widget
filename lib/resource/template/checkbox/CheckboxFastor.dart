@@ -7,6 +7,7 @@ import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 
+
 class CheckboxFastor  extends StatelessWidget {
 
 
@@ -26,16 +27,17 @@ class CheckboxFastor  extends StatelessWidget {
   String? fontFamily;
 
   //input color
-  Color? color_inactive;
-  Color? color_active;
+  Color? colorInActive;
+  Color? colorActive;
 
   CheckboxFastor({
     required this.context,
     required this.value,
     required this.onChanged,
+    required this.colorActive,
+    required this.colorInActive,
     this.removePaddingClick = true,
-    this.color_inactive,
-    this.color_active,
+
     this.size_scale = 1.0,
     this.margin,
     this.padding,
@@ -45,11 +47,7 @@ class CheckboxFastor  extends StatelessWidget {
     this.text_dimen = 0,
     this.text_color,
     this.fontFamily,
-  })  {
-
-    color_active ??= DSColor.tap_active;
-    color_inactive ??= DSColor.tap_inactive;
-  }
+  }) ;
 
 
   @override
@@ -58,17 +56,19 @@ class CheckboxFastor  extends StatelessWidget {
     var ch = Checkbox(
       value: value,
       onChanged: onChanged,
-      activeColor: color_active!!, //background color when it's active
+      activeColor: colorActive!, //background color when it's active
+
     );
 
-    //theme
-    var theme = Theme(
-      data: Theme.of(context).copyWith(
-          unselectedWidgetColor: color_inactive! , //inactive color
-     //     toggleableActiveColor: color_active!! //active color
+    var materialApp = MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        unselectedWidgetColor: colorInActive,
       ),
-      child: ch,
+      home: ch,
     );
+    // //theme
+
 
     // default padding size
     final double defaultPaddingSizeClick = 20;
@@ -84,7 +84,7 @@ class CheckboxFastor  extends StatelessWidget {
 
     //fix: remove default padding
     var sizeBox = SizedBox(
-        child: theme,
+        child: materialApp,
         width: paddingCheckBoxClick,
         height: paddingCheckBoxClick);
 
@@ -142,3 +142,5 @@ class CheckboxFastor  extends StatelessWidget {
 
 
 }
+
+

@@ -1,3 +1,7 @@
+# 1.3.58
+
+* Fix Deprecated Of Theme color of "CheckboxFastor" widget
+
 # 1.3.57
 
 * Update Readme
