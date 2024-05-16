@@ -1,3 +1,7 @@
+# 1.3.59
+
+* Fixing Analytics Issue
+
 # 1.3.58
 
 * Fix Deprecated Of Theme color of "CheckboxFastor" widget
