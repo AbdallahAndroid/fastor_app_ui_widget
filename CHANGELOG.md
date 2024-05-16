@@ -1,6 +1,9 @@
-# 1.3.52
+# 1.3.53
 
 * Fixing Analytics Issue
+
+# 1.3.51
+
 * ImageFastor : change names of parameter
 
 # 1.3.49

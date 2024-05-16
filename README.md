@@ -6,7 +6,6 @@
     * PageFastor, TextFastor, ImageFastor, RowFastor, ColumnFastor, TextFieldFastor ..etc
 * Helping make coding faster by use Utils. Example Classes: 
   * NetworkManager, LanguageTools, ... etc.
- 
 
 ## Get Start
 1- import dependence in yaml file:

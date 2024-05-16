@@ -1,11 +1,16 @@
 name: fastor_app_ui_widget
 
-version: 1.3.52
+version: 1.3.53
 homepage: https://github.com/AbdallahAndroid/fastor_app_ui_widget
 #homepage: https://fastor-app.com
 
-#description: >-
-description: Coding Faster By Build Fast UI Widget.  Reduce 28% of chars in writing code & lines breaks.  Get ride of RenderFlex overflowed by pixels.  Basics ui widget with extra feature not found at normal widget. Example widget  PageFastor, TextFastor, ImageFastor, RowFastor, ColumnFastor, TextFieldFastor ..etc. Helping make coding faster by use Utils. Example Classes  NetworkManager, LanguageTools, ... etc.
+## Fix Analytics Issue: description field in your package's pubspec.yaml file between 60 and 180 characters
+description: Coding Faster By Build Fast UI Widget.  Reduce 28% of chars in writing code & lines breaks. Basics ui widget with extra feature not found at regular widget.
+
+
+## Fix Analytics Issue
+repository: https://github.com/AbdallahAndroid/fastor_app_ui_widget
+
 
 environment:
 #  sdk: ">=2.17.3 <3.0.0"   #flutter version 3.0.2
