@@ -104,7 +104,6 @@ void main() async {
 </tr>
 </table>
 
-## Content: Other Fastor UI Widget
 
 [ScaffoldFastor](https://pub.dev/packages/fastor_app_ui_widget#scaffoldfastor)
 
@@ -140,9 +139,6 @@ void main() async {
 
 [TimerCountDownFastor](https://pub.dev/packages/fastor_app_ui_widget#timercountdownfastor)
 
-## Content: Classes Helper UI
-
-* BoxDecoration easy to use in Container( decoration: ) 
 [BoarderHelper](https://pub.dev/packages/fastor_app_ui_widget#boarderhelper)
 
 ## Content: Classes Helper Tools
@@ -1749,10 +1745,10 @@ enum CalenderTypeFastor { dateStartFromToday, birthday }
 
 ---
 
-# Classes Helper UI
-
+ 
 # BoarderHelper
 
+* BoxDecoration easy to use in Container( decoration: )
 * BoxDecoration utils to be used in "Container()"
 ```
 Container(
