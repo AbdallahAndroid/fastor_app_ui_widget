@@ -2,9 +2,6 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkConfigDio.dart';
-
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 

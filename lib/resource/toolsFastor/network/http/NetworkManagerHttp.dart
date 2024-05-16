@@ -1,12 +1,7 @@
 import 'dart:convert';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-
-// import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-// import 'package:http/http.dart';
+
 
 /**
     1- in navigate write

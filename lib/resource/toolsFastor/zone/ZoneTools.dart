@@ -1,6 +1,4 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
-
 import 'package:timezone_to_country/timezone_to_country.dart';
 import 'package:country_dial_code/country_dial_code.dart';
 

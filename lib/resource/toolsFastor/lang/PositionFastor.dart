@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
+
 import 'package:flutter/material.dart';
 
 @Deprecated( "use class (PositionedFastor) instead ")

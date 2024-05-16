@@ -1,9 +1,6 @@
-
 import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
-import 'package:log_debug/log_debug.dart';
-
 import 'package:universal_io/io.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
