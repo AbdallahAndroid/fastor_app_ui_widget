@@ -4,8 +4,12 @@
 * Get ride of RenderFlex overflowed by pixels.
 * Basics ui widget with extra feature not found at normal widget. Example widget:
     * PageFastor, TextFastor, ImageFastor, RowFastor, ColumnFastor, TextFieldFastor ..etc
+* Can Write Widget Type Fastor Inside Regular Widget Flutter and vise versa:
+    * Example : can use "ColumnFastor()" inside "Column()" regular and vise versa
+    * Example : can use "TextFastor()" inside "Column()" regular or inside "ColumnFastor"
+    * Don't Worry About Using Widget Type Fastor With Regular Widget
 * Helping make coding faster by use Utils. Example Classes: 
-  * NetworkManager, LanguageTools, ... etc.
+  * NetworkManager, LanguageTools, ... etc. 
 
 ## Get Start
 1- import dependence in yaml file:

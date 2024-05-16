@@ -1,5 +1,6 @@
-# 1.3.59
+# 1.3.60
 
+* Update Readme
 * Fixing Analytics Issue
 
 # 1.3.58
