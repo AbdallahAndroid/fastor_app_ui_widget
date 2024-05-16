@@ -126,6 +126,8 @@ export 'resource/resources/boarder/BorderRadiusTools.dart';
 import 'resource/template/pager_view/PageViewFastor.dart';
 export 'resource/template/pager_view/PageViewFastor.dart';
 
+// import 'resource/template/radio/RadioFastor.dart';
+// export 'resource/template/radio/RadioFastor.dart';
 import 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 export 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 
@@ -328,6 +330,7 @@ class fastor_app_ui_widget extends fastor {
   late CardViewTemplate card;
   late CheckboxTemplate ch;
   late CheckboxFastor chFastor;
+  // late RadioFastor radioFastor;
   late GestureDetectorTemplate gs;
   late ColumnTemplate col;
   late ColumnFastor colFastor;

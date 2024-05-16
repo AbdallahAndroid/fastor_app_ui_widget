@@ -11,6 +11,8 @@
 
 ## basic widget 11 
 
+RadioFastor
+
 [RadioTemplate]() + add feature : colors
 
 [Switch]()  + add feature : colors
