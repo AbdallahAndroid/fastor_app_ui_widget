@@ -33,14 +33,6 @@ void main() async {
 
 [https://pub.dev/documentation/fastor_app_ui_widget/latest/index.html](https://pub.dev/documentation/fastor_app_ui_widget/latest/index.html)
 
-### tutorial source code
-
-[https://github.com/AbdallahAndroid/fastor_app](https://github.com/AbdallahAndroid/fastor_app)
-
-[//]: # (### Tutorial Youtube)
-
-[//]: # ()
-[//]: # ([https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T]&#40;https://www.youtube.com/playlist?list=PLStw2JQi0_9pHWMU83AWIYQyApfNnsr0T&#41;)
 
 # Tutorial Content
 
