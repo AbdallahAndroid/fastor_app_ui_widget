@@ -1,17 +1,9 @@
 import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
 import 'package:flutter/material.dart';
-
-
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
-import 'package:fastor_app_ui_widget/resource/template/constants/TemplateSize.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
-import 'package:hexcolor/hexcolor.dart';
-
-
- 
 
 ///class button ui
 @Deprecated( "use instead 'ButtonFastor()'")

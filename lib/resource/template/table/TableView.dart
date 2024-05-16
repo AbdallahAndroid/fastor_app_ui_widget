@@ -1,6 +1,5 @@
 
 import 'package:fastor_app_ui_widget/resource/template/listview/ListViewTemplate.dart';
-import 'package:log_debug/log_debug.dart';
 import 'package:flutter/material.dart';
 
 @Deprecated( "deprecated instead use class (TableFastor.dart)")

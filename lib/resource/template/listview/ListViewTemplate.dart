@@ -1,4 +1,3 @@
-import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/scrollview/SingleChildScrollViewTemplate.dart';
 import 'package:flutter/material.dart';
 

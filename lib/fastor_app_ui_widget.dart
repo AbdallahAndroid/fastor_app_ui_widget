@@ -6,7 +6,6 @@ library fastor_app_ui_widget;
 import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
-// import 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
@@ -60,7 +59,7 @@ import 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.d
 import 'package:fastor_app_ui_widget/resource/template/stack/StackTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/switch/SwitchTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/table/TableView.dart';
-import 'package:fastor_app_ui_widget/resource/template/table/TableFastor.dart';//
+
 export 'package:fastor_app_ui_widget/resource/template/table/TableFastor.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
@@ -73,7 +72,6 @@ export 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFiel
 export 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 
 
-// export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldBackendErrorFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/template/TextFieldTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
@@ -126,8 +124,6 @@ export 'resource/resources/boarder/BorderRadiusTools.dart';
 import 'resource/template/pager_view/PageViewFastor.dart';
 export 'resource/template/pager_view/PageViewFastor.dart';
 
-// import 'resource/template/radio/RadioFastor.dart';
-// export 'resource/template/radio/RadioFastor.dart';
 import 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 export 'resource/template/textfield/password/TextFieldPasswordFastor.dart';
 
@@ -167,7 +163,7 @@ export 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.da
 
 export 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
 export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-// export 'package:fastor_app_ui_widget/resource/color/ResourceColor.dart';
+
 export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 export 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 export 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
@@ -211,7 +207,6 @@ export 'resource/template/image/ImageCircleView.dart';
 export 'package:fastor_app_ui_widget/resource/template/select/template/SpinnerTemplate.dart';
 export 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.dart';
 
-// export 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.dart';
 
 //-------------------------------------------------------- both export and improt
 import 'package:fastor_app_ui_widget/resource/uiFastor/scroll/FastorScrollTheme.dart';
@@ -220,7 +215,6 @@ import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarCo
 export 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 
 
-import  'package:fastor_app_ui_widget/resource/template/material_app/FastorMaterialApp.dart';
 export  'package:fastor_app_ui_widget/resource/template/material_app/FastorMaterialApp.dart';
 
 import  'package:fastor_app_ui_widget/resource/template/AppBarFastor/AppBarFastor.dart';
@@ -254,9 +248,6 @@ export 'resource/template/switch/SwitchFastor.dart';
 import 'resource/template/textfield/email_or_phone/TextFieldEmailOrPhoneFastor.dart';
 export 'resource/template/textfield/email_or_phone/TextFieldEmailOrPhoneFastor.dart';
 
-
-
-import 'resource/template/textfield/validator/ValidatorType.dart';
 export 'resource/template/textfield/validator/ValidatorType.dart';
 import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'resource/toolsFastor/initialize_app/Fastor.dart';
@@ -278,8 +269,6 @@ export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkRequest
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/NetworkTypeDio.dart';
 export 'package:fastor_app_ui_widget/resource/toolsFastor/network/ValidateResponse.dart';
 
-//dio
-// import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/DioService.dart' hide post_dio ;
 import 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkManagerDio.dart'  hide DioService ;
 
 import 'resource/toolsFastor/values/ToolsString.dart';

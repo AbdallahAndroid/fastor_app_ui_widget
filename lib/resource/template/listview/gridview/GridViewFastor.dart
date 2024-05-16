@@ -1,10 +1,7 @@
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/listview/ListViewTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
-
 import 'package:flutter/material.dart';
-import 'package:log_debug/log_debug.dart';
-
 
 class GridViewFastor extends StatelessWidget {
 

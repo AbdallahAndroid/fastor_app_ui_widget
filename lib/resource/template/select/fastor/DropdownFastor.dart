@@ -1,7 +1,5 @@
-// class DropdownFastor e
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/DropdownContent.dart';
-import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/PreviousSelected.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/ProgressDropdown.dart';
 import 'package:flutter/material.dart';
 

@@ -7,20 +7,13 @@ import 'package:fastor_app_ui_widget/resource/toolsFastor/state/FastorStateManag
 import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 
 import 'package:flutter/material.dart';
-
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
-
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
-
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';
 import 'package:flutter/services.dart';
-
 import 'base/BasePageTemplateProgrees.dart';
-
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 
 
 /// Page Fastor like Scaffold

@@ -1,13 +1,7 @@
 
-
-
-
 import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/LangFastor.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionFastor.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
-
-import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 //------------------------------------------------------------------ callback
 

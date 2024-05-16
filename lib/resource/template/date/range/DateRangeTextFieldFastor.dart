@@ -1,8 +1,6 @@
  import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
 import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
 import 'DatePickerHelper.dart';
 import 'DateRangePickerResult.dart';
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/resources/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
-
 
 
 class BaseCardViewTemplate {

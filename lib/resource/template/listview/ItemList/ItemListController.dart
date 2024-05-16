@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:log_debug/log_debug.dart';
 
-
-
 typedef ListViewCreateCallBack = Function(List<Widget> listWidget, List<dynamic> listState);
 
 

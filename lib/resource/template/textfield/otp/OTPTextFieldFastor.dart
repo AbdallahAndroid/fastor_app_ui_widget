@@ -1,7 +1,5 @@
 import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
-import 'package:fastor_app_ui_widget/resource/template/textfield/TextFieldTemplateBase.dart';
 import 'package:flutter/material.dart';
-import 'package:need_resume/need_resume.dart';
 import 'TextFieldsOtp.dart';
 
 class OTPTextFieldFastor extends StatefulWidget {

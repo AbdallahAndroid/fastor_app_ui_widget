@@ -1,13 +1,7 @@
-import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
-
-
 import 'package:flutter/material.dart';
-
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
-
 import '../TextFieldTemplateBase.dart';
-
 
 /// use class "ValidatorTemplate" to change type of input field "name, email,..etc"
 @Deprecated( "Used class `TextFieldStateLessFastor()`  instead")

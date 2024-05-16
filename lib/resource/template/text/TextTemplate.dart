@@ -5,7 +5,6 @@ import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.da
 
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/constants/TemplateSize.dart';
-import 'package:log_debug/log_debug.dart';
 
 
 import 'BaseTextTemplate.dart';

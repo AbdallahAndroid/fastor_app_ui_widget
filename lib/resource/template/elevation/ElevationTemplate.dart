@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'ShadowContainer.dart';
 
 class ElevationTemplate {
 

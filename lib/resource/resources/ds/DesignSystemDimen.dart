@@ -1,7 +1,5 @@
 
 
-import 'package:hexcolor/hexcolor.dart';
-
 /**
  * - copy this line to easy enter value:
     static var  = dimen();
