@@ -1,9 +1,9 @@
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/responsive_views/helper/PortraitToLandscapeUtilsResponsiveFastor.dart';
-import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
-import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircleFastor.dart';
-import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/column/ColumnFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/widget/ButtonBarPaginate.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/widget/TotalInformationBarPaginate.dart';
 import 'package:flutter/material.dart';

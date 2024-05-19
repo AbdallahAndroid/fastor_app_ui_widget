@@ -2,7 +2,7 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/NumberController.dart';
 import 'package:flutter/material.dart';
