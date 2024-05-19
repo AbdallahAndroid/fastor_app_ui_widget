@@ -34,7 +34,7 @@ class NetworkHeaderTools {
     Map<String, String > header = Map();
     if(ToolsValidation.isEmpty(token) ) return header;
     header[ "Authorization"] =  "Bearer " + token;
-    header[ "lang"] =  LangFastor.isArabic ? "ar" : "en";
+    header[ "lang"] =  LangApp.isArabic ? "ar" : "en";
     return header;
   }
 

@@ -1,8 +1,8 @@
 
 
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/row/RowTemplate.dart';
-import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/ButtonNextPreviousController.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/widget/NumberViewPaginate.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ extension ButtonBarPaginate on PaginateBarState {
 
 
   Widget _buttonPrevousAndNumbersPagesListAndButtonNext(){
-    return RowTemplate.wrapChildren_gravityCenter( [
+    return RowUtils.wrapChildren_gravityCenter( [
         _btPrevious(),
         rowNumbersListHorizontal(),
       _btNext()

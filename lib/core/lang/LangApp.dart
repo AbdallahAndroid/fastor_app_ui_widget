@@ -4,22 +4,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 
-var translatorFastor = new LangFastor();
+var translatorApp = new LangApp();
 
 extension StringExtensions on String {
 
-  String translateByFastor() {
-    return LangFastor.searchForValue( this );
+  String translateApp() {
+    return LangApp.searchForValue( this );
   }
 
-  /// the "trf" means  "translateByFastor"
-  String trf() {
-    return LangFastor.searchForValue( this );
+  /// the "tra" means  "translateApp"
+  String tra() {
+    return LangApp.searchForValue( this );
   }
 
-  /// the "arf" means "Arabic By Fastor"
-  String arf(String arabicMeans ) {
-    if(LangFastor.isArabic ) {
+  /// the "ar" means "Arabic"
+  String ar(String arabicMeans ) {
+    if(LangApp.isArabic ) {
       return arabicMeans;
     } else {
       return this;
@@ -30,7 +30,7 @@ extension StringExtensions on String {
 
 }
 
-class LangFastor {
+class LangApp {
 
   //--------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ class LangFastor {
   static Future _updateLanguageType( ) async {
 
     //default boolean
-    LangFastor.isArabic = await _getCacheIsArabic( );
+    LangApp.isArabic = await _getCacheIsArabic( );
 
     //force type
     /**
@@ -97,16 +97,16 @@ class LangFastor {
 
   static Future updateActiveLanguageCode() async  {
     //update code
-    if(LangFastor.isArabic ) {
-      LangFastor.activeLanguageCode = "ar";
+    if(LangApp.isArabic ) {
+      LangApp.activeLanguageCode = "ar";
     } else {
-      LangFastor.activeLanguageCode = "en";
+      LangApp.activeLanguageCode = "en";
     }
   }
   //------------------------------------------------------------------- choose direction and local
 
   static Locale getLocale(){
-    if(LangFastor.isArabic ) {
+    if(LangApp.isArabic ) {
       return Locale('ar' ) ;
     } else {
       return Locale( "en" );
@@ -123,7 +123,7 @@ class LangFastor {
 
 
   static TextDirection getTextDirection(){
-    if ( LangFastor.isArabic ) {
+    if ( LangApp.isArabic ) {
       return TextDirection.rtl;
     } else {
       return TextDirection.ltr;
@@ -131,7 +131,7 @@ class LangFastor {
   }
 
   static AlignmentGeometry getAlignmentGeometry(){
-    if ( LangFastor.isArabic ) {
+    if ( LangApp.isArabic ) {
       return Alignment.topRight;
     } else {
       return Alignment.topLeft;
@@ -140,7 +140,7 @@ class LangFastor {
 
 
   static AlignmentGeometry getAlignmentGeometryStart(){
-    if ( LangFastor.isArabic ) {
+    if ( LangApp.isArabic ) {
       return Alignment.topRight;
     } else {
       return Alignment.topLeft;
@@ -148,7 +148,7 @@ class LangFastor {
   }
 
   static AlignmentGeometry getAlignmentGeometryEnd(){
-    if ( LangFastor.isArabic ) {
+    if ( LangApp.isArabic ) {
       return Alignment.topLeft;
     } else {
       return Alignment.topRight;
@@ -167,7 +167,7 @@ class LangFastor {
   static String searchForValue(String searchFor ) {
     // Log.i( "Lang - tr() - Lang.isArabic: ${LangFastor.isArabic}");
     // Log.i( "Lang - tr() - searchFor: $searchFor");
-    if( LangFastor.isArabic ) {
+    if( LangApp.isArabic ) {
       return _readArabicIfExist( searchFor );
     }
     return searchFor; ///default
@@ -193,7 +193,7 @@ class LangFastor {
 
   static Future _setCacheArabic(  bool v) async {
     //Log.i("Lang - _setCacheArabic() - v: $v");
-    LangFastor.isArabic = v;
+    LangApp.isArabic = v;
     await updateActiveLanguageCode();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_keyCache, v);

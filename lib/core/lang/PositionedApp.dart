@@ -12,7 +12,7 @@ class PositionedFastor {
     double? top,
     double? bottom,
   } ) {
-    bool isArabic = LangFastor.isArabic;
+    bool isArabic = LangApp.isArabic;
     if( isArabic ) {
       return Positioned(child: child,
         top: top,

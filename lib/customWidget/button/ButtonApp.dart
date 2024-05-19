@@ -1,11 +1,11 @@
 
 
-import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 
-import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 
 ///class button ui
 class ButtonApp extends StatelessWidget {
@@ -165,7 +165,7 @@ class ButtonApp extends StatelessWidget {
 
 
   Widget progressCircle(){
-    var prog = ProgressCircleFastor(size: sizeProgress, color: colorProgress);
+    var prog = ProgressCircleApp(size: sizeProgress, color: colorProgress);
     return SizedBox( width: sizeProgress! * 2, child: prog );
   }
 
@@ -190,7 +190,7 @@ class ButtonApp extends StatelessWidget {
 
   Widget _getTextWidget(String text,) {
     //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
-    return TextFastor(text,
+    return TextApp(text,
         textAlign: textAlign!,
         color: textColor !,
         fontSize: textFontSize!,

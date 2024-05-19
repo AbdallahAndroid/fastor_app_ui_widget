@@ -1,15 +1,15 @@
-import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldFastor.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorTemplate.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
 import 'package:flutter/material.dart';
 
-import 'OTPTextFieldFastor.dart';
+import 'OTPTextFieldApp.dart';
 
 extension TextFieldsOtp on OTPFastorState  {
 
 
   Widget tf_1(){
     if(widget.countNumber < 1 ) return SizedBox();
-    return TextFieldFastor(
+    return TextFieldApp(
         width: widget.widthOTP,
         padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
         maxLength: 1,
@@ -21,7 +21,7 @@ extension TextFieldsOtp on OTPFastorState  {
         text_color: widget.colorText,
         hint_color: widget.colorHint,
         fontFamily: widget.fontFamily,
-        validatorCustom: ValidatorTemplate.equal( 1 ),
+        validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         onChanged: (s){
           //set value
@@ -47,7 +47,7 @@ extension TextFieldsOtp on OTPFastorState  {
   Widget tf_2(){
     if(widget.countNumber < 2 ) return SizedBox();
 
-    return TextFieldFastor(
+    return TextFieldApp(
         width: widget.widthOTP,
         padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
         maxLength: 1,
@@ -59,7 +59,7 @@ extension TextFieldsOtp on OTPFastorState  {
         text_color: widget.colorText,
         hint_color: widget.colorHint,
         fontFamily: widget.fontFamily,
-        validatorCustom: ValidatorTemplate.equal( 1 ),
+        validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         onChanged: (s){
           //set value
@@ -86,7 +86,7 @@ extension TextFieldsOtp on OTPFastorState  {
   Widget tf_3(){
     if(widget.countNumber < 3 ) return SizedBox();
 
-    return TextFieldFastor(
+    return TextFieldApp(
         width: widget.widthOTP,
         padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
         maxLength: 1,
@@ -98,7 +98,7 @@ extension TextFieldsOtp on OTPFastorState  {
         text_color: widget.colorText,
         hint_color: widget.colorHint,
         fontFamily: widget.fontFamily,
-        validatorCustom: ValidatorTemplate.equal( 1 ),
+        validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         onChanged: (s){
           //set value
@@ -125,7 +125,7 @@ extension TextFieldsOtp on OTPFastorState  {
   Widget tf_4(){
     if(widget.countNumber < 4 ) return SizedBox();
 
-    return TextFieldFastor(
+    return TextFieldApp(
         width: widget.widthOTP,
         padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
         maxLength: 1,
@@ -137,7 +137,7 @@ extension TextFieldsOtp on OTPFastorState  {
         hint_color: widget.colorHint,
         fontFamily: widget.fontFamily,
         autovalidateMode: tf4_valid,
-        validatorCustom: ValidatorTemplate.equal( 1 ),
+        validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         onChanged: (s){
           //set value
@@ -164,14 +164,14 @@ extension TextFieldsOtp on OTPFastorState  {
   Widget tf_5(){
     if(widget.countNumber < 5 ) return SizedBox();
 
-    return TextFieldFastor(
+    return TextFieldApp(
         width: widget.widthOTP,
         padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
         maxLength: 1,
         textAlign: TextAlign.center,
         focusNode: tf5_node,
         autovalidateMode: tf5_valid,
-        validatorCustom: ValidatorTemplate.equal( 1 ),
+        validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         decorationBackground: widget.decoration,
         fontSize: widget.fontSize,
@@ -204,7 +204,7 @@ extension TextFieldsOtp on OTPFastorState  {
   Widget tf_6(){
     if(widget.countNumber < 6 ) return SizedBox();
 
-    return TextFieldFastor(
+    return TextFieldApp(
       width: widget.widthOTP,
       padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
       maxLength: 1,
@@ -216,7 +216,7 @@ extension TextFieldsOtp on OTPFastorState  {
       focusNode: tf6_node,
       fontFamily: widget.fontFamily,
       autovalidateMode: tf6_valid,
-      validatorCustom: ValidatorTemplate.equal( 1 ),
+      validatorCustom: ValidatorApp.equal( 1 ),
       keyboardType: TextInputType.number,
       onChanged: (s){
         //set value

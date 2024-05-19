@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SaveFastor {
 
-  static const tag = "SaveFastor";
+  static const tag = "SaveApp";
 
   static SharedPreferences? prefs;
 
@@ -19,18 +19,6 @@ class SaveFastor {
 
   static  Future  init() async {
     prefs = await SharedPreferences.getInstance();
-  }
-
-  static String messageThrowException(){
-    return "You Missed initialize Fastor Plugin, You Need to write the below line at the main() method: \n "
-        + "Fastor.initializeApp();\n";
-        // + "\n"
-        // + "example :\n"
-        // + "class MyApp extends StatelessWidget {\n"
-        // + "\t@override\n"
-        // + "\tWidget build(BuildContext context) {\n"
-        // + "\t\tFastor.initializeApp(context);\n"
-        // + "}\n";
   }
 
   //-----------------------------------------------------------------------  map list

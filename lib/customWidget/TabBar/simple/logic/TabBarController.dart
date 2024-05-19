@@ -1,7 +1,7 @@
-import 'package:fastor_app_ui_widget/customWidget/TabBar/simple/TabBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/TabBar/simple/TabBarApp.dart';
 import 'package:flutter/material.dart';
 
-extension TabBarController on TabBarFastorState {
+extension TabBarController on TabBarAppState {
 
   Color getColorBySelectedStatus(int positionOfCurrentItem){
     if( selectedIndex ==  positionOfCurrentItem) {

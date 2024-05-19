@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:log_debug/log_debug.dart';
 
-class StatusBarConstant {
+class StatusBarSizeHelper {
 
   //-------------------------------------------------------------- variable
 

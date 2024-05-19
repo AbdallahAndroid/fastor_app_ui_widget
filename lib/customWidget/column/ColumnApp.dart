@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColumnFastor extends StatelessWidget {
+class ColumnApp extends StatelessWidget {
 
   List<Widget> children = const <Widget>[];
   MainAxisAlignment? mainAxisAlignment ; // = MainAxisAlignment.start,
@@ -16,7 +16,7 @@ class ColumnFastor extends StatelessWidget {
   Decoration? decoration; // pages: decoration: BorderHelper.top_line()
   Alignment? alignment;
 
-  ColumnFastor({
+  ColumnApp({
 
     //found before at flutter v2.8
     required List<Widget> this.children ,

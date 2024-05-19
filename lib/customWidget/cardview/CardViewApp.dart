@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 
 
-class CardViewTemplate {
+class CardViewApp {
 
   static Widget t({
     required Widget child,

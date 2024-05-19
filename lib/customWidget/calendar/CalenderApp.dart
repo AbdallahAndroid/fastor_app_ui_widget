@@ -9,7 +9,7 @@ typedef CalenderSelectCallback = Function(DateTime selectedDateTime, String sele
 
 enum CalenderTypeFastor { dateStartFromToday, birthday }
 
-class CalenderFastor extends StatefulWidget {
+class CalenderApp extends StatefulWidget {
 
   String? title;
   String? hint;
@@ -24,7 +24,7 @@ class CalenderFastor extends StatefulWidget {
   Decoration? decoration;
   double? height;
 
-  CalenderFastor( {
+  CalenderApp( {
     this.title,
     this.hint,
     this.dateSelected,
@@ -44,12 +44,12 @@ class CalenderFastor extends StatefulWidget {
 
 }
 
-class _CalenderCustomState extends State<CalenderFastor> {
+class _CalenderCustomState extends State<CalenderApp> {
 
   @override
   Widget build(BuildContext context) {
 
-    var column = ColumnFastor( children: [
+    var column = ColumnApp( children: [
       widget.title != null ? titleWidget()! : SizedBox(),
       widget.title != null ? SizedBox( height: 20,) : SizedBox(  ), //margin below title
       tapWidget()

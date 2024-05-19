@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/customWidget/row/RowTemplate.dart';
+import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 
 
-class CheckboxFastor  extends StatelessWidget {
+class CheckboxApp  extends StatelessWidget {
 
 
   BuildContext context;
@@ -24,7 +24,7 @@ class CheckboxFastor  extends StatelessWidget {
   Color? colorInActive;
   Color? colorActive;
 
-  CheckboxFastor({
+  CheckboxApp({
     required this.context,
     required this.value,
     required this.onChanged,
@@ -107,7 +107,7 @@ class CheckboxFastor  extends StatelessWidget {
     var tx = Text(s, textAlign: TextAlign.left, style: myStyle);
 
     //row title
-    var row = RowTemplate.wrapChildren([scale, tx]);
+    var row = RowUtils.wrapChildren([scale, tx]);
 
     //fix default padding at the container when there is padding for click
     if (removePaddingClick == false) {

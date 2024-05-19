@@ -1,10 +1,10 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/row/RowTemplate.dart';
-import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldFastor.dart';
-import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarApp.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
 
 
   Widget totalBarPaginate(){
-    var rows =  RowTemplate.wrapChildren( [
+    var rows =  RowUtils.wrapChildren( [
       txt_total() ,
       tf_pageGoTo(),
       bt_go() 
@@ -30,7 +30,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
 
   Widget txt_total(){
     var txt = "Total "   + widget.maxPage.toString() + " pages Go To Page" ;
-    return TextFastor ( txt ,
+    return TextApp ( txt ,
         fontSize: 15,
     color: Colors.black,
     margin: EdgeInsets.only(left: 10));
@@ -40,7 +40,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
 
 
   Widget tf_pageGoTo() {
-    return TextFieldFastor(
+    return TextFieldApp(
       text_color: Colors.black,
       decorationBackground: BoarderHelper.box(
         // radiusSize: 0,

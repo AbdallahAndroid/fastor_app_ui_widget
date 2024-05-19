@@ -209,28 +209,6 @@ class BoarderHelper extends BaseBoarderHelper{
   }
 
 
-  static BoxDecoration test( {
-    double? radiusSize ,
-    Color? colorBackground,
-    double? widthLine ,
-    Color? colorLine,
-  }) {
-
-    //default
-    radiusSize ??= 10;
-    colorBackground ??= Colors.transparent;
-    colorLine ??= Colors.grey.withOpacity(0.3);
-
-    //width
-    widthLine ??= 1;
-
-    return BaseBoarderHelper.top_line(
-        radiusSize: radiusSize,
-        colorBackground:  colorBackground,
-        widthLine: widthLine,
-        colorLine: colorLine);
-  }
-
 
   static rounded({
     double? radiusSize ,
