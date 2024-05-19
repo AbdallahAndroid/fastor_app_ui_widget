@@ -193,7 +193,7 @@ class ButtonApp extends StatelessWidget {
     return TextFastor(text,
         textAlign: textAlign!,
         color: textColor !,
-        fontSize: textFontSize,
+        fontSize: textFontSize!,
         padding: padding!,
         fontFamily: fontFamily);
   }

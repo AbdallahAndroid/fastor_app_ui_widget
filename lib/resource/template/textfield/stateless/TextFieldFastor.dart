@@ -3,8 +3,6 @@ import 'package:fastor_app_ui_widget/resource/template/textfield/validator/Valid
 import 'package:flutter/material.dart';
 
 
-
-
 class TextFieldFastor extends StatelessWidget {
 
   // validate

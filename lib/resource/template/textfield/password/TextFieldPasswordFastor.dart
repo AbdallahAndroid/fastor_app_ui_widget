@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldPasswordFastor extends StatefulWidget {
@@ -173,9 +175,9 @@ class _TextFieldPasswordState extends State<TextFieldPasswordFastor> {
       controller: widget.controller,
 
       /// password config
-      validatorCustom: widget.validatorCustom?? ValidatorTemplate.pass(error_text: "*Enter password at least 8 char.".arf("* ادخل كلمة المرور")),
+      validatorCustom: widget.validatorCustom?? ValidatorTemplate.pass(error_text: "*Enter password at least 8 char." ),
       autovalidateMode: widget.autovalidateMode??AutovalidateMode.onUserInteraction,
-      hint_text: widget.hint_text?? "Enter password".arf( "كملة المرور"),
+      hint_text: widget.hint_text?? "Enter password" ,
       maxLines: 1, // must in type password to write lines max is "1"  to fix crash
       obscureText: ! isShowCharacter,
       onChanged: widget.onChanged,

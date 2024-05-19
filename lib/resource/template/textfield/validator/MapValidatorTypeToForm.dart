@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorType.dart';
 import 'package:flutter/material.dart';
 
 class MapValidatorTypeToForm {

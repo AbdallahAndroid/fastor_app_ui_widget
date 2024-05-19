@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 import 'package:flutter/material.dart';
 
 typedef TextFieldEmailListener = Function(String email);
@@ -54,28 +56,8 @@ class _TextFieldEmailOrPhoneState extends State<TextFieldEmailOrPhoneFastor> {
   @override
   Widget build(BuildContext context) {
     return textFieldPhone();
-    // return Stack(children: [
-    //   textFieldPhone(),
-    //   if (isHaveIcon()) choosePositionIconByDirectionArabicOrEnglish()
-    //
-    // ]);
   }
 
-  // Positioned choosePositionIconByDirectionArabicOrEnglish(){
-  //   if( widget.textDirection == TextDirection.ltr ) {
-  //     return  Positioned(
-  //       child: chooseIcon()!,
-  //       right: 0,
-  //       bottom: 0,
-  //     );
-  //   } else {
-  //     return  Positioned(
-  //       child: chooseIcon()!,
-  //       left: 0,
-  //       bottom: 0,
-  //     );
-  //   }
-  // }
 
   Widget textFieldPhone() {
     var mobile = MobileCountryFastor(

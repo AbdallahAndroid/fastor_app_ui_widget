@@ -72,7 +72,7 @@ class TimerFastorState extends State<TimerCountDownFastor> {
         child:  TextFastor( mm_ss_shape,
           color: widget.color,
           fontFamily: widget.fontFamily,
-          fontSize: widget.fontSize,
+          fontSize: widget.fontSize??15,
         )
     );
   }

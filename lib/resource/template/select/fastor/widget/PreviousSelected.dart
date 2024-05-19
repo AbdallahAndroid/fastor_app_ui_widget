@@ -20,7 +20,7 @@ extension PreviousSelected on DropdownFastorState {
 
     return  TextFastor( widget.hintText??"select",
         padding: widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
-        fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+        fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize! : 15 ,
         fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
         color:   widget.colorHintText,
         textAlign: widget.textAlignItemDropdown ?? TextAlign.left  );
@@ -33,7 +33,7 @@ extension PreviousSelected on DropdownFastorState {
       padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
       color: getColorItemTextWhenSelected( ),
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
-      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
+      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize! : 15 ,
       fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
       textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
     );

@@ -7,7 +7,9 @@ import 'BaseTextTemplate.dart';
 
 /// text view
 class TextFastor extends StatelessWidget {
+
   //------------------------------------------------------------------ varaible
+
   String s;
   TextAlign? textAlign ; //= TextAlign.left;
   TextDecoration? textDecoration; // = TextDecoration.none;
