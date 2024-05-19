@@ -1,7 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
+import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/toolbar/simple/ToolbarSimpleApp.dart';
 import 'package:flutter/material.dart';

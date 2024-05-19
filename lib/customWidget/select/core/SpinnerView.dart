@@ -251,7 +251,7 @@ class SpinnerViewState extends State<SpinnerView> {
       dropboxAndBoarder(),
 
       /// icon
-      PositionedFastor.directional(
+      PositionedApp.directional(
         textDirection:  widget.textDirection!,
         child: widget.iconDropdown!,
         top: marginTopIcon,

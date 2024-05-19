@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 @Deprecated( "use class (PositionedFastor) instead ")
-class PositionFastor  {
+class PositionApp  {
 
 
   static Positioned directional( {

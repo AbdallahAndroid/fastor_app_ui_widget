@@ -1,7 +1,7 @@
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:flutter/material.dart';
 
-class PositionedFastor {
+class PositionedApp {
 
 
   static Positioned langFastor( {

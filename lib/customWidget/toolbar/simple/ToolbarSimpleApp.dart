@@ -109,13 +109,13 @@ class _ToolbarSimple extends  State<ToolbarSimpleApp>   {
 
 
       //back
-      PositionedFastor.langFastor( child:  bt_back(), left: 0,   top: 0  ),
+      PositionedApp.langFastor( child:  bt_back(), left: 0,   top: 0  ),
 
       //button left
-      PositionedFastor.langFastor(child: bt_left() , left: 0, top: 0 , bottom: 0 ),
+      PositionedApp.langFastor(child: bt_left() , left: 0, top: 0 , bottom: 0 ),
 
       //button right
-      PositionedFastor.langFastor(child: bt_right() , right: 0, top: 0 , bottom: 0 ),
+      PositionedApp.langFastor(child: bt_right() , right: 0, top: 0 , bottom: 0 ),
 
 
     ],);
