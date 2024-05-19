@@ -1,4 +1,9 @@
 
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
+import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
+import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 import 'package:flutter/material.dart';
 
 

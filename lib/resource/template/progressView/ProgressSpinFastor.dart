@@ -10,12 +10,9 @@ class ProgressSpinFastor extends StatelessWidget {
 
 
   ProgressSpinFastor( {
-    this.color,
-    this.size
+    required this.color,
+    required this.size
   }){
-    color ??= DSColor.ds_progress;
-    size ??= 40.0;
-
     /**
      * the spin libriry not working when size less than 28
      */

@@ -10,19 +10,12 @@ class ProgressCircleFastor extends StatelessWidget {
 
 
   ProgressCircleFastor( {
-    this.color,
-    this.size
-  }){
-    color ??= DSColor.ds_progress;
-    size ??= 40.0;
-
-  }
-
+    required this.color,
+    required this.size,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var colorAlpha = color!.withOpacity( 0.5);
-
     var prg = CircularProgressIndicator( color: color);
 
     //container
