@@ -8,7 +8,7 @@ import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircleFastor.dart';
 
 ///class button ui
-class ButtonFastor extends StatelessWidget {
+class ButtonApp extends StatelessWidget {
   //------------------------------------------------------------------
   String text;
 
@@ -37,7 +37,7 @@ class ButtonFastor extends StatelessWidget {
   Color? colorProgress;
 
 
-  ButtonFastor(
+  ButtonApp(
       this.text,
       this.onPressed,
       {

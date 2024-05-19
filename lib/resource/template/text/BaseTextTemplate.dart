@@ -1,14 +1,5 @@
 
-
-
-
-
-
 import 'package:flutter/material.dart';
-
-
-
-import 'package:fastor_app_ui_widget/resource/template/constants/TemplateSize.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 
 
@@ -17,18 +8,17 @@ abstract class BaseTextTemplate  {
 
   static Widget normal(String?  s ,  {
     TextAlign textAlign = TextAlign.left,
-    Color? colorOpt = Colors.black ,
+     double?  width,
+     double?  height,
+    Color? colorText = Colors.black ,
     TextDecoration? textDecoration = TextDecoration.none,
-    double dimenOpt = 0,
+    double fontSize = 20,
     String? fontFamily,
     EdgeInsets? margin,
     EdgeInsets? padding = EdgeInsets.zero,
 
     Decoration? decoration_background, // must before use this use also width fixed and height
-    double? width,
-    double? height,
 
-    TemplateSize? templateSize = TemplateSize.wrap,
     VoidCallback? onPressed,
     Alignment? align = Alignment.topLeft,
 
@@ -51,46 +41,36 @@ abstract class BaseTextTemplate  {
 
 
 
-    //set default dimen
-    var myDimen = DSDimen.text_level_1;
-    if ( dimenOpt != 0 ) {
-      myDimen = dimenOpt;
-    }
 
-    //color
-    Color myColor = DSColor.text_h1;
-    if  ( colorOpt != null ) {
-      myColor = colorOpt;
-    }
 
     //style
     var myStyle = TextStyle(
-        fontSize: myDimen,
-        color: myColor,
+        fontSize: fontSize,
+        color: colorText,
         fontFamily: fontFamily,
       height: 1.0, //space between lines
       decoration:  textDecoration,
-      decorationColor: myColor,
+      decorationColor: colorText,
     );
 
     //view
-    Widget viewChild = _chooseChildWhenPressed(s, textAlign, myStyle, maxLines, onPressed , selectedTextAllow, dsLevel);
+    Widget viewChild = _chooseChildWhenPressed(s, textAlign, myStyle, maxLines, onPressed , selectedTextAllow );
 
-    //get fixed size
-    Size? fixedSize = DesignSystemTools.getFixedSize(width, height, dimenOpt);
 
     //size
     Widget? container = null;
-    if ( fixedSize != null ) {
+    if ( width != null ) {
+      //get fixed size
+      Size? fixedSize = Size(width!, height??fontSize );
       container = ContainerTemplate.fixedSize( viewChild, fixedSize, margin, padding, decoration_background, align)  ;
      // Log.i( "fixed size");
-    } else if ( templateSize == TemplateSize.match ) {
-      container = ContainerTemplate.matchParent( viewChild, margin : margin, padding : padding, decoration : decoration_background, align : align)  ;
-    }  else {
-      container = ContainerTemplate.wrapContent( viewChild,
-          margin: margin, padding : padding,
-          decoration: decoration_background,
-          align : align)  ;
+    }   else {
+      container = Container(  child: viewChild,
+          alignment: align,
+          margin: margin,
+          padding : padding,
+          decoration: decoration_background
+      )  ;
     }
 
     return container;
@@ -100,14 +80,14 @@ abstract class BaseTextTemplate  {
   //-------------------------------------------------------------------------- base
 
   static Widget _text_without_surround(String s, TextAlign textAlign,
-      TextStyle myStyle, int? maxLines, bool selectedTextAllow, LevelDS dsLevel) {
+      TextStyle myStyle, int? maxLines, bool selectedTextAllow ) {
 
     //choose type
     Widget chooseTxt ;
     if( selectedTextAllow ) {
       chooseTxt =  SelectableText( s ,
           // Cursor
-          cursorColor: DSColor.cursor_selectedText,
+          cursorColor: Colors.grey,
           showCursor: selectedTextAllow,
           //style
           textAlign: textAlign,
@@ -130,10 +110,10 @@ abstract class BaseTextTemplate  {
 
 
   static Widget _chooseChildWhenPressed(String s, TextAlign textAlign, TextStyle myStyle,
-      int? maxLines, VoidCallback? onPressed, bool selectedTextAllow, LevelDS dsLevel) {
+      int? maxLines, VoidCallback? onPressed, bool selectedTextAllow ) {
 
     //simple text
-    Widget text   = _text_without_surround(s ,  textAlign, myStyle, maxLines , selectedTextAllow, dsLevel);
+    Widget text   = _text_without_surround(s ,  textAlign, myStyle, maxLines , selectedTextAllow);
 
     if( onPressed != null ) {
       return _GestureDetector(text, onPressed);

@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
-import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/button/ButtonApp.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
@@ -75,7 +75,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
   }
   
   Widget bt_go(){
-    return ButtonFastor(  "Go"  , () {
+    return ButtonApp(  "Go"  , () {
 
       goToClickFunction();
 
