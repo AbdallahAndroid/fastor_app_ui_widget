@@ -14,9 +14,9 @@ class CardViewApp {
     required double height,
 
     //shadow
-    Color? colorBoarderLine = Colors.transparent,
-    Color? shadowColor,
-    double? elevationValue,
+    Color? colorBoarderLine = Colors.grey,
+    Color? shadowColor = Colors.grey,
+    double? elevationValue = 3 ,
 
     //space
     EdgeInsets? margin,

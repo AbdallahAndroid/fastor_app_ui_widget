@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hexcolor/hexcolor.dart';
-import 'package:log_debug/log_debug.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
 class StatusBarSizeHelper {
 
@@ -40,7 +40,7 @@ class StatusBarSizeHelper {
       //Log.i( "StatusBarConstant - getHeight() - result: $result ");
       return paddingTop!;
     }  catch (err) {
-      LogDebug.e( "StatusBarConstant - getHeight() - err: $err ");
+      Log.e( "StatusBarConstant - getHeight() - err: $err ");
       return 65;
     }
 

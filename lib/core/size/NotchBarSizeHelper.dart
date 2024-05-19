@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:log_debug/log_debug.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
 class NotchBarSizeHelper {
 
@@ -25,7 +25,7 @@ class NotchBarSizeHelper {
     //  Log.i( "NotchBarConstant - getHeight() - result: $r2 ");
       return paddingBottom!;
     }  catch (err) {
-      LogDebug.e( "NotchBarConstant - getHeight() - err: $err ");
+      Log.e( "NotchBarConstant - getHeight() - err: $err ");
       return 65;
     }
 

@@ -6,9 +6,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fastor_app_ui_widget/core/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
 
 import 'package:fastor_app_ui_widget/core/boarder/BorderRadiusTools.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
-import 'package:log_debug/log_debug.dart';
 
 
 
@@ -111,10 +111,10 @@ class ImageApp extends StatelessWidget  {
       bool isFound = context != null;
       return isFound;
     } on Error catch(er){
-      LogDebug.k(tag, "isVisibleWidget()  Error "   + er.toString()  );
+      Log.k(tag, "isVisibleWidget()  Error "   + er.toString()  );
       return false;
     } on Exception catch(ex){
-      LogDebug.k(tag, "isVisibleWidget()  Exception "   + ex.toString()  );
+      Log.k(tag, "isVisibleWidget()  Exception "   + ex.toString()  );
       return false;
     }
   }

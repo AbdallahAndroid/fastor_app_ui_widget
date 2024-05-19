@@ -35,7 +35,6 @@ dependencies:
   country_code_picker:
   timezone_to_country:
   country_dial_code:
-  log_debug:
   http:
   dio:
   pretty_dio_logger: ^1.1.1

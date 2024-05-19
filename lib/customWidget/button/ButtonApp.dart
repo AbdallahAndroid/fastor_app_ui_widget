@@ -78,6 +78,7 @@ class ButtonApp extends StatelessWidget {
 
     showProgress ??= false;
 
+    background ??= Colors.grey.withOpacity(0.5);
 
     setDefaultProgressSize();
   }
@@ -181,13 +182,6 @@ class ButtonApp extends StatelessWidget {
 
   //------------------------------------------------------------------- button style and text theme
 
-  ButtonStyle getButtonStyle(){
-    //style button
-    return _getButtonStyle(background!, width, height,
-        borderLine, borderRadius, textFontSize! );
-  }
-
-
   Widget _getTextWidget(String text,) {
     //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
     return TextApp(text,
@@ -198,26 +192,31 @@ class ButtonApp extends StatelessWidget {
         fontFamily: fontFamily);
   }
 
-  static ButtonStyle _getButtonStyle(Color backgroundColor_ds, double? width,
-      double? height, Color? borderLine, double? borderRadius, double dimen) {
+
+  ButtonStyle getButtonStyle(){
+
     //boarder - line
-    borderLine ??= backgroundColor_ds;
-    BorderSide side = BorderSide(color: borderLine, width: 1);
+    borderLine ??= background;
+    BorderSide side = BorderSide(color: borderLine!, width: 1);
 
     //boarder - radius
     var shape = RoundedRectangleBorder(
         borderRadius: BorderRadius.circular( borderRadius??5));
 
+    var size = null;
+    if( width != null ) {
+      size = Size(width!, height??textFontSize!);
+    }
 
     //style
     var style = ElevatedButton.styleFrom(
         minimumSize: Size.zero,
         padding: EdgeInsets.zero,
-        fixedSize: Size(width!, height!),
+        fixedSize: size,
 
        //need to fix [ANALYSIS ISSUE] instead of "primary"
-        foregroundColor: backgroundColor_ds,
-        backgroundColor: backgroundColor_ds,
+        foregroundColor: background,
+        backgroundColor: background,
 
         side: side,
         shape: shape

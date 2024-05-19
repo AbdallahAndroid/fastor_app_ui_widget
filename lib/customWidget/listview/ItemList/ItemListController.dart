@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:log_debug/log_debug.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
+
 
 typedef ListViewCreateCallBack = Function(List<Widget> listWidget, List<dynamic> listState);
 
@@ -63,7 +64,7 @@ abstract class  ItemListController {
     var elevation = (elevationUsed  * 2) /3 ;
     var radius = radiusUsed  * 4;
     var r = this.getHeightItem() +   elevation + radius;
-    LogDebug.i( "getHeightFrame() - r: " + r.toString()  );
+    Log.i( "getHeightFrame() - r: " + r.toString()  );
     return r; //225
   }
 

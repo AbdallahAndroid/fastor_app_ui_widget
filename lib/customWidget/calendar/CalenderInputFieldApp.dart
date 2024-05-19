@@ -7,14 +7,14 @@ import 'package:intl/intl.dart';
 
 typedef CalenderSelectCallback = Function(DateTime selectedDateTime, String selectedDate );
 
-enum CalenderTypeFastor { dateStartFromToday, birthday }
+enum CalenderTypeApp { dateStartFromToday, birthday }
 
-class CalenderApp extends StatefulWidget {
+class CalenderInputFieldApp extends StatefulWidget {
 
   String? title;
   String? hint;
   String? dateSelected;
-  CalenderTypeFastor? calenderTypeFastor;
+  CalenderTypeApp? calenderTypeApp;
   CalenderSelectCallback callback;
   Color? colorTextUnSelected;
   Color? colorTextSelected;
@@ -24,12 +24,12 @@ class CalenderApp extends StatefulWidget {
   Decoration? decoration;
   double? height;
 
-  CalenderApp( {
+  CalenderInputFieldApp( {
     this.title,
     this.hint,
     this.dateSelected,
     required this.callback,
-    required this.calenderTypeFastor,
+    required this.calenderTypeApp,
     this.colorTextSelected,
     this.colorTextUnSelected,
     this.colorTextTitle,
@@ -44,7 +44,7 @@ class CalenderApp extends StatefulWidget {
 
 }
 
-class _CalenderCustomState extends State<CalenderApp> {
+class _CalenderCustomState extends State<CalenderInputFieldApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -134,9 +134,9 @@ class _CalenderCustomState extends State<CalenderApp> {
   Future  showDialogPickerDate( ) async {
     //Log.i( "showDialogPickerDate( )");
     DateTime? selectTime =  null;
-    if( widget.calenderTypeFastor == CalenderTypeFastor.dateStartFromToday   ) {
+    if( widget.calenderTypeApp == CalenderTypeApp.dateStartFromToday   ) {
       selectTime = await _showDialogStartFromToday();
-    } else if( widget.calenderTypeFastor == CalenderTypeFastor.birthday   ) {
+    } else if( widget.calenderTypeApp == CalenderTypeApp.birthday   ) {
       selectTime = await _showDialogBirthday();
     }
 
