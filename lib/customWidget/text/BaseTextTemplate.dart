@@ -1,8 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/customWidget/container/ContainerTemplate.dart';
-
-
 
 abstract class BaseTextTemplate  {
 
@@ -61,8 +57,16 @@ abstract class BaseTextTemplate  {
     Widget? container = null;
     if ( width != null ) {
       //get fixed size
-      Size? fixedSize = Size(width!, height??fontSize );
-      container = ContainerTemplate.fixedSize( viewChild, fixedSize, margin, padding, decoration_background, align)  ;
+      // Size? fixedSize = Size(width!, height??fontSize );
+      container = Container (
+          child: viewChild,
+          width: width,
+          height: height??fontSize,
+          margin: margin,
+          padding: padding,
+          decoration:  decoration_background,
+          alignment: align,
+      )  ;
      // Log.i( "fixed size");
     }   else {
       container = Container(  child: viewChild,

@@ -1,6 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/customWidget/column/ColumnFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

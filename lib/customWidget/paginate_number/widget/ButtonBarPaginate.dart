@@ -1,8 +1,6 @@
 
 
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/ButtonNextPreviousController.dart';
@@ -14,9 +12,9 @@ extension ButtonBarPaginate on PaginateBarState {
 
 
   Widget buttonBarPaginate() {
-    return ContainerTemplate.wrapContent(
-        _buttonPrevousAndNumbersPagesListAndButtonNext()
-        , align: Alignment.center,
+    return Container(
+        child: _buttonPrevousAndNumbersPagesListAndButtonNext(),
+        alignment: Alignment.center,
       margin: EdgeInsets.only( left: 10 )
     );
   }

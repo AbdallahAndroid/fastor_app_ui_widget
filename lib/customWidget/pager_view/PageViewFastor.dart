@@ -1,6 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/column/ColumnFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:flutter/material.dart';
 
 class PageViewFastor extends StatefulWidget {

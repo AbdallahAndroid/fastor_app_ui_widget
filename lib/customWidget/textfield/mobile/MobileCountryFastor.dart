@@ -1,5 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fastor_app_ui_widget/customWidget/column/ColumnFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/row/RowScrollFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldFastor.dart';
