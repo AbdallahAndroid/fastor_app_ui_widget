@@ -1,6 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
+import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/toolbar/simple/ToolbarSimpleFastor.dart';

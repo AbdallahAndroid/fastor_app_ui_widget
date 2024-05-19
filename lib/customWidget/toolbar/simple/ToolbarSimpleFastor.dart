@@ -1,8 +1,8 @@
 
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
-import 'package:fastor_app_ui_widget/core/lang/PositionedFastor.dart';
+import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:flutter/material.dart';
 

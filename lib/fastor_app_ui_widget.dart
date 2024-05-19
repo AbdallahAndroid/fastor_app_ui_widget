@@ -75,20 +75,20 @@
 // import 'package:fastor_app_ui_widget/customWidget/textfield/template/TextFieldTemplate.dart';
 //
 // import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorTemplate.dart';
-// import 'package:fastor_app_ui_widget/core/cache/ClipboardFastor.dart';
-// export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/ClipboardFastor.dart';
-// import 'package:fastor_app_ui_widget/core/cache/SaveFastor.dart';
-// export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveFastor.dart';
+// import 'package:fastor_app_ui_widget/core/cache/ClipboardHelper.dart';
+// export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/ClipboardHelper.dart';
+// import 'package:fastor_app_ui_widget/core/cache/SaveApp.dart';
+// export 'package:fastor_app_ui_widget/resource/toolsFastor/cache/SaveApp.dart';
 //
 // import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 // import 'package:fastor_app_ui_widget/core/device/deviceChangeSize/ListenerChangeDeviceSize.dart';
-// import 'package:fastor_app_ui_widget/core/lang/PositionedFastor.dart';
-// export 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionedFastor.dart';
+// import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
+// export 'package:fastor_app_ui_widget/resource/toolsFastor/lang/PositionedApp.dart';
 //
 // import 'package:fastor_app_ui_widget/core/log/Log.dart';
 // import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
-// import 'package:fastor_app_ui_widget/core/network/parse/ApiParserFastor.dart';
-// export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiParserFastor.dart';
+// import 'package:fastor_app_ui_widget/core/network/parse/ApiParserTools.dart';
+// export 'package:fastor_app_ui_widget/resource/toolsFastor/network/parse/ApiParserTools.dart';
 //
 // import 'package:fastor_app_ui_widget/core/network/parse/ApiTools.dart';
 // import 'package:fastor_app_ui_widget/core/timer/ToolsWait.dart';
@@ -130,8 +130,8 @@
 // import 'resource/template/timer/TimerCountDownFastor.dart';
 // export 'resource/template/timer/TimerCountDownFastor.dart';
 //
-// import 'resource/toolsFastor/lang/PositionFastor.dart';
-// export 'resource/toolsFastor/lang/PositionFastor.dart';
+// import 'resource/toolsFastor/lang/PositionApp.dart';
+// export 'resource/toolsFastor/lang/PositionApp.dart';
 // import 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 // export 'resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 // import 'resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
@@ -209,8 +209,8 @@
 //
 //
 // //-------------------------------------------------------- both export and improt
-// import 'package:fastor_app_ui_widget/resource/uiFastor/scroll/FastorScrollTheme.dart';
-// export 'package:fastor_app_ui_widget/resource/uiFastor/scroll/FastorScrollTheme.dart';
+// import 'package:fastor_app_ui_widget/resource/uiFastor/scroll/AppScrollTheme.dart';
+// export 'package:fastor_app_ui_widget/resource/uiFastor/scroll/AppScrollTheme.dart';
 // import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 // export 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 //
@@ -252,8 +252,8 @@
 // import 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';
 // import 'resource/toolsFastor/initialize_app/Fastor.dart';
 // export 'resource/toolsFastor/initialize_app/Fastor.dart';
-// import 'resource/toolsFastor/lang/LangFastor.dart';
-// export 'resource/toolsFastor/lang/LangFastor.dart';
+// import 'resource/toolsFastor/lang/LangApp.dart';
+// export 'resource/toolsFastor/lang/LangApp.dart';
 // import 'resource/toolsFastor/navigate/NavigationTools.dart';
 // export 'resource/toolsFastor/navigate/NavigationTools.dart';
 // export 'resource/template/toolbar/simple/ToolbarSimpleFastor.dart';

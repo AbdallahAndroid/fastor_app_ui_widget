@@ -3,7 +3,7 @@ import 'package:fastor_app_ui_widget/customWidget/TabBar/simple/TabBarFastor.dar
 import 'package:fastor_app_ui_widget/customWidget/TabBar/simple/logic/TabBarController.dart';
 import 'package:fastor_app_ui_widget/customWidget/column/ColumnFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextFastor.dart';
-import 'package:fastor_app_ui_widget/core/size/TextWidthCalculatorFastor.dart';
+import 'package:fastor_app_ui_widget/core/size/TextWidthCalculatorApp.dart';
 import 'package:flutter/material.dart';
 
 extension ItemTabBarFastorExtension on TabBarFastorState {
