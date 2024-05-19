@@ -1,8 +1,9 @@
 
 
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircleFastor.dart';
 
@@ -189,10 +190,10 @@ class ButtonFastor extends StatelessWidget {
 
   Widget _getTextWidget(String text,) {
     //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
-    return TextTemplate.t(text,
+    return TextFastor(text,
         textAlign: textAlign!,
         color: textColor !,
-        dimen: textFontSize,
+        fontSize: textFontSize,
         padding: padding!,
         fontFamily: fontFamily);
   }

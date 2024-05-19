@@ -2,7 +2,7 @@ import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 
@@ -30,7 +30,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
 
   Widget txt_total(){
     var txt = "Total "   + widget.maxPage.toString() + " pages Go To Page" ;
-    return TextTemplate.t( txt ,
+    return TextFastor ( txt ,
     color: Colors.black,
     margin: EdgeInsets.only(left: 10));
   }

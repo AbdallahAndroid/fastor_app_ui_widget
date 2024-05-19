@@ -2,7 +2,7 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/NumberController.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ extension BoxNumberItem on PaginateBarState {
     required int page ,
     required bool isSelected}){
 
-    var textWidget =  TextTemplate.t( "" + page.toString()  ,
+    var textWidget =  TextFastor( "" + page.toString()  ,
         color: Colors.black,
         padding: EdgeInsets.symmetric( horizontal: 20 , vertical: 6),
         margin: EdgeInsets.only( right: 20 ),

@@ -1,6 +1,7 @@
 
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/logic/TabBarController.dart';
+import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/core/size/TextWidthCalculatorFastor.dart';
 import 'package:flutter/material.dart';

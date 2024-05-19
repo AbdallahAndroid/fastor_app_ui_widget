@@ -1,9 +1,10 @@
 
 
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
+import 'package:fastor_app_ui_widget/core/lang/PositionedFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 class ToolbarSimpleFastor extends StatefulWidget {
 
@@ -23,6 +24,7 @@ class ToolbarSimpleFastor extends StatefulWidget {
   Widget? buttonLeft;
   Widget? buttonRight;
   BuildContext pageContext;
+  Color? colorBackgroundToolbar;
 
   ToolbarSimpleFastor(
       this.pageContext, this.title ,{
@@ -33,7 +35,8 @@ class ToolbarSimpleFastor extends StatefulWidget {
         this.titleColor,
         this.titleMargin,
         this.iconSize,
-        this.iconColorBack
+        this.iconColorBack,
+        this.colorBackgroundToolbar
       } ) {
     //set values
     this.hideBackButton = hideBackButton;
@@ -45,7 +48,9 @@ class ToolbarSimpleFastor extends StatefulWidget {
 
     //  Log.i( "ToolbarSimple - myTitle: $myTitle /onClickListener: $onClickListener");
 
-    titleColor ??= DSColor.toolbar_title;
+    //toolbar
+    titleColor ??= Colors.white;
+    colorBackgroundToolbar ??= Colors.black;
   }
 
 
@@ -97,7 +102,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
     return Stack( children: [
 
       EmptyView.colored( DeviceTools.getWidth( context),
-          ToolbarSimpleFastor.frameHeight, DSColor.ds_background_toolbar),
+          ToolbarSimpleFastor.frameHeight, widget.colorBackgroundToolbar!),
 
       //title
       Positioned( child:  tv_title(), left: 0, right: 0 , top: 0 ),
@@ -123,7 +128,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
     var txt =  Text( widget.title,
         textAlign: TextAlign.center,
         style: TextStyle(
-            fontSize: DSDimen.text_level_1,
+            fontSize: 20,
             color: widget.titleColor,
             decoration:  TextDecoration.none
         )
@@ -150,7 +155,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleFastor>   {
         height: ToolbarSimpleFastor.frameHeight ,
         alignment: Alignment.center,
         // margin: EdgeInsets.only( top: 15 ),
-        padding: EdgeInsets.symmetric( horizontal: DSDimen.space_parent),
+        padding: EdgeInsets.symmetric( horizontal: 20 ),
         child: icon);
 
     return GestureDetector( child: ct ,

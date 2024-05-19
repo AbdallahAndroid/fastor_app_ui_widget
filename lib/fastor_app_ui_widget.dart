@@ -64,7 +64,7 @@
 //
 // import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 // export 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
-// import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+// import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 // import 'package:fastor_app_ui_widget/resource/template/textfield/mobile/MobileCountryFastor.dart';
 // import 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFieldFastor.dart';
 // export 'package:fastor_app_ui_widget/resource/template/textfield/otp/OTPTextFieldFastor.dart';
