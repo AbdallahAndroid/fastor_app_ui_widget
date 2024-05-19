@@ -3,7 +3,7 @@ import 'dart:ui';
 
 
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
 import 'package:flutter/material.dart';
 

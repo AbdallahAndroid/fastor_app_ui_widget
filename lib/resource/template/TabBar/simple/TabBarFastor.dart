@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/ItemTabBarFastor.dart';
 import 'package:flutter/material.dart';
 

@@ -1,8 +1,8 @@
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/logic/TabBarController.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/size/TextWidthCalculatorFastor.dart';
+import 'package:fastor_app_ui_widget/core/size/TextWidthCalculatorFastor.dart';
 import 'package:flutter/material.dart';
 
 extension ItemTabBarFastorExtension on TabBarFastorState {

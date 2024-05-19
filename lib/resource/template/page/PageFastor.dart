@@ -2,13 +2,13 @@
 
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
 import 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/state/FastorStateManagement.dart';
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/state/FastorStateManagement.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';

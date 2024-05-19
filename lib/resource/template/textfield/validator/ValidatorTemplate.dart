@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:flutter/material.dart';
 
 class ValidatorTemplate {

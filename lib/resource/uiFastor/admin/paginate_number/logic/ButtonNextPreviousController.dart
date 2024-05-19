@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/logic/NumberController.dart';
 

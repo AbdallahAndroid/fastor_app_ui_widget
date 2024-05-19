@@ -1,8 +1,8 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

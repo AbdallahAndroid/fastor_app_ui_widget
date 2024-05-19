@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/resource/resources/boarder/BorderRadiusTools.dart';
+import 'package:fastor_app_ui_widget/core/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
 
 

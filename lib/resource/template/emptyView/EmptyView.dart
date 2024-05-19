@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/toolsFastor/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:flutter/material.dart';
 
 class EmptyView {

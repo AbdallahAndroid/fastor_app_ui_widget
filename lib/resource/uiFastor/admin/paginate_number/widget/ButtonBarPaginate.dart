@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/fastor_app_ui_widget.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';

@@ -1,8 +1,8 @@
 
-import 'package:fastor_app_ui_widget/resource/resources/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
-import 'package:fastor_app_ui_widget/resource/toolsFastor/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
