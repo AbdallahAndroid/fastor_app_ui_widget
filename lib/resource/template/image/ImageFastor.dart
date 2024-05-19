@@ -7,7 +7,6 @@ import 'package:fastor_app_ui_widget/core/device/deviceChangeSize/ListenerChange
 
 import 'package:fastor_app_ui_widget/core/boarder/BorderRadiusTools.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:log_debug/log_debug.dart';
 
@@ -300,10 +299,9 @@ class ImageFastor extends StatelessWidget  {
     );
 
     var sizeBox = SizedBox(child:  cont,
-        width:  EdgeInsetsTools.getNetSizeAfterPadding(width, padding!),
-        height:  EdgeInsetsTools.getNetSizeAfterPadding(height, padding!)
+        width:  width + padding!.left + padding!.right,
+        height:   height +  padding!.top + padding!.bottom
     );
-
 
     return clickOnThisArea(sizeBox);
   }

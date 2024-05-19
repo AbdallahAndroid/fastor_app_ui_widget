@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Fastor.initializeApp( );
+  // await Fastor.initializeApp( );
   // runApp(const MyApp());
 }
