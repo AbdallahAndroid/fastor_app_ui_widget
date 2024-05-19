@@ -116,7 +116,7 @@
 // import 'package:fastor_app_ui_widget/core/network/dio/NetworkConfigDio.dart';
 // export 'package:fastor_app_ui_widget/resource/toolsFastor/network/dio/NetworkConfigDio.dart';
 //
-// import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
+// import 'package:fastor_app_ui_widget/resource/template/textfield/regular/TextFieldFastor.dart';
 // export 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 //
 // import 'core/boarder/BorderRadiusTools.dart';

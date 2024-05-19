@@ -359,16 +359,16 @@ class TextFieldFastor extends StatelessWidget {
     }
 
 
-    var boarderSide = BorderSide(color: DSColor.ds_textfield_boarder_line,
+    var boarderSide = BorderSide(color: Colors.grey,
         width: widthUnderLine);
 
     var enabledBorder =  OutlineInputBorder(
-      borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
+      borderRadius: BorderRadius.circular(10 ),
       borderSide:    boarderSide,
     );
 
     var  focusedBorder  = OutlineInputBorder(
-      borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2), //32.0
+      borderRadius: BorderRadius.circular( 10 ), //32.0
       borderSide:  boarderSide  ,
     );
 

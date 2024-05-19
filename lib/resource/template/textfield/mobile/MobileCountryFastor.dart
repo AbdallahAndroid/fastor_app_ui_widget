@@ -2,7 +2,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/row/RowScrollFastor.dart';
-import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/regular/TextFieldFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
 

@@ -1,5 +1,6 @@
 
-import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/regular/TextFieldFastor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:flutter/material.dart';
 
