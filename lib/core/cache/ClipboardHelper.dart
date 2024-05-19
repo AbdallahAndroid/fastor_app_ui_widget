@@ -25,7 +25,7 @@ class ClipboardText extends StatelessWidget {
 
 //------------------------------------------------------------------------ background
 
-class ClipboardFastor {
+class ClipboardHelper {
 
   static Future save(String valueToSave ) async {
 
