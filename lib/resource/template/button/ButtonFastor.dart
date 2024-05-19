@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircleFastor.dart';
@@ -28,7 +27,6 @@ class ButtonFastor extends StatelessWidget {
   VoidCallback? onLongPress;
   EdgeInsets? margin;
   EdgeInsets? padding;
-  LevelDS? levelDS; // = LevelDS.l1;
   TextAlign? textAlign ; //= TextAlign.center;
   Alignment? gravityLayout; //container alignment
 
@@ -37,23 +35,18 @@ class ButtonFastor extends StatelessWidget {
   double? sizeProgress;
   Color? colorProgress;
 
-  Color? textColor_ds;
-
-  Color? backgroundColor_ds;
-  // double? textDimen_ds;
-  String? font_ds;
 
   ButtonFastor(
       this.text,
       this.onPressed,
       {
-        this.textColor,
+        this.textColor = Colors.black,
         this.showProgress,
         this.sizeProgress,
-        this.colorProgress,
-        this.textFontSize  ,
+        this.colorProgress = Colors.yellow,
+        this.textFontSize  = 16 ,
         this.fontFamily,
-        this.background,
+        this.background = Colors.grey,
         this.width,
         this.height,
         this.borderLine,
@@ -62,10 +55,8 @@ class ButtonFastor extends StatelessWidget {
         this.onLongPress,
         this.margin,
         this.padding,
-        this.levelDS ,
         this.textAlign = TextAlign.center ,
         this.gravityLayout,
-        this.font_ds
       }
       ){
     setDefaultValue();
@@ -75,27 +66,14 @@ class ButtonFastor extends StatelessWidget {
   //------------------------------------------------------------------------- default
 
   void setDefaultValue() {
-    levelDS ??= LevelDS.l1;
-
     //text dimen, text color, button color, font
-    textFontSize =
-        DesignSystemTools.getDimenDesignSystem_text(levelDS!, textFontSize);
-    textColor_ds =
-        DesignSystemTools.getColorDesignSystem_buttonText(levelDS!, textColor);
-    backgroundColor_ds =
-        DesignSystemTools.getColorDesignSystem_buttonBackground(
-            levelDS!, background);
-    font_ds =
-        DesignSystemTools.getFontDesignSystem_button(levelDS!, fontFamily);
 
     //padding default
     // padding ??= EdgeInsets.only(left: 3.7, right: 3.7, top: 3.7, bottom: 3.7);
-    padding ??= EdgeInsets.symmetric(
-        horizontal: DSDimen.button_padding_horizontal,
-        vertical: DSDimen.button_padding_vertical);
+    padding ??= EdgeInsets.zero;
 
     //margin fix
-    margin = EdgeInsetsTools.fixDefaultSpace(margin, 6);
+    margin = EdgeInsets.zero;
 
     showProgress ??= false;
 
@@ -204,7 +182,7 @@ class ButtonFastor extends StatelessWidget {
 
   ButtonStyle getButtonStyle(){
     //style button
-    return _getButtonStyle(backgroundColor_ds!, width, height,
+    return _getButtonStyle(background!, width, height,
         borderLine, borderRadius, textFontSize! );
   }
 
@@ -213,10 +191,10 @@ class ButtonFastor extends StatelessWidget {
     //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
     return TextTemplate.t(text,
         textAlign: textAlign!,
-        color: textColor_ds!,
+        color: textColor !,
         dimen: textFontSize,
         padding: padding!,
-        fontFamily: font_ds!);
+        fontFamily: fontFamily);
   }
 
   static ButtonStyle _getButtonStyle(Color backgroundColor_ds, double? width,
@@ -226,18 +204,15 @@ class ButtonFastor extends StatelessWidget {
     BorderSide side = BorderSide(color: borderLine, width: 1);
 
     //boarder - radius
-    borderRadius ??= DSDimen.ds_button_large_corner;
     var shape = RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadius));
+        borderRadius: BorderRadius.circular( borderRadius??5));
 
-    //fixed size
-    Size? fixedSize = DesignSystemTools.getFixedSize(width, height, dimen);
 
     //style
     var style = ElevatedButton.styleFrom(
         minimumSize: Size.zero,
         padding: EdgeInsets.zero,
-        fixedSize: fixedSize,
+        fixedSize: Size(width!, height!),
 
        //need to fix [ANALYSIS ISSUE] instead of "primary"
         foregroundColor: backgroundColor_ds,

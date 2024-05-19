@@ -1,10 +1,4 @@
-
 import 'package:flutter/material.dart';
-
-
-
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
-import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 
 
@@ -96,29 +90,16 @@ class CheckboxFastor  extends StatelessWidget {
 
     /////////////////////////////////////// text
 
-    //font
-    fontFamily ??= DSFont.h3;
-
     //fix null
     String paddingLeftCheckBoxTap = "  ";
     String s = paddingLeftCheckBoxTap + text!;
 
-    //dimen
-    var myDimen = DSDimen.text_level_3;
-    if (text_dimen != 0) {
-      myDimen = text_dimen!;
-    }
 
-    //color
-    Color myColor = DSColor.text_h3;
-    if (text_color != null) {
-      myColor = text_color!;
-    }
 
     //style
     var myStyle = TextStyle(
-        fontSize: myDimen,
-        color: myColor,
+        fontSize: text_dimen,
+        color: text_color,
         fontFamily: fontFamily,
         decoration: TextDecoration.none);
 
@@ -130,8 +111,7 @@ class CheckboxFastor  extends StatelessWidget {
 
     //fix default padding at the container when there is padding for click
     if (removePaddingClick == false) {
-      padding =
-          EdgeInsetsTools.fixDefaultSpace(padding, defaultPaddingSizeClick);
+      padding = EdgeInsets.zero;
     }
 
     // space

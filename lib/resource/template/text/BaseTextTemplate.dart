@@ -34,15 +34,11 @@ abstract class BaseTextTemplate  {
 
     bool? selectedTextAllow ,
 
-    //level
-    LevelDS? dsLevel,
 
     //lines
     int? maxLines
   })  {
 
-    //default
-    dsLevel ??= LevelDS.l2;
 
     //default not selected
     /**
