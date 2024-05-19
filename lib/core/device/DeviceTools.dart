@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
+import 'package:fastor_app_ui_widget/core/size/NotchBarConstant.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
@@ -200,7 +200,7 @@ class DeviceTools {
 
   double getHeightInsideSafeArea(BuildContext context){
     return DeviceTools.getHeight(context)
-        - NotchBarConstant.getHeight(context)
+        - NotchBarSizeHelper.getHeight(context)
         - StatusBarConstant.getHeight(context) ;
   }
 

@@ -3,9 +3,9 @@
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/logic/ButtonNextPreviousController.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/widget/NumberViewPaginate.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/ButtonNextPreviousController.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/widget/NumberViewPaginate.dart';
 import 'package:flutter/material.dart';
 
 

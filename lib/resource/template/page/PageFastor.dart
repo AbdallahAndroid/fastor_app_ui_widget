@@ -4,7 +4,7 @@
 import 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/state/FastorStateManagement.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
+import 'package:fastor_app_ui_widget/core/size/NotchBarConstant.dart';
 
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCircle.dart';
@@ -273,7 +273,7 @@ class PageFastor extends StatelessWidget {
     }
 
     //calculate notch bar height
-    double marginNotchBar = NotchBarConstant.getHeight(context!);
+    double marginNotchBar = NotchBarSizeHelper.getHeight(context!);
 
     //status bar mobile + take all page
     var safeAreaWithPageContent = Container(

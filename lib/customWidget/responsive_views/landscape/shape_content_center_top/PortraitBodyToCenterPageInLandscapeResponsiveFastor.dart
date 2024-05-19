@@ -1,6 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/responsive_views/helper/ResponsiveFastorConstant.dart';
+import 'package:fastor_app_ui_widget/customWidget/responsive_views/helper/ResponsiveFastorConstant.dart';
 import 'package:flutter/material.dart';
 
 class PortraitBodyToCenterPageInLandscapeResponsiveFastor extends StatelessWidget {

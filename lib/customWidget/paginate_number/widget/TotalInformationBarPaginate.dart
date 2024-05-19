@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dar
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 
 import 'package:flutter/material.dart';
 

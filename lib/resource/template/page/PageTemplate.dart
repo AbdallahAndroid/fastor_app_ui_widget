@@ -3,7 +3,7 @@
 import 'package:fastor_app_ui_widget/resource/template/image/ImageView.dart';
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/state/FastorStateManagement.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/iphoneNotchBar/NotchBarConstant.dart';
+import 'package:fastor_app_ui_widget/core/size/NotchBarConstant.dart';
 
 
 
@@ -221,7 +221,7 @@ class PageTemplate {
     }
 
     //calculate notch bar height
-    double marginNotchBar = NotchBarConstant.getHeight(context);
+    double marginNotchBar = NotchBarSizeHelper.getHeight(context);
 
     //status bar mobile + take all page
     var statusBar = Container(

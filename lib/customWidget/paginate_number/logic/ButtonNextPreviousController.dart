@@ -1,7 +1,7 @@
 
 
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/logic/NumberController.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
+import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/NumberController.dart';
 
 extension ButtonNextPreviousController on PaginateBarState {
 

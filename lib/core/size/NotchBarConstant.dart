@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:log_debug/log_debug.dart';
 
-class NotchBarConstant {
+class NotchBarSizeHelper {
 
   static double? paddingBottom ;
 
