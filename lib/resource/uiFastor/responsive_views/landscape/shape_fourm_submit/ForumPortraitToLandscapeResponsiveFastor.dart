@@ -1,4 +1,8 @@
 
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/resource/template/stack/StackTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/uiFastor/responsive_views/helper/ResponsiveFastor.dart';
 import 'package:flutter/cupertino.dart';
 
 
@@ -30,7 +34,7 @@ class ForumPortraitToLandscapeResponsiveFastor     extends StatelessWidget {
 
     //margin to parent
     return Container(child: stack,
-        margin: EdgeInsets.all(DSDimen.space_parent)
+        margin: EdgeInsets.all(20)
     );
   }
 

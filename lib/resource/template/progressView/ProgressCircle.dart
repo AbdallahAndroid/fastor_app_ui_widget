@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:fastor_app_ui_widget/resource/resources/ds/LevelDS.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:log_debug/log_debug.dart';
 

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 
 import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/statusBar/StatusBarConstant.dart';
+import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
 
 
