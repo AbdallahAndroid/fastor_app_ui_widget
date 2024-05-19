@@ -251,7 +251,7 @@ class _DateTextFieldFastorState extends State<DateRangeTextFieldFastor> {
     return TextFastor(
         "$msg",
         color: widget.colorText,
-        fontSize: widget.fontSize
+        fontSize: widget.fontSize??15
 
     );
   }
@@ -260,7 +260,7 @@ class _DateTextFieldFastorState extends State<DateRangeTextFieldFastor> {
     return TextFastor(
       widget.hintText != null ? widget.hintText! : "Date",
       color: widget.hintColor,
-      fontSize: widget.fontSize,
+      fontSize: widget.fontSize??15,
     );
   }
 

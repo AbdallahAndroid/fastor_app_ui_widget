@@ -250,7 +250,7 @@ class _DateTextFieldFastorState extends State<DateTextFieldFastor> {
     return TextFastor(
         "$_selectedDate",
         color: widget.colorText,
-        fontSize: widget.fontSize
+        fontSize: widget.fontSize??15
     );
   }
 
@@ -258,7 +258,7 @@ class _DateTextFieldFastorState extends State<DateTextFieldFastor> {
     return TextFastor(
         widget.previousSelectedText??"",
         color: widget.colorText,
-        fontSize: widget.fontSize
+        fontSize: widget.fontSize??15
     );
   }
 
@@ -266,7 +266,7 @@ class _DateTextFieldFastorState extends State<DateTextFieldFastor> {
     return TextFastor(
       widget.hintText != null ? widget.hintText! : "Date",
       color: widget.hintColor,
-      fontSize: widget.fontSize,
+      fontSize: widget.fontSize??15,
     );
   }
 

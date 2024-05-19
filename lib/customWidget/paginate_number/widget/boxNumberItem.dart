@@ -21,6 +21,7 @@ extension BoxNumberItem on PaginateBarState {
         padding: EdgeInsets.symmetric( horizontal: 20 , vertical: 6),
         margin: EdgeInsets.only( right: 20 ),
         height: 25,
+        fontSize: 15,
         decoration: isSelected? decoration_selected() : decoration_unselected()
     );
 

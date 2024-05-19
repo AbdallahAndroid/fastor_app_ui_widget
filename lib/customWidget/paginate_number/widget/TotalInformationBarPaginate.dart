@@ -31,6 +31,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
   Widget txt_total(){
     var txt = "Total "   + widget.maxPage.toString() + " pages Go To Page" ;
     return TextFastor ( txt ,
+        fontSize: 15,
     color: Colors.black,
     margin: EdgeInsets.only(left: 10));
   }

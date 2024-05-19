@@ -39,7 +39,7 @@ class TextFastor extends StatelessWidget {
       {
         required this.color,
         required this.fontSize ,
-        required this.fontFamily,
+          this.fontFamily,
         this.textAlign  = TextAlign.left,
         this.textDecoration  = TextDecoration.none,
         this.backgroundColor,

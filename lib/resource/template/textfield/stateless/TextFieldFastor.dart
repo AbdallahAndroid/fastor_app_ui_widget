@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
 import 'package:flutter/material.dart';
 
@@ -142,13 +144,13 @@ class TextFieldFastor extends StatelessWidget {
     padding ??= EdgeInsets.zero;
 
     //hint color
-    hint_color ??= DSColor.ds_textfield_hint;
+    hint_color ??= Colors.grey;
 
     //text color
-    text_color ??= DSColor.ds_textfield_text;
+    text_color ??= Colors.black;
 
     //text size
-    fontSize ??= DSDimen.text_level_2;
+    fontSize ??= 16;
 
     //align
     textAlign ??= TextAlign.start;
@@ -280,7 +282,7 @@ class TextFieldFastor extends StatelessWidget {
     return TextFastor(  titleText??"",
       color: text_color??Colors.black,
       fontSize: fontSize??15,
-      margin: const EdgeInsets.only(bottom: 20 ),
+      margin: const EdgeInsets.only(bottom: 20 ) ,
     );
   }
 
