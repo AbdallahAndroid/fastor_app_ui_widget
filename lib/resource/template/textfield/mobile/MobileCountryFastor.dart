@@ -1,4 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:fastor_app_ui_widget/resource/template/column/ColumnFastor.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/column/ColumnTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/textfield/validator/ValidatorTemplate.dart';
@@ -145,10 +146,11 @@ class _MobileCountryFastorState extends State<MobileCountryFastor> {
 
 
   Widget mobile(){
-    return ColumnTemplate.t( children: [
+    return ColumnFastor(children:    [
       if(widget.title != null ) tx_mobile(),
       if(widget.title != null ) SizedBox( height: 15,),
-      countryWithPhoneWithBoarder()
+      countryWithPhoneWithBoarder(),
+
     ],
     );
   }

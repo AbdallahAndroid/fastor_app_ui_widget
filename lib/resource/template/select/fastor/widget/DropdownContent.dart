@@ -1,5 +1,8 @@
 
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/DropdownFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/select/fastor/widget/PreviousSelected.dart';
+import 'package:fastor_app_ui_widget/resource/template/select/view/SpinnerView.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:flutter/material.dart';
 
 
@@ -61,7 +64,6 @@ extension DropdownContent on DropdownFastorState {
 
   Widget _getItemDropdownWidget(String name, int positionName){
     return TextFastor( name,
-      levelDS: LevelDS.l3,
       padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
       color: getColorItemTextWhenSelectedOrNot(positionName),
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,

@@ -1,5 +1,8 @@
 
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangFastor.dart';
+import 'package:fastor_app_ui_widget/core/lang/PositionedFastor.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
@@ -51,8 +54,6 @@ class SpinnerView extends StatefulWidget {
 
   TextDirection? textDirection;
 
-  @Deprecated( "Old Way To Change The View")
-  ValueChanged<SpinnerViewState>? changeState;
   
   SpinnerView (  {
     required  List<Widget> this.childers ,
@@ -83,8 +84,6 @@ class SpinnerView extends StatefulWidget {
     //arabic
     this.textDirection,
 
-    @deprecated
-    ValueChanged<SpinnerViewState>? this.changeState
 
   }){
     setDefaultValue();
@@ -94,11 +93,7 @@ class SpinnerView extends StatefulWidget {
 
 
   @override
-  SpinnerViewState createState() {
-    var state = SpinnerViewState();
-    if(changeState != null ) changeState!(state);
-    return state;
-  }
+  SpinnerViewState createState()  => SpinnerViewState();
 
   //--------------------------------------------------------------- set default values
 

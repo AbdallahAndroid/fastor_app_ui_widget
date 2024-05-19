@@ -1,7 +1,5 @@
 import 'dart:ui';
 
-
-import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarConstant.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +14,11 @@ class SingleChildScrollViewTemplate {
   /**
    * "t" symbole for "template" means choose the axis
    */
-  static Widget t(BuildContext context, Axis axis, List<Widget> children, double minesMargin) {
+  static Widget t(BuildContext context, Axis axis, List<Widget> children, double minesMargin, Color backgroundAllScreen) {
     if( axis == Axis.horizontal ) {
       return SingleChildScrollViewTemplate.hList( context, children );
     } else {
-      return SingleChildScrollViewTemplate.vList( context, children, minesMargin );
+      return SingleChildScrollViewTemplate.vList( context, children, minesMargin, backgroundAllScreen);
     }
   }
 
@@ -29,7 +27,7 @@ class SingleChildScrollViewTemplate {
    */
   static Widget h( BuildContext context,  Widget child ){
     return SingleChildScrollView(
-        reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_horizontal( context ),
+       // reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_horizontal( context ),
         scrollDirection: Axis.horizontal,
         child: child
     );
@@ -41,23 +39,19 @@ class SingleChildScrollViewTemplate {
    * horizontal list
    */
   static Widget hList( BuildContext context, List<Widget> children  ){
-    //Log.i( "hList()  ");
-
-    //fix backend sort
-    var sortListByLang = DirectionLanguage.row_nestedScrollHorizontal_arrayWidget(context, children)  ;
 
     //row
     var row = Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
-      children: sortListByLang,
+      children: children,
     );
 
     //scroll
     var scroll = SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_horizontal(context),
+        // reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_horizontal(context),
         scrollDirection: Axis.horizontal,
         child: row
     );
@@ -84,7 +78,7 @@ class SingleChildScrollViewTemplate {
    * vertical
    */
   static Widget vList( BuildContext context, List<Widget> children,
-      double minesMarginVertical ){
+      double minesMarginVertical , Color background_all_screen ){
     //Log.i( "vList()");
 
     // list
@@ -117,7 +111,7 @@ class SingleChildScrollViewTemplate {
     );
 
     //shadow
-    var effectScrollbar  = DSColor.ds_background_all_screen;
+    var effectScrollbar  =  background_all_screen;
     var themeScroll = Theme(
       //Inherit the current Theme and override only the accentColor property
         data: ThemeData(

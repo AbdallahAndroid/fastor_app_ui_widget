@@ -122,8 +122,6 @@ class DropdownFastor extends StatefulWidget {
     // removeSelected ??= false;
     colorPreviousSelected ??= Colors.black;
 
-    textDirection ??= LangFastor.getTextDirection();
-
     //progress
     showProgress ??= false;
     setDefaultProgressSize();

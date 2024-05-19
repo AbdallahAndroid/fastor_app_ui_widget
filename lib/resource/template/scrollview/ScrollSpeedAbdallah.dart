@@ -24,7 +24,7 @@ import 'package:flutter/material.dart';
 ///         child:  getColumnTemplate(),
 ///         // child: getColumnTemplateTestLoop(),
 ///       ),
-class ScrollSpeed {
+class ScrollSpeedAbdallah {
 
   final String tag = "ScrollSpeed";
   BuildContext context;
@@ -47,7 +47,7 @@ class ScrollSpeed {
   static List<int> historyLog = [];
 
 
-  ScrollSpeed (this.context,{
+  ScrollSpeedAbdallah (this.context,{
     required this.speed,
     // bool? speedForMobileBrowserOnly = true
   }  ){

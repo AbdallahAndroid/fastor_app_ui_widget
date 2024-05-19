@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 
@@ -154,11 +154,7 @@ class _SwitchFastorState extends State<SwitchFastor> {
 
     //row
     var row = RowTemplate.wrapChildren( [ scale, spaceBetweenTitle, widget.text_child! ]);
-    //case: have custome padding
-    //fix default padding at the container when there is padding for click
-    if( widget.removePaddingClick == false ){
-      widget.padding = EdgeInsetsTools.fixDefaultSpace( widget.padding, defaultPaddingSizeClick);
-    }
+
     return row;
   }
 

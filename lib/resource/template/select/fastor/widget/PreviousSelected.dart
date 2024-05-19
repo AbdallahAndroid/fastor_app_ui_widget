@@ -1,4 +1,6 @@
 
+import 'package:fastor_app_ui_widget/resource/template/select/fastor/DropdownFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextFastor.dart';
 import 'package:flutter/material.dart';
 
 extension PreviousSelected on DropdownFastorState {
@@ -21,15 +23,13 @@ extension PreviousSelected on DropdownFastorState {
         fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize : null ,
         fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
         color:   widget.colorHintText,
-        textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
-        levelDS: LevelDS.l2);
+        textAlign: widget.textAlignItemDropdown ?? TextAlign.left  );
   }
 
 
   Widget previousSelectedWidget(){
     if( widget.previousSelectedText == null ) return SizedBox();
     return TextFastor( widget.previousSelectedText??"",
-      levelDS: LevelDS.l3,
       padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
       color: getColorItemTextWhenSelected( ),
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,

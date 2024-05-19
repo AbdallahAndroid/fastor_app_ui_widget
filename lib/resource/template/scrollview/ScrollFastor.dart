@@ -1,10 +1,8 @@
 import 'dart:ui';
 
-
-
-import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeed.dart';
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/resource/uiFastor/language/DirectionLanguage.dart';
+import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollSpeedAbdallah.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
@@ -41,17 +39,6 @@ class ScrollFastor extends StatelessWidget  {
     footer_height ??= 0;
 
 
-    // var statusBarHeight = StatusBarConstant.getHeight();
-    // Log.i( "statusHeight : " + statusHeight.toString() );
-
-    // fix toolbar + navigation
-    var tallView = Column( children: [
-      // EmptyView.empty( statusBarHeight   , statusBarHeight   ),
-      EmptyView.empty( toolbarHeight!   , toolbarHeight!  ),
-
-      EmptyView.empty( footer_height!  , footer_height!   )
-    ]);
-
     //validate not need
     var scroll ;
     if( DeviceTools.isBrowserIOS() ) {
@@ -77,7 +64,7 @@ class ScrollFastor extends StatelessWidget  {
         //why 4 ?
         because iphone or  android in browser the speed of scroll is slow
      */
-    ScrollSpeed scrollSpeed = ScrollSpeed(context!, speed: 4);
+    ScrollSpeedAbdallah scrollSpeed = ScrollSpeedAbdallah(context!, speed: 4);
 
     //scroll
     var scroll =  _caseScrollNormal(  );
@@ -115,7 +102,7 @@ class ScrollFastor extends StatelessWidget  {
       child: child, //tallView,
       //keyboard when scrolling
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_vertical(context!),
+     // reverse: DirectionLanguage.SingleChildScrollView_reverseStatus_vertical(context!),
     );
 
     //thumbVisibility
