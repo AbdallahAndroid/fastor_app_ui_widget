@@ -1,4 +1,8 @@
 
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/resource/template/click/GestureDetectorTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/logic/NumberController.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +17,9 @@ extension BoxNumberItem on PaginateBarState {
     required bool isSelected}){
 
     var textWidget =  TextTemplate.t( "" + page.toString()  ,
-
-        levelDS: LevelDS.l3,
         color: Colors.black,
-        padding: EdgeInsets.symmetric( horizontal: DSDimen.space_level_4 , vertical: 6),
-        margin: EdgeInsets.only( right: DSDimen.space_level_4 ),
+        padding: EdgeInsets.symmetric( horizontal: 20 , vertical: 6),
+        margin: EdgeInsets.only( right: 20 ),
         height: 25,
         decoration: isSelected? decoration_selected() : decoration_unselected()
     );
@@ -29,15 +31,15 @@ extension BoxNumberItem on PaginateBarState {
 
   BoxDecoration decoration_selected() {
     return BoarderHelper.rounded(
-        radiusSize: DSDimen.ds_size_corner_level_4 ,
+        radiusSize: 20 ,
         colorBackground: Colors.grey // colorBackground: DSColor.tap_active
     );
   }
 
 
   BoxDecoration decoration_unselected() {
-    return BoarderHelper.rounded( radiusSize: DSDimen.ds_size_corner_level_4 ,
-        colorBackground: DSColor.tap_inactive );
+    return BoarderHelper.rounded( radiusSize: 20 ,
+        colorBackground:  Colors.green );
   }
 
   //------------------------------------------------------------------------- click on number

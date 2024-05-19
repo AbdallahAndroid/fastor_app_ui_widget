@@ -12,7 +12,7 @@ extension ButtonNextPreviousController on PaginateBarState {
     //check min zero
     if( minArrive) {
       widget.currentPage = 1;
-       msgError =  "No Previous Page Found".arf( "لا يوجد صفح اقل من ١")  ;
+       msgError =  "No Previous Page Found"  ;
        setState(() {
 
        });
@@ -44,7 +44,7 @@ extension ButtonNextPreviousController on PaginateBarState {
 
     //check maxPage
     if( maxArrive ) {
-      String title = "The max page is: ".arf( " اقصي حدد صفح هو: ");
+      String title = "The max page is: "  ;
       msgError =    title +widget.maxPage.toString() ;
       setState(() {
 

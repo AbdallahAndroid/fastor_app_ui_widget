@@ -1,11 +1,9 @@
-
-
-
-
-
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/textfield/stateless/TextFieldFastor.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 
 import 'package:flutter/material.dart';
@@ -25,16 +23,16 @@ extension TotalInformationBarPaginate on PaginateBarState {
       child: rows,
       // color: Colors.yellow,
       // width: DeviceTools.getWidth(),
-      margin: EdgeInsets.symmetric(vertical: DSDimen.space_level_4),
+      margin: EdgeInsets.symmetric(vertical: 10),
       alignment: Alignment.center,
     );
   }
 
   Widget txt_total(){
-    var txt = "Total ".arf( "اجمالي الصفح ")  + widget.maxPage.toString() + " pages Go To Page".arf( " الذهاب الي صفحة");
-    return TextTemplate.t( txt , levelDS: LevelDS.l3,
+    var txt = "Total "   + widget.maxPage.toString() + " pages Go To Page" ;
+    return TextTemplate.t( txt ,
     color: Colors.black,
-    margin: EdgeInsets.only(left: DSDimen.space_level_2));
+    margin: EdgeInsets.only(left: 10));
   }
 
   //-------------------------------------------------------------------- GoTo
@@ -50,7 +48,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
       ),
       hint_color: Colors.transparent,
       keyboardType: TextInputType.number,
-      margin: EdgeInsets.only(left: DSDimen.space_level_3 ),
+      margin: EdgeInsets.only(left: 15 ),
       padding: EdgeInsets.all( 7 ),
       controller:  tf_goto_controller,
       //savge change
@@ -77,13 +75,12 @@ extension TotalInformationBarPaginate on PaginateBarState {
   }
   
   Widget bt_go(){
-    return ButtonTemplate.t( "Go".arf( "الذهاب") , () {
+    return ButtonTemplate.t( "Go"  , () {
 
       goToClickFunction();
 
     } ,
-        margin: EdgeInsets.only(left: DSDimen.space_level_3 ),
-        levelDS: LevelDS.l2,
+        margin: EdgeInsets.only(left: 15 ),
       background: widget.colorSecondary,
       textColor: widget.colorPrimary,
     );
@@ -93,7 +90,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
   void goToClickFunction(){
     //check zero
     if( pageGoTo <= 0 ) {
-      msgError =  "Missed Field Go To Page".arf( "ادخل رقم الصفحة") ;
+      msgError =  "Missed Field Go To Page"  ;
     setState(() {
 
     });

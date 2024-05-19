@@ -1,5 +1,7 @@
 
 
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/resource/uiFastor/admin/paginate_number/widget/boxNumberItem.dart';
 import 'package:flutter/material.dart';

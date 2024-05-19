@@ -16,7 +16,7 @@ extension ButtonBarPaginate on PaginateBarState {
     return ContainerTemplate.wrapContent(
         _buttonPrevousAndNumbersPagesListAndButtonNext()
         , align: Alignment.center,
-      margin: EdgeInsets.only( left: DSDimen.space_level_2 )
+      margin: EdgeInsets.only( left: 10 )
     );
   }
 
@@ -32,23 +32,21 @@ extension ButtonBarPaginate on PaginateBarState {
   //---------------------------------------------------------------------------- next and previouis
 
   Widget _btPrevious(){
-    return ButtonTemplate.t( "Previous".arf( "السابق") , () {
+    return ButtonTemplate.t( "Previous" , () {
 
       previousButtonFunction();
     } ,
       background: widget.colorSecondary,
       textColor: widget.colorPrimary,
-        margin: EdgeInsets.only( right: DSDimen.space_level_4 ), //left: DSDimen.space_level_1,
-        levelDS: LevelDS.l2,
+        margin: EdgeInsets.only( right: 20)
     );
   }
 
 
   Widget _btNext(){
-    return ButtonTemplate.t( "Next".arf( "التالي") , () {
+    return ButtonTemplate.t( "Next"  , () {
       nextButtonFunction();
     } ,
-        levelDS: LevelDS.l2,
       background: widget.colorSecondary,
       textColor: widget.colorPrimary,
     );
