@@ -13,7 +13,7 @@
 //
 // import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 // export 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
-// import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
+// import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 // import 'package:fastor_app_ui_widget/resource/template/calendar/CalendarTemplate.dart';
 // import 'package:fastor_app_ui_widget/resource/template/calendar/offical_sdk/CalenderFastor.dart' ;
 // export 'package:fastor_app_ui_widget/resource/template/calendar/offical_sdk/CalenderFastor.dart' ;
@@ -21,7 +21,7 @@
 //
 // import 'package:fastor_app_ui_widget/resource/template/cardview/fixedSize/CardViewTemplate.dart';
 // import 'package:fastor_app_ui_widget/resource/template/checkbox/CheckboxTemplate.dart';
-// import 'package:fastor_app_ui_widget/resource/template/click/GestureDetectorTemplate.dart';
+// 
 // import 'package:fastor_app_ui_widget/resource/template/column/ColumnTemplate.dart';
 // import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 // import 'package:fastor_app_ui_widget/resource/template/crop/CropTemplate.dart';

@@ -141,7 +141,10 @@ class PaginateBarState extends State<PaginateBarFastor> {
 
   Widget progressView(){
 
-    var prg = ProgressCircleFastor( color: widget.colorSecondary,);
+    var prg = ProgressCircleFastor(
+      color: widget.colorSecondary,
+            size:  30
+    );
 
     return Container( child: prg,
       width: DeviceTools.getWidth(context),

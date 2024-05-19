@@ -1,6 +1,7 @@
 
 
-import 'package:fastor_app_ui_widget/resource/template/button/ButtonTemplate.dart';
+import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
+import 'package:fastor_app_ui_widget/resource/template/button/ButtonFastor.dart';
 import 'package:fastor_app_ui_widget/resource/template/container/ContainerTemplate.dart';
 import 'package:fastor_app_ui_widget/resource/template/row/RowTemplate.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
@@ -32,7 +33,7 @@ extension ButtonBarPaginate on PaginateBarState {
   //---------------------------------------------------------------------------- next and previouis
 
   Widget _btPrevious(){
-    return ButtonTemplate.t( "Previous" , () {
+    return ButtonFastor( "Previous" , () {
 
       previousButtonFunction();
     } ,
@@ -44,7 +45,7 @@ extension ButtonBarPaginate on PaginateBarState {
 
 
   Widget _btNext(){
-    return ButtonTemplate.t( "Next"  , () {
+    return ButtonFastor( "Next"  , () {
       nextButtonFunction();
     } ,
       background: widget.colorSecondary,

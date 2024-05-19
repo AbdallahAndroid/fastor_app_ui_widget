@@ -1,7 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
-import 'package:fastor_app_ui_widget/resource/template/click/GestureDetectorTemplate.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/text/TextTemplate.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarFastor.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/logic/NumberController.dart';
@@ -46,7 +46,7 @@ extension BoxNumberItem on PaginateBarState {
 
   Widget setupClickOnThisNumber(int page, bool isSelected, Widget textWidget) {
 
-    return GestureDetectorTemplate.t(child : textWidget, onPressed:  (){
+    return GestureDetector( child : textWidget, onTap:  (){
       Log.i( "setupClickOnThisNumber() - Click page: " + page.toString()  );
 
       msgError = null;
@@ -63,8 +63,7 @@ extension BoxNumberItem on PaginateBarState {
 
       //interface
       widget.paginateNumberChange(page);
-    }
-        , paddingClick: EdgeInsets.all(5 ) );
+    } );
   }
 
 }
