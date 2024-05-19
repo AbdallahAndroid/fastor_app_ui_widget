@@ -1,5 +1,5 @@
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+
+
 import 'package:flutter/material.dart';
 
 

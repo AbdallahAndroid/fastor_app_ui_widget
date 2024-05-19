@@ -1,5 +1,5 @@
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+
+
 import 'package:flutter/material.dart';
 
 
@@ -19,9 +19,9 @@ class BoarderHelper extends BaseBoarderHelper{
 
 
     //set default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color  ;
-    colorLine ??= DSColor.cardview_boarderLine  ;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent ;
+    colorLine ??= Colors.grey.withOpacity(0.3)  ;
 
     //set default radius
     var objRadius = Radius.circular( radiusSize );
@@ -47,9 +47,9 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
-    colorLine ??= DSColor.cardview_boarderLine;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     return BaseBoarderHelper.circle(radiusSize: radiusSize ,
         colorBackground:  colorBackground,
@@ -68,8 +68,8 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //set default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent ;
 
     //elevation
     var physical =   PhysicalModel(
@@ -108,7 +108,7 @@ class BoarderHelper extends BaseBoarderHelper{
 
 
     //radius
-    radiusBoarderSize ??= DSDimen.ds_size_corner_level_2;
+    radiusBoarderSize ??= 10;
     var objRadius = Radius.circular( radiusBoarderSize );
     var radiusDefault = BorderRadius.all(  objRadius );
     radiusBorder ??= radiusDefault;
@@ -155,9 +155,9 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
-    colorLine ??= DSColor.cardview_boarderLine;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     return BaseBoarderHelper.bottom_line(radiusSize: radiusSize ,
         colorBackground:  colorBackground,
@@ -174,9 +174,9 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
-    colorLine ??= DSColor.cardview_boarderLine;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     //width
     widthLine ??= 5;
@@ -194,9 +194,9 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
-    colorLine ??= DSColor.cardview_boarderLine;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     //width
     widthLine ??= 5;
@@ -217,13 +217,12 @@ class BoarderHelper extends BaseBoarderHelper{
   }) {
 
     //default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color;
-    colorLine ??= DSColor.cardview_boarderLine;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     //width
     widthLine ??= 1;
-
 
     return BaseBoarderHelper.top_line(
         radiusSize: radiusSize,
@@ -240,9 +239,9 @@ class BoarderHelper extends BaseBoarderHelper{
     Color? colorLine ,}) {
 
     //set default
-    radiusSize ??= DSDimen.ds_size_corner_level_2;
-    colorBackground ??= DSColor.cardview_background_color  ;
-    colorLine ??= DSColor.cardview_boarderLine  ;
+    radiusSize ??= 10;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     //set default radius
     var objRadius = Radius.circular( radiusSize );
@@ -265,8 +264,8 @@ class BoarderHelper extends BaseBoarderHelper{
     Color? colorLine ,}) {
 
     //set default
-    colorBackground ??= DSColor.cardview_background_color  ;
-    colorLine ??= DSColor.cardview_boarderLine  ;
+    colorBackground ??= Colors.transparent;
+    colorLine ??= Colors.grey.withOpacity(0.3);
 
     var box = BoxDecoration(
         border: Border.all(color: colorLine ) ,

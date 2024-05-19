@@ -13,7 +13,7 @@ import 'package:fastor_app_ui_widget/resource/template/progressView/ProgressCirc
 
 
 
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
+
 import 'package:fastor_app_ui_widget/resource/template/emptyView/EmptyView.dart';
 
 import 'package:fastor_app_ui_widget/resource/template/scrollview/ScrollViewPage.dart';

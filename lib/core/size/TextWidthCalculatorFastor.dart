@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class TextWidthCalculatorFastor {
 
     //set default
     //dimenFont ??= DSDimen.text_level_2;
-    padding ??= DSDimen.textfield_auto_padding;
+    padding ??= 0;
     frame_width_max ??= DeviceTools.getWidth(context);
 
     // ratio

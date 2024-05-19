@@ -4,8 +4,8 @@
 //
 //
 // import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-// import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemColor.dart';
-// import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemDimen.dart';
+// 
+// 
 // import 'package:fastor_app_ui_widget/resource/resources/ds/DesignSystemFont.dart';
 // import 'package:fastor_app_ui_widget/resource/template/EdgeInsets/EdgeInsetsTools.dart';
 // import 'package:fastor_app_ui_widget/resource/template/TabBar/simple/TabBarFastor.dart';
