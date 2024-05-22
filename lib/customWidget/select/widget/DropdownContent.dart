@@ -67,7 +67,7 @@ extension DropdownContent on DropdownAppState {
       padding: widget.paddingText??EdgeInsets.only( left: 10, right: 10),
       color: getColorItemTextWhenSelectedOrNot(positionName),
       // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
-      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize! : 15 ,
+      fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize??15 : 15 ,
       fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
       textAlign: widget.textAlignItemDropdown ?? TextAlign.left ,
     );
