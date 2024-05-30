@@ -134,7 +134,7 @@ class TextFieldFastor extends StatelessWidget {
     this.suffixIcon
 
   }) {
-      setDefaultValues();
+    setDefaultValues();
   }
 
   //--------------------------------------------------------------- default value
@@ -144,13 +144,13 @@ class TextFieldFastor extends StatelessWidget {
     padding ??= EdgeInsets.zero;
 
     //hint color
-    hint_color ??= DSColor.ds_textfield_hint;
+    hint_color ??= Colors.grey;
 
     //text color
-    text_color ??= DSColor.ds_textfield_text;
+    text_color ??= Colors.black;
 
     //text size
-    fontSize ??= DSDimen.text_level_2;
+    fontSize ??= 16;
 
     //align
     textAlign ??= TextAlign.start;
@@ -162,16 +162,16 @@ class TextFieldFastor extends StatelessWidget {
       obscureText = true;
     }
 
-    //error message
-    errorColor ??= Colors.red;
-
-    //choose validator
-    autovalidateMode ??= AutovalidateMode.disabled;
-    _setValidator();
-
+    //decoration
+    validateDecorationInputField();
     makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
 
-    validateDecorationInputField();
+    //error
+    _setErrorMessageValueFromBackend();
+    errorColor ??= Colors.red;
+    autovalidateMode ??= AutovalidateMode.disabled;
+    _setValidator();
+    setErrorMessageInCaseCustomDecoration();
 
     //??TextInputAction.newline
     if( textInputAction == null ){
@@ -186,12 +186,12 @@ class TextFieldFastor extends StatelessWidget {
     //default
     isShowBoarder ??= false;
 
-    errorMessage ??= _getErrorTextBackend();
+
   }
 
 
   void _setValidator() {
-    //set default
+    // set default
     validatorChosen = ValidatorTemplate.d();
 
     //priority for custom
@@ -231,15 +231,79 @@ class TextFieldFastor extends StatelessWidget {
   }
 
 
-  String? _getErrorTextBackend( ) {
+  _setErrorMessageValueFromBackend( ) {
     if (errorsMessageArray != null) {
       // print( "abdo - _getErrorText() - keyError: keyError");
       // print( "abdo - _getErrorText() - errors![key]: ${errors![keyError]}");
-      var result =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
-      return result;
-    } else {
-      // print( "abdo - _getErrorText() - errors is (null)");
-      return null;
+      errorMessage =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
+      print( "abdo - _getErrorTextBackend() - errorMessage: ${errorMessage}");
+
+    }
+  }
+
+  /// why make clone decoration ?
+  ///    when use "error_message" backend it can not show due to sometimes user
+  ///    use custome "decoration" inputDecoration.
+  void setErrorMessageInCaseCustomDecoration() {
+    InputDecoration? cloneDecoration;
+    if( errorMessage != null  && decoration != null ) {
+
+      cloneDecoration = InputDecoration(
+
+        /// clode to edit this
+          errorText: errorMessage,
+
+          icon: decoration!.icon,
+          iconColor: decoration!.iconColor,
+          label: decoration!.label,
+          labelText: decoration!.labelText,
+          floatingLabelStyle: decoration!.floatingLabelStyle,
+          helperText : decoration!.helperText,
+          helperStyle : decoration!.helperStyle,
+          helperMaxLines: decoration!.helperMaxLines,
+          hintText : decoration!.hintText,
+          hintStyle: decoration!.hintStyle,
+          hintTextDirection : decoration!.hintTextDirection,
+          hintMaxLines: decoration!.hintMaxLines,
+          error  : decoration!.error,
+          errorMaxLines: decoration!.errorMaxLines,
+          floatingLabelBehavior : decoration!.floatingLabelBehavior,
+          floatingLabelAlignment: decoration!.floatingLabelAlignment,
+          isCollapsed : decoration!.isCollapsed,
+          isDense: decoration!.isDense,
+          contentPadding : decoration!.contentPadding,
+          prefixIcon: decoration!.prefixIcon,
+          prefixIconConstraints : decoration!.prefixIconConstraints,
+          prefix: decoration!.prefix,
+          prefixText : decoration!.prefixText,
+          prefixStyle: decoration!.prefixStyle,
+          prefixIconColor: decoration!.prefixIconColor,
+          suffixIcon: decoration!.suffixIcon,
+          suffix: decoration!.suffix,
+          suffixText: decoration!.suffixText,
+          suffixStyle : decoration!.suffixStyle,
+          suffixIconColor: decoration!.suffixIconColor,
+          suffixIconConstraints: decoration!.suffixIconConstraints,
+          counter: decoration!.counter,
+          counterText: decoration!.counterText,
+          counterStyle: decoration!.counterStyle,
+          filled : decoration!.filled,
+          fillColor: decoration!.fillColor,
+          focusColor: decoration!.focusColor,
+          hoverColor: decoration!.hoverColor,
+          errorBorder: decoration!.errorBorder,
+          focusedBorder: decoration!.focusedBorder,
+          focusedErrorBorder: decoration!.focusedErrorBorder,
+          disabledBorder : decoration!.disabledBorder,
+          enabledBorder: decoration!.enabledBorder,
+          border: decoration!.border,
+          enabled: decoration!.enabled,
+          semanticCounterText : decoration!.semanticCounterText,
+          alignLabelWithHint: decoration!.alignLabelWithHint,
+          constraints  : decoration!.constraints
+      );
+      decoration = cloneDecoration;
+
     }
   }
 
@@ -260,7 +324,7 @@ class TextFieldFastor extends StatelessWidget {
   Widget columnTitleAndTextField(){
     return ColumnFastor(children: [
       titleWidgetIfFound(),
-    _getTextFourmField()
+      _getTextFourmField()
     ] );
   }
 
@@ -282,7 +346,7 @@ class TextFieldFastor extends StatelessWidget {
     return TextFastor(  titleText??"",
       color: text_color??Colors.black,
       fontSize: fontSize??15,
-      margin: const EdgeInsets.only(bottom: 20 ),
+      margin: const EdgeInsets.only(bottom: 20 ) ,
     );
   }
 
@@ -306,8 +370,8 @@ class TextFieldFastor extends StatelessWidget {
       // cursor color
       cursorColor: hint_color,
 
-      //padding + hint + underline
-      decoration: decoration != null ? decoration :   getDecorationInput( ),
+      //padding + hint + underline + error_message
+      decoration:  chooseDecoration(),
 
       //keyboard
       keyboardType: keyboardType,
@@ -340,7 +404,12 @@ class TextFieldFastor extends StatelessWidget {
 
   //--------------------------------------------------------------------- input text feild
 
-  InputDecoration getDecorationInput( ) {
+  InputDecoration? chooseDecoration() {
+    return decoration != null ? decoration :   getDecorationBoarderOrNotUnderLineShape( );
+  }
+
+
+  InputDecoration getDecorationBoarderOrNotUnderLineShape( ) {
 
     if( isShowBoarder! ) {
       return getDecorationInput_outlineInput(  );
@@ -359,16 +428,16 @@ class TextFieldFastor extends StatelessWidget {
     }
 
 
-    var boarderSide = BorderSide(color: DSColor.ds_textfield_boarder_line,
+    var boarderSide = BorderSide(color: Colors.grey,
         width: widthUnderLine);
 
     var enabledBorder =  OutlineInputBorder(
-      borderRadius: BorderRadius.circular(DSDimen.ds_size_corner_level_2),
+      borderRadius: BorderRadius.circular(10 ),
       borderSide:    boarderSide,
     );
 
     var  focusedBorder  = OutlineInputBorder(
-      borderRadius: BorderRadius.circular( DSDimen.ds_size_corner_level_2), //32.0
+      borderRadius: BorderRadius.circular( 10 ), //32.0
       borderSide:  boarderSide  ,
     );
 
@@ -415,7 +484,7 @@ class TextFieldFastor extends StatelessWidget {
   }
 
 
-    InputDecoration getDecorationInput_underLine( ) {
+  InputDecoration getDecorationInput_underLine( ) {
 
     //check is need to remove underline
     double widthUnderLine = 1;
@@ -473,6 +542,9 @@ class TextFieldFastor extends StatelessWidget {
         suffixIcon: suffixIcon
     );
   }
+
+
+
 
 
 
