@@ -243,7 +243,7 @@ class ImageApp extends StatelessWidget  {
       child: EmptyViewSizeImage(), //EmptyView.empty(width, height),
       decoration: BoxDecoration(
           borderRadius: boarderRadius,
-          color: colorBackground,
+          // color: colorBackground, //must remove this line to can show the  asset at aspect mode behind the background url
           image: DecorationImage(
               image: imageProviderChoosed,
               fit: getBoxFitBackground()
