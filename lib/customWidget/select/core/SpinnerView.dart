@@ -127,7 +127,7 @@ class SpinnerView extends StatefulWidget {
 
     //error
     // errorColor ??= Colors.red;
-    errorTextStyle = const TextStyle(
+    errorTextStyle ??= const TextStyle(
         color: Colors.redAccent ,
         fontWeight: FontWeight.w500,
         fontSize: 14
