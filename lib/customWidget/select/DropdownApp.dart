@@ -1,4 +1,5 @@
 
+
 import 'package:fastor_app_ui_widget/customWidget/select/widget/DropdownContent.dart';
 import 'package:fastor_app_ui_widget/customWidget/select/widget/ProgressDropdown.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class DropdownApp extends StatefulWidget {
 
   // error style
   Decoration? errorOutlineDropdownDropdown;
-  // String? errorMessageBackend;
+  String? errorMessageBackend;
   TextStyle? errorTextStyle;
 
   TextDirection? textDirection;
@@ -103,6 +104,7 @@ class DropdownApp extends StatefulWidget {
     this.colorPreviousSelected,
     this.paddingText,
     this.decorationOutlineDropdown,
+    this.errorMessageBackend,
     this.errorBackendKeyJson,
     this.errorBackendJson,
     this.errorOutlineDropdownDropdown,

@@ -77,6 +77,7 @@ class SpinnerView extends StatefulWidget {
     //error
     this.errorBackendKeyJson,
     this.errorBackendJson,
+    this.errorMessageBackend,
     // this.errorColor,
     this.errorTextStyle,
     this.errorOutlineDropdownDropdown,

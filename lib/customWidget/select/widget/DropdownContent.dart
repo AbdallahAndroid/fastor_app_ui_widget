@@ -23,6 +23,7 @@ extension DropdownContent on DropdownAppState {
       iconDropdown: widget.iconDropdown,
       textStyleItemDropdown: widget.textStyleItemDropdown,
       decorationOutlineDropdown: widget.decorationOutlineDropdown,
+      errorMessageBackend: widget.errorMessageBackend,
       errorBackendKeyJson: widget.errorBackendKeyJson,
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
