@@ -170,7 +170,7 @@ class  DropdownAppState extends State<DropdownApp > {
 
   Widget getDirection() {
     return   Directionality(
-      textDirection:   widget.textDirection!,
+      textDirection:   widget.textDirection??TextDirection.ltr,
       child:   Builder(
         builder: (BuildContext context) {
           return   MediaQuery(

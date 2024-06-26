@@ -219,7 +219,7 @@ class SpinnerViewState extends State<SpinnerView> {
 
   Widget getDirection() {
     return   Directionality(
-      textDirection:   widget.textDirection!,
+      textDirection:   widget.textDirection??TextDirection.ltr,
       child:   Builder(
         builder: (BuildContext context) {
           return   MediaQuery(
