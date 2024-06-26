@@ -128,6 +128,8 @@ class DropdownApp extends StatefulWidget {
     showProgress ??= false;
     setDefaultProgressSize();
     setDefaultProgressColor();
+
+    searchInNamesForThePositionOfPreviousTextSelected();
   }
 
 
@@ -149,6 +151,23 @@ class DropdownApp extends StatefulWidget {
     }
     colorProgress  = colorPreviousSelected;
   }
+
+
+
+  void searchInNamesForThePositionOfPreviousTextSelected() {
+    if( names == null || names.isEmpty ) return;
+    if( previousSelectedText == null ) return;
+    int index = 0;
+    names?.forEach((element) {
+      bool foundPosition = element == previousSelectedText;
+      if( foundPosition ) {
+        previousPosition = index;
+        return;
+      }
+      index = index + 1;
+    });
+  }
+
 
   @override
   DropdownAppState createState()  => DropdownAppState();
