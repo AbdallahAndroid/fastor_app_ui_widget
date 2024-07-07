@@ -5,6 +5,10 @@ import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorA
 import 'package:flutter/material.dart';
 
 
+
+import 'package:flutter/material.dart';
+
+
 class TextFieldApp extends StatelessWidget {
 
   // validate
@@ -63,6 +67,8 @@ class TextFieldApp extends StatelessWidget {
   String? errorKeySearchingInErrorMessageArray;
   String? errorMessage;
   Color? errorColor;
+  InputDecoration? originalDecorationBeforeErrorEdition ;
+  bool isShowErrorBefore = false;
 
   //other
   TextAlign? textAlign;
@@ -162,16 +168,8 @@ class TextFieldApp extends StatelessWidget {
       obscureText = true;
     }
 
-    //decoration
-    validateDecorationInputField();
-    makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
-
-    //error
-    _setErrorMessageValueFromBackend();
-    errorColor ??= Colors.red;
-    autovalidateMode ??= AutovalidateMode.disabled;
-    _setValidator();
-    setErrorMessageInCaseCustomDecoration();
+    //error + decoration
+    handleEveryReBuildErrorAndDecorationShape();
 
     //??TextInputAction.newline
     if( textInputAction == null ){
@@ -189,6 +187,25 @@ class TextFieldApp extends StatelessWidget {
 
   }
 
+  void handleEveryReBuildErrorAndDecorationShape(){
+
+    //decoration
+    validateDecorationInputField();
+    makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
+
+    //error
+    _setErrorMessageValueFromBackend();
+    errorColor ??= Colors.red;
+    autovalidateMode ??= AutovalidateMode.disabled;
+    _setValidator();
+    setErrorMessageInCaseCustomDecorationByCloneOriginalInputDecorationAndEditItByErrorMessage();
+
+    /// remove decoration error when error message cleared
+    bool oldMessageNeedToBeRemovedFromDecoration =  errorMessage == null  && isShowErrorBefore;
+    if( oldMessageNeedToBeRemovedFromDecoration ) {
+      decoration = originalDecorationBeforeErrorEdition;
+    }
+  }
 
   void _setValidator() {
     // set default
@@ -236,17 +253,19 @@ class TextFieldApp extends StatelessWidget {
       // print( "abdo - _getErrorText() - keyError: keyError");
       // print( "abdo - _getErrorText() - errors![key]: ${errors![keyError]}");
       errorMessage =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
-      print( "abdo - _getErrorTextBackend() - errorMessage: ${errorMessage}");
-
+      print( "TextFieldApp - _getErrorTextBackend() - errorMessage: ${errorMessage}");
     }
   }
+
 
   /// why make clone decoration ?
   ///    when use "error_message" backend it can not show due to sometimes user
   ///    use custome "decoration" inputDecoration.
-  void setErrorMessageInCaseCustomDecoration() {
+  void setErrorMessageInCaseCustomDecorationByCloneOriginalInputDecorationAndEditItByErrorMessage() {
     InputDecoration? cloneDecoration;
     if( errorMessage != null  && decoration != null ) {
+      originalDecorationBeforeErrorEdition = decoration;
+      isShowErrorBefore = true;
 
       cloneDecoration = InputDecoration(
 
@@ -303,7 +322,7 @@ class TextFieldApp extends StatelessWidget {
           constraints  : decoration!.constraints
       );
       decoration = cloneDecoration;
-
+      print("TextFieldApp - setErrorMessageInCaseCustomDecoration() clone decoration error"   );
     }
   }
 
@@ -311,6 +330,9 @@ class TextFieldApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    setDefaultValues();
+
+    print("TextFieldApp - build() errorMessage: $errorMessage"   );
     return Container(
       child: columnTitleAndTextField(),
       width: width,
@@ -410,7 +432,7 @@ class TextFieldApp extends StatelessWidget {
 
 
   InputDecoration getDecorationBoarderOrNotUnderLineShape( ) {
-
+    print( "abdo - getDecorationBoarderOrNotUnderLineShape()");
     if( isShowBoarder! ) {
       return getDecorationInput_outlineInput(  );
     } else {
