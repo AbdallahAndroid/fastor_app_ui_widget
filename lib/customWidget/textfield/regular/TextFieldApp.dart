@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 
 
+
 class TextFieldApp extends StatelessWidget {
 
   // validate
@@ -48,6 +49,7 @@ class TextFieldApp extends StatelessWidget {
   //controller
   TextEditingController? controller;
   ValueChanged<String>? onChanged;
+  ValueChanged<String>? onFieldSubmitted;
 
   //input content type
   TextInputType? keyboardType;
@@ -77,7 +79,7 @@ class TextFieldApp extends StatelessWidget {
   //icon
   Widget? prefixIcon;
   Widget? suffixIcon;
-
+  double? iconSize;
 
   TextFieldApp({
     // validate
@@ -113,6 +115,7 @@ class TextFieldApp extends StatelessWidget {
     //controller
     this.controller,
     this.onChanged,
+    this.onFieldSubmitted,
 
     //input content type
     this.keyboardType,
@@ -137,7 +140,8 @@ class TextFieldApp extends StatelessWidget {
 
     //icon
     this.prefixIcon, //example "icon" left of textField
-    this.suffixIcon
+    this.suffixIcon,
+    this.iconSize,
 
   }) {
     setDefaultValues();
@@ -253,7 +257,7 @@ class TextFieldApp extends StatelessWidget {
       // print( "abdo - _getErrorText() - keyError: keyError");
       // print( "abdo - _getErrorText() - errors![key]: ${errors![keyError]}");
       errorMessage =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
-      print( "TextFieldApp - _getErrorTextBackend() - errorMessage: ${errorMessage}");
+      //  print( "TextFieldApp - _getErrorTextBackend() - errorMessage: ${errorMessage}");
     }
   }
 
@@ -270,59 +274,59 @@ class TextFieldApp extends StatelessWidget {
       cloneDecoration = InputDecoration(
 
         /// clode to edit this
-          errorText: errorMessage,
+        errorText: errorMessage,
 
-          icon: decoration!.icon,
-          iconColor: decoration!.iconColor,
-          label: decoration!.label,
-          labelText: decoration!.labelText,
-          floatingLabelStyle: decoration!.floatingLabelStyle,
-          helperText : decoration!.helperText,
-          helperStyle : decoration!.helperStyle,
-          helperMaxLines: decoration!.helperMaxLines,
-          hintText : decoration!.hintText,
-          hintStyle: decoration!.hintStyle,
-          hintTextDirection : decoration!.hintTextDirection,
-          hintMaxLines: decoration!.hintMaxLines,
-          error  : decoration!.error,
-          errorMaxLines: decoration!.errorMaxLines,
-          floatingLabelBehavior : decoration!.floatingLabelBehavior,
-          floatingLabelAlignment: decoration!.floatingLabelAlignment,
-          isCollapsed : decoration!.isCollapsed,
-          isDense: decoration!.isDense,
-          contentPadding : decoration!.contentPadding,
-          prefixIcon: decoration!.prefixIcon,
-          prefixIconConstraints : decoration!.prefixIconConstraints,
-          prefix: decoration!.prefix,
-          prefixText : decoration!.prefixText,
-          prefixStyle: decoration!.prefixStyle,
-          prefixIconColor: decoration!.prefixIconColor,
-          suffixIcon: decoration!.suffixIcon,
-          suffix: decoration!.suffix,
-          suffixText: decoration!.suffixText,
-          suffixStyle : decoration!.suffixStyle,
-          suffixIconColor: decoration!.suffixIconColor,
-          suffixIconConstraints: decoration!.suffixIconConstraints,
-          counter: decoration!.counter,
-          counterText: decoration!.counterText,
-          counterStyle: decoration!.counterStyle,
-          filled : decoration!.filled,
-          fillColor: decoration!.fillColor,
-          focusColor: decoration!.focusColor,
-          hoverColor: decoration!.hoverColor,
-          errorBorder: decoration!.errorBorder,
-          focusedBorder: decoration!.focusedBorder,
-          focusedErrorBorder: decoration!.focusedErrorBorder,
-          disabledBorder : decoration!.disabledBorder,
-          enabledBorder: decoration!.enabledBorder,
-          border: decoration!.border,
-          enabled: decoration!.enabled,
-          semanticCounterText : decoration!.semanticCounterText,
-          alignLabelWithHint: decoration!.alignLabelWithHint,
-          constraints  : decoration!.constraints
+        icon: decoration!.icon,
+        iconColor: decoration!.iconColor,
+        label: decoration!.label,
+        labelText: decoration!.labelText,
+        floatingLabelStyle: decoration!.floatingLabelStyle,
+        helperText : decoration!.helperText,
+        helperStyle : decoration!.helperStyle,
+        helperMaxLines: decoration!.helperMaxLines,
+        hintText : decoration!.hintText,
+        hintStyle: decoration!.hintStyle,
+        hintTextDirection : decoration!.hintTextDirection,
+        hintMaxLines: decoration!.hintMaxLines,
+        error  : decoration!.error,
+        errorMaxLines: decoration!.errorMaxLines,
+        floatingLabelBehavior : decoration!.floatingLabelBehavior,
+        floatingLabelAlignment: decoration!.floatingLabelAlignment,
+        isCollapsed : decoration!.isCollapsed,
+        isDense: decoration!.isDense,
+        contentPadding : decoration!.contentPadding,
+        prefixIcon: decoration!.prefixIcon,
+        prefixIconConstraints : decoration!.prefixIconConstraints,
+        prefix: decoration!.prefix,
+        prefixText : decoration!.prefixText,
+        prefixStyle: decoration!.prefixStyle,
+        prefixIconColor: decoration!.prefixIconColor,
+        suffixIcon: decoration!.suffixIcon,
+        suffix: decoration!.suffix,
+        suffixText: decoration!.suffixText,
+        suffixStyle : decoration!.suffixStyle,
+        suffixIconColor: decoration!.suffixIconColor,
+        suffixIconConstraints: decoration!.suffixIconConstraints,
+        counter: decoration!.counter,
+        counterText: decoration!.counterText,
+        counterStyle: decoration!.counterStyle,
+        filled : decoration!.filled,
+        fillColor: decoration!.fillColor,
+        focusColor: decoration!.focusColor,
+        hoverColor: decoration!.hoverColor,
+        errorBorder: decoration!.errorBorder,
+        focusedBorder: decoration!.focusedBorder,
+        focusedErrorBorder: decoration!.focusedErrorBorder,
+        disabledBorder : decoration!.disabledBorder,
+        enabledBorder: decoration!.enabledBorder,
+        border: decoration!.border,
+        enabled: decoration!.enabled,
+        semanticCounterText : decoration!.semanticCounterText,
+        alignLabelWithHint: decoration!.alignLabelWithHint,
+        constraints  : decoration!.constraints,
       );
       decoration = cloneDecoration;
-      print("TextFieldApp - setErrorMessageInCaseCustomDecoration() clone decoration error"   );
+      // print("TextFieldApp - setErrorMessageInCaseCustomDecoration() clone decoration error"   );
     }
   }
 
@@ -332,7 +336,7 @@ class TextFieldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     setDefaultValues();
 
-    print("TextFieldApp - build() errorMessage: $errorMessage"   );
+    // print("TextFieldApp - build() errorMessage: $errorMessage"   );
     return Container(
       child: columnTitleAndTextField(),
       width: width,
@@ -406,7 +410,7 @@ class TextFieldApp extends StatelessWidget {
       onChanged: onChanged,
 
       //submit
-      onFieldSubmitted: onChanged,
+      onFieldSubmitted: onFieldSubmitted??onChanged,
 
       //max length
       maxLength: maxLength,
@@ -432,7 +436,7 @@ class TextFieldApp extends StatelessWidget {
 
 
   InputDecoration getDecorationBoarderOrNotUnderLineShape( ) {
-    print( "abdo - getDecorationBoarderOrNotUnderLineShape()");
+    //print( "abdo - getDecorationBoarderOrNotUnderLineShape()");
     if( isShowBoarder! ) {
       return getDecorationInput_outlineInput(  );
     } else {
@@ -478,30 +482,41 @@ class TextFieldApp extends StatelessWidget {
     return InputDecoration(
 
       //remove default padding and set custom
-      isDense: true,
-      contentPadding: padding,
+        isDense: true,
+        contentPadding: padding,
 
-      //hint text
-      hintText: hint_text,
+        //hint text
+        hintText: hint_text,
 
-      //hint color
-      hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
+        //hint color
+        hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
 
-      // underline customer color
-      enabledBorder: enabledBorder,
-      focusedBorder: focusedBorder,
+        // underline customer color
+        enabledBorder: enabledBorder,
+        focusedBorder: focusedBorder,
 
-      //error text
-      errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
-      errorText : errorMessage,
+        //error text
+        errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
+        errorText : errorMessage,
 
-      //error boarder
-      errorBorder: errorBorder,
-      focusedErrorBorder: focusedErrorBorder,
+        //error boarder
+        errorBorder: errorBorder,
+        focusedErrorBorder: focusedErrorBorder,
 
-      //other
-      prefixIcon: prefixIcon,
-      suffixIcon: suffixIcon,
+        //other
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+
+        /// fix icon size
+        prefixIconConstraints: iconSize != null ? BoxConstraints(
+          minWidth: iconSize!, // Adjust the minimum width as needed
+          minHeight: iconSize!, // Adjust the minimum height as needed
+        ) : null ,
+        suffixIconConstraints:iconSize != null ?  BoxConstraints(
+          minWidth: iconSize!, // Adjust the minimum width as needed
+          minHeight: iconSize!, // Adjust the minimum height as needed
+        ): null
+
     );
   }
 
@@ -561,7 +576,20 @@ class TextFieldApp extends StatelessWidget {
 
         //other
         prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon
+        suffixIcon: suffixIcon,
+
+
+        /// fix icon size
+        prefixIconConstraints: iconSize != null ? BoxConstraints(
+          minWidth: iconSize!, // Adjust the minimum width as needed
+          minHeight: iconSize!, // Adjust the minimum height as needed
+        ) : null ,
+        suffixIconConstraints:iconSize != null ?  BoxConstraints(
+          minWidth: iconSize!, // Adjust the minimum width as needed
+          minHeight: iconSize!, // Adjust the minimum height as needed
+        ): null
+
+
     );
   }
 
