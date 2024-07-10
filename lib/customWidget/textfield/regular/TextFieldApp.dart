@@ -29,7 +29,7 @@ class TextFieldApp extends StatelessWidget {
   Color? hint_color;
 
   //mode of textfield
-  bool isRemoveUnderline = false;
+  bool? isRemoveUnderline  ;
 
   @Deprecated("use showOutlineInput")
   bool? isShowBoarder;
@@ -99,7 +99,7 @@ class TextFieldApp extends StatelessWidget {
     this.fontFamily,
 
     //boarder and underline
-    this.isRemoveUnderline = false,
+    this.isRemoveUnderline ,
     this.isShowBoarder,
     this.showOutlineInput,
 
@@ -150,6 +150,8 @@ class TextFieldApp extends StatelessWidget {
   //--------------------------------------------------------------- default value
 
   void setDefaultValues() {
+    isRemoveUnderline ??= false;
+
     //padding default
     padding ??= EdgeInsets.zero;
 
@@ -525,7 +527,7 @@ class TextFieldApp extends StatelessWidget {
 
     //check is need to remove underline
     double widthUnderLine = 1;
-    if( isRemoveUnderline ) {
+    if( isRemoveUnderline! ) {
       widthUnderLine = 0;
     }
 
@@ -563,23 +565,25 @@ class TextFieldApp extends StatelessWidget {
         hintStyle: TextStyle(color: hint_color, fontSize: fontSize),
 
         // underline customer color
-        enabledBorder: enabledBorder,
-        focusedBorder: focusedBoarder,
+        enabledBorder:isRemoveUnderline! ? InputBorder.none :  enabledBorder,
+        focusedBorder: isRemoveUnderline! ? InputBorder.none : focusedBoarder,
+        border: isRemoveUnderline! ? InputBorder.none : null ,
+        disabledBorder: isRemoveUnderline! ? InputBorder.none : null ,
 
         //error text
         errorText : errorMessage,
         errorStyle:   TextStyle(color: errorColor, fontWeight: FontWeight.w500, fontSize: 10),
 
         //error boarder
-        errorBorder: errorBorder,
-        focusedErrorBorder: focusedErrorBorder,
+        errorBorder:  errorBorder,
+        focusedErrorBorder:   focusedErrorBorder,
+
 
         //other
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
 
-
-        /// fix icon size
+        // fix icon size
         prefixIconConstraints: iconSize != null ? BoxConstraints(
           minWidth: iconSize!, // Adjust the minimum width as needed
           minHeight: iconSize!, // Adjust the minimum height as needed
@@ -595,6 +599,11 @@ class TextFieldApp extends StatelessWidget {
 
 
 
+
+
+
+
+}
 
 
 
