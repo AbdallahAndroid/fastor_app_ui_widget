@@ -6,6 +6,7 @@ import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 
+
 //------------------------------------------------------------------ callback
 
 typedef SpinnerViewCallBack = void Function( int position, bool isRemoveSelected );
@@ -21,6 +22,7 @@ class SpinnerView extends StatefulWidget {
   Widget? iconDropdown;
   Decoration? decorationOutlineDropdown;
 
+  double? menuMaxHeight;
   Color? colorDropdownMenu;
   Color? colorDropdownButtonOutline;
   // Color? colorDropdownButtonBackground;
@@ -54,7 +56,7 @@ class SpinnerView extends StatefulWidget {
 
   TextDirection? textDirection;
 
-  
+
   SpinnerView (  {
     required  List<Widget> this.childers ,
     required Widget this.hintWidget,
@@ -67,6 +69,7 @@ class SpinnerView extends StatefulWidget {
     this.iconDropdown,
     this.textStyleItemDropdown,
 
+    this.menuMaxHeight,
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     // this.colorDropdownButtonBackground,
@@ -219,17 +222,8 @@ class SpinnerViewState extends State<SpinnerView> {
 
   Widget getDirection() {
     return   Directionality(
-      textDirection:   widget.textDirection??TextDirection.ltr,
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: contentUi(),
-          );
-        },
-      ),
+      textDirection:   widget.textDirection!,
+      child: contentUi(),
     );
   }
 
@@ -331,8 +325,8 @@ class SpinnerViewState extends State<SpinnerView> {
       // icon: widget.iconDropdown,
       // iconSize: 24, //widget.iconSize,
       iconSize: 0, //hide icon
-
       elevation: 16,
+      menuMaxHeight: widget.menuMaxHeight,
       dropdownColor: widget.colorDropdownMenu,
       focusColor: widget.colorDropdownMenu,
       style: widget.textStyleItemDropdown??TextStyle(
@@ -382,7 +376,7 @@ class SpinnerViewState extends State<SpinnerView> {
     listDrop = [];
 
     // set hint
-    setHintWidget();
+    setHintWidgetInFirstItemOnTop();
 
     //for
     for( int position = 0 ; position < widget.childers.length; position++ ) {
@@ -395,14 +389,17 @@ class SpinnerViewState extends State<SpinnerView> {
     //  return listDrop;
   }
 
-  void setHintWidget() {
-    var removeSpace = 60;
-    var hintTextAnIcon = Stack( children: [
-      EmptyView.empty( widget.width_frame - removeSpace  , widget.height_frame ),
-      Align( child: widget.hintWidget!, alignment: Alignment.centerLeft,),
-      Positioned( child: EmptyView.zero(), right: 0 )
-    ],);
-    _addToDrop( hintTextAnIcon, SpinnerView.key_position_hint );
+  void setHintWidgetInFirstItemOnTop() {
+    // var removeSpace = 60;
+    // var hintTextAnIcon = Stack(
+    //   children: [
+    //   EmptyView.empty( widget.width_frame - removeSpace  , widget.height_frame ),
+    //
+    //   Align( child: widget.hintWidget!, alignment: Alignment.centerLeft,),
+    //
+    //   Positioned( child: EmptyView.zero(), right: 0 )
+    // ],);
+    _addToDrop( widget.hintWidget, SpinnerView.key_position_hint );
   }
 
 
@@ -411,7 +408,8 @@ class SpinnerViewState extends State<SpinnerView> {
     DropdownMenuItem<String> drop = DropdownMenuItem<String>(
       // key: _formKey,
       value: position ,
-      child: wid,
+      child:   Directionality(textDirection: widget.textDirection!, child: wid ) ,
+      // alignment: AlignmentDirectional.centerEnd,
     );
     listDrop.add( drop );
 
