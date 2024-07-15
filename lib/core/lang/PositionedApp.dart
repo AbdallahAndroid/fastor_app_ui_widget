@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class PositionedApp {
 
 
-  static Positioned langFastor( {
+  static Positioned langApp( {
 
     required Widget child,
     double? left,

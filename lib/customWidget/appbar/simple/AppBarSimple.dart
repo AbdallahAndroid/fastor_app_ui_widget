@@ -3,7 +3,10 @@
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
+import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppBarSimple extends StatefulWidget {
@@ -17,10 +20,10 @@ class AppBarSimple extends StatefulWidget {
   ValueChanged<bool>? onClickListener;
 
   //icon
-  Color? iconColorBack;
+  Color? iconColor;
   double? iconSize;
 
-  static const frameHeight = 60.0;
+  static double frameHeight = Figma.h(74);
   Widget? buttonLeft;
   Widget? buttonRight;
   BuildContext pageContext;
@@ -30,12 +33,12 @@ class AppBarSimple extends StatefulWidget {
       this.pageContext, this.title ,{
         ValueChanged<bool>? this.onClickListener,
         bool hideBackButton = false,
-        Widget? buttonLeft,
-        Widget? buttonRight,
+        this.buttonLeft,
+        this.buttonRight,
         this.titleColor,
         this.titleMargin,
         this.iconSize,
-        this.iconColorBack,
+        this.iconColor,
         this.colorBackgroundToolbar
       } ) {
     //set values
@@ -43,14 +46,15 @@ class AppBarSimple extends StatefulWidget {
     this.buttonLeft = buttonLeft;
     this.buttonRight = buttonRight;
 
-    iconColorBack ??= Colors.grey;
+    iconColor ??= ColorResource.white;
     iconSize ??= 20;
 
-    //  Log.i( "ToolbarSimple - myTitle: $myTitle /onClickListener: $onClickListener");
+    frameHeight = Figma.h(74) ; //+  NotchBarSizeHelper.getTop( pageContext);
+    // Log.i( "AppBarSimple() - frameHeight: $frameHeight");
 
     //toolbar
-    titleColor ??= Colors.white;
-    colorBackgroundToolbar ??= Colors.black;
+    titleColor ??= ColorResource.white;
+    colorBackgroundToolbar ??= ColorResource.blackSecond;
   }
 
 
@@ -83,7 +87,7 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
             data: MediaQuery.of(context).copyWith(
               textScaleFactor: 1.0,
             ),
-            child: contentUI(),
+            child: contentUIUnderNotchHeight(),
           );
         },
       ),
@@ -91,9 +95,12 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
   }
 
 
-  Widget contentUI(){
+  Widget contentUIUnderNotchHeight(){
     return Container(
       alignment: Alignment.topCenter,
+      padding: EdgeInsets.only(top:  NotchBarSizeHelper.getTop( context)),
+      color: widget.colorBackgroundToolbar,
+      height: NotchBarSizeHelper.getTop(context) + AppBarSimple.frameHeight,
       child:  stackContent(),
     );
   }
@@ -102,42 +109,35 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
     return Stack( children: [
 
       EmptyView.colored( DeviceTools.getWidth( context),
-          AppBarSimple.frameHeight, widget.colorBackgroundToolbar!),
+          AppBarSimple.frameHeight,
+          widget.colorBackgroundToolbar!
+      ),
 
       //title
-      Positioned( child:  tv_title(), left: 0, right: 0 , top: 0 ),
-
+      Positioned( child:  tv_title(), left: 0, right: 0 , top:  18    ),
 
       //back
-      PositionedApp.langFastor( child:  bt_back(), left: 0,   top: 0  ),
+      PositionedApp.langApp( child:  bt_back(), left: 0,   top:  18 -5     ),
 
       //button left
-      PositionedApp.langFastor(child: bt_left() , left: 0, top: 0 , bottom: 0 ),
+      PositionedApp.langApp(child: bt_left() , left: 1, top:  18    ),
 
       //button right
-      PositionedApp.langFastor(child: bt_right() , right: 0, top: 0 , bottom: 0 ),
+      PositionedApp.langApp(child: bt_right() , right: 1, top:  18    ),
 
 
     ],);
   }
 
-
+  // double notchTop(){  return NotchBarSizeHelper.getTop(context) ;}
   //---------------------------------------------------------------------------- title
 
   Widget tv_title(){
-    var txt =  Text( widget.title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            fontSize: 20,
-            color: widget.titleColor,
-            decoration:  TextDecoration.none
-        )
-    );
-
-    return Container( child:  txt ,
-        margin: widget.titleMargin?? EdgeInsets.only(top: 15)
-    );
-
+    // return TitleAppBar( widget.title );
+    return  TextApp( widget.title,
+      fontSize: 16,
+      color: widget.titleColor,
+    )
   }
 
   //---------------------------------------------------------------------------- back button
@@ -149,14 +149,18 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
     }
 
     //show
-    var icon = Icon( Icons.arrow_back ,size: widget.iconSize, color: widget.iconColorBack, );
+    var icon = Icon( CupertinoIcons.back,
+        size: 12+12 ,
+        color: widget.iconColor
+    );
+
     var ct = Container(
-      // width: icon_size,
-        height: AppBarSimple.frameHeight ,
-        alignment: Alignment.center,
-        // margin: EdgeInsets.only( top: 15 ),
-        padding: EdgeInsets.symmetric( horizontal: 20 ),
-        child: icon);
+      // color: Colors.red,
+      // height: AppBarSimple.frameHeight ,
+      // alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: icon
+    );
 
     return GestureDetector( child: ct ,
       onTap: () {
