@@ -46,15 +46,14 @@ class AppBarSimple extends StatefulWidget {
     this.buttonLeft = buttonLeft;
     this.buttonRight = buttonRight;
 
-    iconColor ??= ColorResource.white;
+    iconColor ??= Colors.white;
     iconSize ??= 20;
 
-    frameHeight = Figma.h(74) ; //+  NotchBarSizeHelper.getTop( pageContext);
-    // Log.i( "AppBarSimple() - frameHeight: $frameHeight");
+    frameHeight =  74  ;
 
     //toolbar
-    titleColor ??= ColorResource.white;
-    colorBackgroundToolbar ??= ColorResource.blackSecond;
+    titleColor ??= Colors.white;
+    colorBackgroundToolbar ??= Colors.black;
   }
 
 
@@ -137,7 +136,7 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
     return  TextApp( widget.title,
       fontSize: 16,
       color: widget.titleColor,
-    )
+    );
   }
 
   //---------------------------------------------------------------------------- back button
