@@ -23,7 +23,7 @@ class AppBarSimple extends StatefulWidget {
   Color? iconColor;
   double? iconSize;
 
-  static double frameHeight = Figma.h(74);
+  static double frameHeight =  74;
   Widget? buttonLeft;
   Widget? buttonRight;
   BuildContext pageContext;
