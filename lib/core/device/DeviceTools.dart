@@ -25,8 +25,8 @@ class DeviceTools {
 
   // /-------------------------------------------------------------- variable
 
-  static double widthFullSize = 0;
-  static double heightFullSize = 0;
+  static double _widthFullSize = 0;
+  static double _heightFullSize = 0;
   static Orientation? _orientationPrevous = null;
 
   //-------------------------------------------------------------- platform
@@ -146,22 +146,22 @@ class DeviceTools {
    */
   static void _clearCacheSaveDeviceSizeNow(  ) {
     //make it zero
-    widthFullSize = 0;
-    heightFullSize = 0;
+    _widthFullSize = 0;
+    _heightFullSize = 0;
   }
-
+  
 
   static double getWidth (BuildContext  context, { String? className  }) {
     try {
 
       _clearCacheDiviceSizeWhenOrientationChange(context);
 
-      if( isMobile() &&  widthFullSize != 0 ) {
-        return widthFullSize;
+      if( isMobile() &&  _widthFullSize != 0 ) {
+        return _widthFullSize;
       }
-      widthFullSize =  MediaQuery.of(context).size.width;
+      _widthFullSize =  MediaQuery.of(context).size.width;
       // Log.i( "DeviceTools - getScreenWidth() - result: $result ");
-      return widthFullSize;
+      return _widthFullSize;
     }  catch (err) {
       if( className  != null ){
         //Log.e( "DeviceTools - getWidth() - err - className: $className ");
@@ -178,12 +178,12 @@ class DeviceTools {
 
       _clearCacheDiviceSizeWhenOrientationChange(context);
 
-      if( isMobile() &&  heightFullSize != 0 ) {
-        return heightFullSize;
+      if( isMobile() &&  _heightFullSize != 0 ) {
+        return _heightFullSize;
       }
-      heightFullSize =  MediaQuery.of(context).size.height;
+      _heightFullSize =  MediaQuery.of(context).size.height;
       //Log.i( "DeviceTools - getHeight() - result: $result ");
-      return heightFullSize;
+      return _heightFullSize;
     }  catch (err) {
       if( className  != null ){
         //Log.e( "DeviceTools - getHeight() - err - className: $className ");
@@ -200,7 +200,7 @@ class DeviceTools {
 
   double getHeightInsideSafeArea(BuildContext context){
     return DeviceTools.getHeight(context)
-        - NotchBarSizeHelper.getHeight(context)
+        - NotchBarSizeHelper.getHeightTopAndDown(context)
         - StatusBarSizeHelper.getHeight(context) ;
   }
 
