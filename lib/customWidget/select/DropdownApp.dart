@@ -54,6 +54,9 @@ class DropdownApp extends StatefulWidget {
   Color? underlineColor;
   Widget? iconDropdown;
 
+  // menu
+  double? menuMaxHeight;
+
   //space
   EdgeInsets? paddingText;
 
@@ -97,6 +100,7 @@ class DropdownApp extends StatefulWidget {
     this.colorDropdownMenu,
     this.colorDropdownButtonOutline,
     // this.colorDropdownButtonBackground,
+    this.menuMaxHeight,
     this.underlineColor,
     this.iconDropdown,
     this.previousSelectedText,
@@ -189,17 +193,18 @@ class  DropdownAppState extends State<DropdownApp > {
 
   Widget getDirection() {
     return   Directionality(
-      textDirection:   widget.textDirection??TextDirection.ltr,
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: contentUI(),
-          );
-        },
-      ),
+      textDirection:   TextDirection.rtl, //widget.textDirection??TextDirection.ltr,
+      child: contentUI(),
+      // child:   Builder(
+      //   builder: (BuildContext context) {
+      //     return   MediaQuery(
+      //       data: MediaQuery.of(context).copyWith(
+      //         textScaleFactor: 1.0,
+      //       ),
+      //       child: contentUI(),
+      //     );
+      //   },
+      // ),
     );
   }
 
