@@ -1,13 +1,16 @@
 
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/customWidget/appbar/simple/TitleAppBar.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class AppBarSimple extends StatefulWidget {
 
@@ -23,7 +26,7 @@ class AppBarSimple extends StatefulWidget {
   Color? iconColor;
   double? iconSize;
 
-  static double frameHeight =  74;
+  static double frameHeight = Figma.h(74);
   Widget? buttonLeft;
   Widget? buttonRight;
   BuildContext pageContext;
@@ -49,7 +52,8 @@ class AppBarSimple extends StatefulWidget {
     iconColor ??= Colors.white;
     iconSize ??= 20;
 
-    frameHeight =  74  ;
+    frameHeight = Figma.h(74) ; //+  NotchBarSizeHelper.getTop( pageContext);
+    // Log.i( "AppBarSimple() - frameHeight: $frameHeight");
 
     //toolbar
     titleColor ??= Colors.white;
@@ -67,6 +71,8 @@ class AppBarSimple extends StatefulWidget {
 
 class _ToolbarSimple extends  State<AppBarSimple>   {
 
+
+  double paddingBackButtonVertical = Figma.h(10);
 
   //--------------------------------------------------------------------------- build stacks
 
@@ -113,30 +119,27 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
       ),
 
       //title
-      Positioned( child:  tv_title(), left: 0, right: 0 , top:  18    ),
+      Positioned( child:  tv_title(), left: Figma.w(24 + 5), right: Figma.w(24 + 5) , top: Figma.h(18 )  ),
 
       //back
-      PositionedApp.langApp( child:  bt_back(), left: 0,   top:  18 -5     ),
+      PositionedApp.langApp( child:  bt_back(), left: 0,   top: Figma.h(18 -5 - paddingBackButtonVertical )   ),
 
       //button left
-      PositionedApp.langApp(child: bt_left() , left: 1, top:  18    ),
+      PositionedApp.langApp(child: bt_left() , left: 1, top: Figma.h(18 )   ),
 
       //button right
-      PositionedApp.langApp(child: bt_right() , right: 1, top:  18    ),
+      PositionedApp.langApp(child: bt_right() , right: 1, top: Figma.h(18 )   ),
 
 
     ],);
   }
 
+
   // double notchTop(){  return NotchBarSizeHelper.getTop(context) ;}
   //---------------------------------------------------------------------------- title
 
   Widget tv_title(){
-    // return TitleAppBar( widget.title );
-    return  TextApp( widget.title,
-      fontSize: 16,
-      color: widget.titleColor,
-    );
+    return TitleAppBar( widget.title );
   }
 
   //---------------------------------------------------------------------------- back button
@@ -149,15 +152,15 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
 
     //show
     var icon = Icon( CupertinoIcons.back,
-        size: 12+12 ,
+        size: Figma.h(12+12),
         color: widget.iconColor
     );
 
     var ct = Container(
-      // color: Colors.red,
-      // height: AppBarSimple.frameHeight ,
-      // alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        color: Colors.transparent,
+        // height: AppBarSimple.frameHeight ,
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: paddingBackButtonVertical /2),
         child: icon
     );
 

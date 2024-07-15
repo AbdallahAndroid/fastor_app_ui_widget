@@ -149,7 +149,7 @@ class DeviceTools {
     _widthFullSize = 0;
     _heightFullSize = 0;
   }
-  
+
 
   static double getWidth (BuildContext  context, { String? className  }) {
     try {
