@@ -6,7 +6,7 @@ import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:flutter/material.dart';
 
-class ToolbarSimpleApp extends StatefulWidget {
+class AppBarSimple extends StatefulWidget {
 
   //title
   String title;
@@ -26,7 +26,7 @@ class ToolbarSimpleApp extends StatefulWidget {
   BuildContext pageContext;
   Color? colorBackgroundToolbar;
 
-  ToolbarSimpleApp(
+  AppBarSimple(
       this.pageContext, this.title ,{
         ValueChanged<bool>? this.onClickListener,
         bool hideBackButton = false,
@@ -62,7 +62,7 @@ class ToolbarSimpleApp extends StatefulWidget {
 
 }
 
-class _ToolbarSimple extends  State<ToolbarSimpleApp>   {
+class _ToolbarSimple extends  State<AppBarSimple>   {
 
 
   //--------------------------------------------------------------------------- build stacks
@@ -102,7 +102,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleApp>   {
     return Stack( children: [
 
       EmptyView.colored( DeviceTools.getWidth( context),
-          ToolbarSimpleApp.frameHeight, widget.colorBackgroundToolbar!),
+          AppBarSimple.frameHeight, widget.colorBackgroundToolbar!),
 
       //title
       Positioned( child:  tv_title(), left: 0, right: 0 , top: 0 ),
@@ -152,7 +152,7 @@ class _ToolbarSimple extends  State<ToolbarSimpleApp>   {
     var icon = Icon( Icons.arrow_back ,size: widget.iconSize, color: widget.iconColorBack, );
     var ct = Container(
       // width: icon_size,
-        height: ToolbarSimpleApp.frameHeight ,
+        height: AppBarSimple.frameHeight ,
         alignment: Alignment.center,
         // margin: EdgeInsets.only( top: 15 ),
         padding: EdgeInsets.symmetric( horizontal: 20 ),

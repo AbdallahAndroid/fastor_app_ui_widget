@@ -2,15 +2,17 @@
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/customWidget/appbar/simple/AppBarSimple.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/toolbar/simple/ToolbarSimpleApp.dart';
 import 'package:flutter/material.dart';
-
 
 class ScaffoldApp  extends StatelessWidget {
 
+  Color? statusBarColorIOSDevice;
+
   Widget body;
   bool? putBodyInsideScroll;
+  bool? putBodyInsideSafeArea;
   BuildContext? context;
   ScrollController? scrollController;
   GlobalKey<ScaffoldState>? keyDrawer;
@@ -19,6 +21,7 @@ class ScaffoldApp  extends StatelessWidget {
   String? titleAppbar;
   final PreferredSizeWidget? appBar;
   Widget? appBarCustom;
+  double? appBarCustomHeight;
   bool? isShowBackButtonAppBar;
   final Widget? floatingActionButton;
   final bool? makeStatusBarTransparent;
@@ -34,12 +37,14 @@ class ScaffoldApp  extends StatelessWidget {
   ScaffoldApp({
     super.key,
     required this.body,
+    this.putBodyInsideSafeArea = false  ,
     this.putBodyInsideScroll = false ,
     this.backgroundColor,
     this.floatingActionButton,
     this.titleAppbar,
     this.appBar,
     this.appBarCustom,
+    this.appBarCustomHeight,
     this.widgetBackground,
     this.isShowBackButtonAppBar,
     this.scrollController,
@@ -49,12 +54,29 @@ class ScaffoldApp  extends StatelessWidget {
     this.makeStatusBarTransparent,
     this.floatingActionButtonLocation,
 
+    // status bar
+    this.statusBarColorIOSDevice,
+
     //transparent
     this.shapeTransparent = false ,
     this.shapeTransparentColor,
   }) {
 
 
+    _setDefaultValues();
+  }
+
+  _setDefaultValues(){
+    backgroundColor ??= Colors.white;
+
+    statusBarColorIOSDevice ??= backgroundColor;
+
+    bool isNeedAppBar =   appBarCustom != null || appBar != null || titleAppbar != null;
+    if( isNeedAppBar ) {
+      appBarCustomHeight ??= AppBarSimple.frameHeight;
+    }
+
+    putBodyInsideSafeArea ??= false ;
   }
 
   @override
@@ -65,29 +87,44 @@ class ScaffoldApp  extends StatelessWidget {
 
   Widget scaffoldContent(context) {
     return Scaffold(
-        backgroundColor: shapeTransparent!? Colors.transparent : backgroundColor,
+        backgroundColor: shapeTransparent!? Colors.transparent : statusBarColorIOSDevice,
         key: keyDrawer,
         drawer: drawer,
         onDrawerChanged: onDrawerChanged,
         floatingActionButton: floatingActionButton,
         appBar: appBar,
-        body: Directionality(
-          textDirection: LangApp.getTextDirection(),
-          child: SafeArea(
-            child: scaffoldBody(context),
-          ),
-        ),
+        body:  bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(),
         resizeToAvoidBottomInset: true,
         floatingActionButtonLocation: floatingActionButtonLocation
     );
   }
 
-  Widget scaffoldBody(context) {
+
+  Widget bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(){
+    return Directionality(
+      textDirection: LangApp.getTextDirection(),
+      child: putBodyInsideSafeArea! ? SafeArea(
+        child: bodyScaffold(context),
+      ) : bodyScaffold(context),
+    );
+  }
+
+
+  Widget bodyScaffold(context) {
+    // print("bodyScaffold() - appBarCustomHeight: $appBarCustomHeight");
     return Stack(
       children: [
+        Container(
+          color: Colors.orange,
+          width: DeviceTools.getWidth(context),
+          height: DeviceTools.getHeight(context),
+        ),
         if( isNormalBackground() ) _decorationBackgroundCustom(),
         if( shapeTransparent! ) _SizeBoxBackgroundShapeDialogTransparent(),
-        chooseBodyPutInsideScrollONot(),
+        Container(
+          margin: EdgeInsets.only(top: appBarCustomHeight??0  ),
+          child: chooseBodyPutInsideScrollONot(),
+        ),
         chooseShowAppBar(),
       ],
     );
@@ -103,22 +140,36 @@ class ScaffoldApp  extends StatelessWidget {
     double notchHeight = MediaQuery.of(context!).viewPadding.bottom;
     double statusBar = StatusBarSizeHelper.getHeight(context!);
 
-    return Container(
-        child: widgetBackground,
-        width: DeviceTools.getWidth(context!),
-        height: DeviceTools.getHeight(context!) - notchHeight - statusBar
-    );
+    if( putBodyInsideSafeArea!  ) {
+      return Container(
+          child: widgetBackground,
+          color: backgroundColor,
+          width: DeviceTools.getWidth(context!),
+          height: DeviceTools.getHeight(context!) - notchHeight - statusBar
+      );
+    } else {
+      return Container(
+          child: widgetBackground,
+          color: backgroundColor,
+          width: DeviceTools.getWidth(context!),
+          height: DeviceTools.getHeight(context!)
+      );
+    }
   }
 
   Widget _SizeBoxBackgroundShapeDialogTransparent(){
     double notchHeight = MediaQuery.of(context!).viewPadding.bottom;
     double statusBar = StatusBarSizeHelper.getHeight(context!);
+    double minesSafeArea = notchHeight + statusBar;
+    if( putBodyInsideSafeArea!  == false ) {
+      minesSafeArea = 0;
+    }
 
     shapeTransparentColor ??= Colors.black.withOpacity( 0.5 );
 
     var dismissBackgroundColoredAllScreen =  Container(
       width: DeviceTools.getWidth(context!),
-      height: DeviceTools.getHeight(context!) - notchHeight - statusBar,
+      height: DeviceTools.getHeight(context!) - minesSafeArea,
       color: shapeTransparentColor,
       child: widgetBackground,
     );
@@ -166,7 +217,8 @@ class ScaffoldApp  extends StatelessWidget {
     /// set default back
     isShowBackButtonAppBar ??=  true;
     bool isHideBack = isShowBackButtonAppBar == false ;
+
     ///case transparent
-    return ToolbarSimpleApp( context!,  titleAppbar ?? "", hideBackButton: isHideBack ,);
+    return AppBarSimple( context!,  titleAppbar ?? "", hideBackButton: isHideBack ,);
   }
 }
