@@ -209,13 +209,16 @@ class LangApp {
 
 
   static Future setEnglish() async {
+    LangApp.isArabic = true;
+    updateActiveLanguageCode();
     await _setCacheArabic(false);
   }
 
 
   static Future setArabic() async {
+    LangApp.isArabic = true;
+    updateActiveLanguageCode();
     await _setCacheArabic(true);
   }
-
 
 }
