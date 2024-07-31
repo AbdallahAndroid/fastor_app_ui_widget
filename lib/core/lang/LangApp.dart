@@ -46,7 +46,7 @@ class LangApp {
   // static bool _sync = false;
 
   static bool isArabic = false;
-
+  static bool isEnglish = ! isArabic;
 
   //-------------------------------------------------------------------- setup
 
@@ -209,7 +209,8 @@ class LangApp {
 
 
   static Future setEnglish() async {
-    LangApp.isArabic = true;
+    LangApp.isArabic = false;
+    LangApp.isEnglish = true;
     updateActiveLanguageCode();
     await _setCacheArabic(false);
   }
@@ -217,6 +218,7 @@ class LangApp {
 
   static Future setArabic() async {
     LangApp.isArabic = true;
+    LangApp.isEnglish = false;
     updateActiveLanguageCode();
     await _setCacheArabic(true);
   }
