@@ -62,7 +62,7 @@ class DropdownApp extends StatefulWidget {
 
   //boarder
   Decoration? decorationOutlineDropdown;
-
+  Decoration? decorationProgressView;
 
   //error message
   String? errorBackendKeyJson;
@@ -108,6 +108,7 @@ class DropdownApp extends StatefulWidget {
     this.colorPreviousSelected,
     this.paddingText,
     this.decorationOutlineDropdown,
+    this.decorationProgressView,
     this.errorMessageBackend,
     this.errorBackendKeyJson,
     this.errorBackendJson,

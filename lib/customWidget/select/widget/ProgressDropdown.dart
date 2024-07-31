@@ -11,7 +11,7 @@ extension ProgressDropdown on DropdownAppState {
     return Container(
       width: widget.width,
       height: widget.height_frame,
-      decoration: widget.decorationOutlineDropdown,
+      decoration: widget.decorationProgressView??widget.decorationOutlineDropdown,
       // child: _stackTextAndProgressIcon(),
       child: progressIcon(),
       alignment: Alignment.center,
