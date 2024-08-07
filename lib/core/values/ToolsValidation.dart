@@ -131,8 +131,16 @@ class ToolsValidation {
   }
 
 
-  /// check have "@" and "." and anyThingAfter last dot
   static isEmail(String? s) {
+    final RegExp emailRegExp = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
+    return emailRegExp.hasMatch(s!);
+  }
+
+
+  /// check have "@" and "." and anyThingAfter last dot
+  static isEmail2(String? s) {
     if( s == null ) return false;
     if( s == "" ) return false;
     bool haveAt = s!.contains( "@");
