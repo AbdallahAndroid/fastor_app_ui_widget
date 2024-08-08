@@ -1,29 +1,26 @@
 
 import 'package:cross_file/cross_file.dart';
+import 'package:dio/src/form_data.dart';
 
 class NetworkRequestFile  {
 
   //--------------------------------------------------------------- variable
 
-  String  parameterFile = "file";
+  String  fileRequestKeyInJson = "file";
 
-  /***
-  ///////////choose type of request
-  1-
-   */
+
+  /// choose type of request
   String? filePath;
   XFile? xFile;
+  FormData? formData;
 
 
 
-  /**
-   Why make this way of carry parameter body ?
-      Due to "Dio" webservice not allow to send dyamic parameter in post body
-
-      var formData = FormData.fromMap();
-
-   */
-  //body request
+  ///body request
+  /// Why make this way of carry parameter body ?
+  //       Due to "Dio" webservice not allow to send dyamic parameter in post body
+  //
+  //       var formData = FormData.fromMap();
   String? body_key1 ;
   String? body_value1;
   String? body_key2;
@@ -58,9 +55,9 @@ class NetworkRequestFile  {
 
 
 
-   @override
+  @override
   String toString() {
-    return 'NetworkRequestFile{filePath: $filePath, body_key1: $body_key1, body_value1: $body_value1, body_key2: $body_key2, body_value2: $body_value2, body_key3: $body_key3, body_value3: $body_value3, body_key4: $body_key4, body_value4: $body_value4, body_key5: $body_key5, body_value5: $body_value5, body_key6: $body_key6, body_value6: $body_value6, body_key7: $body_key7, body_value7: $body_value7}';
+    return 'NetworkRequestFile{filePath: $filePath, xFile: $xFile, formData: $formData,  body_key1: $body_key1, body_value1: $body_value1, body_key2: $body_key2, body_value2: $body_value2, body_key3: $body_key3, body_value3: $body_value3, body_key4: $body_key4, body_value4: $body_value4, body_key5: $body_key5, body_value5: $body_value5, body_key6: $body_key6, body_value6: $body_value6, body_key7: $body_key7, body_value7: $body_value7}';
   }
 
   //------------------------------------------------ type method
@@ -76,7 +73,7 @@ class NetworkRequestFile  {
     this.filePath = filePath;
   }
 
-  NetworkRequestFile.fromXFileAndBody(XFile xFile, Map<String, String>? body) {
+  NetworkRequestFile.fromXFileAndBody(XFile xFile, Map<String, dynamic>? body) {
 
     this.xFile = xFile;
 
@@ -90,10 +87,10 @@ class NetworkRequestFile  {
 
   }
 
-  NetworkRequestFile.fromFilePathAndBody(String filePath, Map<String, String>? body) {
+  NetworkRequestFile.fromFilePathAndBody(String filePath, Map<String, dynamic>? body) {
     if( body == null ) {
-       NetworkRequestFile.fromFilePath( filePath);
-       return ;
+      NetworkRequestFile.fromFilePath( filePath);
+      return ;
     }
 
 
@@ -106,8 +103,13 @@ class NetworkRequestFile  {
     });
   }
 
+  NetworkRequestFile.fromFormData(FormData formData) {
+    this.formData = formData;
+  }
 
-   void setByIndex(NetworkRequestFile obj, int index, String k, String v) {
+  //------------------------------------------------------------------ body
+
+  void setByIndex(NetworkRequestFile obj, int index, String k, String v) {
     switch( index ) {
       case 1 : { obj.body_key1 = k; obj.body_value1 = v; } break;
       case 2 : { obj.body_key2 = k; obj.body_value2 = v; } break;
@@ -125,9 +127,10 @@ class NetworkRequestFile  {
       case 13 : { obj.body_key13 = k; obj.body_value13 = v; } break;
       case 14 : { obj.body_key14 = k; obj.body_value14 = v; } break;
       default: {
-       // obj.body_valueMoreThan7 += v + " ,";
+        // obj.body_valueMoreThan7 += v + " ,";
       }
     }
   }
+
 
 }

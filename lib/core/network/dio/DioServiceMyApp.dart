@@ -8,6 +8,12 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'DioParameter.dart';
 
+
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+
+import 'DioParameter.dart';
+
 extension DioServiceFastor on NetworkManagerDio {
 
 
@@ -352,7 +358,7 @@ extension DioServiceFastor on NetworkManagerDio {
 
       //data
       var formData = FormData.fromMap({
-        requestFile!.parameterFile : await MultipartFile.fromFile( requestFile!.filePath!), //'file'
+        requestFile!.fileRequestKeyInJson : await MultipartFile.fromFile( requestFile!.filePath!), //'file'
         "${requestFile!.body_key1}": "${requestFile!.body_value1}",
         "${requestFile!.body_key2}": "${requestFile!.body_value2}",
         "${requestFile!.body_key3}": "${requestFile!.body_value3}",
@@ -369,10 +375,10 @@ extension DioServiceFastor on NetworkManagerDio {
         "${requestFile!.body_key13}": "${requestFile!.body_value13}",
         "${requestFile!.body_key14}": "${requestFile!.body_value14}"
 
-      //  "${requestFile!.body_keyMoreThan7}": requestFile!.body_valueMoreThan7,
+        //  "${requestFile!.body_keyMoreThan7}": requestFile!.body_valueMoreThan7,
       });
 
-     Log.k(tag, "_file() - formData: " + formData.toString());
+      Log.k(tag, "_file() - formData: " + formData.toString());
 
       Dio _dio = Dio();
       //show request and response in beatful log
@@ -401,7 +407,7 @@ extension DioServiceFastor on NetworkManagerDio {
 
       }
 
-     Log.k(tag, "_file() - success: " + response.toString());
+      Log.k(tag, "_file() - success: " + response.toString());
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
@@ -491,8 +497,8 @@ extension DioServiceFastor on NetworkManagerDio {
 
       response = await _dio.post(url,
           data: formData,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress
+          onSendProgress: onSendProgress,
+          onReceiveProgress: onReceiveProgress
       );
       // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
 
@@ -529,5 +535,78 @@ extension DioServiceFastor on NetworkManagerDio {
     }
   }
 
+
+  Future<Response >  fileTypeFormData(  { ProgressCallbackFastor? onSendProgress,
+    ProgressCallbackFastor? onReceiveProgress  }) async {
+
+    Response? response ;
+    try {
+      Log.k(tag, "fileTypeFormData() - xFile: ${requestFile!.formData}"  );
+
+
+      //check not file
+      if ( requestFile!.formData == null ) {
+        if (callback_dio != null)
+          callback_dio!(false, "filePath not found", Map());
+        return getFailedResponse();
+      }
+
+      Dio _dio = Dio();
+
+      //show request and response in beatful log
+      _dio.interceptors.add(PrettyDioLogger(
+        requestHeader: isEnableLogDioPretty!,
+        requestBody: isEnableLogDioPretty!,
+        responseBody: isEnableLogDioPretty!,
+      ));
+
+      //time out have issue between version "4 and 5"
+      /**
+          if(timeOutSecond != null ) {
+          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
+          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
+          }
+       */
+      _dio.options.headers = headers;
+
+      response = await _dio.post(url,
+          data: requestFile!.formData,
+          onSendProgress: onSendProgress,
+          onReceiveProgress: onReceiveProgress
+      );
+      // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
+
+      //call back
+      if (callback_dio != null) callback_dio!(true, "success", response.data);
+
+      //return
+      return response;
+    } on DioError catch (dioError) {
+      Log.k(tag, "DioError - e: " + dioError.toString());
+      if( dioError.response != null && dioError!.response!.data != null ) {
+        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
+        Map<String,dynamic> data = Map();
+        if( dioError!.response!.data != null ) {
+          if( dioError!.response!.data is Map ) {
+            data = dioError!.response!.data;
+          } else {
+            data["data"] = dioError!.response!.data.toString();
+          }
+        }
+        if (callback_dio != null) callback_dio!(false, "failed", data);
+        return dioError!.response!;
+      } else {
+        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
+        return getFailedResponse(msg: dioError.toString() );
+      }
+
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_fileTypeXFile() - e: " + msg);
+      if (callback_dio != null) callback_dio!(false, "Falied to Upload File", Map());
+
+      return getFailedResponse(msg: e.toString() );
+    }
+  }
 
 }

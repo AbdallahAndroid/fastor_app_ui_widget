@@ -1,12 +1,22 @@
 
 
 import 'package:dio/dio.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkConfigDio.dart';
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 
 import 'DioServiceMyApp.dart';
 import 'DioParameter.dart';
+
+
+
+
+import 'dart:io';
+
+import 'package:cross_file/cross_file.dart';
+import 'package:dio/dio.dart';
+
 
 typedef NetworkDiocallback_dio = void Function(
     bool status, String msg, Map<String, dynamic> mapJson);
@@ -24,7 +34,7 @@ typedef NetworkDiocallback_dio = void Function(
 ///   for example: response data is compressed with gzip or no content-length header.
 typedef ProgressCallbackFastor = void Function(int count, int total);
 
-class NetworkManagerDio  {
+class   NetworkManagerDio  {
 
   final tag = "NetworkManagerDio";
 
@@ -44,13 +54,9 @@ class NetworkManagerDio  {
 
   NetworkDiocallback_dio? callback_dio;
 
-  NetworkConfigDio? config;
 
   int? timeOutSecond;
 
-  //------------------------------------------------------------------------- constructor
-
-  NetworkManagerDio( { this.config });
 
   //------------------------------------------------------------------------- types  callback not future
 
@@ -59,7 +65,7 @@ class NetworkManagerDio  {
         Map<String, dynamic>? body,
         Map<String, String>? headers,
 
-      ///file
+        ///file
         NetworkRequestFile? requestFile,
         ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
@@ -95,7 +101,7 @@ class NetworkManagerDio  {
     _setupNetworkTypeDefault();
     this.callback_dio = callback;
 
-    _configureSetup();
+    _configureDefaultSetup();
 
     return await _chooseTypeNetworkThenStartService( onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);
   }
@@ -112,7 +118,7 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.get, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkTypeDio.get, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile, handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -127,7 +133,7 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.post, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkTypeDio.post, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -142,7 +148,7 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.put, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkTypeDio.put, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -156,7 +162,7 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.patch, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkTypeDio.patch, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -171,15 +177,23 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,  NetworkTypeDio.delete, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkTypeDio.delete, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
 
+  //--------------------------------------------------------------------- file
+
   Future<Response> file(String url,
-      {Map<String, dynamic>? body,
+      {
+        required String fileRequestKeyInJson,
+        Map<String, dynamic>? body,
         Map<String, String>? headers,
+        XFile? xFileToUpload,
+        File? fileToUpload,
+        FormData? formData,
         NetworkRequestFile? requestFile,
+        bool? isTypeMethodPUT,
         bool? isEnableLogDioPretty ,
         int?  timeOutSecond,
         ProgressCallbackFastor? onSendProgress,
@@ -187,7 +201,12 @@ class NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await any( url,
+
+    if(requestFile == null ) {
+      initRequestFileObject(fileRequestKeyInJson, xFileToUpload, fileToUpload, formData,  body, isTypeMethodPUT);
+    }
+
+    return await _any( url,
         NetworkTypeDio.file,
         body: body,
         headers: headers,
@@ -201,16 +220,41 @@ class NetworkManagerDio  {
   }
 
 
+  void initRequestFileObject(
+      String fileRequestKeyInJson, XFile? xFileToUpload, File? fileToUpload,
+      FormData? formData, Map<String, dynamic>? body, bool? isTypeMethodPUT) {
+
+    if(formData != null ){
+      requestFile = NetworkRequestFile.fromFormData(formData);
+    } else if( xFileToUpload != null ) {
+      requestFile = NetworkRequestFile.fromXFileAndBody(xFileToUpload!, body);
+    } else if ( fileToUpload != null ) {
+      if(body != null ) {
+        requestFile = NetworkRequestFile.fromFilePathAndBody(fileToUpload!.path, body!);
+      } else {
+        requestFile = NetworkRequestFile.fromFilePath(fileToUpload!.path );
+      }
+    }
+    // Log.i("NetworkManagerDio - initRequestFileObject() - formData: $formData");
+    // Log.i("NetworkManagerDio - initRequestFileObject() - requestFile: $requestFile");
+    if(requestFile == null )  {
+      throw Exception("missed XFile or File or FormData");
+    }
+
+    requestFile!.fileRequestKeyInJson = fileRequestKeyInJson;
+    requestFile!.isTypeMethodPUT = isTypeMethodPUT??false;
+  }
+
   //------------------------------------------------------------------------- any type
 
-  Future<Response> any(String url,
+  Future<Response> _any(String url,
       NetworkTypeDio  type,
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
 
         /// file
         NetworkRequestFile? requestFile,
-       ProgressCallbackFastor? onSendProgress,
+        ProgressCallbackFastor? onSendProgress,
         ProgressCallbackFastor? onReceiveProgress,
 
         bool? isEnableLogDioPretty ,
@@ -250,7 +294,7 @@ class NetworkManagerDio  {
 
     _setupNetworkTypeDefault();
 
-    _configureSetup();
+    _configureDefaultSetup();
 
     //choose type
     return await _chooseTypeNetworkThenStartService( onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress );
@@ -258,28 +302,9 @@ class NetworkManagerDio  {
 
   //-------------------------------------------------------------------- default values
 
-  void _configureSetup()   {
-    if( config == null ) return;
-
-    //base url
-    if( config?.baseUrl != null  ) {
-      if( url.startsWith( "http") == false  ) {
-        url = config!.baseUrl + url;
-      }
-    }
-
-    //header
-    if( config?.headers != null ) {
-      headers.addAll( headers );
-    }
-
-    //beauty log
-    if( config?.isEnableLogDioPretty != null ) {
-      ///check already there is instance varible found for current request
-      isEnableLogDioPretty ??= config?.isEnableLogDioPretty;
-    }
-
-
+  void _configureDefaultSetup()   {
+    // var configureHeaders = NetworkConfig.getConfigureHeader();
+    // headers.addAll( configureHeaders );
   }
 
 
@@ -308,8 +333,10 @@ class NetworkManagerDio  {
         return  file_dio();
       }  else if ( requestFile!.xFile != null ) {
         return  fileTypeXFile_dio(  onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);
+      }  else if ( requestFile!.formData != null ) {
+        return  fileTypeFormData(  onSendProgress: onSendProgress, onReceiveProgress: onReceiveProgress);
       } else {
-        callback_dio!(false, "filePath not found or XFile not found", Map());
+        if(callback_dio != null )callback_dio!(false, "filePath not found or XFile not found", Map());
         return  getFailedResponse();
       }
     } else if (type == NetworkTypeDio.post) {
@@ -326,4 +353,6 @@ class NetworkManagerDio  {
   }
 
 
+
 }
+
