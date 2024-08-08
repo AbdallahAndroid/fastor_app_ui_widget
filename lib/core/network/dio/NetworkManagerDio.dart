@@ -202,9 +202,10 @@ class   NetworkManagerDio  {
         NetworkDiocallback_dio? callback}) async {
 
 
-    if(requestFile == null ) {
-      initRequestFileObject(fileRequestKeyInJson, xFileToUpload, fileToUpload, formData,  body, isTypeMethodPUT);
-    }
+    this.requestFile = requestFile;
+
+    initRequestFileObject(fileRequestKeyInJson, xFileToUpload, fileToUpload, formData,  body, isTypeMethodPUT);
+
 
     return await _any( url,
         NetworkTypeDio.file,
