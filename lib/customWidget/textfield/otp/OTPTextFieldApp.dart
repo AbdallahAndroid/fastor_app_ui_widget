@@ -1,6 +1,9 @@
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
 import 'package:flutter/material.dart';
 import 'TextFieldsOtp.dart';
 
@@ -22,7 +25,8 @@ class OTPTextFieldApp extends StatefulWidget {
   Color? colorHint;
   String? fontFamily;
   double? fontSize;
-  Decoration? decoration; //at the Container
+  InputDecoration? decoration;
+  Decoration? decorationBackground; //at the Container
 
   OTPTextFieldApp( {
     required this.countNumber,
@@ -35,7 +39,8 @@ class OTPTextFieldApp extends StatefulWidget {
     // this.colorHint,
     this.fontFamily,
     this.fontSize,
-    this.decoration
+    this.decoration,
+    this.decorationBackground
   }) {
     widthOTP ??= 40;
     heightByPadding ??= 9;
@@ -45,13 +50,13 @@ class OTPTextFieldApp extends StatefulWidget {
   }
 
   @override
-  OTPFastorState createState() {
-    return OTPFastorState( );
+  OTPState createState() {
+    return OTPState( );
   }
 
 }
 
-class  OTPFastorState extends State<OTPTextFieldApp> {
+class  OTPState extends State<OTPTextFieldApp> {
 
 
   //fields data
@@ -90,18 +95,10 @@ class  OTPFastorState extends State<OTPTextFieldApp> {
   Widget forceEnglishDirection() {
     return   Directionality(
       textDirection:   TextDirection.ltr,
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: rowField(),
-          );
-        },
-      ),
+      child: rowField(),
     );
   }
+
 
   Widget rowField(){
     var row  =  RowUtils.scroll( context,   [
@@ -137,6 +134,8 @@ class  OTPFastorState extends State<OTPTextFieldApp> {
     return result;
   }
 
+
+
   //------------------------------------------------------------------------ updateCallBack
 
   Future updateCallBack() async {
@@ -152,4 +151,6 @@ class  OTPFastorState extends State<OTPTextFieldApp> {
       widget.onComplete(true);
     }
   }
+
+
 }

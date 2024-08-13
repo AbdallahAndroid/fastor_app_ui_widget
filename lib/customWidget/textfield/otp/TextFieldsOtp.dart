@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'OTPTextFieldApp.dart';
 
-extension TextFieldsOtp on OTPFastorState  {
+extension  FieldsOtp on OTPState  {
 
 
   Widget tf_1(){
@@ -16,7 +16,8 @@ extension TextFieldsOtp on OTPFastorState  {
         textAlign: TextAlign.center,
         focusNode: tf1_node,
         autovalidateMode: tf1_valid,
-        decorationBackground: widget.decoration,
+        decoration: widget.decoration,
+        decorationBackground: widget.decorationBackground,
         fontSize: widget.fontSize,
         text_color: widget.colorText,
         hint_color: widget.colorHint,
@@ -29,9 +30,6 @@ extension TextFieldsOtp on OTPFastorState  {
 
           //focus to after check have value
           if( s.length >= 1 ) {
-            /**
-                fix user when clear number to change previous writing
-             */
             FocusScope.of(context).requestFocus(tf2_node);
           }
 
@@ -54,7 +52,8 @@ extension TextFieldsOtp on OTPFastorState  {
         textAlign: TextAlign.center,
         focusNode: tf2_node,
         autovalidateMode: tf2_valid,
-        decorationBackground: widget.decoration,
+        decoration: widget.decoration,
+        decorationBackground: widget.decorationBackground,
         fontSize: widget.fontSize,
         text_color: widget.colorText,
         hint_color: widget.colorHint,
@@ -62,16 +61,14 @@ extension TextFieldsOtp on OTPFastorState  {
         validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
         onChanged: (s){
+
           //set value
           tf2_txt = s;
 
-          //focus to after check have value
+          //focus
           if( s.length >= 1 ) {
             FocusScope.of(context).requestFocus(tf3_node);
-          }
-
-          //focus to previous
-          if( s == "" ) {
+          } else if( s.length == 0 ) {
             FocusScope.of(context).requestFocus(tf1_node);
           }
 
@@ -80,6 +77,13 @@ extension TextFieldsOtp on OTPFastorState  {
         },
         margin: EdgeInsets.only( right: widget.margin! )
     );
+
+    // return WillPopScope(
+    //   child: tf,
+    //   onWillPop: () async {
+    //     Log.i("tf_2() - onWillPop ****");
+    //   return false;
+    // },);
   }
 
 
@@ -93,7 +97,8 @@ extension TextFieldsOtp on OTPFastorState  {
         textAlign: TextAlign.center,
         focusNode: tf3_node,
         autovalidateMode: tf3_valid,
-        decorationBackground: widget.decoration,
+        decoration: widget.decoration,
+        decorationBackground: widget.decorationBackground,
         fontSize: widget.fontSize,
         text_color: widget.colorText,
         hint_color: widget.colorHint,
@@ -104,13 +109,10 @@ extension TextFieldsOtp on OTPFastorState  {
           //set value
           tf3_txt = s;
 
-          //focus to after check have value
+          //focus
           if( s.length >= 1 ) {
             FocusScope.of(context).requestFocus(tf4_node);
-          }
-
-          //focus to previous
-          if( s == "" ) {
+          } else if( s.length == 0 ) {
             FocusScope.of(context).requestFocus(tf2_node);
           }
 
@@ -131,7 +133,8 @@ extension TextFieldsOtp on OTPFastorState  {
         maxLength: 1,
         textAlign: TextAlign.center,
         focusNode: tf4_node,
-        decorationBackground: widget.decoration,
+        decoration: widget.decoration,
+        decorationBackground: widget.decorationBackground,
         fontSize: widget.fontSize,
         text_color: widget.colorText,
         hint_color: widget.colorHint,
@@ -143,13 +146,10 @@ extension TextFieldsOtp on OTPFastorState  {
           //set value
           tf4_txt = s;
 
-          //focus to after check have value
+          //focus
           if( s.length >= 1 ) {
             FocusScope.of(context).requestFocus(tf5_node);
-          }
-
-          //focus to previous
-          if( s == "" ) {
+          } else if( s.length == 0 ) {
             FocusScope.of(context).requestFocus(tf3_node);
           }
 
@@ -173,7 +173,8 @@ extension TextFieldsOtp on OTPFastorState  {
         autovalidateMode: tf5_valid,
         validatorCustom: ValidatorApp.equal( 1 ),
         keyboardType: TextInputType.number,
-        decorationBackground: widget.decoration,
+        decoration: widget.decoration,
+        decorationBackground: widget.decorationBackground,
         fontSize: widget.fontSize,
         text_color: widget.colorText,
         hint_color: widget.colorHint,
@@ -182,13 +183,10 @@ extension TextFieldsOtp on OTPFastorState  {
           //set value
           tf5_txt = s;
 
-          //focus to after check have value
+          //focus
           if( s.length >= 1 ) {
             FocusScope.of(context).requestFocus(tf6_node);
-          }
-
-          //focus to previous
-          if( s == "" ) {
+          } else if( s.length == 0 ) {
             FocusScope.of(context).requestFocus(tf4_node);
           }
 
@@ -208,7 +206,8 @@ extension TextFieldsOtp on OTPFastorState  {
       width: widget.widthOTP,
       padding: EdgeInsets.symmetric(vertical: widget.heightByPadding! ), //to set height
       maxLength: 1,
-      decorationBackground: widget.decoration,
+      decoration: widget.decoration,
+      decorationBackground: widget.decorationBackground,
       fontSize: widget.fontSize,
       text_color: widget.colorText,
       hint_color: widget.colorHint,
@@ -222,13 +221,15 @@ extension TextFieldsOtp on OTPFastorState  {
         //set value
         tf6_txt = s;
 
-        //call back
-        updateCallBack();
-
-        //focus to previous
-        if( s == "" ) {
+        //focus
+        if( s.length >= 1 ) {
+          /// nothing
+        } else if( s.length == 0 ) {
           FocusScope.of(context).requestFocus(tf5_node);
         }
+
+        //call back
+        updateCallBack();
 
       },
       //  margin: EdgeInsets.only( right: DSDimen.space_level_3)
