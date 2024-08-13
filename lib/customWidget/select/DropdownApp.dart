@@ -135,6 +135,8 @@ class DropdownApp extends StatefulWidget {
     setDefaultProgressColor();
 
     searchInNamesForThePositionOfPreviousTextSelected();
+    searchInNamesForTheTextPrevious();
+
   }
 
 
@@ -174,6 +176,21 @@ class DropdownApp extends StatefulWidget {
   }
 
 
+  void searchInNamesForTheTextPrevious() {
+    if( names == null || names.isEmpty ) return;
+    if( previousPosition == null ) return;
+    if( previousSelectedText == null ) return;
+    int index = 0;
+    names?.forEach((name) {
+      bool found = previousPosition == index;
+      if( found ) {
+        previousSelectedText = name;
+        return;
+      }
+      index = index + 1;
+    });
+  }
+
   @override
   DropdownAppState createState()  => DropdownAppState();
 
@@ -186,6 +203,14 @@ class  DropdownAppState extends State<DropdownApp > {
   String?  selected_name ;
   int?  selected_position ;
   bool userNotClickedYetOnButtonDropdown = true;
+
+
+  @override
+  void initState() {
+    setSelectedPositionValueEqualToPreviousPosition();
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -236,8 +261,8 @@ class  DropdownAppState extends State<DropdownApp > {
   Color? getColorItemTextWhenSelectedOrNot ( int positionName){
     var defaultColor = widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :   widget.colorItemText;
     bool isSamePositionSelected = positionName ==  selected_position;
+    //print( "getColorItemTextWhenSelectedOrNot() - positionName: $positionName /isSamePositionSelected: $isSamePositionSelected");
     if(isSamePositionSelected )  {
-      // Log.i( "fastor - getColorItemTextWhenSelectedOrNot() - isSkipChangeColorSelected");
       return widget.colorItemTextSelected??defaultColor;
     }
     return defaultColor;
@@ -246,6 +271,12 @@ class  DropdownAppState extends State<DropdownApp > {
   Color? getColorItemTextWhenSelected ( ){
     var defaultColor = widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :   widget.colorItemText;
     return widget.colorItemTextSelected??defaultColor;
+  }
+
+  /// this will make the previous selected text is colored
+  void setSelectedPositionValueEqualToPreviousPosition() {
+    selected_position = widget.previousPosition;
+    selected_name = widget.previousSelectedText;
   }
 
 }
