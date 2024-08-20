@@ -11,6 +11,7 @@ class ScaffoldApp extends StatelessWidget {
   Color? statusBarColorIOSDevice;
 
   bool isNeedAppBarCustom = false;
+  bool isNoAppBarNormalOrAppBarCustomFound = false;
 
   Widget body;
   bool? putBodyInsideScroll;
@@ -81,6 +82,8 @@ class ScaffoldApp extends StatelessWidget {
     putBodyInsideSafeArea ??= false;
 
     fixUserEnterManyTypesOfAppBarAtSameTime();
+
+    isNoAppBarNormalOrAppBarCustomFound =   appBar  == null &&  appBarCustom == null && titleAppbar == null ;
   }
 
   fixUserEnterManyTypesOfAppBarAtSameTime(){
@@ -122,7 +125,7 @@ class ScaffoldApp extends StatelessWidget {
       child: putBodyInsideSafeArea!
           ? Container(
         margin: EdgeInsets.only(
-          // top: NotchBarSizeHelper.getTop(context!),
+          top: isNoAppBarNormalOrAppBarCustomFound ? NotchBarSizeHelper.getTop(context!) : 0 ,
           bottom: NotchBarSizeHelper.getBottom(context!),
         ),
         child: bodyScaffold(context),
