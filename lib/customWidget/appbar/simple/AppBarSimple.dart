@@ -5,6 +5,7 @@ import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/simple/TitleAppBar.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
@@ -26,7 +27,7 @@ class AppBarSimple extends StatefulWidget {
   Color? iconColor;
   double? iconSize;
 
-  static double frameHeight = Figma.h(74);
+  static double frameHeight = Figma.h(64);
   Widget? buttonLeft;
   Widget? buttonRight;
   BuildContext pageContext;
@@ -50,26 +51,23 @@ class AppBarSimple extends StatefulWidget {
     this.buttonRight = buttonRight;
 
     iconColor ??= Colors.white;
-    iconSize ??= 20;
-
-    frameHeight = Figma.h(74) ; //+  NotchBarSizeHelper.getTop( pageContext);
-    // Log.i( "AppBarSimple() - frameHeight: $frameHeight");
+    iconSize ??= Figma.h( 20 );
 
     //toolbar
     titleColor ??= Colors.white;
-    colorBackgroundToolbar ??= Colors.black;
+    colorBackgroundToolbar ??= statusBarColorBackgroundBlackSecond;
   }
 
 
   @override
-  _ToolbarSimple createState()  {
-    return  _ToolbarSimple(  );
+  _AppBarSimpleState createState()  {
+    return  _AppBarSimpleState(  );
   }
 
 
 }
 
-class _ToolbarSimple extends  State<AppBarSimple>   {
+class _AppBarSimpleState extends  State<AppBarSimple>   {
 
 
   double paddingBackButtonVertical = Figma.h(10);
@@ -78,6 +76,7 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
 
   @override
   Widget build(BuildContext context) {
+    paddingBackButtonVertical = Figma.h(10);
     //Log.i( "ToolbarSimple - build()");
     return getDirection();
   }
@@ -86,16 +85,7 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
   Widget getDirection() {
     return   Directionality(
       textDirection:   LangApp.getTextDirection(),
-      child:   Builder(
-        builder: (BuildContext context) {
-          return   MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaleFactor: 1.0,
-            ),
-            child: contentUIUnderNotchHeight(),
-          );
-        },
-      ),
+      child: contentUIUnderNotchHeight(),
     );
   }
 
@@ -103,9 +93,9 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
   Widget contentUIUnderNotchHeight(){
     return Container(
       alignment: Alignment.topCenter,
-      padding: EdgeInsets.only(top:  NotchBarSizeHelper.getTop( context)),
+      padding: EdgeInsets.only(top:  NotchBarSizeHelper.getTop( widget.pageContext)),
       color: widget.colorBackgroundToolbar,
-      height: NotchBarSizeHelper.getTop(context) + AppBarSimple.frameHeight,
+      height:  AppBarSimple.frameHeight + NotchBarSizeHelper.getTop(context) ,
       child:  stackContent(),
     );
   }
@@ -119,16 +109,16 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
       ),
 
       //title
-      Positioned( child:  tv_title(), left: Figma.w(24 + 5), right: Figma.w(24 + 5) , top: Figma.h(18 )  ),
+      Positioned( child:  tv_title(), left: Figma.w(24 + 5), right: Figma.w(24 + 5) , top: Figma.h(20 )  ),
 
       //back
-      PositionedApp.langApp( child:  bt_back(), left: 0,   top: Figma.h(18 -5 - paddingBackButtonVertical )   ),
+      PositionedApp.langApp( child:  bt_back(), left: 0,   top: Figma.h(20 - (paddingBackButtonVertical / 2 )  )   ),
 
       //button left
-      PositionedApp.langApp(child: bt_left() , left: 1, top: Figma.h(18 )   ),
+      PositionedApp.langApp(child: bt_left() , left: 1, top: Figma.h(20 )   ),
 
       //button right
-      PositionedApp.langApp(child: bt_right() , right: 1, top: Figma.h(18 )   ),
+      PositionedApp.langApp(child: bt_right() , right: 1, top: Figma.h(20 )   ),
 
 
     ],);
@@ -152,7 +142,7 @@ class _ToolbarSimple extends  State<AppBarSimple>   {
 
     //show
     var icon = Icon( CupertinoIcons.back,
-        size: Figma.h(12+12),
+        size: Figma.h(24),
         color: widget.iconColor
     );
 

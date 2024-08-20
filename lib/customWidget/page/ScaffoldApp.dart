@@ -1,14 +1,16 @@
 
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/simple/AppBarSimple.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollApp.dart';
 import 'package:flutter/material.dart';
 
-class ScaffoldApp  extends StatelessWidget {
-
+class ScaffoldApp extends StatelessWidget {
   Color? statusBarColorIOSDevice;
+
+  bool isNeedAppBarCustom = false;
 
   Widget body;
   bool? putBodyInsideScroll;
@@ -28,56 +30,67 @@ class ScaffoldApp  extends StatelessWidget {
   FloatingActionButtonLocation? floatingActionButtonLocation;
 
   Color? backgroundColor;
-  Widget? widgetBackground; //make widget to set as fixed background while scrolling moving
+  Widget?
+  widgetBackground; //make widget to set as fixed background while scrolling moving
 
   //transparent
   bool? shapeTransparent;
   Color? shapeTransparentColor;
+  Widget? bottomSheet;
 
-  ScaffoldApp({
-    super.key,
-    required this.body,
-    this.putBodyInsideSafeArea = false  ,
-    this.putBodyInsideScroll = false ,
-    this.backgroundColor,
-    this.floatingActionButton,
-    this.titleAppbar,
-    this.appBar,
-    this.appBarCustom,
-    this.appBarCustomHeight,
-    this.widgetBackground,
-    this.isShowBackButtonAppBar,
-    this.scrollController,
-    this.keyDrawer,
-    this.drawer,
-    this.onDrawerChanged,
-    this.makeStatusBarTransparent,
-    this.floatingActionButtonLocation,
+  ScaffoldApp(
+      {super.key,
+        required this.body,
+        this.putBodyInsideSafeArea = false,
+        this.putBodyInsideScroll = false,
+        this.backgroundColor,
+        this.floatingActionButton,
+        this.titleAppbar,
+        this.appBar,
+        this.appBarCustom,
+        this.appBarCustomHeight,
+        this.widgetBackground,
+        this.isShowBackButtonAppBar,
+        this.scrollController,
+        this.keyDrawer,
+        this.drawer,
+        this.onDrawerChanged,
+        this.makeStatusBarTransparent,
+        this.floatingActionButtonLocation,
 
-    // status bar
-    this.statusBarColorIOSDevice,
+        // status bar
+        this.statusBarColorIOSDevice,
 
-    //transparent
-    this.shapeTransparent = false ,
-    this.shapeTransparentColor,
-  }) {
-
-
+        //transparent
+        this.shapeTransparent = false,
+        this.shapeTransparentColor,
+        this.bottomSheet}) {
     _setDefaultValues();
   }
 
-  _setDefaultValues(){
+  _setDefaultValues() {
     backgroundColor ??= Colors.white;
 
-    statusBarColorIOSDevice ??= backgroundColor;
+    statusBarColorIOSDevice ??= statusBarColorBackgroundBlackSecond;
 
-    bool isNeedAppBar =   appBarCustom != null || appBar != null || titleAppbar != null;
-    if( isNeedAppBar ) {
+    isNeedAppBarCustom = appBarCustom != null  || titleAppbar != null;
+    if (isNeedAppBarCustom) {
       appBarCustomHeight ??= AppBarSimple.frameHeight;
     }
 
-    putBodyInsideSafeArea ??= false ;
+    putBodyInsideSafeArea ??= false;
+
+    fixUserEnterManyTypesOfAppBarAtSameTime();
   }
+
+  fixUserEnterManyTypesOfAppBarAtSameTime(){
+    if( isNeedAppBarCustom  && appBar != null ) {
+      appBarCustomHeight = null;
+      appBarCustom = null;
+      isNeedAppBarCustom = false;
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -85,89 +98,109 @@ class ScaffoldApp  extends StatelessWidget {
     return scaffoldContent(context);
   }
 
+
   Widget scaffoldContent(context) {
     return Scaffold(
-        backgroundColor: shapeTransparent!? Colors.transparent : statusBarColorIOSDevice,
-        key: keyDrawer,
-        drawer: drawer,
-        onDrawerChanged: onDrawerChanged,
-        floatingActionButton: floatingActionButton,
-        appBar: appBar,
-        body:  bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(),
-        resizeToAvoidBottomInset: true,
-        floatingActionButtonLocation: floatingActionButtonLocation
+      // backgroundColor: shapeTransparent! ? Colors.transparent : statusBarColorIOSDevice,
+      backgroundColor: shapeTransparent! ? Colors.transparent : backgroundColor,
+      key: keyDrawer,
+      drawer: drawer,
+      onDrawerChanged: onDrawerChanged,
+      floatingActionButton: floatingActionButton,
+      appBar: appBar,
+      body:  bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(),
+      resizeToAvoidBottomInset: true,
+      floatingActionButtonLocation: floatingActionButtonLocation,
+      bottomSheet: bottomSheet,
     );
   }
 
 
-  Widget bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(){
+  Widget bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish() {
     return Directionality(
       textDirection: LangApp.getTextDirection(),
-      child: putBodyInsideSafeArea! ? SafeArea(
+      child: putBodyInsideSafeArea!
+          ? Container(
+        margin: EdgeInsets.only(
+          // top: NotchBarSizeHelper.getTop(context!),
+          bottom: NotchBarSizeHelper.getBottom(context!),
+        ),
         child: bodyScaffold(context),
-      ) : bodyScaffold(context),
+      )
+          : bodyScaffold(context),
     );
   }
 
-
   Widget bodyScaffold(context) {
-    // print("bodyScaffold() - appBarCustomHeight: $appBarCustomHeight");
+    // print("bodyScaffold() - appBarCustomHeight: $appBarCustomHeight /isNeedAppBarCustom: $isNeedAppBarCustom");
     return Stack(
       children: [
-        Container(
-          color: Colors.orange,
+
+        /// set frame size
+        SizedBox(
           width: DeviceTools.getWidth(context),
           height: DeviceTools.getHeight(context),
         ),
-        if( isNormalBackground() ) _decorationBackgroundCustom(),
-        if( shapeTransparent! ) _SizeBoxBackgroundShapeDialogTransparent(),
+
+        /// set background
+        if (isNormalBackground()) _decorationBackgroundCustom(),
+        if (shapeTransparent!) _SizeBoxBackgroundShapeDialogTransparent(),
+
+        /// body
         Container(
-          margin: EdgeInsets.only(top: appBarCustomHeight??0  ),
+          margin: getMarginTopToMakeBodyContentUnderAppBarCustom(context), //
           child: chooseBodyPutInsideScrollONot(),
         ),
+
+        /// app bar
         chooseShowAppBar(),
       ],
     );
   }
 
+
+  EdgeInsets? getMarginTopToMakeBodyContentUnderAppBarCustom(context){
+    if( isNeedAppBarCustom == false  ) return null;
+    return EdgeInsets.only(     top: (appBarCustomHeight  ?? 0)  + NotchBarSizeHelper.getTop(context) );
+  }
+
+
   //-------------------------------------------------------- background
 
-  bool isNormalBackground(){
-    return shapeTransparent == false  ;
+  bool isNormalBackground() {
+    return shapeTransparent == false;
   }
 
   Widget _decorationBackgroundCustom() {
     double notchHeight = MediaQuery.of(context!).viewPadding.bottom;
     double statusBar = StatusBarSizeHelper.getHeight(context!);
 
-    if( putBodyInsideSafeArea!  ) {
+    if (putBodyInsideSafeArea!) {
       return Container(
           child: widgetBackground,
           color: backgroundColor,
           width: DeviceTools.getWidth(context!),
-          height: DeviceTools.getHeight(context!) - notchHeight - statusBar
-      );
+          height: DeviceTools.getHeight(context!) - notchHeight - statusBar);
     } else {
       return Container(
           child: widgetBackground,
           color: backgroundColor,
           width: DeviceTools.getWidth(context!),
-          height: DeviceTools.getHeight(context!)
-      );
+          height: DeviceTools.getHeight(context!));
     }
   }
 
-  Widget _SizeBoxBackgroundShapeDialogTransparent(){
+  Widget _SizeBoxBackgroundShapeDialogTransparent() {
     double notchHeight = MediaQuery.of(context!).viewPadding.bottom;
     double statusBar = StatusBarSizeHelper.getHeight(context!);
     double minesSafeArea = notchHeight + statusBar;
-    if( putBodyInsideSafeArea!  == false ) {
+    if (putBodyInsideSafeArea! == false) {
       minesSafeArea = 0;
     }
 
-    shapeTransparentColor ??= Colors.black.withOpacity( 0.5 );
+    shapeTransparentColor ??= Colors.black.withOpacity(0.5);
 
-    var dismissBackgroundColoredAllScreen =  Container(
+    var dismissBackgroundColoredAllScreen = Container(
       width: DeviceTools.getWidth(context!),
       height: DeviceTools.getHeight(context!) - minesSafeArea,
       color: shapeTransparentColor,
@@ -175,14 +208,13 @@ class ScaffoldApp  extends StatelessWidget {
     );
 
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         // Log.i("backgroundClickAnySpaceAreaToDismiss() - click");
         Navigator.pop(context!);
       },
       child: dismissBackgroundColoredAllScreen,
     );
   }
-
 
   Widget chooseBodyPutInsideScrollONot() {
     if (putBodyInsideScroll!) {
@@ -204,21 +236,35 @@ class ScaffoldApp  extends StatelessWidget {
   //-------------------------------------------------------- app bar
 
   Widget chooseShowAppBar() {
+
+    /// case not need
+    if(isNeedAppBarCustom == false ) return SizedBox();
+
+    /// case found normal appBar material app, skip use custom
+    if( appBar != null ) return SizedBox();
+
     ///case custom
     if (appBarCustom != null) {
       return appBarCustom!;
     }
 
     ///validate not need
-    bool notNeedBackAppBarAndNotHaveTitle = isShowBackButtonAppBar == null &&
-        titleAppbar == null;
+    bool notNeedBackAppBarAndNotHaveTitle =
+        isShowBackButtonAppBar == null && titleAppbar == null;
     if (notNeedBackAppBarAndNotHaveTitle) return const SizedBox();
 
     /// set default back
-    isShowBackButtonAppBar ??=  true;
-    bool isHideBack = isShowBackButtonAppBar == false ;
+    isShowBackButtonAppBar ??= true;
+    bool isHideBack = isShowBackButtonAppBar == false;
 
     ///case transparent
-    return AppBarSimple( context!,  titleAppbar ?? "", hideBackButton: isHideBack ,);
+    return AppBarSimple(
+      context!,
+      titleAppbar ?? "",
+      hideBackButton: isHideBack,
+    );
+    // return Text("app customer test", style: TextStyle(color: Colors.blue),);
   }
+
+
 }

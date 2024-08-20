@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 
+Color statusBarColorBackgroundBlackSecond = Colors.black;
+
 class StatusBarSizeHelper {
 
   //-------------------------------------------------------------- variable
 
   //colors
-  static var colorBackground =   HexColor( "#000000");
+  static var colorBackground =  statusBarColorBackgroundBlackSecond;
 
   /**
    * //text color
