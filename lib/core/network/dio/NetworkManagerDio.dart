@@ -43,7 +43,7 @@ class   NetworkManagerDio  {
   String url = "";
   Map<String, dynamic> body = Map();
   Map<String, String> headers = Map();
-  NetworkTypeDio? type;
+  NetworkType? type;
 
   bool? handleErrorXMLHttpRequest;
 
@@ -71,7 +71,7 @@ class   NetworkManagerDio  {
         ProgressCallbackFastor? onReceiveProgress,
 
         ///other
-        NetworkTypeDio? type,
+        NetworkType? type,
         bool? isEnableLogDioPretty ,
         int?  timeOutSecond,
         bool?  handleErrorXMLHttpRequest
@@ -118,7 +118,7 @@ class   NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await _any( url,  NetworkTypeDio.get, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkType.get, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile, handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -133,7 +133,7 @@ class   NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await _any( url,  NetworkTypeDio.post, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkType.post, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -148,7 +148,7 @@ class   NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await _any( url,  NetworkTypeDio.put, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkType.put, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -162,7 +162,7 @@ class   NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await _any( url,  NetworkTypeDio.patch, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkType.patch, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -177,7 +177,7 @@ class   NetworkManagerDio  {
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
-    return await _any( url,  NetworkTypeDio.delete, timeOutSecond : timeOutSecond,
+    return await _any( url,  NetworkType.delete, timeOutSecond : timeOutSecond,
         body: body, headers: headers, requestFile: requestFile,  handleErrorXMLHttpRequest: handleErrorXMLHttpRequest,
         isEnableLogDioPretty: isEnableLogDioPretty, callback: callback );
   }
@@ -208,7 +208,7 @@ class   NetworkManagerDio  {
 
 
     return await _any( url,
-        NetworkTypeDio.file,
+        NetworkType.file,
         body: body,
         headers: headers,
         requestFile: requestFile,
@@ -249,7 +249,7 @@ class   NetworkManagerDio  {
   //------------------------------------------------------------------------- any type
 
   Future<Response> _any(String url,
-      NetworkTypeDio  type,
+      NetworkType  type,
       {Map<String, dynamic>? body,
         Map<String, String>? headers,
 
@@ -312,11 +312,11 @@ class   NetworkManagerDio  {
   void _setupNetworkTypeDefault() async {
     //set method type "POST" when have body
     if (type == null && this.body.length > 0) {
-      this.type = NetworkTypeDio.post;
+      this.type = NetworkType.post;
 
       //case no body here is Get
     } else if (type == null) {
-      this.type = NetworkTypeDio.get;
+      this.type = NetworkType.get;
     }
 
     //log now
@@ -328,7 +328,7 @@ class   NetworkManagerDio  {
 
 
   Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCallbackFastor? onReceiveProgress}) async {
-    if (type == NetworkTypeDio.file ||
+    if (type == NetworkType.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
         return  file_dio();
@@ -340,13 +340,13 @@ class   NetworkManagerDio  {
         if(callback_dio != null )callback_dio!(false, "filePath not found or XFile not found", Map());
         return  getFailedResponse();
       }
-    } else if (type == NetworkTypeDio.post) {
+    } else if (type == NetworkType.post) {
       return await  post_dio();
-    } else if (type == NetworkTypeDio.put) {
+    } else if (type == NetworkType.put) {
       return await  put_dio();
-    } else if (type == NetworkTypeDio.patch) {
+    } else if (type == NetworkType.patch) {
       return await  patch_dio();
-    } else if (type == NetworkTypeDio.delete) {
+    } else if (type == NetworkType.delete) {
       return await  delete_dio();
     } else {
       return await  get_dio();

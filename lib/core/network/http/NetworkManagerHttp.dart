@@ -1,4 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
+
+
 
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkTypeDio.dart';
@@ -11,272 +15,350 @@ import 'package:http/http.dart' as http;
 
  */
 
-typedef NetworkHttpCallback = void Function(  bool status, String msg, String json_string );
+typedef NetworkHttpCallback = void Function(
+    bool status, String msg, String json_string);
 
-enum NetworkTypeHttp{
-  get,
-  post,
-  put,
-  delete,
-  file,
+int timeoutPerSecond = 20;
 
-  /**
-      Access to XMLHttpRequest  has been blocked by CORS policy: Response to preflight request doesn't
-      pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-   */
-  htmlContent
-}
-
-class NetworkManagerHttp {
-
-  static final tag = "NetworkManage";
-
-
+class NetworkManagerUniversal {
 
   //--------------------------------------------------------------------------- variable
 
+  static final tag = "NetworkManagerUniversal";
+
   String url = "";
   Map<String, dynamic> body = Map();
-  Map<String, String>?  headers = Map();
-  NetworkTypeHttp type = NetworkTypeHttp.post;
-  NetworkHttpCallback? callback;
+  Map<String, String>? headers = Map();
+  NetworkType type = NetworkType.post;
+  bool isLogRequest = true;
+  bool isLogResponse = true ;
 
-  bool? isLogRequest;
-  bool? isLogResponse;
 
-  //------------------------------------------------------------------------- types constructor
 
-  NetworkManagerHttp( String url, {
-    Map<String, dynamic>? body,
-    Map<String, String>?  headers,
-    NetworkTypeHttp type = NetworkTypeHttp.post,
-    NetworkHttpCallback? callback,
-    this.isLogRequest = false,
-    this.isLogResponse = false
-  }  ) {
+  //--------------------------------------------------------------------------- config
 
-    //set url
-    this.url = url;
-    this.type = type;
 
-    //set body and header
-    if( body != null ) this.body = body;
-    if( headers != null ) this.headers = headers;
-
-    //set call back
-    if( callback != null ) this.callback = callback;
-
-    //constructor
-    _initConstructor();
-  }
-
-  //-------------------------------------------------------------------- init constructor
-
-  void _initConstructor(){
+  void _configHeader() {
     //edit headers
-    headers = _setDefaultHeader(headers);
+    headers ??= Map();
 
-    if( type == NetworkTypeHttp.htmlContent ) {
-      headers = null;
-    }
-
-    // //set method type "GET" when no body
-    // if( type == null &&  this.body.length == 0  ) {
-    //   if( type != NetworkTypeHttp.htmlContent ) {
-    //     this.type = NetworkTypeHttp.get;
-    //   }
+    // Map<String, String> headersConfig =  NetworkConfig.getConfigureHeader();
+    // if( UserHelper.isGuest()  ) {
+    //   headersConfig = NetworkHeaderTools.langAndAccessKey(   ConstantEnvironment.endPointAccessKeyPassInHeader );
     // } else {
-    //   this.type = type;
+    //   headersConfig = NetworkHeaderTools.bearerTokenAndLangAndAccessKey( UserHelper.getToken(), ConstantEnvironment.endPointAccessKeyPassInHeader );
     // }
-
-    // when null
-    // isLogResponse ??= isLogRequest;
+    // headers!.addAll( headersConfig);
 
     //log now
-    if(isLogRequest!){
-      Log.k( tag, "start() url: " + url  );
-      Log.k( tag, "start() body: " + this.body.toString()  );
-      Log.k( tag, "start() headers: " + headers.toString()  );
+    if (isLogRequest!) {
+      Log.k(tag, "start() type: " + type.toString());
+      Log.k(tag, "start() url: " + url);
+      Log.k(tag, "start() body: " + this.body.toString());
+      Log.k(tag, "start() headers: " + headers.toString());
     }
-
-    //choose type
-    _chooseTypeMethod( );
   }
 
-  //----------------------------------------------------------------------- start
+  //----------------------------------------------------------------------- choose type
 
-  void _chooseTypeMethod( ){
-    if( type == NetworkTypeDio.post ) {
-      _post_http();
-    } else if( type == NetworkTypeHttp.put) {
-      _put();
-    } else if( type == NetworkTypeHttp.delete) {
-      _delete();
+  Future<http.Response> chooseTypeNetworkRequest(String url,
+
+      {
+        required  NetworkType type,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        bool? isLogRequest,
+        bool? isLogResponse,
+        bool? isEnableLogDioPretty}
+      ) async {
+
+    this.type = type;
+    this.url = url;
+    this.body = body??Map();
+    this.headers = headers;
+
+    if(isEnableLogDioPretty??false  ) {
+      isLogRequest = true;
+      isLogResponse = true;
+    }
+    this.isLogRequest = isLogRequest??true;
+    this.isLogRequest = isLogResponse??true;
+
+    _configHeader();
+
+    if (type == NetworkType.get) {
+      return await get(url, body: body, headers: headers, isLogResponse: isLogResponse, isLogRequest: isLogRequest , isEnableLogDioPretty: isEnableLogDioPretty);
+    } else if (type == NetworkType.post) {
+      return await post(url, body: body, headers: headers, isLogResponse: isLogResponse, isLogRequest: isLogRequest , isEnableLogDioPretty: isEnableLogDioPretty);
+    } else if (type == NetworkType.put) {
+      return await put(url, body: body, headers: headers, isLogResponse: isLogResponse, isLogRequest: isLogRequest , isEnableLogDioPretty: isEnableLogDioPretty);
+    } else if (type == NetworkType.delete) {
+      return await delete(url, body: body, headers: headers, isLogResponse: isLogResponse, isLogRequest: isLogRequest , isEnableLogDioPretty: isEnableLogDioPretty);
     } else {
-      _get( );
+      return await get(url, body: body, headers: headers, isLogResponse: isLogResponse, isLogRequest: isLogRequest , isEnableLogDioPretty: isEnableLogDioPretty);
     }
   }
 
   //--------------------------------------------------------------------------- type: get
 
-  Future<String> _get(   ) async {
-    //edit headers
-    if( type == NetworkTypeHttp.htmlContent ) {
-      headers = null;
+  Future<http.Response> get(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        bool? isLogRequest,
+        bool? isLogResponse,
+        bool? isEnableLogDioPretty}
+      ) async {
+
+    type = NetworkType.get;
+    this.url = url;
+    this.body = body??Map();
+    this.headers = headers;
+
+    if(isEnableLogDioPretty??false  ) {
+      isLogRequest = true;
+      isLogResponse = true;
     }
+    this.isLogRequest = isLogRequest??true;
+    this.isLogRequest = isLogResponse??true;
 
-    //http
-    Uri uri = Uri.parse(url);
-    http.Response  response = await http.get(uri,
-        headers: headers
-      // body: jsonEncode( body),
-    );
-
-    //log big data
-    if(isLogResponse! )  Log.k( tag, "_get() - finish body - success: "  + response.body );
-    // Log.k( tag, "post() - finish body - success "   );
-
+    _configHeader();
     try {
-      //call back
-      if( callback != null ) callback!(true, "success", response.body  );
-    } catch (e){
-      String msg = e.toString();
-      Log.k(tag,  "post() - e: " + msg );
-      if( callback != null ) callback!(false, msg, "");
-    }
+      //http
+      Uri uri = Uri.parse(url);
+      http.Response response = await http
+          .get(uri, headers: this.headers
+        // body: jsonEncode( body),
+      )
+          .timeout(
+        Duration(seconds: timeoutPerSecond),
+        onTimeout: () => responseFailedInstanceTimeout(),
+      ) ;
 
-    //return
-    return response.body;
+
+      //log big data
+      if (this.isLogResponse!)
+        Log.k(tag, "_get() - finish body - success: " + response.body);
+      Log.k( tag, "get() - status: ${response.statusCode}" );
+
+      //call back
+      // if( callback != null ) callback!(true, "success", response.body  );
+      return response;
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_get() - e: " + msg);
+      // if( callback != null ) callback!(false, msg, "");
+      return responseFailedInstance();
+    }
   }
 
   //------------------------------------------------------------------------- type: post
 
-  Future<String> _post_http( ) async {
-    var myBody = jsonEncode( body);
+  Future<http.Response> post(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        bool? isLogRequest,
+        bool? isLogResponse,
+        bool? isEnableLogDioPretty}
+      ) async {
+
+    type = NetworkType.post;
+    this.url = url;
+    this.body = body??Map();
+    this.headers = headers;
+
+    if(isEnableLogDioPretty??false  ) {
+      isLogRequest = true;
+      isLogResponse = true;
+    }
+    this.isLogRequest = isLogRequest??true;
+    this.isLogRequest = isLogResponse??true;
+
+    _configHeader();
+
+    var myBody = jsonEncode(this.body);
     // Log.k( tag, "_post_http() - myBody: "  + myBody  );
 
-    //http
-    Uri uri = Uri.parse(url);
-    http.Response  response = await http.post(uri,
-      headers: headers,
-      body: myBody,
-    );
-
-    //log big data
-      if(isLogResponse! ) Log.k( tag, "_post_http() - finish body - success: "  + response.body );
-    // Log.k( tag, "post() - finish body - success "   );
-
     try {
-      //call back
-      if( callback != null ) callback!(true, "success", response.body  );
-    } catch (e){
-      String msg = e.toString();
-      Log.k(tag,  "post() - e: " + msg );
-      if( callback != null ) callback!(false,  msg, "" );
-    }
+      //http
+      Uri uri = Uri.parse(url);
+      http.Response response = await http
+          .post(
+        uri,
+        headers: this.headers,
+        body: myBody,
+      )
+          .timeout(
+        Duration(seconds: timeoutPerSecond),
+        onTimeout: () => responseFailedInstanceTimeout(),
 
-    //return
-    return response.body;
+      );
+
+      //log big data
+      if (this.isLogResponse!)
+        Log.k(tag, "post() - finish body - success: " + response.body);
+      Log.k( tag, "post() - status: ${response.statusCode}" );
+
+      //call back
+      // if( callback != null ) callback!(true, "success", response.body  );
+      //return
+      return response;
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_post_http() - e: " + msg);
+      // if( callback != null ) callback!(false,  msg, "" );
+      return responseFailedInstance();
+    }
   }
 
   //--------------------------------------------------------------------------- type: put
 
-  Future<String> _put() async {
-    var myBody = jsonEncode( body);
-    // Log.k( tag, "_put() - myBody: "  + myBody  );
+  Future<http.Response> put(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        bool? isLogRequest,
+        bool? isLogResponse,
+        bool? isEnableLogDioPretty}
+      ) async {
 
-    //http
-    Uri uri = Uri.parse(url);
-    http.Response  response = await http.post(uri,
-      headers: headers,
-      body: myBody,
-    );
+    type = NetworkType.put;
+    this.url = url;
+    this.body = body??Map();
+    this.headers = headers;
 
-    //log big data
-    if(isLogResponse! ) Log.k( tag, "_put() - finish body - success: "  + response.body );
-    // Log.k( tag, "post() - finish body - success "   );
-
-    try {
-      //call back
-      if( callback != null ) callback!(true, "success", response.body  );
-    } catch (e){
-      String msg = e.toString();
-      Log.k(tag,  "_put() - e: " + msg );
-      if( callback != null ) callback!(false,  msg, "" );
+    if(isEnableLogDioPretty??false  ) {
+      isLogRequest = true;
+      isLogResponse = true;
     }
+    this.isLogRequest = isLogRequest??true;
+    this.isLogRequest = isLogResponse??true;
 
-    //return
-    return response.body;
+    _configHeader();
+    try {
+      var myBody = jsonEncode(this.body);
+      // Log.k( tag, "_put() - myBody: "  + myBody  );
+
+      //http
+      Uri uri = Uri.parse(url);
+      http.Response response = await http
+          .post(
+        uri,
+        headers: this.headers,
+        body: myBody,
+      )
+          .timeout(
+        Duration(seconds: timeoutPerSecond),
+        onTimeout: () => responseFailedInstanceTimeout(),
+      );
+
+      //log big data
+      if (this.isLogResponse!)
+        Log.k(tag, "_put() - finish body - success: " + response.body);
+      Log.k( tag, "put() - status: ${response.statusCode}" );
+
+      //call back
+      // if( callback != null ) callback!(true, "success", response.body  );
+      return response;
+    } catch (e) {
+      String msg = e.toString();
+      Log.k(tag, "_put() - e: " + msg);
+      // if( callback != null ) callback!(false,  msg, "" );
+      return responseFailedInstance();
+    }
   }
-
 
   //--------------------------------------------------------------------------- type: delete
 
-  Future<String> _delete() async {
-    var myBody = jsonEncode( body);
+  Future<http.Response> delete(String url,
+      {Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        bool? isLogRequest,
+        bool? isLogResponse,
+        bool? isEnableLogDioPretty}
+      ) async {
+
+    type = NetworkType.delete;
+    this.url = url;
+    this.body = body??Map();
+    this.headers = headers;
+
+    if(isEnableLogDioPretty??false  ) {
+      isLogRequest = true;
+      isLogResponse = true;
+    }
+    this.isLogRequest = isLogRequest??true;
+    this.isLogRequest = isLogResponse??true;
+
+    _configHeader();
+    var myBody = jsonEncode(this.body);
     // Log.k( tag, "_delete() - myBody: "  + myBody  );
-
-    //http
-    Uri uri = Uri.parse(url);
-    http.Response  response = await http.post(uri,
-      headers: headers,
-      body: myBody,
-    );
-
-    //log big data
-    if(isLogResponse! ) Log.k( tag, "_delete() - finish body - success: "  + response.body );
-    // Log.k( tag, "post() - finish body - success "   );
-
     try {
+      //http
+      Uri uri = Uri.parse(url);
+      http.Response response = await http
+          .post(
+        uri,
+        headers: this.headers,
+        body: myBody,
+      )
+          .timeout(
+        Duration(seconds: timeoutPerSecond) ,
+        onTimeout: () => responseFailedInstanceTimeout(),
+      );
+
+      //log big data
+      if (this.isLogResponse!)
+        Log.k(tag, "_delete() - finish body - success: " + response.body);
+      Log.k( tag, "delete() - status: ${response.statusCode}" );
+
       //call back
-      if( callback != null ) callback!(true, "success", response.body  );
-    } catch (e){
+      // if( callback != null ) callback!(true, "success", response.body  );
+      return response;
+    } catch (e) {
       String msg = e.toString();
-      Log.k(tag,  "_delete() - e: " + msg );
-      if( callback != null ) callback!(false,  msg, "" );
+      Log.k(tag, "_delete() - e: " + msg);
+      // if( callback != null ) callback!(false,  msg, "" );
+      return responseFailedInstance();
     }
-
-    //return
-    return response.body;
   }
 
-  //------------------------------------------------------------------------- header
+  //--------------------------------------------------------------------- type: file
 
-   Map<String, String>  _setDefaultHeader(Map<String, String>? custome) {
+  // Future<http.Response> file(String url,
+  //     {
+  //       String? fileRequestKeyInJson,
+  //       Map<String, dynamic>? body,
+  //       Map<String, String>? headers,
+  //       XFile? xFileToUpload,
+  //       File? fileToUpload,
+  //       bool? isTypeMethodPUT,
+  //       bool? isEnableLogDioPretty ,
+  //       int?  timeOutSecond, }) async {
+  //
+  //
+  // }
 
-    /// check type network
-    if(type == NetworkTypeHttp.htmlContent) {
-      custome ??= Map();
-      if(!custome.containsKey( "Access-Control-Allow-Origin")) {
-        custome["Access-Control-Allow-Origin"]  = "*";
-      }
-      if(!custome.containsKey( "Content-Type")) {
-        custome["Content-Type"]  = "application/json";
-      }
-      if(!custome.containsKey( "Accept")) {
-        custome["Accept"]  = "*/*";
-      }
-      return custome;
-    }
+  //------------------------------------------------------------------------- shape error
 
-    /**
-     * check already write another "Content-Type"
-     */
-    if( custome != null ) {
-      bool containAlready = custome.containsKey( "Content-Type" );
-      if (containAlready )return custome;
-    }
 
-    //default
-    /**
-     * the "POSTMAN" already found content-type hidden header already send by default
-     * so we need here to pass this "Content-Type"
-     */
-    custome ??= Map();
-    custome[ "Content-Type"] =  "application/json";
-    return custome;
+
+  http.Response responseFailedInstance()   {
+    return http.Response(
+      jsonEncode( {
+        "message": "failed network"
+      }),
+      500,
+    );
   }
 
+
+  http.Response responseFailedInstanceTimeout()   {
+    return http.Response(
+      jsonEncode( {
+        "message": "Request Timeout"
+      }),
+      408,
+    );
+  }
 
 
 }
