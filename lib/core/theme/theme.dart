@@ -75,7 +75,7 @@ final appTheme = ThemeData(
       borderRadius: BorderRadius.circular(10),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide:  BorderSide(color: Colors.gray),
+      borderSide:  BorderSide(color: Colors.grey),
       borderRadius: BorderRadius.circular(10),
     ),
     border: OutlineInputBorder(
