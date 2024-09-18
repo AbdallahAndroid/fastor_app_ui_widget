@@ -1,11 +1,13 @@
 
 
+import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
+
 
 ///class button ui
 class ButtonApp extends StatelessWidget {
@@ -36,18 +38,20 @@ class ButtonApp extends StatelessWidget {
   double? sizeProgress;
   Color? colorProgress;
 
+  /// icon
+  Widget? iconCenter;
 
   ButtonApp(
       this.text,
       this.onPressed,
       {
-        this.textColor = Colors.black,
+        this.textColor  ,
         this.showProgress,
         this.sizeProgress,
-        this.colorProgress = Colors.yellow,
-        this.textFontSize  = 16 ,
+        this.colorProgress , //= Colors.yellow
+        this.textFontSize  ,
         this.fontFamily,
-        this.background = Colors.grey,
+        this.background  ,
         this.width,
         this.height,
         this.borderLine,
@@ -58,6 +62,7 @@ class ButtonApp extends StatelessWidget {
         this.padding,
         this.textAlign = TextAlign.center ,
         this.gravityLayout,
+        this.iconCenter
       }
       ){
     setDefaultValue();
@@ -67,7 +72,12 @@ class ButtonApp extends StatelessWidget {
   //------------------------------------------------------------------------- default
 
   void setDefaultValue() {
-    //text dimen, text color, button color, font
+    textColor ??= Colors.white;
+    colorProgress ??= Colors.orange;
+    background ??= Colors.green;
+    // fontFamily ??= FontResources.mediumHellix;
+
+    height ??= Figma.h( 50 );
 
     //padding default
     // padding ??= EdgeInsets.only(left: 3.7, right: 3.7, top: 3.7, bottom: 3.7);
@@ -80,6 +90,8 @@ class ButtonApp extends StatelessWidget {
 
     background ??= Colors.grey.withOpacity(0.5);
 
+    textFontSize ??= Figma.h( 16 );
+
     setDefaultProgressSize();
   }
 
@@ -91,11 +103,11 @@ class ButtonApp extends StatelessWidget {
 
     //case have height
     if( height !=null ) {
-      sizeProgress = height! * 0.5;
+      sizeProgress = height! * 1 ;
     }
 
     //case not have height, take height of font
-    return sizeProgress = textFontSize  ;
+    sizeProgress ??= textFontSize  ;
   }
 
   //-----------------------------------------------------------------------------
@@ -142,6 +154,8 @@ class ButtonApp extends StatelessWidget {
   Widget chooseButtonTextOrProgressViewInsideButton(){
     if( showProgress!){
       return progressContainer();
+    } else if ( iconCenter != null ){
+      return _getIconAndTextWidget( );
     } else {
       return _getTextWidget(text);
     }
@@ -151,18 +165,20 @@ class ButtonApp extends StatelessWidget {
 
   Widget progressContainer(){
     return Container(
-        child: stackTextEmptyWithProgress(),
+        height: height,
+        alignment: Alignment.center,
+        child: progressCircle(),
         padding: EdgeInsets.symmetric(vertical: 0.5, horizontal: 2)
     );
   }
 
 
-  Widget stackTextEmptyWithProgress(){
-    return Stack(children: [
-      emptyTextWidgetWithSameWidthOfNormalText(),
-      Positioned(child: progressCircle(), left: 0, right: 0, bottom: 7,)
-    ],);
-  }
+  // Widget stackTextEmptyWithProgress(){
+  //   return Stack(children: [
+  //     emptyTextWidgetWithSameWidthOfNormalText(),
+  //     Positioned(child: progressCircle(), left: 0, right: 0, bottom: 7,)
+  //   ],);
+  // }
 
 
   Widget progressCircle(){
@@ -180,7 +196,21 @@ class ButtonApp extends StatelessWidget {
     return _getTextWidget(textSpace);
   }
 
-  //------------------------------------------------------------------- button style and text theme
+  //------------------------------------------------------------------- button text and icon
+
+  Widget _getIconAndTextWidget(){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        iconCenter!,
+        SizedBox( width: 16,),
+        _getTextWidget(text)
+      ],);
+  }
+
+  //------------------------------------------------------------------- button style
 
   Widget _getTextWidget(String text,) {
     //, textAlign!, textColor_ds!, textFontSize!, padding!, font_ds!
@@ -214,7 +244,7 @@ class ButtonApp extends StatelessWidget {
         padding: EdgeInsets.zero,
         fixedSize: size,
 
-       //need to fix [ANALYSIS ISSUE] instead of "primary"
+        //need to fix [ANALYSIS ISSUE] instead of "primary"
         foregroundColor: background,
         backgroundColor: background,
 
@@ -228,3 +258,4 @@ class ButtonApp extends StatelessWidget {
 
 
 }
+
