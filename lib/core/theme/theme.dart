@@ -94,8 +94,8 @@ final appTheme = ThemeData(
     titleMedium: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
     titleSmall: TextStyle(color: Colors.black, fontSize: 14,fontWeight: FontWeight.bold),
     bodyLarge: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
-    bodyMedium: TextStyle(color: Colors.gray, fontSize: 16,fontWeight: FontWeight.bold),
-    bodySmall: TextStyle(color: Colors.gray, fontSize: 15),
+    bodyMedium: TextStyle(color: Colors.grey, fontSize: 16,fontWeight: FontWeight.bold),
+    bodySmall: TextStyle(color: Colors.grey, fontSize: 15),
   ),
 );
 
