@@ -1,7 +1,7 @@
 import '../../values/ToolsString.dart';
 
 /// api parse status, or boolean, or double as string format
-class ApiParserFastor {
+class ApiParserApp {
 
 //------------------------------------------------------------------ boolean read
 
@@ -167,6 +167,32 @@ class ApiParserFastor {
     } catch (e) {
       // print("parseIntDynamic() - invalid format");
       return 0;
+    }
+  }
+
+  //------------------------------------------------------------ parse error
+
+  ///
+  /// eample: json return error phone bug
+  /// {
+  ///     "status": false,
+  ///     "message": "The selected phone is invalid.",
+  ///     "errors": {
+  ///         "phone": [
+  ///             "The selected phone is invalid."
+  ///         ]
+  ///     }
+  /// }
+  ///
+  static String? parseErrorValueFromKey(String keyInArray, Map<String, dynamic> jsonError ) {
+    // print("parseErrorValueFromKey() - keyInArray: $keyInArray /jsonError: $jsonError");
+    if( jsonError.containsKey( keyInArray) ) {
+      var array = jsonError[keyInArray];
+      var result = array[0];
+      // print("parseErrorValueFromKey() -  result: $result");
+      return  result;
+    } else {
+      return null;
     }
   }
 
