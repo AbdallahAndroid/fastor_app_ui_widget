@@ -17,4 +17,9 @@ class InternetTools {
   }
 
 
+  static Future<bool> isNotConnected() async {
+    return ! await isConnected();
+  }
+
+
 }
