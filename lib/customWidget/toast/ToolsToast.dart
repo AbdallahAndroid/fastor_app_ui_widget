@@ -1,10 +1,7 @@
+import 'package:fastor_app_ui_widget/core/global/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:flutter/material.dart';
 
-/// declare "rootScaffoldMessengerKey" at MaterialApp()
-/// MaterialApp(
-///              scaffoldMessengerKey: rootScaffoldMessengerKey,
-final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 
 class ToolsToast{
