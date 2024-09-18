@@ -1,6 +1,12 @@
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:flutter/material.dart';
 
+/// declare "rootScaffoldMessengerKey" at MaterialApp()
+/// MaterialApp(
+///              scaffoldMessengerKey: rootScaffoldMessengerKey,
+final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+
 class ToolsToast{
 
 
@@ -149,6 +155,68 @@ class ToolsToast{
     Future.delayed(Duration(milliseconds: milisecond??1500), () {
       overlayEntry.remove();
     });
+  }
+
+
+  //------------------------------------------------------------- snake bar
+
+
+
+  static snackBar(
+      BuildContext context, {
+        required String message,
+        bool isMessageError = false,
+      }) {
+    rootScaffoldMessengerKey.currentState?.showSnackBar(SnackBar(
+      padding: EdgeInsets.only(right: 15.0, left: 15.0 , top: 15.0 ,bottom: 10.0 ),
+      content: Row(
+        children: [
+          isMessageError
+              ? CircleAvatar(
+            backgroundColor: Colors.red.withOpacity(0.5),
+            radius: 12,
+            child: Icon(
+              Icons.close,
+              color: Colors.white,
+              size: 14,
+            ),
+          )
+              : Image.asset( "assets/images/logo.png",
+            width: 20.0 ,
+            height: 20.0,
+            fit: BoxFit.fill,
+          ),
+          SizedBox( width: 10 ),
+          Expanded(
+            child: Text(
+              message,
+              maxLines: 2,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12 ),
+            ),
+          ),
+          // const Spacer(),
+          InkWell(
+            onTap: (){
+              rootScaffoldMessengerKey.currentState?.hideCurrentSnackBar();
+            },
+            child: Text(
+              'Dismiss'.trim(),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.white,
+                  fontSize: 12),
+            ),
+          ),
+        ],
+      ),
+      duration: const Duration(seconds: 4),
+      backgroundColor: isMessageError ? Colors.red : Colors.green,
+    ));
   }
 
 
