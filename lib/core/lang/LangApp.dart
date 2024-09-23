@@ -162,6 +162,16 @@ class LangApp {
   //   ];
   // }
 
+  static EdgeInsets onlyEdgeInsets({double? top, double? bottom, double? left, double? right}) {
+    return EdgeInsets.only(
+      left: LangApp.isEnglish?left??0 : right??0,
+      right: LangApp.isEnglish?right??0 : left??0,
+      top: top??0,
+      bottom: bottom??0,
+    );
+  }
+
+
   //----------------------------------------------------------- translate
 
   static String searchForValue(String searchFor ) {

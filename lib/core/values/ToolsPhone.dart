@@ -51,7 +51,7 @@ class ToolsPhone {
     return result;
   }
 
-  
+
   static String fixEgyptAndSaudiZeroNumberReturnJustPhone(String countryCode, String phone ) {
     //check null or empty countryCode
     if( ToolsValidation.isEmpty( phone ) ) return "";
