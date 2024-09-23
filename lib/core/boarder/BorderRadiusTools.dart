@@ -5,6 +5,29 @@ import 'package:flutter/material.dart';
 class BorderRadiusTools {
 
 
+  static BorderRadius top({
+    //radius
+    required double  radius
+  }) {
+
+    return get(
+        radius_topLeft: radius,
+        radius_topRight: radius
+    );
+  }
+
+
+  static BorderRadius bottom({
+    //radius
+    required double  radius
+  }) {
+
+    return get(
+        radius_bottomRight: radius,
+        radius_bottomLeft: radius
+    );
+  }
+
   static BorderRadius get({
     //radius
     double? radius_all = 0,
