@@ -14,8 +14,9 @@ class BoarderHelper extends BaseBoarderHelper{
     double? radiusSize ,
     Color? colorBackground ,
     Color? colorLine ,
+    double? widthLine = 1 ,
     BorderRadius? radiusBorder, //see "BorderRadiusTools"
-} ) {
+  } ) {
 
 
     //set default
@@ -30,13 +31,14 @@ class BoarderHelper extends BaseBoarderHelper{
 
 
     var dec_container_radius = BoxDecoration(
-        border: Border.all(color: colorLine ) ,
+        border: Border.all(color: colorLine , width: widthLine??1) ,
         borderRadius: radiusBorder ,
         color: colorBackground                                                          //background color
     );
 
     return dec_container_radius;
   }
+
 
 
   static BoxDecoration cardViewShadow( {
