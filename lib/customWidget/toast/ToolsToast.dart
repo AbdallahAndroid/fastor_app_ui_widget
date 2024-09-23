@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/global/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class ToolsToast{
     });
   }
 
+
   static top(BuildContext context, String  msg, {
     Color? colorBackground,
     Color? colorText,
@@ -55,17 +57,23 @@ class ToolsToast{
       builder: (context) => PositionedApp.langApp(
         right: 50.0,
         left: 50.0,
+        top: 50,
         child: Material(
           color: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-            decoration: BoxDecoration(
-              color: colorBackground??Colors.grey.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Text(
-              msg,
-              style: TextStyle(color: colorText??Colors.black, fontSize: 16.0),
+            alignment: Alignment.center,
+            color: Colors.transparent,
+            width: DeviceTools.getWidth(context),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                color: colorBackground??Colors.grey.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                msg,
+                style: TextStyle(color: colorText??Colors.black, fontSize: 16.0),
+              ),
             ),
           ),
         ),
@@ -79,6 +87,7 @@ class ToolsToast{
       overlayEntry.remove();
     });
   }
+
 
 
   static topRight(BuildContext context, String  msg, {
