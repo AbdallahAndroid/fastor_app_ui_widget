@@ -50,4 +50,17 @@ class ToolsPhone {
     // Log.i( "getFullPhone() - after edit: " + result  );
     return result;
   }
+
+  
+  static String fixEgyptAndSaudiZeroNumberReturnJustPhone(String countryCode, String phone ) {
+    //check null or empty countryCode
+    if( ToolsValidation.isEmpty( phone ) ) return "";
+    if( ToolsValidation.isEmpty( countryCode )) return phone;
+
+    String fullPhone = fixEgyptAndSaudiNumber( countryCode, phone );
+    String phoneOnly = fullPhone.substring( countryCode.length );
+    Log.i("fixEgyptAndSaudiZeroNumberReturnJustPhone() - fullPhone: $fullPhone /phoneOnly: $phoneOnly");
+    return phoneOnly;
+  }
+
 }
