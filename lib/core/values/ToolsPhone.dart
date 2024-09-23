@@ -59,7 +59,7 @@ class ToolsPhone {
 
     String fullPhone = fixEgyptAndSaudiNumber( countryCode, phone );
     String phoneOnly = fullPhone.substring( countryCode.length );
-    Log.i("fixEgyptAndSaudiZeroNumberReturnJustPhone() - fullPhone: $fullPhone /phoneOnly: $phoneOnly");
+   // Log.i("fixEgyptAndSaudiZeroNumberReturnJustPhone() - fullPhone: $fullPhone /phoneOnly: $phoneOnly");
     return phoneOnly;
   }
 
