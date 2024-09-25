@@ -151,6 +151,16 @@ class DeviceTools {
   }
 
 
+  static double getWidthGlobal ( ) {
+    return getWidth( getContextGlobal()! );
+  }
+
+
+  static double getHeightGlobal ( ) {
+    return getHeight( getContextGlobal()! );
+  }
+
+
   static double getWidth (BuildContext  context, { String? className  }) {
     try {
 

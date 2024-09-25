@@ -4,3 +4,5 @@ import 'package:flutter/material.dart';
 /// MaterialApp(
 ///              scaffoldMessengerKey: rootScaffoldMessengerKey,
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
+BuildContext? getContextGlobal(){ return rootScaffoldMessengerKey.currentState?.context; }
