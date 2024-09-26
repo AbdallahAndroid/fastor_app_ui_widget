@@ -132,6 +132,7 @@ class ToolsValidation {
 
 
   static isEmail(String? s) {
+    if( s == null ) return false;
     final RegExp emailRegExp = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
