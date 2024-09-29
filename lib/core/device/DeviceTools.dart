@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/global/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
 import 'package:flutter/material.dart';
