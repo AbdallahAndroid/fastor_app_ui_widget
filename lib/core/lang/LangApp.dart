@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -171,7 +172,14 @@ class LangApp {
     );
   }
 
+  //---------------------------------------------------- image rotate
 
+  static Widget rotateImageOrIcon(Widget imageOrIconToBeRotate  ) {
+    return Transform.rotate(
+      angle:   LangApp.isArabic ?  sqrt2 : 0 ,
+      child:  imageOrIconToBeRotate,
+    );
+  }
   //----------------------------------------------------------- translate
 
   static String searchForValue(String searchFor ) {
