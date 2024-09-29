@@ -6,6 +6,7 @@ import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/TextFieldOnCompleteController.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,13 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   BuildContext pageContext;
   String hint;
   ValueChanged<String>  onChanged;
-
+  ValueChanged<String>  onCompleted;
 
   SearchAppBar( {
     required this.pageContext,
     required this.hint,
-    required this.onChanged
+    required this.onChanged,
+    required this.onCompleted
 });
 
   @override
@@ -37,6 +39,7 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<SearchAppBar> {
 
   var searchController = TextEditingController();
+  var onCompleteHandler = TextFieldOnCompleteController();
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +106,7 @@ class _CustomAppBarState extends State<SearchAppBar> {
       ),
       onChanged: (s){
         widget.onChanged( searchController.text);
+        onChangeHappenedOrOnSubmitButtonClicked(searchController.text);
       },
     );
   }
@@ -114,6 +118,7 @@ class _CustomAppBarState extends State<SearchAppBar> {
         KeyboardTools.dismiss(context);
         // cubit!.clickOnSearchByTextStores(   );
         widget.onChanged( searchController.text);
+        onChangeHappenedOrOnSubmitButtonClicked(searchController.text);
       },
       child:  Container(
         margin: EdgeInsets.only(bottom: 10),
@@ -127,6 +132,15 @@ class _CustomAppBarState extends State<SearchAppBar> {
       ),
     );
   }
+
+  //---------------------------------------------
+
+  onChangeHappenedOrOnSubmitButtonClicked(String s ) {
+    onCompleteHandler.onChange(s,  callback: (textWritten) {
+      widget.onCompleted(textWritten);
+    });
+  }
+
 
 
 }
