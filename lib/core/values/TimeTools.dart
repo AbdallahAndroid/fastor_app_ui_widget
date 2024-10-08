@@ -1,5 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsNumber.dart';
 import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:intl/intl.dart';
 
@@ -245,6 +246,63 @@ class TimeTools {
     DateTime date = DateTime.parse("2000-01-01 " + hh_mm_ss); // Any date can be used here
     String formattedTime = DateFormat('hh:mm a').format(date);
     return formattedTime;
+  }
+
+  //--------------------------------------------------------------- seconds
+
+  /// convert "2025-12-31T00:00:00.000000Z" to second
+  static int convertDateToSecondBetweenNowAndThisDate(String isoDate ) {
+    DateTime futureDate = DateTime.parse(isoDate) ;
+    DateTime now = DateTime.now()   ;
+    Duration difference = futureDate.difference(now);
+    int secondsUntilNow = difference.inSeconds % 60;
+    // Log.i("convertDateToSecondBetweenNowAndThisDate() - now: $now /futureDate: $futureDate /difference: $difference /second: $secondsUntilNow");
+    return secondsUntilNow;
+  }
+
+
+  /// Convert seconds to days (1 day = 86400 seconds)
+  static String convertSecondToDay(int secondsUntilNow ) {
+    double daysUntilNow = secondsUntilNow / 86400;
+    // Log.i("convertSecondToDay() -  secondsUntilNow: $secondsUntilNow /daysUntilNow: $daysUntilNow");
+    return ToolsNumber.removeFractionFromDouble( daysUntilNow).toString();
+  }
+
+
+  /// used in counter how many time remaing of hour mines   days until reach today
+  /// convert second to how many hours to end and mines all previous days
+  static String convertSecondToHourRemaingForToday(int secondsUntilNow  ) {
+    double daysUntilNow = secondsUntilNow / 86400;
+    double fractionDay =   ToolsNumber.getFractionFromDouble(daysUntilNow);
+    double hoursRemainig = fractionDay * 24;
+    String removeFraction = ToolsNumber.removeFractionFromDouble( hoursRemainig).toString();
+    return removeFraction;
+  }
+
+
+  /// used in counter how many time remaing of min mines hours and days until reach today
+  static String convertSecondToMinRemaingForToday(int secondsUntilNow  ) {
+    double daysUntilNow = secondsUntilNow / 86400;
+    double fractionDay =   ToolsNumber.getFractionFromDouble(daysUntilNow);
+    double hoursRemainig = fractionDay * 24;
+    double fractionHour = ToolsNumber.getFractionFromDouble( hoursRemainig );
+    double minRemainig = fractionHour * 60 ;
+    String removeFraction = ToolsNumber.removeFractionFromDouble( minRemainig).toString();
+    return removeFraction;
+  }
+
+
+  /// used in counter how many time remaing of second mines min, hours and days until reach today
+  static String convertSecondToSecRemaingForToday(int secondsUntilNow  ) {
+    double daysUntilNow = secondsUntilNow / 86400;
+    double fractionDay =   ToolsNumber.getFractionFromDouble(daysUntilNow);
+    double hoursRemainig = fractionDay * 24;
+    double fractionHour = ToolsNumber.getFractionFromDouble( hoursRemainig );
+    double minRemainig = fractionHour * 60 ;
+    double fractionMin = ToolsNumber.getFractionFromDouble( minRemainig );
+    double secRemainig = fractionMin * 60 ;
+    String removeFraction = ToolsNumber.removeFractionFromDouble( secRemainig).toString();
+    return removeFraction;
   }
 
   //----------------------------------------------------------------- day name

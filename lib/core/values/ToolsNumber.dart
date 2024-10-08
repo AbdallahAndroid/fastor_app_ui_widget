@@ -34,4 +34,21 @@ class ToolsNumber {
   }
 
 
+
+  static int removeFractionFromDouble(double row_counter ){
+    //round
+    double fraction =  row_counter -  row_counter.truncate();// '2.3555' >> "0.3555"
+    if( fraction > 0.0 ) {
+      row_counter = row_counter   - fraction;
+    }
+    // Log.i("roundToPlus1() - row_counter: $row_counter ");
+    return row_counter.toInt();
+  }
+
+
+  static double getFractionFromDouble(double row_counter ){
+    double fraction =  row_counter -  row_counter.truncate();// '2.3555' >> "0.3555"
+    return fraction;
+  }
+
 }
