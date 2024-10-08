@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:fastor_app_ui_widget/customWidget/timer/TimerCountDownApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/timer/timer_second/TimerCountDownApp.dart';
 
 extension TimerLogic on TimerFastorState {
 

@@ -3,7 +3,7 @@ import 'dart:async';
 
 
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/timer/logic/TimerLogic.dart';
+import 'package:fastor_app_ui_widget/customWidget/timer/timer_second/TimerLogic.dart';
 import 'package:flutter/material.dart';
 
 
