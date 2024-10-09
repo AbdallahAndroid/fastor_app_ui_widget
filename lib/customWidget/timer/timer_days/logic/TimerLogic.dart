@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:fastor_app_ui_widget/core/values/TimeTools.dart';
 import 'package:fastor_app_ui_widget/customWidget/timer/timer_days/TimerDaysWidget.dart';
 
 extension TimerLogic on TimerDaysState {
@@ -22,23 +21,26 @@ extension TimerLogic on TimerDaysState {
 
   Future _fireTimerAction() async {
 
-    //increment
-    secondRemaining = secondRemaining - 1;
-    // Log.i("_fireTimerAction() - loop secondRemaining: " + secondRemaining.toString()  );
+    //dif
+    final currentTime = DateTime.now();
+    remainingTime = expiryDateStartDateTime.difference(currentTime);
+    // expireRemaingDateTime = TimeTools.getDateTimeMinesSecondPassingDate( expireRemaingDateTime, 1  ) ;
+    // secondRemaining = TimeTools.convertDateToSecondBetweenNowAndThisDate( expireRemaingDateTime.toString());
+    Log.i("_fireTimerAction() - loop remainingTime: " + remainingTime.toString() );
 
     //validate to stop on zero view
-    bool isEndTimer = secondRemaining == 0;
+    bool isEndTimer = remainingTime.isNegative;
     if( isEndTimer  ) {
       _resetTimerAndEmitEndTimerState();
       stopTimer();
       updateUIWithNewTimerValue();
       return;
     }
-    bool isHideWhenNegative = secondRemaining < 0;
-    if( isHideWhenNegative) {
-      stopTimer();
-      return;
-    }
+    // bool isHideWhenNegative = secondRemaining < 0;
+    // if( isHideWhenNegative) {
+    //   stopTimer();
+    //   return;
+    // }
 
     //ui
     updateUIWithNewTimerValue();
@@ -63,11 +65,15 @@ extension TimerLogic on TimerDaysState {
   void updateUIWithNewTimerValue() {
     if(isViewMounted() == false ) return;
 
+
+
+
+
     setState(() {
-      dayRemaing =  TimeTools.convertSecondToDay( secondRemaining );
-      hourRemaing =  TimeTools.convertSecondToHourRemaingForToday( secondRemaining );
-      minRemaing =  TimeTools.convertSecondToMinRemaingForToday( secondRemaining );
-      secondRemaing =  TimeTools.convertSecondToSecRemaingForToday( secondRemaining );
+      dayRemaing = remainingTime.inDays.toString();
+      hourRemaing = remainingTime.inHours.remainder(24).toString();
+      minRemaing = remainingTime.inMinutes.remainder(60).toString();
+      secondRemaingUntillToday = remainingTime.inSeconds.remainder(60).toString();
     });
   }
 
@@ -91,22 +97,22 @@ extension TimerLogic on TimerDaysState {
     widget.callBack();
   }
 
-  //-------------------------------------------------------------------- time
+//-------------------------------------------------------------------- time
 
-  // /**
-  //     int totalSeconds = 125;
-  //     String formattedTime = formatSecondsToMinutesAndSeconds(totalSeconds);
-  //     print(formattedTime); // Output: 02:05
-  //  */
-  // String formatSecondsToMinutesAndSeconds(int seconds) {
-  //   int minutes = seconds ~/ 60;
-  //   int remainingSeconds = seconds % 60;
-  //
-  //   String minutesStr = minutes.toString().padLeft(2, '0');
-  //   String secondsStr = remainingSeconds.toString().padLeft(2, '0');
-  //
-  //   return '$minutesStr:$secondsStr';
-  // }
+// /**
+//     int totalSeconds = 125;
+//     String formattedTime = formatSecondsToMinutesAndSeconds(totalSeconds);
+//     print(formattedTime); // Output: 02:05
+//  */
+// String formatSecondsToMinutesAndSeconds(int seconds) {
+//   int minutes = seconds ~/ 60;
+//   int remainingSeconds = seconds % 60;
+//
+//   String minutesStr = minutes.toString().padLeft(2, '0');
+//   String secondsStr = remainingSeconds.toString().padLeft(2, '0');
+//
+//   return '$minutesStr:$secondsStr';
+// }
 
 
 }

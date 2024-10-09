@@ -13,7 +13,7 @@ typedef TimerEndCallBack = Function();
 class TimerDaysWidget extends StatefulWidget {
 
   BuildContext contextPage;
-  int second;
+  String expiryDateStartString; // example "2025-12-31T00:00:00.000000Z"
   TimerEndCallBack callBack;
   bool? isModeHiddenJustTimer ;
 
@@ -23,7 +23,7 @@ class TimerDaysWidget extends StatefulWidget {
 
   TimerDaysWidget( {
     required this.contextPage,
-    required this.second,
+    required this.expiryDateStartString,
     required this.callBack,
     this.color,
     this.fontSize,
@@ -33,25 +33,30 @@ class TimerDaysWidget extends StatefulWidget {
 
 
   @override
-  TimerDaysState createState() => TimerDaysState(second);
+  TimerDaysState createState() => TimerDaysState(expiryDateStartString);
 }
 
 class TimerDaysState extends State<TimerDaysWidget> {
 
 
-  int secondRemaining = 0 ;
+  String expiryDateStartString;
+  DateTime expiryDateStartDateTime =  DateTime.now();
+  Duration remainingTime = Duration();
+  // int secondRemaining = 0;
+
   String  dayRemaing = "";
   String  hourRemaing = "";
   String  minRemaing = "";
-  String  secondRemaing = "";
+  String  secondRemaingUntillToday = "";
   Timer? myTimer;
 
-  TimerDaysState( this.secondRemaining);
+  TimerDaysState( this.expiryDateStartString);
 
 
   @override
   void initState() {
     super.initState();
+    expiryDateStartDateTime = DateTime.parse( expiryDateStartString );
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await intervalTimerCreate();
     });
@@ -73,7 +78,7 @@ class TimerDaysState extends State<TimerDaysWidget> {
       return SizedBox();
     }
     return   Container(
-        child:  TextApp( dayRemaing + " Day " + hourRemaing + " Hour " + minRemaing + " Min " + secondRemaing + " Second",
+        child:  TextApp( dayRemaing + " Day " + hourRemaing + " Hour " + minRemaing + " Min " + secondRemaingUntillToday + " Second",
           color: Colors.black,
           fontFamily: widget.fontFamily,
           fontSize: widget.fontSize??15,
