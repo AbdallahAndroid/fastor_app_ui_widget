@@ -26,7 +26,7 @@ extension TimerLogic on TimerDaysState {
     remainingTime = expiryDateStartDateTime.difference(currentTime);
     // expireRemaingDateTime = TimeTools.getDateTimeMinesSecondPassingDate( expireRemaingDateTime, 1  ) ;
     // secondRemaining = TimeTools.convertDateToSecondBetweenNowAndThisDate( expireRemaingDateTime.toString());
-    Log.i("_fireTimerAction() - loop remainingTime: " + remainingTime.toString() );
+    // Log.i("_fireTimerAction() - loop remainingTime: " + remainingTime.toString() );
 
     //validate to stop on zero view
     bool isEndTimer = remainingTime.isNegative;
