@@ -211,7 +211,7 @@ class   NetworkManagerDio  {
         NetworkType.file,
         body: body,
         headers: headers,
-        requestFile: requestFile,
+        requestFile: this.requestFile,
         timeOutSecond : timeOutSecond,
         isEnableLogDioPretty: isEnableLogDioPretty,
         onSendProgress: onSendProgress,
