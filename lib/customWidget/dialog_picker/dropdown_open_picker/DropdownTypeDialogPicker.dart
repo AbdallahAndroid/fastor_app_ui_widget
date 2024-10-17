@@ -35,7 +35,17 @@ class DropdownTypeDialogPicker extends StatefulWidget {
   }) {
 
     showProgress ??= false;
+    setMessageErrorFromErrorsArray();
   }
+
+
+  setMessageErrorFromErrorsArray(){
+    if( messageError != null ) return;
+    if( errorKeySearchingInErrorMessageArray == null ) return;
+    if( errorsMessageArray == null ) return;
+    messageError =  errorsMessageArray!.keys.contains( errorKeySearchingInErrorMessageArray) ? errorsMessageArray![errorKeySearchingInErrorMessageArray][0] : null;
+  }
+
 
   @override
   DropdownTypeDialogState createState()  => DropdownTypeDialogState( );
