@@ -119,7 +119,7 @@ class CardViewApp {
      */
 
     //radius
-    var radiusCustom = BorderRadiusTools.get(
+    var radiusCustom = BorderRadiusTools.getByLang(
       radius_all: radius_all,
       radius_topLeft: radius_topLeft,
       radius_topRight: radius_topRight,
@@ -205,7 +205,7 @@ class CardViewApp {
     radius_all ??= 0;
 
     //radius
-    var radiusCustom = BorderRadiusTools.get(
+    var radiusCustom = BorderRadiusTools.getByLang(
       radius_all: radius_all,
       radius_topLeft: radius_topLeft,
       radius_topRight: radius_topRight,

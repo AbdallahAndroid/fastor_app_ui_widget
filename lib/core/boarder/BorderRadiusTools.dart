@@ -1,3 +1,6 @@
+import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:flutter/material.dart';
+
 import 'package:flutter/material.dart';
 
 
@@ -10,7 +13,7 @@ class BorderRadiusTools {
     required double  radius
   }) {
 
-    return get(
+    return getByLang(
         radius_topLeft: radius,
         radius_topRight: radius
     );
@@ -22,13 +25,24 @@ class BorderRadiusTools {
     required double  radius
   }) {
 
-    return get(
+    return getByLang(
         radius_bottomRight: radius,
         radius_bottomLeft: radius
     );
   }
 
-  static BorderRadius get({
+
+  static BorderRadius topRight({
+    //radius
+    required double  radius
+  }) {
+    return getByLang(
+      radius_topRight: radius,
+    );
+  }
+
+
+  static BorderRadius getByLang({
     //radius
     double? radius_all = 0,
     double? radius_topLeft = 0,
@@ -38,7 +52,7 @@ class BorderRadiusTools {
   }) {
 
 
-  //set default radius
+    //set default radius
     radius_all ??= 0;
     radius_topLeft ??= 0;
     radius_topRight ??= 0;
@@ -62,14 +76,30 @@ class BorderRadiusTools {
       radius_bottomRight = radius_all;
     }
 
-//radius
-    var radiusCustom = BorderRadius.only(
-      topLeft: Radius.circular(radius_topLeft ),
-      topRight: Radius.circular(radius_topRight ),
-      bottomLeft: Radius.circular(radius_bottomLeft ),
-      bottomRight: Radius.circular(radius_bottomRight ),
-    );
-
-    return radiusCustom;
+    if( LangApp.isArabic ) {
+      return   BorderRadius.only(
+        topLeft: Radius.circular(radius_topRight ),
+        topRight: Radius.circular(radius_topLeft ),
+        bottomLeft: Radius.circular(radius_bottomRight ),
+        bottomRight: Radius.circular(radius_bottomLeft ),
+      );
+    } else {
+      return   BorderRadius.only(
+        topLeft: Radius.circular(radius_topLeft ),
+        topRight: Radius.circular(radius_topRight ),
+        bottomLeft: Radius.circular(radius_bottomLeft ),
+        bottomRight: Radius.circular(radius_bottomRight ),
+      );
+    }
   }
+
+
+  static left(double radius) {
+    return getByLang(
+        radius_topLeft: radius,
+        radius_bottomLeft: radius
+    );
+  }
+
+
 }
