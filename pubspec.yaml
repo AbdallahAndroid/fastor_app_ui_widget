@@ -14,9 +14,9 @@ repository: https://github.com/AbdallahAndroid/fastor_app_ui_widget
 
 environment:
 #  sdk: ">=2.17.3 <3.0.0"   #flutter version 3.0.2
-  sdk: ">=2.17.0 <3.0.0"   #flutter version 3.0.0
+#  sdk: ">=2.17.0 <3.0.0"   #flutter version 3.0.0
+  sdk: '>=3.4.0 <4.0.0' #flutter sdk  3.22.0
   flutter: ">=1.17.0"
-
 
 TextFieldEmailOrPhoneFastor:
   dart:
@@ -51,6 +51,7 @@ dependencies:
 
   # chart
   syncfusion_flutter_charts: 22.2.12
+  fl_chart: 0.69.0
 
   #picker
   image_picker: 1.0.4
