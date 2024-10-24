@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
+import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 
@@ -328,6 +329,13 @@ class   NetworkManagerDio  {
 
 
   Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCallbackFastor? onReceiveProgress}) async {
+
+    if (await InternetTools.isNotConnected()) {
+      // return Left(ServerNoInternetConnectionFailure(  ));
+      throw ServerNoInternetConnectionException(  );
+    }
+
+    /// file
     if (type == NetworkType.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
@@ -340,6 +348,8 @@ class   NetworkManagerDio  {
         if(callback_dio != null )callback_dio!(false, "filePath not found or XFile not found", Map());
         return  getFailedResponse();
       }
+
+      /// types: put,get,post,patch,delete
     } else if (type == NetworkType.post) {
       return await  post_dio();
     } else if (type == NetworkType.put) {

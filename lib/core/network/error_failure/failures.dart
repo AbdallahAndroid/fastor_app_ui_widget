@@ -15,6 +15,8 @@ class ServerMessageFailure extends Failure {
 
 class ServerUnAuthenticationFailure  extends Failure {}
 
+class ServerNoInternetConnectionFailure extends Failure {}
+
 class DNSConnectionDomainFailedFailure extends Failure {
   String? message;
   DNSConnectionDomainFailedFailure( { this.message});

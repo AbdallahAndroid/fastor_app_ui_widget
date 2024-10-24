@@ -21,6 +21,12 @@ class FailureHandler {
 
 
   static Failure chooseFailure(Exception e ) {
+    if( e is ServerNoInternetConnectionException ) {
+      return ServerNoInternetConnectionFailure();
+    }
+    if( e is ServerEmptyDataException ) {
+      return ServerMessageFailure( "No Data Found".tra() );
+    }
     if( e is ServerMessageException ) {
       return ServerMessageFailure( e.message );
     }

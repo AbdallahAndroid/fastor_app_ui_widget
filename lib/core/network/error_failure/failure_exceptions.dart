@@ -15,9 +15,12 @@ class ServerMessageException implements Exception {
 }
 
 /// remove cache login when found this
-class ServerUnAuthenticationException implements Exception {
+class ServerUnAuthenticationException implements Exception { }
 
-}
+class ServerNoInternetConnectionException implements Exception { }
+
+class ServerEmptyDataException implements Exception { }
+
 class InputFieldInvalidException implements Exception {
 
   String? message;
