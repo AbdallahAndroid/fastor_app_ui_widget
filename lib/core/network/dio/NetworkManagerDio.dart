@@ -2,7 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/network/dio/NetworkConfigDio.dart';
+import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 
@@ -304,8 +304,8 @@ class   NetworkManagerDio  {
   //-------------------------------------------------------------------- default values
 
   void _configureDefaultSetup()   {
-    // var configureHeaders = NetworkConfig.getConfigureHeader();
-    // headers.addAll( configureHeaders );
+    var configureHeaders = NetworkConfig.getConfigureHeader();
+    headers.addAll( configureHeaders );
   }
 
 
