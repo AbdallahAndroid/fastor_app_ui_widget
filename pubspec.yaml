@@ -36,7 +36,7 @@ dependencies:
   timezone_to_country:
   country_dial_code:
   http:
-  dio:
+  dio: 5.7.0
   pretty_dio_logger: ^1.1.1
   cross_file: # ^0.3.3+4
   intl: # ^0.18.1

@@ -443,8 +443,8 @@ extension DioServiceFastor on NetworkManagerDio {
   }
 
 
-  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackFastor? onSendProgress,
-    ProgressCallbackFastor? onReceiveProgress  }) async {
+  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackApp? onSendProgress,
+    ProgressCallbackApp? onReceiveProgress  }) async {
 
     Response? response ;
     try {
@@ -536,8 +536,8 @@ extension DioServiceFastor on NetworkManagerDio {
   }
 
 
-  Future<Response >  fileTypeFormData(  { ProgressCallbackFastor? onSendProgress,
-    ProgressCallbackFastor? onReceiveProgress  }) async {
+  Future<Response >  fileTypeFormData(  { ProgressCallbackApp? onSendProgress,
+    ProgressCallbackApp? onReceiveProgress  }) async {
 
     Response? response ;
     try {

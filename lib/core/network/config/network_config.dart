@@ -16,7 +16,7 @@ class NetworkConfig{
     _headers = null;
   }
 
-  static Map<String,String> getConfigureHeader()   {
+  static   Map<String,String>  getConfigureHeaderFromCache()     {
 
     /// fix perfomance
     if( _headers!= null ) {
@@ -29,7 +29,7 @@ class NetworkConfig{
     if( UserHelper.isGuest()  ) {
       _headers =  guestType(      );
     } else {
-      _headers =  login( UserHelper.getToken()  );
+      _headers =  loginType( UserHelper.getToken()  );
     }
     _headers!["Accept"] = "application/json";
     return _headers!;
@@ -39,16 +39,18 @@ class NetworkConfig{
   static Map<String, String > guestType(  ) {
     Map<String, String > header = Map();
     header[ "lang"] =  LangApp.isArabic ? "ar" : "en";
+    header!["Accept"] = "application/json";
     return header;
   }
 
 
-  static Map<String, String > login(String token ) {
+  static Map<String, String > loginType(String token ) {
     Map<String, String > header = Map();
     header[ "lang"] =  LangApp.isArabic ? "ar" : "en";
     if(ToolsValidation.isValid(token)) {
       header[ "Authorization"] =  "Bearer " + token;
     }
+    header!["Accept"] = "application/json";
     return header;
   }
 

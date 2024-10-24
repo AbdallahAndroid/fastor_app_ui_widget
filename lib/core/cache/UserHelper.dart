@@ -4,6 +4,7 @@
 import 'package:fastor_app_ui_widget/core/cache/SaveApp.dart';
 import 'package:fastor_app_ui_widget/core/cache/UserModel.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/network/NetworkSingletone.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 
@@ -16,7 +17,7 @@ class UserHelper {
   //----------------------------------------------- logout clear
 
   static  logout( ) async {
-    NetworkConfig.initConfigure();
+    NetworkHelperSingleTone.setLogout();
     String userId =    UserHelper.getUserId();
     setToken( "");
     await SaveApp.setString( CacheKeys.userId,  "" );
@@ -42,9 +43,9 @@ class UserHelper {
    * call this method from login or from get profile api
    */
   static  saveProfile(UserModel user) async {
-    NetworkConfig.initConfigure();
     if( ToolsValidation.isValid( user.token ) ) {
-      await setToken(user.token??"");
+      NetworkHelperSingleTone.setLogin( user.token! );
+      await setToken( user.token!);
     }
 
     await SaveApp.setString( CacheKeys.userId, user!.id!.toString() );
