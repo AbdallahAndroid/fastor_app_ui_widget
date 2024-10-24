@@ -198,6 +198,14 @@ class ApiParserApp {
     }
   }
 
+  ///-------------------------------------------------------------- fix empty
+
+  static bool isEmptyArray(dynamic json ) {
+    String dataString = "$json";
+    bool isEmptyArray = dataString == "[]";
+    return isEmptyArray;
+  }
+
 
 
 }
