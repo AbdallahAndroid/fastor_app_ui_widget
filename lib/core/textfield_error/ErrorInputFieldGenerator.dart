@@ -1,17 +1,7 @@
+
+
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
-
-class ErrorModel {
-
-  String key;
-  String value;
-
-  ErrorModel({
-      required this.key,
-    required this.value
-  });
-}
-
-
+import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldModel.dart';
 
 ///
 /// example error:
@@ -33,7 +23,14 @@ class ErrorModel {
 class ErrorInputFieldGenerator {
 
 
-  static Map<String, dynamic> generateErrorArrayMessageShapeLaravel(List<ErrorModel> arrayErrorModel ){
+  static Map<String, dynamic> generateErrorArrayMessageShapeLaravelWithOneMessage( String key, String errorMessage ){
+    List<ErrorInputFieldEntity> arrayErrorModel = [];
+    arrayErrorModel.add( ErrorInputFieldEntity(key:  key , value: errorMessage )) ;
+    return generateErrorArrayMessageShapeLaravelTakeArray(arrayErrorModel);
+  }
+
+
+  static Map<String, dynamic> generateErrorArrayMessageShapeLaravelTakeArray(List<ErrorInputFieldEntity> arrayErrorModel ){
     Map<String, dynamic> errors = Map();
 
     arrayErrorModel.forEach(( model ) {
@@ -47,4 +44,8 @@ class ErrorInputFieldGenerator {
     Log.i("ErrorInputFieldGenerator - generateErrorArrayMessage() - data: $data");
     return errors;
   }
+
+
+
+
 }
