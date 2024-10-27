@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
@@ -52,7 +53,7 @@ class TextFieldApp extends StatelessWidget {
   ValueChanged<String>? onFieldSubmitted;
 
   //input content type
-  TextInputType? keyboardType;
+  TextInputType? textInputType;
   bool obscureText = false;
 
   //action
@@ -81,7 +82,14 @@ class TextFieldApp extends StatelessWidget {
   Widget? suffixIcon;
   double? iconSize;
 
+  bool? enabled;
+
+
+  /// filter
+  List<TextInputFormatter>? inputFormatters;
+
   TextFieldApp({
+
     // validate
     this.validatorCustom,
     // this.validatorType,
@@ -118,7 +126,7 @@ class TextFieldApp extends StatelessWidget {
     this.onFieldSubmitted,
 
     //input content type
-    this.keyboardType,
+    this.textInputType,
     this.textInputAction,
     this.obscureText = false,
 
@@ -134,9 +142,13 @@ class TextFieldApp extends StatelessWidget {
     this.errorMessage,
     this.errorColor,
 
+    // filter
+    this.inputFormatters,
+
     //other
     this.textAlign,
     this.focusNode,
+    this.enabled,
 
     //icon
     this.prefixIcon, //example "icon" left of textField
@@ -168,8 +180,8 @@ class TextFieldApp extends StatelessWidget {
     textAlign ??= TextAlign.start;
 
     //password
-    bool isPass = keyboardType != null &&
-        keyboardType == TextInputType.visiblePassword;
+    bool isPass = textInputType != null &&
+        textInputType == TextInputType.visiblePassword;
     if (isPass) {
       obscureText = true;
     }
@@ -180,7 +192,7 @@ class TextFieldApp extends StatelessWidget {
     //??TextInputAction.newline
     if( textInputAction == null ){
 
-      if( keyboardType  == null && keyboardType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
+      if( textInputType  == null && textInputType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
         if( minLines != null && minLines! > 1 ) {
           textInputAction = TextInputAction.newline;
         }
@@ -191,6 +203,8 @@ class TextFieldApp extends StatelessWidget {
     isShowBoarder ??= false;
 
 
+    // set filer auto
+    setFilterInputAuto();
   }
 
   void handleEveryReBuildErrorAndDecorationShape(){
@@ -275,6 +289,10 @@ class TextFieldApp extends StatelessWidget {
 
       cloneDecoration = InputDecoration(
 
+        /// enable
+        enabled: enabled??decoration!.enabled,
+        // enabled: decoration!.enabled,
+
         /// clode to edit this
         errorText: errorMessage,
 
@@ -322,7 +340,7 @@ class TextFieldApp extends StatelessWidget {
         disabledBorder : decoration!.disabledBorder,
         enabledBorder: decoration!.enabledBorder,
         border: decoration!.border,
-        enabled: decoration!.enabled,
+
         semanticCounterText : decoration!.semanticCounterText,
         alignLabelWithHint: decoration!.alignLabelWithHint,
         constraints  : decoration!.constraints,
@@ -402,7 +420,7 @@ class TextFieldApp extends StatelessWidget {
       decoration:  chooseDecoration(),
 
       //keyboard
-      keyboardType: keyboardType,
+      keyboardType: textInputType,
       //TextInputType.number
 
       //controller
@@ -427,6 +445,9 @@ class TextFieldApp extends StatelessWidget {
       textInputAction :  textInputAction ,
 
       focusNode: focusNode,
+
+      /// filter
+      inputFormatters: inputFormatters,
     );
   }
 
@@ -483,7 +504,9 @@ class TextFieldApp extends StatelessWidget {
     //return value
     return InputDecoration(
 
-      //remove default padding and set custom
+        enabled: decoration!.enabled,
+
+        //remove default padding and set custom
         isDense: true,
         contentPadding: padding,
 
@@ -554,7 +577,9 @@ class TextFieldApp extends StatelessWidget {
     //return value
     return InputDecoration(
 
-      //remove default padding and set custom
+        enabled: enabled??true,
+
+        //remove default padding and set custom
         isDense: true,
         contentPadding: padding,
 
@@ -595,6 +620,15 @@ class TextFieldApp extends StatelessWidget {
 
 
     );
+  }
+
+  void setFilterInputAuto() {
+    if( inputFormatters != null ) return;
+    if( textInputType == TextInputType.number ) {
+      inputFormatters = [
+        FilteringTextInputFormatter.digitsOnly, // Only allows numbers
+      ];
+    }
   }
 
 
