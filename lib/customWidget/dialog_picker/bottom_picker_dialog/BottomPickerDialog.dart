@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/button_cutom/ButtonFullTransparent.dart';
@@ -16,20 +17,26 @@ import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 
 
 
+enum BottomPickerShapeEnum {  confirmBottom, oneClick}
+
 class BottomPickerDialog extends StatefulWidget {
 
   double? heightListviewFixed ; //
+
+  BottomPickerShapeEnum? bottomPickerShape;
 
   String titleDialog;
   List<DataPickerEntity> dataEntities;
   ListViewDialogPickerGenericListener listener;
 
+
   BottomPickerDialog({
     required this.titleDialog,
     required this.dataEntities,
     required this.listener,
+    this.bottomPickerShape
   }){
-
+    bottomPickerShape ??= BottomPickerShapeEnum.confirmBottom;
     setDefaultHeightFixedIfNeeded();
   }
 
@@ -57,12 +64,11 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
 
   @override
   Widget build(BuildContext context) {
-     return Container(
-       width:  DeviceTools.getWidth(context), //MediaQuery.of(context).size.width,
-       // height: 300,
-       decoration: cardViewTopRadiusOnly(),
-       child: contentUICard(),
-     );
+    return Container(
+      width:  DeviceTools.getWidth(context), //MediaQuery.of(context).size.width,
+      decoration: cardViewTopRadiusOnly(),
+      child: contentUICard(),
+    );
   }
 
   //---------------------------------------------------------------- card ui
@@ -70,8 +76,6 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
   BoxDecoration cardViewTopRadiusOnly(   ) {
     //set default
     var radiusSize = 15.0;
-    var colorBackground  = Colors.white ;
-    var colorLine = Colors.grey.withOpacity(0.3)  ;
 
     // radius
     var radiusBorder = BorderRadius.only(
@@ -80,9 +84,9 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
     );
 
     return BoxDecoration(
-        border: Border.all(color: colorLine , width:  1) ,
+        border: Border.all(color: Colors.grey.withOpacity(0.3) , width:  1) ,
         borderRadius: radiusBorder ,
-        color: colorBackground                                                          //background color
+        color:  ColorResource.textFieldBackground//Colors.white                                                          //background color
     );
   }
 
@@ -92,9 +96,9 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
       children: [
         titleDialog(),
         listViewItems(),
-        buttonChoose(),
-        SizedBox(height: Figma.h(10),),
-        buttonCancel(),
+        if( widget.bottomPickerShape! == BottomPickerShapeEnum.confirmBottom ) buttonChoose(),
+        if( widget.bottomPickerShape! == BottomPickerShapeEnum.confirmBottom ) SizedBox(height: Figma.h(10),),
+        if( widget.bottomPickerShape! == BottomPickerShapeEnum.confirmBottom ) buttonCancel(),
         SizedBox(height: Figma.h(10),),
       ],
     );
@@ -108,7 +112,7 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
       alignment: LangApp.isArabic? Alignment.topRight : Alignment.topLeft, // LangApp.getAlignmentGeometryStart(),
       child:  Text( widget.titleDialog,
         style: TextStyle(
-            color: Colors.black,
+            color: ColorResource.textPrimary,
             // fontFamily: FontResources.mediumPoppins,
             fontSize: Figma.h(16)
         ),
@@ -143,19 +147,19 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
         //print("BottomPickerDialog - click - entity: $entity");
         setState(() {
           selectedEntity = entity;
+          inCaseShapeOneSingleClickAutoDismissDialog();
         });
       },
     );
   }
-  
+
   Widget buttonChoose(){
     return ButtonPrimary( "Choose".tra(), () {
       if(selectedEntity == null ) {
         ToolsToast.bottom(context,  "choose one item".tra() );
         return;
       }
-      Navigator.pop(context);
-      widget.listener( selectedEntity! );
+      successSelectAndDismissDialog();
     },
       radius: 0,
       height: Figma.h(43),
@@ -167,17 +171,15 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
   Widget buttonCancel(){
     return ButtonFullTransparent(
       "Cancel".tra(),
-        (){
-          Navigator.pop(context);
-        },
+          (){
+        Navigator.pop(context);
+      },
       width: MediaQuery.of(context).size.width,
       radius: 0,
       height: Figma.h(43),
       fontSize: Figma.h(16),
     ) ;
   }
-
-
 
 
 }
