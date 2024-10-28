@@ -2,13 +2,16 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class IconAndSeperatorTextField extends StatelessWidget {
+class IconAndSeparatorTextField extends StatelessWidget {
 
   BuildContext? context;
   Widget icon;
@@ -27,7 +30,7 @@ class IconAndSeperatorTextField extends StatelessWidget {
   Map<String, dynamic>? errorsMessageArray;
 
 
-  IconAndSeperatorTextField( {
+  IconAndSeparatorTextField( {
     required this.icon,
     required this.hint,
     required this.controller,
@@ -44,19 +47,46 @@ class IconAndSeperatorTextField extends StatelessWidget {
     this.errorMessage,
     this.errorKeySearchingInErrorMessageArray,
     this.errorsMessageArray
-  });
+  }){
+
+    colorLineBoarder ??= ColorResource.textFieldDarkBoarderLineBeforeFocused;
+    _setValidatorFromBackend();
+  }
+
+
+  void _setValidatorFromBackend() {
+    if (errorKeySearchingInErrorMessageArray == null) return;
+    if (errorsMessageArray == null) return;
+    if (errorsMessageArray!.containsKey(errorKeySearchingInErrorMessageArray!) == false) return;
+    errorMessage = errorsMessageArray!["" + errorKeySearchingInErrorMessageArray!][0];
+    // Log.i( "_setValidatorFromBackend() - errorMessage: $errorMessage");
+  }
 
 
   @override
   Widget build(BuildContext context) {
     this.context = context;
     return  Container(
+      child: Stack(children: [
+        iconAndTextField(),
+        if( ToolsValidation.isValid( errorMessage )    ) PositionedApp.langApp(
+            child:  errorMessageWidget(),
+            left: Figma.w( 47 ),
+            top: DimensionResource.textFieldHeight - Figma.h( 17 )
+        )
+      ],),
+    );
+  }
+
+  Widget iconAndTextField(){
+    return Container(
       width: getWidthSizeMinusMargin(),
       height: minLines != null ? null :  DimensionResource.textFieldHeight,
       decoration: BoarderHelper.cardView(
-        colorLine: colorLineBoarder??ColorResource.textFieldDarkBoarderLineBeforeFocused,
-        colorBackground: ColorResource.textFieldBackground,
-        radiusSize: radius??8,
+          colorLine: errorMessage != null ? ColorResource.redMaterial : colorLineBoarder,
+          colorBackground:   ColorResource.textFieldBackground,
+          radiusSize: radius??8,
+          widthLine: 1.5
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -78,7 +108,6 @@ class IconAndSeperatorTextField extends StatelessWidget {
     );
   }
 
-
   textField(){
     return  TextFieldApp(
       hint_text: hint,
@@ -94,9 +123,9 @@ class IconAndSeperatorTextField extends StatelessWidget {
       isRemoveUnderline: true,
       onChanged: onChanged,
       textInputType: textInputType,
-      errorsMessageArray: errorsMessageArray,
-      errorKeySearchingInErrorMessageArray: errorKeySearchingInErrorMessageArray,
-      errorMessage: errorMessage,
+      // errorsMessageArray: errorsMessageArray,
+      // errorKeySearchingInErrorMessageArray: errorKeySearchingInErrorMessageArray,
+      // errorMessage: errorMessage,
     );
   }
 
@@ -124,6 +153,32 @@ class IconAndSeperatorTextField extends StatelessWidget {
     double containerWidth = getWidthSizeMinusMargin();
     double iconWidth = 20;
     return containerWidth - iconWidth - 20 - 30 ;
+  }
+
+  //---------------------------------------------- error
+
+  errorMessageWidget(){
+    double size = Figma.h( 10);
+    // Log.i("errorMessageWidget() - errorMessage: $errorMessage");
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+          Icon( Icons.info_outline, size: size, color: ColorResource.red,),
+          SizedBox( width:  5 ,),
+          TextApp( errorMessage??"",
+            color: ColorResource.redMaterial,
+            fontSize: size,
+            // fontFamily: FontResource.regular,
+          ),
+
+        ],
+      ),
+    );
   }
 
 }

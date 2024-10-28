@@ -94,6 +94,7 @@ class ColorResource {
   static var redLight = Colors.red.withOpacity( 0.5 );
   static var redMedium = Colors.red.withOpacity( 0.8 );
   static var redDark = Colors.red;
+  static var redMaterial = Colors.red;
 
   ///
   static var iconEmptyDataFound = Color(0xffFFF5EB);
