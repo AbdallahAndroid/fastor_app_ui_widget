@@ -41,7 +41,7 @@ enum CalenderTypeApp { dateStartFromToday, birthday }
     }
 
  */
-class CalenderInputFieldApp extends StatefulWidget {
+class ButtonDateApp extends StatefulWidget {
 
   String? title;
   String? hint;
@@ -64,7 +64,7 @@ class CalenderInputFieldApp extends StatefulWidget {
   String? errorMessageBackend;
 
 
-  CalenderInputFieldApp( {
+  ButtonDateApp( {
     this.title,
     this.hint,
     this.dateSelected,
@@ -107,7 +107,7 @@ class CalenderInputFieldApp extends StatefulWidget {
 
 }
 
-class _CalenderCustomState extends State<CalenderInputFieldApp> {
+class _CalenderCustomState extends State<ButtonDateApp> {
 
   @override
   Widget build(BuildContext context) {

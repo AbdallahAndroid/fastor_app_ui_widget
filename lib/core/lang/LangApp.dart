@@ -140,6 +140,15 @@ class LangApp {
   }
 
 
+  static getAlignmentGeometryStartCenter() {
+    if ( LangApp.isArabic ) {
+      return Alignment.centerRight;
+    } else {
+      return Alignment.centerLeft;
+    }
+
+  }
+
   static AlignmentGeometry getAlignmentGeometryStart(){
     if ( LangApp.isArabic ) {
       return Alignment.topRight;
@@ -240,5 +249,6 @@ class LangApp {
     updateActiveLanguageCode();
     await _setCacheArabic(true);
   }
+
 
 }
