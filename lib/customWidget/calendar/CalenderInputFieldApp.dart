@@ -9,6 +9,35 @@ typedef CalenderSelectCallback = Function(DateTime selectedDateTime, String sele
 
 enum CalenderTypeApp { dateStartFromToday, birthday }
 
+/**
+ *
+    --------------------- example birthday shape
+
+    Widget birthday() {
+    return CalenderInputFieldApp(
+    hint:  "Birthday (optional)".tra(),
+    decoration: BoarderHelper.cardView(
+    colorLine: ColorResource.textFieldBoarderLineBeforeFocused,
+    radiusSize: DimensionResource.cornerTextField,
+    colorBackground: ColorResource.textFieldBackground
+    ),
+    calenderTypeApp: CalenderTypeApp.birthday,
+    dateSelected: request.birthdate,
+    colorTextTitle: ColorResource.textPrimary,
+    colorTextSelected: ColorResource.textPrimary,
+    colorTextUnSelected: ColorResource.textLight,
+    fontFamily: FontResource.regular,
+    fontSize: Figma.h( 16 ),
+    width: getTextFieldWidth(),
+    height: DimensionResource.textFieldHeight,
+    callback: (dateTime, date) {
+    var dateShape = DateFormat('yyyy/MM/DD').format(dateTime);
+    request.birthdate = dateShape;
+    },
+    );
+    }
+
+ */
 class CalenderInputFieldApp extends StatefulWidget {
 
   String? title;
@@ -23,6 +52,7 @@ class CalenderInputFieldApp extends StatefulWidget {
   double? fontSize;
   Decoration? decoration;
   double? height;
+  double? width;
 
   CalenderInputFieldApp( {
     this.title,
@@ -36,8 +66,9 @@ class CalenderInputFieldApp extends StatefulWidget {
     this.fontFamily,
     this.decoration,
     this.fontSize,
-    this.height
-});
+    this.height,
+    this.width
+  });
 
   @override
   _CalenderCustomState createState()  => _CalenderCustomState();
@@ -48,15 +79,12 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
 
   @override
   Widget build(BuildContext context) {
-
-    var column = ColumnApp( children: [
-      widget.title != null ? titleWidget()! : SizedBox(),
-      widget.title != null ? SizedBox( height: 20,) : SizedBox(  ), //margin below title
-      tapWidget()
-    ],);
-
     return Container(
-      child: column,
+      child: ColumnApp( children: [
+        widget.title != null ? titleWidget()! : SizedBox(),
+        widget.title != null ? SizedBox( height: 20,) : SizedBox(  ), //margin below title
+        tapWidget()
+      ],),
     );
   }
 
@@ -71,14 +99,16 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
     );
   }
 
+
   Widget fieldWidget(){
     return Container(
       child: hintOrTextSelectedWidget(),
+      width: widget.width ,
       height: widget.height??49,
       alignment: Alignment.center,
       decoration: widget.decoration ?? BoarderHelper.cardView(
           colorLine: Colors.grey.withOpacity( 0.5),
-          radiusSize: 3,
+          radiusSize: 15,
           colorBackground: Colors.white
       ),
     );
@@ -109,9 +139,9 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
   Widget hintWidget(){
     return Text( widget.hint??"Select Date",
       style: TextStyle(
-          color: widget.colorTextUnSelected??Colors.grey,  //Colors.black
-          fontSize: widget.fontSize??13,
-          fontFamily: widget.fontFamily, //ProjectFonts.DarkerGrotesque_Bold_700
+        color: widget.colorTextUnSelected??Colors.grey,  //Colors.black
+        fontSize: widget.fontSize??13,
+        fontFamily: widget.fontFamily, //ProjectFonts.DarkerGrotesque_Bold_700
       ),
     );
     //return TextCustomMedium(  "Select Date");
@@ -120,9 +150,9 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
   Widget textDateSelected(){
     return Text( "${widget.dateSelected}",
       style: TextStyle(
-          color: widget.colorTextSelected??Colors.black,// ColorApp.black,
-          fontSize: widget.fontSize??13,
-          fontFamily: widget.fontFamily,
+        color: widget.colorTextSelected??Colors.black,// ColorApp.black,
+        fontSize: widget.fontSize??13,
+        fontFamily: widget.fontFamily,
       ),
     );
     //return TextCustomMedium(  "${widget.dateSelected}");
@@ -137,7 +167,7 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
     if( widget.calenderTypeApp == CalenderTypeApp.dateStartFromToday   ) {
       selectTime = await _showDialogStartFromToday();
     } else if( widget.calenderTypeApp == CalenderTypeApp.birthday   ) {
-      selectTime = await _showDialogBirthday();
+      selectTime = await _getDateBirthday();
     }
 
     // Log.i( "DialogPickDateTime - listener - value: " + selectTime.toString() );
@@ -159,12 +189,12 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
     return selectTime;
   }
 
-  Future<DateTime?> _showDialogBirthday() async {
+  Future<DateTime?> _getDateBirthday() async {
     DateTime? selectTime =  await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(), //DateTime(DateTime.now().year - 25),
-        firstDate: DateTime(DateTime.now().year - 100),
-        lastDate: DateTime.now(),
+      context: context,
+      initialDate: DateTime(2000, 1, 1), //DateTime(DateTime.now().year - 25), // DateTime.now(),
+      firstDate: DateTime(DateTime.now().year - 100),
+      lastDate: DateTime.now(),
       initialDatePickerMode: DatePickerMode.year,
     );
     return selectTime;
