@@ -69,7 +69,7 @@ class IconAndSeperatorTextField extends StatelessWidget {
       showOutlineInput: false,
       isRemoveUnderline: true,
       onChanged: onChanged,
-      keyboardType: textInputType,
+      textInputType: textInputType,
       errorsMessageArray: errorsMessageArray,
       errorKeySearchingInErrorMessageArray: errorKeySearchingInErrorMessageArray,
       errorMessage: errorMessage,

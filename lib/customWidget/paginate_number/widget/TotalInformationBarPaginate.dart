@@ -48,7 +48,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
         colorLine: Colors.black
       ),
       hint_color: Colors.transparent,
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       margin: EdgeInsets.only(left: 15 ),
       padding: EdgeInsets.all( 7 ),
       controller:  tf_goto_controller,

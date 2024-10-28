@@ -181,7 +181,7 @@ class _TextFieldState extends State<TextFieldMobileFocusAndUnFocusBoarder> {
       errorsMessageArray: widget.errorsMessageArray,
       errorKeySearchingInErrorMessageArray: widget.errorKeySearchingInErrorMessageArray,
       controller: widget.controller,
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       decoration: getInputDecorationSwitchBetweenFocusOrUnFocus(),
       onChanged: (text) {
         setState(() => _hasFocus = text.isNotEmpty);

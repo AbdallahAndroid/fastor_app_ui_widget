@@ -86,7 +86,7 @@ class _IconAndSeperatorPasswordTextFieldState extends State<IconAndSeperatorPass
       showOutlineInput: false,
       isRemoveUnderline: true,
       onChanged: widget.onChanged,
-      keyboardType: widget.textInputType,
+      textInputType: widget.textInputType,
 
       ///error  config
       errorsMessageArray: widget.errorsMessageArray,

@@ -50,7 +50,7 @@ class _TextFieldEmailFocusAndUnFocusBoarderState extends State<TextFieldEmailFoc
       errorKeySearchingInErrorMessageArray: widget.errorKeySearchingInErrorMessageArray,
       errorsMessageArray: widget.errorsMessageArray,
       controller: widget.controller,
-      keyboardType: TextInputType.emailAddress,
+      textInputType: TextInputType.emailAddress,
       decoration: getInputDecorationSwitchBetweenFocusOrUnFocus(),
         onChanged: (text)  {
           // widget.errorMessage = null;

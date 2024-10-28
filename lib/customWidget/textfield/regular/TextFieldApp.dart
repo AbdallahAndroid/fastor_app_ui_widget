@@ -53,7 +53,7 @@ class TextFieldApp extends StatelessWidget {
   ValueChanged<String>? onFieldSubmitted;
 
   //input content type
-  TextInputType? textInputType;
+  TextInputType? textInputType; //textInputType;
   bool obscureText = false;
 
   //action

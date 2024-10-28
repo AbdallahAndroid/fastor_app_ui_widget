@@ -249,7 +249,7 @@ class _MobileCountryAppState extends State<MobileCountryApp> {
         validatorCustom: ValidatorApp.emailOrPhone( ),
         padding: widget.padding?? EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 13),
         autovalidateMode: autovalidateMode,
-        keyboardType: widget.textInputType??TextInputType.number,
+        textInputType: widget.textInputType??TextInputType.number,
         suffixIcon: widget.suffixIcon,
         text_color: widget.textStyle?.color,
         hint_text: widget.hint ,

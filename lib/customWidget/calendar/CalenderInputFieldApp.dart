@@ -9,6 +9,7 @@ typedef CalenderSelectCallback = Function(DateTime selectedDateTime, String sele
 
 enum CalenderTypeApp { dateStartFromToday, birthday }
 
+
 /**
  *
     --------------------- example birthday shape
@@ -16,6 +17,8 @@ enum CalenderTypeApp { dateStartFromToday, birthday }
     Widget birthday() {
     return CalenderInputFieldApp(
     hint:  "Birthday (optional)".tra(),
+    errorBackendJson: stateCubit is RegisterErrorState ? (stateCubit as RegisterErrorState).errors : null ,
+    errorBackendKeyJson: "birthday",
     decoration: BoarderHelper.cardView(
     colorLine: ColorResource.textFieldBoarderLineBeforeFocused,
     radiusSize: DimensionResource.cornerTextField,
@@ -54,6 +57,13 @@ class CalenderInputFieldApp extends StatefulWidget {
   double? height;
   double? width;
 
+
+  //error
+  String? errorBackendKeyJson;
+  Map<String, dynamic>? errorBackendJson;
+  String? errorMessageBackend;
+
+
   CalenderInputFieldApp( {
     this.title,
     this.hint,
@@ -67,8 +77,30 @@ class CalenderInputFieldApp extends StatefulWidget {
     this.decoration,
     this.fontSize,
     this.height,
-    this.width
-  });
+    this.width,
+
+
+    //error
+    this.errorBackendKeyJson,
+    this.errorBackendJson,
+    this.errorMessageBackend
+
+  }) {
+    _setValidatorFromBackend();
+  }
+
+
+  void _setValidatorFromBackend() {
+    // print("fastor - _setValidatorFromBackend() - errorBackendKeyJson: $errorBackendKeyJson");
+    // print("fastor - _setValidatorFromBackend() - errorBackendJson: $errorBackendJson");
+
+    if (errorBackendKeyJson == null) return;
+    if (errorBackendJson == null) return;
+    if (errorBackendJson!.containsKey(errorBackendKeyJson!) == false) return;
+    errorMessageBackend = errorBackendJson!["" + errorBackendKeyJson!][0];
+    // print("fastor - _setValidatorFromBackend() - errorMessageBackend: $errorMessageBackend");
+  }
+
 
   @override
   _CalenderCustomState createState()  => _CalenderCustomState();
@@ -83,13 +115,14 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
       child: ColumnApp( children: [
         widget.title != null ? titleWidget()! : SizedBox(),
         widget.title != null ? SizedBox( height: 20,) : SizedBox(  ), //margin below title
-        tapWidget()
+        tapWidgetWithTextField(),
+        widget.errorMessageBackend != null ? errorMessageWidget() : SizedBox(),
       ],),
     );
   }
 
 
-  Widget tapWidget(){
+  Widget tapWidgetWithTextField(){
     return GestureDetector(
       child: fieldWidget(),
       onTap: () async {
@@ -158,6 +191,15 @@ class _CalenderCustomState extends State<CalenderInputFieldApp> {
     //return TextCustomMedium(  "${widget.dateSelected}");
   }
 
+  Widget errorMessageWidget(){
+    return Text( "${widget.errorMessageBackend}",
+      style: TextStyle(
+        color:  Colors.red,// ColorApp.black,
+        fontSize: widget.fontSize??13,
+        fontFamily: widget.fontFamily,
+      ),
+    );
+  }
 
   //--------------------------------------------------------- date picker
 

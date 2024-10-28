@@ -161,7 +161,7 @@ class _TextFieldPasswordState extends State<TextFieldPasswordApp> {
       decorationBackground: widget.decorationBackground,
       margin:  widget.margin,
       padding: widget.padding,
-      keyboardType: widget.keyboardType,
+      textInputType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       width: widget.width,
       maxLength: widget.maxLength,
