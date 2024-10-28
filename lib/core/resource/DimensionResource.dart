@@ -8,6 +8,8 @@ class DimensionResource {
   static   double textFieldContentPaddingVertical = Figma.h( 15 );
   static  double textFieldHeight = Figma.h(65) ;
 
+  /// corner
+  static double cornerTextField = 8 ;
 
   /// button
   static  double buttonHeight = Figma.h(65) ;
@@ -20,5 +22,6 @@ class DimensionResource {
   static var marginBetweenTwoSections = Figma.h( 16 );
   static var marginBetweenItemInSingleSections = Figma.h( 8 );
   static var marginBetweenItemList = Figma.h( 16 );
+
 
 }
