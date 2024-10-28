@@ -29,6 +29,7 @@ class ColorResource {
   static var textFieldIcon =  Color(0xff02263c );
   static var textFieldHint = Colors.grey;
   static var textFieldText =  Color(0xff02263c );
+  static var textFieldDarkBoarderLineBeforeFocused =  Colors.grey;
 
   /// buttons
   static var buttonBoarder = Color(0xffC7E2F1);

@@ -1,6 +1,9 @@
 
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +13,13 @@ class IconAndSeperatorTextField extends StatelessWidget {
   BuildContext? context;
   Widget icon;
   String hint;
-  double width;
   TextEditingController controller;
   ValueChanged<String>  onChanged;
   TextInputType? textInputType;
+  double? radius;
+  Color? colorLineBoarder;
+
+  int? minLines;
 
   ///errors
   String? errorMessage;
@@ -24,16 +30,21 @@ class IconAndSeperatorTextField extends StatelessWidget {
   IconAndSeperatorTextField( {
     required this.icon,
     required this.hint,
-    required this.width,
     required this.controller,
     required this.onChanged,
     this.textInputType,
+
+    this.minLines,
+
+    /// boarder
+    this.colorLineBoarder,
+    this.radius,
 
     ///errors
     this.errorMessage,
     this.errorKeySearchingInErrorMessageArray,
     this.errorsMessageArray
-});
+  });
 
 
   @override
@@ -41,21 +52,29 @@ class IconAndSeperatorTextField extends StatelessWidget {
     this.context = context;
     return  Container(
       width: getWidthSizeMinusMargin(),
-      height: 50, //DimensionResource.textFieldHeight
+      height: minLines != null ? null :  DimensionResource.textFieldHeight,
       decoration: BoarderHelper.cardView(
-        colorLine: Colors.white60,
-        colorBackground: Colors.white60,
-        radiusSize: 8,
+        colorLine: colorLineBoarder??ColorResource.textFieldDarkBoarderLineBeforeFocused,
+        colorBackground: ColorResource.textFieldBackground,
+        radiusSize: radius??8,
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: minLines != null ?  CrossAxisAlignment.start : CrossAxisAlignment.center ,
         children: [
           SizedBox( width: 10 ,),
-          icon,
+          Padding(
+            padding:  minLines != null ? EdgeInsets.only(top: Figma.h( 13 ) ) : EdgeInsets.zero,
+            child: icon ,
+          ),
           SizedBox( width: 10 ,),
-          divider(),
+          Padding(
+            padding:  minLines != null ? EdgeInsets.only(top: Figma.h( 13 ) ) : EdgeInsets.zero,
+            child: divider() ,
+          ),
           SizedBox( width: 10 ,),
-        textField()
-      ],),
+          textField()
+        ],),
     );
   }
 
@@ -63,8 +82,13 @@ class IconAndSeperatorTextField extends StatelessWidget {
   textField(){
     return  TextFieldApp(
       hint_text: hint,
-      hint_color: Colors.grey,
+      fontSize: Figma.h( 16 ),
+      // fontFamily: FontResource.regular,
+      hint_color: ColorResource.textFieldHint,
+      text_color: ColorResource.textFieldText,
       controller: controller,
+      padding: minLines != null ? EdgeInsets.all( 10 ) : null ,
+      minLines: minLines,
       width: getWidthTextField(),
       showOutlineInput: false,
       isRemoveUnderline: true,
@@ -78,18 +102,21 @@ class IconAndSeperatorTextField extends StatelessWidget {
 
 
   Widget divider(){
+    var heightDivider = 25.0;
+    if( minLines != null ) {
+      heightDivider = minLines! * 20;
+    }
     return Container(
       width: 2,
-      height: 25,
-      color: Colors.grey //.textFieldHint,
+      height: heightDivider,
+      color: ColorResource.textFieldHint,
     ) ;
   }
 
 
   double getWidthSizeMinusMargin(){
-    // return DeviceTools.getWidthGlobal( ) - DimensionResource.marginBetweenTwoInputFiled -
-    //     DimensionResource.marginBetweenTwoInputFiled;
-    return width;
+    return DeviceTools.getWidthGlobal( ) - DimensionResource.marginBetweenTwoInputFiled -
+        DimensionResource.marginBetweenTwoInputFiled;
   }
 
 
