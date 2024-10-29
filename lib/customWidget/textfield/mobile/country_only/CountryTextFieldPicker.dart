@@ -72,7 +72,7 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
           },
           textStyle:  TextStyle(
             color: ColorResource.textPrimary,
-            fontFamily: FontResource.regular,
+            // fontFamily: FontResource.regular,
             fontSize: Figma.h( 16 ),
             // fontFamily: FontResources.regular
           ),

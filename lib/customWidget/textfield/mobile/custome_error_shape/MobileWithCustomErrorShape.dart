@@ -151,7 +151,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
       padding: LangApp.onlyEdgeInsets(left: 10 ),
       width: getWidthPhoneOnly()  ,
       fontSize: Figma.h( 16 ),
-      fontFamily: FontResource.regular,
+      // fontFamily: FontResource.regular,
       maxLines: 1,
       minLines: 1,
       maxLength: 12,
@@ -211,7 +211,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
           TextApp(  errorMessage??"",
             color: ColorResource.redMaterial,
             fontSize: size,
-            fontFamily: FontResource.regular,
+            // fontFamily: FontResource.regular,
           ),
 
         ],
