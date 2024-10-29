@@ -7,7 +7,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
 import 'package:flutter/material.dart';
 
-typedef CountryTextFieldPickerListener = Function(String countryCode );
+typedef CountryTextFieldPickerListener = Function(String countryCode, bool isFirstTimeCreateWidget );
 
 class CountryTextFieldPicker extends StatefulWidget {
 
@@ -24,29 +24,32 @@ class CountryTextFieldPicker extends StatefulWidget {
 }
 
 class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
-  String? countryCode_text;
+  String? countryCode_text = "+966";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    setCountryCodeCurrent();
+    // setCountryCodeCurrent();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // updateCallback();
+      widget.listener( countryCode_text!, true );
     });
   }
 
   //-------------------------------------------------------------- auto set timezone
 
-  void setCountryCodeCurrent() {
-    ZoneTools.getZoneCountryDialCode( "+966").then((value)   {
+  /**
+      void setCountryCodeCurrent() {
+      ZoneTools.getZoneCountryDialCode( "+966").then((value)   {
       setState(() {
-        countryCode_text = value;
+      countryCode_text = value;
       });
 
       widget.listener( countryCode_text!);
-    });
-  }
+      });
+      }
+
+   */
 
 
   @override
@@ -65,11 +68,11 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
             // Log.i( "c: " + countryCode.toString() );
             countryCode_text = countryCode.dialCode!;
 
-            widget.listener( countryCode_text!);
+            widget.listener( countryCode_text!, false );
           },
           textStyle:  TextStyle(
             color: ColorResource.textPrimary,
-            // fontFamily: FontResource.regular,
+            fontFamily: FontResource.regular,
             fontSize: Figma.h( 16 ),
             // fontFamily: FontResources.regular
           ),

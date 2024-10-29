@@ -15,6 +15,9 @@ import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 
+typedef MobileWithCustomErrorShapeListener = Function(String country_code, String phone, bool isFirstTimeOpenScreen );
+
+
 class MobileWithCustomErrorShape extends StatelessWidget {
 
 
@@ -24,7 +27,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   OutlineInputBorder? outlineInputBoarder;
   TextEditingController? controller;
   FormFieldValidator<String>? validatorCustom;
-  MobileCountryListener callback;
+  MobileWithCustomErrorShapeListener callback;
   String? errorMessage;
   String? errorKeySearchingInErrorMessageArray;
   Map<String, dynamic>? errorsMessageArray;
@@ -47,8 +50,9 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     this.errorKeySearchingInErrorMessageArray,
     this.errorMessage,
     this.outlineInputBoarder,
-}){
+  }){
 
+    phone_text = controller?.text;
     // colorLineBoarder ??= ColorResource.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
@@ -59,7 +63,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     if (errorsMessageArray == null) return;
     if (errorsMessageArray!.containsKey(errorKeySearchingInErrorMessageArray!) == false) return;
     errorMessage = errorsMessageArray!["" + errorKeySearchingInErrorMessageArray!][0];
-    Log.i( "MobileWithCustomErrorShape - _setValidatorFromBackend() - errorMessage: $errorMessage");
+    //Log.i( "MobileWithCustomErrorShape - _setValidatorFromBackend() - errorMessage: $errorMessage");
   }
 
 
@@ -93,18 +97,18 @@ class MobileWithCustomErrorShape extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           country(),
+          country(),
           SizedBox( width:  marginBetweenTwoField,),
           textFieldAndErrorMessage()
-    ] );
+        ] );
   }
 
   //--------------------------------------------------------- country
 
   Widget country(){
-    return CountryTextFieldPicker(listener: ( country ) {
+    return CountryTextFieldPicker(listener: ( country, isFirstTimeCreateWidget ) {
       countryCode = country;
-      updateCallback();
+      updateCallback(isFirstTimeCreateWidget);
     });
   }
 
@@ -115,6 +119,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     //   Log.i("TextFieldMobileFocus - tf_phone() -  widget.errorKeySearchingInErrorMessageArray: ${widget.errorKeySearchingInErrorMessageArray}");
     //   Log.i("TextFieldMobileFocus - tf_phone() -  widget.errorsMessageArray: ${widget.errorsMessageArray}");
     // }
+    Log.i("textFieldAndErrorMessage() - before build phoneController: ${controller}");
     return Container(
       decoration: BoarderHelper.cardView(
           colorLine: ColorResource.textFieldDarkBoarderLineBeforeFocused,
@@ -146,7 +151,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
       padding: LangApp.onlyEdgeInsets(left: 10 ),
       width: getWidthPhoneOnly()  ,
       fontSize: Figma.h( 16 ),
-      // fontFamily: FontResource.regular,
+      fontFamily: FontResource.regular,
       maxLines: 1,
       minLines: 1,
       maxLength: 12,
@@ -163,10 +168,10 @@ class MobileWithCustomErrorShape extends StatelessWidget {
       textInputType: TextInputType.number,
       // decoration: getInputDecorationSwitchBetweenFocusOrUnFocus(),
       onChanged: (text) {
-     //   setState(() => _hasFocus = text.isNotEmpty);
+        //   setState(() => _hasFocus = text.isNotEmpty);
 
         phone_text = text;
-        updateCallback();
+        updateCallback(false );
 
 
       } ,
@@ -184,8 +189,8 @@ class MobileWithCustomErrorShape extends StatelessWidget {
 
   //---------------------------------------------------------------- call back
 
-  updateCallback(){
-     callback( countryCode??"", phone_text??"" );
+  updateCallback(bool isFirstTime){
+    callback( countryCode??"", phone_text??"" ,isFirstTime );
   }
 
   //---------------------------------------------- error
@@ -206,7 +211,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
           TextApp(  errorMessage??"",
             color: ColorResource.redMaterial,
             fontSize: size,
-            // fontFamily: FontResource.regular,
+            fontFamily: FontResource.regular,
           ),
 
         ],
