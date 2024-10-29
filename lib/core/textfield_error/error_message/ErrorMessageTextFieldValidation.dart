@@ -6,6 +6,8 @@ import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 
 class ErrorMessageTextFieldValidation {
 
+  static String tag = "ErrorMessageTextFieldValidation";
+
   //------------------------------------------------------------ error array
 
   static Map<String, dynamic>? form({
@@ -14,7 +16,7 @@ class ErrorMessageTextFieldValidation {
     String? phone,
     String? password,
     String? passwordConfirm
-}) {
+  }) {
     var errors = ErrorInputFieldArrayModel();
 
     /// name
@@ -70,7 +72,7 @@ class ErrorMessageTextFieldValidation {
     } else {
       return null;
     }
-}
+  }
 
 
   //---------------------------------------------------------------- error single field
@@ -87,9 +89,10 @@ class ErrorMessageTextFieldValidation {
 
 
   static Map<String, dynamic>?  validateEmail( String? str ) {
+    // Log.k(tag, "validateEmail - str: $str");
     if(ToolsValidation.isEmpty( str ) ) {
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "email",  ErrorMessageTextConstant.emailEmpty );
-    } else if( ToolsValidation.isName( str  )  == false ) {
+    } else if( ToolsValidation.isEmail( str  )  == false ) {
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "email",  ErrorMessageTextConstant.emailInvalid );
     } else {
       return null ;
@@ -97,12 +100,14 @@ class ErrorMessageTextFieldValidation {
   }
 
 
-  static Map<String, dynamic>?  validatePhone(String? phone) {
+  static Map<String, dynamic>?  validatePhone(String? phone ) {
     if(ToolsValidation.isEmpty(  phone ) ) {
+      Log.i("validatePhone() - ToolsValidation.isEmpty YES");
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone", ErrorMessageTextConstant.phoneRequired  );
     } else if( ToolsValidation.isPhoneMobileValidAndEnglishLetter(  phone  )  == false ) {
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneInvalid );
     } else {
+      Log.i("validatePhone() - good");
       return null;
     }
   }
