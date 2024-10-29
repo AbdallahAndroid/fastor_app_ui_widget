@@ -1,4 +1,5 @@
 
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldGenerator.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldModel.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/error_message/ErrorMessageTextConstant.dart';
@@ -102,12 +103,12 @@ class ErrorMessageTextFieldValidation {
 
   static Map<String, dynamic>?  validatePhone(String? phone ) {
     if(ToolsValidation.isEmpty(  phone ) ) {
-      Log.i("validatePhone() - ToolsValidation.isEmpty YES");
+      // Log.i("validatePhone() - ToolsValidation.isEmpty YES");
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone", ErrorMessageTextConstant.phoneRequired  );
     } else if( ToolsValidation.isPhoneMobileValidAndEnglishLetter(  phone  )  == false ) {
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneInvalid );
     } else {
-      Log.i("validatePhone() - good");
+      // Log.i("validatePhone() - good");
       return null;
     }
   }
