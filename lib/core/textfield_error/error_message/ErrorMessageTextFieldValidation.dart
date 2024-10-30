@@ -5,6 +5,22 @@ import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldModel.d
 import 'package:fastor_app_ui_widget/core/textfield_error/error_message/ErrorMessageTextConstant.dart';
 import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 
+/**
+    /// used when button login click "if(validateLogin() == false   ) return;"
+    bool validateLogin(  ) {
+    var errors = ErrorMessageTextFieldValidation.form(
+    phone: loginRequest.phone??"",
+    password: loginRequest.password??"",
+    );
+    if( errors != null ) {
+    emit( LoginErrorState(  errors:  errors ) );
+    return false ;
+    }
+    emit( AuthInitialState(  ) );
+    return true ;
+    }
+
+ */
 class ErrorMessageTextFieldValidation {
 
   static String tag = "ErrorMessageTextFieldValidation";
