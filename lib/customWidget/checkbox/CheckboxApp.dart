@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 
+class CheckboxApp  extends StatefulWidget {
 
-class CheckboxApp  extends StatelessWidget {
-
-
-  BuildContext context;
-  bool value;
+  bool value; /// init value
   ValueChanged<bool?> onChanged;
 
   bool? removePaddingClick = true;
@@ -25,7 +22,6 @@ class CheckboxApp  extends StatelessWidget {
   Color? colorActive;
 
   CheckboxApp({
-    required this.context,
     required this.value,
     required this.onChanged,
     required this.colorActive,
@@ -45,23 +41,55 @@ class CheckboxApp  extends StatelessWidget {
 
 
   @override
+  _CheckboxAppState createState() => _CheckboxAppState();
+}
+class _CheckboxAppState  extends State<CheckboxApp> {
+
+  bool selectedValue = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+    selectedValue = widget.value;
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
+    Log.i("CheckboxApp - selectedValue: $selectedValue");
 //Checkbox
     var ch = Checkbox(
-      value: value,
-      onChanged: onChanged,
-      activeColor: colorActive!, //background color when it's active
+      value: selectedValue,
+      side:  sideCheckbox(),
+      fillColor: fillColorCheckBox(),
+      onChanged: ( newValue){
+
+        setState(() {
+          selectedValue = newValue??false;
+        });
+
+
+        widget.onChanged(newValue);
+      },
+      activeColor: widget.colorActive!, //background color when it's active
 
     );
 
-    var materialApp = MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        unselectedWidgetColor: colorInActive,
-      ),
-      home: ch,
-    );
-    // //theme
+
+    // var materialApp = MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   theme: ThemeData(
+    //     unselectedWidgetColor: widget.colorInActive,
+    //     checkboxTheme: CheckboxThemeData(
+    //       fillColor: fillColorCheckBox(),
+    //
+    //     ),
+    //   ),
+    //   home: ch,
+    // );
+    // // // //theme
 
 
     // default padding size
@@ -72,13 +100,13 @@ class CheckboxApp  extends StatelessWidget {
      *  the mobile when click arround the checkbox it's working
      */
     double paddingCheckBoxClick = 40;
-    if (removePaddingClick!) {
+    if (widget.removePaddingClick!) {
       paddingCheckBoxClick = defaultPaddingSizeClick;
     }
 
     //fix: remove default padding
     var sizeBox = SizedBox(
-        child: materialApp,
+        child: ch,
         width: paddingCheckBoxClick,
         height: paddingCheckBoxClick);
 
@@ -86,21 +114,21 @@ class CheckboxApp  extends StatelessWidget {
     // var material = Material(child: sizeBox);
 
     //size by scale
-    var scale = Transform.scale(scale: size_scale, child: sizeBox);
+    var scale = Transform.scale(scale: widget.size_scale, child: sizeBox);
 
     /////////////////////////////////////// text
 
     //fix null
     String paddingLeftCheckBoxTap = "  ";
-    String s = paddingLeftCheckBoxTap + text!;
+    String s = paddingLeftCheckBoxTap + widget.text!;
 
 
 
     //style
     var myStyle = TextStyle(
-        fontSize: text_dimen,
-        color: text_color,
-        fontFamily: fontFamily,
+        fontSize: widget.text_dimen,
+        color: widget.text_color,
+        fontFamily: widget.fontFamily,
         decoration: TextDecoration.none);
 
     //tx
@@ -110,17 +138,38 @@ class CheckboxApp  extends StatelessWidget {
     var row = RowUtils.wrapChildren([scale, tx]);
 
     //fix default padding at the container when there is padding for click
-    if (removePaddingClick == false) {
-      padding = EdgeInsets.zero;
+    if (widget.removePaddingClick == false) {
+      widget.padding = EdgeInsets.zero;
     }
 
     // space
-    var ct = Container(margin: margin, padding: padding, child: row);
+    return Container(
+      // color: Colors.red,
+        margin: widget.margin, padding: widget.padding, child: row);
+  }
 
-    return ct;
+  sideCheckbox() {
+    return  WidgetStateBorderSide.resolveWith((states) {
+      if (!states.contains(WidgetState.selected)) {
+        return BorderSide(width: 2, color: widget.colorInActive!); // Unselected border
+      }
+      return BorderSide(width: 2, color: widget.colorActive!); // Selected border
+    });
+  }
+
+
+  fillColorCheckBox() {
+    return  WidgetStateProperty.resolveWith((states) {
+      if (!states.contains(WidgetState.selected)) {
+        return Colors.transparent; // Unselected color
+      }
+      return widget.colorActive; // Selected color
+    });
   }
 
 
 }
+
+
 
 
