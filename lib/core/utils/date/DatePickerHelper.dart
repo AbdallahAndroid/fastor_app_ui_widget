@@ -1,15 +1,14 @@
 
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/date/DatePickerCallBack.dart';
+import 'package:fastor_app_ui_widget/customWidget/date/range/widget/DateRangePickerResult.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../customWidget/date/range/widget/DateRangePickerResult.dart';
 
-import 'package:fastor_app_ui_widget/core/date/DatePickerCallBack.dart';
 import 'package:flutter/material.dart' as material;
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart' as syncfusion;
-import '../../customWidget/date/range/widget/DateRangePickerResult.dart';
 
 /**
  *-------------- how to use
