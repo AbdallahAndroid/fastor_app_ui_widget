@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 
@@ -58,7 +59,7 @@ class _CheckboxAppState  extends State<CheckboxApp> {
 
   @override
   Widget build(BuildContext context) {
-    Log.i("CheckboxApp - selectedValue: $selectedValue");
+    // Log.i("CheckboxApp - selectedValue: $selectedValue");
 //Checkbox
     var ch = Checkbox(
       value: selectedValue,
