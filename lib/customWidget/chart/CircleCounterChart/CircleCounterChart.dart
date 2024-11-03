@@ -1,10 +1,11 @@
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 
-import 'package:fastor_app_ui_widget/customWidget/chart/CounterChart/logic/MapperPieData.dart';
-import 'package:fastor_app_ui_widget/customWidget/chart/CounterChart/logic/RequestMapperToPioChart.dart';
-import 'package:fastor_app_ui_widget/customWidget/chart/CounterChart/widget/IndicatorColorTitle.dart';
+import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/logic/MapperPieData.dart';
+import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/logic/RequestMapperToPioChart.dart';
+import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/widget/IndicatorColorTitle.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,36 +13,39 @@ import 'package:fl_chart/fl_chart.dart';
 
 import 'package:flutter/material.dart';
 
-class CounterChart extends StatefulWidget {
+class CircleCounterChart extends StatefulWidget {
 
   List<String> titles;
   List<double> values;
   List<Color> colors;
   TextStyle? textStyle;
+  String? valuePrefix;
 
-  CounterChart( {
+  CircleCounterChart( {
    required this.titles,
     required this.values,
     required this.colors,
-    this.textStyle
+    this.textStyle,
+    this.valuePrefix,
 });
 
 
   @override
-  CounterChartState createState() => CounterChartState();
+  CircleCounterChartState createState() => CircleCounterChartState();
 }
 
-class CounterChartState extends State<CounterChart> {
+class CircleCounterChartState extends State<CircleCounterChart> {
 
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: [
         cardWithChart(),
+        SizedBox( height: DimensionResource.marginBetweenItemInSingleSections,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
