@@ -28,6 +28,7 @@ class ErrorMessageTextFieldValidation {
 
   //------------------------------------------------------------ error array
 
+
   static Map<String, dynamic>? form({
     String? name,
     String? email,
@@ -40,7 +41,6 @@ class ErrorMessageTextFieldValidation {
   }) {
 
     isNationalIdOptionalForever ??= false;
-
     var errors = ErrorInputFieldArrayModel();
 
     /// name
@@ -65,19 +65,11 @@ class ErrorMessageTextFieldValidation {
     if( phone != null ) {
       if(ToolsValidation.isEmpty(  phone ) ) {
         errors.add( "phone",  ErrorMessageTextConstant.phoneRequired );
-      } else if( ToolsValidation.isPhoneSaudi( phone  )  == false ) {
+      } else if( ToolsValidation.isPhoneMobileValidAndEnglishLetter( phone  )  == false ) {
         errors.add( "phone",  ErrorMessageTextConstant.phoneInvalid  );
       }
     }
 
-    /// otp
-    if( otp != null ) {
-      if(ToolsValidation.isEmpty(  otp ) ) {
-        errors.add( "otp",  ErrorMessageTextConstant.otpRequired );
-      } else if(  otp!.length < 4  ) {
-        errors.add( "otp",  ErrorMessageTextConstant.otpLength  );
-      }
-    }
 
     /// national id
     if( nationalIdSaudi != null ) {
@@ -91,6 +83,7 @@ class ErrorMessageTextFieldValidation {
         }
       }
     }
+
 
     /// validate password
     if( password != null ) {
@@ -146,38 +139,16 @@ class ErrorMessageTextFieldValidation {
   }
 
 
-  static Map<String, dynamic>?  validateOtp( String? str ) {
-    // Log.k(tag, "validateOtp - str: $str");
-    if(ToolsValidation.isEmpty( str ) ) {
-      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "otp",  ErrorMessageTextConstant.otpRequired );
-    } else if(  str!.length < 4 ) {
-      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "otp",  ErrorMessageTextConstant.otpLength );
-    } else {
-      return null ;
-    }
-  }
-
   static Map<String, dynamic>?  validatePhone(String? phone ) {
-    Log.i("validatePhone() - phone: $phone");
     if(ToolsValidation.isEmpty(  phone ) ) {
-      Log.i("validatePhone() - ToolsValidation.isEmpty YES");
-      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneRequired );
-    } else if( ToolsValidation.isPhoneSaudi( phone  )  == false ) {
-      Log.i("validatePhone() - isPhoneSaudi NO");
-      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneInvalid  );
+      // Log.i("validatePhone() - ToolsValidation.isEmpty YES");
+      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone", ErrorMessageTextConstant.phoneRequired  );
+    } else if( ToolsValidation.isPhoneMobileValidAndEnglishLetter(  phone  )  == false ) {
+      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneInvalid );
+    } else {
+      // Log.i("validatePhone() - good");
+      return null;
     }
-    Log.i("validatePhone() - good");
-    return null;
-    // if(ToolsValidation.isEmpty(  phone ) ) {
-    //   Log.i("validatePhone() - ToolsValidation.isEmpty YES");
-    //   return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone", ErrorMessageTextConstant.phoneRequired  );
-    // } else if( ToolsValidation.isPhoneSaudi(  phone  )  == false ) {
-    //   Log.i("validatePhone() - isPhoneSaudi NO");
-    //   return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "phone",  ErrorMessageTextConstant.phoneInvalid );
-    // } else {
-    //   Log.i("validatePhone() - good");
-    //   return null;
-    // }
   }
 
 
@@ -198,18 +169,9 @@ class ErrorMessageTextFieldValidation {
     } else if( ToolsValidation.isPasswordValid(  passwordConfirm  )  == false ) {
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "password_confirm",  ErrorMessageTextConstant.passwordConfirmLength);
     } else if ( passwordConfirm !=  password  ){
-      Log.i("validatePasswordConfirmation() - password: $password /confirm: $passwordConfirm");
       return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "password_confirm",   ErrorMessageTextConstant.passwordConfirmNotMatch );
     } else {
       return null;
-    }
-  }
-
-  static Map<String, dynamic>?  validateNationalIdSaudi(String? str) {
-    if(  str!.length < 9 ) {
-      return ErrorInputFieldGenerator.generateErrorArrayMessageShapeLaravelWithOneMessage( "national_id",  ErrorMessageTextConstant.nationalIdLength );
-    } else {
-      return null ;
     }
   }
 

@@ -20,6 +20,6 @@ class ErrorMessageTextConstant {
   static String passwordConfirmLength =  "enter password at least 8 char".tra();
   static String passwordConfirmNotMatch = "password confirm not match".tra();
 
-
+  static String nationalIdLength = "national ID is 10 number".tra();
 
 }
