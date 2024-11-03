@@ -67,13 +67,18 @@ class DatePickerHelper {
                 // Get the selected range
                 if (args.value is syncfusion.PickerDateRange) {
                   DateTime startDate = args.value.startDate;
-                  DateTime endDate = args.value.endDate ?? startDate;
-                  print("Selected range: $startDate to $endDate");
+                  DateTime? endDate = args.value.endDate ;
+                  Log.i("dateRangePluginSyncfusion() - select range: $startDate to $endDate");
+
+                  if( endDate == null ) return;
 
                   String start = DateFormat('yyyy/MM/dd').format(startDate );
                   String end = DateFormat('yyyy/MM/dd').format(endDate ); // hh:mm:ss
                   var result = DateRangePickerResult(start, end );
+
+                  material.Navigator.pop(context);
                   callback( result );
+
 
                 }
               },
@@ -84,7 +89,7 @@ class DatePickerHelper {
     );
 
   }
-
+  
 
   static Future<DateRangePickerResult?> dateRange(material.BuildContext context, String? oldStartYYYYMMDD , String? oldEndYYYYMMDD ) async {
 
