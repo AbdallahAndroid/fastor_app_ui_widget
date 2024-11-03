@@ -1,10 +1,10 @@
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/zone/ZoneTools.dart';
 import 'package:flutter/material.dart';
 
 typedef CountryTextFieldPickerListener = Function(String countryCode, bool isFirstTimeCreateWidget );

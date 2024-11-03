@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/boarder/BorderRadiusTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:flutter/material.dart';
 
 

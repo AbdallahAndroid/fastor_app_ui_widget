@@ -4,12 +4,12 @@ import 'package:fastor_app_ui_widget/customWidget/dialog_picker/dropdown_open_pi
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/typedef_dialog_picker.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 class DropdownTypeDialogPicker extends StatefulWidget {
 

@@ -1,4 +1,4 @@
-import '../../values/ToolsString.dart';
+import '../../utils/values/ToolsString.dart';
 
 /// api parse status, or boolean, or double as string format
 class ApiParserApp {

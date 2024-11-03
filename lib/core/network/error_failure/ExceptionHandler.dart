@@ -1,7 +1,7 @@
 
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
 
 import 'failures.dart';

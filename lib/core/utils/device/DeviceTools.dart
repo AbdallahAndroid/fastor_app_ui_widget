@@ -1,6 +1,6 @@
-import 'package:fastor_app_ui_widget/core/global/GlobalApp.dart';
-import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
-import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/globa/GlobalApp.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;

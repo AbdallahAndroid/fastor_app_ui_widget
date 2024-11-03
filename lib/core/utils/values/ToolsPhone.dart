@@ -1,6 +1,6 @@
 
 
-import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 class ToolsPhone {
 

@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/chart/TransactionDoublePriceChart/TransactionDoublePriceChart.dart';
 import 'package:fl_chart/fl_chart.dart';

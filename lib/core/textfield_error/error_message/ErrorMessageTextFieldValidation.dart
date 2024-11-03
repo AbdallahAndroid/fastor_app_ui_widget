@@ -1,9 +1,9 @@
 
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldGenerator.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldModel.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/error_message/ErrorMessageTextConstant.dart';
-import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 /**
     /// used when button login click "if(validateLogin() == false   ) return;"

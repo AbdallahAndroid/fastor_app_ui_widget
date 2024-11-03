@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/MobileCountryApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/zone/ZoneTools.dart';
 
 class TextFieldMobileFocusAndUnFocusBoarder extends StatefulWidget {
 

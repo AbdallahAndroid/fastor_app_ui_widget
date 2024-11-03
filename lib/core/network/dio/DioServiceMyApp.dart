@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkManagerDio.dart';
-import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

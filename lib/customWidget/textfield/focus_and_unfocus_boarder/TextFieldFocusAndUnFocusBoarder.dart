@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 class TextFieldFocusAndUnFocusBoarder extends StatefulWidget {
 

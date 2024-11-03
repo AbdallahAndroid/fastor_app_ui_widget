@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/slider/ItemBoarder.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/slider/ItemDicatorWidget.dart';
 

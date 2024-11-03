@@ -1,8 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/ProjectFigmaScreenInitializer.dart';
 import 'package:flutter/cupertino.dart';
-
-import 'ProjectFigmaScreenInitializer.dart';
 
 double _currentDeviceWidth = 0;
 double _currentDeviceHeight = 0;

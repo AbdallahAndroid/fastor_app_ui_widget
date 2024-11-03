@@ -1,8 +1,8 @@
 
 
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:flutter/material.dart';

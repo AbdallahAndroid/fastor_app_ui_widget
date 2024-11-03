@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hexcolor/hexcolor.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 Color statusBarColorBackgroundBlackSecond = Colors.black;
 

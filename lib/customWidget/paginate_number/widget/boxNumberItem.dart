@@ -1,6 +1,6 @@
 
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarApp.dart';

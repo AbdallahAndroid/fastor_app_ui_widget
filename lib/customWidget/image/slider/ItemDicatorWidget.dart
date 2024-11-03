@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:flutter/material.dart';
 
 class ItemDicatorWidget extends StatelessWidget {

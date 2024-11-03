@@ -1,7 +1,7 @@
 
 import 'dart:collection';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/core/values/UniqueIdTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/UniqueIdTools.dart';
 import 'package:flutter/material.dart';
 
 typedef DeviceSizeChangeCallBack = Function(double w, double h );

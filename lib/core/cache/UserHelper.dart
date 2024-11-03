@@ -3,10 +3,10 @@
 
 import 'package:fastor_app_ui_widget/core/cache/SaveApp.dart';
 import 'package:fastor_app_ui_widget/core/cache/UserModel.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkSingletone.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
-import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 import '../lang/LangApp.dart';
 import 'CacheKeys.dart';

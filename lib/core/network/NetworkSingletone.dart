@@ -1,6 +1,6 @@
 
 import 'package:dio/dio.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkRequestFile.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkManagerDio.dart';

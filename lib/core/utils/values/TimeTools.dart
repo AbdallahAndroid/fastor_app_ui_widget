@@ -1,7 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/values/ToolsNumber.dart';
-import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsNumber.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:intl/intl.dart';
 
 class TimeTools {

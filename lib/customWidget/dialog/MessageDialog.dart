@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/button_cutom/ButtonPrimary.dart';
 import 'package:flutter/material.dart';

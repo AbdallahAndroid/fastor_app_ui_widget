@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/core/values/ToolsNumber.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsNumber.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/CircleCounterChart.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/logic/RequestMapperToPioChart.dart';
 import 'package:fl_chart/fl_chart.dart';

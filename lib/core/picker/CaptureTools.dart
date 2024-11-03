@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/picker/ToolsFile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

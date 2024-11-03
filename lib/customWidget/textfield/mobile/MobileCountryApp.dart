@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowScrollApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
-import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/zone/ZoneTools.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
