@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
 import 'package:flutter/material.dart';

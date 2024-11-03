@@ -1,7 +1,7 @@
 
 
 import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';

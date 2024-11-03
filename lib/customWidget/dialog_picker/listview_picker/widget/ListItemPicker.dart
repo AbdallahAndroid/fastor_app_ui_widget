@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/customWidget/image/ImageApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/typedef_dialog_picker.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowScrollApp.dart';
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';

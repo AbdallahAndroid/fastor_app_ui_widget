@@ -1,6 +1,6 @@
 
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/customWidget/listview/ListViewApp.dart';
 import 'package:flutter/material.dart';
 

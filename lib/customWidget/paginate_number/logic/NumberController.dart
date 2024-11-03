@@ -1,6 +1,6 @@
 
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/PaginateBarApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/paginate_number/widget/boxNumberItem.dart';

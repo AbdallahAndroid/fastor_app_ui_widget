@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 import 'package:flutter/cupertino.dart';

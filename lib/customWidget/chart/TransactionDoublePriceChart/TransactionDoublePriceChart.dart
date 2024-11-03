@@ -1,8 +1,9 @@
+import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
-import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/utils/values/ToolsNumber.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsNumber.dart';
+
 import 'package:fastor_app_ui_widget/customWidget/chart/TransactionDoublePriceChart/logic/ChartController.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/TransactionDoublePriceChart/widget/TouchChart.dart';
 import 'package:flutter/material.dart';

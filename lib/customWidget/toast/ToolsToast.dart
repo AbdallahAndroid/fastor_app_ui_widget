@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/global/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:flutter/material.dart';
