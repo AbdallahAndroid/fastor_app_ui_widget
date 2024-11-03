@@ -41,7 +41,7 @@ dependencies:
   cross_file: # ^0.3.3+4
   intl: # ^0.18.1
   clipboard:
-
+  syncfusion_flutter_datepicker: 22.2.12
 
   carousel_slider: 4.2.1
 
