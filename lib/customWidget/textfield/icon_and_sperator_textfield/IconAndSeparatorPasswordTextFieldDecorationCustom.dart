@@ -36,7 +36,7 @@ class IconAndSeparatorPasswordTextField extends StatefulWidget {
   Color?  colorLineBoarder;
 
 
-  IconAndSeparatorPasswordTextField( {
+  IconAndSeparatorPasswordTextField.IconAndSeparatorPasswordTextFieldDecorationCustom( {
     required this.iconPrefix,
     required this.colorIconEyePassword,
     required this.hint,
