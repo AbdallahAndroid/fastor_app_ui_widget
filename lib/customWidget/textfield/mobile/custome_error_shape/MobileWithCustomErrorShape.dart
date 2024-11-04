@@ -190,7 +190,19 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   //---------------------------------------------------------------- call back
 
   updateCallback(bool isFirstTime){
-    callback( countryCode , phone_text  ,isFirstTime );
+    if( isFirstTime && ToolsValidation.isValid( controller?.text )) {
+      setPhoneNumberSelectedToControllerText();
+      callback( countryCode , phone_text  ,isFirstTime );
+    } else {
+      callback( countryCode , phone_text  ,isFirstTime );
+    }
+    // Log.i("updateCallback() - isFirstTime: $isFirstTime /country: $countryCode");
+
+  }
+
+
+  setPhoneNumberSelectedToControllerText(){
+    phone_text ??= controller?.text;
   }
 
   //---------------------------------------------- error
