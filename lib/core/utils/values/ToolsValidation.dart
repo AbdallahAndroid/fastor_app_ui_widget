@@ -25,6 +25,21 @@ class ToolsValidation {
   }
 
 
+  static bool isPhoneSaudi(String? str) {
+    if (isEmpty( str)) {
+      return false;
+    }
+    int len = str!.length;
+    if (len  < 9) {  //0523016941  or without zero "523016941
+      return false;
+    }
+    if( ToolsValidation.isStringContainArabicNumber(str!) ) {
+      return false;
+    }
+    return true;
+  }
+
+
   /// check for arabic number :   ١٢٣٤٥٦٧٨٩٠   now return false
   static bool isPhoneMobileValid(String? str) {
     if (isEmpty( str)) {
