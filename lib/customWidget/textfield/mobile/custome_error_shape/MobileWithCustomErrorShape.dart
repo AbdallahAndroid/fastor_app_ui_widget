@@ -15,7 +15,7 @@ import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 
-typedef MobileWithCustomErrorShapeListener = Function(String country_code, String phone, bool isFirstTimeOpenScreen );
+typedef MobileWithCustomErrorShapeListener = Function(String? country_code, String? phone, bool isFirstTimeOpenScreen );
 
 
 class MobileWithCustomErrorShape extends StatelessWidget {
@@ -52,7 +52,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     this.outlineInputBoarder,
   }){
 
-    phone_text = controller?.text;
+    // phone_text = controller?.text;
     // colorLineBoarder ??= ColorResource.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
@@ -190,7 +190,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   //---------------------------------------------------------------- call back
 
   updateCallback(bool isFirstTime){
-    callback( countryCode??"", phone_text??"" ,isFirstTime );
+    callback( countryCode , phone_text  ,isFirstTime );
   }
 
   //---------------------------------------------- error
