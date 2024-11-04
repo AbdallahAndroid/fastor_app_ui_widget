@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
-
 class TextFieldApp extends StatelessWidget {
 
   // validate
@@ -32,8 +30,8 @@ class TextFieldApp extends StatelessWidget {
   //mode of textfield
   bool? isRemoveUnderline  ;
 
-  @Deprecated("use showOutlineInput")
-  bool? isShowBoarder;
+  // @Deprecated("use showOutlineInput")
+  // // bool? isShowBoarder;
   bool? showOutlineInput;
 
   //background
@@ -53,7 +51,7 @@ class TextFieldApp extends StatelessWidget {
   ValueChanged<String>? onFieldSubmitted;
 
   //input content type
-  TextInputType? textInputType; //textInputType;
+  TextInputType? textInputType;
   bool obscureText = false;
 
   //action
@@ -108,7 +106,7 @@ class TextFieldApp extends StatelessWidget {
 
     //boarder and underline
     this.isRemoveUnderline ,
-    this.isShowBoarder,
+    // this.isShowBoarder,
     this.showOutlineInput,
 
     //background + decoration
@@ -163,6 +161,7 @@ class TextFieldApp extends StatelessWidget {
 
   void setDefaultValues() {
     isRemoveUnderline ??= false;
+    showOutlineInput ??= false;
 
     //padding default
     padding ??= EdgeInsets.zero;
@@ -189,29 +188,15 @@ class TextFieldApp extends StatelessWidget {
     //error + decoration
     handleEveryReBuildErrorAndDecorationShape();
 
-    //??TextInputAction.newline
-    if( textInputAction == null ){
-
-      if( textInputType  == null && textInputType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
-        if( minLines != null && minLines! > 1 ) {
-          textInputAction = TextInputAction.newline;
-        }
-      }
-    }
-
-    //default
-    isShowBoarder ??= false;
-
-
     // set filer auto
+    fixCrashWhenTextTypeAndManyLines();
     setFilterInputAuto();
   }
 
   void handleEveryReBuildErrorAndDecorationShape(){
 
     //decoration
-    validateDecorationInputField();
-    makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
+    validateDecorationInputFieldNotToBeDecorationBackground();
 
     //error
     _setErrorMessageValueFromBackend();
@@ -240,7 +225,7 @@ class TextFieldApp extends StatelessWidget {
   }
 
 
-  validateDecorationInputField(){
+  validateDecorationInputFieldNotToBeDecorationBackground(){
     /// case not have decoration
     if( decoration == null ) return;
 
@@ -253,17 +238,6 @@ class TextFieldApp extends StatelessWidget {
     if( decoration is Decoration ){
       decorationBackground = decoration as Decoration;
       decoration = null; //remove this now not good argument case exception
-    }
-  }
-
-
-  void makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther(){
-    //showOutlineInput
-    showOutlineInput ??= false;
-    isShowBoarder ??= false;
-    if(isShowBoarder! || showOutlineInput! ) {
-      showOutlineInput = true;
-      isShowBoarder = true;
     }
   }
 
@@ -283,7 +257,7 @@ class TextFieldApp extends StatelessWidget {
   ///    use custome "decoration" inputDecoration.
   void setErrorMessageInCaseCustomDecorationByCloneOriginalInputDecorationAndEditItByErrorMessage() {
     InputDecoration? cloneDecoration;
-    if( errorMessage != null  && decoration != null ) {
+    if(  decoration != null ) { //errorMessage != null  &&
       originalDecorationBeforeErrorEdition = decoration;
       isShowErrorBefore = true;
 
@@ -460,7 +434,7 @@ class TextFieldApp extends StatelessWidget {
 
   InputDecoration getDecorationBoarderOrNotUnderLineShape( ) {
     //print( "abdo - getDecorationBoarderOrNotUnderLineShape()");
-    if( isShowBoarder! ) {
+    if( showOutlineInput! ) {
       return getDecorationInput_outlineInput(  );
     } else {
       return getDecorationInput_underLine( );
@@ -504,7 +478,7 @@ class TextFieldApp extends StatelessWidget {
     //return value
     return InputDecoration(
 
-        enabled: decoration!.enabled,
+        enabled: decoration?.enabled??true,
 
         //remove default padding and set custom
         isDense: true,
@@ -628,6 +602,24 @@ class TextFieldApp extends StatelessWidget {
       inputFormatters = [
         FilteringTextInputFormatter.digitsOnly, // Only allows numbers
       ];
+    } else if ( textInputType == TextInputType.name ) {
+      inputFormatters = [
+        // FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))fsdaf,// Only a-z
+        FilteringTextInputFormatter.deny(RegExp(r'[^a-zA-Z\s]')), // Only a-z
+      ];
+    }
+  }
+
+  void fixCrashWhenTextTypeAndManyLines() {
+    //??TextInputAction.newline
+    if( textInputAction == null ){
+
+      ///
+      if( textInputType  == null && textInputType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
+        if( minLines != null && minLines! > 1 ) {
+          textInputAction = TextInputAction.newline;
+        }
+      }
     }
   }
 
