@@ -1,27 +1,31 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as slider;
+import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+import 'package:fastor_app_ui_widget/customWidget/image/placeholder/ImageCustomPlaceholderSquare.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/slider/ItemBoarder.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/slider/ItemDicatorWidget.dart';
-
 import 'package:flutter/material.dart';
-class SliderImageProduct extends StatefulWidget {
 
-  List<String>? images;
+class SliderImage extends StatefulWidget {
 
-  SliderImageProduct( this.images );
+  double height;
+  List<String>  images;
+
+  SliderImage( this.images , { required this.height });
 
 
   @override
-  SliderImageProductState createState()  => SliderImageProductState();
+  SliderImageState createState()  => SliderImageState();
 
 }
 
-class SliderImageProductState extends State<SliderImageProduct> {
+class SliderImageState extends State<SliderImage> {
 
 
   //indicator
-  CarouselController carouselController = new  CarouselController() ;
+  slider.CarouselSliderController carouselController = new  slider.CarouselSliderController() ;
   int currentIndicatorIndex = 0;
 
 
@@ -29,7 +33,7 @@ class SliderImageProductState extends State<SliderImageProduct> {
   Widget build(BuildContext context) {
     return Stack(children: [
       imageSlider(),
-      Positioned(child: indicatorBar(), left: 0,  right: 0, bottom: Figma.h( 10), ),
+      PositionedApp.langApp(child: indicatorBar(), left: 0,  right: 0, bottom: Figma.h( 75), ),
     ],);
   }
 
@@ -65,10 +69,17 @@ class SliderImageProductState extends State<SliderImageProduct> {
   //------------------------------------------------------- image slider
 
   imageSlider() {
-    return CarouselSlider(
+    if(widget.images.isEmpty ) {
+      return ImageCustomPlaceholderSquare(
+        width: DeviceTools.getWidth(context),
+        height: widget.height,
+        url: null ,
+      );
+    }
+    return slider.CarouselSlider(
       carouselController: carouselController,
-      options: CarouselOptions(
-        height: Figma.h(285), // DeviceTools.getHeight(context),
+      options: slider.CarouselOptions(
+        height: widget.height, // DeviceTools.getHeight(context),
         // aspectRatio: 16/9,
         viewportFraction: 1,
         initialPage: 0,
@@ -80,7 +91,7 @@ class SliderImageProductState extends State<SliderImageProduct> {
         autoPlayCurve: Curves.fastOutSlowIn,
         scrollDirection: Axis.horizontal,
         enlargeCenterPage: false,  //shape enlarge the center of page while looping between screens
-        onPageChanged: ( int index, CarouselPageChangedReason reason ){
+        onPageChanged: ( int index, slider.CarouselPageChangedReason reason ){
           Log.i("imageSlider() - onPageChanged - index: $index");
           setState(() {
             currentIndicatorIndex = index;

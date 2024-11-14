@@ -43,7 +43,8 @@ dependencies:
   clipboard:
   syncfusion_flutter_datepicker: 22.2.12
 
-  carousel_slider: 4.2.1
+#  carousel_slider: 4.2.1
+  carousel_slider: 5.0.0
 
   #animate
   shimmer_animation: 2.1.0
