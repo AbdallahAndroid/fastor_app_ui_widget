@@ -1,12 +1,14 @@
 
 import 'package:dio/dio.dart';
+import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
+import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkRequestFile.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkManagerDio.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart' as picker ;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:universal_io/io.dart';
+// import 'package:universal_io/io.dart';
 
 
 class NetworkHelperSingleTone {
@@ -193,7 +195,7 @@ class NetworkHelperSingleTone {
     required String fileRequestKeyInJson,
     Map<String, dynamic>? body,
     Map<String, String>? headers,
-    XFile? xFileToUpload,
+    picker.XFile? xFileToUpload,
     FormData? formData,
     NetworkRequestFile? requestFile,
     bool? isTypeMethodPUT,
