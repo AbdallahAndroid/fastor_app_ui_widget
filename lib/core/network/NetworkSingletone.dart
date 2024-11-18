@@ -17,7 +17,7 @@ class NetworkHelperSingleTone {
 
   static bool _isSync = false;
   static Dio _dio = Dio();
-  static int _timeOutSecond =  10;
+  static int _timeOutSecond =  60;
 
   ///--------------------------------------------------------------- singletone
 
@@ -36,6 +36,11 @@ class NetworkHelperSingleTone {
     _dio.options.headers = NetworkConfig.getConfigureHeaderFromCache();
     _dio.options.connectTimeout = Duration( seconds: _timeOutSecond  )  ;
     _dio.options.receiveTimeout =  Duration( seconds: _timeOutSecond! );
+    _dio.interceptors.add(PrettyDioLogger(
+      requestHeader: true,
+      requestBody: true,
+      responseBody: true ,
+    ));
   }
 
 
@@ -59,8 +64,17 @@ class NetworkHelperSingleTone {
         int?  timeOutSecond,
         bool? isEnableLogDioPretty ,
         bool?  handleErrorXMLHttpRequest }) async {
-    setTypePretty(isEnableLogDioPretty);
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
+
     try {
+      if( isEnableLogDioPretty != null && isEnableLogDioPretty == false ) {
+        var dioNoLog = _dio;
+        dioNoLog.interceptors.clear();
+        return await dioNoLog.get(url, );
+      }
       return   await _dio.get(url, );
     } on DioException catch (dioError) {
       return getFailedResponseDioError( dioError: dioError );
@@ -75,8 +89,19 @@ class NetworkHelperSingleTone {
         int?  timeOutSecond,
         bool? isEnableLogDioPretty ,
         bool?  handleErrorXMLHttpRequest }) async {
-    setTypePretty(isEnableLogDioPretty);
+
+
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
+
     try {
+      if( isEnableLogDioPretty != null && isEnableLogDioPretty == false ) {
+        var dioNoLog = _dio;
+        dioNoLog.interceptors.clear();
+        return await dioNoLog.post(url, data: body );
+      }
       return   await _dio.post(url, data: body );
     } on DioException catch (dioError) {
       return getFailedResponseDioError( dioError: dioError );
@@ -91,8 +116,17 @@ class NetworkHelperSingleTone {
         int?  timeOutSecond,
         bool? isEnableLogDioPretty ,
         bool?  handleErrorXMLHttpRequest }) async {
-    setTypePretty(isEnableLogDioPretty);
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
+
     try {
+      if( isEnableLogDioPretty != null && isEnableLogDioPretty == false ) {
+        var dioNoLog = _dio;
+        dioNoLog.interceptors.clear();
+        return await dioNoLog.put(url, data: body );
+      }
       return   await _dio.put(url, data: body );
     } on DioException catch (dioError) {
       return getFailedResponseDioError( dioError: dioError );
@@ -108,8 +142,17 @@ class NetworkHelperSingleTone {
         int?  timeOutSecond,
         bool? isEnableLogDioPretty ,
         bool?  handleErrorXMLHttpRequest }) async {
-    setTypePretty(isEnableLogDioPretty);
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
+
     try {
+      if( isEnableLogDioPretty != null && isEnableLogDioPretty == false ) {
+        var dioNoLog = _dio;
+        dioNoLog.interceptors.clear();
+        return await dioNoLog.delete(url, data: body );
+      }
       return   await _dio.delete(url, data: body );
     } on DioException catch (dioError) {
       return getFailedResponseDioError( dioError: dioError );
@@ -124,8 +167,17 @@ class NetworkHelperSingleTone {
         int?  timeOutSecond,
         bool? isEnableLogDioPretty ,
         bool?  handleErrorXMLHttpRequest }) async {
-    setTypePretty(isEnableLogDioPretty);
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
+
     try {
+      if( isEnableLogDioPretty != null && isEnableLogDioPretty == false ) {
+        var dioNoLog = _dio;
+        dioNoLog.interceptors.clear();
+        return await dioNoLog.patch(url, data: body );
+      }
       return   await _dio.patch(url, data: body );
     } on DioException catch (dioError) {
       return getFailedResponseDioError( dioError: dioError );
@@ -138,37 +190,41 @@ class NetworkHelperSingleTone {
 
 
   Future<Response> file(String url, {
-        required String fileRequestKeyInJson,
-        Map<String, dynamic>? body,
-        Map<String, String>? headers,
-        XFile? xFileToUpload,
-        File? fileToUpload,
-        FormData? formData,
-        NetworkRequestFile? requestFile,
-        bool? isTypeMethodPUT,
-        bool? isEnableLogDioPretty ,
-        int?  timeOutSecond,
-        ProgressCallbackApp? onSendProgress,
-        ProgressCallbackApp? onReceiveProgress,
-        bool?  handleErrorXMLHttpRequest } ) async {
+    required String fileRequestKeyInJson,
+    Map<String, dynamic>? body,
+    Map<String, String>? headers,
+    XFile? xFileToUpload,
+    FormData? formData,
+    NetworkRequestFile? requestFile,
+    bool? isTypeMethodPUT,
+    bool? isEnableLogDioPretty ,
+    int?  timeOutSecond,
+    ProgressCallbackApp? onSendProgress,
+    ProgressCallbackApp? onReceiveProgress,
+    bool?  handleErrorXMLHttpRequest } ) async {
+
+
+    if (await InternetTools.isNotConnected()) {
+      throw ServerNoInternetConnectionException(  );
+    }
 
     return NetworkManagerDio().file(url,
         fileRequestKeyInJson: fileRequestKeyInJson,
         body: body,
         headers: headers,
         xFileToUpload: xFileToUpload,
-        fileToUpload: fileToUpload,
-      formData: formData,
-      requestFile: requestFile,
-      isTypeMethodPUT: isTypeMethodPUT,
-      isEnableLogDioPretty: isEnableLogDioPretty,
-      timeOutSecond: timeOutSecond,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-      handleErrorXMLHttpRequest: handleErrorXMLHttpRequest
+        formData: formData,
+        requestFile: requestFile,
+        isTypeMethodPUT: isTypeMethodPUT,
+        isEnableLogDioPretty: isEnableLogDioPretty,
+        timeOutSecond: timeOutSecond,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+        handleErrorXMLHttpRequest: handleErrorXMLHttpRequest
     );
   }
-    ///--------------------------------------------------------- failure helper methods
+
+  ///--------------------------------------------------------- failure helper methods
 
   Response  getFailedResponseDioError( {required DioException  dioError   }) {
 
@@ -199,24 +255,26 @@ class NetworkHelperSingleTone {
     return Response(requestOptions:  new RequestOptions(path:  msg != null ? msg : "failed request"));
   }
 
-
-  void setTypePretty(bool? isEnableLogDioPretty) {
-    isEnableLogDioPretty ??= true;
-    //show request and response in beatful log
-    if( isEnableLogDioPretty! ) {
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true, //isEnableLogDioPretty!,
-        responseBody: true,
-      ));
-    } else {
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: false,
-        requestBody: true,
-        responseBody: false ,
-      ));
-    }
-  }
+//
+// void setTypePretty(bool?  isEnableLogDioPretty) {
+//   isEnableLogDioPretty ??= true;
+//   //show request and response in beatful log
+//   if( isEnableLogDioPretty! ) {
+//     _dio.interceptors.clear( );
+//     _dio.interceptors.add(PrettyDioLogger(
+//       requestHeader: true,
+//       requestBody: true, //isEnableLogDioPretty!,
+//       responseBody: true,
+//     ));
+//   } else {
+//     _dio.interceptors.clear( );
+//     _dio.interceptors.add(PrettyDioLogger(
+//       requestHeader: false,
+//       requestBody: true,
+//       responseBody: false ,
+//     ));
+//   }
+// }
 
 
 
