@@ -2,6 +2,9 @@ import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 
+
+import 'package:flutter/material.dart';
+
 class CheckboxApp  extends StatefulWidget {
 
   bool value; /// init value
@@ -56,42 +59,8 @@ class _CheckboxAppState  extends State<CheckboxApp> {
   }
 
 
-
   @override
   Widget build(BuildContext context) {
-    // Log.i("CheckboxApp - selectedValue: $selectedValue");
-//Checkbox
-    var ch = Checkbox(
-      value: selectedValue,
-      side:  sideCheckbox(),
-      fillColor: fillColorCheckBox(),
-      onChanged: ( newValue){
-
-        setState(() {
-          selectedValue = newValue??false;
-        });
-
-
-        widget.onChanged(newValue);
-      },
-      activeColor: widget.colorActive!, //background color when it's active
-
-    );
-
-
-    // var materialApp = MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     unselectedWidgetColor: widget.colorInActive,
-    //     checkboxTheme: CheckboxThemeData(
-    //       fillColor: fillColorCheckBox(),
-    //
-    //     ),
-    //   ),
-    //   home: ch,
-    // );
-    // // // //theme
-
 
     // default padding size
     final double defaultPaddingSizeClick = 20;
@@ -105,38 +74,12 @@ class _CheckboxAppState  extends State<CheckboxApp> {
       paddingCheckBoxClick = defaultPaddingSizeClick;
     }
 
-    //fix: remove default padding
-    var sizeBox = SizedBox(
-        child: ch,
-        width: paddingCheckBoxClick,
-        height: paddingCheckBoxClick);
-
-    //fix material
-    // var material = Material(child: sizeBox);
-
-    //size by scale
-    var scale = Transform.scale(scale: widget.size_scale, child: sizeBox);
-
     /////////////////////////////////////// text
 
     //fix null
     String paddingLeftCheckBoxTap = "  ";
     String s = paddingLeftCheckBoxTap + widget.text!;
 
-
-
-    //style
-    var myStyle = TextStyle(
-        fontSize: widget.text_dimen,
-        color: widget.text_color,
-        fontFamily: widget.fontFamily,
-        decoration: TextDecoration.none);
-
-    //tx
-    var tx = Text(s, textAlign: TextAlign.left, style: myStyle);
-
-    //row title
-    var row = RowUtils.wrapChildren([scale, tx]);
 
     //fix default padding at the container when there is padding for click
     if (widget.removePaddingClick == false) {
@@ -145,8 +88,38 @@ class _CheckboxAppState  extends State<CheckboxApp> {
 
     // space
     return Container(
-      // color: Colors.red,
-        margin: widget.margin, padding: widget.padding, child: row);
+        margin: widget.margin,
+        padding: widget.padding,
+        child: Row( children : [
+
+          /// checkbox
+          Transform.scale(
+              scale: widget.size_scale,
+              child: SizedBox(
+                  child: Checkbox(
+                    value: selectedValue,
+                    side:  sideCheckbox(),
+                    fillColor: fillColorCheckBox(),
+                    onChanged: ( newValue){
+                      updateUi(newValue);
+                    },
+                    activeColor: widget.colorActive!, //background color when it's active
+
+                  ),
+                  width: paddingCheckBoxClick,
+                  height: paddingCheckBoxClick
+              )
+          ),
+
+          /// title
+          Text(s, textAlign: TextAlign.left, style: TextStyle(
+              fontSize: widget.text_dimen,
+              color: widget.text_color,
+              fontFamily: widget.fontFamily,
+              decoration: TextDecoration.none))
+
+        ])
+    );
   }
 
   sideCheckbox() {
@@ -166,6 +139,16 @@ class _CheckboxAppState  extends State<CheckboxApp> {
       }
       return widget.colorActive; // Selected color
     });
+  }
+
+  void updateUi(bool? newValue) {
+
+    setState(() {
+      selectedValue = newValue??false;
+    });
+
+
+    widget.onChanged(newValue);
   }
 
 
