@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
 import 'package:flutter/material.dart';
 
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 
 
 

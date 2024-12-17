@@ -1,0 +1,4 @@
+enum EnumChartPriceShape {
+  detail,
+  smallIndicator
+}

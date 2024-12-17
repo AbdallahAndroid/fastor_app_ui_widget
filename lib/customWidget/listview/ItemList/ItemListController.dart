@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 
 typedef ListViewCreateCallBack = Function(List<Widget> listWidget, List<dynamic> listState);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -139,6 +140,15 @@ class LangApp {
   }
 
 
+  static getAlignmentGeometryStartCenter() {
+    if ( LangApp.isArabic ) {
+      return Alignment.centerRight;
+    } else {
+      return Alignment.centerLeft;
+    }
+
+  }
+
   static AlignmentGeometry getAlignmentGeometryStart(){
     if ( LangApp.isArabic ) {
       return Alignment.topRight;
@@ -162,6 +172,23 @@ class LangApp {
   //   ];
   // }
 
+  static EdgeInsets onlyEdgeInsets({double? top, double? bottom, double? left, double? right}) {
+    return EdgeInsets.only(
+      left: LangApp.isEnglish?left??0 : right??0,
+      right: LangApp.isEnglish?right??0 : left??0,
+      top: top??0,
+      bottom: bottom??0,
+    );
+  }
+
+  //---------------------------------------------------- image rotate
+
+  static Widget rotateImageOrIcon(Widget imageOrIconToBeRotate  ) {
+    return Transform.rotate(
+      angle:   LangApp.isArabic ?  sqrt2 : 0 ,
+      child:  imageOrIconToBeRotate,
+    );
+  }
   //----------------------------------------------------------- translate
 
   static String searchForValue(String searchFor ) {
@@ -222,5 +249,6 @@ class LangApp {
     updateActiveLanguageCode();
     await _setCacheArabic(true);
   }
+
 
 }

@@ -4,7 +4,7 @@ import 'dart:io';
 
 
 
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkTypeDio.dart';
 import 'package:http/http.dart' as http;
 

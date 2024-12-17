@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 
 
 import 'package:flutter/material.dart';
-
-
+import 'package:flutter/services.dart';
 
 class TextFieldApp extends StatelessWidget {
 
@@ -31,8 +30,8 @@ class TextFieldApp extends StatelessWidget {
   //mode of textfield
   bool? isRemoveUnderline  ;
 
-  @Deprecated("use showOutlineInput")
-  bool? isShowBoarder;
+  // @Deprecated("use showOutlineInput")
+  // // bool? isShowBoarder;
   bool? showOutlineInput;
 
   //background
@@ -52,7 +51,7 @@ class TextFieldApp extends StatelessWidget {
   ValueChanged<String>? onFieldSubmitted;
 
   //input content type
-  TextInputType? keyboardType;
+  TextInputType? textInputType;
   bool obscureText = false;
 
   //action
@@ -81,7 +80,14 @@ class TextFieldApp extends StatelessWidget {
   Widget? suffixIcon;
   double? iconSize;
 
+  bool? enabled;
+
+
+  /// filter
+  List<TextInputFormatter>? inputFormatters;
+
   TextFieldApp({
+
     // validate
     this.validatorCustom,
     // this.validatorType,
@@ -100,7 +106,7 @@ class TextFieldApp extends StatelessWidget {
 
     //boarder and underline
     this.isRemoveUnderline ,
-    this.isShowBoarder,
+    // this.isShowBoarder,
     this.showOutlineInput,
 
     //background + decoration
@@ -118,7 +124,7 @@ class TextFieldApp extends StatelessWidget {
     this.onFieldSubmitted,
 
     //input content type
-    this.keyboardType,
+    this.textInputType,
     this.textInputAction,
     this.obscureText = false,
 
@@ -134,9 +140,13 @@ class TextFieldApp extends StatelessWidget {
     this.errorMessage,
     this.errorColor,
 
+    // filter
+    this.inputFormatters,
+
     //other
     this.textAlign,
     this.focusNode,
+    this.enabled,
 
     //icon
     this.prefixIcon, //example "icon" left of textField
@@ -151,6 +161,7 @@ class TextFieldApp extends StatelessWidget {
 
   void setDefaultValues() {
     isRemoveUnderline ??= false;
+    showOutlineInput ??= false;
 
     //padding default
     padding ??= EdgeInsets.zero;
@@ -168,8 +179,8 @@ class TextFieldApp extends StatelessWidget {
     textAlign ??= TextAlign.start;
 
     //password
-    bool isPass = keyboardType != null &&
-        keyboardType == TextInputType.visiblePassword;
+    bool isPass = textInputType != null &&
+        textInputType == TextInputType.visiblePassword;
     if (isPass) {
       obscureText = true;
     }
@@ -177,27 +188,15 @@ class TextFieldApp extends StatelessWidget {
     //error + decoration
     handleEveryReBuildErrorAndDecorationShape();
 
-    //??TextInputAction.newline
-    if( textInputAction == null ){
-
-      if( keyboardType  == null && keyboardType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
-        if( minLines != null && minLines! > 1 ) {
-          textInputAction = TextInputAction.newline;
-        }
-      }
-    }
-
-    //default
-    isShowBoarder ??= false;
-
-
+    // set filer auto
+    fixCrashWhenTextTypeAndManyLines();
+    setFilterInputAuto();
   }
 
   void handleEveryReBuildErrorAndDecorationShape(){
 
     //decoration
-    validateDecorationInputField();
-    makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther();
+    validateDecorationInputFieldNotToBeDecorationBackground();
 
     //error
     _setErrorMessageValueFromBackend();
@@ -226,7 +225,7 @@ class TextFieldApp extends StatelessWidget {
   }
 
 
-  validateDecorationInputField(){
+  validateDecorationInputFieldNotToBeDecorationBackground(){
     /// case not have decoration
     if( decoration == null ) return;
 
@@ -239,17 +238,6 @@ class TextFieldApp extends StatelessWidget {
     if( decoration is Decoration ){
       decorationBackground = decoration as Decoration;
       decoration = null; //remove this now not good argument case exception
-    }
-  }
-
-
-  void makeBothVariableShowOutlineInputAndIsShowBoarderEqualEachOther(){
-    //showOutlineInput
-    showOutlineInput ??= false;
-    isShowBoarder ??= false;
-    if(isShowBoarder! || showOutlineInput! ) {
-      showOutlineInput = true;
-      isShowBoarder = true;
     }
   }
 
@@ -269,11 +257,15 @@ class TextFieldApp extends StatelessWidget {
   ///    use custome "decoration" inputDecoration.
   void setErrorMessageInCaseCustomDecorationByCloneOriginalInputDecorationAndEditItByErrorMessage() {
     InputDecoration? cloneDecoration;
-    if( errorMessage != null  && decoration != null ) {
+    if(  decoration != null ) { //errorMessage != null  &&
       originalDecorationBeforeErrorEdition = decoration;
       isShowErrorBefore = true;
 
       cloneDecoration = InputDecoration(
+
+        /// enable
+        enabled: enabled??decoration!.enabled,
+        // enabled: decoration!.enabled,
 
         /// clode to edit this
         errorText: errorMessage,
@@ -322,7 +314,7 @@ class TextFieldApp extends StatelessWidget {
         disabledBorder : decoration!.disabledBorder,
         enabledBorder: decoration!.enabledBorder,
         border: decoration!.border,
-        enabled: decoration!.enabled,
+
         semanticCounterText : decoration!.semanticCounterText,
         alignLabelWithHint: decoration!.alignLabelWithHint,
         constraints  : decoration!.constraints,
@@ -402,7 +394,7 @@ class TextFieldApp extends StatelessWidget {
       decoration:  chooseDecoration(),
 
       //keyboard
-      keyboardType: keyboardType,
+      keyboardType: textInputType,
       //TextInputType.number
 
       //controller
@@ -427,6 +419,9 @@ class TextFieldApp extends StatelessWidget {
       textInputAction :  textInputAction ,
 
       focusNode: focusNode,
+
+      /// filter
+      inputFormatters: inputFormatters,
     );
   }
 
@@ -439,7 +434,7 @@ class TextFieldApp extends StatelessWidget {
 
   InputDecoration getDecorationBoarderOrNotUnderLineShape( ) {
     //print( "abdo - getDecorationBoarderOrNotUnderLineShape()");
-    if( isShowBoarder! ) {
+    if( showOutlineInput! ) {
       return getDecorationInput_outlineInput(  );
     } else {
       return getDecorationInput_underLine( );
@@ -483,7 +478,9 @@ class TextFieldApp extends StatelessWidget {
     //return value
     return InputDecoration(
 
-      //remove default padding and set custom
+        enabled: decoration?.enabled??true,
+
+        //remove default padding and set custom
         isDense: true,
         contentPadding: padding,
 
@@ -554,7 +551,9 @@ class TextFieldApp extends StatelessWidget {
     //return value
     return InputDecoration(
 
-      //remove default padding and set custom
+        enabled: enabled??true,
+
+        //remove default padding and set custom
         isDense: true,
         contentPadding: padding,
 
@@ -595,6 +594,33 @@ class TextFieldApp extends StatelessWidget {
 
 
     );
+  }
+
+  void setFilterInputAuto() {
+    if( inputFormatters != null ) return;
+    if( textInputType == TextInputType.number ) {
+      inputFormatters = [
+        FilteringTextInputFormatter.digitsOnly, // Only allows numbers
+      ];
+    } else if ( textInputType == TextInputType.name ) {
+      inputFormatters = [
+        // FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z]'))fsdaf,// Only a-z
+        FilteringTextInputFormatter.deny(RegExp(r'[^a-zA-Z\s]')), // Only a-z
+      ];
+    }
+  }
+
+  void fixCrashWhenTextTypeAndManyLines() {
+    //??TextInputAction.newline
+    if( textInputAction == null ){
+
+      ///
+      if( textInputType  == null && textInputType != TextInputType.text ) { ///crash when make "TextInputType.text" and "TextInputAction.newline"
+        if( minLines != null && minLines! > 1 ) {
+          textInputAction = TextInputAction.newline;
+        }
+      }
+    }
   }
 
 

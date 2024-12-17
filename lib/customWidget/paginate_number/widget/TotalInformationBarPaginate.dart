@@ -1,5 +1,5 @@
-import 'package:fastor_app_ui_widget/core/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
@@ -48,7 +48,7 @@ extension TotalInformationBarPaginate on PaginateBarState {
         colorLine: Colors.black
       ),
       hint_color: Colors.transparent,
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       margin: EdgeInsets.only(left: 15 ),
       padding: EdgeInsets.all( 7 ),
       controller:  tf_goto_controller,

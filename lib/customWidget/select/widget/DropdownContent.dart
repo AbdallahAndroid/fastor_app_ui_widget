@@ -73,7 +73,7 @@ extension DropdownContent on DropdownAppState {
           .textStyleItemDropdown!.fontSize ?? 15 : 15,
       fontFamily: widget.textStyleItemDropdown != null ? widget
           .textStyleItemDropdown!.fontFamily : null,
-      textAlign: widget.textAlignItemDropdown ?? TextAlign.left,
+      textAlign: widget.textAlignItemDropdown ?? TextAlign.start,
     );
   }
 

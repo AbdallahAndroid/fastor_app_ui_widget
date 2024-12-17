@@ -1,8 +1,8 @@
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
-import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/simple/AppBarSimple.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollApp.dart';
 import 'package:flutter/material.dart';

@@ -1,11 +1,11 @@
 
 
-import 'package:fastor_app_ui_widget/core/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/core/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
-import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
-import 'package:fastor_app_ui_widget/core/size/StatusBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/simple/TitleAppBar.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';

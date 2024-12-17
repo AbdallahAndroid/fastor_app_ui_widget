@@ -1,8 +1,10 @@
 
 
 import 'package:dio/dio.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/network/dio/NetworkConfigDio.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
+import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
+import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
 import '../NetworkRequestFile.dart';
 import '../NetworkTypeDio.dart';
 
@@ -32,7 +34,7 @@ typedef NetworkDiocallback_dio = void Function(
 /// 2.When receiving data:
 ///   [total] will be -1 if the size of the response body is not known in advance,
 ///   for example: response data is compressed with gzip or no content-length header.
-typedef ProgressCallbackFastor = void Function(int count, int total);
+typedef ProgressCallbackApp = void Function(int count, int total);
 
 class   NetworkManagerDio  {
 
@@ -67,8 +69,8 @@ class   NetworkManagerDio  {
 
         ///file
         NetworkRequestFile? requestFile,
-        ProgressCallbackFastor? onSendProgress,
-        ProgressCallbackFastor? onReceiveProgress,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress,
 
         ///other
         NetworkType? type,
@@ -196,8 +198,8 @@ class   NetworkManagerDio  {
         bool? isTypeMethodPUT,
         bool? isEnableLogDioPretty ,
         int?  timeOutSecond,
-        ProgressCallbackFastor? onSendProgress,
-        ProgressCallbackFastor? onReceiveProgress,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress,
         bool?  handleErrorXMLHttpRequest,
         NetworkDiocallback_dio? callback}) async {
 
@@ -211,7 +213,7 @@ class   NetworkManagerDio  {
         NetworkType.file,
         body: body,
         headers: headers,
-        requestFile: requestFile,
+        requestFile: this.requestFile,
         timeOutSecond : timeOutSecond,
         isEnableLogDioPretty: isEnableLogDioPretty,
         onSendProgress: onSendProgress,
@@ -255,8 +257,8 @@ class   NetworkManagerDio  {
 
         /// file
         NetworkRequestFile? requestFile,
-        ProgressCallbackFastor? onSendProgress,
-        ProgressCallbackFastor? onReceiveProgress,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress,
 
         bool? isEnableLogDioPretty ,
         int?  timeOutSecond,
@@ -304,8 +306,8 @@ class   NetworkManagerDio  {
   //-------------------------------------------------------------------- default values
 
   void _configureDefaultSetup()   {
-    // var configureHeaders = NetworkConfig.getConfigureHeader();
-    // headers.addAll( configureHeaders );
+    var configureHeaders = NetworkConfig.getConfigureHeaderFromCache();
+    headers.addAll( configureHeaders );
   }
 
 
@@ -327,7 +329,14 @@ class   NetworkManagerDio  {
   }
 
 
-  Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackFastor? onSendProgress, ProgressCallbackFastor? onReceiveProgress}) async {
+  Future<Response> _chooseTypeNetworkThenStartService( {ProgressCallbackApp? onSendProgress, ProgressCallbackApp? onReceiveProgress}) async {
+
+    if (await InternetTools.isNotConnected()) {
+      // return Left(ServerNoInternetConnectionFailure(  ));
+      throw ServerNoInternetConnectionException(  );
+    }
+
+    /// file
     if (type == NetworkType.file ||
         requestFile != null ) {
       if( requestFile!.filePath != null ) {
@@ -340,6 +349,8 @@ class   NetworkManagerDio  {
         if(callback_dio != null )callback_dio!(false, "filePath not found or XFile not found", Map());
         return  getFailedResponse();
       }
+
+      /// types: put,get,post,patch,delete
     } else if (type == NetworkType.post) {
       return await  post_dio();
     } else if (type == NetworkType.put) {

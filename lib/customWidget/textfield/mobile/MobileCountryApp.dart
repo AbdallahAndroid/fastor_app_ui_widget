@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/customWidget/column/ColumnApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/row/RowScrollApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
-import 'package:fastor_app_ui_widget/core/zone/ZoneTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/zone/ZoneTools.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -249,7 +249,7 @@ class _MobileCountryAppState extends State<MobileCountryApp> {
         validatorCustom: ValidatorApp.emailOrPhone( ),
         padding: widget.padding?? EdgeInsets.only(top: 8, left: 8, right: 8, bottom: 13),
         autovalidateMode: autovalidateMode,
-        keyboardType: widget.textInputType??TextInputType.number,
+        textInputType: widget.textInputType??TextInputType.number,
         suffixIcon: widget.suffixIcon,
         text_color: widget.textStyle?.color,
         hint_text: widget.hint ,
