@@ -4,6 +4,18 @@ import 'package:flutter/material.dart';
 
 class KeyboardTools {
 
+  /**------ example
+   *
+   *   final FocusNode textFieldFocusNode = FocusNode();
+   *
+   *
+   *   TextField(
+      focusNode: textFieldFocusNode,
+   */
+  static void textFieldRemoveFocus( FocusNode textFieldFocusNode  ) {
+    textFieldFocusNode.unfocus();
+  }
+
   static Future<bool> dismiss(BuildContext context ) async  {
     FocusScope.of( context).unfocus();
     return true;
