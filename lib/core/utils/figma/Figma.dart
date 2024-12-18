@@ -83,3 +83,52 @@ class Figma   {
 
 
 }
+
+
+
+extension FigmaSizeDouble on double {
+
+  figmaHeight(){
+    return Figma.w( this );
+  }
+
+
+  figmaWidth(){
+    return Figma.w( this );
+  }
+
+
+  w(){
+    return Figma.w( this );
+  }
+
+
+  h(){
+    return Figma.h( this );
+  }
+
+}
+
+
+extension FigmaSizeInt on int {
+
+  figmaHeight(){
+    return Figma.w(  double.parse(   "$this.0") );
+  }
+
+
+  figmaWidth(){
+    return Figma.w(double.parse(   "$this.0") );
+  }
+
+
+  w(){
+    return Figma.w( double.parse(   "$this.0") );
+  }
+
+
+  h(){
+    return Figma.h( double.parse(   "$this.0") );
+  }
+
+}
