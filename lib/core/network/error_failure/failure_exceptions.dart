@@ -19,6 +19,9 @@ class ServerUnAuthenticationException implements Exception { }
 
 class ServerNoInternetConnectionException implements Exception { }
 
+class ServerTimeoutException implements Exception { }
+
+
 class ServerEmptyDataException implements Exception { }
 
 class InputFieldInvalidException implements Exception {

@@ -230,8 +230,11 @@ class NetworkHelperSingleTone {
 
   Response  getFailedResponseDioError( {required DioException  dioError   }) {
 
-    if( dioError.type == DioExceptionType.connectionTimeout ) {
-      return getFailedResponse( dioError.type);
+    if (dioError.type == DioExceptionType.connectionTimeout ||
+        dioError.type == DioExceptionType.sendTimeout ||
+        dioError.type == DioExceptionType.receiveTimeout) {
+      // return getFailedResponse( dioError.type);
+      throw ServerTimeoutException(  );
     }
     Log.k(tag, "DioError - e: " + dioError.toString());
     if( dioError.response != null && dioError!.response!.data != null ) {

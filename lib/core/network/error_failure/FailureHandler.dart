@@ -24,6 +24,9 @@ class FailureHandler {
     if( e is ServerNoInternetConnectionException ) {
       return ServerNoInternetConnectionFailure();
     }
+    if( e is ServerTimeoutException ) {
+      return ServerNoInternetConnectionFailure();
+    }
     if( e is ServerEmptyDataException ) {
       return ServerMessageFailure( "No Data Found".tra() );
     }
