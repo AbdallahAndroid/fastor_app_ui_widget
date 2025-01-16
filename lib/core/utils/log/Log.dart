@@ -38,6 +38,18 @@ class Log {
     _printSpecial(msgFinal);
   }
 
+
+  static void logBidData(dynamic dataBig) {
+    String data  = "$dataBig";
+    const int chunkSize = 800; // Adjust based on your console limits
+    for (int i = 0; i < data.length; i += chunkSize) {
+      final chunk = data.substring(i, i + chunkSize > data.length ? data.length : i + chunkSize);
+
+      if( i == 0 )print( LogDeveloperInfo.appId + " : " +  _getTimeOfLog() + " : BIG DATA:");
+      print('$chunk');
+    }
+  }
+  
   //------------------------------------------------------------------- tools
 
   static _printSpecial(String msg) {
