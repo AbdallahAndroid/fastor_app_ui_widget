@@ -47,12 +47,17 @@ class ApiParserApp {
 
   /// "status": "0",  >> means false
   /// "status": false,  >> means false
-  static bool parseBoolean(String? n) {
+
+  static bool parseBoolean(dynamic? n) {
     if (n == null) return false;
 
     //case true
-    if (n == "1") return true;
-    if (n == "true") return true;
+    if ( "$n"  == "1") return true;
+    if ("$n"  ==  "true") return true;
+
+    /// case false
+    if ("$n"  ==  "false") return false;
+
     //default
     return false;
   }

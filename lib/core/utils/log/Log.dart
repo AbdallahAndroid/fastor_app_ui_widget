@@ -49,7 +49,7 @@ class Log {
       print('$chunk');
     }
   }
-  
+
   //------------------------------------------------------------------- tools
 
   static _printSpecial(String msg) {
