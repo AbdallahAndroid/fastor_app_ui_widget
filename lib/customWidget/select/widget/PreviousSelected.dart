@@ -28,7 +28,7 @@ extension PreviousSelected on DropdownAppState {
           width: getWidthTextWidget(),
           padding:  widget.hintPadding != null ? widget.hintPadding : widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
           fontSize:  chooseFontSize(),
-          fontFamily: chooseFontFamily(),
+          fontFamily: chooseFontFamily( - 1),
           color:   widget.colorHintText,
           textAlign: widget.textAlignItemDropdown ?? TextAlign.start
       ),

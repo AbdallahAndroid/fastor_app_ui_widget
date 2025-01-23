@@ -39,14 +39,16 @@ class DropdownApp extends StatefulWidget {
   Color? colorHintText;
   EdgeInsets? hintPadding;
 
-  //text
-  TextStyle? textStyleItemDropdown;
+  //text selected
+
   TextStyle? textStyleItemSelectedDropdown;
+  String? fontFamilySelected;
   TextAlign? textAlignItemDropdown;
 
-  /// font
+  // text item
   double? fontSize;
   String? fontFamily;
+  TextStyle? textStyleItemDropdown;
 
   //previous
   int? previousPosition;
@@ -105,6 +107,7 @@ class DropdownApp extends StatefulWidget {
     this.hintText,
     this.fontSize,
     this.fontFamily,
+    this.fontFamilySelected,
     this.hintWidget,
     this.hintPadding,
     this.textStyleItemDropdown,

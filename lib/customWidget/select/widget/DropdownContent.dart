@@ -73,7 +73,7 @@ extension DropdownContent on DropdownAppState {
         width: getWidthTextWidget(),
         // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
         fontSize: chooseFontSize(),
-        fontFamily: chooseFontFamily(),
+        fontFamily: chooseFontFamily( positionName ),
         textAlign: widget.textAlignItemDropdown ?? TextAlign.start,
       ),
     );
@@ -90,9 +90,11 @@ extension DropdownContent on DropdownAppState {
         .textStyleItemDropdown!.fontSize ?? 15 : widget.fontSize ?? 15;
   }
 
-  String? chooseFontFamily(){
+
+  String? chooseFontFamily(int positionName){
+    bool isSamePositionSelected = positionName ==  selected_position;
+    if( widget.fontFamilySelected != null && isSamePositionSelected ) return widget.fontFamilySelected!;
     return widget.textStyleItemDropdown != null ? widget
         .textStyleItemDropdown!.fontFamily : widget.fontFamily;
   }
-
 }
