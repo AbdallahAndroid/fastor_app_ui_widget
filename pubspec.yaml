@@ -33,7 +33,8 @@ dependencies:
   need_resume:
   internet_connection_checker:
   country_code_picker:
-  timezone_to_country:
+  #timezone_to_country: 2.2.1 or more higher not working with flutter 3.22.0
+  timezone_to_country: 2.2.0
   country_dial_code:
   http:
   dio: 5.7.0
