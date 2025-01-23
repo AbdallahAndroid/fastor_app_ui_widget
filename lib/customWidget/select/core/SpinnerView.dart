@@ -1,11 +1,11 @@
 
+
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
-import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:flutter/material.dart';
+import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
-
 
 //------------------------------------------------------------------ callback
 
@@ -278,17 +278,14 @@ class SpinnerViewState extends State<SpinnerView> {
   //---------------------------------------------------------- decoration and resize
 
   Widget dropboxAndBoarder(){
-    var dropBox = getDropBoxWidget();
-
-    //decoration
-    var containerDecoration = Container( child:  dropBox,
-        // color: Colors.green,
+    return Container(
+        child:  getDropBoxWidget(),
+        // color: Colors.green, /// for testing
+        decoration: chooseDecorationNormalOrError(),
         width: widget.width_frame  ,
         height: widget.height_frame,
         alignment: Alignment.center,
-        decoration: chooseDecorationNormalOrError()
     );
-    return containerDecoration;
   }
 
 
@@ -375,7 +372,7 @@ class SpinnerViewState extends State<SpinnerView> {
     //remove old
     listDrop = [];
 
-    // set hint
+    // set hint first item
     setHintWidgetInFirstItemOnTop();
 
     //for
@@ -408,6 +405,7 @@ class SpinnerViewState extends State<SpinnerView> {
     DropdownMenuItem<String> drop = DropdownMenuItem<String>(
       // key: _formKey,
       value: position ,
+      // alignment: Alignment.center, /// moving text selected position aligment
       child:   Directionality(textDirection: widget.textDirection!, child: wid ) ,
       // alignment: AlignmentDirectional.centerEnd,
     );

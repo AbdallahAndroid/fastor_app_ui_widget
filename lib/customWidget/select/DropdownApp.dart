@@ -1,5 +1,11 @@
 
 
+import 'dart:ui';
+
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
+// import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/select/widget/DropdownContent.dart';
 import 'package:fastor_app_ui_widget/customWidget/select/widget/ProgressDropdown.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +37,16 @@ class DropdownApp extends StatefulWidget {
   String? hintText;
   Widget? hintWidget;
   Color? colorHintText;
+  EdgeInsets? hintPadding;
 
   //text
   TextStyle? textStyleItemDropdown;
+  TextStyle? textStyleItemSelectedDropdown;
   TextAlign? textAlignItemDropdown;
+
+  /// font
+  double? fontSize;
+  String? fontFamily;
 
   //previous
   int? previousPosition;
@@ -91,8 +103,12 @@ class DropdownApp extends StatefulWidget {
     this.radiusButton,
     this.spinnerTriangleWidth,
     this.hintText,
+    this.fontSize,
+    this.fontFamily,
     this.hintWidget,
+    this.hintPadding,
     this.textStyleItemDropdown,
+    this.textStyleItemSelectedDropdown,
     this.textAlignItemDropdown,
     this.colorHintText,
     this.colorItemText,
@@ -137,6 +153,10 @@ class DropdownApp extends StatefulWidget {
     searchInNamesForThePositionOfPreviousTextSelected();
     searchInNamesForTheTextPrevious();
 
+    /// logs
+    Log.k("DropdownApp", "setDefaultValues() - hintText: $hintText" );
+    Log.k("DropdownApp", "setDefaultValues() - previousSelectedText: $previousSelectedText" );
+    Log.k("DropdownApp", "setDefaultValues() - names: $names" );
   }
 
 
@@ -182,13 +202,15 @@ class DropdownApp extends StatefulWidget {
     if( previousSelectedText == null ) return;
     int index = 0;
     names?.forEach((name) {
-      bool found = previousPosition == index;
+      bool found = previousSelectedText == name;
       if( found ) {
         previousSelectedText = name;
+        Log.k("DropdownApp", "searchInNamesForTheTextPrevious() - result index: $index");
         return;
       }
       index = index + 1;
     });
+    Log.k("DropdownApp", "searchInNamesForTheTextPrevious() - result index: $index");
   }
 
   @override
@@ -263,7 +285,8 @@ class  DropdownAppState extends State<DropdownApp > {
     bool isSamePositionSelected = positionName ==  selected_position;
     //print( "getColorItemTextWhenSelectedOrNot() - positionName: $positionName /isSamePositionSelected: $isSamePositionSelected");
     if(isSamePositionSelected )  {
-      return widget.colorItemTextSelected??defaultColor;
+
+      return widget.textStyleItemSelectedDropdown != null ? widget.textStyleItemSelectedDropdown!.color :  widget.colorItemTextSelected??defaultColor;
     }
     return defaultColor;
   }

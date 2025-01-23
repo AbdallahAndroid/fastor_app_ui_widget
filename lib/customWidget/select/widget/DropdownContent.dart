@@ -29,7 +29,7 @@ extension DropdownContent on DropdownAppState {
       errorBackendJson: widget.errorBackendJson,
       errorTextStyle: widget.errorTextStyle,
       errorOutlineDropdownDropdown: widget.errorOutlineDropdownDropdown,
-      hintWidget: chooseHintOrPreviousSelectedTextWidget(),
+      hintWidget: chooseHintWidget(),
       previousPosition: widget.previousPosition,
       textDirection: widget.textDirection,
       onSelectPosition: (p, isRemoveSelected) {
@@ -64,22 +64,35 @@ extension DropdownContent on DropdownAppState {
 
 
   Widget _getItemDropdownWidget(String name, int positionName) {
-    return TextApp(name,
+    return  Container(
+      height: chooseFontSize()  * 2, /// fix padding top/bottom of text not working
+      // color: Colors.blue, /// for testing
       padding: widget.paddingText ?? EdgeInsets.only(left: 10, right: 10),
-      color: getColorItemTextWhenSelectedOrNot(positionName),
-      width: getWidthTextWidget(),
-      // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
-      fontSize: widget.textStyleItemDropdown != null ? widget
-          .textStyleItemDropdown!.fontSize ?? 15 : 15,
-      fontFamily: widget.textStyleItemDropdown != null ? widget
-          .textStyleItemDropdown!.fontFamily : null,
-      textAlign: widget.textAlignItemDropdown ?? TextAlign.start,
+      child: TextApp(name,
+        color: getColorItemTextWhenSelectedOrNot(positionName),
+        width: getWidthTextWidget(),
+        // color:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.color :  widget.colorHintText,
+        fontSize: chooseFontSize(),
+        fontFamily: chooseFontFamily(),
+        textAlign: widget.textAlignItemDropdown ?? TextAlign.start,
+      ),
     );
   }
 
   double getWidthTextWidget() {
     return widget.width -
         8; //set width to fix alignment, while -4 is required due to boarder;
+  }
+
+
+  chooseFontSize() {
+    return widget.textStyleItemDropdown != null ? widget
+        .textStyleItemDropdown!.fontSize ?? 15 : widget.fontSize ?? 15;
+  }
+
+  String? chooseFontFamily(){
+    return widget.textStyleItemDropdown != null ? widget
+        .textStyleItemDropdown!.fontFamily : widget.fontFamily;
   }
 
 }

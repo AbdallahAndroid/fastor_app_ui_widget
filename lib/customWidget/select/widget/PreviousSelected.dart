@@ -8,26 +8,30 @@ import 'package:flutter/material.dart';
 extension PreviousSelected on DropdownAppState {
 
 
-  Widget  chooseHintOrPreviousSelectedTextWidget(){
-    // if( widget.previousSelectedText == null ) {
-    //   return _hint();
-    // } else {
-    //   return previousSelectedWidget();
-    // }
-    return _hint();
-  }
+  Widget  chooseHintWidget(){
 
+    /**
+        // if( widget.previousSelectedText == null ) {
+        //   return _hint();
+        // } else {
+        //   return previousSelectedWidget();
+        // }
+        return _hint();
+        }
 
-  Widget _hint(){
+     */
     if(widget.hintWidget != null ) return widget.hintWidget!;
 
-    return  TextApp( widget.hintText??"select",
-        width: getWidthTextWidget(),
-        padding: widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
-        fontSize:  widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontSize! : 15 ,
-        fontFamily: widget.textStyleItemDropdown != null ? widget.textStyleItemDropdown!.fontFamily : null ,
-        color:   widget.colorHintText,
-        textAlign: widget.textAlignItemDropdown ?? TextAlign.start
+    return  Container(
+        height: chooseFontSize()  * 2, /// fix padding top/bottom of text not working
+      child: TextApp( widget.hintText??"select",
+          width: getWidthTextWidget(),
+          padding:  widget.hintPadding != null ? widget.hintPadding : widget.paddingText??EdgeInsets.only(  left: 10, right: 10),
+          fontSize:  chooseFontSize(),
+          fontFamily: chooseFontFamily(),
+          color:   widget.colorHintText,
+          textAlign: widget.textAlignItemDropdown ?? TextAlign.start
+      ),
     );
   }
 
