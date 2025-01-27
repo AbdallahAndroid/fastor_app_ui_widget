@@ -232,13 +232,13 @@ class  DropdownAppState extends State<DropdownApp > {
 
   @override
   void initState() {
-    setSelectedPositionValueEqualToPreviousPosition();
     super.initState();
   }
 
 
   @override
   Widget build(BuildContext context) {
+    setSelectedPositionValueEqualToPreviousPosition();
     return getDirection();
   }
 
