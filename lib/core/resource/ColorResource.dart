@@ -100,6 +100,10 @@ class ColorResource {
   ///
   static var iconEmptyDataFound = Color(0xffFFF5EB);
 
+  static var white = Colors.white;
+
+  static var areaAroundDialogTransparent = Color(0x99000000); // Black with 60% opacity;
+
 
 
 

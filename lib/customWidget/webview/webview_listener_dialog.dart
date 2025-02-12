@@ -59,23 +59,14 @@ class _WebviewState extends State<WebviewWithListenerDialog> {
   }
 
   webview() {
-    return Container(
-      width: DeviceTools.getWidth(context),
-      height: DeviceTools.getHeightInsideSafeArea(context),
-      child: Expanded(
+    return Center(
+      child: Container(
+        width: DeviceTools.getWidth(context) * 0.9,
+        height: DeviceTools.getHeightInsideSafeArea(context) * 0.8,
         child: WebViewWidget(controller: _controller),
       ),
     );
-    // return   WebViewWidget(
-    //     controller: WebviewHelper.getWebViewController(
-    //     onAuthError: onAuthError,
-    //     onProgress: onProgress,
-    //     onError: onError,
-    //     onFinished: onFinished,
-    //     ),
-    // );
   }
-
   void setupController() {
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)

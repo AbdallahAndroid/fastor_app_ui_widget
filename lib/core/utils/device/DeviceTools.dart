@@ -207,13 +207,12 @@ class DeviceTools {
 
   //+++++++++++++++++ mines safe area
 
-
-
-  double getHeightInsideSafeArea(BuildContext context){
+  static double getHeightInsideSafeArea(BuildContext context){
     return DeviceTools.getHeight(context)
         - NotchBarSizeHelper.getHeightTopAndDown(context)
         - StatusBarSizeHelper.getHeight(context) ;
   }
+
 
 
   //++++++++++++++++ by percentage
