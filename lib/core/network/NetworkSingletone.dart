@@ -2,10 +2,12 @@
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
 import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
+import 'package:fastor_app_ui_widget/core/network/network_file_type.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/network/NetworkRequestFile.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkManagerDio.dart';
+import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:image_picker/image_picker.dart' as picker ;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 // import 'package:universal_io/io.dart';
@@ -190,40 +192,130 @@ class NetworkHelperSingleTone {
 
   ///--------------------------------------------------------------- file
 
+  //
+  // Future<Response> file(String url, {
+  //   required String fileRequestKeyInJson,
+  //   Map<String, dynamic>? body,
+  //   Map<String, String>? headers,
+  //   picker.XFile? xFileToUpload,
+  //   FormData? formData,
+  //   NetworkRequestFile? requestFile,
+  //   bool? isTypeMethodPUT,
+  //   bool? isEnableLogDioPretty ,
+  //   int?  timeOutSecond,
+  //   ProgressCallbackApp? onSendProgress,
+  //   ProgressCallbackApp? onReceiveProgress,
+  //   bool?  handleErrorXMLHttpRequest } ) async {
+  //
+  //
+  //   if (await InternetTools.isNotConnected()) {
+  //     throw ServerNoInternetConnectionException(  );
+  //   }
+  //
+  //   return NetworkManagerDio().file(url,
+  //       fileRequestKeyInJson: fileRequestKeyInJson,
+  //       body: body,
+  //       headers: headers,
+  //       xFileToUpload: xFileToUpload,
+  //       formData: formData,
+  //       requestFile: requestFile,
+  //       isTypeMethodPUT: isTypeMethodPUT,
+  //       isEnableLogDioPretty: isEnableLogDioPretty,
+  //       timeOutSecond: timeOutSecond,
+  //       onSendProgress: onSendProgress,
+  //       onReceiveProgress: onReceiveProgress,
+  //       handleErrorXMLHttpRequest: handleErrorXMLHttpRequest
+  //   );
+  // }
 
-  Future<Response> file(String url, {
-    required String fileRequestKeyInJson,
-    Map<String, dynamic>? body,
-    Map<String, String>? headers,
-    picker.XFile? xFileToUpload,
-    FormData? formData,
-    NetworkRequestFile? requestFile,
-    bool? isTypeMethodPUT,
-    bool? isEnableLogDioPretty ,
-    int?  timeOutSecond,
-    ProgressCallbackApp? onSendProgress,
-    ProgressCallbackApp? onReceiveProgress,
-    bool?  handleErrorXMLHttpRequest } ) async {
+  ///--------------------------------------------------------------- file
 
+  Future<Response> uploadXFile(
+      {required String url,
+        required String fileRequestKeyInJson,
+        required NetworkFileType networkFileType,
+        required picker.XFile xFile,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        int? timeOutSecond,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress}) async {
+    try {
+      Log.k(tag, "fileUploadTypeXFile() - xFile: ${xFile}");
 
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException(  );
+      //check not file
+      if (ToolsValidation.isEmpty(xFile.path)) {
+        return getFailedResponse("xFile.path not found");
+      }
+
+      //byte
+      List<int> byte = await xFile.readAsBytes().then((value) {
+        return value.cast();
+      });
+      Log.k(tag, 'fileUploadTypeXFile() - byte ' + byte.length.toString());
+
+      //generate cloud path
+      var mp = await MultipartFile.fromBytes(byte,
+          filename: xFile.path.toString() + xFile.name);
+      Log.k(tag, "fileUploadTypeXFile() - mp: " + mp.toString());
+
+      //data
+      var formData = FormData.fromMap({
+        fileRequestKeyInJson: mp,
+      });
+      if (body != null) {
+        body.forEach((key, value) {
+          Log.k(tag,
+              "fileUploadTypeXFile() - body loop key: $key /value: $value");
+          formData.fields.add(MapEntry(key, value.toString()));
+        });
+      }
+      Log.k(tag, "fileUploadTypeXFile() - formData: " + formData.toString());
+
+      ///time out
+      if (timeOutSecond != null) {
+        _dio.options.connectTimeout = Duration(seconds: timeOutSecond!);
+        _dio.options.receiveTimeout = Duration(seconds: timeOutSecond!);
+      }
+
+      switch (networkFileType) {
+        case NetworkFileType.post:
+          {
+            return await _dio.post(url,
+                data: formData,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress);
+          }
+
+        case NetworkFileType.put:
+          {
+            return await _dio.put(url,
+                data: formData,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress);
+          }
+
+        case NetworkFileType.patch:
+          {
+            return await _dio.patch(url,
+                data: formData,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress);
+          }
+
+        default:
+          {
+            return await _dio.post(url,
+                data: formData,
+                onSendProgress: onSendProgress,
+                onReceiveProgress: onReceiveProgress);
+          }
+      }
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
+    } catch (e) {
+      return getFailedResponse(e);
     }
-
-    return NetworkManagerDio().file(url,
-        fileRequestKeyInJson: fileRequestKeyInJson,
-        body: body,
-        headers: headers,
-        xFileToUpload: xFileToUpload,
-        formData: formData,
-        requestFile: requestFile,
-        isTypeMethodPUT: isTypeMethodPUT,
-        isEnableLogDioPretty: isEnableLogDioPretty,
-        timeOutSecond: timeOutSecond,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-        handleErrorXMLHttpRequest: handleErrorXMLHttpRequest
-    );
   }
 
   ///--------------------------------------------------------- failure helper methods
