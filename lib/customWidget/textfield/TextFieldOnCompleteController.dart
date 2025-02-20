@@ -2,6 +2,30 @@ import 'dart:async';
 
 typedef OnCompleteWritingCallback = Function(String textWritten );
 
+/**
+----------------------------- how to use
+
+    0- declare at instance scope
+    var onCompleteHandler = TextFieldOnCompleteController();
+
+    1- at widget textfield fire
+    return TextFieldApp(
+
+    onChanged: (s){
+
+      onChangeHappenedOrOnSubmitButtonClicked(searchController.text);
+    },
+    );
+
+    2-  fire action
+    onChangeHappenedOrOnSubmitButtonClicked(String s ) {
+      onCompleteHandler.onChange(s,  callback: (textWritten) {
+          widget.onCompleted(textWritten);
+      });
+    }
+
+
+ */
 class TextFieldOnCompleteController {
 
   Timer? _debounceTimer;
