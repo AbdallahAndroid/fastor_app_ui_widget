@@ -122,12 +122,15 @@ extension FigmaSizeInt on int {
   }
 
   double get w => Figma.w( double.parse(   "$this.0") );
+  double get wr => Figma.h( double.parse(   "$this.0") );
 
   w2(){
     return Figma.h( double.parse(   "$this.0") );
   }
 
   double get h => Figma.h( double.parse(   "$this.0") );
+
+  double get hr => Figma.h( double.parse(   "$this.0") );
 
   h2(){
     return Figma.h( double.parse(   "$this.0") );
