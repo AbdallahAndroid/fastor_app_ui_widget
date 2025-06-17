@@ -23,6 +23,20 @@ class ToolsPrice {
     return s  + " "  + rial ;
   }
 
+
+  static String priceWithoutCurrency(double? d) {
+//rounded xx.yy
+    d ??= 0.0;
+    double roundedTwoFraction = double.parse((d).toStringAsFixed(2));
+
+    //remove ".00" if found
+    String s = roundedTwoFraction.toString();
+    if (s.endsWith(".00")) {
+      s = s.replaceAll(".00", "");
+    }
+    return s;
+  }
+
   //------------------------------------------------------------------------thousandAndMillion
 
   /// convert 2000000 to 2 Mill.
