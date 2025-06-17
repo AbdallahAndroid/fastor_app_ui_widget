@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// class AppColors extends ColorResource {}
 class ColorResource {
 
 
@@ -104,7 +105,8 @@ class ColorResource {
 
   static var areaAroundDialogTransparent = Color(0x99000000); // Black with 60% opacity;
 
-
+  /// grey
+  static var grey = Color(0xff69626d );
 
 
 

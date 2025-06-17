@@ -42,8 +42,8 @@ class TextApp extends StatelessWidget {
   TextApp(
       this.s,
       {
-        required this.color,
-        required this.fontSize ,
+          this.color = Colors.black,
+          this.fontSize = 14  ,
         this.fontFamily,
         this.textAlign,
         this.textDecoration  = TextDecoration.none,
