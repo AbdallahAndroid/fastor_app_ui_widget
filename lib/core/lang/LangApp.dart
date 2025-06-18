@@ -18,6 +18,11 @@ extension StringExtensions on String {
     return LangApp.searchForValue( this );
   }
 
+  String tr() {
+    return LangApp.searchForValue( this );
+  }
+
+
   /// the "ar" means "Arabic"
   String ar(String arabicMeans ) {
     if(LangApp.isArabic ) {

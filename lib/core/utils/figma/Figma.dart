@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/ProjectFigmaScreenInitializer.dart';
 import 'package:flutter/cupertino.dart';
@@ -107,6 +109,18 @@ extension FigmaSizeDouble on double {
     return Figma.h( this );
   }
 
+  /// radius
+  double get r => FigmaSizeDouble.scaleRadius() * this;
+  static double scaleRadius() => min(scaleWidth(), scaleHeight());
+  static double scaleText() => min(scaleWidth(), scaleHeight());
+  static double scaleWidth() =>
+      _currentDeviceWidth / ProjectFigmaScreenInitializer.figmaScreenWidth;
+  static double scaleHeight() =>
+      _currentDeviceHeight / ProjectFigmaScreenInitializer.figmaScreenHeight;
+
+  /// text
+  double get sp => scaleText() * this;
+
 }
 
 
@@ -135,5 +149,11 @@ extension FigmaSizeInt on int {
   h2(){
     return Figma.h( double.parse(   "$this.0") );
   }
+
+  /// radius
+  double get r => FigmaSizeDouble.scaleRadius() * this;
+
+  /// text
+  double get sp => FigmaSizeDouble.scaleText() * this;
 
 }
