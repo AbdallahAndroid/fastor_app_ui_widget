@@ -49,6 +49,7 @@ class ScrollOnCompleteController {
     required this.isLoadingNextPage,
     required this.onCompleteCallback}) {
 
+    _lastEdition = _getCurrentTimestamp();
     _setupOnScrollListener();
   }
 
@@ -60,8 +61,8 @@ class ScrollOnCompleteController {
           scrollController.position.maxScrollExtent - 100 ;
       if (  isArriveMaxBottom     ) {
         if(   ! isLoadingNextPage ) {
-          Log.i("ScrollOnCompleteController - _setupOnScrollListener() - allow for get next page");
-         _onArriveBottom();
+          //Log.i("ScrollOnCompleteController - _setupOnScrollListener() - isArriveMaxBottom");
+          _onArriveBottom();
         }
       }
     });
@@ -86,7 +87,8 @@ class ScrollOnCompleteController {
     _debounceTimer = Timer(Duration(milliseconds: 1000), () {
       bool thereInNoEdition  = timeTrigger == _lastEdition;
       if (thereInNoEdition) {
-       onCompleteCallback();
+        Log.i("ScrollOnCompleteController - _timerAgain() - thereInNoEdition _lastEdition: $_lastEdition");
+        onCompleteCallback();
       }
     });
   }
@@ -102,5 +104,5 @@ class ScrollOnCompleteController {
     return int.parse(cut1000);
   }
 
-  
+
 }
