@@ -17,7 +17,7 @@ extension BaseTextTemplate on  TextApp  {
           //style
           textAlign: textAlign,
           maxLines: maxLines,
-          style: myStyle );
+          style: textStyle );
 
     } else {
       //normal
@@ -25,7 +25,7 @@ extension BaseTextTemplate on  TextApp  {
           textAlign: textAlign,
           maxLines: maxLines,
           overflow: overflow,
-          style: myStyle );
+          style: textStyle );
     }
 
 

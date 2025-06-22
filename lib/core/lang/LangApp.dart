@@ -7,6 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 var translatorApp = new LangApp();
 
+class AppLanguage extends LangApp {
+
+}
 extension StringExtensions on String {
 
   String translateApp() {

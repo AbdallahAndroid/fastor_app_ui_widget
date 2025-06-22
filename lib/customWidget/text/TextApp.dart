@@ -37,7 +37,7 @@ class TextApp extends StatelessWidget {
   //web allow select text by mounse
   bool? selectedTextAllow;
 
-  TextStyle? myStyle;
+  TextStyle? textStyle;
 
   TextApp(
       this.s,
@@ -46,6 +46,7 @@ class TextApp extends StatelessWidget {
           this.fontSize = 14  ,
         this.fontFamily,
         this.textAlign,
+        this.textStyle,
         this.textDecoration  = TextDecoration.none,
         this.backgroundColor,
         this.margin,
@@ -83,8 +84,8 @@ class TextApp extends StatelessWidget {
     //fix null
     s ??= "";
 
-    //style
-    myStyle = TextStyle(
+    //style default
+    textStyle ??=  TextStyle(
       fontSize: fontSize,
       color: color,
       fontFamily: fontFamily,
@@ -94,7 +95,7 @@ class TextApp extends StatelessWidget {
     );
 
     //view
-    Widget viewChild =  chooseChildWhenPressed(s, textAlign!, myStyle!, maxLines, onPressed , selectedTextAllow! );
+    Widget viewChild =  chooseChildWhenPressed(s, textAlign!, textStyle!, maxLines, onPressed , selectedTextAllow! );
 
 
     //size

@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 typedef PageinateListviewOnScrollBottomChange = Function(   );
 
-/// example see from "README.md"
+
+/// see example at "README.md"
 class PaginateListview extends StatelessWidget {
 
 
@@ -21,6 +22,9 @@ class PaginateListview extends StatelessWidget {
   /// While not fire change in case there isLoadingNextPage next page
   PageinateListviewOnScrollBottomChange  onScrollArriveBottomAndValidToGetNextPageChange;
 
+  /// refresh
+  RefreshCallback onRefresh;
+
   EdgeInsets? padding;
   bool isLoadingNextPage;
 
@@ -28,20 +32,18 @@ class PaginateListview extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
 
 
-
   PaginateListview({
     Key? key,
     required this.children,
     required this.onScrollArriveBottomAndValidToGetNextPageChange,
     required this.isLoadingNextPage ,
+    required this.onRefresh,
     this.padding,
   }) {
+    Log.i("PaginateListview() - len: ${children.length}");
     _setProgressViewWidgetToListChildren();
     _setupOnScrollListener();
   }
-
-
-
 
 
   void _setupOnScrollListener() {
@@ -50,7 +52,7 @@ class PaginateListview extends StatelessWidget {
           _scrollController.position.maxScrollExtent - 100 ;
       if (  isArriveMaxBottom     ) {
         if(   ! isLoadingNextPage ) {
-          Log.i("PaginateListview - _setupOnScrollListener() - isLoadingNextPage: $isLoadingNextPage");
+          Log.i("PaginateListview - _setupOnScrollListener() - allow for get next page");
           onScrollArriveBottomAndValidToGetNextPageChange(   );
         }
       }
@@ -65,13 +67,19 @@ class PaginateListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: ListView(
-      controller: _scrollController,
-      primary: false,
-      shrinkWrap: true,
-      padding: padding,
-      children: children,
-    ));
+    return Expanded(child:
+    RefreshIndicator(
+      onRefresh: onRefresh,
+      child: ListView.builder(
+          controller: _scrollController,
+          itemCount: children.length,
+          padding: padding,
+          itemBuilder:  (ctx, index ) {
+            return children[index];
+          }
+      ),
+    )
+    );
   }
 
 
