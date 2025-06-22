@@ -1,5 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/progress_circle_container.dart';
+import 'package:fastor_app_ui_widget/customWidget/scrollview/scroll_on_complete_controller.dart';
 import 'package:flutter/material.dart';
 
 
@@ -42,23 +43,9 @@ class PaginateListview extends StatelessWidget {
   }) {
     Log.i("PaginateListview() - len: ${children.length}");
     _setProgressViewWidgetToListChildren();
-    _setupOnScrollListener();
+    _setupOnScrollComplete();
   }
 
-
-  void _setupOnScrollListener() {
-    _scrollController.addListener( (){
-      bool isArriveMaxBottom = _scrollController.position.pixels >=
-          _scrollController.position.maxScrollExtent - 100 ;
-      if (  isArriveMaxBottom     ) {
-        if(   ! isLoadingNextPage ) {
-          Log.i("PaginateListview - _setupOnScrollListener() - allow for get next page");
-          onScrollArriveBottomAndValidToGetNextPageChange(   );
-        }
-      }
-    });
-
-  }
 
   _setProgressViewWidgetToListChildren(){
     if(isLoadingNextPage ) children.add( ProgressCircleContainer());
@@ -79,6 +66,16 @@ class PaginateListview extends StatelessWidget {
           }
       ),
     )
+    );
+  }
+
+  void _setupOnScrollComplete() {
+    ScrollOnCompleteController(
+        scrollController: _scrollController,
+        isLoadingNextPage: isLoadingNextPage,
+        onCompleteCallback: (){
+          onScrollArriveBottomAndValidToGetNextPageChange();
+        }
     );
   }
 
