@@ -14,10 +14,9 @@
         );
 ```
 
-## 2- in cubit 
+## 2- in cubit
 ```
-getFirstPageDriver() async {
-  downloadDriverPage= 1;
+getFirstPageDriver() async { 
   driversResponse = null;
   downloadDrivers();
 }
@@ -25,41 +24,64 @@ getFirstPageDriver() async {
 
 getNextPageDriver() async {
   int current = driversResponse?.meta?.currentPage??1;
-  downloadDriverPage  = current  + 1;
-  downloadDrivers();
+  int next  = current  + 1;
+  downloadDrivers(next );
 }
 
 
-downloadDrivers() async {
-  Log.i("downloadDrivers() - start downloadDriverPage: $downloadDriverPage");
+downloadDrivers(int nextPage ) async {
+  Log.i("downloadDrivers() - start downloadDriverPage: nextPage");
 
   /// emit
   emit(DriversDownloadingListState());
 
 
-  Either<Failure, DriversResponse> either = await driversDownloadUsecase( downloadDriverPage );
+  Either<Failure, DriversResponse> either = await driversDownloadUsecase( nextPage );
   return either.fold((failure) {
     var msg = getFailureMessage(failure);
     Log.i("downloadDrivers() - failure: $failure");
     emit(DriversDownloadListErrorState(msg));
   }, (response) async {
-
-    /// update page
-    downloadDriverPage = response.meta?.currentPage??1;
-    Log.i("downloadDrivers() - success - downloadDriverPage: $downloadDriverPage");
-
-    /// choose : append or replace first page
-    if( downloadDriverPage == 1  ) {
-      driversResponse = response;
-    }  else {
-      if( driversResponse != null ){
-        driversResponse!.drivers.addAll( response.drivers );
-      } else {
-        driversResponse = response;
-      }
-    }
+ 
+    _chooseAppendOrReplace(response);
 
     emit(DriversDownloadListCompleteState(  ));
   });
 }
+
+
+
+
+  void _chooseAppendOrReplace(DriversResponse responseNew) {
+
+    /// case  the old Response not found, means first time download data
+    if( driversResponse == null ){
+      driversResponse = responseNew;
+      return;
+    }
+
+    /// case first page (reset first page )
+    int newPage = responseNew.meta?.currentPage??1;
+    bool isFirstPage = newPage  == 1;
+    if( isFirstPage  ) {
+      driversResponse = responseNew;
+      return;
+    }
+
+    /// validate : this page already download before
+    int previous = driversResponse?.meta?.currentPage??1;
+    bool isPageAlreadyDownloaded = newPage == previous ;
+    Log.i("_chooseAppendOrReplace()  - previous: $previous /newPage: $newPage"
+        " /isPageAlreadyDownloaded: $isPageAlreadyDownloaded");
+    if( isPageAlreadyDownloaded ){
+      return;
+    }
+
+    /// update meta
+    driversResponse!.meta = responseNew.meta;
+
+    ///default append
+    driversResponse!.drivers.addAll( responseNew.drivers );
+  }
+
 ``` 
