@@ -9,10 +9,11 @@
     * Example : can use "TextFastor()" inside "Column()" regular or inside "ColumnFastor"
     * Don't Worry About Using Widget Type Fastor With Regular Widget
 * Helping make coding faster by use Utils. Example Classes: 
-  * NetworkManager, LanguageTools, ... etc. 
+  * NetworkManager, LanguageTools, ..... etc.
 
 ## Get Start
 1- import dependence in yaml file:
+
 ```
 fastor_app_ui_widget:
 ```
