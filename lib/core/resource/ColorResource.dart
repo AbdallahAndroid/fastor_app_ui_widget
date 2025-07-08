@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-// class AppColors extends ColorResource {}
+extension AppColors on  ColorResource {
+
+}
 class ColorResource {
 
 
