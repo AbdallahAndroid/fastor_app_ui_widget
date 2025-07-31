@@ -1,5 +1,6 @@
 
 
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,18 +11,18 @@ class ProgressCircleApp extends StatelessWidget {
 
 
   ProgressCircleApp( {
-    required this.color,
-    required this.size,
+    this.color,
+    this.size,
   });
 
   @override
   Widget build(BuildContext context) {
-    var prg = CircularProgressIndicator( color: color);
+    var prg = CircularProgressIndicator( color: color??ColorResource.progress);
 
     //container
     var ct = Container(
-        width: size,
-        height: size,
+        width: size??40,
+        height: size??40,
         child: prg,
         alignment: Alignment.center
     );

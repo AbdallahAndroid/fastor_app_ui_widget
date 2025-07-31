@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-extension AppColors on  ColorResource {
+class AppColors with  ColorResource {
 
 }
-class ColorResource {
+mixin class ColorResource {
 
 
   /// primary
@@ -102,6 +102,9 @@ class ColorResource {
   static var redMedium = Colors.red.withOpacity( 0.8 );
   static var redDark = Colors.red;
   static var redMaterial = Colors.red;
+
+  /// black
+  static var black = Colors.black;
 
   ///
   static var iconEmptyDataFound = Color(0xffFFF5EB);
