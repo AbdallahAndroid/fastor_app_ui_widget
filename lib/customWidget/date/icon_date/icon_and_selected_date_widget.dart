@@ -2,7 +2,7 @@ import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/customWidget/date/icon_date/icon_date_picker_custom.dart';
-import 'package:fastor_app_ui_widget/customWidget/decoration/AppDecoration.dart';
+import 'package:fastor_app_ui_widget/core/resource/AppDecoration.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
 

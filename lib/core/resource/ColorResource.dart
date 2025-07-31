@@ -6,6 +6,9 @@ extension AppColors on  ColorResource {
 class ColorResource {
 
 
+  /// primary
+  static Color primaryDark = Colors.green;
+  static Color primaryLight = Colors.greenAccent;
 
   /// backgroud views
   static Color backgroundAllScreens = Colors.white;
