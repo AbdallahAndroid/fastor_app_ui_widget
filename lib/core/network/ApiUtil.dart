@@ -10,6 +10,13 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 typedef ProgressCallbackApp = void Function(int count, int total);
 
+/// how to use with "di"
+/**
+    /// network
+    ApiUtil api = await ApiUtil.instance();
+    sl.registerLazySingleton<ApiUtil>(() => api);
+
+ */
 class ApiUtil {
   static Dio _dioWithPretty = Dio();
   static Dio _dioNoPrettyDioLogger = Dio();
