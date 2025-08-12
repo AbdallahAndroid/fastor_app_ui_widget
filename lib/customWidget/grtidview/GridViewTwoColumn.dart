@@ -6,16 +6,15 @@ class GridViewTwoColumn extends StatelessWidget {
   // int span;
   List<Widget> children;
   bool isPutInsideSingleChildScrollView;
-  // double widthGridViewParent ;
+  MainAxisAlignment mainAxisAlignment ;
 
   /// data
   List<  Widget > columnsChildren1 = [];
   List<  Widget > columnsChildren2 = [];
 
   GridViewTwoColumn({
-    // required this.span,
     required this.children,
-    // required this.widthGridViewParent,
+    required this.mainAxisAlignment,
     required this.isPutInsideSingleChildScrollView
   }){
 
@@ -61,7 +60,7 @@ class GridViewTwoColumn extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.start,

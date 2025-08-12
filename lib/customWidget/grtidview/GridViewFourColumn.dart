@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-class GridViewThreeColumn extends StatelessWidget {
-  /// consctructor variables
-  // int span;
+class GridViewFourColumn extends StatelessWidget {
   List<Widget> children;
   bool isPutInsideSingleChildScrollView;
 
@@ -10,10 +8,11 @@ class GridViewThreeColumn extends StatelessWidget {
   List<Widget> _columnsChildren1 = [];
   List<Widget> _columnsChildren2 = [];
   List<Widget> _columnsChildren3 = [];
+  List<Widget> _columnsChildren4 = [];
 
   MainAxisAlignment mainAxisAlignment;
 
-  GridViewThreeColumn(
+  GridViewFourColumn(
       {required this.children,
         required this.mainAxisAlignment,
       required this.isPutInsideSingleChildScrollView}) {
@@ -29,12 +28,14 @@ class GridViewThreeColumn extends StatelessWidget {
   void forChildrenGridList() {
     for (int i = 0; i < children.length; i++) {
       Widget child = children[i];
-      if (i % 3 == 0) {
+      if (i % 4 == 0) {
         _columnsChildren1.add(child);
-      } else if (i % 3 == 1) {
+      } else if (i % 4 == 1) {
         _columnsChildren2.add(child);
-      } else if (i % 3 == 2) {
+      } else if (i % 4 == 2) {
         _columnsChildren3.add(child);
+      } else if (i % 4 == 3) {
+        _columnsChildren4.add(child);
       }
     }
   }
@@ -74,6 +75,13 @@ class GridViewThreeColumn extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren3,
         ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _columnsChildren4,
+        ),
+
       ],
     );
   }
