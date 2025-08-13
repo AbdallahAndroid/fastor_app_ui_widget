@@ -6,3 +6,11 @@ import 'package:flutter/material.dart';
 final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 BuildContext? getContextGlobal(){ return rootScaffoldMessengerKey.currentState?.context; }
+
+
+class GlobalApp {
+
+  static BuildContext? getContexts(){ return getContextGlobal(); }
+
+  static BuildContext getContextForceUnWarp(){ return getContextGlobal()!; }
+}

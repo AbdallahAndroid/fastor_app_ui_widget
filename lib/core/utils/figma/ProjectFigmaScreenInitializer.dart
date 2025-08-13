@@ -2,21 +2,14 @@
 class ProjectFigmaScreenInitializer {
 
   static double batteryFigmaHeight = 14;
+
+  /// normal phone
   static double figmaScreenWidth = 428; /// this width of figma when make arrow mouse object see lenght between arround objects
   static double figmaScreenHeight = 926 - ProjectFigmaScreenInitializer.batteryFigmaHeight; /// this height without status bar battery 772
 
-
-  static void initAuthenticationScreenSize() {
-    figmaScreenWidth = 428;
-    figmaScreenHeight = 926;
-  }
-
-
-  static void initStoreScreenSize() {
-    figmaScreenWidth = 380;
-    figmaScreenHeight = 844;
-  }
-
+  /// landscape
+  static double figmaScreenLandscapeWidth = 1133;
+  static double figmaScreenLandscapeHeight = 744;
 
 
 }
