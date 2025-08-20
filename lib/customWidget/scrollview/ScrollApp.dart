@@ -93,12 +93,13 @@ class ScrollApp extends StatelessWidget  {
     Widget _caseScrollNormal(  ) {
 
     //setup isStopScroll
-    ScrollPhysics physicsValue = AlwaysScrollableScrollPhysics()  ;
+    // ScrollPhysics physicsValue = AlwaysScrollableScrollPhysics()  ;
 
     //scroll
     var scrollChild = SingleChildScrollView(
       controller: scrollController ,
-      physics: physicsValue,
+      // physics: physicsValue,
+      physics: ClampingScrollPhysics(),
       child: child, //tallView,
       //keyboard when scrolling
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
