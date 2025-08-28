@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/progress_circle_container.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/scroll_on_complete_controller.dart';
@@ -32,6 +33,11 @@ class PaginateListview extends StatelessWidget {
   /// variable : Private
   final ScrollController _scrollController = ScrollController();
 
+  Widget  emptyDataWidget;
+
+  int len = 0;
+
+
 
   PaginateListview({
     Key? key,
@@ -39,11 +45,14 @@ class PaginateListview extends StatelessWidget {
     required this.onScrollArriveBottomAndValidToGetNextPageChange,
     required this.isLoadingNextPage ,
     required this.onRefresh,
+    required this.emptyDataWidget,
     this.padding,
   }) {
-    Log.i("PaginateListview() - len: ${children.length}");
+    len = children.length;
+    Log.i("PaginateListview() - len: ${len}");
     _setProgressViewWidgetToListChildren();
     _setupOnScrollComplete();
+    _addEmptyDataWidgetInCaseNoData();
   }
 
 
@@ -52,22 +61,23 @@ class PaginateListview extends StatelessWidget {
   }
 
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(child:
-    RefreshIndicator(
-      onRefresh: onRefresh,
-      child: ListView.builder(
-          controller: _scrollController,
-          itemCount: children.length,
-          padding: padding,
-          itemBuilder:  (ctx, index ) {
-            return children[index];
-          }
-      ),
-    )
-    );
+  _addEmptyDataWidgetInCaseNoData() {
+    if( len != 0 ) return;
+    double heightScreen = DeviceTools.getHeightGlobal( )??0;
+
+    children.add( emptyDataWidget );
+
+    /// add space bottom to allow scroll to top to fixing the "swipe to refresh"
+    // children.add( Container(
+    //   width: DeviceTools.getWidthGlobal( ),
+    //   constraints: BoxConstraints( minHeight: heightScreen   ),
+    //   alignment: Alignment.center,
+    //   margin: EdgeInsets.only(top: 160.hr),
+    //   color: Colors.grey.withOpacity(0.5 ),
+    // ) );
+    Log.i("PaginateListview - _addEmptyDataWidgetInCaseNoData()  ");
   }
+
 
   void _setupOnScrollComplete() {
     ScrollOnCompleteController(
@@ -79,8 +89,31 @@ class PaginateListview extends StatelessWidget {
     );
   }
 
+  ///--------------------------------------------------------------- build
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(child: RefreshIndicator(
+      onRefresh: onRefresh,
+      child:   listBuilderShapeHaveData(),
+    )
+    );
+  }
 
 
+  listBuilderShapeHaveData() {
+    // Log.i("PaginateListview - listBuilderShapeHaveData()  - children.length: ${children.length}");
+    return ListView.builder(
+        physics: len == 0 ? AlwaysScrollableScrollPhysics() : null ,
+        controller: _scrollController,
+        itemCount: children.length,
+        padding: padding,
+        itemBuilder:  (ctx, index ) {
+          return children[index];
+        }
+    );
+  }
 
 
 }
+
