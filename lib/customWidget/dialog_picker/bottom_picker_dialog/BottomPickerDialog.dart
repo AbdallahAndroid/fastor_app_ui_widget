@@ -25,6 +25,8 @@ class BottomPickerDialog extends StatefulWidget {
 
   BottomPickerShapeEnum? bottomPickerShape;
 
+  String? previousSelectedId;
+  DataPickerEntity? previousSelectedEntity;
   String titleDialog;
   List<DataPickerEntity> dataEntities;
   ListViewDialogPickerGenericListener listener;
@@ -38,6 +40,7 @@ class BottomPickerDialog extends StatefulWidget {
   }){
     bottomPickerShape ??= BottomPickerShapeEnum.confirmBottom;
     setDefaultHeightFixedIfNeeded();
+    setPreviousSelectedIfFound();
   }
 
   setDefaultHeightFixedIfNeeded(){
@@ -46,8 +49,20 @@ class BottomPickerDialog extends StatefulWidget {
     }
   }
 
+
+  void setPreviousSelectedIfFound() {
+    if(  previousSelectedId == null ) return;
+    for( var entity in  dataEntities ) {
+      if (entity.id ==  previousSelectedId) {
+        previousSelectedEntity = entity;
+        break;
+      }
+    }
+  }
+
+
   @override
-  BottomPickerDialogState createState()  => BottomPickerDialogState();
+  BottomPickerDialogState createState()  => BottomPickerDialogState( previousSelectedEntity);
 }
 
 class BottomPickerDialogState extends State<BottomPickerDialog> {
@@ -58,6 +73,9 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
   int indexListview = 0;
   DataPickerEntity? selectedEntity;
 
+  BottomPickerDialogState(DataPickerEntity? previousSelectedEntity){
+    selectedEntity =  previousSelectedEntity;
+  }
 
 
   //---------------------------------------------------------------- ui
