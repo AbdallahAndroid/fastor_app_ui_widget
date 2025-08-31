@@ -1,4 +1,5 @@
 
+import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 
@@ -39,12 +40,15 @@ class TextApp extends StatelessWidget {
 
   TextStyle? textStyle;
 
+  FontWeight? fontWeight;
+
   TextApp(
       this.s,
       {
           this.color = Colors.black,
-          this.fontSize = 14  ,
+        this.fontSize = 14  ,
         this.fontFamily,
+        this.fontWeight,
         this.textAlign,
         this.textStyle,
         this.textDecoration  = TextDecoration.none,
@@ -63,7 +67,40 @@ class TextApp extends StatelessWidget {
       ){
 
     textAlign ??= TextAlign.start;
+    setFontWeightDefaultByChooseFontProjectNames();
   }
+
+
+  void setFontWeightDefaultByChooseFontProjectNames() {
+    if( fontWeight != null ) return;
+    if( fontFamily == FontProject.w400 ) {
+      fontWeight = FontWeight.w400;
+      return;
+    }
+    if( fontFamily == FontProject.w500 ) {
+      fontWeight = FontWeight.w500;
+      return;
+    }
+
+    if( fontFamily == FontProject.w600 ) {
+      fontWeight = FontWeight.w600;
+      return;
+    }
+
+    if( fontFamily == FontProject.w700 ) {
+      fontWeight = FontWeight.w700;
+      return;
+    }
+    if( fontFamily == FontProject.w800 ) {
+      fontWeight = FontWeight.w800;
+      return;
+    }
+    if( fontFamily == FontProject.w900 ) {
+      fontWeight = FontWeight.w900;
+      return;
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +125,7 @@ class TextApp extends StatelessWidget {
     textStyle ??=  TextStyle(
       fontSize: fontSize,
       color: color,
+      fontWeight : fontWeight,
       fontFamily: fontFamily,
       height: 1.0, //space between lines
       decoration:  textDecoration,
