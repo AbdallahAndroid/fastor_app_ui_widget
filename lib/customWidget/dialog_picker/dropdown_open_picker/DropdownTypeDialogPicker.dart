@@ -1,8 +1,8 @@
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/dropdown_open_picker/logic/DropdownShapeDialogController.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/DataPickerEntity.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/typedef_dialog_picker.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/data/DataPickerEntity.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listener/typedef_dialog_picker.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';

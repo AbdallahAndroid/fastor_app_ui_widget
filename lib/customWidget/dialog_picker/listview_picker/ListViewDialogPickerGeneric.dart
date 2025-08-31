@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/DataPickerEntity.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/data/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/widget/ListItemPicker.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/typedef_dialog_picker.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listener/typedef_dialog_picker.dart';
 
 
 class ListViewDialogPickerGeneric extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/bottom_picker_dialog/BottomPickerDialog.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/typedef_dialog_picker.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listener/typedef_dialog_picker.dart';
 import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/dialog_picker/dropdown_small_open_picker/DropdownSmallTypeDialogPicker.dart';
-import 'package:fastor_app_ui_widget/customWidget/dialog_picker/listview_picker/core/DataPickerEntity.dart';
+import 'package:fastor_app_ui_widget/customWidget/dialog_picker/data/DataPickerEntity.dart';
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 
