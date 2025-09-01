@@ -65,8 +65,9 @@ dependencies:
   # map
   google_maps_flutter: 2.9.0 #flutter 3.22.0
 
-  # intent
+  # intent and share
   url_launcher: 6.2.6 #flutter 3.22.0
+#  share_plus: 11.1.0
 
   #qrcode
   qr_flutter: 4.1.0
