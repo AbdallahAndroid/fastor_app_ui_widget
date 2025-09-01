@@ -38,7 +38,7 @@ class IconAndSeparatorTextFieldDialogPicker extends StatefulWidget {
   IconAndSeparatorTextFieldDialogPicker({
     this.hint,
     this.colorLineBoarder,
-    //   colorLineBoarder: ColorResource.textFieldLightBoarderLine,
+    //   colorLineBoarder: AppColor.textFieldLightBoarderLine,
     required this.icon,
     required this.dataEntities,
     required this.listener,
@@ -105,7 +105,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
     return Container(
       width: 2,
       height: 25,
-      color: ColorResource.textFieldHint,
+      color: AppColor.textFieldHint,
     ) ;
   }
 
@@ -151,7 +151,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
       height: Figma.h(43),
       alignment: Alignment.center,
       child: ProgressCircleApp(
-          color: ColorResource.progress,
+          color: AppColor.progress,
           size: 40 ),
     );
 }
@@ -170,7 +170,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
 
   Widget _selectedNameWidget(){
     return TextCustomRegular( dataSelected?.title??"",
-      color: ColorResource.textFieldText,
+      color: AppColor.textFieldText,
       fontSize: Figma.h(16),
     );
   }
@@ -178,7 +178,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
 
   Widget _hintWidget(){
     return TextCustomRegular(  widget.hint??"select",
-      color: ColorResource.textFieldHint,
+      color: AppColor.textFieldHint,
       fontSize: Figma.h(16),
     );
   }

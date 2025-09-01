@@ -73,7 +73,7 @@ class DividerApp extends StatelessWidget {
     return  Container(
       width: DeviceTools.getWidth(context) - (widthOfTitle??0) - (marginLeftRight! * 2 ) ,
       height: 0.5,
-      color: color??ColorResource.dividerPrimaryLight,
+      color: color??AppColor.dividerPrimaryLight,
     );
   }
 

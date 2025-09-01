@@ -55,7 +55,7 @@ class IconAndSeparatorPasswordTextField extends StatefulWidget {
     this.errorsMessageArray
   }) {
 
-    colorLineBoarder ??= ColorResource.textFieldDarkBoarderLineBeforeFocused;
+    colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
 
@@ -108,8 +108,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
       width: getWidthSizeMinusMargin(),
       height: DimensionResource.textFieldHeight,
       decoration: BoarderHelper.cardView(
-        colorLine: ColorResource.textFieldDarkBoarderLineBeforeFocused,
-        colorBackground: ColorResource.textFieldBackground,
+        colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
+        colorBackground: AppColor.textFieldBackground,
         radiusSize: DimensionResource.cornerTextField,
       ),
       child: Row(
@@ -132,8 +132,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
       // hint_text: widget.hint_text?? "Enter password" ,
       fontSize: Figma.h( 16 ),
       // fontFamily: FontResource.regular,
-      hint_color: ColorResource.textFieldHint,
-      text_color: ColorResource.textFieldText,
+      hint_color: AppColor.textFieldHint,
+      text_color: AppColor.textFieldText,
       controller: widget.controller,
       width: getWidthTextField(),
       showOutlineInput: false,
@@ -159,7 +159,7 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
     return Container(
       width: 2,
       height: 25,
-      color: ColorResource.textFieldHint,
+      color: AppColor.textFieldHint,
     ) ;
   }
 
@@ -256,10 +256,10 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
 
-          Icon( Icons.info_outline, size: size, color: ColorResource.red,),
+          Icon( Icons.info_outline, size: size, color: AppColor.red,),
           SizedBox( width:  5 ,),
           TextApp( widget.errorMessage??"",
-            color: ColorResource.redMaterial,
+            color: AppColor.redMaterial,
             fontSize: size,
             // fontFamily: FontResource.regular,
           ),

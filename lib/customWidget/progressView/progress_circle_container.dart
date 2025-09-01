@@ -10,7 +10,7 @@ class ProgressCircleContainer extends StatelessWidget {
   EdgeInsets? margin;
 
   ProgressCircleContainer({this.color, this.size, this.margin}) {
-    color ??= ColorResource.progress;
+    color ??= AppColor.progress;
     size ??= 40.0;
   }
 

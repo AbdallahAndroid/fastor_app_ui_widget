@@ -39,7 +39,7 @@ class TimeHintBoxTab extends StatelessWidget {
               /// choose between : hint /or/ selected
               if( previousSelected == null ) TextApp(
                 hint,
-                color: ColorResource.grey ,
+                color: AppColor.grey ,
                 fontSize: 16.hr,
               ),
               if( previousSelected != null ) TextApp(
@@ -48,11 +48,11 @@ class TimeHintBoxTab extends StatelessWidget {
               ),
 
               ///  icon
-              Icon( Icons.alarm, size: 24.hr , color: ColorResource.grey,)
+              Icon( Icons.alarm, size: 24.hr , color: AppColor.grey,)
               // SvgPicture.asset(AppIcons.clock,
               //     width: 24.hr,
               //     height: 24.hr,
-              //     color: ColorResource.grey)
+              //     color: AppColor.grey)
 
             ],
           )),

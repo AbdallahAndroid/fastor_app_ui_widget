@@ -18,7 +18,7 @@ class TextError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextApp( title,
-        // color: color?? ColorResource.textLight,
+        // color: color?? AppColor.textLight,
         // fontFamily: FontResource.semibold,
         fontSize:   fontSize??Figma.w( 16),
       color: color??Colors.black

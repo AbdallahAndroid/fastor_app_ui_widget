@@ -23,7 +23,7 @@ class ProgressAnimation extends StatelessWidget {
       width: Figma.w( 150 ),
       height: Figma.w( 150 ),
       decoration: BoarderHelper.cardView(
-          colorBackground: ColorResource.progressContainer,
+          colorBackground: AppColor.progressContainer,
           radiusSize: 15
       ),
       alignment: Alignment.center,

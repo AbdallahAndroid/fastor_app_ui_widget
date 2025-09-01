@@ -56,7 +56,7 @@ class _CustomAppBarState extends State<SearchAppBar> {
   containerAppbar(){
     return Container(
       height: SearchAppBar.height,
-      color: Colors.black,//ColorResource.appBarBackground,
+      color: Colors.black,//AppColor.appBarBackground,
       padding: EdgeInsets.symmetric(
           horizontal: 30, //DimensionResource.marginLeftRightScreen ,
           vertical: Figma.h(10 )
@@ -70,8 +70,8 @@ class _CustomAppBarState extends State<SearchAppBar> {
     return Container(
       decoration: BoarderHelper.cardView(
           radiusSize: 15,
-          colorBackground: Colors.grey.withOpacity( 0.5),//ColorResource.textFieldBackground,
-          colorLine: Colors.grey, //ColorResource.textFieldBoarderLineBeforeFocused
+          colorBackground: Colors.grey.withOpacity( 0.5),//AppColor.textFieldBackground,
+          colorLine: Colors.grey, //AppColor.textFieldBoarderLineBeforeFocused
       ),
       child: iconAndInputField(),
     );
@@ -95,8 +95,8 @@ class _CustomAppBarState extends State<SearchAppBar> {
       // fontFamily: FontResource.regular,
       hint_text: widget.hint,
       isRemoveUnderline: true,
-      // hint_color: ColorResource.textFieldHint,
-      // text_color: ColorResource.textFieldText,
+      // hint_color: AppColor.textFieldHint,
+      // text_color: AppColor.textFieldText,
       textInputAction: TextInputAction.search,
       padding: EdgeInsets.only(
           top: Figma.h( 12 ),
@@ -126,7 +126,7 @@ class _CustomAppBarState extends State<SearchAppBar> {
         padding: EdgeInsets.all( 10 ),
         child: LangApp.rotateImageOrIcon(Icon(
           CupertinoIcons.search,
-          color: Colors.black, //ColorResource.textFieldIcon,
+          color: Colors.black, //AppColor.textFieldIcon,
           size: Figma.h(25),
         )) ,
       ),

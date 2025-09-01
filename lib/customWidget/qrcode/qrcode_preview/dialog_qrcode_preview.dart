@@ -33,8 +33,8 @@ class DialogQrcodePreview extends StatelessWidget {
       version: QrVersions.auto,
       size: 180.wr,
       padding: EdgeInsets.all( 15.wr ),
-      foregroundColor: ColorResource.white,
-      backgroundColor: ColorResource.black,
+      foregroundColor: AppColor.white,
+      backgroundColor: AppColor.black,
     );
   }
 

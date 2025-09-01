@@ -61,7 +61,7 @@ class MessageDialog {
 
     AwesomeDialog(
       context: context,
-      // dialogBackgroundColor: ColorResource.backgroundDialog,
+      // dialogBackgroundColor: AppColor.backgroundDialog,
       dialogType: DialogType.noHeader,
       animType: AnimType.bottomSlide,
       width: Figma.w(350),
@@ -70,7 +70,7 @@ class MessageDialog {
       title: title,
       titleTextStyle:   TextStyle(
           // fontFamily: FontResource.semibold,
-          // color: ColorResource.textPrimary,
+          // color: AppColor.textPrimary,
           fontSize: 20
       ),
 
@@ -78,7 +78,7 @@ class MessageDialog {
       desc: msg,
       descTextStyle:   TextStyle(
           // fontFamily: FontResource.regular,
-          // color: ColorResource.textPrimary,
+          // color: AppColor.textPrimary,
           fontSize: 14
       ),
 

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppColors with  ColorResource {
+class AppColor   {
 
-}
-mixin class ColorResource {
 
 
   /// primary
@@ -115,8 +113,6 @@ mixin class ColorResource {
 
   /// grey
   static var grey = Color(0xff69626d );
-
-
 
 
 }

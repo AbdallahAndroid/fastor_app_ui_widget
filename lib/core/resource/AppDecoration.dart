@@ -11,8 +11,8 @@ abstract class AppDecoration {
   static dialogWhite() {
     return BoarderHelper.cardView(
         radiusSize: 30.h,
-        colorLine: ColorResource.greenLight,
-        colorBackground: ColorResource.white);
+        colorLine: AppColor.greenLight,
+        colorBackground: AppColor.white);
   }
 
 
@@ -22,10 +22,10 @@ abstract class AppDecoration {
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [
-          ColorResource.primaryDark,
-          ColorResource.primaryLight,
-          ColorResource.primaryLight,
-          ColorResource.primaryLight,
+          AppColor.primaryDark,
+          AppColor.primaryLight,
+          AppColor.primaryLight,
+          AppColor.primaryLight,
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -35,8 +35,8 @@ abstract class AppDecoration {
 
   static cardBodyScreen() {
     return BoxDecoration(
-        color: ColorResource.white,
+        color: AppColor.white,
         borderRadius: BorderRadius.all(Radius.circular(30.r)),
-        border: Border.all(color: ColorResource.white));
+        border: Border.all(color: AppColor.white));
   }
 }

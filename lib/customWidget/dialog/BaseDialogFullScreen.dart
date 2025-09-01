@@ -32,7 +32,7 @@ class BaseDialogFullScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScaffoldApp(
         shapeTransparent: true,
-        shapeTransparentColor: ColorResource.areaAroundDialogTransparent,
+        shapeTransparentColor: AppColor.areaAroundDialogTransparent,
         body: Container(
             alignment: alignment ?? Alignment.center,
             width: DeviceTools.getWidth(context),

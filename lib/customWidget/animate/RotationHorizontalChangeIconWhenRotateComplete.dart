@@ -105,7 +105,7 @@ class _RotationHorizontalChangeIconEveryOneSecondState extends State<RotationHor
   icon1Widget(){
     return Icon( widget.icon1,
         size: Figma.w(100),
-        color: ColorResource.iconInsideProgressContainer
+        color: AppColor.iconInsideProgressContainer
     );
   }
 
@@ -113,7 +113,7 @@ class _RotationHorizontalChangeIconEveryOneSecondState extends State<RotationHor
   icon2Widget(){
     return Icon( widget.icon2,
         size: Figma.w(100),
-        color: ColorResource.iconInsideProgressContainer
+        color: AppColor.iconInsideProgressContainer
     );
   }
 

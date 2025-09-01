@@ -56,8 +56,8 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoarderHelper.cardView(
-          colorLine: ColorResource.textFieldDarkBoarderLineBeforeFocused,
-          colorBackground: ColorResource.textFieldBackground,
+          colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
+          colorBackground: AppColor.textFieldBackground,
           radiusSize: DimensionResource.cornerTextField,
           widthLine: 2
       ),
@@ -71,13 +71,13 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
             widget.listener( countryCode_text!, false );
           },
           textStyle:  TextStyle(
-            color: ColorResource.textPrimary,
+            color: AppColor.textPrimary,
             // fontFamily: FontResource.regular,
             fontSize: Figma.h( 16 ),
             // fontFamily: FontResources.regular
           ),
           dialogTextStyle:    TextStyle(
-            color: ColorResource.textPrimary,
+            color: AppColor.textPrimary,
             fontSize: Figma.h( 14 ),
             // fontFamily: FontResources.regular
           ),

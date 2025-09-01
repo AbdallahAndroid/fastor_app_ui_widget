@@ -53,7 +53,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   }){
 
     // phone_text = controller?.text;
-    // colorLineBoarder ??= ColorResource.textFieldDarkBoarderLineBeforeFocused;
+    // colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
 
@@ -122,8 +122,8 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     Log.i("textFieldAndErrorMessage() - before build phoneController: ${controller}");
     return Container(
       decoration: BoarderHelper.cardView(
-          colorLine: ColorResource.textFieldDarkBoarderLineBeforeFocused,
-          colorBackground: ColorResource.textFieldBackground,
+          colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
+          colorBackground: AppColor.textFieldBackground,
           radiusSize: DimensionResource.cornerTextField,
           widthLine: 2
       ),
@@ -155,8 +155,8 @@ class MobileWithCustomErrorShape extends StatelessWidget {
       maxLines: 1,
       minLines: 1,
       maxLength: 12,
-      hint_color: ColorResource.textFieldHint,
-      text_color: ColorResource.textFieldText,
+      hint_color: AppColor.textFieldHint,
+      text_color: AppColor.textFieldText,
       hint_text: "Mobile number".tra(),
       // autovalidateMode:  AutovalidateMode.onUserInteraction,
       // validatorCustom:  ValidatorApp.mobile( error_text: "phone more than 7 digits".tra() ) ,
@@ -218,10 +218,10 @@ class MobileWithCustomErrorShape extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          Icon( Icons.info_outline, size: size, color: ColorResource.red,),
+          Icon( Icons.info_outline, size: size, color: AppColor.red,),
           SizedBox( width:  5 ,),
           TextApp(  errorMessage??"",
-            color: ColorResource.redMaterial,
+            color: AppColor.redMaterial,
             fontSize: size,
             // fontFamily: FontResource.regular,
           ),

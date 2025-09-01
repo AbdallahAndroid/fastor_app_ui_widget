@@ -47,7 +47,7 @@ class DateHintBoxTab extends StatelessWidget {
               ///  icon
               Icon(Icons.calendar_month,
                   size: 24.hr,
-                  color: ColorResource. grey
+                  color: AppColor. grey
               )
 
             ],

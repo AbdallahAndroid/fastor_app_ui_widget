@@ -23,15 +23,15 @@ enum CalenderTypeApp { dateStartFromToday, birthday }
     errorBackendJson: stateCubit is RegisterErrorState ? (stateCubit as RegisterErrorState).errors : null ,
     errorBackendKeyJson: "birthday",
     decoration: BoarderHelper.cardView(
-    colorLine: ColorResource.textFieldBoarderLineBeforeFocused,
+    colorLine: AppColor.textFieldBoarderLineBeforeFocused,
     radiusSize: DimensionResource.cornerTextField,
-    colorBackground: ColorResource.textFieldBackground
+    colorBackground: AppColor.textFieldBackground
     ),
     calenderTypeApp: CalenderTypeApp.birthday,
     dateSelected: request.birthdate,
-    colorTextTitle: ColorResource.textPrimary,
-    colorTextSelected: ColorResource.textPrimary,
-    colorTextUnSelected: ColorResource.textLight,
+    colorTextTitle: AppColor.textPrimary,
+    colorTextSelected: AppColor.textPrimary,
+    colorTextUnSelected: AppColor.textLight,
     fontFamily: FontResource.regular,
     fontSize: Figma.h( 16 ),
     width: getTextFieldWidth(),
@@ -170,7 +170,7 @@ class _CalenderCustomState extends State<IconAndSeparatorDateShapeTextFieldApp> 
     return Container(
       width: 2,
       height: 25,
-      color: ColorResource.textFieldHint,
+      color: AppColor.textFieldHint,
     ) ;
   }
 

@@ -8,7 +8,7 @@ abstract class AppTextStyles {
 
   static TextStyle fontGrey = TextStyle(
     fontSize: 18.sp,
-    color: ColorResource.grey,
+    color: AppColor.grey,
     fontWeight: FontWeight.normal,
   );
 

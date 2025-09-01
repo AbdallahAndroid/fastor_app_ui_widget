@@ -18,7 +18,7 @@ class ItemDicatorWidget extends StatelessWidget {
         decoration: BoarderHelper.cardView(
           radiusSize: 5,
           colorLine: Colors.transparent,
-          colorBackground: Colors.green, //ColorResource.tapSelectedBackground,
+          colorBackground: Colors.green, //AppColor.tapSelectedBackground,
         ),
       ) ;
     } else {
@@ -29,7 +29,7 @@ class ItemDicatorWidget extends StatelessWidget {
         decoration: BoarderHelper.cardView(
           radiusSize: 5,
           colorLine: Colors.transparent,
-          colorBackground: Colors.grey , //ColorResource.tapUnSelectedBackground,
+          colorBackground: Colors.grey , //AppColor.tapUnSelectedBackground,
         ),
       ) ;
     }

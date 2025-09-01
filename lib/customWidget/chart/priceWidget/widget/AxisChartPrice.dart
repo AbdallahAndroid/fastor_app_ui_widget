@@ -29,7 +29,7 @@ extension AxisChartPrice on ChartPriceProductState {
         /// line above label
         axisLine: AxisLine( color: colorBoarderLineOutlineChart(), width: getWidthBoarderLineOutlineChart() ),
         labelStyle: TextStyle(
-            color: ColorResource.textPrimary,
+            color: AppColor.textPrimary,
             // fontFamily: FontResources.regular,
             fontSize: isDetailShape() ?  Figma.w( 12 ) : 0
         )
@@ -53,7 +53,7 @@ extension AxisChartPrice on ChartPriceProductState {
         axisLine: AxisLine( color: colorBoarderLineOutlineChart(), width: getWidthBoarderLineOutlineChart() ),
 
         labelStyle: TextStyle(
-            color: ColorResource.textPrimary,
+            color: AppColor.textPrimary,
             // fontFamily: FontResources.regular,
             fontSize: isDetailShape() ?  Figma.w( 12 ) : 0
         )

@@ -44,7 +44,7 @@ class GalleryOrCameraPickerDialog {
       // desc:  "".tra(),
       // descTextStyle:   TextStyle(
       //     fontFamily: FontResource.regular,
-      //     color: ColorResource.textPrimary,
+      //     color: AppColor.textPrimary,
       //     fontSize: 14
       // ),
 
