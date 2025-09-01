@@ -19,23 +19,41 @@ class ContainerInnerCornerAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: AppbarCornerBottomInnerUtils.appBarPrimaryLinearGradientNoRadius(),
-      child: Stack(
-        children: [
-          SizedBox( width: DeviceTools.getWidth(context), height: DeviceTools.getHeight(context),),
-          appBarCustomWidget,
-          containerBody(context)
+      // decoration: AppbarCornerBottomInnerUtils.appBarPrimaryLnearGradientNoRadius(),
+        color: AppColor.appBarBackground,
+        child: Stack(
+          children: [
+            Container(
+              width: DeviceTools.getWidth(context),
+              height: DeviceTools.getHeight(context),
+              color: AppColor.appBarBackground,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: heightAppbar),
+              child: cropBodyInsideRadius(context),
+            ),
+            appBarCustomWidget
 
-        ],
-      )
+          ],
+        )
     );
   }
 
-  containerBody(BuildContext context ) {
-    return Container(
-      decoration: AppbarCornerBottomInnerUtils.childBodyDecoration(),
-      margin: EdgeInsets.only(top: AppbarCornerBottomInnerUtils.getAppBarHeight(context)),
-      child: body,
+  cropBodyInsideRadius(BuildContext context ) {
+    return ClipRRect(
+      borderRadius:   BorderRadius.only(
+        topLeft: Radius.circular(32.r ),
+        topRight: Radius.circular(32.r ),
+      ),
+      child: Container(
+        color:  AppColor.backgroundAllScreens,
+        // decoration: AppbarCornerBottomInnerUtils.childBodyDecoration(),
+        constraints: BoxConstraints(
+          minHeight: DeviceTools.getHeight(context) - heightAppbar,
+          minWidth: DeviceTools.getWidth(context),
+        ),
+        child: body,
+      ),
     );
   }
 
