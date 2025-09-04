@@ -12,9 +12,13 @@ class GridViewFourColumn extends StatelessWidget {
 
   MainAxisAlignment mainAxisAlignment;
 
+
+  double marginBetweenItems   ;
+
   GridViewFourColumn(
       {required this.children,
         required this.mainAxisAlignment,
+        required this.marginBetweenItems,
       required this.isPutInsideSingleChildScrollView}) {
     setValues();
   }
@@ -23,6 +27,9 @@ class GridViewFourColumn extends StatelessWidget {
 
   setValues() {
     forChildrenGridList();
+    if( children.length >= 4 ) {
+      mainAxisAlignment = MainAxisAlignment.center;
+    }
   }
 
   void forChildrenGridList() {
@@ -63,18 +70,21 @@ class GridViewFourColumn extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren1,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren2,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren3,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GridViewFiveColumn extends StatelessWidget {
+
+class GridViewSixColumn extends StatelessWidget {
   List<Widget> children;
   bool isPutInsideSingleChildScrollView;
 
@@ -10,12 +11,17 @@ class GridViewFiveColumn extends StatelessWidget {
   List<Widget> _columnsChildren3 = [];
   List<Widget> _columnsChildren4 = [];
   List<Widget> _columnsChildren5 = [];
+  List<Widget> _columnsChildren6 = [];
 
   MainAxisAlignment mainAxisAlignment;
 
-  GridViewFiveColumn(
+
+  double marginBetweenItems   ;
+
+  GridViewSixColumn(
       {required this.children,
         required this.mainAxisAlignment,
+        required this.marginBetweenItems,
       required this.isPutInsideSingleChildScrollView}) {
     setValues();
   }
@@ -24,21 +30,32 @@ class GridViewFiveColumn extends StatelessWidget {
 
   setValues() {
     forChildrenGridList();
+    if( children.length >= 6 ) {
+      mainAxisAlignment = MainAxisAlignment.center;
+    }
   }
 
   void forChildrenGridList() {
     for (int i = 0; i < children.length; i++) {
       Widget child = children[i];
-      if (i % 5 == 0) {
+      if (i % 6 == 0) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 0");
         _columnsChildren1.add(child);
-      } else if (i % 5 == 1) {
+      } else if (i % 6 == 1) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 1");
         _columnsChildren2.add(child);
-      } else if (i % 5 == 2) {
+      } else if (i % 6 == 2) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 2");
         _columnsChildren3.add(child);
-      } else if (i % 5 == 3) {
+      } else if (i % 6 == 3) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 3");
         _columnsChildren4.add(child);
-      } else if (i % 5 == 4) {
+      } else if (i % 6 == 4) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 4");
         _columnsChildren5.add(child);
+      } else if (i % 6 == 5) {
+        // Log.i("GridViewSixColumn - forChildrenGridList() - i: $i - case 5");
+        _columnsChildren6.add(child);
       }
     }
   }
@@ -66,29 +83,40 @@ class GridViewFiveColumn extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren1,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren2,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren3,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren4,
         ),
+        SizedBox( width: marginBetweenItems,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _columnsChildren5,
+        ),
+        SizedBox( width: marginBetweenItems,),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _columnsChildren6,
         ),
       ],
     );
