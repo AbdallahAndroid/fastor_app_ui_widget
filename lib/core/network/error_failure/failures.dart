@@ -43,3 +43,5 @@ class MissedParameterFailure  extends Failure {
   String? message;
   MissedParameterFailure( this.message );
 }
+
+class NoInternetFailure extends Failure {}
