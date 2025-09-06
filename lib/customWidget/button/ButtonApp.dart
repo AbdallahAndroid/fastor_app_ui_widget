@@ -172,28 +172,9 @@ class ButtonApp extends StatelessWidget {
     );
   }
 
-
-  // Widget stackTextEmptyWithProgress(){
-  //   return Stack(children: [
-  //     emptyTextWidgetWithSameWidthOfNormalText(),
-  //     Positioned(child: progressCircle(), left: 0, right: 0, bottom: 7,)
-  //   ],);
-  // }
-
-
   Widget progressCircle(){
     var prog = ProgressCircleApp(size: sizeProgress, color: colorProgress);
     return SizedBox( width: sizeProgress! * 2, child: prog );
-  }
-
-
-  Widget emptyTextWidgetWithSameWidthOfNormalText(){
-    int lenghtText = text.toString().length;
-    var textSpace = " ";
-    for( int i = 0; i < lenghtText ; i++ ) {
-      textSpace += " ";
-    }
-    return _getTextWidget(textSpace);
   }
 
   //------------------------------------------------------------------- button text and icon
