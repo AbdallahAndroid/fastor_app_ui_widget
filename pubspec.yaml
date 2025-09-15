@@ -77,6 +77,11 @@ dependencies:
   # deep link
   uni_links3: ^0.5.3
 
+  # video
+  video_thumbnail: 0.5.6
+#  video_player: 2.9.2
+#  chewie: 1.8.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
