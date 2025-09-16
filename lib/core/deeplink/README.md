@@ -2,19 +2,25 @@ basm allah alrahman elrahmim
 
 ## Get start 
 
-1. code setup form main screens 
+1. form main() 
 ```
-    @override
-    void initState() {
+await initDeepLinkFromMainMethod();
+```
+
+2. from main screen : 
+* like home/login/any navigation bottom main
+```
+  @override
+  void initState() { 
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback( ( t ){
-    initDeepLinkFromMainScreens(context);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) { 
+      initDeepLinkFromMainScreens(context);
     });
-    }
+  }
 
 ```
 
-2. at file "DeepLinkSetup" handle navigation 
+3. at file "DeepLinkSetup" handle navigation 
  
 4. Android Manfiest 
 ``` 
@@ -30,5 +36,40 @@ basm allah alrahman elrahmim
                     android:pathPrefix="/r/" />
 
             </intent-filter>
+
+```
+
+5. at class target navigation :
+* make once click back refresh the app, by open home page 
+- router :
+```
+  static void realestateDetailPageByIdOpenByDeepLink(BuildContext context, int  realestateModelSelectedId) {
+    Log.i("RouterPage - realestateDetailPageByIdOpenByDeepLink() - context: $context");
+    Log.i("RouterPage - realestateDetailPageByIdOpenByDeepLink() - realestateModelSelectedId: $realestateModelSelectedId");
+    NavigationTools.push(context, RealestateDetailScreen(
+        id: realestateModelSelectedId,
+        isOpenFromDeepLink : true,
+    ) );
+  }
+```
+
+- handle click back :
+```
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+        canPop:  false    ,
+        onPopInvoked: ( b ) async {
+          Log.i( "RealestateDetailScreen - PopScope() - click - isOpenFromDeepLink: ${widget.isOpenFromDeepLink}");
+          if( widget.isOpenFromDeepLink! ) {
+            RouterPage.home(context);
+          } else {
+            Navigator.pop(context);
+          }
+          return   ;
+        },
+        child: consumerRealestate()
+    );
+  }
 
 ```
