@@ -8,6 +8,29 @@ import 'BaseBoarderHelper.dart';
 
 class BoarderHelper extends BaseBoarderHelper{
 
+  ///--------------------------------------------------------------------- shadow
+
+  static BoxDecoration shadow({
+    Color? colorBackground ,
+    Color? colorShadow ,
+    double? widthLine,
+    required BorderRadius  radiusBorder,
+  }){
+    return BoxDecoration(
+      color: colorBackground, // opaque color behind shadow
+      boxShadow: [
+        BoxShadow(
+          color: colorShadow??Colors.black.withOpacity(0.25), // black with 25% opacity
+          offset: const Offset(0, 4), // vertical shift (bottom shadow)
+          blurRadius: 6, // how blurry
+          spreadRadius: 0, // optional
+        ),
+      ],
+      borderRadius: radiusBorder,
+    );
+  }
+
+
   //--------------------------------------------------------------------- cardview
 
   static BoxDecoration cardView(  {
