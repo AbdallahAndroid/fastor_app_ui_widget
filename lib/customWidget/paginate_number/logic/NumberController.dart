@@ -14,7 +14,7 @@ extension NumberController on PaginateBarState {
     //remove previous
     listNumberWidget = [];
 
-    /// case the page
+    /// case the scaffold
 
     if( _isTypeNumberDecending() ) {
       caseNumberSortDecending();
@@ -66,7 +66,7 @@ extension NumberController on PaginateBarState {
 
   int _asendingModeCalculateStarterNeedoShow(){
 
-    ///case current page is zero
+    ///case current scaffold is zero
     if( widget.currentPage == 0 ) {
       var defaultStarter = 1;
       return defaultStarter;

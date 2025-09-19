@@ -29,11 +29,11 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
 
 
   static List<Widget> _mainPages = <Widget>[
-    UnderDevelopmentNavigationScreen( "page 1"),
-    UnderDevelopmentNavigationScreen( "page 2"),
-    UnderDevelopmentNavigationScreen( "page 3"),
-    UnderDevelopmentNavigationScreen( "page 4"),
-    UnderDevelopmentNavigationScreen( "page 5"),
+    UnderDevelopmentNavigationScreen( "scaffold 1"),
+    UnderDevelopmentNavigationScreen( "scaffold 2"),
+    UnderDevelopmentNavigationScreen( "scaffold 3"),
+    UnderDevelopmentNavigationScreen( "scaffold 4"),
+    UnderDevelopmentNavigationScreen( "scaffold 5"),
   ];
 
 
@@ -119,7 +119,7 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
                   color: getColorSelectedOrNot(0),
                 ),
               )),
-          label: 'page 1'.tra(),
+          label: 'scaffold 1'.tra(),
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.white,
@@ -131,7 +131,7 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
                 color: getColorSelectedOrNot(1),
               )
           ),
-          label: 'page 2'.tra(),
+          label: 'scaffold 2'.tra(),
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.white,
@@ -144,7 +144,7 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
                 color: getColorSelectedOrNot(2),
               )
           ),
-          label: 'page 3'.tra(),
+          label: 'scaffold 3'.tra(),
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.white,
@@ -155,7 +155,7 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
                 size: sizeIcon,
                 color: getColorSelectedOrNot(3),
               )),
-          label: 'page 4'.tra(),
+          label: 'scaffold 4'.tra(),
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.white,
@@ -167,7 +167,7 @@ class NavigationBottomMainState extends State<NavigationBottomMainScreen> {
                 color: getColorSelectedOrNot(4),
               )
           ),
-          label: 'page 5'.tra(),
+          label: 'scaffold 5'.tra(),
         ),
       ],
       currentIndex: selectedIndexNavigation,

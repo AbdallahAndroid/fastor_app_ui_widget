@@ -35,7 +35,7 @@ class ListenerChangeDeviceSize   {
   double newSize_height = 0;
 
   /**
-   when this page context it's means i need to stop change size
+   when this scaffold context it's means i need to stop change size
   */
   late BuildContext currentPageContext;
 
@@ -115,7 +115,7 @@ class ListenerChangeDeviceSize   {
     if( w == 0 ) return false;
     if( h == 0) return false;
 
-    //check page change, by open another page
+    //check scaffold change, by open another scaffold
     /**
         This error happens if you call setState() on a State object for a widget that no longer appears in the widget tree
      */

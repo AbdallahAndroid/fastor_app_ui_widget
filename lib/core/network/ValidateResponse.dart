@@ -125,19 +125,19 @@ class ValidateResponse {
 
   /**
    *1- example totalBar record is 100, while pagiantor is 10
-   * current page is 9
+   * current scaffold is 9
    * "to" is 10
    *  >> result false
    *
    *2- example totalBar record is 100, while pagiantor is 10
-   * current page is 10
+   * current scaffold is 10
    * "to" is 10
    *  >> result true "there is no next pages"
 
 
    *
    *3- example totalBar record is 0 zero, while pagiantor is 10
-   * current page is 1
+   * current scaffold is 1
    * "to" is 0
    *  >> result true "there is no next pages"
    */
@@ -147,7 +147,7 @@ class ValidateResponse {
     if( last_page == null ) return false;
     /**
      * why write <= not write == ?
-     * in case zero record the "to" is zero while current page is "1"
+     * in case zero record the "to" is zero while current scaffold is "1"
      */
     bool result =  last_page <= currentPage;
    // Log.i( "isPaginateLaravelEnd() - currentPage: " + currentPage.toString() +

@@ -90,7 +90,7 @@ class SliderImageState extends State<SliderImage> {
         autoPlayAnimationDuration: Duration(milliseconds: 800),
         autoPlayCurve: Curves.fastOutSlowIn,
         scrollDirection: Axis.horizontal,
-        enlargeCenterPage: false,  //shape enlarge the center of page while looping between screens
+        enlargeCenterPage: false,  //shape enlarge the center of scaffold while looping between screens
         onPageChanged: ( int index, slider.CarouselPageChangedReason reason ){
           Log.i("imageSlider() - onPageChanged - index: $index");
           setState(() {

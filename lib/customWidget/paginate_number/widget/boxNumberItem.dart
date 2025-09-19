@@ -48,7 +48,7 @@ extension BoxNumberItem on PaginateBarState {
   Widget setupClickOnThisNumber(int page, bool isSelected, Widget textWidget) {
 
     return GestureDetector( child : textWidget, onTap:  (){
-      Log.i( "setupClickOnThisNumber() - Click page: " + page.toString()  );
+      Log.i( "setupClickOnThisNumber() - Click scaffold: " + page.toString()  );
 
       msgError = null;
 

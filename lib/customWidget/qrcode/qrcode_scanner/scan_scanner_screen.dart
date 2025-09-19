@@ -3,7 +3,7 @@
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
-import 'package:fastor_app_ui_widget/customWidget/page/ScaffoldApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/scaffold/ScaffoldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/qrcode/qrcode_scanner/automation/ScanAutomation.dart';
 import 'package:fastor_app_ui_widget/customWidget/qrcode/qrcode_scanner/logic/scan_scanner_controller.dart';
