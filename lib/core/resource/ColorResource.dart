@@ -114,5 +114,8 @@ class AppColor   {
   /// grey
   static var grey = Color(0xff69626d );
 
+  /// white
+ static var whiteTransparent = Colors.white.withOpacity(0.7);
+
 
 }
