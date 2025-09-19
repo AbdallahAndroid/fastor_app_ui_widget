@@ -124,22 +124,22 @@ class MobileWithCustomErrorShape extends StatelessWidget {
       decoration: BoarderHelper.cardView(
           colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
           colorBackground: AppColor.textFieldBackground,
-          radiusSize: DimensionResource.cornerTextField,
+          radiusSize: AppDimension.cornerTextField,
           widthLine: 2
       ),
       // padding: LangApp.onlyEdgeInsets(left: 10 ),
       alignment: LangApp.getAlignmentGeometryStartCenter(),
-      height: DimensionResource.textFieldHeight,
+      height: AppDimension.textFieldHeight,
       child:  Stack(children: [
         SizedBox(
           width: getWidthPhoneOnly(),
-          height: DimensionResource.textFieldHeight,
+          height: AppDimension.textFieldHeight,
         ),
         Positioned(child:  textField(), top: Figma.h( 20) ),
         if( ToolsValidation.isValid(  errorMessage )    ) PositionedApp.langApp(
             child:  errorMessageWidget(),
             left: 0,
-            top: DimensionResource.textFieldHeight - Figma.h( 17 )
+            top: AppDimension.textFieldHeight - Figma.h( 17 )
         )
       ],),
     );
@@ -182,8 +182,8 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   getWidthPhoneOnly(){
     return DeviceTools.getWidth(context!)
         - CountryTextFieldPicker.widthCountryCode -  marginBetweenTwoField
-        - DimensionResource.marginLeftRightScreen
-        -  DimensionResource.marginLeftRightScreen
+        - AppDimension.marginLeftRightScreen
+        -  AppDimension.marginLeftRightScreen
         -  marginBetweenTwoField;
   }
 

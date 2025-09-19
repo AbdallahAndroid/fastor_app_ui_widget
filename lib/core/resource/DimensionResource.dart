@@ -1,6 +1,7 @@
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
+import 'package:flutter/material.dart';
 
-class DimensionResource {
+class AppDimension {
 
 
   /// textfield
@@ -22,6 +23,50 @@ class DimensionResource {
   static var marginBetweenTwoSections = Figma.h( 16 );
   static var marginBetweenItemInSingleSections = Figma.h( 8 );
   static var marginBetweenItemList = Figma.h( 16 );
+
+
+  ///-------------------------------------------------------------------------------
+
+
+  static var marginHorizontalScreen = 16.w ;
+
+  static var sectionGridviewBottomPadding = 4.h;
+
+  static double homeScreenFilterByBuildTypeHeight() =>  32.h;
+
+  static double mapCityTriangleMarkerHeight = 20;
+
+  static double mapRealestateTriangleMarkerHeight = 20;
+
+  static double mapTriangleMarkerHeight = 36;
+
+  /// marker city
+  // static double mapCityMarkerCustomWidth = 200;
+  // static double mapCityMarkerCustomHeight = 130;
+
+  /// marker Cluster
+  static double mapClusterMarkerCustomWidth = 200;
+  static double mapClusterMarkerCustomHeight = 130;
+
+  /// marker realestate
+  static double mapRealestateMarkerCustomWidth = 100;
+  static double mapRealestateMarkerCustomHeight = 23 + 13 - 3;
+
+  /// radius
+  static double  radiusTab() => 32.h;
+  static radiusDialog() => 30.r ;
+  static var radiusSection = 24.r;
+  static double  radiusAllScreen  =  32.h;
+
+  /// appbar
+  static double tapAppBarHeight() => 44.h;
+
+
+
+  static dialogWidth() => 340.w;
+
+  static double  factorOfRenderRepaintBoundary( double v) => v * 2.0;
+
 
 
 }

@@ -58,11 +58,11 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
       decoration: BoarderHelper.cardView(
           colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
           colorBackground: AppColor.textFieldBackground,
-          radiusSize: DimensionResource.cornerTextField,
+          radiusSize: AppDimension.cornerTextField,
           widthLine: 2
       ),
       width: CountryTextFieldPicker.widthCountryCode ,
-      height: DimensionResource.textFieldHeight,
+      height: AppDimension.textFieldHeight,
       child: CountryCodePicker(
           onChanged: (countryCode) {
             // Log.i( "c: " + countryCode.toString() );

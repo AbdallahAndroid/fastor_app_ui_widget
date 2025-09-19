@@ -17,7 +17,7 @@ class IndicatorColorTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: DimensionResource.marginBetweenItemInSingleSections),
+      margin: EdgeInsets.only(bottom: AppDimension.marginBetweenItemInSingleSections),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,

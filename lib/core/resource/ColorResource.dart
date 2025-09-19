@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class AppColor   {
 
 
+  ///theme device
+  static const statusBarColorBackground =  Color( 0xffCE1226);
+  static const colorBackgroundNavigation = Colors.white;
+
 
   /// primary
   static Color primaryDark = Colors.green;
   static Color primaryLight = Colors.greenAccent;
+  static Color primary = Colors.green;
 
   /// backgroud views
   static Color backgroundAllScreens = Colors.white;

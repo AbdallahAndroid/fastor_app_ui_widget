@@ -33,7 +33,7 @@ class ProgressWithIcon extends StatelessWidget {
             color: AppColor.iconInsideProgressContainer,
             size: Figma.h( 100),
           ),
-          SizedBox( height: DimensionResource.marginBetweenTwoSections ,),
+          SizedBox( height: AppDimension.marginBetweenTwoSections ,),
           ProgressCircleApp(color: AppColor.progressCircle, size: Figma.h( 40),),
         ],),
     );

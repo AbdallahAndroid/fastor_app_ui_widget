@@ -117,7 +117,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
   Widget iconAndTextField(){
     return Container(
       width: widget.width ,
-      height: widget.height??DimensionResource.textFieldHeight,
+      height: widget.height??AppDimension.textFieldHeight,
       alignment: LangApp.getAlignmentGeometryStartCenter(),//Alignment.centerLeft,
       decoration: widget.decoration ?? BoarderHelper.cardView(
           colorLine: Colors.grey.withOpacity( 0.5),
