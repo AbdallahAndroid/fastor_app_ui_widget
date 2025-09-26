@@ -17,10 +17,16 @@ class AppColor   {
   static Color backgroundAllScreens = Colors.white;
   static Color backgroundCard =  Colors.black;
   static Color backgroundItemList = Colors.white;
-  static Color backgroundDialog = Colors.white;
   static Color backgroundBottomSheet =  backgroundCard.withOpacity( 0.4);
   static var backgroundCardTransparent  =  backgroundCard.withOpacity( 0.1);
   static var blurCard =  Colors.blueAccent.withOpacity(0.5); //.withOpacity( 0.4 );
+
+  /// dialog
+  static var backgroundDialogDismissHome = Colors.black.withOpacity( 0.4 ); /// Color(0x99000000);
+  static Color dialogDismisableBackground = Color(0xffFFFFFF ).withOpacity( 0.6 );
+  static var backgroundDialog =  Colors.white; //figma make it white ffffff
+  static var backgroundCardDialogTransparent =  Colors.white.withOpacity(0.6 ); //figma make it white ffffff
+
 
   /// text
   static var textPrimary = Colors.black;
