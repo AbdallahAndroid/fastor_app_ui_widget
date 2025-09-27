@@ -1,11 +1,14 @@
 import 'dart:ui';
 
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/utils/theme/ColorProject.dart';
-import 'package:fastor_app_ui_widget/core/utils/theme/app_dimension.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+// import 'package:fastor_app_ui_widget/core/log/Log.dart';
+// import 'package:fastor_app_ui_widget/core/utils/theme/ColorProject.dart';
+// import 'package:fastor_app_ui_widget/core/utils/theme/app_dimension.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/data/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/dropdown_floating_label_picker/logic/DropdownShapeDialogController.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/listener/typedef_dialog_picker.dart';
@@ -134,7 +137,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     return Transform.translate(
       offset:   Offset(0, -12.sp /2  ), // x = 0, y = -12 (move UP by 12 px)
       child:  Container(
-        margin: EdgeInsets.symmetric( horizontal: 16.5.w ),
+        margin: EdgeInsets.symmetric( horizontal: 16.5  ),
         color:  colorBackgroundInputField ,
         padding: EdgeInsets.symmetric( horizontal: 4.w  ),
         child: TextApp(  title ,

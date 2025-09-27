@@ -46,6 +46,10 @@ class AppColor   {
   static var textFieldHint = Colors.grey;
   static var textFieldText =  Color(0xff02263c );
   static var textFieldDarkBoarderLineBeforeFocused =  Colors.grey;
+  static var textFieldLabel = Colors.black.withOpacity(0.60); /// figma;
+  static var textFieldBoarder =  Colors.black.withOpacity( 0.38) ; /// figma
+  static var textFieldError = Colors.red;
+
 
   /// buttons
   static var buttonBoarder = Color(0xffC7E2F1);
