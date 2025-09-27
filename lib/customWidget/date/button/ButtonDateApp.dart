@@ -201,7 +201,7 @@ class _CalenderCustomState extends State<ButtonDateApp> {
     );
   }
 
-  //--------------------------------------------------------- date picker
+  //--------------------------------------------------------- date camera
 
   Future  showDialogPickerDate( ) async {
     //Log.i( "showDialogPickerDate( )");

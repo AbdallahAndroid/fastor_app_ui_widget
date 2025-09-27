@@ -55,7 +55,7 @@ dependencies:
   syncfusion_flutter_charts: 22.2.12
   fl_chart: 0.69.0
 
-  #picker
+  #camera
   image_picker: 1.0.4
   permission_handler: 10.4.1
 

@@ -96,7 +96,7 @@ class DateFromToRowTabsState extends State<DateFromToRowTabs> {
     );
   }
 
-  ///------------------------------------------------------------------- picker
+  ///------------------------------------------------------------------- camera
 
   void _showFromDatePicker(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(

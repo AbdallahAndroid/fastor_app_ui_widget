@@ -39,7 +39,7 @@ class AttachTools {
       XFile? xFile = await ImagePicker().pickImage(source: ImageSource.gallery);
       Log.i("_pickerFile() - xFile " + xFile.toString());
 
-      //check mobile cancel picker image
+      //check mobile cancel camera image
       if (xFile == null) {
         Log.i("_pickerFile() - photo == null - stop! ");
         //return failed
