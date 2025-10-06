@@ -207,7 +207,15 @@ class _MobileCountryAppState extends State<MobileCountryApp> {
 
           updateCallback();
         },
+        // style
+        dialogTextStyle: widget.textStyle,
         textStyle: widget.textStyle,
+        headerTextStyle: widget.textStyle?? TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+        ),
+
         // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
         initialSelection: countryCode_text,
         favorite: widget.favoriteCountryCodeArray??[ "+966",  "+20"],

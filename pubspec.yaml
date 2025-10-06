@@ -32,7 +32,7 @@ dependencies:
   flutter_spinkit: #^5.1.0
   need_resume:
   internet_connection_checker:
-  country_code_picker:
+  country_code_picker: 3.3.0
   #timezone_to_country: 2.2.1 or more higher not working with flutter 3.22.0
   timezone_to_country: 2.2.0
   country_dial_code:
