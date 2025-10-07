@@ -32,6 +32,10 @@ extension DioServiceFastor on NetworkManagerDio {
       ));
     }
 
+    /// valid any status code
+    _dio.options.validateStatus = (status ) => status != null  ;
+
+
     //time out have issue between version "4 and 5"
     /**
         if(timeOutSecond != null ) {
@@ -74,6 +78,10 @@ extension DioServiceFastor on NetworkManagerDio {
           responseBody: isEnableLogDioPretty!,
         ));
       }
+
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
 
       //time out have issue between version "4 and 5"
       /**
@@ -118,6 +126,11 @@ extension DioServiceFastor on NetworkManagerDio {
         ));
       }
 
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
+
+
       //time out have issue between version "4 and 5"
       /**
           if(timeOutSecond != null ) {
@@ -161,6 +174,10 @@ extension DioServiceFastor on NetworkManagerDio {
         ));
       }
 
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
+
       //time out have issue between version "4 and 5"
       /**
           if(timeOutSecond != null ) {
@@ -202,6 +219,9 @@ extension DioServiceFastor on NetworkManagerDio {
           responseBody: isEnableLogDioPretty!,
         ));
       }
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
 
       //time out have issue between version "4 and 5"
       /**
