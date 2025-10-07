@@ -1,9 +1,29 @@
 import '../../utils/values/ToolsString.dart';
 
+String makeString(dynamic v ) => ApiParserApp.parseStringDynamic( v )??"";
+int makeInt(dynamic v ) => ApiParserApp.parseIntDynamic( v )??0;
+double makeDouble(dynamic v ) => ApiParserApp.parseDoubleOrInt( v )??0;
+bool makeBoolean(dynamic v ) => ApiParserApp.parseBooleanDynamic( v )??false ;
+
+
+
 /// api parse status, or boolean, or double as string format
 class ApiParserApp {
 
 //------------------------------------------------------------------ boolean read
+
+
+  /// "block": "0",  >> means false
+  static bool parseBooleanDynamic(dynamic n) {
+    if (n == null) return false;
+    String value = n.toString().trim();
+    //case true
+    if (value == "1") return true;
+    if (value == "true") return true;
+    //default
+    return false;
+  }
+
 
       ///  - example success:
       ///   {
@@ -210,6 +230,14 @@ class ApiParserApp {
     bool isEmptyArray = dataString == "[]";
     return isEmptyArray;
   }
+
+
+  static String? parseStringDynamic( dynamic d ) {
+    if( d == null ) return null;
+    if( d.toString() == "null" ) return null;
+    return d.toString();
+  }
+
 
 
 
