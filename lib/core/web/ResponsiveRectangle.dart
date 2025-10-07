@@ -1,7 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/customWidget/listview/ListViewApp.dart';
-import 'package:fastor_app_ui_widget/web/responsive_views/helper/ResponsiveConstant.dart';
+import 'package:fastor_app_ui_widget/core/web/ResponsiveConstant.dart';
 import 'package:flutter/material.dart';
 /**
  Here the defaule page type is "portrait", what to do when responsive to landscape

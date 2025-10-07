@@ -7,8 +7,8 @@ import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/customWidget/cardview/CardViewApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
-import 'package:fastor_app_ui_widget/web/responsive_views/helper/ResponsiveConstant.dart';
-import 'package:fastor_app_ui_widget/web/responsive_views/landscape/shape_content_center_top/ResponsiveLandscapeCenterTopBody.dart';
+import 'package:fastor_app_ui_widget/core/web/ResponsiveConstant.dart';
+import 'package:fastor_app_ui_widget/core/web/widget/ResponsiveLandscapeCenterTopBody.dart';
 import 'package:flutter/material.dart';
 
 /**
