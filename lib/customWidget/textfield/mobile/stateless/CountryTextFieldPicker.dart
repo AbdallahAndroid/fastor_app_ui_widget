@@ -11,12 +11,12 @@ typedef CountryTextFieldPickerListener = Function(String countryCode, bool isFir
 
 class CountryTextFieldPicker extends StatefulWidget {
 
-  static double widthCountryCode  = 110.0;
+  double widthCountryCode;
 
   CountryTextFieldPickerListener listener;
 
 
-  CountryTextFieldPicker({ required this.listener });
+  CountryTextFieldPicker({ required this.listener,  this.widthCountryCode = 120  });
 
   @override
   _CountryTextFieldPickerState createState() => _CountryTextFieldPickerState();
@@ -61,7 +61,7 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
           radiusSize: AppDimension.cornerTextField,
           widthLine: 2
       ),
-      width: CountryTextFieldPicker.widthCountryCode ,
+      width: widget.widthCountryCode ,
       height: AppDimension.textFieldHeight,
       child: CountryCodePicker(
           onChanged: (countryCode) {

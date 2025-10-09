@@ -1,36 +1,39 @@
+
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
-import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/stateless/CountryTextFieldPicker.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:fastor_app_ui_widget/core/resource/AppDecoration.dart';
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/statefull/MobileCountryApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 
-typedef MobileWithCustomErrorShapeListener = Function(String? country_code, String? phone, bool isFirstTimeOpenScreen );
+typedef MobileAppStatelessListener = Function(String? country_code, String? phone, bool isFirstTimeOpenScreen );
 
 
-class MobileWithCustomErrorShape extends StatelessWidget {
+class MobileAppStatelessWidget extends StatelessWidget {
 
 
   final marginBetweenTwoField = 10.0;
 
-  String labelText;
+
   OutlineInputBorder? outlineInputBoarder;
   TextEditingController? controller;
   FormFieldValidator<String>? validatorCustom;
-  MobileWithCustomErrorShapeListener callback;
+  MobileAppStatelessListener callback;
   String? errorMessage;
   String? errorKeySearchingInErrorMessageArray;
   Map<String, dynamic>? errorsMessageArray;
+  double width;
 
   // Color? colorLineBoarder;
 
@@ -39,17 +42,13 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   String? phone_text;
   String? countryCode  ;
   BuildContext? context;
-
-  double width;
   double widthCountryCode;
 
 
-  MobileWithCustomErrorShape({
-    required this.labelText,
-    required this.callback,
+  MobileAppStatelessWidget({
     required this.width,
     required this.widthCountryCode,
-
+    required this.callback,
     this.controller,
     this.validatorCustom,
     this.errorsMessageArray,
@@ -57,19 +56,21 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     this.errorMessage,
     this.outlineInputBoarder,
   }){
-
+    // Log.i("MobileWithCustomErrorShape - before errorKey: $errorKeySearchingInErrorMessageArray /array: $errorsMessageArray");
     // phone_text = controller?.text;
     // colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
+    // Log.i( "MobileWithCustomErrorShape - after end _setValidatorFromBackend() - errorMessage: $errorMessage");
   }
 
 
   void _setValidatorFromBackend() {
     if (errorKeySearchingInErrorMessageArray == null) return;
     if (errorsMessageArray == null) return;
+    // Log.i( "_setValidatorFromBackend() - contain: ${ errorsMessageArray!.containsKey(errorKeySearchingInErrorMessageArray!) }");
     if (errorsMessageArray!.containsKey(errorKeySearchingInErrorMessageArray!) == false) return;
     errorMessage = errorsMessageArray!["" + errorKeySearchingInErrorMessageArray!][0];
-    //Log.i( "MobileWithCustomErrorShape - _setValidatorFromBackend() - errorMessage: $errorMessage");
+    // Log.i( "MobileWithCustomErrorShape - after end _setValidatorFromBackend() - result: ${errorMessage}");
   }
 
 
@@ -98,15 +99,18 @@ class MobileWithCustomErrorShape extends StatelessWidget {
 
 
   countryAndTextField() {
-    return Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          country(),
-          SizedBox( width:  marginBetweenTwoField,),
-          textFieldAndErrorMessage()
-        ] );
+    return Container(
+      decoration: AppDecoration.textField(),
+      child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            country(),
+            SizedBox( width:  marginBetweenTwoField,),
+            textFieldAndErrorMessage()
+          ] ),
+    );
   }
 
   //--------------------------------------------------------- country
@@ -115,7 +119,9 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     return CountryTextFieldPicker(listener: ( country, isFirstTimeCreateWidget ) {
       countryCode = country;
       updateCallback(isFirstTimeCreateWidget);
-    });
+    },
+    widthCountryCode: widthCountryCode,
+    );
   }
 
   //--------------------------------------------------------------- PhoneOnly
@@ -127,13 +133,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     // }
     Log.i("textFieldAndErrorMessage() - before build phoneController: ${controller}");
     return Container(
-      decoration: BoarderHelper.cardView(
-          colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
-          colorBackground: AppColor.textFieldBackground,
-          radiusSize: AppDimension.cornerTextField,
-          widthLine: 2
-      ),
-      // padding: LangApp.onlyEdgeInsets(left: 10 ),
+
       alignment: LangApp.getAlignmentGeometryStartCenter(),
       height: AppDimension.textFieldHeight,
       child:  Stack(children: [
@@ -142,11 +142,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
           height: AppDimension.textFieldHeight,
         ),
         Positioned(child:  textField(), top: Figma.h( 20) ),
-        if( ToolsValidation.isValid(  errorMessage )    ) PositionedApp.langApp(
-            child:  errorMessageWidget(),
-            left: 0,
-            top: AppDimension.textFieldHeight - Figma.h( 17 )
-        )
+
       ],),
     );
   }
@@ -156,19 +152,17 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     return TextFieldApp(
       padding: LangApp.onlyEdgeInsets(left: 10 ),
       width: getWidthPhoneOnly()  ,
-      fontSize: Figma.h( 16 ),
+      fontSize: 16.sp ,
+      fontFamily: FontProject.w500,
+      errorMessage: errorMessage,
+
       // fontFamily: FontResource.regular,
       maxLines: 1,
       minLines: 1,
       maxLength: 12,
       hint_color: AppColor.textFieldHint,
       text_color: AppColor.textFieldText,
-      hint_text: "Mobile number".tra(),
-      // autovalidateMode:  AutovalidateMode.onUserInteraction,
-      // validatorCustom:  ValidatorApp.mobile( error_text: "phone more than 7 digits".tra() ) ,
-      // errorMessage: widget.errorMessage,
-      // errorsMessageArray: widget.errorsMessageArray,
-      // errorKeySearchingInErrorMessageArray: widget.errorKeySearchingInErrorMessageArray,
+      hint_text:  "xxxx-xxxx",
       isRemoveUnderline: true,
       controller:   controller,
       textInputType: TextInputType.number,
@@ -187,8 +181,9 @@ class MobileWithCustomErrorShape extends StatelessWidget {
 
   getWidthPhoneOnly(){
     return width
-        -   marginBetweenTwoField
-        -  widthCountryCode
+        - widthCountryCode -  marginBetweenTwoField
+        // - AppDimension.marginHorizontalScreen
+        // -  AppDimension.marginHorizontalScreen
         -  marginBetweenTwoField;
   }
 
@@ -208,32 +203,6 @@ class MobileWithCustomErrorShape extends StatelessWidget {
 
   setPhoneNumberSelectedToControllerText(){
     phone_text ??= controller?.text;
-  }
-
-  //---------------------------------------------- error
-
-  errorMessageWidget(){
-    double size = Figma.h( 10);
-    // Log.i("errorMessageWidget() - errorMessage: $errorMessage");
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-
-          Icon( Icons.info_outline, size: size, color: AppColor.red,),
-          SizedBox( width:  5 ,),
-          TextApp(  errorMessage??"",
-            color: AppColor.redMaterial,
-            fontSize: size,
-            // fontFamily: FontResource.regular,
-          ),
-
-        ],
-      ),
-    );
   }
 
 

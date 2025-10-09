@@ -39,4 +39,18 @@ abstract class AppDecoration {
         borderRadius: BorderRadius.all(Radius.circular(30.r)),
         border: Border.all(color: AppColor.white));
   }
+
+
+  ///------------------------------------------------------------------ textfield
+
+
+  static textField() {
+    return BoarderHelper.cardView(
+        radiusSize: 12.r,
+        colorLine: AppColor.textFieldBoarderLine,
+        colorBackground: AppColor.white
+    );
+  }
+
+
 }
