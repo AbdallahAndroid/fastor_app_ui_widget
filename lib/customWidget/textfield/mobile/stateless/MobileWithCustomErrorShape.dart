@@ -7,10 +7,10 @@ import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/country_only/CountryTextFieldPicker.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/stateless/CountryTextFieldPicker.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/MobileCountryApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/statefull/MobileCountryApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
