@@ -8,23 +8,35 @@ import 'package:flutter/material.dart';
 
 
 typedef TimerEndCallBack = Function();
+typedef TimerStartCallback = Function();
+enum TimerWorkingMode{ onInitState, onTap }
 
 class TimerCountDownApp extends StatefulWidget {
 
   BuildContext contextPage;
   int second;
-  TimerEndCallBack callBack;
+  TimerEndCallBack callBackEnd;
+  TimerStartCallback callbackOnStart;
+  TimerWorkingMode timerWorkingMode;
+
+  /// make action after some second without timer showing in ui
   bool? isModeHiddenJustTimer ;
 
   Color? color;
   String? fontFamily;
+  String? prefixSecondText;
+  String? hintText;
   double? fontSize;
 
   TimerCountDownApp( {
     required this.contextPage,
     required this.second,
-    required this.callBack,
+    required this.timerWorkingMode,
+    required this.callbackOnStart,
+    required this.callBackEnd,
     this.color,
+    this.hintText,
+    this.prefixSecondText,
     this.fontSize,
     this.fontFamily,
     this.isModeHiddenJustTimer = false,
@@ -32,24 +44,25 @@ class TimerCountDownApp extends StatefulWidget {
 
 
   @override
-  TimerFastorState createState() => TimerFastorState(second);
+  TimerCountState createState() => TimerCountState(second);
 }
 
-class TimerFastorState extends State<TimerCountDownApp> {
+class TimerCountState extends State<TimerCountDownApp> {
 
 
   int secondRemaining = 0 ;
   String  mm_ss_shape = "";
   Timer? myTimer;
+  bool isTimerEnd = false;
 
-  TimerFastorState( this.secondRemaining);
+  TimerCountState( this.secondRemaining);
 
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await intervalTimerCreate();
+      if(widget.timerWorkingMode == TimerWorkingMode.onInitState  ) await intervalTimerStart();
     });
   }
 
@@ -64,16 +77,64 @@ class TimerFastorState extends State<TimerCountDownApp> {
 
   @override
   Widget build(BuildContext context) {
-    // Log.i("TimerChatState - build() - isModeHiddenJustTimer: " + widget.isModeHiddenJustTimer.toString()  );
+    //
+    return GestureDetector(
+      onTap: ()async{
+        bool isModeOnTap = widget.timerWorkingMode == TimerWorkingMode.onTap;
+        bool isTimerStoped = myTimer == null ||( myTimer!.isActive == false) ;
+        if( isModeOnTap && isTimerStoped ) {
+          await intervalTimerStart();
+        }
+      },
+      child: chooseShape(),
+    );
+  }
+
+
+  Widget chooseShape(){
+
+    /// case hide forever
     if(widget.isModeHiddenJustTimer!) {
       return SizedBox();
     }
+
+    /// when found hint text
+    ///case timer end,
+    ///case timer not start yet
+    bool isEndTimerAndFoundHintText = isTimerEnd && widget.prefixSecondText != null;
+    bool isNotStartTimerYetAndFoundHintText = (myTimer == null ) && widget.prefixSecondText != null;
+    if( isEndTimerAndFoundHintText || isNotStartTimerYetAndFoundHintText ) {
+      return hintText();
+    }
+
+    /// case timer working now
+    return shapeSecondTimerInProgress();
+  }
+
+  Widget shapeSecondTimerInProgress() {
+    String secondText = "";
+    String prefix = widget.prefixSecondText??"";
+    bool isStillFoundSecond = mm_ss_shape.isNotEmpty;
+    if( isStillFoundSecond) {
+      secondText = mm_ss_shape + " " + prefix;
+    } else {
+      secondText = mm_ss_shape;
+    }
     return   Container(
-        child:  TextApp( mm_ss_shape,
+        child:  TextApp( secondText,
           color: widget.color,
           fontFamily: widget.fontFamily,
           fontSize: widget.fontSize??15,
         )
+    );;
+  }
+
+
+  Widget hintText() {
+    return TextApp( widget.hintText??"",
+      color: widget.color,
+      fontFamily: widget.fontFamily,
+      fontSize: widget.fontSize??15,
     );
   }
 

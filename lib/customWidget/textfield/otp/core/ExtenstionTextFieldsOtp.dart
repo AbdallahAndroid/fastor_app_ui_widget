@@ -22,7 +22,7 @@ extension  FieldsOtp on OTPState  {
       hint_color: widget.colorHint,
       fontFamily: widget.fontFamily,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       onChanged: (s){
         //set value
         tf1_txt = s;
@@ -57,7 +57,7 @@ extension  FieldsOtp on OTPState  {
       hint_color: widget.colorHint,
       fontFamily: widget.fontFamily,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       onChanged: (s){
 
         //set value
@@ -100,7 +100,7 @@ extension  FieldsOtp on OTPState  {
       hint_color: widget.colorHint,
       fontFamily: widget.fontFamily,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       onChanged: (s){
         //set value
         tf3_txt = s;
@@ -135,7 +135,7 @@ extension  FieldsOtp on OTPState  {
       fontFamily: widget.fontFamily,
       autovalidateMode: tf4_valid,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       onChanged: (s){
         //set value
         tf4_txt = s;
@@ -165,7 +165,7 @@ extension  FieldsOtp on OTPState  {
       focusNode: tf5_node,
       autovalidateMode: tf5_valid,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       decoration: widget.decoration,
       fontSize: widget.fontSize,
       text_color: widget.colorText,
@@ -206,7 +206,7 @@ extension  FieldsOtp on OTPState  {
       fontFamily: widget.fontFamily,
       autovalidateMode: tf6_valid,
       validatorCustom: ValidatorApp.equal( 1 ),
-      keyboardType: TextInputType.number,
+      textInputType: TextInputType.number,
       onChanged: (s){
         //set value
         tf6_txt = s;

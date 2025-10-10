@@ -2,20 +2,28 @@ import 'dart:async';
 
 import 'package:fastor_app_ui_widget/customWidget/timer/timer_second/TimerCountDownApp.dart';
 
-extension TimerLogic on TimerFastorState {
+extension TimerLogic on TimerCountState {
 
   //------------------------------------------------------------ timer
 
-  Future intervalTimerCreate() async {
-
+  Future intervalTimerStart() async {
+    // Log.i("Timer - intervalTimerStart()" );
+    initTimerAgain();
 
     //fire now
     _fireTimerAction();
+    widget.callbackOnStart();
 
     //wait some second then fire
     myTimer = Timer.periodic(const Duration(milliseconds: 1000 ), (_) {
       _fireTimerAction();
+
     });
+  }
+
+  Future initTimerAgain() async {
+    secondRemaining = widget.second;
+    isTimerEnd = false ;
   }
 
 
@@ -23,7 +31,7 @@ extension TimerLogic on TimerFastorState {
 
     //increment
     secondRemaining = secondRemaining - 1;
-    // Log.i("_fireTimerAction() - loop secondRemaining: " + secondRemaining.toString()  );
+    // Log.i("Timer - _fireTimerAction() - loop secondRemaining: " + secondRemaining.toString()  );
 
     //validate to stop on zero view
     bool isEndTimer = secondRemaining == 0;
@@ -51,6 +59,7 @@ extension TimerLogic on TimerFastorState {
   }
 
   stopTimer() {
+    isTimerEnd = true;
     if( myTimer == null )return false;
     myTimer?.cancel();
   }
@@ -63,7 +72,7 @@ extension TimerLogic on TimerFastorState {
     if(isViewMounted() == false ) return;
 
     setState(() {
-      mm_ss_shape =  formatSecondsToMinutesAndSeconds( secondRemaining );
+      mm_ss_shape =  _formatSecondsToMinutesAndSeconds( secondRemaining );
     });
   }
 
@@ -84,7 +93,7 @@ extension TimerLogic on TimerFastorState {
 
   void callBackTheTimerEnd(){
     // Log.i("callBackTheTimerEnd() - sec: $secondRemaining");
-    widget.callBack();
+    widget.callBackEnd();
   }
 
   //-------------------------------------------------------------------- time
@@ -94,7 +103,7 @@ extension TimerLogic on TimerFastorState {
       String formattedTime = formatSecondsToMinutesAndSeconds(totalSeconds);
       print(formattedTime); // Output: 02:05
    */
-  String formatSecondsToMinutesAndSeconds(int seconds) {
+  String _formatSecondsToMinutesAndSeconds(int seconds) {
     int minutes = seconds ~/ 60;
     int remainingSeconds = seconds % 60;
 
