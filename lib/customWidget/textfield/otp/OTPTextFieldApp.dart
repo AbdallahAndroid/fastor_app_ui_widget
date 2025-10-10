@@ -18,10 +18,11 @@ class OTPTextFieldApp extends StatefulWidget {
   //size
   double? widthOTP  ;
   double? heightByPadding  ;
-  double? margin ;
+  double? marginBetweenOtpField ;
+  EdgeInsets? padding ;
 
   //color
-  Color? colorText;
+  Color  colorText;
   Color? colorHint;
   String? fontFamily;
   double? fontSize;
@@ -30,12 +31,14 @@ class OTPTextFieldApp extends StatefulWidget {
 
   OTPTextFieldApp( {
     required this.countNumber,
+    required this.colorText,
     required ValueChanged<String> this.onChangeCode,
     required ValueChanged<bool> this.onComplete,
     this.widthOTP,
     this.heightByPadding,
-    this.margin,
-    this.colorText,
+    this.marginBetweenOtpField,
+    this.padding,
+
     // this.colorHint,
     this.fontFamily,
     this.fontSize,
@@ -44,14 +47,39 @@ class OTPTextFieldApp extends StatefulWidget {
   }) {
     widthOTP ??= 40;
     heightByPadding ??= 9;
-    margin ??= 5;
+    marginBetweenOtpField ??= 5;
 
     colorHint = colorText;
+
+    setDefaultInputDecoration();
   }
 
   @override
   OTPState createState() {
     return OTPState( );
+  }
+
+  void setDefaultInputDecoration() {
+    if( decoration != null ) return;
+    decoration = InputDecoration(
+      // contentPadding:   EdgeInsets.only(bottom: 10.h ),
+
+      // Customize underline when not focused
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorText,
+          width: 2, // 👈 underline width
+        ),
+      ),
+
+      // Customize underline when focused
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorText,
+          width: 2, // 👈 thicker when focused
+        ),
+      ),
+    );
   }
 
 }
@@ -102,12 +130,43 @@ class  OTPState extends State<OTPTextFieldApp> {
 
   Widget rowField(){
     var row  =  RowUtils.scroll( context,   [
-      tf_1(),
-      tf_2(),
-      tf_3(),
-      tf_4(),
-      tf_5(),
-      tf_6()
+      Container(
+        decoration: widget.decorationBackground,
+        margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_1(),
+      ),
+      Container(
+        decoration: widget.decorationBackground,
+        margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_2(),
+      ),
+      Container(
+        decoration: widget.decorationBackground,
+        margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_3(),
+      ),
+
+      Container(
+        decoration: widget.decorationBackground,
+        margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_4(),
+      ),
+      Container(
+        decoration: widget.decorationBackground,
+        margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_5(),
+      ),
+      Container(
+        decoration: widget.decorationBackground,
+        // margin: EdgeInsets.only( right: widget.marginBetweenOtpField!),
+        padding: widget.padding??EdgeInsets.only(bottom:  10 ),
+        child: tf_6(),
+      ),
     ]
     );
 
@@ -129,7 +188,7 @@ class  OTPState extends State<OTPTextFieldApp> {
     // var marginOutSide = 20;
     var tf = widget.widthOTP! * 6;
 
-    var result =  tf + widget.margin! * 5;
+    var result =  tf + widget.marginBetweenOtpField! * 5;
     //Log.i( "sizeOfOTPSixFields() " + result.toString() );
     return result;
   }
