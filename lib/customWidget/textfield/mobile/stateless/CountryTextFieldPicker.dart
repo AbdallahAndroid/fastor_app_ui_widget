@@ -12,11 +12,16 @@ typedef CountryTextFieldPickerListener = Function(String countryCode, bool isFir
 class CountryTextFieldPicker extends StatefulWidget {
 
   double widthCountryCode;
+  String? previousCountryCodeSelected;
 
   CountryTextFieldPickerListener listener;
 
 
-  CountryTextFieldPicker({ required this.listener,  this.widthCountryCode = 120  });
+  CountryTextFieldPicker({
+    required this.listener,
+    required this.previousCountryCodeSelected,
+    this.widthCountryCode = 120
+  });
 
   @override
   _CountryTextFieldPickerState createState() => _CountryTextFieldPickerState();

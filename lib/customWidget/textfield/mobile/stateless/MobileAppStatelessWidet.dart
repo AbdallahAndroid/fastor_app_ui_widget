@@ -34,6 +34,7 @@ class MobileAppStatelessWidget extends StatelessWidget {
   String? errorKeySearchingInErrorMessageArray;
   Map<String, dynamic>? errorsMessageArray;
   double width;
+  String? previousCountryCodeSelected;
 
   // Color? colorLineBoarder;
 
@@ -49,6 +50,7 @@ class MobileAppStatelessWidget extends StatelessWidget {
     required this.width,
     required this.widthCountryCode,
     required this.callback,
+    required this.previousCountryCodeSelected,
     this.controller,
     this.validatorCustom,
     this.errorsMessageArray,
@@ -56,6 +58,7 @@ class MobileAppStatelessWidget extends StatelessWidget {
     this.errorMessage,
     this.outlineInputBoarder,
   }){
+    countryCode = previousCountryCodeSelected;
     // Log.i("MobileWithCustomErrorShape - before errorKey: $errorKeySearchingInErrorMessageArray /array: $errorsMessageArray");
     // phone_text = controller?.text;
     // colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
@@ -120,6 +123,7 @@ class MobileAppStatelessWidget extends StatelessWidget {
       countryCode = country;
       updateCallback(isFirstTimeCreateWidget);
     },
+      previousCountryCodeSelected: countryCode,
     widthCountryCode: widthCountryCode,
     );
   }

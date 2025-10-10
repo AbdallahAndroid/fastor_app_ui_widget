@@ -32,6 +32,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   String? errorKeySearchingInErrorMessageArray;
   Map<String, dynamic>? errorsMessageArray;
 
+  String? previousCountryCodeSelected;
   // Color? colorLineBoarder;
 
   // bool _hasFocus = false;
@@ -49,7 +50,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     required this.callback,
     required this.width,
     required this.widthCountryCode,
-
+    required this.previousCountryCodeSelected,
     this.controller,
     this.validatorCustom,
     this.errorsMessageArray,
@@ -57,7 +58,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     this.errorMessage,
     this.outlineInputBoarder,
   }){
-
+    countryCode = previousCountryCodeSelected;
     // phone_text = controller?.text;
     // colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
@@ -115,7 +116,9 @@ class MobileWithCustomErrorShape extends StatelessWidget {
     return CountryTextFieldPicker(listener: ( country, isFirstTimeCreateWidget ) {
       countryCode = country;
       updateCallback(isFirstTimeCreateWidget);
-    });
+    },
+      previousCountryCodeSelected: countryCode,
+    );
   }
 
   //--------------------------------------------------------------- PhoneOnly
