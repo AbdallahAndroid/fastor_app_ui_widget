@@ -2,7 +2,7 @@ import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
 import 'package:flutter/material.dart';
 
-import 'OTPTextFieldApp.dart';
+import '../OTPTextFieldApp.dart';
 
 extension  FieldsOtp on OTPState  {
 

@@ -5,7 +5,7 @@ import 'package:fastor_app_ui_widget/customWidget/row/RowUtils.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/validator/ValidatorApp.dart';
 import 'package:flutter/material.dart';
-import 'TextFieldsOtp.dart';
+import 'core/ExtenstionTextFieldsOtp.dart';
 
 class OTPTextFieldApp extends StatefulWidget {
 
@@ -39,7 +39,7 @@ class OTPTextFieldApp extends StatefulWidget {
     // this.colorHint,
     this.fontFamily,
     this.fontSize,
-    this.decoration,
+    this.decoration, ///InputDecoration
     this.decorationBackground
   }) {
     widthOTP ??= 40;
