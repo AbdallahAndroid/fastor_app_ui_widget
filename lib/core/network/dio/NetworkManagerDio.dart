@@ -138,8 +138,6 @@ class   NetworkManagerDio  {
   }
 
 
-  ///----------------------------------------------------------------------- file
-
   Future<Response> uploadXFile(
       {required String url,
         required String fileRequestKeyInJson,
@@ -147,11 +145,19 @@ class   NetworkManagerDio  {
         required  XFile xFile,
         Map<String, dynamic>? body,
         Map<String, String>? headers,
+        bool? isEnableLogDioPretty  = true,
         int? timeOutSecond,
         ProgressCallbackApp? onSendProgress,
         ProgressCallbackApp? onReceiveProgress}) async {
     try {
       Log.k(tag, "uploadXFile() - xFile: ${xFile}");
+
+      /// DEFAULT
+      if( headers == null ) {
+        // this.headers = setDefaultHeader( null );
+        this.headers = NetworkConfig.getConfigureHeaderFromCache();
+      }
+
 
       //check not file
       if (ToolsValidation.isEmpty(xFile.path)) {
