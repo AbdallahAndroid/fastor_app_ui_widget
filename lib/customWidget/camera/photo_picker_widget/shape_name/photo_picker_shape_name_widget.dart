@@ -5,6 +5,7 @@ import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/ColorProject.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/FontProject.dart';
@@ -13,6 +14,7 @@ import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/ImageApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/image_file_app.dart';
+import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,22 +47,42 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
   XFile? xFilePreviousSelected;
   String? imageUrlPreviousSelected;
   String placeholderAssetName;
+  bool? showProgress;
+
+  /// then equal "true" hide button picker file
+  bool? isModePreviousOnly;
+
+  double? widthBoarderLine;
+  double? fontSizeShapeFirstCharacter;
 
   PhotoPickerShapeNameWidget( {
     required this.width,
     required this.username,
     required this.placeholderAssetName,
     required this.photoCallback,
+    this.widthBoarderLine,
+    this.fontSizeShapeFirstCharacter,
+    this.showProgress = false ,
+    this.isModePreviousOnly = false ,
     this.xFilePreviousSelected,
     this.imageUrlPreviousSelected,
     this.errorText
-});
+  });
 
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: isModePreviousOnly! ? null :  (){
+
+        if( isModePreviousOnly! ) return;
+        if( showProgress! ) return;
+
+        // if( UserHelper.isGuest() ) {
+        //   RouterPage.loginNeededDialog(context);
+        //   return;
+        // }
+
         GalleryOrCameraPickerDialog.show(
             context: context,
             callbackCamera:( xFile ) => photoCallback(xFile),
@@ -86,27 +108,40 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
 
 
           /// photo
-           ClipRRect(
-              borderRadius: BorderRadiusTools.get( radius_all: getRadius() ),
-              child: Container(
-                width: width ,
-                height: width ,
-                // decoration: AppDecoration.photoCircle( getRadius()  ),
-                child: chooseShapeImage(context),
-              ),
+          ClipRRect(
+            borderRadius: BorderRadiusTools.get( radius_all: getRadius() ),
+            child: Container(
+              width: width ,
+              height: width ,
+              // decoration: AppDecoration.photoCircle( getRadius()  ),
+              child: chooseShapeImage(context),
             ),
+          ),
 
           /// button picker 
-          PositionedApp.langApp(
+          if(showProgress == false && isModePreviousOnly! == false  )PositionedApp.langApp(
               bottom: 0,
-              right: 0,
+              right: 15.w,
               child: Container(
                 child: Image.asset( "assets/icons/add_photo.png",
-                    width: 32.w ,
-                    height: 32.w ,
+                  width: 32.w ,
+                  height: 32.w ,
                 ),
               )
+          ),
+
+          /// progress
+          if(showProgress!   ) PositionedApp.langApp(
+            bottom: 0,
+            right: 15.w,
+            child: Container(
+              decoration: AppDecoration.photoAddButtonCircle( 32.w /2  ),
+              child: ProgressCircleApp( size: 15.w ,),
+              width: 32.w ,
+              height: 32.w ,
+            ),
           )
+
 
         ],
       ),
@@ -115,12 +150,14 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
 
 
   Widget chooseShapeImage(BuildContext context) {
+    // Log.i("chooseShapeImage() - start");
 
     /// case found xFile
     if( xFilePreviousSelected != null ){
+      Log.i("chooseShapeImage() - xFilePreviousSelected");
       return Container(
-        decoration: AppDecoration.photoCircle( getRadius()  ),
-        margin: EdgeInsets.all( 7.w ), ///boarder width
+        decoration: getDecoration(),
+        margin: EdgeInsets.all( widthBoarderLine??7.w ), ///boarder width
         child: ClipRRect(
           borderRadius: BorderRadiusTools.get( radius_all: getRadius() ),
           child: ImageFileApp(
@@ -134,9 +171,10 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
 
     /// case found imageUrl
     if( ToolsValidation.isValid( imageUrlPreviousSelected) ) {
+      Log.i("chooseShapeImage() - imageUrlPreviousSelected");
       return Container(
-        decoration: AppDecoration.photoCircle( getRadius()  ),
-        margin: EdgeInsets.all( 7.w ), ///boarder width
+        decoration: getDecoration(),
+        margin: EdgeInsets.all( widthBoarderLine??7.w  ), ///boarder width
         child: ClipRRect(
           borderRadius: BorderRadiusTools.get( radius_all: getRadius() ),
           child: ImageApp(
@@ -154,12 +192,14 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
 
     /// case found username
     if( ToolsValidation.isName( username )) {
+      Log.i("chooseShapeImage() - username");
       return imageWithFirstCharacterAtUserName();
     }
 
     /// default placeholder
+    Log.i("chooseShapeImage() - default placeholder");
     return Container(
-      decoration: AppDecoration.photoCircle( getRadius()  ),
+      decoration: getDecoration(),
       child: ImageApp(
         context: context,
         // padding: EdgeInsets.all( width / 5 ) ,
@@ -175,20 +215,24 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
   Widget imageWithFirstCharacterAtUserName() {
     String first = username[0];
     return Container(
-      decoration: AppDecoration.photoCircle( getRadius()  ),
+      decoration: getDecoration(),
       width: width,
       height: width,
       alignment: Alignment.center,
       child: TextApp( first ,
         fontFamily: FontProject.w600,
         color: AppColor.white,
-        fontSize: 65.sp ,
+        fontSize: fontSizeShapeFirstCharacter??65.sp ,
       ),
     );
   }
 
   double getRadius() {
     return width / 2.0;
+  }
+
+  getDecoration() {
+    return AppDecoration.photoCircle( radius:  getRadius(), widthLine: widthBoarderLine??7.w  );
   }
 
 

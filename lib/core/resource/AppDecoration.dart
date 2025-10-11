@@ -293,14 +293,24 @@ abstract class AppDecoration {
 
   ///---------------------------------------------------------- photo
 
-  static photoCircle(double radius) {
+  static photoCircle({required double radius, required double widthLine}) {
     return BoarderHelper.cardView(
         radiusSize: radius,
         colorLine: AppColor.white,
-        widthLine: 7.w ,
+        widthLine: widthLine,
         colorBackground: AppColor.bluePlaceholderImage
     );
   }
+
+  static photoAddButtonCircle(double radius) {
+    return BoarderHelper.cardView(
+        radiusSize: radius,
+        colorLine: AppColor.primary,
+        widthLine: 1.w ,
+        colorBackground: AppColor.white
+    );
+  }
+
 
 
 }
