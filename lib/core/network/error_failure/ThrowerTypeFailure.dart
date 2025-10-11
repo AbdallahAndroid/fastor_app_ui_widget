@@ -32,7 +32,7 @@ class ThrowerTypeFailure {
     int? statusCode = response?.statusCode;
     if( response == null || statusCode  == null )  {
       Log.i("ThrowerTypeFailure - choose() - statusCode == null");
-      throw NoInternetFailure( );
+      return NoInternetFailure( );
     }
 
     /// cast
