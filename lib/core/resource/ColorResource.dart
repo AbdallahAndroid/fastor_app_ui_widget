@@ -22,7 +22,7 @@ class AppColor   {
   static var blurCard =  Colors.blueAccent.withOpacity(0.5); //.withOpacity( 0.4 );
 
   /// dialog
-  static var backgroundDialogDismissHome = Colors.black.withOpacity( 0.4 ); /// Color(0x99000000);
+  static var backgroundDialogDismissCaseHaveMessageTypeEffectGlass = Colors.black.withOpacity( 0.4 ); /// Color(0x99000000);
   static Color dialogDismisableBackground = Color(0xffFFFFFF ).withOpacity( 0.6 );
   static var backgroundDialog =  Colors.white; //figma make it white ffffff
   static var backgroundCardDialogTransparent =  Colors.white.withOpacity(0.6 ); //figma make it white ffffff

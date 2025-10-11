@@ -77,6 +77,8 @@ class AppDimension {
 
   static double  factorOfRenderRepaintBoundary( double v) => v * 2.0;
 
+  static radiusDialogBottomSheet() => 40.r ;
+
 
 
 }
