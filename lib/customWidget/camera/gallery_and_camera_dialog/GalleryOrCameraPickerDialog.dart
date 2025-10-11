@@ -1,81 +1,94 @@
+// import 'package:fastor_app_ui_widget/core/utils/theme/ColorProject.dart';
+// import 'package:fastor_app_ui_widget/core/utils/theme/FontProject.dart';
+// import 'package:fastor_app_ui_widget/core/utils/theme/app_dimension.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
+import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-
-import 'package:fastor_app_ui_widget/customWidget/button/button_cutom/ButtonPrimary.dart';
-import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/logic/ChatFileInputController.dart';
-import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/logic/ChatImageInputController.dart';
+import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/logic/GalleryController.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-typedef BtnCameraPressed = Function(XFile xFile);
-typedef BtnGalleryPressed = Function(XFile xFile);
+typedef PickerResultCameraCallback = Function(XFile xFile);
+typedef PickerResultGalleryCallback = Function(XFile xFile);
 
 class GalleryOrCameraPickerDialog {
 
-  BuildContext context;
-  BtnCameraPressed btnCamera;
-  BtnGalleryPressed btnGallery;
 
-  GalleryOrCameraPickerDialog( {
-    required this.context,
-    required this.btnCamera,
-    required this.btnGallery,
-});
 
-  show (){
+
+  static show ({
+    required BuildContext context,
+    required PickerResultCameraCallback callbackCamera,
+    required PickerResultGalleryCallback callbackGallery,
+    required String assetNamePlaceholder,
+  }){
 
     AwesomeDialog(
       context: context,
-      dialogBackgroundColor: Colors.white,
+      dialogBackgroundColor: AppColor.backgroundDialog,
       dialogType: DialogType.noHeader,
       animType: AnimType.bottomSlide,
-      width: Figma.w(350),
+      width: AppDimension.dialogWidth(),
 
       /// title
       title: "Picker Image".tra(),
       titleTextStyle:   TextStyle(
-          // fontFamily: FontResource.semibold,
-          color: Colors.black,
-          fontSize: 20
+          color: AppColor.textColor,
+          fontFamily: FontProject.w700,
+          fontSize: 24.sp
       ),
 
-      /// description message
-      // desc:  "".tra(),
-      // descTextStyle:   TextStyle(
-      //     fontFamily: FontResource.regular,
-      //     color: AppColor.textPrimary,
-      //     fontSize: 14
-      // ),
 
       /// camera
-      btnOk:    ButtonPrimary(
+      btnOk:    ButtonApp(
         "Camera".tra(), () async {
         Navigator.pop( context);
-        await cameraClick();
+        await GalleryController.cameraClick(
+          context: context,
+          btnCamera: callbackCamera,
+          btnGallery: callbackGallery,
+          assetNamePlaceholder: assetNamePlaceholder
+        );
       },
-        // width: Figma.w(figmaSize),
-        radius: 15,
+        width: 120.wr,
       ),
       btnOkOnPress: () async {
         Navigator.pop( context);
-        await cameraClick();
+        await GalleryController.cameraClick(
+            context: context,
+            btnCamera: callbackCamera,
+            btnGallery: callbackGallery,
+            assetNamePlaceholder: assetNamePlaceholder
+        );
       },
 
 
       /// gallery
-      btnCancel:    ButtonPrimary(
+      btnCancel:    ButtonApp(
         "Gallery".tra(), () async {
         Navigator.pop( context);
 
-        await attachClick();
+        await GalleryController.attachClick(
+            context: context,
+            btnCamera: callbackCamera,
+            btnGallery: callbackGallery,
+            assetNamePlaceholder: assetNamePlaceholder
+        );
       },
-        // width: Figma.w(figmaSize),
-        radius: 15,
+        width: 120.wr,
       ),
       btnCancelOnPress: () async {
         Navigator.pop( context);
-        await attachClick();
+        await GalleryController.attachClick(
+            context: context,
+            btnCamera: callbackCamera,
+            btnGallery: callbackGallery,
+            assetNamePlaceholder: assetNamePlaceholder
+        );
       },
 
     ).show();

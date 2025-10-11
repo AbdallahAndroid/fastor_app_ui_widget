@@ -22,6 +22,7 @@ class AppDimension {
 
   /// button
   static  double buttonHeight = Figma.h(65) ;
+  static double radiusContainerButton = 12.r;
 
   /// spaces
   static double marginLeftRightScreen = Figma.h( 30 );
@@ -64,6 +65,7 @@ class AppDimension {
   static double  radiusTab() => 32.h;
   static radiusDialog() => 30.r ;
   static var radiusSection = 24.r;
+  static var radiusSmallCard = 12.r ;
   static double  radiusAllScreen  =  32.h;
 
   /// appbar

@@ -132,5 +132,102 @@ class AppColor   {
   /// white
  static var whiteTransparent = Colors.white.withOpacity(0.7);
 
+ ///---------------------------------------------------- new
+
+  ///theme device
+  static const colorBackgroundNavigationSystemBar = Colors.white;
+
+  /// background
+  static var backgroundDark = backgroundAllScreens ;
+  static var backgroundScreenHome = primary ;
+  static var backgroundMedium = backgroundAllScreens;
+  static var backgroundLight = backgroundAllScreens;
+
+  static var backgroundGallery = Color(0xff151515);
+  static var backgroundTransparent70 = Colors.white.withOpacity(0.7);
+
+  /// navigation
+  static var colorBackgroundNavigationBottom = Colors.white.withOpacity( 0.5 );
+  static var colorBoarderLineNavigationBottom = Colors.black.withOpacity(0.15);
+
+  /// red
+  static var primaryTabTransparent = Color(0xffCE1226).withOpacity(0.2 ); // figma
+  static Color redLight2 = redLight;  // figma
+
+  /// blue
+  static Color blueMarkerMap = Color(0xff5429CA );
+  static var blueLight = blueMarkerMap.withOpacity(0.5 );
+  static var blueMedium = blueMarkerMap.withOpacity(0.8 );
+
+  /// green
+  static var greenSelected = Color(0xff1BF99C ); //figma
+  static var greenBright = Color(0xff1BF99C);
+
+
+  ///yellow
+  static var secondary = white.withOpacity(0.7 );
+
+  /// boarderline
+  static var dropdownLinePrimary =  primary ;
+  static var boarderLineCardItem = Color(0xffE8E8E8);
+  static var boarderBottomSheet = Color(0xff9E9E9E); ///#9E9E9E
+
+  /// text
+  static var textColor =  Color(0xff161A22) ;
+  static var textGrey = Color(0xff757575);
+  static var textGrey2 = Color(0xff6C737F);
+  static var textBlackLight = Color(0xff505050);
+
+  static var whiteRedLight = Color(0xffF2F2F2);//#F2F2F2
+
+  /// transparent
+  static var transparentDarkPrimary =  primary.withOpacity( 0.5 );
+  static var transparentWhitePrimary = white.withOpacity( 0.6 );
+
+  /// shadow
+  static var shadowLine = white.withOpacity( 0.6 );
+  static var shadowCardForWaterLogo = AppColor.black.withOpacity(0.1);
+  static var shadowCardUnSelected = AppColor.black.withOpacity(0.4);
+
+  /// black
+  static Color blackLight = black.withOpacity(0.5 ) ;
+  static Color blackLight2 = black.withOpacity(0.6 ) ;
+
+  /// grey
+  static var greyLight = Colors.grey.withOpacity(0.5);
+  static var tabGrey = Color(0xff7F7F7F66).withOpacity(0.4);
+
+
+  /// divider
+  static var dividerGrey = Color(0xffB1B1B1);
+  static var dividerPrimaryLight20Percentage = primary.withOpacity(0.2);
+
+  /// textField / dropdown shape inputField
+  static var textFieldDialogHint =  Colors.black.withOpacity(0.60); /// figma
+
+  /// selected
+  static var selectedItemTransparentStatusSelectedBackground = Color(0xffCE1226).withOpacity(0.05);
+  static var selectedItemTransparentStatusUnSelectedBoarder = Color(0xffE1E3E8);
+
+  /// image
+  static var imageBackgroundPlaceHolder = Color(0xffE8E8E8);
+  static var imageWaterLogoDark = Color(0xffB1B1B1).withOpacity( 0.5 );
+  static var bluePlaceholderImage = Color(0xff218EE7);
+
+  /// video
+  static var videoBackgroundPlaceHolder =   black.withOpacity(0.5 ) ;
+
+  /// button
+  static var buttonGray = Colors.black.withOpacity(0.05);
+  static var buttonSecondaryBackgroundGray = Color(0xffF4F4F6);
+  static var buttonTextSecondary = Color(0xff1F1F1F);
+  static var progressButton = white ;
+  static var backgroundButtonWhite = Color(0xffffffff).withOpacity(0.30 );
+
+
+
+
+
+
 
 }
