@@ -27,4 +27,10 @@ class ToolsString {
   }
 
 
+  static bool isArabicCharacter(String text) {
+    String firstChar = text[0];
+    RegExp arabicRegex = RegExp(r'^[\u0600-\u06FF]');
+    return arabicRegex.hasMatch(firstChar);
+  }
+
 }
