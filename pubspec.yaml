@@ -82,6 +82,11 @@ dependencies:
 #  video_player: 2.9.2
 #  chewie: 1.8.0
 
+  # state management
+  flutter_bloc: 8.1.6
+  dartz: ^0.10.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

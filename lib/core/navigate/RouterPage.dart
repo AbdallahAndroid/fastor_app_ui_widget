@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/bottom_picker_dialog/BottomPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/data/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/listener/typedef_dialog_picker.dart';

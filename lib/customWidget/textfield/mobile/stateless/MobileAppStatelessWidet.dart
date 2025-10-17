@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
@@ -11,7 +11,7 @@ import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/mobile/stateless/CountryTextFieldPicker.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fastor_app_ui_widget/core/resource/AppDecoration.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 

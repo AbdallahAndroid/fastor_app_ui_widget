@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
@@ -170,7 +170,6 @@ abstract class AppDecoration {
     );
   }
 
-
   ///----------------------------------------------------------------- bottom sheet
 
   static bottomSheetDecoration() {
@@ -311,6 +310,24 @@ abstract class AppDecoration {
     );
   }
 
+
+  ///---------------------------------------------------------- drawer
+
+  static drawerHeader() {
+    return BoarderHelper.cardView(
+        radiusSize: 0,
+        colorBackground: AppColor.primary
+    );
+  }
+
+  static tapMenuWithIcon( ) {
+    return   BoarderHelper.cardView(
+      colorBackground: Colors.white,
+      radiusSize:  16.sp ,
+      widthLine: 1,
+      colorLine: AppColor.boarderLineCardItem,
+    );
+  }
 
 
 }

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';

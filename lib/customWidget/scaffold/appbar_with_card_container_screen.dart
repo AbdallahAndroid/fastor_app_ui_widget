@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
-import 'package:fastor_app_ui_widget/core/resource/AppDecoration.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWithCardContainerScreen extends StatelessWidget {

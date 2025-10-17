@@ -1,7 +1,7 @@
 // import 'package:fastor_app_ui_widget/core/utils/theme/ColorProject.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/FontProject.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/app_dimension.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';

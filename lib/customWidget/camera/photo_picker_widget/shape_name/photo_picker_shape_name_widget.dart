@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/AppDecoration.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';

@@ -26,7 +26,8 @@ class AppColor   {
   static Color dialogDismisableBackground = Color(0xffFFFFFF ).withOpacity( 0.6 );
   static var backgroundDialog =  Colors.white; //figma make it white ffffff
   static var backgroundCardDialogTransparent =  Colors.white.withOpacity(0.6 ); //figma make it white ffffff
-
+  static var backgroundDialogDismissAreaTypeEffectGlass = Colors.black.withOpacity( 0.4 );
+  static Color dialogDialogDismissAreaTypeNormal = Color(0xffFFFFFF ).withOpacity( 0.6 );
 
   /// text
   static var textPrimary = Colors.black;
@@ -223,6 +224,13 @@ class AppColor   {
   static var buttonTextSecondary = Color(0xff1F1F1F);
   static var progressButton = white ;
   static var backgroundButtonWhite = Color(0xffffffff).withOpacity(0.30 );
+
+  /// appbar
+  static var iconAppbarColor = AppColor.white;
+
+  /// drawer
+  static var drawerBackgroundCard = AppColor.white;
+  static var drawerIconMenu = AppColor.primary;
 
 
 

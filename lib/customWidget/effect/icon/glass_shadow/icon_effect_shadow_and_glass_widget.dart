@@ -1,5 +1,5 @@
 
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/customWidget/effect/card/glass/effect_glass_background_card.dart';
 import 'package:flutter/material.dart';

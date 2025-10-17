@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/button_cutom/ButtonFullTransparent.dart';
