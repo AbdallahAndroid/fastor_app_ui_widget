@@ -106,8 +106,10 @@ class ScaffoldApp extends StatelessWidget {
     return Scaffold(
       // backgroundColor: shapeTransparent! ? Colors.transparent : statusBarColorIOSDevice,
       backgroundColor: shapeTransparent! ? Colors.transparent : backgroundColor,
-      key: keyDrawer,
-      drawer: drawer,
+      key: keyDrawer,  /// drawer
+      drawer: drawer, /// english drawer
+      endDrawerEnableOpenDragGesture: drawer != null , ///arabic drawer, used by code "      keyDrawerScaffoldState.currentState?.openEndDrawer(); "
+      endDrawer: drawer,  ///arabic drawer
       onDrawerChanged: onDrawerChanged,
       floatingActionButton: floatingActionButton,
       appBar: appBar,
