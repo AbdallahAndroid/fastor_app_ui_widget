@@ -21,18 +21,21 @@ class MenuItemTabWidget extends StatelessWidget {
   bool? isHideDecoration;
   GestureTapCallback  onTap;
 
+  bool isSelected;
+
 
   MenuItemTabWidget({
     required this.title,
     required this.iconLeft,
     required this.onTap,
+    required this.isSelected,
 
     /// shape right
     this.textRight,
     this.assetNameRight,
 
     this.isHideDecoration = false ,
-});
+  });
 
 
   @override
@@ -47,7 +50,7 @@ class MenuItemTabWidget extends StatelessWidget {
               left:  6.sp,
               right: 6.sp
           ),
-          decoration: isHideDecoration! ? null : AppDecoration.tapMenuWithIcon(),
+          decoration: isHideDecoration! ? null : AppDecoration.tapMenuWithIcon( isSelected: isSelected),
           color: isHideDecoration! ? Colors.transparent : null ,
           width: DeviceTools.getWidth(context),
           height: 64.h, // 64.h ,
@@ -61,7 +64,8 @@ class MenuItemTabWidget extends StatelessWidget {
 
               Icon( iconLeft,
                 size: 24.h,
-                color: AppColor.primary,
+                // size: isSelected ? 30.h : 24.h,
+                color: AppColor.primaryDark,
               ),
               SizedBox( width: 16.w ,),
 
@@ -74,7 +78,7 @@ class MenuItemTabWidget extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                   child: TextApp( title,
                     fontSize: 16.sp ,
-                    fontFamily: FontProject.w500,
+                    fontFamily: isSelected ? FontProject.w700 : FontProject.w500,
                   ),
                 ),
               ),
@@ -113,8 +117,10 @@ class MenuItemTabWidget extends StatelessWidget {
     return Image.asset( "assets/icons/back_icon_profile.png",
       width: 18.h,
       height: 18.h ,
+      color: isSelected ? AppColor.black : null ,
     );
   }
+
 
 
 }

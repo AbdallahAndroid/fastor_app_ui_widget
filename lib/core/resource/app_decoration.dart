@@ -320,7 +320,16 @@ abstract class AppDecoration {
     );
   }
 
-  static tapMenuWithIcon( ) {
+
+  static tapMenuWithIcon({required bool isSelected} ) {
+    if( isSelected ){
+      return   BoarderHelper.cardView(
+        colorBackground: AppColor.primaryTabTransparent,
+        radiusSize:  16.sp ,
+        widthLine: 1,
+        colorLine: AppColor.boarderLineCardItem,
+      );
+    }
     return   BoarderHelper.cardView(
       colorBackground: Colors.white,
       radiusSize:  16.sp ,

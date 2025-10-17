@@ -11,7 +11,7 @@ import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dar
 import 'package:fastor_app_ui_widget/admin/navigation_dashboard/cubit/navigation_dashboard_cubit.dart';
 import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/body_drawer_header.dart';
 import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/body_drawer_listview.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/menu_item_tab.dart';
+import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/menu_item_tab_widget.dart';
 import 'package:fastor_app_ui_widget/customWidget/camera/photo_picker_widget/shape_name/photo_picker_shape_name_widget.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
