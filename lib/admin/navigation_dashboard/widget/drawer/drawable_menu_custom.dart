@@ -30,6 +30,9 @@ class DrawableMenuCustom  extends Drawer {
         textDirection: LangApp.getTextDirection(),
         child: Drawer(
           width:   300.wt,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero, // 👈 removes corner rounding
+          ),
           backgroundColor: AppColor.dialogDialogDismissAreaTypeNormal,
           child:  ListView(
             padding: EdgeInsets.zero,

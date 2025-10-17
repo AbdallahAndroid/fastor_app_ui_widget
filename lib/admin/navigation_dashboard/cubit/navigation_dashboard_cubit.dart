@@ -44,10 +44,25 @@ class NavigationDashboardCubit extends Cubit<NavigationDashboardState> {
 
 
   dismissDrawer({required MenuTabEntity entity,   required GlobalKey<ScaffoldState> keyDrawerScaffoldState})     {
+
+    /// close by lang
+    if( LangApp.isArabic ){
+      keyDrawerScaffoldState.currentState?.closeEndDrawer();
+    } else {
       keyDrawerScaffoldState.currentState?.closeDrawer();
-      ToolsWait.waitToDo(300, (){
-        emit(  UpdateSelectedPageState(entity) );
-      } );
+    }
+
+    /// validate already opened
+    if( entity.index == currentEntity.index ) {
+      Log.i("dismissDrawer() - already opened - stop");
+      return;
+    }
+
+    Log.i("dismissDrawer() - start");
+    ToolsWait.waitToDo(1000, (){
+      Log.i("dismissDrawer() - end");
+      emit(  UpdateSelectedPageState(entity) );
+    } );
   }
 
 
