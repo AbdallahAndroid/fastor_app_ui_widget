@@ -36,5 +36,9 @@ class RouterPage{
     );
   }
 
+  static void home(BuildContext context) {
+
+  }
+
 
 }

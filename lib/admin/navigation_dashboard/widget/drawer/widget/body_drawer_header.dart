@@ -27,22 +27,42 @@ class BodyDrawerHeader extends StatelessWidget {
     cubit = NavigationDashboardCubit.get(context);
 
     return Container(
-      child:  GestureDetector(
-        child: Column(
+      decoration: AppDecoration.drawerHeader(),
+      child:  Stack(
+        children: [
+
+          contentUIHeader(context),
+
+          /// logout
+          tabLogout(context)
+        ],
+      ),
+    );
+  }
+
+  contentUIHeader(BuildContext context) {
+    return   GestureDetector(
+      child: Container(
+        width: DeviceTools.getWidth(context),
+        alignment: Alignment.center,
+        color: Colors.transparent,
+        margin: EdgeInsets.all( 16.h ),
+        child:  Column(
+          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
             /// photo
             PhotoPickerShapeNameWidget(
-              width: 60.wr ,
+              width: 70.wr ,
               placeholderAssetName: "assets/logo/placeholder_logo_white.png",
               username: UserHelper.getUserName(),
               imageUrlPreviousSelected: UserHelper.getImageUrl(),
               isModePreviousOnly: true,
               photoCallback: ( xFile ){},
             ),
-            SizedBox( height: 16.h ,),
+            SizedBox( height: 6.h ,),
 
             /// username
             TextApp(  UserHelper.getUserNameNullable()??"Dashboard".tr(),
@@ -53,13 +73,29 @@ class BodyDrawerHeader extends StatelessWidget {
             // SizedBox( height: 16.h ,),
           ],
         ),
+      ),
 
-        onTap: () {
-          RouterAdmin.homeDashboard(context);
-          // cubit.dismissDrawer( index: 0, keyDrawerScaffoldState: keyDrawerScaffoldState);
-        },
+      onTap: () {
+        RouterAdmin.homeDashboard(context);
+        // cubit.dismissDrawer( index: 0, keyDrawerScaffoldState: keyDrawerScaffoldState);
+      },
+
+    );
+  }
+
+
+  tabLogout(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        RouterPage.home(context);
+      },
+      child: Container(
+        color: Colors.transparent,
+        padding: EdgeInsets.all( 16.w ),
+        child: Icon( Icons.login_outlined, color: AppColor.white, size: 24.w ,),
       ),
     );
   }
+
 
 }

@@ -6,25 +6,27 @@ class DataSourceMenuItem {
 
 
   static List<MenuTabEntity> getTabs( ) {
+    int counterIndex = 0;
     return [
       MenuTabEntity(
-        index: 0,
+        index: counterIndex++,
         title: 'Analytics'.tr(),
         icon: CupertinoIcons.chart_bar_alt_fill,
-        page:  Container( child: Text("test page"),),
+        page:  Container( child: Text("test page Analytics"),),
       ),
-      // MenuTabEntity(
-      //   index: 1,
-      //   title: 'Users'.tr(),
-      //   icon: CupertinoIcons.person_2_fill,
-      //   page:  UsersListScreen( EnumUsersOpenBy.customers),
-      // ),
-      // MenuTabEntity(
-      //   index: 2,
-      //   title: 'Employees'.tr(),
-      //   icon: CupertinoIcons.person_crop_rectangle,
-      //   page:  UsersListScreen(EnumUsersOpenBy.employees),
-      // ),
+      MenuTabEntity(
+        index: counterIndex++,
+        title: 'Users'.tr(),
+        icon: CupertinoIcons.person_2_fill,
+        page:  Container( child: Text("test page Users"),),
+      ),
+      MenuTabEntity(
+        index: counterIndex++,
+        title: 'Employees'.tr(),
+        icon: CupertinoIcons.person_crop_rectangle,
+        page:  Container( child: Text("test page Employees"),),
+      ),
     ];
   }
+
 }

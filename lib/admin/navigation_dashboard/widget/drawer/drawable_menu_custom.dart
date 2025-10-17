@@ -39,13 +39,7 @@ class DrawableMenuCustom  extends Drawer {
             children: [
 
               /// header
-              DrawerHeader(
-                  decoration: AppDecoration.drawerHeader(),
-                  margin: EdgeInsets.zero,
-                  padding: EdgeInsets.zero,
-                  child:  BodyDrawerHeader(keyDrawerScaffoldState)
-              ),
-
+              BodyDrawerHeader(keyDrawerScaffoldState),
 
               /// tabs drawer
               Container(
