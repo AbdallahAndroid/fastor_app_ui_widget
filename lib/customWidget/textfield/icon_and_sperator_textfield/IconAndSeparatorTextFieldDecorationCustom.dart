@@ -3,7 +3,7 @@ import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
@@ -72,7 +72,7 @@ class IconAndSeparatorTextField extends StatelessWidget {
         if( ToolsValidation.isValid( errorMessage )    ) PositionedApp.langApp(
             child:  errorMessageWidget(),
             left: Figma.w( 47 ),
-            top: DimensionResource.textFieldHeight - Figma.h( 17 )
+            top: AppDimension.textFieldHeight - Figma.h( 17 )
         )
       ],),
     );
@@ -81,7 +81,7 @@ class IconAndSeparatorTextField extends StatelessWidget {
   Widget iconAndTextField(){
     return Container(
       width: getWidthSizeMinusMargin(),
-      height: minLines != null ? null :  DimensionResource.textFieldHeight,
+      height: minLines != null ? null :  AppDimension.textFieldHeight,
       decoration: BoarderHelper.cardView(
           colorLine: errorMessage != null ? AppColor.redMaterial : colorLineBoarder,
           colorBackground:   AppColor.textFieldBackground,
@@ -144,8 +144,8 @@ class IconAndSeparatorTextField extends StatelessWidget {
 
 
   double getWidthSizeMinusMargin(){
-    return DeviceTools.getWidthGlobal( ) - DimensionResource.marginBetweenTwoInputFiled -
-        DimensionResource.marginBetweenTwoInputFiled;
+    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenTwoInputFiled -
+        AppDimension.marginBetweenTwoInputFiled;
   }
 
 

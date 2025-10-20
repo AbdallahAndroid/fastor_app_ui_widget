@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/customWidget/page/ScaffoldApp.dart';
+import 'package:fastor_app_ui_widget/customWidget/scaffold/ScaffoldApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
 import 'package:flutter/material.dart';
 

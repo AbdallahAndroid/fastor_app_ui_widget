@@ -1,5 +1,5 @@
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/core/ChartDataEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/core/ChartDataModel.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/core/ChatDataCalculator.dart';

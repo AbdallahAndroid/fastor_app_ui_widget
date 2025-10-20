@@ -197,7 +197,7 @@ class NetworkHelperSingleTone {
   //   required String fileRequestKeyInJson,
   //   Map<String, dynamic>? body,
   //   Map<String, String>? headers,
-  //   picker.XFile? xFileToUpload,
+  //   camera.XFile? xFileToUpload,
   //   FormData? formData,
   //   NetworkRequestFile? requestFile,
   //   bool? isTypeMethodPUT,

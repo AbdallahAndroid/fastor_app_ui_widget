@@ -21,7 +21,7 @@ class PaginateListview extends StatelessWidget {
   List<Widget> children;
 
   /// this fire onChange in case user arrive bottom of screen,
-  /// While not fire change in case there isLoadingNextPage next page
+  /// While not fire change in case there isLoadingNextPage next scaffold
   PageinateListviewOnScrollBottomChange  onScrollArriveBottomAndValidToGetNextPageChange;
 
   /// refresh

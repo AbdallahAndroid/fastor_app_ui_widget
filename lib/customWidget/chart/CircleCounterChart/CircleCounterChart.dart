@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/chart/CircleCounterChart/logic/MapperPieData.dart';
@@ -45,7 +45,7 @@ class CircleCounterChartState extends State<CircleCounterChart> {
       mainAxisSize: MainAxisSize.max,
       children: [
         cardWithChart(),
-        SizedBox( height: DimensionResource.marginBetweenItemInSingleSections,),
+        SizedBox( height: AppDimension.marginBetweenItemInSingleSections,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

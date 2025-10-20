@@ -1,9 +1,29 @@
 import '../../utils/values/ToolsString.dart';
 
+String makeString(dynamic v ) => ApiParserApp.parseStringDynamic( v )??"";
+int makeInt(dynamic v ) => ApiParserApp.parseIntDynamic( v )??0;
+double makeDouble(dynamic v ) => ApiParserApp.parseDoubleOrInt( v )??0;
+bool makeBoolean(dynamic v ) => ApiParserApp.parseBooleanDynamic( v )??false ;
+
+
+
 /// api parse status, or boolean, or double as string format
 class ApiParserApp {
 
 //------------------------------------------------------------------ boolean read
+
+
+  /// "block": "0",  >> means false
+  static bool parseBooleanDynamic(dynamic n) {
+    if (n == null) return false;
+    String value = n.toString().trim();
+    //case true
+    if (value == "1") return true;
+    if (value == "true") return true;
+    //default
+    return false;
+  }
+
 
       ///  - example success:
       ///   {
@@ -86,19 +106,19 @@ class ApiParserApp {
 
 
   ///1- example totalBar record is 100, while pagiantor is 10
-  /// current page is 9
+  /// current scaffold is 9
   /// "to" is 10
   ///  >> result false
   ///
   ///2- example totalBar record is 100, while pagiantor is 10
-  /// current page is 10
+  /// current scaffold is 10
   /// "to" is 10
   ///  >> result true "there is no next pages"
   ///
   ///
   ///
   ///3- example totalBar record is 0 zero, while pagiantor is 10
-  /// current page is 1
+  /// current scaffold is 1
   /// "to" is 0
    ///  >> result true "there is no next pages"
    ///
@@ -107,7 +127,7 @@ class ApiParserApp {
     if (last_page == null) return false;
     /**
      * why write <= not write == ?
-     * in case zero record the "to" is zero while current page is "1"
+     * in case zero record the "to" is zero while current scaffold is "1"
      */
     bool result = last_page <= currentPage;
     // Log.i( "isPaginateLaravelEnd() - currentPage: " + currentPage.toString() +
@@ -210,6 +230,14 @@ class ApiParserApp {
     bool isEmptyArray = dataString == "[]";
     return isEmptyArray;
   }
+
+
+  static String? parseStringDynamic( dynamic d ) {
+    if( d == null ) return null;
+    if( d.toString() == "null" ) return null;
+    return d.toString();
+  }
+
 
 
 

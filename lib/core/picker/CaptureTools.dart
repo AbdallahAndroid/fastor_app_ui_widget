@@ -52,7 +52,7 @@ typedef PickerVideoCallBack = Function(bool status, String msg, String filePath,
 class CaptureTools {
 
 
-  //------------------------------------------------------------------------- picker only
+  //------------------------------------------------------------------------- camera only
 
   static Future<void> typeCaptureOnly(AssetImage placeHolder, PickerImageCallBack callBack) async {
 
@@ -64,7 +64,7 @@ class CaptureTools {
     try {
       XFile?  photoPickered =  await ImagePicker().pickImage(source: ImageSource.camera) ;
 
-      //check mobile cancel picker image
+      //check mobile cancel camera image
       if( photoPickered == null ) {
         Log.i( "pickerImage() - photo == null - stop! "  );
         //return failed

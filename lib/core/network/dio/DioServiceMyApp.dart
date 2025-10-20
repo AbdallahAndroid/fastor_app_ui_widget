@@ -24,13 +24,17 @@ extension DioServiceFastor on NetworkManagerDio {
     var _dio = Dio();
 
     //show request and response in beatful log
-    if( isEnableLogDioPretty! ) {
+    if (isEnableLogDioPretty!) {
       _dio.interceptors.add(PrettyDioLogger(
         requestHeader: isEnableLogDioPretty!,
         requestBody: isEnableLogDioPretty!,
         responseBody: isEnableLogDioPretty!,
       ));
     }
+
+    /// valid any status code
+    _dio.options.validateStatus = (status ) => status != null  ;
+
 
     //time out have issue between version "4 and 5"
     /**
@@ -42,46 +46,24 @@ extension DioServiceFastor on NetworkManagerDio {
     _dio.options.headers = headers;
 
     try {
-
-      response = await _dio.get(url, );
+      response = await _dio.get(url,);
       // Log.k( tag, "_get_dio() - success: "  + response.toString()  );
 
       //call back
       if (callback_dio != null) callback_dio!(true, "success", response.data);
       //return
       return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
     } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_get_dio() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      return getFailedResponse(msg: e.toString() );
+      return getFailedResponse(msg: e.toString());
     }
-
   }
 
   //--------------------------------------------------------------------------- post
 
   Future<Response>  post_dio() async {
-    Response? response ;
+    Response? response;
 
     try {
       // FormData form = FormData.fromMap(body);
@@ -89,13 +71,17 @@ extension DioServiceFastor on NetworkManagerDio {
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty! ) {
+      if (isEnableLogDioPretty!) {
         _dio.interceptors.add(PrettyDioLogger(
           requestHeader: isEnableLogDioPretty!,
           requestBody: isEnableLogDioPretty!,
           responseBody: isEnableLogDioPretty!,
         ));
       }
+
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
 
       //time out have issue between version "4 and 5"
       /**
@@ -107,7 +93,7 @@ extension DioServiceFastor on NetworkManagerDio {
 
       _dio.options.headers = headers;
 
-      response = await _dio.post(url,  data: body);
+      response = await _dio.post(url, data: body);
       //Log.k(tag, "_post_dio() - success: " + response.toString());
 
       //call back
@@ -115,57 +101,35 @@ extension DioServiceFastor on NetworkManagerDio {
 
       //return
       return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
-    } catch (e,s) {
-      String msg = e.toString();
-      if( isEnableLogDioPretty! ) {
-        Log.k(tag, "_post_dio() - e: " + msg);
-      }
-      Log.k(tag, "_post_dio() - response: " + response.toString() );
-      Log.k(tag, "_post_dio() - s: " + s.toString() );
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      if( response != null ) {
-        return response;
-      }
-      return getFailedResponse(msg: e.toString() );
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
+    } catch (e) {
+      return getFailedResponse(msg: e.toString());
     }
   }
 
   //--------------------------------------------------------------------------- put
 
   Future<Response>  put_dio() async {
-    Response? response ;
+    Response? response;
     try {
       // FormData form = FormData.fromMap(body);
 
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty! ) {
+      if (isEnableLogDioPretty!) {
         _dio.interceptors.add(PrettyDioLogger(
           requestHeader: isEnableLogDioPretty!,
           requestBody: isEnableLogDioPretty!,
           responseBody: isEnableLogDioPretty!,
         ));
       }
+
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
+
 
       //time out have issue between version "4 and 5"
       /**
@@ -177,7 +141,7 @@ extension DioServiceFastor on NetworkManagerDio {
 
       _dio.options.headers = headers;
 
-      response =   await _dio.put(url, data: body);
+      response = await _dio.put(url, data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -185,51 +149,34 @@ extension DioServiceFastor on NetworkManagerDio {
 
       //return
       return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
     } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_put() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      return getFailedResponse(msg: e.toString() );
+      return getFailedResponse(msg: e.toString());
     }
-
   }
 
   //--------------------------------------------------------------------------- patch
 
   Future<Response>  patch_dio() async {
-    Response? response ;
+    Response? response;
     try {
       // FormData form = FormData.fromMap(body);
 
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty! ) {
+      if (isEnableLogDioPretty!) {
         _dio.interceptors.add(PrettyDioLogger(
           requestHeader: isEnableLogDioPretty!,
           requestBody: isEnableLogDioPretty!,
           responseBody: isEnableLogDioPretty!,
         ));
       }
+
+
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
 
       //time out have issue between version "4 and 5"
       /**
@@ -240,7 +187,7 @@ extension DioServiceFastor on NetworkManagerDio {
        */
       _dio.options.headers = headers;
 
-      response =   await _dio.patch(url,  data: body);
+      response = await _dio.patch(url, data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -248,45 +195,24 @@ extension DioServiceFastor on NetworkManagerDio {
 
       //return
       return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
     } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_put() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      return getFailedResponse(msg: e.toString() );
+      return getFailedResponse(msg: e.toString());
     }
-
   }
 
   //--------------------------------------------------------------------------- delete
 
   Future<Response>  delete_dio() async {
-    Response? response ;
+    Response? response;
     try {
       // FormData form = FormData.fromMap(body);
 
       Dio _dio = Dio();
 
       //show request and response in beatful log
-      if( isEnableLogDioPretty! ) {
+      if (isEnableLogDioPretty!) {
         _dio.interceptors.add(PrettyDioLogger(
           requestHeader: isEnableLogDioPretty!,
           requestBody: isEnableLogDioPretty!,
@@ -294,6 +220,9 @@ extension DioServiceFastor on NetworkManagerDio {
         ));
       }
 
+      /// valid any status code
+      _dio.options.validateStatus = (status ) => status != null  ;
+
       //time out have issue between version "4 and 5"
       /**
           if(timeOutSecond != null ) {
@@ -303,7 +232,7 @@ extension DioServiceFastor on NetworkManagerDio {
        */
       _dio.options.headers = headers;
 
-      response =   await _dio.delete(url,  data: body);
+      response = await _dio.delete(url, data: body);
       // Log.k(tag, "_put() - success: " + response.toString());
 
       //call back
@@ -311,302 +240,12 @@ extension DioServiceFastor on NetworkManagerDio {
 
       //return
       return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
+    } on DioException catch (dioError) {
+      return getFailedResponseDioError(dioError: dioError);
     } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_delete() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      return getFailedResponse(msg: e.toString() );
-    }
-
-  }
-
-  //---------------------------------------------------------------------------- file
-
-  Future<Response>  file_dio() async {
-    Response? response ;
-    try {
-      Log.k(tag, "_file() - requestFile: " + requestFile.toString() );
-      // Log.k(tag, "_file() - body: " + body.toString());
-
-      //check not file
-      if (ToolsValidation.isEmpty(requestFile!.filePath)) {
-        if (callback_dio != null)
-          callback_dio!(false, "filePath not found", Map());
-        return getFailedResponse();
-      }
-
-
-
-      //data
-      var formData = FormData.fromMap({
-        requestFile!.fileRequestKeyInJson : await MultipartFile.fromFile( requestFile!.filePath!), //'file'
-        "${requestFile!.body_key1}": "${requestFile!.body_value1}",
-        "${requestFile!.body_key2}": "${requestFile!.body_value2}",
-        "${requestFile!.body_key3}": "${requestFile!.body_value3}",
-        "${requestFile!.body_key4}": "${requestFile!.body_value4}",
-        "${requestFile!.body_key5}": "${requestFile!.body_value5}",
-        "${requestFile!.body_key6}": "${requestFile!.body_value6}",
-        "${requestFile!.body_key7}": "${requestFile!.body_value7}",
-
-        "${requestFile!.body_key8}": "${requestFile!.body_value8}",
-        "${requestFile!.body_key9}": "${requestFile!.body_value9}",
-        "${requestFile!.body_key10}": "${requestFile!.body_value10}",
-        "${requestFile!.body_key11}": "${requestFile!.body_value11}",
-        "${requestFile!.body_key12}": "${requestFile!.body_value12}",
-        "${requestFile!.body_key13}": "${requestFile!.body_value13}",
-        "${requestFile!.body_key14}": "${requestFile!.body_value14}"
-
-        //  "${requestFile!.body_keyMoreThan7}": requestFile!.body_valueMoreThan7,
-      });
-
-      Log.k(tag, "_file() - formData: " + formData.toString());
-
-      Dio _dio = Dio();
-      //show request and response in beatful log
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty!,
-        requestBody: isEnableLogDioPretty!,
-        responseBody: isEnableLogDioPretty!,
-      ));
-
-      //time out have issue between version "4 and 5"
-      /**
-          if(timeOutSecond != null ) {
-          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
-          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-          }
-       */
-      _dio.options.headers = headers;
-
-      if( requestFile!.isTypeMethodPUT ) {
-        response = await _dio.put(url,
-            data: formData);
-
-      } else {
-        response = await _dio.post(url,
-            data: formData);
-
-      }
-
-      Log.k(tag, "_file() - success: " + response.toString());
-
-      //call back
-      if (callback_dio != null) callback_dio!(true, "success", response.data);
-
-      //return
-      return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
-    } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_file() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, msg, Map());
-      return getFailedResponse(msg: e.toString() );
-    }
-
-  }
-
-
-  Future<Response >  fileTypeXFile_dio(  { ProgressCallbackApp? onSendProgress,
-    ProgressCallbackApp? onReceiveProgress  }) async {
-
-    Response? response ;
-    try {
-      Log.k(tag, "_fileTypeXFile() - xFile: " + requestFile!.xFile!.path.toString() );
-
-
-      //check not file
-      if (ToolsValidation.isEmpty(requestFile!.xFile!.path)) {
-        if (callback_dio != null)
-          callback_dio!(false, "filePath not found", Map());
-        return getFailedResponse();
-      }
-
-      //byte
-      List<int> byte = await requestFile!.xFile!.readAsBytes().then((value) {
-        return value.cast();
-      });
-      Log.k(tag, '_fileTypeXFile() - byte ' + byte.length.toString() );
-
-      //generate cloud path
-      //  String fileName = ToolsFile.getFileNameWithoutExtenstion( filePath );
-      var mp = await MultipartFile.fromBytes( byte,
-          filename: requestFile!.xFile!.path.toString() + requestFile!.xFile!.name
-      );
-      Log.k(tag, "_fileTypeXFile() - mp: " + mp.toString() );
-
-      //data
-      var formData = FormData.fromMap({
-        'file': mp,
-      });
-      Log.k(tag, "_fileTypeXFile() - formData: " + formData.toString());
-
-      Dio _dio = Dio();
-
-      //show request and response in beatful log
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty!,
-        requestBody: isEnableLogDioPretty!,
-        responseBody: isEnableLogDioPretty!,
-      ));
-
-      //time out have issue between version "4 and 5"
-      /**
-          if(timeOutSecond != null ) {
-          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
-          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-          }
-       */
-      _dio.options.headers = headers;
-
-      response = await _dio.post(url,
-          data: formData,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress
-      );
-      // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
-
-      //call back
-      if (callback_dio != null) callback_dio!(true, "success", response.data);
-
-      //return
-      return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
-    } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_fileTypeXFile() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, "Falied to Upload File", Map());
-
-      return getFailedResponse(msg: e.toString() );
+      return getFailedResponse(msg: e.toString());
     }
   }
 
-
-  Future<Response >  fileTypeFormData(  { ProgressCallbackApp? onSendProgress,
-    ProgressCallbackApp? onReceiveProgress  }) async {
-
-    Response? response ;
-    try {
-      Log.k(tag, "fileTypeFormData() - xFile: ${requestFile!.formData}"  );
-
-
-      //check not file
-      if ( requestFile!.formData == null ) {
-        if (callback_dio != null)
-          callback_dio!(false, "filePath not found", Map());
-        return getFailedResponse();
-      }
-
-      Dio _dio = Dio();
-
-      //show request and response in beatful log
-      _dio.interceptors.add(PrettyDioLogger(
-        requestHeader: isEnableLogDioPretty!,
-        requestBody: isEnableLogDioPretty!,
-        responseBody: isEnableLogDioPretty!,
-      ));
-
-      //time out have issue between version "4 and 5"
-      /**
-          if(timeOutSecond != null ) {
-          _dio.options.connectTimeout = Duration( seconds: timeOutSecond! )  ;
-          _dio.options.receiveTimeout =  Duration( seconds: timeOutSecond! );
-          }
-       */
-      _dio.options.headers = headers;
-
-      response = await _dio.post(url,
-          data: requestFile!.formData,
-          onSendProgress: onSendProgress,
-          onReceiveProgress: onReceiveProgress
-      );
-      // Log.k(tag, "_fileTypeXFile() - success: " + response.toString());
-
-      //call back
-      if (callback_dio != null) callback_dio!(true, "success", response.data);
-
-      //return
-      return response;
-    } on DioError catch (dioError) {
-      Log.k(tag, "DioError - e: " + dioError.toString());
-      if( dioError.response != null && dioError!.response!.data != null ) {
-        Log.k(tag, "DioError - statusCode: " + dioError!.response!.statusCode.toString());
-        Map<String,dynamic> data = Map();
-        if( dioError!.response!.data != null ) {
-          if( dioError!.response!.data is Map ) {
-            data = dioError!.response!.data;
-          } else {
-            data["data"] = dioError!.response!.data.toString();
-          }
-        }
-        if (callback_dio != null) callback_dio!(false, "failed", data);
-        return dioError!.response!;
-      } else {
-        if (callback_dio != null) callback_dio!(false, "failed",  Map() );
-        return getFailedResponse(msg: dioError.toString() );
-      }
-
-    } catch (e) {
-      String msg = e.toString();
-      Log.k(tag, "_fileTypeXFile() - e: " + msg);
-      if (callback_dio != null) callback_dio!(false, "Falied to Upload File", Map());
-
-      return getFailedResponse(msg: e.toString() );
-    }
-  }
 
 }

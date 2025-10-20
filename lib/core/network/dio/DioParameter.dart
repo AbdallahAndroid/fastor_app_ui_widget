@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/core/network/dio/NetworkManagerDio.dart';
+import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 
 extension DioParameter on NetworkManagerDio {
@@ -42,9 +44,5 @@ extension DioParameter on NetworkManagerDio {
     return custome!;
   }
 
-
-   Response  getFailedResponse( {String? msg }) {
-     return Response(requestOptions:  new RequestOptions(path:  msg != null ? msg : "failed request"));
-   }
 
 }

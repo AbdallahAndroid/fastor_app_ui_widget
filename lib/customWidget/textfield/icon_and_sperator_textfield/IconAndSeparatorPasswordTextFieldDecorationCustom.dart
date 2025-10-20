@@ -3,7 +3,7 @@ import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
@@ -96,7 +96,7 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
         if( ToolsValidation.isValid( widget.errorMessage )    ) PositionedApp.langApp(
             child:  errorMessageWidget(),
             left: Figma.w( 47  ),
-            top: DimensionResource.textFieldHeight - Figma.h( 17 )
+            top: AppDimension.textFieldHeight - Figma.h( 17 )
         )
       ],),
     );
@@ -106,11 +106,11 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
   Widget iconAndTextField(){
     return Container(
       width: getWidthSizeMinusMargin(),
-      height: DimensionResource.textFieldHeight,
+      height: AppDimension.textFieldHeight,
       decoration: BoarderHelper.cardView(
         colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
         colorBackground: AppColor.textFieldBackground,
-        radiusSize: DimensionResource.cornerTextField,
+        radiusSize: AppDimension.cornerTextField,
       ),
       child: Row(
         children: [
@@ -164,8 +164,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
   }
 
   double getWidthSizeMinusMargin(){
-    return DeviceTools.getWidthGlobal( ) - DimensionResource.marginBetweenTwoInputFiled -
-        DimensionResource.marginBetweenTwoInputFiled;
+    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenTwoInputFiled -
+        AppDimension.marginBetweenTwoInputFiled;
   }
 
   double getWidthTextField(){

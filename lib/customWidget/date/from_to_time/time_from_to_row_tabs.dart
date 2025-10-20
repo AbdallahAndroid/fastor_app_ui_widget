@@ -1,5 +1,5 @@
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/customWidget/date/from_to_time/widget/time_hint_box_tab.dart';
@@ -93,7 +93,7 @@ class _DateFromToRowTabsState extends State<TimeFromToRowTabs> {
     );
   }
 
-  ///------------------------------------------------------------------- picker
+  ///------------------------------------------------------------------- camera
 
   void _showFromPicker(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(

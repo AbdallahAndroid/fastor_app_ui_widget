@@ -37,11 +37,11 @@ final appTheme = ThemeData(
 
   datePickerTheme:   DatePickerThemeData(
 
-    //-------------- date picker single date
+    //-------------- date camera single date
     backgroundColor: Colors.green,
     headerForegroundColor: Colors.white,
 
-    //-------------- date picker range
+    //-------------- date camera range
     rangePickerBackgroundColor: Colors.green,  //background
     rangePickerHeaderForegroundColor: Colors.green, // text header
 

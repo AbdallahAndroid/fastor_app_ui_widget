@@ -147,17 +147,22 @@ class UserHelper {
     return SaveApp.getString(CacheKeys.username) ;
   }
 
-  static String getProfilePic() {
-    return SaveApp.getString(CacheKeys.image) ?? "";
+  static String  getUserName()   {
+    return   SaveApp.getString( CacheKeys.username);
   }
 
+  static String?  getUserNameNullable()   {
+    var result =  SaveApp.getString( CacheKeys.username);
+    if( ToolsValidation.isEmpty( result )) return null;
+    return result ;
+  }
 
   //-------------------------------------------- photo
 
-  static String getPhoto() {
-    return SaveApp.getString(CacheKeys.image) ?? "";
-  }
 
+  static String getImageUrl(){
+    return   SaveApp.getString( CacheKeys.image);
+  }
   //-------------------------------------------- email
 
   static String getEmail() {

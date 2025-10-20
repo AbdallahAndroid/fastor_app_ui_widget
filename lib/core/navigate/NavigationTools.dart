@@ -40,7 +40,7 @@ class NavigationTools {
   }
 
   /**
-   * this make librasry "need_resume" working with push to next page
+   * this make librasry "need_resume" working with push to next scaffold
    */
   static void pushResumeAnimateFade(BuildContext context, Widget page, ResumableState resume ) {
     var materialPageRoute = PageRouteBuilder(
@@ -74,7 +74,7 @@ class NavigationTools {
   }
 
   /**
-   * this make librasry "need_resume" working with push to next page
+   * this make librasry "need_resume" working with push to next scaffold
    */
   static void pushResume(BuildContext context, Widget page, ResumableState resume ) {
     var materialPageRoute = MaterialPageRoute(builder: (context) => page);

@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/animate/RotationHorizontalChangeIconEveryOneSecond.dart';
@@ -33,7 +33,7 @@ class ProgressWithIcon extends StatelessWidget {
             color: AppColor.iconInsideProgressContainer,
             size: Figma.h( 100),
           ),
-          SizedBox( height: DimensionResource.marginBetweenTwoSections ,),
+          SizedBox( height: AppDimension.marginBetweenTwoSections ,),
           ProgressCircleApp(color: AppColor.progressCircle, size: Figma.h( 40),),
         ],),
     );

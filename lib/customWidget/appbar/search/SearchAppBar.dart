@@ -115,7 +115,7 @@ class _CustomAppBarState extends State<SearchAppBar> {
   Widget iconSearch(){
     return GestureDetector(
       onTap: (){
-        KeyboardTools.dismiss(context);
+        ToolsKeyboard.dismiss(context);
         // cubit!.clickOnSearchByTextStores(   );
         widget.onChanged( searchController.text);
         onChangeHappenedOrOnSubmitButtonClicked(searchController.text);

@@ -20,7 +20,7 @@ extension ButtonNextPreviousController on PaginateBarState {
     }
     msgError = null;
 
-    //change current page
+    //change current scaffold
     widget.currentPage = widget.currentPage-1;
 
     //redraw list numbers
@@ -44,7 +44,7 @@ extension ButtonNextPreviousController on PaginateBarState {
 
     //check maxPage
     if( maxArrive ) {
-      String title = "The max page is: "  ;
+      String title = "The max scaffold is: "  ;
       msgError =    title +widget.maxPage.toString() ;
       setState(() {
 
@@ -53,7 +53,7 @@ extension ButtonNextPreviousController on PaginateBarState {
     }
     msgError = null;
 
-    //change current page
+    //change current scaffold
     widget.currentPage = widget.currentPage + 1;
 
     //redraw list numbers

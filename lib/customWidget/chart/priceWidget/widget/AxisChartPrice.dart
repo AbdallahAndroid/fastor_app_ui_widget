@@ -1,7 +1,7 @@
 
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/core/ChatDataCalculator.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/priceWidget/ChartPriceProduct.dart';
 import 'package:fastor_app_ui_widget/customWidget/chart/priceWidget/logic/ChartPriceController.dart';

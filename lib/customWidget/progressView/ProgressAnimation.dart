@@ -1,6 +1,6 @@
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/resource/ColorResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 
 import 'package:fastor_app_ui_widget/customWidget/animate/RotationHorizontalChangeIconEveryOneSecond.dart';
 import 'package:fastor_app_ui_widget/customWidget/animate/RotationHorizontalChangeIconWhenRotateComplete.dart';

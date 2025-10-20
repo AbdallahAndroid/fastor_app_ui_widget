@@ -68,7 +68,7 @@ class PageViewAppState extends State<PageViewApp> {
     //Log.i( "initValues() - isArabic: " +  LanguageTools.isArabic( context).toString()) ;
   }
 
-  //------------------------------------------------------------------- page adapter
+  //------------------------------------------------------------------- scaffold adapter
 
   Widget page_adapter() {
     var page = PageView(
@@ -81,7 +81,7 @@ class PageViewAppState extends State<PageViewApp> {
       physics: const ClampingScrollPhysics(),
       controller: widget.pageViewController,
       onPageChanged: (int page) {
-        // Log.i("page_adapter() - PageView - onPageChanged: " + page.toString());
+        // Log.i("page_adapter() - PageView - onPageChanged: " + scaffold.toString());
         updatePageSelected( page );
 
       },

@@ -15,9 +15,9 @@ class PaginateBarApp extends StatefulWidget{
 
   PaginateBarChange paginateNumberChange;
   int currentPage  ;
- //example pages: 1,  Current page selected
-  int itemTotal ;       //pages: 10 , How many page will be avaliable to download from backend
-  int limitPerPage ; //example paginator: 10, limit per every page
+ //example pages: 1,  Current scaffold selected
+  int itemTotal ;       //pages: 10 , How many scaffold will be avaliable to download from backend
+  int limitPerPage ; //example paginator: 10, limit per every scaffold
   int  maxPage = 0;
   bool progress;
 
@@ -58,7 +58,7 @@ class PaginateBarApp extends StatefulWidget{
   }
 
    _calculateMaxPage() {
-    //    this.maxPage ??=  1000000; //pages: 999, means if there is 1000 page it will show to only page 999 maxPage;
+    //    this.maxPage ??=  1000000; //pages: 999, means if there is 1000 scaffold it will show to only scaffold 999 maxPage;
     if( itemTotal == 0 ) {
       maxPage = 0;
       return;
@@ -87,7 +87,7 @@ class PaginateBarApp extends StatefulWidget{
 
 class PaginateBarState extends State<PaginateBarApp> {
 
-  //numbers of page
+  //numbers of scaffold
   List<Widget> listNumberWidget = [];
   int  recordTotal = 0; //example pages: 100,  the totalBar database record
 
