@@ -8,6 +8,7 @@ class AppDimension {
   static   double textFieldContentPaddingHorizontal = Figma.h( 15 );
   static   double textFieldContentPaddingVertical = Figma.h( 15 );
   static  double textFieldHeight = Figma.h(65) ;
+  static double textFieldBoarderWidth = 0.5;
   static var textFieldRadiusBoarder = 12.r ;
   static var textFieldPadding = EdgeInsets.only(
       left: 16.5 ,

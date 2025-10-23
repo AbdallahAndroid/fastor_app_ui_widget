@@ -7,6 +7,23 @@ import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 extension TabletSizePhone on num  {
 
+
+  ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; text
+
+  double get spt {
+    return spTablet;
+  }
+  double get spTablet {
+    if(GlobalApp.getContexts()  != null ) {
+      bool isPortrait =   DeviceTools.isPortrait( GlobalApp.getContexts()! )  ;
+      if(isPortrait ) return FigmaSizeDouble.scaleText() * this ;
+
+      return  min( min( ht, wt ) , min( hTabletLandscapeExact, wTabletLandscapeExact )  ) ;
+    } else {
+      return _hTabletLandscape;
+    }
+  }
+
   ///::::::::::::::::::::::::::::: exact same figma size
 
   /// this calculate exact same figma size
