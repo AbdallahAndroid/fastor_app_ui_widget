@@ -87,7 +87,7 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
             // fontFamily: FontResources.regular
           ),
           // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-          initialSelection: countryCode_text,
+          initialSelection: previousCountryCodeSelected??countryCode_text,
           // favorite:  const [ "+966",  "+20"],
           countryFilter: const [  "+966", "+20"],
           // optional. Shows only country name and flag
