@@ -26,13 +26,13 @@ class TitleAppBar extends StatelessWidget {
 
         /// title
         TextApp( title,
-          fontSize: DeviceTools.isLandscape(context) ? 15.5.wt :  15.5.sp,
+          fontSize: DeviceTools.isLandscape(context) ? 15.5.w :  15.5.sp,
           color: AppColor.white,
         ),
 
         /// counter
         if(counter != null)   TextApp( " " +  counter.toString(),
-          fontSize: DeviceTools.isLandscape(context) ? 15.5.wt : 15.5.sp,
+          fontSize: DeviceTools.isLandscape(context) ? 15.5.w : 15.5.sp,
           color: AppColor.white,
         ),
       ],

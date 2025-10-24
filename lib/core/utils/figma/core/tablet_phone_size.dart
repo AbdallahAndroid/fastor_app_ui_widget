@@ -1,54 +1,59 @@
 
+import 'dart:math';
+
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/ProjectFigmaScreenInitializer.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/core/portrait_phone_size.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/core/scale_text.dart';
 import 'package:fastor_app_ui_widget/core/utils/globa/GlobalApp.dart';
-import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 extension TabletSizePhone on num  {
-
 
   ///;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; text
 
   double get spt {
     return spTablet;
   }
+
   double get spTablet {
     if(GlobalApp.getContexts()  != null ) {
-      bool isPortrait =   DeviceTools.isPortrait( GlobalApp.getContexts()! )  ;
-      if(isPortrait ) return FigmaSizeDouble.scaleText() * this ;
+      bool isPortrait =   DeviceTools.isPortraitNotSemiBox( GlobalApp.getContexts()! )  ;
+      if(isPortrait ) return  numToDouble().spPortrait ;
 
-      return  min( min( ht, wt ) , min( hTabletLandscapeExact, wTabletLandscapeExact )  ) ;
+      return  hTabletInputField; // min( min( ht, wt ) , min( hTabletLandscapeExact, wTabletLandscapeExact )  ) ;
     } else {
       return _hTabletLandscape;
     }
   }
 
+
   ///::::::::::::::::::::::::::::: exact same figma size
 
   /// this calculate exact same figma size
   double get wTabletLandscapeExact {
-    double ratio = ( this / ProjectFigmaScreenInitializer.figmaScreenLandscapeWidth );
-    var result =  ratio * currentDeviceHeight;
+    // double ratio = ( this / ProjectFigmaScreenInitializer.figmaScreenLandscapeWidth );
+    // var result =  ratio * currentDeviceHeight;
     // Log.i("wTabletLandscapeExact() - this: $this /currentDeviceHeight: $currentDeviceHeight /ratio: $ratio /result: $result ");
-    return result;
+    return PortraitPhoneSize.widthPortrait( numToDouble() );
   }
 
 
   /// this calculate exact same figma size
   double get hTabletLandscapeExact {
-    double ratio = ( this / ProjectFigmaScreenInitializer.figmaScreenLandscapeHeight );
-    var result =  ratio * currentDeviceWidth;
-    return  result;
+    // double ratio = ( this / ProjectFigmaScreenInitializer.figmaScreenLandscapeHeight );
+    // var result =  ratio * currentDeviceWidth;
+    return PortraitPhoneSize.heightPortrait( numToDouble() );
   }
 
-  ///::::::::::::::::::::::::::::: detect orientation
+  ///::::::::::::::::::::::::::::: case: input field size
 
   /// "wt"  symbol for  "width tablet"
-  double get wt {
+  ///    >> usage 1: example input field widths >> , make in landscape same width in portrait
+  double get wTabletInputField {
     if(GlobalApp.getContexts()  != null ) {
-      bool isLandScapeNow =   DeviceTools.isLandscape( GlobalApp.getContexts()! )  ;
-      return isLandScapeNow ? _wTabletLandscape : _wTabletPortrait;
+      bool isLandScapeOrSemibBox =   DeviceTools.isLandscapeOrSemiBox( GlobalApp.getContexts()! )  ;
+      return isLandScapeOrSemibBox ? hTabletInputField  : PortraitPhoneSize.widthPortrait( numToDouble() );
     } else {
       return _wTabletLandscape;
     }
@@ -56,10 +61,10 @@ extension TabletSizePhone on num  {
 
 
   /// "ht"  symbol for "height tablet"
-  double get ht {
+  double get hTabletInputField {
     if(GlobalApp.getContexts()  != null ) {
-      bool isLandScapeNow =   DeviceTools.isLandscape( GlobalApp.getContexts()! )  ;
-      return isLandScapeNow ? _hTabletLandscape : _hTabletPortrait;
+      bool isLandScapeOrSemibBox =   DeviceTools.isLandscapeOrSemiBox( GlobalApp.getContexts()! )  ;
+      return isLandScapeOrSemibBox ? _hTabletLandscape : _hTabletPortrait;
     } else {
       return _hTabletLandscape;
     }
@@ -69,30 +74,30 @@ extension TabletSizePhone on num  {
 
   double get _wTabletLandscape {
     /// validate tablet only
-    if( isTablet ==false ){ return Figma.w( numTDouble() ) ; }
-    return _widthLogicTabletSize( numTDouble() ) ;
+    if( isTablet ==false ){ return PortraitPhoneSize.widthPortrait( numToDouble() ) ; }
+    return _widthLogicTabletSize( numToDouble() ) ;
   }
 
   double get _hTabletLandscape {
     /// validate tablet only
-    if( isTablet ==false ){ return Figma.h( numTDouble() ) ; }
-    return _heightLogicTabletSize( numTDouble() ) ;
+    if( isTablet ==false ){ return PortraitPhoneSize.heightPortrait( numToDouble() ) ; }
+    return _heightLogicTabletSize( numToDouble() ) ;
   }
 
   double get _wTabletPortrait {
     /// validate tablet only
-    if( isTablet ==false ){ return Figma.w( numTDouble() ) ; }
-    return _heightLogicTabletSize( numTDouble() )  ;
+    if( isTablet ==false ){ return PortraitPhoneSize.widthPortrait( numToDouble() ) ; }
+    return _heightLogicTabletSize( numToDouble() )  ;
   }
   double get _hTabletPortrait  {
     /// validate tablet only
-    if( isTablet ==false ){ return Figma.h( numTDouble() ) ; }
-    return _widthLogicTabletSize( numTDouble() ) ;
+    if( isTablet ==false ){ return PortraitPhoneSize.heightPortrait( numToDouble() ) ; }
+    return _widthLogicTabletSize( numToDouble() ) ;
   }
 
   ///::::::::::::::::::::::::::::: private
 
-  double numTDouble(){
+  double numToDouble(){
     double d = 0;
     if( this.toString().contains( ".") ) {
       d =  double.parse("$this") ;

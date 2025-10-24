@@ -29,7 +29,7 @@ class DrawableMenuCustom  extends Drawer {
     return Directionality(
         textDirection: LangApp.getTextDirection(),
         child: Drawer(
-          width:   300.wt,
+          width:   300.w ,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // 👈 removes corner rounding
           ),

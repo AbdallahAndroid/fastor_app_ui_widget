@@ -85,18 +85,18 @@ class IconAndSeparatorTextFieldMaterialError extends StatelessWidget {
       error:  errorMessageWidget(),
       //   suffix: errorMessageWidget(),
       enabledBorder:  OutlineInputBorder(
-        borderRadius: BorderRadius.all( Radius.circular( AppDimension.cornerTextField)),
+        borderRadius: BorderRadius.all( Radius.circular( AppDimension.textFieldRadiusBoarder)),
         borderSide:  BorderSide(color: AppColor.textFieldBoarderLine, width: 2.0),
       ),
       prefixIcon: Container(
         width: Figma.h( 65) ,
         height: minLines != null ? null :  AppDimension.textFieldHeight,
         child: Row(children: [
-          SizedBox( width: Figma.h( AppDimension.textFieldContentPaddingHorizontal) ,),
+          SizedBox( width: Figma.h( AppDimension.textFieldPadding.left) ,),
           icon,
-          SizedBox( width: Figma.h( AppDimension.textFieldContentPaddingHorizontal) ,),
+          SizedBox( width: Figma.h( AppDimension.textFieldPadding.left) ,),
           divider(),
-          SizedBox( width: Figma.h( AppDimension.textFieldContentPaddingHorizontal) ,),
+          SizedBox( width: Figma.h( AppDimension.textFieldPadding.left) ,),
         ],),
       )
     );

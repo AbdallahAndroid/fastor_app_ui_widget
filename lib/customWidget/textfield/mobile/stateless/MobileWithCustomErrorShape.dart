@@ -25,7 +25,7 @@ typedef MobileWithCustomErrorShapeListener = Function(String? country_code, Stri
 class MobileWithCustomErrorShape extends StatelessWidget {
 
 
-  final marginBetweenTwoField = 10.0; //.ht ;
+  final marginBetweenTwoField = 10.0; //.h ;
 
 
   OutlineInputBorder? outlineInputBoarder;
@@ -174,11 +174,12 @@ class MobileWithCustomErrorShape extends StatelessWidget {
           width: getWidthPhoneOnly(),
           height: AppDimension.textFieldHeight,
         ),
-        Positioned(child:  textField(), top: 20.ht  ),
+        Positioned(child:  textField(), top: 20.h  ),
         if( ToolsValidation.isValid(  errorMessage )    ) PositionedApp.langApp(
             child:  errorMessageWidget(),
             left: 0,
-            top: AppDimension.textFieldHeight - 17.ht
+            top: AppDimension.textFieldHeight - 17.h
+
         ),
 
 
@@ -189,7 +190,7 @@ class MobileWithCustomErrorShape extends StatelessWidget {
 
   Widget textField(){
     return TextFieldApp(
-      padding: LangApp.onlyEdgeInsets(left: 10.ht  ),
+      padding: LangApp.onlyEdgeInsets(left: 10.h  ),
       width: getWidthPhoneOnly()  ,
       fontSize: 16.spt  ,
       fontFamily: FontProject.w500,
@@ -250,10 +251,10 @@ class MobileWithCustomErrorShape extends StatelessWidget {
   //---------------------------------------------- error
 
   errorMessageWidget(){
-    double size = 10.ht ;
+    double size = 10.h ;
     // Log.i("errorMessageWidget() - errorMessage: $errorMessage");
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.ht ),
+      padding: EdgeInsets.symmetric(horizontal: 10.h ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

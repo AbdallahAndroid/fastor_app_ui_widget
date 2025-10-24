@@ -144,8 +144,8 @@ class IconAndSeparatorTextField extends StatelessWidget {
 
 
   double getWidthSizeMinusMargin(){
-    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenTwoInputFiled -
-        AppDimension.marginBetweenTwoInputFiled;
+    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenInputFields -
+        AppDimension.marginBetweenInputFields;
   }
 
 
