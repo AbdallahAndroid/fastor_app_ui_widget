@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/constant/env.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
@@ -29,67 +30,66 @@ class CountryTextFieldPicker extends StatefulWidget {
 }
 
 class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
-  String? countryCode_text = "+966";
+  String? countryCode_text = env.countryCodeDefault;
+
+  _CountryTextFieldPickerState();
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    // setCountryCodeCurrent();
+    setCountryCodeCurrent();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      widget.listener( countryCode_text!, true );
+      widget.listener(  countryCode_text!, true );
     });
   }
 
   //-------------------------------------------------------------- auto set timezone
 
-  /**
-      void setCountryCodeCurrent() {
-      ZoneTools.getZoneCountryDialCode( "+966").then((value)   {
+  void setCountryCodeCurrent() {
+    countryCode_text = widget.previousCountryCodeSelected??env.countryCodeDefault;
+    if(widget.previousCountryCodeSelected != null ) return;
+    ZoneTools.getZoneCountryDialCode(env.countryCodeDefault).then((value)   {
+      Log.i("setCountryCodeCurrent() - value: " + value.toString() );
       setState(() {
-      countryCode_text = value;
+        countryCode_text = value;
       });
 
-      widget.listener( countryCode_text!);
-      });
-      }
-
-   */
+      widget.listener( countryCode_text!, true );
+    });
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoarderHelper.cardView(
-          colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
-          colorBackground: AppColor.textFieldBackground,
-          radiusSize: AppDimension.cornerTextField,
-          widthLine: 2
-      ),
+      // decoration: BoarderHelper.cardView(
+      //     colorLine: AppColor.textFieldBoarder,
+      //     colorBackground: AppColor.textFieldBackground,
+      //     radiusSize: AppDimension.textFieldRadiusBoarder,
+      //     widthLine: 2
+      // ),
       width: widget.widthCountryCode ,
       height: AppDimension.textFieldHeight,
       child: CountryCodePicker(
           onChanged: (countryCode) {
-            // Log.i( "c: " + countryCode.toString() );
+            Log.i( "CountryCodePicker - onChang countryCodee: " + countryCode.toString() );
             countryCode_text = countryCode.dialCode!;
 
             widget.listener( countryCode_text!, false );
           },
-          textStyle:  TextStyle(
-            color: AppColor.textPrimary,
-            // fontFamily: FontResource.regular,
-            fontSize: Figma.h( 16 ),
-            // fontFamily: FontResources.regular
+          textStyle:   TextStyle(
+            color: AppColor.textFieldText,
+            fontSize: AppDimension.textfieldTextFontSize  ,
+            fontFamily: FontProject.textField,
           ),
-          dialogTextStyle:    TextStyle(
-            color: AppColor.textPrimary,
-            fontSize: Figma.h( 14 ),
-            // fontFamily: FontResources.regular
+          dialogTextStyle:     TextStyle(
+            color: AppColor.textFieldText,
+            fontSize: AppDimension.textfieldTextFontSize  ,
+            fontFamily: FontProject.textField,
           ),
           // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-          initialSelection: previousCountryCodeSelected??countryCode_text,
-          // favorite:  const [ "+966",  "+20"],
-          countryFilter: const [  "+966", "+20"],
+          initialSelection: widget.previousCountryCodeSelected??countryCode_text,
+          countryFilter:  env.isTest ?  [ env.countryCodeDefault, "+20"] : [env.countryCodeDefault],
           // optional. Shows only country name and flag
           showCountryOnly: true,
           // optional. Shows only country name and flag when popup is closed.
