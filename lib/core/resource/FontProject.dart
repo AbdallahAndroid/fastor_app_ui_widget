@@ -31,5 +31,9 @@ class FontProject {
   static var w800 = "Montserrat-ExtraBold.ttf";
   static var w900 = "Montserrat-Black.ttf";
 
+  ///-------------------------------------- input
+
+  static String get textField => w500;
+
 
 }

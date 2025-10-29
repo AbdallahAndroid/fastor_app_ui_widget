@@ -24,6 +24,7 @@ import 'package:fastor_app_ui_widget/core/lang/PositionedApp.dart';
 class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
 
 
+  double width;
   String title;
   String hint;
 
@@ -47,6 +48,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
   Color colorBackgroundInputField;
 
   DropdownFloatingLabelWithEntityAllPicker({
+    required this. width,
     required this.title,
     required this.hint,
     required this.dataEntities,
@@ -54,18 +56,19 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     required this.onSelectAll,
     required this.colorBackgroundInputField,
     required this.entityAll,
+
     this.showProgress,
     this.previousSelectedId,
     this.messageError,
     this.errorsMessageArray,
-    this.errorKeySearchingInErrorMessageArray
+    this.errorKeySearchingInErrorMessageArray,
   }) {
     if(dataEntities != null ) dataEntities!.insert(0, entityAll);
 
     showProgress ??= false;
     setMessageErrorFromErrorsArray();
     searchForPreviousSelectedValue();
-    Log.i("DropdownFloatingLabelWithEntityAllPicker - title: $title /previousSelectedValue: ${previousSelectedId}" );
+    // Log.i("DropdownFloatingLabelWithEntityAllPicker - title: $title /previousSelectedValue: ${previousSelectedId}" );
     // Log.i("DropdownFloatingLabelWithEntityAllPicker - title: $title /messageError: ${messageError}" );
   }
 
@@ -97,17 +100,18 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Log.i("DropdownTypeDialogState - messageError: ${widget.messageError} /title: ${widget.title}");
-   return GestureDetector(
-     child: dropdownUIShape(context),
-     onTap: (){
-       validaBeforeOpenDialogPicker(context);
-     },
-   );
+    return GestureDetector(
+      child: dropdownUIShape(context),
+      onTap: (){
+        validaBeforeOpenDialogPicker(context);
+      },
+    );
   }
 
 
   Widget dropdownUIShape(BuildContext context ){
     return Container(
+      width: width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +141,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     return Transform.translate(
       offset:   Offset(0, -12.sp /2  ), // x = 0, y = -12 (move UP by 12 px)
       child:  Container(
-        margin: EdgeInsets.symmetric( horizontal: 16.5  ),
+        margin: EdgeInsets.symmetric( horizontal: 16.5.w ),
         color:  colorBackgroundInputField ,
         padding: EdgeInsets.symmetric( horizontal: 4.w  ),
         child: TextApp(  title ,
@@ -155,12 +159,12 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
         width: DeviceTools.getWidth(context),
         height: AppDimension.textFieldHeight,
         decoration: BoarderHelper.cardView(
-          colorBackground:  colorBackgroundInputField,
-          colorLine: AppColor.textFieldBoarder,
-          radiusSize: AppDimension.textFieldRadiusBoarder
-      ),
-      padding: AppDimension.textFieldPadding,
-      child:   showProgress! ? progressCenter(context) : _dropdownShapeContentUI(context)
+            colorBackground:  colorBackgroundInputField,
+            colorLine: AppColor.textFieldBoarder,
+            radiusSize: AppDimension.textFieldRadiusBoarder
+        ),
+        padding: AppDimension.textFieldPadding,
+        child:   showProgress! ? progressCenter(context) : _dropdownShapeContentUI(context)
     );
   }
 
@@ -210,7 +214,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     // return Icon( Icons.arrow_drop_down_sharp , size: Figma.w(24), color: Colors.black,);
   }
 
- 
+
   Widget hintOrSelectedTextWidget(){
     //Log.i("hintOrSelectedTextWidget() - dataSelected: $dataSelected");
     if( dataSelectedPrevious != null ) {
@@ -248,6 +252,5 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
       ),
     );
   }
-
 
 }

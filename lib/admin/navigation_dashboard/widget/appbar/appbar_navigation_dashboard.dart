@@ -60,13 +60,13 @@ class AppbarNavigationDashboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              Padding(padding:  EdgeInsetsDirectional.only( start: 20.wt  ) , child: buttonIconMenuDrawer(context) ,),
+              Padding(padding:  EdgeInsetsDirectional.only( start: 20.w  ) , child: buttonIconMenuDrawer(context) ,),
 
-              Padding(padding:  EdgeInsetsDirectional.only( start: 10.wt ) , child: tv_title() ,),
+              Padding(padding:  EdgeInsetsDirectional.only( start: 10.w ) , child: tv_title() ,),
             ],
           ),
 
-          // Padding(padding:  EdgeInsetsDirectional.only( end: 20.wt ) , child: buttonIconMenuDrawer( context) ,),
+          // Padding(padding:  EdgeInsetsDirectional.only( end: 20.w ) , child: buttonIconMenuDrawer( context) ,),
         ],
       ),
     );
@@ -81,8 +81,8 @@ class AppbarNavigationDashboard extends StatelessWidget {
   Widget buttonIconMenuDrawer(BuildContext context) {
     return TapAppbar(
       assetName:  "assets/icons/menu.png",
-      iconWidth: DeviceTools.isLandscape(context) ? 20.wt : 24.wt,
-      iconHeight: DeviceTools.isLandscape(context) ? 20.wt : 24.wt,
+      iconWidth: DeviceTools.isLandscape(context) ? 20.w : 24.w,
+      iconHeight: DeviceTools.isLandscape(context) ? 20.w : 24.w ,
       frameWidth: AppDimension.tapAppBarHeight(),
       frameHeight:  AppDimension.tapAppBarHeight(),
       colorIcon: AppColor.iconAppbarColor,

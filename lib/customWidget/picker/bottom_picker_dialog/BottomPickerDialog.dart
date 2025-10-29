@@ -143,19 +143,32 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
 
   Widget listViewItems( ) {
     indexListview = 0;
-    var listView =  ListView.builder(
-        primary: true,
-        shrinkWrap: true,
+    return Expanded(child: ListView.separated(
+        separatorBuilder: ( ctx, index ) => SizedBox( height: 8.h ,),
+        // primary: true,
+        // shrinkWrap: true,
+        padding: EdgeInsets.zero,
         itemCount: widget.dataEntities.length,
         itemBuilder: (ctx, index )   {
           var entity = widget.dataEntities[index];
           updateValueOfEntityWhileLoadingBuilder(entity);
           return itemPicker( entity);
-        });
-    return SizedBox(
-      height: widget.heightListviewFixed,
-      child: listView  ,
+        })
     );
+
+    // var listView =  ListView.builder(
+    //     primary: true,
+    //     shrinkWrap: true,
+    //     itemCount: widget.dataEntities.length,
+    //     itemBuilder: (ctx, index )   {
+    //       var entity = widget.dataEntities[index];
+    //       updateValueOfEntityWhileLoadingBuilder(entity);
+    //       return itemPicker( entity);
+    //     });
+    // return SizedBox(
+    //   height: widget.heightListviewFixed,
+    //   child: listView  ,
+    // );
   }
 
   Widget itemPicker(DataPickerEntity entity) {

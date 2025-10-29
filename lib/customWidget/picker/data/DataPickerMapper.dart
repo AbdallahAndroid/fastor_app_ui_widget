@@ -12,6 +12,18 @@ class DataPickerMapper {
     );
   }
 
+
+
+  static DataPickerEntity getEntityDefault({ String? image}) {
+    return DataPickerEntity(
+      index: 0,
+      id: "default",
+      title: "Default".tr(),
+      image: image,
+    );
+  }
+
+
   static bool isEntityAll(DataPickerEntity selected) {
     return selected.id == getEntityAll().id;
   }

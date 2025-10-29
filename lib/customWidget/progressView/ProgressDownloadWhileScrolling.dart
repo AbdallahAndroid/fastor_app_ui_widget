@@ -12,7 +12,7 @@ class ProgressDownloadWhileScrolling extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: DeviceTools.getWidth(context),
-      padding: EdgeInsets.all( AppDimension.marginLeftRightScreen),
+      padding: EdgeInsets.all( AppDimension.marginAllScreen),
       alignment: Alignment.center,
       child: ProgressCircleApp( color: Colors.orange, size: 40,),
     );

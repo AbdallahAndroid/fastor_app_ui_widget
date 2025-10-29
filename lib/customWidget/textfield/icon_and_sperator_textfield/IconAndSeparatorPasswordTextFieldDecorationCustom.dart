@@ -110,7 +110,7 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
       decoration: BoarderHelper.cardView(
         colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
         colorBackground: AppColor.textFieldBackground,
-        radiusSize: AppDimension.cornerTextField,
+        radiusSize: AppDimension.textFieldRadiusBoarder,
       ),
       child: Row(
         children: [
@@ -164,8 +164,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
   }
 
   double getWidthSizeMinusMargin(){
-    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenTwoInputFiled -
-        AppDimension.marginBetweenTwoInputFiled;
+    return DeviceTools.getWidthGlobal( ) - AppDimension.marginBetweenInputFields -
+        AppDimension.marginBetweenInputFields;
   }
 
   double getWidthTextField(){

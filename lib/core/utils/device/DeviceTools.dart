@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/globa/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
@@ -88,6 +89,10 @@ class DeviceTools {
     return DeviceTools.getWidth( context ) < DeviceTools.getHeight(context );
   }
 
+  static bool isPortraitNotSemiBox(BuildContext  context ) {
+    if(isSemiBoxShape ) return false;
+    return DeviceTools.getWidth( context ) < DeviceTools.getHeight(context );
+  }
 
   static bool isLandscape(BuildContext  context, ) {
     return ! DeviceTools.isPortrait(context);
@@ -101,6 +106,16 @@ class DeviceTools {
 
   static bool isLandscapeMobile( BuildContext  context ) {
     return isMobile( ) && isLandscape(context);
+  }
+
+  static bool isLandscapeOrSemiBox(BuildContext  context, ) {
+    if(isSemiBoxShape ) return true ;
+    return ! DeviceTools.isPortrait(context)  ;
+  }
+
+  static bool isLandscapeNotSemiBox(BuildContext  context, ) {
+    if(isSemiBoxShape ) return false;
+    return ! DeviceTools.isPortrait(context)  ;
   }
 
 

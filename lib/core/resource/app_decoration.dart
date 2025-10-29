@@ -262,11 +262,11 @@ abstract class AppDecoration {
 
   ///------------------------------------------------------------------ textfield
 
-
   static textField() {
     return BoarderHelper.cardView(
-        radiusSize: 12.r,
-        colorLine: AppColor.boarderLineCardItem,
+        radiusSize: AppDimension.textFieldRadiusBoarder,
+        colorLine: AppColor.textFieldBoarder,
+        widthLine:   AppDimension.textFieldBoarderWidth,
         colorBackground: AppColor.white
     );
   }
@@ -274,9 +274,9 @@ abstract class AppDecoration {
 
   static textFieldError() {
     return BoarderHelper.cardView(
-        radiusSize: 12.r,
+        radiusSize: AppDimension.textFieldRadiusBoarder,
         colorLine: AppColor.red,
-        widthLine: 1,
+        widthLine:AppDimension.textFieldBoarderWidth,
         colorBackground: AppColor.white
     );
   }

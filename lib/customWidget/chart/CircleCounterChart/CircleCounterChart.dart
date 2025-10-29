@@ -45,7 +45,7 @@ class CircleCounterChartState extends State<CircleCounterChart> {
       mainAxisSize: MainAxisSize.max,
       children: [
         cardWithChart(),
-        SizedBox( height: AppDimension.marginBetweenItemInSingleSections,),
+        SizedBox( height: AppDimension.marginInsideSectionsInsideCard,),
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

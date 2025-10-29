@@ -45,21 +45,21 @@ class TapAppbar extends StatelessWidget {
           children: [
             Image.asset(
               assetName,
-              width:  iconWidth??17.25.wt,
-              height: iconHeight??17.25.wt,
+              width:  iconWidth??17.25.wTabletLandscapeExact,
+              height: iconHeight??17.25.wTabletLandscapeExact,
               color: colorIcon,
             ),
 
-            if(title != null )SizedBox( width: 3.45.wt ),
+            if(title != null )SizedBox( width: 3.45.w ),
             if(title != null )TextApp(
               title ?? '',
               // style: TextStyle(fontSize: 13.8.h , color: AppColor.white  ),
               fontFamily: FontProject.w500,
-              fontSize: 13.8.ht ,
+              fontSize: 13.8.h ,
               color: AppColor.white ,
               textAlign: TextAlign.center,
             ),
-            if(title != null ) SizedBox(width: 2.wt ),
+            if(title != null ) SizedBox(width: 2.w ),
           ],
         ),
       ),
