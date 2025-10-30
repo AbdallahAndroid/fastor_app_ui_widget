@@ -87,7 +87,7 @@ class _DateFromToRowTabsState extends State<TimeFromToRowTabs> {
       margin: EdgeInsets.only(top: 4.hr ),
       alignment: LangApp.getAlignmentGeometryStart(),
       child: TextApp( "Time 'From' Less Than Time 'To'".tr() ,
-        color: AppColor.red,
+        color: AppColors.red,
         fontSize: 14.sp ,
       ),
     );

@@ -26,7 +26,7 @@ class RouterPage{
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      barrierColor: AppColor.dialogDismisableBackground,
+      barrierColor: AppColors.dialogDismisableBackground,
       builder: (BuildContext context) {
         return Theme(
           data: Theme.of(context), // forces inheritance

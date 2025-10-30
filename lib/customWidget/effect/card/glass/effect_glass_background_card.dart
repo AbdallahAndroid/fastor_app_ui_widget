@@ -42,9 +42,9 @@ class EffectGlassBackgroundCard extends StatelessWidget {
                 width: width,
                 height: height,
                 decoration: BoarderHelper.cardView(
-                    colorBackground: colorBackground??AppColor.backgroundCardDialogTransparent ,
+                    colorBackground: colorBackground??AppColors.backgroundCardDialogTransparent ,
                     radiusBorder: radiusBorder,
-                    colorLine:  colorLine??AppColor.dialogDismisableBackground
+                    colorLine:  colorLine??AppColors.dialogDismisableBackground
                 ),
               ) // ,
           )

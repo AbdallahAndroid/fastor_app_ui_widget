@@ -33,7 +33,7 @@ class IconShadowCustom extends StatelessWidget {
       /// shadow
       child:  Container(
         decoration: BoxDecoration(
-          color: AppColor.whiteTransparent, // opaque color behind shadow
+          color: AppColors.whiteTransparent, // opaque color behind shadow
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.25), // black with 25% opacity
@@ -52,7 +52,7 @@ class IconShadowCustom extends StatelessWidget {
             height: containerSize,
             alignment: Alignment.center,
             decoration: decoration ?? BoarderHelper.cardView(
-                colorBackground: AppColor.whiteTransparent,
+                colorBackground: AppColors.whiteTransparent,
                 radiusSize: 16.r,
                 colorLine: Colors.transparent
             ),

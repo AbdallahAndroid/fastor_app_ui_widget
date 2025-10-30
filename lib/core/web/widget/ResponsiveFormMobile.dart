@@ -53,7 +53,7 @@ class ResponsiveFourmMobile  {
     return Container( child:  content,
       width: ResponsiveConstant.widthMobileNormal,
       decoration: BoarderHelper.cardViewShadow(
-        colorBackground: AppColor.backgroundAllScreens,
+        colorBackground: AppColors.backgroundAllScreens,
       )  ,
     );
   }

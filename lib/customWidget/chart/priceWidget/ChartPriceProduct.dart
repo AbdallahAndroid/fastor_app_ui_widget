@@ -72,7 +72,7 @@ class  ChartPriceProductState extends State<ChartPriceProduct> {
     return Container(
       width: widget.width,
       height:  isDetailShape() ? Figma.h( 310 ) : null   ,
-      child: isDetailShape() ? ProgressCircleApp( color: AppColor.textPrimary, size: 40, ) : null ,
+      child: isDetailShape() ? ProgressCircleApp( color: AppColors.textPrimary, size: 40, ) : null ,
     );
   }
 
@@ -102,7 +102,7 @@ class  ChartPriceProductState extends State<ChartPriceProduct> {
   }
 
 
-  Color colorBoarderLineOutlineChart(){return AppColor.textSecondary;}
+  Color colorBoarderLineOutlineChart(){return AppColors.textSecondary;}
 
   double getWidthBoarderLineOutlineChart(){
     if( isDetailShape() ) {
@@ -124,9 +124,9 @@ class  ChartPriceProductState extends State<ChartPriceProduct> {
 
   Color chooseColorVoteUpOrDown(){
     if( ChatDataCalculator.isVoteUp( widget.data)  ) {
-      return  AppColor.greenDark;
+      return  AppColors.greenDark;
     } else {
-      return AppColor.red;
+      return AppColors.red;
     }
   }
 

@@ -67,7 +67,7 @@ class BodyDrawerHeader extends StatelessWidget {
             /// username
             TextApp(  UserHelper.getUserNameNullable()??"Dashboard".tr(),
               fontSize: 20.sp,
-              color: AppColor.white,
+              color: AppColors.white,
               fontFamily: FontProject.w500,
             ),
             // SizedBox( height: 16.h ,),
@@ -92,7 +92,7 @@ class BodyDrawerHeader extends StatelessWidget {
       child: Container(
         color: Colors.transparent,
         padding: EdgeInsets.all( 16.w ),
-        child: Icon( Icons.login_outlined, color: AppColor.white, size: 24.w ,),
+        child: Icon( Icons.login_outlined, color: AppColors.white, size: 24.w ,),
       ),
     );
   }

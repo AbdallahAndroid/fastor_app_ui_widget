@@ -52,7 +52,7 @@ class MessageBottomSheetScreen extends StatelessWidget {
             child: Container(
               width: DeviceTools.getWidth(context),
               height: DeviceTools.getHeight(context),
-              color: backgroundColor??AppColor.backgroundDialogDismissCaseHaveMessageTypeEffectGlass ,
+              color: backgroundColor??AppColors.backgroundDialogDismissCaseHaveMessageTypeEffectGlass ,
             ),
           ),
 
@@ -66,9 +66,9 @@ class MessageBottomSheetScreen extends StatelessWidget {
   cardMessage(BuildContext context ) {
     return Container(
       decoration: BoarderHelper.cardView(
-        colorBackground: AppColor.backgroundDialog,
+        colorBackground: AppColors.backgroundDialog,
         radiusBorder: AppDimension.radiusDialogBottomSheet(),
-        colorLine: AppColor.dialogDismisableBackground
+        colorLine: AppColors.dialogDismisableBackground
       ),
       width: DeviceTools.getWidth(context),
       // margin:  EdgeInsets.all( 15.w ),
@@ -117,7 +117,7 @@ class MessageBottomSheetScreen extends StatelessWidget {
         } ,
           width: 100.w ,
           height: 52.hr ,
-          background: AppColor.greyLight,
+          background: AppColors.greyLight,
         ),
 
       ],

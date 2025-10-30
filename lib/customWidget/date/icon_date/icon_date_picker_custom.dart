@@ -19,7 +19,7 @@ class IconDatePickerCustom extends StatelessWidget {
       child: Icon(
         Icons.date_range_sharp,
         size: 24.wr,
-        color: AppColor.greenDark,
+        color: AppColors.greenDark,
       ),
     );
   }

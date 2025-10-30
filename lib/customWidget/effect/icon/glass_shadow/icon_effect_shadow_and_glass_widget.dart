@@ -37,7 +37,7 @@ class IconEffectShadowAndGlassWidget extends StatelessWidget {
       /// shadow
       child:  Container(
         decoration: BoxDecoration(
-          color: AppColor.whiteTransparent, // opaque color behind shadow
+          color: AppColors.whiteTransparent, // opaque color behind shadow
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.25), // black with 25% opacity

@@ -52,7 +52,7 @@ class ScreenshotWebViewState extends State<ScreenshotWebviewlWidget> {
           ? 300.h
           : DeviceTools.getWidth(context),
       height: DeviceTools.getHeight(context),
-      color: AppColor.white,
+      color: AppColors.white,
       // padding: EdgeInsets.all(10),
       child: webViewScreenshot(),
     );

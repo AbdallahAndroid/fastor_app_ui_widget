@@ -13,6 +13,14 @@ import 'CacheKeys.dart';
 
 class UserHelper {
 
+  ///::::::::::::: offline mode switcher
+
+  static bool isOfflineMode() => SaveApp.getBool(CacheKeys.offlineModeStatus);
+
+  static bool isOnlineMode() => !isOfflineMode();
+
+  static Future setOfflineMode(bool isIamOffline) async =>
+      SaveApp.setBool(CacheKeys.offlineModeStatus, isIamOffline);
 
   //----------------------------------------------- logout clear
 

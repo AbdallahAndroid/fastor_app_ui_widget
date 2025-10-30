@@ -170,7 +170,7 @@ class _CalenderCustomState extends State<IconAndSeparatorDateShapeTextFieldApp> 
     return Container(
       width: 2,
       height: 25,
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
     ) ;
   }
 

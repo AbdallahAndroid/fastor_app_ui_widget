@@ -105,7 +105,7 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
     return BoxDecoration(
         border: Border.all(color: Colors.grey.withOpacity(0.3) , width:  1) ,
         borderRadius: radiusBorder ,
-        color:  AppColor.textFieldBackground//Colors.white                                                          //background color
+        color:  AppColors.textFieldBackground//Colors.white                                                          //background color
     );
   }
 
@@ -131,7 +131,7 @@ class BottomPickerDialogState extends State<BottomPickerDialog> {
       alignment: LangApp.isArabic? Alignment.topRight : Alignment.topLeft, // LangApp.getAlignmentGeometryStart(),
       child:  Text( widget.titleDialog,
         style: TextStyle(
-            color: AppColor.textPrimary,
+            color: AppColors.textPrimary,
             // fontFamily: FontResources.mediumPoppins,
             fontSize: Figma.h(16)
         ),

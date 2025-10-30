@@ -78,14 +78,14 @@ class _IconAndSelectedDateState extends State<IconAndSelectedDateWidget> {
             Icon(
               Icons.cancel_outlined,
               size: 12.hr,
-              color: AppColor.greenDark,
+              color: AppColors.greenDark,
             ),
             SizedBox(
               width: 8.hr,
             ),
             TextApp(
               selectedDate ?? "date filtered".tra(),
-              color: AppColor.greenDark,
+              color: AppColors.greenDark,
               fontSize: 10.hr,
             ),
           ],

@@ -60,7 +60,7 @@ class CircleCounterChartState extends State<CircleCounterChart> {
   cardWithChart() {
     return Container(
       decoration: BoarderHelper.cardView(
-          colorBackground: AppColor.backgroundCardTransparent,
+          colorBackground: AppColors.backgroundCardTransparent,
           radiusSize: 15
       ),
       //color: ,

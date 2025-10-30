@@ -17,7 +17,7 @@ class ProgressCircleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var prg = CircularProgressIndicator( color: color??AppColor.progress);
+    var prg = CircularProgressIndicator( color: color??AppColors.progress);
 
     //container
     var ct = Container(

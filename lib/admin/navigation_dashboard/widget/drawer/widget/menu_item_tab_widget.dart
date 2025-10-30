@@ -65,7 +65,7 @@ class MenuItemTabWidget extends StatelessWidget {
               Icon( iconLeft,
                 size: 24.h,
                 // size: isSelected ? 30.h : 24.h,
-                color: AppColor.primaryDark,
+                color: AppColors.primaryDark,
               ),
               SizedBox( width: 16.w ,),
 
@@ -117,7 +117,7 @@ class MenuItemTabWidget extends StatelessWidget {
     return Image.asset( "assets/icons/back_icon_profile.png",
       width: 18.h,
       height: 18.h ,
-      color: isSelected ? AppColor.black : null ,
+      color: isSelected ? AppColors.black : null ,
     );
   }
 

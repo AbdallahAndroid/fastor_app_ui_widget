@@ -13,7 +13,7 @@ class TouchCancelDialog extends StatelessWidget {
         height: 5.h ,
         margin: EdgeInsets.only(top: 6.h , bottom: 6.h ),
         decoration: BoarderHelper.cardView(
-            colorBackground: AppColor.tabGrey,
+            colorBackground: AppColors.tabGrey,
             radiusSize: 2.5.r
         ),
       ),

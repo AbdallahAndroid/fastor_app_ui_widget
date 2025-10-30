@@ -13,8 +13,8 @@ abstract class AppDecoration {
   static dialogWhite() {
     return BoarderHelper.cardView(
         radiusSize: 30.h,
-        colorLine: AppColor.greenLight,
-        colorBackground: AppColor.white);
+        colorLine: AppColors.greenLight,
+        colorBackground: AppColors.white);
   }
 
 
@@ -24,10 +24,10 @@ abstract class AppDecoration {
     return BoxDecoration(
       gradient: LinearGradient(
         colors: [
-          AppColor.primaryDark,
-          AppColor.primaryLight,
-          AppColor.primaryLight,
-          AppColor.primaryLight,
+          AppColors.primaryDark,
+          AppColors.primaryLight,
+          AppColors.primaryLight,
+          AppColors.primaryLight,
         ],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -37,9 +37,9 @@ abstract class AppDecoration {
 
   static cardBodyScreen() {
     return BoxDecoration(
-        color: AppColor.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.all(Radius.circular(30.r)),
-        border: Border.all(color: AppColor.white));
+        border: Border.all(color: AppColors.white));
   }
 
 
@@ -48,8 +48,8 @@ abstract class AppDecoration {
   static tapAppBarPrimaryDark(double radiusSize) {
     return BoarderHelper.cardView(
       radiusSize: radiusSize,
-      colorLine: AppColor.primaryDark,
-      colorBackground: AppColor.primaryDark,
+      colorLine: AppColors.primaryDark,
+      colorBackground: AppColors.primaryDark,
     );
   }
 
@@ -58,8 +58,8 @@ abstract class AppDecoration {
 
   static navigationBottom() {
     return BoarderHelper.cardView(
-        colorLine: AppColor.white,
-        colorBackground: AppColor.white,
+        colorLine: AppColors.white,
+        colorBackground: AppColors.white,
         radiusBorder: BorderRadiusTools.top(radius: 16.r )
     );
   }
@@ -69,24 +69,24 @@ abstract class AppDecoration {
   static cardItem() {
     return BoarderHelper.cardView(
         radiusSize: 16.r,
-        colorLine: AppColor.boarderLineCardItem,
-        colorBackground: AppColor.white
+        colorLine: AppColors.boarderLineCardItem,
+        colorBackground: AppColors.white
     );
   }
 
   static cardItemSection() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.radiusSection,
-        colorLine: AppColor.boarderLineCardItem,
-        colorBackground: AppColor.white
+        colorLine: AppColors.boarderLineCardItem,
+        colorBackground: AppColors.white
     );
   }
 
   static cardSmallPrimary() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.radiusSmallCard,
-        colorLine: AppColor.primary,
-        colorBackground: AppColor.primary
+        colorLine: AppColors.primary,
+        colorBackground: AppColors.primary
     );
   }
 
@@ -98,16 +98,16 @@ abstract class AppDecoration {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppColor.black.withOpacity(0.00),
-          AppColor.black.withOpacity(0.00),
-          AppColor.black.withOpacity(0.0),
-          AppColor.black.withOpacity(0.5),
-          AppColor.black,
+          AppColors.black.withOpacity(0.00),
+          AppColors.black.withOpacity(0.00),
+          AppColors.black.withOpacity(0.0),
+          AppColors.black.withOpacity(0.5),
+          AppColors.black,
         ],
       ),
       borderRadius: BorderRadius.all(Radius.circular(16.r)),
       border: Border.all(
-        color: AppColor.boarderLineCardItem,
+        color: AppColors.boarderLineCardItem,
         width: 1,
       ),
     );
@@ -120,13 +120,13 @@ abstract class AppDecoration {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          AppColor.black.withOpacity(0.00),
-          AppColor.black,
+          AppColors.black.withOpacity(0.00),
+          AppColors.black,
         ],
       ),
       borderRadius: BorderRadius.all(Radius.circular(16.r)),
       border: Border.all(
-        color: AppColor.boarderLineCardItem,
+        color: AppColors.boarderLineCardItem,
         width: 1,
       ),
     );
@@ -137,8 +137,8 @@ abstract class AppDecoration {
   static tapIconTransparent({double? radiusSize}) {
     return BoarderHelper.cardView(
       radiusSize: radiusSize??16.r ,
-      colorLine: AppColor.whiteTransparent,
-      colorBackground: AppColor.whiteTransparent,
+      colorLine: AppColors.whiteTransparent,
+      colorBackground: AppColors.whiteTransparent,
     );
   }
 
@@ -146,8 +146,8 @@ abstract class AppDecoration {
   static tapIconSolid({double? radiusSize}) {
     return BoarderHelper.cardView(
       radiusSize: radiusSize??16.r ,
-      colorLine: AppColor.white ,
-      colorBackground: AppColor.whiteTransparent,
+      colorLine: AppColors.white ,
+      colorBackground: AppColors.whiteTransparent,
     );
   }
 
@@ -163,7 +163,7 @@ abstract class AppDecoration {
 
   static buttonWhite( ) {
     return   BoarderHelper.cardView(
-      colorBackground: AppColor.backgroundButtonWhite,
+      colorBackground: AppColors.backgroundButtonWhite,
       radiusSize: AppDimension.radiusContainerButton,
       widthLine: 2.sp,
       colorLine: Colors.white,
@@ -174,8 +174,8 @@ abstract class AppDecoration {
 
   static bottomSheetDecoration() {
     return BoarderHelper.cardView(
-        colorLine: AppColor.boarderBottomSheet,
-        colorBackground: AppColor.white,
+        colorLine: AppColors.boarderBottomSheet,
+        colorBackground: AppColors.white,
         radiusBorder: BorderRadiusTools.top(radius: 16.r )
     );
   }
@@ -184,16 +184,16 @@ abstract class AppDecoration {
 
   static selectedOrUnSelectedShape(bool isSelected) {
     return BoarderHelper.cardView(
-        colorBackground:  isSelected? AppColor.selectedItemTransparentStatusSelectedBackground: AppColor.white,
-        colorLine:  isSelected? AppColor.primary : AppColor.selectedItemTransparentStatusUnSelectedBoarder,
+        colorBackground:  isSelected? AppColors.selectedItemTransparentStatusSelectedBackground: AppColors.white,
+        colorLine:  isSelected? AppColors.primary : AppColors.selectedItemTransparentStatusUnSelectedBoarder,
         radiusSize: 16.r
     );
   }
 
   static selectedOrUnSelectedCard(bool isSelected, {required double radius}) {
     return BoarderHelper.cardView(
-        colorBackground: isSelected ?  AppColor.white : AppColor.shadowCardUnSelected,
-        colorLine:  isSelected? AppColor.primary : Colors.transparent,
+        colorBackground: isSelected ?  AppColors.white : AppColors.shadowCardUnSelected,
+        colorLine:  isSelected? AppColors.primary : Colors.transparent,
         radiusSize: radius
     );
   }
@@ -202,7 +202,7 @@ abstract class AppDecoration {
   static selectedCardItem() {
     return BoarderHelper.cardView(
         colorBackground: Colors.transparent,
-        colorLine:    AppColor.primary,
+        colorLine:    AppColors.primary,
         radiusSize: 16.r
     );
   }
@@ -210,9 +210,9 @@ abstract class AppDecoration {
 
   static selectedButton() {
     return BoarderHelper.cardView(
-        colorBackground: AppColor.whiteTransparent,
+        colorBackground: AppColors.whiteTransparent,
         widthLine: 2.r ,
-        colorLine:    AppColor.primary,
+        colorLine:    AppColors.primary,
         radiusSize: 32.r
     );
   }
@@ -220,8 +220,8 @@ abstract class AppDecoration {
 
   static unselectedButton() {
     return BoarderHelper.cardView(
-        colorBackground: AppColor.whiteTransparent,
-        colorLine:    AppColor.selectedItemTransparentStatusUnSelectedBoarder,
+        colorBackground: AppColors.whiteTransparent,
+        colorLine:    AppColors.selectedItemTransparentStatusUnSelectedBoarder,
         widthLine: 2.r ,
         radiusSize: 32.r
     );
@@ -229,8 +229,8 @@ abstract class AppDecoration {
 
   static dialogBottomSheet() {
     return BoarderHelper.rounded(
-        colorLine: AppColor.boarderBottomSheet,
-        colorBackground: AppColor.backgroundDialog,
+        colorLine: AppColors.boarderBottomSheet,
+        colorBackground: AppColors.backgroundDialog,
         radiusSize: 25.r ,
         radiusBorder: BorderRadiusTools.get(
             radius_topLeft: 25.r,
@@ -244,8 +244,8 @@ abstract class AppDecoration {
   static markerBoarderOuterBlack() {
     return BoarderHelper.cardView(
         radiusSize: 32.r ,
-        colorBackground: AppColor.white,
-        colorLine: AppColor.black,
+        colorBackground: AppColors.white,
+        colorLine: AppColors.black,
         widthLine: AppDimension.factorOfRenderRepaintBoundary( 1.w)
     );
   }
@@ -254,8 +254,8 @@ abstract class AppDecoration {
   static markerBoarderInnerPrimary() {
     return BoarderHelper.cardView(
         radiusSize: 32.r ,
-        colorBackground: AppColor.primary,
-        colorLine: AppColor.primary,
+        colorBackground: AppColors.primary,
+        colorLine: AppColors.primary,
         widthLine: 0
     );
   }
@@ -265,9 +265,9 @@ abstract class AppDecoration {
   static textField() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.textFieldRadiusBoarder,
-        colorLine: AppColor.textFieldBoarder,
+        colorLine: AppColors.textFieldBoarder,
         widthLine:   AppDimension.textFieldBoarderWidth,
-        colorBackground: AppColor.white
+        colorBackground: AppColors.white
     );
   }
 
@@ -275,9 +275,9 @@ abstract class AppDecoration {
   static textFieldError() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.textFieldRadiusBoarder,
-        colorLine: AppColor.red,
+        colorLine: AppColors.red,
         widthLine:AppDimension.textFieldBoarderWidth,
-        colorBackground: AppColor.white
+        colorBackground: AppColors.white
     );
   }
 
@@ -285,8 +285,8 @@ abstract class AppDecoration {
   static textFieldCode() {
     return BoarderHelper.cardView(
         radiusSize: 8.r,
-        colorLine: AppColor.boarderLineCardItem,
-        colorBackground: AppColor.white
+        colorLine: AppColors.boarderLineCardItem,
+        colorBackground: AppColors.white
     );
   }
 
@@ -295,18 +295,18 @@ abstract class AppDecoration {
   static photoCircle({required double radius, required double widthLine}) {
     return BoarderHelper.cardView(
         radiusSize: radius,
-        colorLine: AppColor.white,
+        colorLine: AppColors.white,
         widthLine: widthLine,
-        colorBackground: AppColor.bluePlaceholderImage
+        colorBackground: AppColors.bluePlaceholderImage
     );
   }
 
   static photoAddButtonCircle(double radius) {
     return BoarderHelper.cardView(
         radiusSize: radius,
-        colorLine: AppColor.primary,
+        colorLine: AppColors.primary,
         widthLine: 1.w ,
-        colorBackground: AppColor.white
+        colorBackground: AppColors.white
     );
   }
 
@@ -316,7 +316,7 @@ abstract class AppDecoration {
   static drawerHeader() {
     return BoarderHelper.cardView(
         radiusSize: 0,
-        colorBackground: AppColor.primary
+        colorBackground: AppColors.primary
     );
   }
 
@@ -324,17 +324,17 @@ abstract class AppDecoration {
   static tapMenuWithIcon({required bool isSelected} ) {
     if( isSelected ){
       return   BoarderHelper.cardView(
-        colorBackground: AppColor.primaryTabTransparent,
+        colorBackground: AppColors.primaryTabTransparent,
         radiusSize:  16.sp ,
         widthLine: 1,
-        colorLine: AppColor.boarderLineCardItem,
+        colorLine: AppColors.boarderLineCardItem,
       );
     }
     return   BoarderHelper.cardView(
       colorBackground: Colors.white,
       radiusSize:  16.sp ,
       widthLine: 1,
-      colorLine: AppColor.boarderLineCardItem,
+      colorLine: AppColors.boarderLineCardItem,
     );
   }
 

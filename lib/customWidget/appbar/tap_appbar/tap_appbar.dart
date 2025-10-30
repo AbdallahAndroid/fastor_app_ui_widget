@@ -56,7 +56,7 @@ class TapAppbar extends StatelessWidget {
               // style: TextStyle(fontSize: 13.8.h , color: AppColor.white  ),
               fontFamily: FontProject.w500,
               fontSize: 13.8.h ,
-              color: AppColor.white ,
+              color: AppColors.white ,
               textAlign: TextAlign.center,
             ),
             if(title != null ) SizedBox(width: 2.w ),

@@ -54,7 +54,7 @@ class TransactionDoublePriceChartState extends State<TransactionDoublePriceChart
   Widget build(BuildContext context) {
     return Container(
       decoration: BoarderHelper.cardView(
-          colorBackground: AppColor.backgroundCardTransparent,
+          colorBackground: AppColors.backgroundCardTransparent,
           radiusSize: 15
       ),
       //color: ,

@@ -16,11 +16,11 @@ class BodyScaffoldCornerTopBottomDifferentColor extends StatelessWidget {
   Widget build(BuildContext context) {
       return Container(
         width: DeviceTools.getWidth(context),
-        color: AppColor.primary,
+        color: AppColors.primary,
         child: ClipRRect(
             borderRadius: BorderRadiusTools.top( radius: AppDimension.radiusAllScreen ),
             child: Container(
-              color: AppColor.colorBackgroundNavigation,
+              color: AppColors.colorBackgroundNavigation,
               child: ClipRRect(
                 borderRadius: BorderRadiusTools.bottom( radius: AppDimension.radiusAllScreen ),
                 child: body ,

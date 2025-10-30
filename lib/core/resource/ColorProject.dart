@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppColor   {
+class AppColors   {
 
 
   ///theme device
@@ -187,8 +187,8 @@ class AppColor   {
 
   /// shadow
   static var shadowLine = white.withOpacity( 0.6 );
-  static var shadowCardForWaterLogo = AppColor.black.withOpacity(0.1);
-  static var shadowCardUnSelected = AppColor.black.withOpacity(0.4);
+  static var shadowCardForWaterLogo = AppColors.black.withOpacity(0.1);
+  static var shadowCardUnSelected = AppColors.black.withOpacity(0.4);
 
   /// black
   static Color blackLight = black.withOpacity(0.5 ) ;
@@ -226,11 +226,11 @@ class AppColor   {
   static var backgroundButtonWhite = Color(0xffffffff).withOpacity(0.30 );
 
   /// appbar
-  static var iconAppbarColor = AppColor.white;
+  static var iconAppbarColor = AppColors.white;
 
   /// drawer
-  static var drawerBackgroundCard = AppColor.white;
-  static var drawerIconMenu = AppColor.primary;
+  static var drawerBackgroundCard = AppColors.white;
+  static var drawerIconMenu = AppColors.primary;
 
 
 

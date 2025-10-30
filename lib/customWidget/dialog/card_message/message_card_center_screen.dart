@@ -38,7 +38,7 @@ class MessageCardCenterScreen extends StatelessWidget {
     return Container(
       width: DeviceTools.getWidth(context),
       height: DeviceTools.getHeight(context),
-      color: AppColor.backgroundDialogDismissCaseHaveMessageTypeEffectGlass , //Color(0x99000000), ///background all screen like dialog
+      color: AppColors.backgroundDialogDismissCaseHaveMessageTypeEffectGlass , //Color(0x99000000), ///background all screen like dialog
       alignment: Alignment.center,
       child: cardMessage(context),
     );
@@ -47,9 +47,9 @@ class MessageCardCenterScreen extends StatelessWidget {
   cardMessage(BuildContext context ) {
     return Container(
       decoration: BoarderHelper.cardView(
-        colorBackground: AppColor.backgroundDialog,
+        colorBackground: AppColors.backgroundDialog,
         radiusSize: AppDimension.radiusDialog(),
-        colorLine: AppColor.dialogDismisableBackground
+        colorLine: AppColors.dialogDismisableBackground
       ),
       width: AppDimension.dialogWidth(),
       // margin:  EdgeInsets.all( 15.w ),
@@ -97,7 +97,7 @@ class MessageCardCenterScreen extends StatelessWidget {
         } ,
           width: 100.w ,
           height: 52.hr ,
-          background: AppColor.greyLight,
+          background: AppColors.greyLight,
         ),
 
       ],

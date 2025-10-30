@@ -77,7 +77,7 @@ class ScanScannerState extends State<QrScanScannerScreen> {
     return Container(
       width: DeviceTools.getWidth(context),
       height: DeviceTools.getHeight(context),
-      color: AppColor.black.withOpacity( 0.5),
+      color: AppColors.black.withOpacity( 0.5),
       child:  Stack(
         children: [
           if( isFetching)    progressViewFullScreen(),
@@ -97,7 +97,7 @@ class ScanScannerState extends State<QrScanScannerScreen> {
 
   Widget progressViewFullScreen() {
     return  Container(
-      color: AppColor.black.withOpacity( 0.5),
+      color: AppColors.black.withOpacity( 0.5),
       width: DeviceTools.getWidth(context),
       height: DeviceTools.getHeight(context),
       alignment: Alignment.center,

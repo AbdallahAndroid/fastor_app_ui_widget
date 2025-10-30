@@ -49,7 +49,7 @@ class MessageEffectGlassCenterScreen extends StatelessWidget {
       body: Container(
         width: DeviceTools.getWidth(context),
         height: DeviceTools.getHeight(context),
-        color: AppColor.backgroundDialogDismissCaseHaveMessageTypeEffectGlass , //Color(0x99000000), ///background all screen like dialog
+        color: AppColors.backgroundDialogDismissCaseHaveMessageTypeEffectGlass , //Color(0x99000000), ///background all screen like dialog
         alignment: Alignment.center,
         child: cardMessage(context),
       ),

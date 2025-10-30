@@ -183,7 +183,7 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
             height: width,
             radius: getRadius(),
             assetAspectRatio: AssetImage( placeholderAssetName),
-            colorBackground: AppColor.bluePlaceholderImage,
+            colorBackground: AppColors.bluePlaceholderImage,
             urlBackground: imageUrlPreviousSelected,
           ),
         ),
@@ -221,7 +221,7 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
       alignment: Alignment.center,
       child: TextApp( first ,
         fontFamily: FontProject.w600,
-        color: AppColor.white,
+        color: AppColors.white,
         fontSize: fontSizeShapeFirstCharacter??65.sp ,
       ),
     );

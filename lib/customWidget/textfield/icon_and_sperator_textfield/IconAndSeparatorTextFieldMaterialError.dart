@@ -57,7 +57,7 @@ class IconAndSeparatorTextFieldMaterialError extends StatelessWidget {
     this.context = context;
     return  TextField(
       style: TextStyle(
-          color: AppColor.textFieldText,
+          color: AppColors.textFieldText,
           fontSize: Figma.h( 16 ),
           // fontFamily: FontResource.regular,
       ),
@@ -77,16 +77,16 @@ class IconAndSeparatorTextFieldMaterialError extends StatelessWidget {
 
   getInputDecoration() {
     return  InputDecoration(
-      fillColor: AppColor.textFieldBackground,
+      fillColor: AppColors.textFieldBackground,
       filled: true,
       contentPadding: EdgeInsets.zero,
       hintText: hint,
-      hintStyle: TextStyle( color: AppColor.textFieldHint ),
+      hintStyle: TextStyle( color: AppColors.textFieldHint ),
       error:  errorMessageWidget(),
       //   suffix: errorMessageWidget(),
       enabledBorder:  OutlineInputBorder(
         borderRadius: BorderRadius.all( Radius.circular( AppDimension.textFieldRadiusBoarder)),
-        borderSide:  BorderSide(color: AppColor.textFieldBoarderLine, width: 2.0),
+        borderSide:  BorderSide(color: AppColors.textFieldBoarderLine, width: 2.0),
       ),
       prefixIcon: Container(
         width: Figma.h( 65) ,
@@ -130,7 +130,7 @@ class IconAndSeparatorTextFieldMaterialError extends StatelessWidget {
     return Container(
       width: 2,
       height: heightDivider,
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
     ) ;
   }
 
@@ -151,10 +151,10 @@ class IconAndSeparatorTextFieldMaterialError extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          Icon( Icons.info_outline, size: size, color: AppColor.red,),
+          Icon( Icons.info_outline, size: size, color: AppColors.red,),
           SizedBox( width:  5 ,),
           TextApp( getErrorMessage()??"",
-            color: AppColor.redMaterial,
+            color: AppColors.redMaterial,
             fontSize: size,
             // fontFamily: FontResource.regular,
           ),

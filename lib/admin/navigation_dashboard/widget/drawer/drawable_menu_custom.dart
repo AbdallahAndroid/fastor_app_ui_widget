@@ -33,7 +33,7 @@ class DrawableMenuCustom  extends Drawer {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // 👈 removes corner rounding
           ),
-          backgroundColor: AppColor.dialogDialogDismissAreaTypeNormal,
+          backgroundColor: AppColors.dialogDialogDismissAreaTypeNormal,
           child:  ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -44,7 +44,7 @@ class DrawableMenuCustom  extends Drawer {
               /// tabs drawer
               Container(
                 padding: EdgeInsets.symmetric(vertical: 16.hr  ),
-                color: AppColor.drawerBackgroundCard,
+                color: AppColors.drawerBackgroundCard,
                 // color: Colors.green,
                 height: DeviceTools.getHeight(context),
                 child: BodyDrawerListview(keyDrawerScaffoldState),

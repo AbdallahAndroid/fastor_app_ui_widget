@@ -36,7 +36,7 @@ class AppbarCornerBottomInnerUtils {
 
   static Decoration childBodyDecoration(){
     return BoarderHelper.cardView(
-      colorBackground: AppColor.backgroundAllScreens,
+      colorBackground: AppColors.backgroundAllScreens,
       colorLine: Colors.transparent,
       radiusBorder: BorderRadiusTools.top(radius:  20.h  )
     );

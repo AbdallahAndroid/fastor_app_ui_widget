@@ -49,7 +49,7 @@ class IconAndSeparatorTextField extends StatelessWidget {
     this.errorsMessageArray
   }){
 
-    colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
+    colorLineBoarder ??= AppColors.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
 
@@ -83,8 +83,8 @@ class IconAndSeparatorTextField extends StatelessWidget {
       width: getWidthSizeMinusMargin(),
       height: minLines != null ? null :  AppDimension.textFieldHeight,
       decoration: BoarderHelper.cardView(
-          colorLine: errorMessage != null ? AppColor.redMaterial : colorLineBoarder,
-          colorBackground:   AppColor.textFieldBackground,
+          colorLine: errorMessage != null ? AppColors.redMaterial : colorLineBoarder,
+          colorBackground:   AppColors.textFieldBackground,
           radiusSize: radius??8,
           widthLine: 1.5
       ),
@@ -113,8 +113,8 @@ class IconAndSeparatorTextField extends StatelessWidget {
       hint_text: hint,
       fontSize: Figma.h( 16 ),
       // fontFamily: FontResource.regular,
-      hint_color: AppColor.textFieldHint,
-      text_color: AppColor.textFieldText,
+      hint_color: AppColors.textFieldHint,
+      text_color: AppColors.textFieldText,
       controller: controller,
       padding: minLines != null ? EdgeInsets.all( 10 ) : null ,
       minLines: minLines,
@@ -138,7 +138,7 @@ class IconAndSeparatorTextField extends StatelessWidget {
     return Container(
       width: 2,
       height: heightDivider,
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
     ) ;
   }
 
@@ -168,10 +168,10 @@ class IconAndSeparatorTextField extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          Icon( Icons.info_outline, size: size, color: AppColor.red,),
+          Icon( Icons.info_outline, size: size, color: AppColors.red,),
           SizedBox( width:  5 ,),
           TextApp( errorMessage??"",
-            color: AppColor.redMaterial,
+            color: AppColors.redMaterial,
             fontSize: size,
             // fontFamily: FontResource.regular,
           ),

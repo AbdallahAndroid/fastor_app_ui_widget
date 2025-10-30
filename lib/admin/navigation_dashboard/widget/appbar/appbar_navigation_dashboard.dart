@@ -44,7 +44,7 @@ class AppbarNavigationDashboard extends StatelessWidget {
     return Container(
       alignment: LangApp.getAlignmentGeometryStartCenter(),
       padding: EdgeInsets.only(top:  NotchBarSizeHelper.getTop( context)),
-      color: AppColor.appBarBackground,
+      color: AppColors.appBarBackground,
       height:   AppbarNavigationDashboard.height(context),
       width: DeviceTools.getWidth(context),
       // child:  stackContent(),
@@ -85,7 +85,7 @@ class AppbarNavigationDashboard extends StatelessWidget {
       iconHeight: DeviceTools.isLandscape(context) ? 20.w : 24.w ,
       frameWidth: AppDimension.tapAppBarHeight(),
       frameHeight:  AppDimension.tapAppBarHeight(),
-      colorIcon: AppColor.iconAppbarColor,
+      colorIcon: AppColors.iconAppbarColor,
 
       onTap:  () => cubit.drawerOpen( keyDrawerScaffoldState ),
     );

@@ -80,12 +80,12 @@ class _CountryTextFieldPickerState extends State<CountryTextFieldPicker> {
             widget.listener( countryCode_text!, false );
           },
           textStyle:   TextStyle(
-            color: AppColor.textFieldText,
+            color: AppColors.textFieldText,
             fontSize: AppDimension.textfieldTextFontSize  ,
             fontFamily: FontProject.textField,
           ),
           dialogTextStyle:     TextStyle(
-            color: AppColor.textFieldText,
+            color: AppColors.textFieldText,
             fontSize: AppDimension.textfieldTextFontSize  ,
             fontFamily: FontProject.textField,
           ),

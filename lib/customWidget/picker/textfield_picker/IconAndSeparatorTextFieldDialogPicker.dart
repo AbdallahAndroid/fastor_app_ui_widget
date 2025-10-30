@@ -105,7 +105,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
     return Container(
       width: 2,
       height: 25,
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
     ) ;
   }
 
@@ -151,7 +151,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
       height: Figma.h(43),
       alignment: Alignment.center,
       child: ProgressCircleApp(
-          color: AppColor.progress,
+          color: AppColors.progress,
           size: 40 ),
     );
 }
@@ -170,7 +170,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
 
   Widget _selectedNameWidget(){
     return TextCustomRegular( dataSelected?.title??"",
-      color: AppColor.textFieldText,
+      color: AppColors.textFieldText,
       fontSize: Figma.h(16),
     );
   }
@@ -178,7 +178,7 @@ class IconAndSeparatorTextFieldDialogState extends State<IconAndSeparatorTextFie
 
   Widget _hintWidget(){
     return TextCustomRegular(  widget.hint??"select",
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
       fontSize: Figma.h(16),
     );
   }

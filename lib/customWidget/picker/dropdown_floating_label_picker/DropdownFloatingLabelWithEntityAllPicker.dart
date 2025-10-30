@@ -145,7 +145,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
         color:  colorBackgroundInputField ,
         padding: EdgeInsets.symmetric( horizontal: 4.w  ),
         child: TextApp(  title ,
-          color:  AppColor.textFieldLabel,
+          color:  AppColors.textFieldLabel,
           fontWeight: FontWeight.w400,
           fontSize: 12.sp ,
         ),
@@ -160,7 +160,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
         height: AppDimension.textFieldHeight,
         decoration: BoarderHelper.cardView(
             colorBackground:  colorBackgroundInputField,
-            colorLine: AppColor.textFieldBoarder,
+            colorLine: AppColors.textFieldBoarder,
             radiusSize: AppDimension.textFieldRadiusBoarder
         ),
         padding: AppDimension.textFieldPadding,
@@ -209,7 +209,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     return Image.asset( "assets/icons/dropdown_trangle.png",
       width: 12.w,
       height: 6.h ,
-      color: AppColor.textFieldText,
+      color: AppColors.textFieldText,
     );
     // return Icon( Icons.arrow_drop_down_sharp , size: Figma.w(24), color: Colors.black,);
   }
@@ -227,7 +227,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
 
   Widget _selectedNameWidget(){
     return TextApp( dataSelectedPrevious?.title??"",
-      color: AppColor.textFieldText,
+      color: AppColors.textFieldText,
       fontWeight: FontWeight.w400,
       fontSize: 16.sp ,
     );
@@ -236,7 +236,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
 
   Widget _hintWidget(){
     return TextApp(   hint ,
-      color: AppColor.textFieldText,
+      color: AppColors.textFieldText,
       fontWeight: FontWeight.w400,
       fontSize: 16.sp ,
     );
@@ -247,7 +247,7 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 8),
       child: TextApp(   messageError??"",
-        color: AppColor.textFieldError,
+        color: AppColors.textFieldError,
         fontSize: Figma.w(12),
       ),
     );

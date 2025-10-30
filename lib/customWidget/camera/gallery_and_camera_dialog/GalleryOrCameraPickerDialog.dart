@@ -29,7 +29,7 @@ class GalleryOrCameraPickerDialog {
 
     AwesomeDialog(
       context: context,
-      dialogBackgroundColor: AppColor.backgroundDialog,
+      dialogBackgroundColor: AppColors.backgroundDialog,
       dialogType: DialogType.noHeader,
       animType: AnimType.bottomSlide,
       width: AppDimension.dialogWidth(),
@@ -37,7 +37,7 @@ class GalleryOrCameraPickerDialog {
       /// title
       title: "Picker Image".tra(),
       titleTextStyle:   TextStyle(
-          color: AppColor.textColor,
+          color: AppColors.textColor,
           fontFamily: FontProject.w700,
           fontSize: 24.sp
       ),

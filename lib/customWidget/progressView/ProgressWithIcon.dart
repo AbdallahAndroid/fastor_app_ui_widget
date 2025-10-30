@@ -20,7 +20,7 @@ class ProgressWithIcon extends StatelessWidget {
     return Container(
       width: Figma.w( 150 ),
       decoration: BoarderHelper.cardView(
-          colorBackground: AppColor.progressContainer,
+          colorBackground: AppColors.progressContainer,
           radiusSize: 15
       ),
       padding: EdgeInsets.all( 20 ),
@@ -30,11 +30,11 @@ class ProgressWithIcon extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon( icon, // Icons.notification_important_outlined
-            color: AppColor.iconInsideProgressContainer,
+            color: AppColors.iconInsideProgressContainer,
             size: Figma.h( 100),
           ),
           SizedBox( height: AppDimension.marginBetweenInputFields ,),
-          ProgressCircleApp(color: AppColor.progressCircle, size: Figma.h( 40),),
+          ProgressCircleApp(color: AppColors.progressCircle, size: Figma.h( 40),),
         ],),
     );
   }

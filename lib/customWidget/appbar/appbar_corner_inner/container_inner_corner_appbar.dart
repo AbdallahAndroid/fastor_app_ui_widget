@@ -22,13 +22,13 @@ class ContainerInnerCornerAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // decoration: AppbarCornerBottomInnerUtils.appBarPrimaryLnearGradientNoRadius(),
-        color: AppColor.appBarBackground,
+        color: AppColors.appBarBackground,
         child: Stack(
           children: [
             Container(
               width: DeviceTools.getWidth(context),
               height: DeviceTools.getHeight(context),
-              color: AppColor.appBarBackground,
+              color: AppColors.appBarBackground,
             ),
             Container(
               margin: EdgeInsets.only(top: heightAppbar),
@@ -48,7 +48,7 @@ class ContainerInnerCornerAppbar extends StatelessWidget {
         topRight: Radius.circular(32.r ),
       ),
       child: Container(
-        color:  AppColor.backgroundAllScreens,
+        color:  AppColors.backgroundAllScreens,
         // decoration: AppbarCornerBottomInnerUtils.childBodyDecoration(),
         constraints: BoxConstraints(
           minHeight: DeviceTools.getHeight(context) - heightAppbar,

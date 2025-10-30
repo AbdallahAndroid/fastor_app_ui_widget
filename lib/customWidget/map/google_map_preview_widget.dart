@@ -22,7 +22,7 @@ class GoogleMapPreviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      color: AppColor.grey,
+      color: AppColors.grey,
       child:  GoogleMap(
         initialCameraPosition: CameraPosition(
           target:  latLng ,//

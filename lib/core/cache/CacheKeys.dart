@@ -40,4 +40,7 @@ class CacheKeys {
   static String nationalId = "nationalId";
   static String gender = "gender";
 
+  static final String offlineModeStatus = "offlineModeStatus";
+  static final String offlineAvailableModeStatus = "offlineAvailableModeStatus";
+
 }

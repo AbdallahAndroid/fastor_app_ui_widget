@@ -29,7 +29,7 @@ class TextUnderlineButton extends StatelessWidget {
             textStyle: TextStyle(
               fontFamily: FontProject.w600,
               fontSize: 16.sp ,
-              color: AppColor.primaryDark,
+              color: AppColors.primaryDark,
 
             )
           ),
@@ -39,7 +39,7 @@ class TextUnderlineButton extends StatelessWidget {
             child: Container(
               height: 2, // underline thickness
               width: widthUnderLine,
-              color: AppColor.primaryDark,
+              color: AppColors.primaryDark,
             )
           )
 

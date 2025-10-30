@@ -55,7 +55,7 @@ class IconAndSeparatorPasswordTextField extends StatefulWidget {
     this.errorsMessageArray
   }) {
 
-    colorLineBoarder ??= AppColor.textFieldDarkBoarderLineBeforeFocused;
+    colorLineBoarder ??= AppColors.textFieldDarkBoarderLineBeforeFocused;
     _setValidatorFromBackend();
   }
 
@@ -108,8 +108,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
       width: getWidthSizeMinusMargin(),
       height: AppDimension.textFieldHeight,
       decoration: BoarderHelper.cardView(
-        colorLine: AppColor.textFieldDarkBoarderLineBeforeFocused,
-        colorBackground: AppColor.textFieldBackground,
+        colorLine: AppColors.textFieldDarkBoarderLineBeforeFocused,
+        colorBackground: AppColors.textFieldBackground,
         radiusSize: AppDimension.textFieldRadiusBoarder,
       ),
       child: Row(
@@ -132,8 +132,8 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
       // hint_text: widget.hint_text?? "Enter password" ,
       fontSize: Figma.h( 16 ),
       // fontFamily: FontResource.regular,
-      hint_color: AppColor.textFieldHint,
-      text_color: AppColor.textFieldText,
+      hint_color: AppColors.textFieldHint,
+      text_color: AppColors.textFieldText,
       controller: widget.controller,
       width: getWidthTextField(),
       showOutlineInput: false,
@@ -159,7 +159,7 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
     return Container(
       width: 2,
       height: 25,
-      color: AppColor.textFieldHint,
+      color: AppColors.textFieldHint,
     ) ;
   }
 
@@ -256,10 +256,10 @@ class _IconAndSeparatorPasswordTextFieldState extends State<IconAndSeparatorPass
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
 
-          Icon( Icons.info_outline, size: size, color: AppColor.red,),
+          Icon( Icons.info_outline, size: size, color: AppColors.red,),
           SizedBox( width:  5 ,),
           TextApp( widget.errorMessage??"",
-            color: AppColor.redMaterial,
+            color: AppColors.redMaterial,
             fontSize: size,
             // fontFamily: FontResource.regular,
           ),
