@@ -22,10 +22,10 @@ class DbHelper {
 
   static Future<Database> initDb() async {
     String dbName = 'maqsafy_offline_online.db';
-    var version = databaseOfflineVersion;
+    var version = env.databaseOfflineVersion;
     if (isTestEnvironment) {
-      dbName = 'maqsafy_offline_test_v${databaseOfflineVersion}.db';
-      version = databaseOfflineVersion + 100;
+      dbName = 'maqsafy_offline_test_v${env.databaseOfflineVersion}.db';
+      version = env.databaseOfflineVersion + 100;
     }
     db =  await openDatabase(
       dbName,
