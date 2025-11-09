@@ -25,6 +25,18 @@ dependencies:
     sdk: flutter
 
   #-------------------------------------------------- abdallah copy/past
+
+
+  # update 2025-01 >> flutter 3.22.0
+  firebase_core: 3.8.0
+  firebase_auth: 5.3.3
+  firebase_analytics: 11.3.5
+  firebase_crashlytics: 4.1.5
+  firebase_messaging: 15.1.5
+  flutter_local_notifications: 18.0.1
+#  permission_handler: 10.4.1
+  firebase_database: 11.1.6
+
   hexcolor:
   universal_io:
   cached_network_image:
