@@ -32,9 +32,13 @@ class QueryRequestHelper {
 
     });
 
+    /// check empty
+    if(resultQuery == "" ){
+      return endpoint;
+    }
+
     String fullUrlWithParameter =  endpoint + "?" + resultQuery;
     Log.i("QueryRequestHelper - fullUrlWithParameter: $fullUrlWithParameter");
     return fullUrlWithParameter;
   }
-
 }

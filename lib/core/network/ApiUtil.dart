@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:fastor_app_ui_widget/core/network/ValidateResponse.dart';
+import 'package:fastor_app_ui_widget/core/network/cache_json/cacher_json.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
 import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
 import 'package:fastor_app_ui_widget/core/network/network_file_type.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:image_picker/image_picker.dart' as picker;
 
@@ -40,6 +43,7 @@ class ApiUtil {
 
   static resetConfig() async {
     await _init(_baseUrl);
+    await CacherJson.clearCache();
   }
 
 
@@ -79,11 +83,267 @@ class ApiUtil {
     };
   }
 
+  ///------------------------------------------------------------- stream cache and remote
 
-  //------------------------------------------------------------- types
+  static Stream<Response<dynamic>> getCacheAndRemoteStream(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+      }) async* {
+    try {
+      /// 1️⃣ Try to load from cache first
+      const String cacheMethod = "GET";
+      final payload = body ?? parameters ?? {};
+      final Map<String, dynamic> json = await CacherJson.getJson(
+        methodType: cacheMethod,
+        endpoint: endpoint,
+        bodyOrParameter: payload,
+      );
+      if (isEnableLogDioPretty ?? false) Log.logBidData(json);
+      final Response<dynamic> responseCache = mapJsonCacheToResponseDio(json);
+
+      // 1st emission (cache)
+      if (responseCache.statusCode == 200) {
+        Log.i("getCacheStream() - found cache - $cacheMethod / $endpoint");
+        yield responseCache;
+      }
+
+      // 🔄 Fetch remote in background
+      final Response<dynamic> responseDio = await get(
+        endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: false,
+      );
+      Log.i(
+          "getCacheStream() - remote update - status: ${responseDio.statusCode}");
+
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+        await CacherJson.setJson(
+          methodType: cacheMethod,
+          endpoint: endpoint,
+          bodyOrParameter: payload,
+          jsonData: responseDio.data,
+        );
+      }
+      // 2nd emission (remote)
+      yield responseDio;
+
+      /// close stream
+      return ;
+    } catch (e) {
+      Log.e("getCacheStream() - error: $e");
+      // optional: yield an error response instead of throwing
+      yield getFailedResponse(e);
+      /// close stream
+      return ;
+    }
+  }
+
+  /***
+   * -------------------- how to use
+   *
+   *:::::::::::::  1- datasource
+      static  Stream<Either<Failure, ResponseCategories>>  getAll(   ) async* {
+      var methodStreamNetwork = ApiUtil.postCacheAndRemoteStream(EndPoint.categoryGetAll,
+      isEnableLogDioPretty: false   );
+
+      await for (var responseDio in methodStreamNetwork) {
+      Log.i("CategoryDataSource - getAll() - methodStreamNetwork statusCode: ${responseDio.statusCode}  ");
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+      yield  right(await ResponseCategories().fromJson(responseDio.data));
+      } else {
+      yield  left(ThrowerTypeFailure.choose(responseDio));
+      }
+      }
+      }
+
+
+      ::::::::::::: 2- cubit
+      emit(CategoryListLoadingState());
+      var methodStreamEither = CategoryDataSource.getAll(  );
+      await for (var either in methodStreamEither ) {
+      Log.i("category - downloadAllCategory() - either $either  ");
+      either.fold((l) {
+      Log.i("category - downloadAllCategory() - failed $l  ");
+      return emit( CategoryListFailedState(  HandleErrorMessageHelper.getMessage(l), null   ) ) ;
+      }, (r) async {
+      allDataCategory =  r.data;
+      Log.i("category - downloadAllCategory() - allDataCategory len: ${allDataCategory.length} ");
+      return emit( CategoryListSuccessState(  ) );
+      });
+      }
+   */
+  static Stream<Response<dynamic>> postCacheAndRemoteStream(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+      }) async* {
+    try {
+      /// 1️⃣ Try to load from cache first
+      const String cacheMethod = "POST";
+      final payload = body ?? parameters ?? {};
+      final Map<String, dynamic> json = await CacherJson.getJson(
+        methodType: cacheMethod,
+        endpoint: endpoint,
+        bodyOrParameter: payload,
+      );
+      if (isEnableLogDioPretty ?? false) Log.logBidData(json);
+      final Response<dynamic> responseCache = mapJsonCacheToResponseDio(json);
+
+      // 1st emission (cache)
+      if (responseCache.statusCode == 200) {
+        Log.i("postCacheStream() - found cache - $cacheMethod / $endpoint");
+        yield responseCache;
+      }
+
+      // 🔄 Fetch remote in background
+      final Response<dynamic> responseDio = await post(
+        endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: false,
+      );
+      Log.i(
+          "postCacheStream() - remote update - status: ${responseDio.statusCode}");
+
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+        await CacherJson.setJson(
+          methodType: cacheMethod,
+          endpoint: endpoint,
+          bodyOrParameter: payload,
+          jsonData: responseDio.data,
+        );
+      }
+      // 2nd emission (remote)
+      yield responseDio;
+
+      /// close stream
+      return ;
+    } catch (e) {
+      Log.e("postCacheStream() - error: $e");
+      // optional: yield an error response instead of throwing
+      yield getFailedResponse(e);
+      /// close stream
+      return ;
+    }
+  }
+
+
+  //------------------------------------------------------------- cache or remote
+
+  static Future<Response<dynamic>> getCacheOrRemote(String endpoint,{
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? extraHeader,
+    Map<String, dynamic>? parameters,
+    bool? isEnableLogDioPretty,
+  }) async {
+
+    /// get from cache
+    String cacheMethod = "GET";
+    var payload = body??parameters??Map();
+    Map<String, dynamic> json = await CacherJson.getJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload );
+    if(isEnableLogDioPretty??false ) Log.logBidData(json );
+    Response<dynamic> responseCache = mapJsonCacheToResponseDio( json );
+
+    ///case: success found data at cache >>
+    ///   >> redownload from remote then update at cache
+    ///   >> return result speedly from cache without waiting from remote
+    if( responseCache.statusCode == 200 ) {
+      Log.i("getCache() - found cache - method: $cacheMethod /endpoint: $endpoint");
+      get(endpoint,
+          extraHeader: extraHeader,
+          body: body,
+          parameters: parameters,
+          isEnableLogDioPretty: false
+      ).then( (Response<dynamic>  responseDio )async {
+        Log.i("getCache() - redownload and update from remote - remote status: ${responseDio.statusCode}");
+        if(ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode) ) {
+          await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload, jsonData: responseDio.data );
+        }
+      });
+      return responseCache ;
+    }
+
+    /// case : download data from remote first time
+    ///       >> set to cache first time
+    var responseDioFirstTime =  await  get(endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: isEnableLogDioPretty
+    ) ;
+    Log.i("getCache() - not found data at cache so must download first time from remote - status: ${responseDioFirstTime.statusCode}");
+    if(ValidateResponse.isStatusFrom200To210Code(responseDioFirstTime.statusCode) ) {
+      await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload,
+          jsonData: responseDioFirstTime.data );
+    }
+    return  responseDioFirstTime;
+  }
+
+
+  static Future<Response<dynamic>> postCacheOrRemote(String endpoint,{
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? extraHeader,
+    Map<String, dynamic>? parameters,
+    bool? isEnableLogDioPretty,
+  }) async {
+    Log.i("postCache() - start endpoint: $endpoint");
+
+    /// get from cache
+    String cacheMethod = "POST";
+    var payload = body??parameters??Map();
+    Map<String, dynamic> json = await CacherJson.getJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload );
+    // Log.i("postCache() - json cache: $json");
+    if(isEnableLogDioPretty??false ) Log.logBidData(json );
+    Response<dynamic> responseCache = mapJsonCacheToResponseDio( json );
+
+    ///case: success data in cache >>
+    ///   >> redownload nad update from remote
+    ///   >> return result speedly from cache
+    if( responseCache.statusCode == 200 ) {
+      Log.i("postCache() - found cache success");
+      post(endpoint,
+          extraHeader: extraHeader,
+          body: body,
+          parameters: parameters,
+          isEnableLogDioPretty: false
+      ).then( (Response<dynamic>  responseDio )async {
+        Log.i("postCache() - redownload and update from remote - remote status: ${responseDio.statusCode}");
+        if(ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode) ) {
+          await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload, jsonData: responseDio.data );
+        }
+      });
+      return responseCache;
+    }
+
+
+    /// case : download data from remote first time
+    ///       >> set to cache first time
+
+    var responseDioFirstTime =  await  post(endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: isEnableLogDioPretty
+    ) ;
+    Log.i("postCache() - not found data at cache so must download first time from remote - status: ${responseDioFirstTime.statusCode}");
+    if(ValidateResponse.isStatusFrom200To210Code(responseDioFirstTime.statusCode) ) {
+      await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload,
+          jsonData: responseDioFirstTime.data );
+    }
+    return  responseDioFirstTime;
+  }
+
+  ///------------------------------------------------------------- normal  types
 
   static Future<Response<dynamic>> get(String endpoint,{
-
     Map<String, dynamic>? body,
     Map<String, dynamic>? extraHeader,
     Map<String, dynamic>? parameters,
@@ -306,4 +566,23 @@ class ApiUtil {
         requestOptions:
         new RequestOptions(path: msg != null ? msg : "failed request"));
   }
+
+
+  static  Response mapJsonCacheToResponseDio(Map<String, dynamic> json ) {
+    if( json.isEmpty ) {
+      return Response(
+          statusCode: 400,
+          data: json ,
+          requestOptions:
+          new RequestOptions(path:  "failed", data: json ));
+    } {
+      return Response(
+          statusCode: 200,
+          data: json ,
+          requestOptions:
+          new RequestOptions(path:  "success", data: json ));
+    }
+
+  }
+
 }
