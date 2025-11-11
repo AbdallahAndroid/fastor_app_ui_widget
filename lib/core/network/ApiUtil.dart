@@ -20,7 +20,6 @@ typedef ProgressCallbackApp = void Function(int count, int total);
 class ApiUtil {
   static Dio _dioWithPretty = Dio();
   static Dio _dioNoPrettyDioLogger = Dio();
-  static Dio _dioFile = Dio();
   static String _baseUrl = "";
 
   /// when make it "true" casuing foreverr show
@@ -37,6 +36,12 @@ class ApiUtil {
     await _init(baseUrl);
     return ApiUtil._();
   }
+  //---------------------------------------------- init
+
+  static resetConfig() async {
+    await _init(_baseUrl);
+  }
+
 
   static _init(String baseUrl) async {
     ///set timeout
@@ -46,30 +51,20 @@ class ApiUtil {
     _dioNoPrettyDioLogger.options.connectTimeout = Duration(seconds: 20);
     _dioNoPrettyDioLogger.options.receiveTimeout = Duration(seconds: 20);
     _dioNoPrettyDioLogger.options.sendTimeout = Duration(seconds: 20);
-    _dioFile.options.connectTimeout = Duration(seconds: 60);
-    _dioFile.options.receiveTimeout = Duration(seconds: 60);
-    _dioFile.options.sendTimeout = Duration(seconds: 60);
 
     /// add base
     _dioWithPretty.options.baseUrl = baseUrl;
     _dioNoPrettyDioLogger.options.baseUrl = baseUrl;
-    _dioFile.options.baseUrl = baseUrl;
 
     /// add headers
     _dioWithPretty.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
+    await NetworkConfig.getHeaders();
     _dioNoPrettyDioLogger.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
-    _dioFile.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
+    await NetworkConfig.getHeaders();
+
 
     /// add pretty
     _dioWithPretty.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-    ));
-    _dioFile.interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
       responseBody: true,
@@ -82,57 +77,30 @@ class ApiUtil {
     _dioNoPrettyDioLogger.options.validateStatus = (status) {
       return status != null && status >= 200 && status < 500;
     };
-    _dioFile.options.validateStatus = (status) {
-      return status != null && status >= 200 && status < 500;
-    };
   }
 
-  //---------------------------------------------- init
-
-  static setLogout() async {
-    await _init(ApiUtil._baseUrl);
-  }
-
-  static setLogin(String token, String? userPanel) async {
-    await _init(ApiUtil._baseUrl);
-  }
 
   //------------------------------------------------------------- types
 
-  Future<Response<dynamic>> get({
-    required String endpoint,
+  static Future<Response<dynamic>> get(String endpoint,{
+
     Map<String, dynamic>? body,
     Map<String, dynamic>? extraHeader,
     Map<String, dynamic>? parameters,
     bool? isEnableLogDioPretty,
   }) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
 
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-      var response = await _dioNoPrettyDioLogger.get(
+
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+
+      var response = await dio.get(
         endpoint,
         data: body,
         queryParameters: parameters,
@@ -145,40 +113,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> post(
-      {required String endpoint,
-      dynamic body,
-      Map<String, dynamic>? parameters,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? extraHeader}) async {
+  static Future<Response<dynamic>> post(
+      String endpoint, {
+        dynamic body,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? extraHeader}) async {
 
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioWithPretty.post(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.post(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -187,40 +137,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> put(
-      {required String endpoint,
-      Map<String, dynamic>? body,
-      Map<String, dynamic>? extraHeader,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? parameters}) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+  static Future<Response<dynamic>> put(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? parameters}) async {
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
 
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioNoPrettyDioLogger.put(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.put(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -229,40 +161,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> delete(
-      {required String endpoint,
-      Map<String, dynamic>? body,
-      Map<String, dynamic>? extraHeader,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? parameters}) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+  static Future<Response<dynamic>> delete(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? parameters}) async {
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
 
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioNoPrettyDioLogger.delete(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.delete(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -273,16 +187,16 @@ class ApiUtil {
 
   ///--------------------------------------------------------------- file
 
-  Future<Response> uploadXFile(
-      {required String url,
-      required String fileRequestKeyInJson,
-      required NetworkFileType networkFileType,
-      required picker.XFile xFile,
-      Map<String, dynamic>? body,
-      Map<String, String>? headers,
-      int? timeOutSecond,
-      ProgressCallbackApp? onSendProgress,
-      ProgressCallbackApp? onReceiveProgress}) async {
+  static  Future<Response> uploadXFile(
+      String endpoint, {
+        required String fileRequestKeyInJson,
+        required NetworkFileType networkFileType,
+        required picker.XFile xFile,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        int? timeOutSecond,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress}) async {
     try {
 
       //check not file
@@ -311,14 +225,14 @@ class ApiUtil {
 
       ///time out
       if (timeOutSecond != null) {
-        _dioFile.options.connectTimeout = Duration(seconds: timeOutSecond!);
-        _dioFile.options.receiveTimeout = Duration(seconds: timeOutSecond!);
+        _dioWithPretty.options.connectTimeout = Duration(seconds: timeOutSecond!);
+        _dioWithPretty.options.receiveTimeout = Duration(seconds: timeOutSecond!);
       }
 
       switch (networkFileType) {
         case NetworkFileType.post:
           {
-            return await _dioFile.post(url,
+            return await _dioWithPretty.post(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -326,7 +240,7 @@ class ApiUtil {
 
         case NetworkFileType.put:
           {
-            return await _dioFile.put(url,
+            return await _dioWithPretty.put(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -334,7 +248,7 @@ class ApiUtil {
 
         case NetworkFileType.patch:
           {
-            return await _dioFile.patch(url,
+            return await _dioWithPretty.patch(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -342,7 +256,7 @@ class ApiUtil {
 
         default:
           {
-            return await _dioFile.post(url,
+            return await _dioWithPretty.post(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -355,13 +269,21 @@ class ApiUtil {
     }
   }
 
-  ///--------------------------------------------------------- failure helper methods
+  ///---------------------------------------------------------   helper methods
 
-  Response getFailedResponseDioError({required DioException dioError}) {
+  static Dio getDioType({
+    bool isEnableLogDioPretty = false,
+  }) {
+    if (isEnableLogDioPretty) return _dioWithPretty;
+    return _dioNoPrettyDioLogger;
+  }
+
+  static  Response getFailedResponseDioError({required DioException dioError}) {
+
     if (dioError.type == DioExceptionType.connectionTimeout ||
         dioError.type == DioExceptionType.sendTimeout ||
         dioError.type == DioExceptionType.receiveTimeout) {
-      throw ServerTimeoutException();
+      return getFailedResponse( "time out");
     }
     if (dioError.response != null && dioError!.response!.data != null) {
       Map<String, dynamic> data = Map();
@@ -378,10 +300,10 @@ class ApiUtil {
     }
   }
 
-  Response getFailedResponse(e) {
+  static  Response getFailedResponse(e) {
     String msg = e.toString();
     return Response(
         requestOptions:
-            new RequestOptions(path: msg != null ? msg : "failed request"));
+        new RequestOptions(path: msg != null ? msg : "failed request"));
   }
 }
