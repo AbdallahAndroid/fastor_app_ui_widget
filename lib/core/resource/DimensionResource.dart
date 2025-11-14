@@ -123,6 +123,15 @@ class AppDimension  {
   static double iconAdmin = 14.w ;
   static double iconContainerAdmin = 27.w ;
 
+  /// dialog picker
+  static double dialogPickerWidthCard(BuildContext context ) {
+    return DeviceTools.isLandscapeOrSemiBox(context) ? 450.w : DeviceTools.getWidth(context);
+  }
+
+  static double dialogPickerWidthInputField(BuildContext context ) {
+    return DeviceTools.isLandscapeOrSemiBox(context) ? 360.w : DeviceTools.getWidth(context) - 90.w ;
+  }
+
 
 
 }
