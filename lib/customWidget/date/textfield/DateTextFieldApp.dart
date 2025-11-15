@@ -1,5 +1,6 @@
 
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/emptyView/EmptyView.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
@@ -285,12 +286,12 @@ class _DateTextFieldAppState extends State<DateTextFieldApp> {
 
   //---------------------------------------------------------
 
+
   Future showDialogPickerDate() async {
     //Log.i("showDialogPickerDate( )");
-
     DateTime? selectTime = await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
+        initialDate: getInitialDateFromSelectedOrPreviousDataOrDefaultIsNow() ,
         firstDate: DateTime(1975),
         lastDate: DateTime(2100));
     //Log.i("DialogPickDateTime - listener - value: " + selectTime.toString());
@@ -299,8 +300,31 @@ class _DateTextFieldAppState extends State<DateTextFieldApp> {
     }
   }
 
+
+  DateTime getInitialDateFromSelectedOrPreviousDataOrDefaultIsNow(){
+    try{
+      if (ToolsValidation.isValid(_selectedDate)) {
+        DateFormat fmt = DateFormat('yyyy-MM-dd');
+        DateTime dt = fmt.parse(_selectedDate);
+        // Log.i("getInitialDateFromSelectedOrPreviousDataOrDefaultIsNow() - type selected: $dt");
+        return dt;
+      } else if( ToolsValidation.isValid( widget.previousSelectedText ) ) {
+        DateFormat fmt = DateFormat('yyyy-MM-dd');
+        DateTime dt = fmt.parse(widget.previousSelectedText!);
+        // Log.i("getInitialDateFromSelectedOrPreviousDataOrDefaultIsNow() - type previousSelectedText: $dt");
+        return dt;
+      } else {
+        return  DateTime.now();
+      }
+    }catch (e ){
+      Log.i("getInitialDateFromSelectedOrPreviousDataOrDefaultIsNow() - e: $e");
+      return  DateTime.now();
+    }
+  }
+
+
   Future timeSelectedChangeTo(DateTime dateTime) async {
-    _selectedDate = DateFormat('yyyy/MM/dd').format(dateTime);
+    _selectedDate = DateFormat('yyyy-MM-dd').format(dateTime);
     //Log.i("DialogPickDateTime - listener - edit: " + _selectedDate);
 
     setState(() {
