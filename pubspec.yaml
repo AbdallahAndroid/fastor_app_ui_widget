@@ -105,6 +105,9 @@ dependencies:
 
   sqflite: ^2.3.3+1
 
+  #auth ( face id , finger print )
+  local_auth: 2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
