@@ -1,10 +1,11 @@
 
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 class QueryRequestHelper {
 
 
-  static String mapToQueryFilterNullValue(Map<String, dynamic> map) {
+  static String mapToQueryFilterNullValue(String endpoint, Map<String, dynamic> map) {
 
     String resultQuery = "";
 
@@ -31,8 +32,13 @@ class QueryRequestHelper {
 
     });
 
-    return resultQuery;
+    /// check empty
+    if(resultQuery == "" ){
+      return endpoint;
+    }
+
+    String fullUrlWithParameter =  endpoint + "?" + resultQuery;
+    Log.i("QueryRequestHelper - fullUrlWithParameter: $fullUrlWithParameter");
+    return fullUrlWithParameter;
   }
-
-
 }

@@ -6,26 +6,8 @@ import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 class NetworkConfig{
 
-  static Map<String, String>? _headers ;
-
-
-  /**
-   * when to init() , after update profile or update login or logout
-   */
-  static void initConfigure(){
-    _headers = null;
-  }
-
-  static   Map<String,String>  getConfigureHeaderFromCache()     {
-
-    /// fix perfomance
-    if( _headers!= null ) {
-      return _headers!;
-    }
-
-    if( _headers == null  ) {
-      _headers = Map();
-    }
+  static   Map<String,String>  getHeaders()     {
+    Map<String, String>? _headers       = Map();
     if( UserHelper.isGuest()  ) {
       _headers =  guestType(      );
     } else {

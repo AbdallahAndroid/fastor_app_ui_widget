@@ -3,8 +3,8 @@
 
 import 'package:fastor_app_ui_widget/core/cache/SaveApp.dart';
 import 'package:fastor_app_ui_widget/core/cache/UserModel.dart';
+import 'package:fastor_app_ui_widget/core/network/ApiUtil.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/network/NetworkSingletone.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
@@ -25,7 +25,7 @@ class UserHelper {
   //----------------------------------------------- logout clear
 
   static  logout( ) async {
-    NetworkHelperSingleTone.setLogout();
+    ApiUtil.resetConfig();
     String userId =    UserHelper.getUserId();
     setToken( "");
     await SaveApp.setString( CacheKeys.userId,  "" );
@@ -52,7 +52,7 @@ class UserHelper {
    */
   static  saveProfile(UserModel user) async {
     if( ToolsValidation.isValid( user.token ) ) {
-      NetworkHelperSingleTone.setLogin( user.token! );
+      ApiUtil.resetConfig(  );
       await setToken( user.token!);
     }
 

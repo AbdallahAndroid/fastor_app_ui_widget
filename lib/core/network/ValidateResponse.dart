@@ -19,7 +19,7 @@ class ValidateResponse {
     return true;
   }
 
-  static bool isStatusFrom200To210Code(int  statusCode) {
+  static bool isStatusFrom200To210Code(int?  statusCode) {
     if(  statusCode == null ) return false;
     if(  statusCode  >  210 ) return false;
     if(  statusCode  <  200 ) return false;

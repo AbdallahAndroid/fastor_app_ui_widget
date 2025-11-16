@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:fastor_app_ui_widget/core/network/ValidateResponse.dart';
+import 'package:fastor_app_ui_widget/core/network/cache_json/cacher_json.dart';
 import 'package:fastor_app_ui_widget/core/network/config/network_config.dart';
 import 'package:fastor_app_ui_widget/core/network/error_failure/failure_exceptions.dart';
 import 'package:fastor_app_ui_widget/core/network/internet/InternetTools.dart';
 import 'package:fastor_app_ui_widget/core/network/network_file_type.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 import 'package:image_picker/image_picker.dart' as picker;
 
@@ -20,7 +23,6 @@ typedef ProgressCallbackApp = void Function(int count, int total);
 class ApiUtil {
   static Dio _dioWithPretty = Dio();
   static Dio _dioNoPrettyDioLogger = Dio();
-  static Dio _dioFile = Dio();
   static String _baseUrl = "";
 
   /// when make it "true" casuing foreverr show
@@ -37,6 +39,13 @@ class ApiUtil {
     await _init(baseUrl);
     return ApiUtil._();
   }
+  //---------------------------------------------- init
+
+  static resetConfig() async {
+    await _init(_baseUrl);
+    await CacherJson.clearCache();
+  }
+
 
   static _init(String baseUrl) async {
     ///set timeout
@@ -46,30 +55,20 @@ class ApiUtil {
     _dioNoPrettyDioLogger.options.connectTimeout = Duration(seconds: 20);
     _dioNoPrettyDioLogger.options.receiveTimeout = Duration(seconds: 20);
     _dioNoPrettyDioLogger.options.sendTimeout = Duration(seconds: 20);
-    _dioFile.options.connectTimeout = Duration(seconds: 60);
-    _dioFile.options.receiveTimeout = Duration(seconds: 60);
-    _dioFile.options.sendTimeout = Duration(seconds: 60);
 
     /// add base
     _dioWithPretty.options.baseUrl = baseUrl;
     _dioNoPrettyDioLogger.options.baseUrl = baseUrl;
-    _dioFile.options.baseUrl = baseUrl;
 
     /// add headers
     _dioWithPretty.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
+    await NetworkConfig.getHeaders();
     _dioNoPrettyDioLogger.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
-    _dioFile.options.headers =
-        await NetworkConfig.getConfigureHeaderFromCache();
+    await NetworkConfig.getHeaders();
+
 
     /// add pretty
     _dioWithPretty.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-    ));
-    _dioFile.interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
       responseBody: true,
@@ -82,57 +81,286 @@ class ApiUtil {
     _dioNoPrettyDioLogger.options.validateStatus = (status) {
       return status != null && status >= 200 && status < 500;
     };
-    _dioFile.options.validateStatus = (status) {
-      return status != null && status >= 200 && status < 500;
-    };
   }
 
-  //---------------------------------------------- init
+  ///------------------------------------------------------------- stream cache and remote
 
-  static setLogout() async {
-    await _init(ApiUtil._baseUrl);
+  static Stream<Response<dynamic>> getCacheAndRemoteStream(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+      }) async* {
+    try {
+      /// 1️⃣ Try to load from cache first
+      const String cacheMethod = "GET";
+      final payload = body ?? parameters ?? {};
+      final Map<String, dynamic> json = await CacherJson.getJson(
+        methodType: cacheMethod,
+        endpoint: endpoint,
+        bodyOrParameter: payload,
+      );
+      if (isEnableLogDioPretty ?? false) Log.logBidData(json);
+      final Response<dynamic> responseCache = mapJsonCacheToResponseDio(json);
+
+      // 1st emission (cache)
+      if (responseCache.statusCode == 200) {
+        Log.i("getCacheStream() - found cache - $cacheMethod / $endpoint");
+        yield responseCache;
+      }
+
+      // 🔄 Fetch remote in background
+      final Response<dynamic> responseDio = await get(
+        endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: false,
+      );
+      Log.i(
+          "getCacheStream() - remote update - status: ${responseDio.statusCode}");
+
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+        await CacherJson.setJson(
+          methodType: cacheMethod,
+          endpoint: endpoint,
+          bodyOrParameter: payload,
+          jsonData: responseDio.data,
+        );
+      }
+      // 2nd emission (remote)
+      yield responseDio;
+
+      /// close stream
+      return ;
+    } catch (e) {
+      Log.e("getCacheStream() - error: $e");
+      // optional: yield an error response instead of throwing
+      yield getFailedResponse(e);
+      /// close stream
+      return ;
+    }
   }
 
-  static setLogin(String token, String? userPanel) async {
-    await _init(ApiUtil._baseUrl);
+  /***
+   * -------------------- how to use
+   *
+   *:::::::::::::  1- datasource
+      static  Stream<Either<Failure, ResponseCategories>>  getAll(   ) async* {
+      var methodStreamNetwork = ApiUtil.postCacheAndRemoteStream(EndPoint.categoryGetAll,
+      isEnableLogDioPretty: false   );
+
+      await for (var responseDio in methodStreamNetwork) {
+      Log.i("CategoryDataSource - getAll() - methodStreamNetwork statusCode: ${responseDio.statusCode}  ");
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+      yield  right(await ResponseCategories().fromJson(responseDio.data));
+      } else {
+      yield  left(ThrowerTypeFailure.choose(responseDio));
+      }
+      }
+      }
+
+
+      ::::::::::::: 2- cubit
+      emit(CategoryListLoadingState());
+      var methodStreamEither = CategoryDataSource.getAll(  );
+      await for (var either in methodStreamEither ) {
+      Log.i("category - downloadAllCategory() - either $either  ");
+      either.fold((l) {
+      Log.i("category - downloadAllCategory() - failed $l  ");
+      return emit( CategoryListFailedState(  HandleErrorMessageHelper.getMessage(l), null   ) ) ;
+      }, (r) async {
+      allDataCategory =  r.data;
+      Log.i("category - downloadAllCategory() - allDataCategory len: ${allDataCategory.length} ");
+      return emit( CategoryListSuccessState(  ) );
+      });
+      }
+   */
+  static Stream<Response<dynamic>> postCacheAndRemoteStream(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+      }) async* {
+    try {
+      /// 1️⃣ Try to load from cache first
+      const String cacheMethod = "POST";
+      final payload = body ?? parameters ?? {};
+      final Map<String, dynamic> json = await CacherJson.getJson(
+        methodType: cacheMethod,
+        endpoint: endpoint,
+        bodyOrParameter: payload,
+      );
+      if (isEnableLogDioPretty ?? false) Log.logBidData(json);
+      final Response<dynamic> responseCache = mapJsonCacheToResponseDio(json);
+
+      // 1st emission (cache)
+      if (responseCache.statusCode == 200) {
+        Log.i("postCacheStream() - found cache - $cacheMethod / $endpoint");
+        yield responseCache;
+      }
+
+      // 🔄 Fetch remote in background
+      final Response<dynamic> responseDio = await post(
+        endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: false,
+      );
+      Log.i(
+          "postCacheStream() - remote update - status: ${responseDio.statusCode}");
+
+      if (ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode)) {
+        await CacherJson.setJson(
+          methodType: cacheMethod,
+          endpoint: endpoint,
+          bodyOrParameter: payload,
+          jsonData: responseDio.data,
+        );
+      }
+      // 2nd emission (remote)
+      yield responseDio;
+
+      /// close stream
+      return ;
+    } catch (e) {
+      Log.e("postCacheStream() - error: $e");
+      // optional: yield an error response instead of throwing
+      yield getFailedResponse(e);
+      /// close stream
+      return ;
+    }
   }
 
-  //------------------------------------------------------------- types
 
-  Future<Response<dynamic>> get({
-    required String endpoint,
+  //------------------------------------------------------------- cache or remote
+
+  static Future<Response<dynamic>> getCacheOrRemote(String endpoint,{
     Map<String, dynamic>? body,
     Map<String, dynamic>? extraHeader,
     Map<String, dynamic>? parameters,
     bool? isEnableLogDioPretty,
   }) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
+
+    /// get from cache
+    String cacheMethod = "GET";
+    var payload = body??parameters??Map();
+    Map<String, dynamic> json = await CacherJson.getJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload );
+    if(isEnableLogDioPretty??false ) Log.logBidData(json );
+    Response<dynamic> responseCache = mapJsonCacheToResponseDio( json );
+
+    ///case: success found data at cache >>
+    ///   >> redownload from remote then update at cache
+    ///   >> return result speedly from cache without waiting from remote
+    if( responseCache.statusCode == 200 ) {
+      Log.i("getCache() - found cache - method: $cacheMethod /endpoint: $endpoint");
+      get(endpoint,
+          extraHeader: extraHeader,
+          body: body,
+          parameters: parameters,
+          isEnableLogDioPretty: false
+      ).then( (Response<dynamic>  responseDio )async {
+        Log.i("getCache() - redownload and update from remote - remote status: ${responseDio.statusCode}");
+        if(ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode) ) {
+          await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload, jsonData: responseDio.data );
+        }
+      });
+      return responseCache ;
     }
 
-    try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.get(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
+    /// case : download data from remote first time
+    ///       >> set to cache first time
+    var responseDioFirstTime =  await  get(endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: isEnableLogDioPretty
+    ) ;
+    Log.i("getCache() - not found data at cache so must download first time from remote - status: ${responseDioFirstTime.statusCode}");
+    if(ValidateResponse.isStatusFrom200To210Code(responseDioFirstTime.statusCode) ) {
+      await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload,
+          jsonData: responseDioFirstTime.data );
+    }
+    return  responseDioFirstTime;
+  }
+
+
+  static Future<Response<dynamic>> postCacheOrRemote(String endpoint,{
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? extraHeader,
+    Map<String, dynamic>? parameters,
+    bool? isEnableLogDioPretty,
+  }) async {
+    Log.i("postCache() - start endpoint: $endpoint");
+
+    /// get from cache
+    String cacheMethod = "POST";
+    var payload = body??parameters??Map();
+    Map<String, dynamic> json = await CacherJson.getJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload );
+    // Log.i("postCache() - json cache: $json");
+    if(isEnableLogDioPretty??false ) Log.logBidData(json );
+    Response<dynamic> responseCache = mapJsonCacheToResponseDio( json );
+
+    ///case: success data in cache >>
+    ///   >> redownload nad update from remote
+    ///   >> return result speedly from cache
+    if( responseCache.statusCode == 200 ) {
+      Log.i("postCache() - found cache success");
+      post(endpoint,
+          extraHeader: extraHeader,
+          body: body,
+          parameters: parameters,
+          isEnableLogDioPretty: false
+      ).then( (Response<dynamic>  responseDio )async {
+        Log.i("postCache() - redownload and update from remote - remote status: ${responseDio.statusCode}");
+        if(ValidateResponse.isStatusFrom200To210Code(responseDio.statusCode) ) {
+          await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload, jsonData: responseDio.data );
         }
-      }
-      var response = await _dioNoPrettyDioLogger.get(
+      });
+      return responseCache;
+    }
+
+
+    /// case : download data from remote first time
+    ///       >> set to cache first time
+
+    var responseDioFirstTime =  await  post(endpoint,
+        extraHeader: extraHeader,
+        body: body,
+        parameters: parameters,
+        isEnableLogDioPretty: isEnableLogDioPretty
+    ) ;
+    Log.i("postCache() - not found data at cache so must download first time from remote - status: ${responseDioFirstTime.statusCode}");
+    if(ValidateResponse.isStatusFrom200To210Code(responseDioFirstTime.statusCode) ) {
+      await CacherJson.setJson(methodType: cacheMethod, endpoint: endpoint, bodyOrParameter: payload,
+          jsonData: responseDioFirstTime.data );
+    }
+    return  responseDioFirstTime;
+  }
+
+  ///------------------------------------------------------------- normal  types
+
+  static Future<Response<dynamic>> get(String endpoint,{
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? extraHeader,
+    Map<String, dynamic>? parameters,
+    bool? isEnableLogDioPretty,
+  }) async {
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
+
+    try {
+
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+
+      var response = await dio.get(
         endpoint,
         data: body,
         queryParameters: parameters,
@@ -145,40 +373,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> post(
-      {required String endpoint,
-      dynamic body,
-      Map<String, dynamic>? parameters,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? extraHeader}) async {
+  static Future<Response<dynamic>> post(
+      String endpoint, {
+        dynamic body,
+        Map<String, dynamic>? parameters,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? extraHeader}) async {
 
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.post(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioWithPretty.post(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.post(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -187,40 +397,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> put(
-      {required String endpoint,
-      Map<String, dynamic>? body,
-      Map<String, dynamic>? extraHeader,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? parameters}) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+  static Future<Response<dynamic>> put(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? parameters}) async {
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
 
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.put(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioNoPrettyDioLogger.put(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.put(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -229,40 +421,22 @@ class ApiUtil {
     }
   }
 
-  Future<Response<dynamic>> delete(
-      {required String endpoint,
-      Map<String, dynamic>? body,
-      Map<String, dynamic>? extraHeader,
-      bool? isEnableLogDioPretty,
-      Map<String, dynamic>? parameters}) async {
-    if (await InternetTools.isNotConnected()) {
-      throw ServerNoInternetConnectionException();
-    }
+  static Future<Response<dynamic>> delete(
+      String endpoint, {
+        Map<String, dynamic>? body,
+        Map<String, dynamic>? extraHeader,
+        bool? isEnableLogDioPretty,
+        Map<String, dynamic>? parameters}) async {
+    // if (await InternetTools.isNotConnected()) {
+    //   throw ServerNoInternetConnectionException();
+    // }
 
     try {
-      if (isEnableLogDioPretty != null) {
-        if (isEnableLogDioPretty) {
-          return await _dioWithPretty.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else if( isForceEnableLogsPrettyDio) {
-          return await _dioWithPretty.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        } else {
-          return await _dioNoPrettyDioLogger.delete(
-            endpoint,
-            data: body,
-            queryParameters: parameters,
-          );
-        }
-      }
-
-      return await _dioNoPrettyDioLogger.delete(endpoint,
+      var dio = getDioType(
+        isEnableLogDioPretty: isEnableLogDioPretty ?? false,
+      );
+      dio.options.headers.addAll(extraHeader ?? Map());
+      return await dio.delete(endpoint,
           data: body, queryParameters: parameters);
     } on DioException catch (dioError) {
       return getFailedResponseDioError(dioError: dioError);
@@ -273,16 +447,16 @@ class ApiUtil {
 
   ///--------------------------------------------------------------- file
 
-  Future<Response> uploadXFile(
-      {required String url,
-      required String fileRequestKeyInJson,
-      required NetworkFileType networkFileType,
-      required picker.XFile xFile,
-      Map<String, dynamic>? body,
-      Map<String, String>? headers,
-      int? timeOutSecond,
-      ProgressCallbackApp? onSendProgress,
-      ProgressCallbackApp? onReceiveProgress}) async {
+  static  Future<Response> uploadXFile(
+      String endpoint, {
+        required String fileRequestKeyInJson,
+        required NetworkFileType networkFileType,
+        required picker.XFile xFile,
+        Map<String, dynamic>? body,
+        Map<String, String>? headers,
+        int? timeOutSecond,
+        ProgressCallbackApp? onSendProgress,
+        ProgressCallbackApp? onReceiveProgress}) async {
     try {
 
       //check not file
@@ -311,14 +485,14 @@ class ApiUtil {
 
       ///time out
       if (timeOutSecond != null) {
-        _dioFile.options.connectTimeout = Duration(seconds: timeOutSecond!);
-        _dioFile.options.receiveTimeout = Duration(seconds: timeOutSecond!);
+        _dioWithPretty.options.connectTimeout = Duration(seconds: timeOutSecond!);
+        _dioWithPretty.options.receiveTimeout = Duration(seconds: timeOutSecond!);
       }
 
       switch (networkFileType) {
         case NetworkFileType.post:
           {
-            return await _dioFile.post(url,
+            return await _dioWithPretty.post(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -326,7 +500,7 @@ class ApiUtil {
 
         case NetworkFileType.put:
           {
-            return await _dioFile.put(url,
+            return await _dioWithPretty.put(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -334,7 +508,7 @@ class ApiUtil {
 
         case NetworkFileType.patch:
           {
-            return await _dioFile.patch(url,
+            return await _dioWithPretty.patch(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -342,7 +516,7 @@ class ApiUtil {
 
         default:
           {
-            return await _dioFile.post(url,
+            return await _dioWithPretty.post(endpoint,
                 data: formData,
                 onSendProgress: onSendProgress,
                 onReceiveProgress: onReceiveProgress);
@@ -355,13 +529,21 @@ class ApiUtil {
     }
   }
 
-  ///--------------------------------------------------------- failure helper methods
+  ///---------------------------------------------------------   helper methods
 
-  Response getFailedResponseDioError({required DioException dioError}) {
+  static Dio getDioType({
+    bool isEnableLogDioPretty = false,
+  }) {
+    if (isEnableLogDioPretty) return _dioWithPretty;
+    return _dioNoPrettyDioLogger;
+  }
+
+  static  Response getFailedResponseDioError({required DioException dioError}) {
+
     if (dioError.type == DioExceptionType.connectionTimeout ||
         dioError.type == DioExceptionType.sendTimeout ||
         dioError.type == DioExceptionType.receiveTimeout) {
-      throw ServerTimeoutException();
+      return getFailedResponse( "time out");
     }
     if (dioError.response != null && dioError!.response!.data != null) {
       Map<String, dynamic> data = Map();
@@ -378,10 +560,29 @@ class ApiUtil {
     }
   }
 
-  Response getFailedResponse(e) {
+  static  Response getFailedResponse(e) {
     String msg = e.toString();
     return Response(
         requestOptions:
-            new RequestOptions(path: msg != null ? msg : "failed request"));
+        new RequestOptions(path: msg != null ? msg : "failed request"));
   }
+
+
+  static  Response mapJsonCacheToResponseDio(Map<String, dynamic> json ) {
+    if( json.isEmpty ) {
+      return Response(
+          statusCode: 400,
+          data: json ,
+          requestOptions:
+          new RequestOptions(path:  "failed", data: json ));
+    } {
+      return Response(
+          statusCode: 200,
+          data: json ,
+          requestOptions:
+          new RequestOptions(path:  "success", data: json ));
+    }
+
+  }
+
 }
