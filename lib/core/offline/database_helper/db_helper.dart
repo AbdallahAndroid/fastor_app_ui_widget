@@ -1,19 +1,17 @@
 import 'dart:async';
 
-
+import 'package:fastor_app_ui_widget/core/cache/SaveApp.dart';
 import 'package:fastor_app_ui_widget/core/constant/env.dart';
 import 'package:fastor_app_ui_widget/core/network/parse/ApiParserApp.dart';
 import 'package:fastor_app_ui_widget/core/offline/database_helper/table_name.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:sqflite/sqflite.dart';
 
+Database? db;
 
-Database? db ;
 class DbHelper {
-
-
   Future<Database> getDatabaseInstance() async {
-    if( db != null ) return db!;
+    if (db != null) return db!;
     db = await DbHelper.initDb();
     return db!;
   }
@@ -27,11 +25,12 @@ class DbHelper {
       dbName = 'maqsafy_offline_test_v${env.databaseOfflineVersion}.db';
       version = env.databaseOfflineVersion + 100;
     }
-    db =  await openDatabase(
+    db = await openDatabase(
       dbName,
       onCreate: _onCreate,
       onUpgrade: (db, oldVersion, newVersion) {},
       version: version,
+      onOpen: (db) => _fixIncrementVersionByDropOldTablesThenCreateAgain(db),
       onConfigure: (db) async => await db.execute('PRAGMA foreign_keys = ON'),
     );
     return db!;
@@ -49,9 +48,47 @@ class DbHelper {
   }
 
   static Future<List<Map<String, dynamic>>> getAll(TableName tableName) async {
-
     final List<Map<String, dynamic>> maps = await db!.query(tableName.name);
     return maps;
+  }
+
+  ///---------------------------------------------------------------------- fix increment version
+
+  /// fix offline sql when increment version in ios
+  static _fixIncrementVersionByDropOldTablesThenCreateAgain(Database db) async {
+    bool isNew = SaveApp.getBool(_getKeyCheckerVersionAlreadyUsed()) == false;
+    if (isNew) {
+      Log.i(
+          "DbHelper - _fixIncrementVersionByDropOldTablesThenCreateAgain() - isNew: $isNew");
+
+      ///set old for next time
+      SaveApp.setBool(_getKeyCheckerVersionAlreadyUsed(), true);
+
+      /// remove all old tables
+      await _dropAllTables(db);
+
+      /// create new tables again
+      await _onCreate(db, env.databaseOfflineVersion);
+    }
+  }
+
+  static String _getKeyCheckerVersionAlreadyUsed() =>
+      "database_checker_version_already_used-ver:" +
+      env.databaseOfflineVersion.toString();
+
+  static Future<void> _dropAllTables(Database db) async {
+    await db.transaction((txn) async {
+      for (var table in TableName.values) {
+        final tableName = table.name; // convert enum to string
+        try {
+          await txn.execute('DROP TABLE IF EXISTS $tableName');
+          // Log.i("DbHelper - _dropAllTables() - loop: $tableName ");
+        } catch (e) {
+          Log.i(
+              "DbHelper - _dropAllTables() - loop: $tableName - exception: $e");
+        }
+      }
+    });
   }
 
   ///---------------------------------------------------------------------- setter
@@ -217,7 +254,6 @@ class DbHelper {
     int id, {
     required TableName tableName,
   }) async {
-
     final List<Map<String, dynamic>> maps = await db!.query(
       tableName.name,
       where: 'id = ?',
@@ -324,6 +360,4 @@ class DbHelper {
   static Future<void> closeDb(Database db) async {
     await db.close();
   }
-
-
 }
