@@ -14,7 +14,7 @@ class LocationTools {
 
   /// Get current location after checking permissions.
   static Future<Position?> getCurrentLocation(BuildContext context) async {
-    bool hasPermission = await _handleLocationPermission(context);
+    bool hasPermission = await checkAndRequestPermissionByPluginGeolocator();
 
     if (!hasPermission) {
       Log.i("getCurrentLocation() - hasPermission - failed ");
@@ -28,27 +28,27 @@ class LocationTools {
   }
 
   /// Handle permission logic and show popup if denied.
-  static Future<bool> _handleLocationPermission(BuildContext context) async {
-    var permission = await Permission.location.status;
-
-    if (permission.isGranted) return true;
-
-    if (permission.isDenied) {
-      bool? shouldAsk = await showPermissionPopup(context);
-      if (shouldAsk == true) {
-        var result = await Permission.location.request();
-        return result.isGranted;
-      }
-      return false;
-    }
-
-    if (permission.isPermanentlyDenied) {
-      await openAppSettings();
-      return false;
-    }
-
-    return false;
-  }
+  // static Future<bool> _handleLocationPermissionByPluginPermission(BuildContext context) async {
+  //   var permission = await Permission.location.status;
+  //
+  //   if (permission.isGranted) return true;
+  //
+  //   if (permission.isDenied) {
+  //     bool? shouldAsk = await showPermissionPopup(context);
+  //     if (shouldAsk == true) {
+  //       var result = await Permission.location.request();
+  //       return result.isGranted;
+  //     }
+  //     return false;
+  //   }
+  //
+  //   if (permission.isPermanentlyDenied) {
+  //     await openAppSettings();
+  //     return false;
+  //   }
+  //
+  //   return false;
+  // }
 
   /// Show popup asking the user for permission.
   static Future<bool?> showPermissionPopup(BuildContext context) {
@@ -66,12 +66,46 @@ class LocationTools {
             child: TextApp('Cancel'.tr()),
           ),
           ButtonApp(
-             'Allow'.tr(),
-              () => Navigator.pop(ctx, true),
+            'Allow'.tr(),
+            () => Navigator.pop(ctx, true),
           ),
         ],
       ),
     );
+  }
+
+  ///----------------------------------------------- permison by plugin geolocator
+
+  /// Requests location permission and handles settings navigation for denied forever case.
+  /// Returns:
+  /// - `true` if GPS is enabled and permission is granted.
+  /// - `false` if permission is denied or denied forever.
+  /// - Throws `LocationServiceDisabledException` if GPS is disabled.
+  static Future<bool> checkAndRequestPermissionByPluginGeolocator() async {
+    Log.i("LocationHelper - checkAndRequestPermission: Starting");
+
+    // Check and request permission
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await requestPermissionByPluginGeolocator();
+      Log.i(
+          "LocationHelper - checkAndRequestPermission: Requested permission: $permission");
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      Log.i(
+          "LocationHelper - checkAndRequestPermission: Permission denied forever, opening settings");
+      await Geolocator.openAppSettings();
+      return false;
+    }
+
+    return permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always;
+  }
+
+  static Future<LocationPermission>
+      requestPermissionByPluginGeolocator() async {
+    return await Geolocator.requestPermission();
   }
 
   ///----------------------------------------------- location distance calculation
