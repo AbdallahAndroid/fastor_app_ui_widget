@@ -27,53 +27,6 @@ class LocationTools {
     return result;
   }
 
-  /// Handle permission logic and show popup if denied.
-  // static Future<bool> _handleLocationPermissionByPluginPermission(BuildContext context) async {
-  //   var permission = await Permission.location.status;
-  //
-  //   if (permission.isGranted) return true;
-  //
-  //   if (permission.isDenied) {
-  //     bool? shouldAsk = await showPermissionPopup(context);
-  //     if (shouldAsk == true) {
-  //       var result = await Permission.location.request();
-  //       return result.isGranted;
-  //     }
-  //     return false;
-  //   }
-  //
-  //   if (permission.isPermanentlyDenied) {
-  //     await openAppSettings();
-  //     return false;
-  //   }
-  //
-  //   return false;
-  // }
-
-  /// Show popup asking the user for permission.
-  static Future<bool?> showPermissionPopup(BuildContext context) {
-    return showDialog<bool>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text('Location Permission Required'.tr()),
-        content: Text(
-          'This app needs access to your location for determine your position with the school location.'
-              .tr(),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx, false),
-            child: TextApp('Cancel'.tr()),
-          ),
-          ButtonApp(
-            'Allow'.tr(),
-            () => Navigator.pop(ctx, true),
-          ),
-        ],
-      ),
-    );
-  }
-
   ///----------------------------------------------- permison by plugin geolocator
 
   /// Requests location permission and handles settings navigation for denied forever case.
@@ -148,3 +101,50 @@ class LocationTools {
     return distance <= rangeInKilo;
   }
 }
+
+/// Handle permission logic and show popup if denied.
+// static Future<bool> _handleLocationPermissionByPluginPermission(BuildContext context) async {
+//   var permission = await Permission.location.status;
+//
+//   if (permission.isGranted) return true;
+//
+//   if (permission.isDenied) {
+//     bool? shouldAsk = await showPermissionPopup(context);
+//     if (shouldAsk == true) {
+//       var result = await Permission.location.request();
+//       return result.isGranted;
+//     }
+//     return false;
+//   }
+//
+//   if (permission.isPermanentlyDenied) {
+//     await openAppSettings();
+//     return false;
+//   }
+//
+//   return false;
+// }
+
+// /// Show popup asking the user for permission.
+// static Future<bool?> showPermissionPopup(BuildContext context) {
+//   return showDialog<bool>(
+//     context: context,
+//     builder: (ctx) => AlertDialog(
+//       title: Text('Location Permission Required'.tr()),
+//       content: Text(
+//         'This app needs access to your location for determine your position with the school location.'
+//             .tr(),
+//       ),
+//       actions: [
+//         TextButton(
+//           onPressed: () => Navigator.pop(ctx, false),
+//           child: TextApp('Cancel'.tr()),
+//         ),
+//         ButtonApp(
+//           'Allow'.tr(),
+//           () => Navigator.pop(ctx, true),
+//         ),
+//       ],
+//     ),
+//   );
+// }
