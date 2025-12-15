@@ -33,19 +33,44 @@ extension DropdownShapeDialogController on DropdownFloatingLabelWithEntityAllPic
         previousSelectedId: dataSelectedPrevious?.id??DataPickerMapper.getEntityAll().id,
         listener: ( DataPickerEntity selected ) {
 
+
+
           /// update by type "entity all" or any other entity
-          if( DataPickerMapper.isEntityAll(selected) ) {
-            this.dataSelectedPrevious = null ;
-             onSelectAll( );
+          if( entityAll != null ) {
+            if( DataPickerMapper.isEntityAll(selected) ) {
+              this.dataSelectedPrevious = null ;
+              if(onSelectAll!= null ){
+                onSelectAll!( );
+              } else {
+                _defaultUpdateSelected(selected);
+              }
+            } else {
+              _defaultUpdateSelected(selected);
+            }
           }  else {
-            this.dataSelectedPrevious = selected;
-             onSelectEntity(selected);
+            _defaultUpdateSelected(selected);
           }
+
         }
     );
-
-
   }
+
+
+  void _defaultUpdateSelected(DataPickerEntity selected) {
+    this.dataSelectedPrevious = selected;
+    onSelectEntity(selected);
+  }
+
+
+  String? returnEntityAllIdInCaseTypeFoundEntityAll() {
+    if( entityAll != null ) {
+      return DataPickerMapper.getEntityAll().id;
+    } else {
+      return null;
+    }
+  }
+
+
 
 
 }

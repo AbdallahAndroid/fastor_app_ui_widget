@@ -31,10 +31,12 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
   bool? showProgress;
   List<DataPickerEntity?>? dataEntities;
   ListViewDialogPickerGenericListener onSelectEntity;
-  VoidCallback onSelectAll;
 
-  /// data
-  DataPickerEntity entityAll;
+
+
+  /// entity all
+  DataPickerEntity? entityAll;
+  VoidCallback? onSelectAll;
 
   //error
   Map<String, dynamic>? errorsMessageArray;
@@ -53,9 +55,12 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     required this.hint,
     required this.dataEntities,
     required this.onSelectEntity,
-    required this.onSelectAll,
+
     required this.colorBackgroundInputField,
-    required this.entityAll,
+
+    /// all entity
+    this.onSelectAll,
+      this.entityAll,
 
     this.showProgress,
     this.previousSelectedId,
@@ -63,7 +68,8 @@ class DropdownFloatingLabelWithEntityAllPicker extends StatelessWidget {
     this.errorsMessageArray,
     this.errorKeySearchingInErrorMessageArray,
   }) {
-    if(dataEntities != null ) dataEntities!.insert(0, entityAll);
+    if(dataEntities != null && entityAll != null  ) dataEntities!.insert(0, entityAll);
+
 
     showProgress ??= false;
     setMessageErrorFromErrorsArray();
