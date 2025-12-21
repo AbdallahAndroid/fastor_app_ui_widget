@@ -51,7 +51,7 @@ extension GalleryController on GalleryOrCameraPickerDialog {
     required String assetNamePlaceholder,
   }) async {
     //step : camera
-    await CaptureTools.typeCaptureOnly( AssetImage( "/assets/image/placeholderTransparentLogoBlack.png"),
+    await CaptureTools.captureImageByCamera( AssetImage( "/assets/image/placeholderTransparentLogoBlack.png"),
             (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
 
           //check failed picked

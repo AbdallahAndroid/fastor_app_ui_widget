@@ -52,9 +52,9 @@ typedef PickerVideoCallBack = Function(bool status, String msg, String filePath,
 class CaptureTools {
 
 
-  //------------------------------------------------------------------------- camera only
+  //------------------------------------------------------------------------- camera
 
-  static Future<void> typeCaptureOnly(AssetImage placeHolder, PickerImageCallBack callBack) async {
+  static Future<void> captureImageByCamera(AssetImage placeHolder, PickerImageCallBack callBack) async {
 
     Image placeHolderImage = Image(image:  placeHolder);
 
@@ -108,6 +108,61 @@ class CaptureTools {
     }
   }
 
+  //-------------------------------------------------------------------------  video
+
+  static Future<void> captureVideo(AssetImage placeHolder, PickerImageCallBack callBack) async {
+
+    Image placeHolderImage = Image(image:  placeHolder);
+
+    /// permission
+    await ToolsFile.requestPermissionGalleryAndCamera();
+
+    try {
+      XFile?  photoPickered =  await ImagePicker().pickVideo(source: ImageSource.camera) ;
+
+      //check mobile cancel camera image
+      if( photoPickered == null ) {
+        Log.i( "pickerImage() - photo == null - stop! "  );
+        //return failed
+        callBack(false, "Picker Image canceled", "", placeHolderImage, null  );
+        return;
+      }
+
+      //get path
+      Log.i( "pickerImage() - photoPickered.path: " + photoPickered.path  );
+
+      //get image
+      Image myImage;
+      // Uint8List unitFile = await photoPickered.readAsBytes();
+      // Log.i( "pickerImage() - unitFile: " + unitFile.toString()  );
+
+      if( DeviceTools.isPlatformWeb() ) {
+        myImage  =  Image.network( photoPickered.path) ;
+      } else {
+        File myFile =    File( photoPickered.path);
+        myImage  =  Image.file( myFile) ;
+      }
+
+
+      //log
+
+      /**
+          Log.i( "pickerImage() - photoPickered: " + photoPickered.toString()  );
+          Log.i( "pickerImage() - photoPickered.path: " + photoPickered.path  );
+          Log.i( "pickerImage() - imagePickered: " + imagePickered.toString()  );
+          Log.i( "pickerImage() - myImage: " + myImage.toString()  );
+       */
+
+      //success
+      callBack(true, "success", photoPickered.path, myImage, photoPickered );
+
+    } on PlatformException catch(e){
+      Log.i( "pickerImage() - exc: " + e.toString() );
+      //return failed
+      callBack(false, "Picker image failed, error: " + e.toString() ,"", placeHolderImage, null  );
+      return;
+    }
+  }
 
 
 }
