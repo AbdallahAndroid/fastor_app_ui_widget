@@ -82,6 +82,14 @@ abstract class AppDecoration {
     );
   }
 
+  static cardItemFileSelected() {
+    return BoarderHelper.cardView(
+        radiusSize: AppDimension.placeholderFileRadiusCard,
+        colorLine: AppColors.fileCardBackground,
+        colorBackground: AppColors.fileCardBackground
+    );
+  }
+
   static cardSmallPrimary() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.radiusSmallCard,

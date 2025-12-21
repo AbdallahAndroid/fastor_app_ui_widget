@@ -29,8 +29,11 @@ class ImageApp extends StatelessWidget  {
   String? urlAspectRation;
   String? urlBackground;
 
-  double? radius = 0 ;
-  BorderRadius? borderRadius;
+  double? radiusAll = 0 ;
+  double? radiusTopLeft;
+  double? radiusTopRight ;
+  double? radiusBottomLeft;
+  double? radiusBottomRight;
 
   Color? colorBackground;
   EdgeInsets? padding;
@@ -41,6 +44,9 @@ class ImageApp extends StatelessWidget  {
 
   //gravity
   Alignment? gravityLayoutAlignment = Alignment.center;
+
+  //radius
+  late BorderRadius boarderRadius;
 
   // is url or asseat found
   bool isAssestFound = false;
@@ -64,8 +70,11 @@ class ImageApp extends StatelessWidget  {
     AssetImage? this.assetBackground,
     String? this.urlAspectRation, //src
     String? this.urlBackground,
-    double? this.radius ,
-    this.borderRadius,
+    double? this.radiusAll ,
+    double? this.radiusTopLeft ,
+    double? this.radiusTopRight ,
+    double? this.radiusBottomLeft ,
+    double? this.radiusBottomRight ,
     Color? this.colorBackground,
     EdgeInsets? this.padding,
     EdgeInsets? this.margin,
@@ -73,11 +82,7 @@ class ImageApp extends StatelessWidget  {
     Alignment? this.gravityLayoutAlignment,
     bool? this.responsiveAuto,
     BoxFit? this.boxFitBackground
-  }){
-    //init
-    initValues();
-    _autoResponsive();
-  }
+  });
 
 
   //----------------------------------------------------------------------- public : set image Url
@@ -122,9 +127,15 @@ class ImageApp extends StatelessWidget  {
   Widget build(BuildContext context) {
     // Log.k(tag, "build()  image.width: " + width.toString()  );
 
-    if(borderRadius != null ) {
+    //init
+    initValues();
+    _autoResponsive();
+
+
+
+    if(boarderRadius != null ) {
       return ClipRRect(
-        borderRadius: borderRadius!,
+        borderRadius: boarderRadius!,
         child: getContent(),
       );
     }
@@ -195,10 +206,15 @@ class ImageApp extends StatelessWidget  {
     padding ??= EdgeInsets.zero;
     margin ??= EdgeInsets.zero;
 
-    if( radius != null ) {
-      borderRadius = BorderRadius.circular( radius! );
-    }
-
+    //radius
+    radiusAll ??= 0;
+    boarderRadius = BorderRadiusTools.get(
+      radius_all: radiusAll,
+      radius_topLeft: radiusTopLeft,
+      radius_topRight: radiusTopRight,
+      radius_bottomLeft: radiusBottomLeft,
+      radius_bottomRight: radiusBottomRight,
+    );
   }
 
 
@@ -231,7 +247,8 @@ class ImageApp extends StatelessWidget  {
       height: height,
       child: EmptyViewSizeImage(), //EmptyView.empty(width, height),
       decoration: BoxDecoration(
-          borderRadius: borderRadius,
+          borderRadius: boarderRadius,
+          // color: colorBackground, //must remove this line to can show the  asset at aspect mode behind the background url
           image: DecorationImage(
               image: imageProviderChoosed,
               fit: getBoxFitBackground()
@@ -264,7 +281,7 @@ class ImageApp extends StatelessWidget  {
     //init type
     _setImageProviderModeAspectRatio();
 
-    // Log.k(tag,  "getViewMode_aspectRatio() - boarderRadius: " + boarderRadius.toString() );
+    //Log.k(tag,  "getViewMode_aspectRatio() - boarderRadius: " + boarderRadius.toString() );
 
     //return view
     var cont =   Container(
@@ -276,7 +293,7 @@ class ImageApp extends StatelessWidget  {
       child:  EmptyViewSizeImage(),
       decoration: BoxDecoration(
           color: colorBackground,
-          borderRadius: borderRadius,
+          borderRadius: boarderRadius,
           image: DecorationImage(
             image: imageProviderChoosed,
             fit:  BoxFit.contain,

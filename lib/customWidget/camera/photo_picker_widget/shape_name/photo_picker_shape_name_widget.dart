@@ -181,7 +181,7 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
             context: context,
             width: width,
             height: width,
-            radius: getRadius(),
+            radiusAll: getRadius(),
             assetAspectRatio: AssetImage( placeholderAssetName),
             colorBackground: AppColors.bluePlaceholderImage,
             urlBackground: imageUrlPreviousSelected,
@@ -206,7 +206,7 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
         assetAspectRatio: AssetImage( placeholderAssetName),
         width: width * 0.7 ,
         height: width * 0.7 ,
-        radius: getRadius(),
+        radiusAll: getRadius(),
       ),
     );
   }

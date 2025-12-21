@@ -234,9 +234,13 @@ class AppColors   {
   static var drawerBackgroundCard = AppColors.white;
   static var drawerIconMenu = AppColors.primary;
 
+  /// placeholder picker image
+  static var placeholderImagePickerBoxCardBackground = Color(0xffEFF4F7);
+  static Color blueTextPlaceholderImagePicker  = Color(0xff0066FF); //#0066FF
+  static Color blueBoarderLine = Color(0xff0066FF); //#0066FF
 
-
-
+  /// file
+  static var fileCardBackground = Color(0xFFF2F2F2) ;
 
 
 

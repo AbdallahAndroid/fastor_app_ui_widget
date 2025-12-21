@@ -158,7 +158,7 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
       onPressed: () async {
 
         //step : camera
-        await AttachTools.typePickerImage(  assetPlaceholder,
+        await AttachTools.typePickerMedia(  assetPlaceholder,
                 (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
 
               //check failed picked

@@ -29,7 +29,7 @@ class ImageCustomPlaceholderSquare extends StatelessWidget {
       width: width,
       height: height,
       urlBackground: url,
-      radius: radius,
+      radiusAll: radius,
       assetAspectRatio: assetPlaceHolder, //??AssetImage("assets/images/placeholder_logo_square.png"), /// placeholder icon
       colorBackground:   colorBackground!    , /// placeholder color
     );

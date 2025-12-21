@@ -22,7 +22,7 @@ extension GalleryController on GalleryOrCameraPhotoPickerDialog {
     Log.i("attachClick()");
 
     //step : camera
-    await AttachTools.typePickerImage(  AssetImage( assetNamePlaceholder),
+    await AttachTools.typePickerMedia(  AssetImage( assetNamePlaceholder),
             (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
 
           //check failed picked

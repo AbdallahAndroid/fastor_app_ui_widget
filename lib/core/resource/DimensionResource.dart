@@ -5,6 +5,8 @@ import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dar
 import 'package:flutter/material.dart';
 
 class AppDimension  {
+  static double  placeholderFileRadiusCard = 16.r ;
+
 
   /// dropdown
   static double dropdownWidthDialogFilter(BuildContext context) => DeviceTools.getWidth(context) - 16.5.hTabletInputField - 16.5.hTabletInputField  ;
