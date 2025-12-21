@@ -4,13 +4,13 @@ import 'package:fastor_app_ui_widget/core/picker/AttachTools.dart';
 import 'package:fastor_app_ui_widget/core/picker/CaptureTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
-import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPickerDialog.dart';
+import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPhotoPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 
-extension GalleryController on GalleryOrCameraPickerDialog {
+extension GalleryController on GalleryOrCameraPhotoPickerDialog {
 
 
   static Future attachClick({

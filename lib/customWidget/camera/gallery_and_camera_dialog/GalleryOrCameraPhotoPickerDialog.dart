@@ -15,7 +15,7 @@ import 'package:image_picker/image_picker.dart';
 typedef PickerResultCameraCallback = Function(XFile xFile);
 typedef PickerResultGalleryCallback = Function(XFile xFile);
 
-class GalleryOrCameraPickerDialog {
+class GalleryOrCameraPhotoPickerDialog {
 
 
 

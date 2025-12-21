@@ -11,7 +11,7 @@ import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/FontProject.dart';
 // import 'package:fastor_app_ui_widget/core/utils/theme/app_decoration.dart';
 // import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
-import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPickerDialog.dart';
+import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPhotoPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/ImageApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/image/image_file_app.dart';
 import 'package:fastor_app_ui_widget/customWidget/progressView/ProgressCircleApp.dart';
@@ -83,7 +83,7 @@ class PhotoPickerShapeNameWidget extends StatelessWidget {
         //   return;
         // }
 
-        GalleryOrCameraPickerDialog.show(
+        GalleryOrCameraPhotoPickerDialog.show(
             context: context,
             callbackCamera:( xFile ) => photoCallback(xFile),
             callbackGallery: ( xFile ) => photoCallback(xFile),
