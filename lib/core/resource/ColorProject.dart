@@ -28,6 +28,8 @@ class AppColors   {
   static var backgroundCardDialogTransparent =  Colors.white.withOpacity(0.6 ); //figma make it white ffffff
   static var backgroundDialogDismissAreaTypeEffectGlass = Colors.black.withOpacity( 0.4 );
   static Color dialogDialogDismissAreaTypeNormal = Color(0xffFFFFFF ).withOpacity( 0.6 );
+  static var backgroundDialogFixingPreviousScreenInCaseWhite = Colors.black.withOpacity( 0.4 );
+  static var backgroundDialogDismissAreaTypeEffectGlassPortrait = Colors.white.withOpacity( 0.4 );
 
   /// text
   static var textPrimary = Colors.black;
