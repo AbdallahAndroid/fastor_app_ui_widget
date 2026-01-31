@@ -52,7 +52,7 @@ class AppColors   {
   static var textFieldLabel = Colors.black.withOpacity(0.60); /// figma;
   static var textFieldBoarder =  Colors.black.withOpacity( 0.38) ; /// figma
   static var textFieldError = Colors.red;
-
+  static var textFieldIcon2 = Color(0xff767680).withOpacity(0.12) ;
 
   /// buttons
   static var buttonBoarder = Color(0xffC7E2F1);
