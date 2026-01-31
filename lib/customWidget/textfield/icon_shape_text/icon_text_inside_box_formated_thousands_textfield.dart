@@ -8,6 +8,7 @@ import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/textfield/error_text/error_textfield.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/format_helper/thousands_formated/thousands_textfield_formate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -36,25 +37,6 @@ class IconTextInsideBoxFormatedNumberThousandsTextfield extends StatelessWidget 
     this.errorMessage,
   });
 
-  /// Format number with thousand separators (e.g., 9800700 -> 9,800,700)
-  String _formatWithThousandSeparator(String value) {
-    if (value.isEmpty) return value;
-    // Remove existing commas
-    String cleanValue = value.replaceAll(',', '');
-    // Check if it's a valid number
-    if (int.tryParse(cleanValue) == null) return value;
-    // Add thousand separators
-    String result = '';
-    int count = 0;
-    for (int i = cleanValue.length - 1; i >= 0; i--) {
-      count++;
-      result = cleanValue[i] + result;
-      if (count % 3 == 0 && i != 0) {
-        result = ',' + result;
-      }
-    }
-    return result;
-  }
 
   String? _getErrorMessageFromBackend() {
     if (errorMessage != null) return errorMessage;
@@ -87,11 +69,11 @@ class IconTextInsideBoxFormatedNumberThousandsTextfield extends StatelessWidget 
     return Container(
       // decoration: AppDecoration.textFieldShapeDefault(),
       child: TextFormField(
-        initialValue: _formatWithThousandSeparator(previousValue ?? ""),
+        initialValue: ThousandSeparatorInputFormatter.formatWithThousandSeparator(previousValue ?? ""),
         keyboardType: TextInputType.number,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
-          _ThousandSeparatorInputFormatter(),
+          ThousandSeparatorInputFormatter(),
         ],
         onChanged: (value) {
           // Return value without commas to the callback
@@ -172,45 +154,6 @@ class IconTextInsideBoxFormatedNumberThousandsTextfield extends StatelessWidget 
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular( AppDimension.textFieldRadiusBoarder,),
       borderSide: BorderSide(color: AppColors.textFieldBoarder, width: AppDimension.textFieldBoarderWidth ),
-    );
-  }
-}
-
-/// Custom TextInputFormatter to add thousand separators while typing
-class _ThousandSeparatorInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    if (newValue.text.isEmpty) {
-      return newValue;
-    }
-
-    // Remove all non-digit characters
-    String newText = newValue.text.replaceAll(RegExp(r'[^\d]'), '');
-
-    if (newText.isEmpty) {
-      return const TextEditingValue(text: '');
-    }
-
-    // Format with thousand separators
-    String formatted = '';
-    int count = 0;
-    for (int i = newText.length - 1; i >= 0; i--) {
-      count++;
-      formatted = newText[i] + formatted;
-      if (count % 3 == 0 && i != 0) {
-        formatted = ',' + formatted;
-      }
-    }
-
-    // Calculate new cursor position
-    int cursorPosition = formatted.length;
-
-    return TextEditingValue(
-      text: formatted,
-      selection: TextSelection.collapsed(offset: cursorPosition),
     );
   }
 }
