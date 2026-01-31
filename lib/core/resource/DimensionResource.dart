@@ -5,7 +5,6 @@ import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dar
 import 'package:flutter/material.dart';
 
 class AppDimension  {
-  static double  placeholderFileRadiusCard = 16.r ;
 
 
   /// dropdown
@@ -135,5 +134,8 @@ class AppDimension  {
   }
 
 
+  /// file
+  static var placeholderFileHeight = 56.h ;
+  static double placeholderFileRadiusCard = 16.r;
 
 }

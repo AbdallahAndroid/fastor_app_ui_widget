@@ -298,6 +298,17 @@ abstract class AppDecoration {
     );
   }
 
+  ///---------------------------------------------------------- icon
+
+  static iconCircle({required double radius, required double widthLine}) {
+    return BoarderHelper.cardView(
+        radiusSize: radius,
+        colorLine: AppColors.primary,
+        widthLine: widthLine,
+        colorBackground: AppColors.primary
+    );
+  }
+
   ///---------------------------------------------------------- photo
 
   static photoCircle({required double radius, required double widthLine}) {
