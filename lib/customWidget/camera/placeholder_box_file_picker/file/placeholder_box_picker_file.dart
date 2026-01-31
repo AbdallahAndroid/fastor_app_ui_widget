@@ -4,7 +4,7 @@ import 'package:fastor_app_ui_widget/core/picker/AttachTools.dart';
 import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/camera/placeholder_box_file_picker/file/widget/placeholder_attache_widget.dart';
-import 'package:fastor_app_ui_widget/customWidget/camera/placeholder_box_file_picker/file/widget/preview_selected_attachment.dart';
+import 'package:fastor_app_ui_widget/customWidget/camera/placeholder_box_file_picker/file/widget/preview_selected_attachment_simple.dart';
 import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
