@@ -13,7 +13,7 @@ import 'package:fastor_app_ui_widget/customWidget/text/TextError.dart';
 import 'package:flutter/material.dart';
 
 
-class PreviewSelectedAttachment extends StatelessWidget {
+class PreviewSelectedAttachmentSimple extends StatelessWidget {
   final String title; // center title (english text; direction handled by LangApp)
   final VoidCallback onChangeCallback; // tap on chip
   final String? errorMessage; // optional error shown below
@@ -23,7 +23,7 @@ class PreviewSelectedAttachment extends StatelessWidget {
   double height;
 
 
-  PreviewSelectedAttachment({
+  PreviewSelectedAttachmentSimple({
     Key? key,
     required this.title,
     required this.width,
