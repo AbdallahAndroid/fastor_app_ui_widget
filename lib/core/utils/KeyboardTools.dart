@@ -16,8 +16,16 @@ class ToolsKeyboard {
     textFieldFocusNode.unfocus();
   }
 
+
   static Future<bool> dismiss(BuildContext context ) async  {
-    FocusScope.of( context).unfocus();
+    // Use primaryFocus to get the currently focused node and unfocus it
+    // This is more reliable than FocusScope.of(context).unfocus()
+
+    /// first line hide keyboard
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    /// second line hide keyboard
+    FocusScope.of(context).unfocus();
     return true;
   }
 
