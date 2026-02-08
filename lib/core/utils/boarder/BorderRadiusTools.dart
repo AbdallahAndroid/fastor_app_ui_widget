@@ -156,4 +156,12 @@ class BorderRadiusTools {
 
 
 
+
+  static right(double radius) {
+    return get(
+        radius_topRight: radius,
+        radius_bottomRight: radius
+    );
+  }
+
 }

@@ -113,5 +113,14 @@ class ToolsFile {
     }
   }
 
+  ///---------------------------------------------------------- extension file
+
+  static bool isExtensionTypeImage(String pathFileName ) {
+    String ext = pathFileName.toLowerCase();
+    if( ext.endsWith(".png") || ext.endsWith(".jpg") || ext.endsWith(".jpeg") || ext.endsWith(".gif") || ext.endsWith(".heic") ) {
+      return true;
+    }
+    return false;
+  }
 
 }
