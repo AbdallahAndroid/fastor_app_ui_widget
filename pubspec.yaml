@@ -108,6 +108,9 @@ dependencies:
   #auth ( face id , finger print )
   local_auth: 2.3.0
 
+  # payment - apple pay
+#  pay: 3.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
