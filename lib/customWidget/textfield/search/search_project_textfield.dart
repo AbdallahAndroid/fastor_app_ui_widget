@@ -1,5 +1,5 @@
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldParser.dart';

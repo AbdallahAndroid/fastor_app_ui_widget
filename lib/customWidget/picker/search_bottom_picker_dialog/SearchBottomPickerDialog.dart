@@ -1,6 +1,6 @@
 
 
-import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
 import 'package:fastor_app_ui_widget/core/utils/KeyboardTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';

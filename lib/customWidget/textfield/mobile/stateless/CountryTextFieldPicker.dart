@@ -3,7 +3,7 @@ import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/utils/boarder/BoarderHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
-import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';

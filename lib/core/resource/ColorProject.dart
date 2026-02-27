@@ -88,6 +88,10 @@ class AppColors   {
   static var checkboxColorActive =  Color(0xff8ECFF6);
   static var checkboxColorInActive =  Color(0xffFFF5EB);
 
+  /// button
+  static var buttonGrey = Colors.grey.withOpacity(0.5);
+  static var buttonTransparent = Color(0x33AE0003); //.withAlpha(  51);
+
   /// appbar
   static var appBarBackground =  Color(0xff02263c );
 

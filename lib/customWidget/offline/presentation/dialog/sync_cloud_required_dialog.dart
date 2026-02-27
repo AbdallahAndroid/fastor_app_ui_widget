@@ -1,4 +1,4 @@
-import 'package:fastor_app_ui_widget/core/resource/DimensionResource.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

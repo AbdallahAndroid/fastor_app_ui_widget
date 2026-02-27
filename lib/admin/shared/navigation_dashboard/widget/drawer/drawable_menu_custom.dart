@@ -8,10 +8,10 @@ import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/cubit/navigation_dashboard_cubit.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/body_drawer_header.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/body_drawer_listview.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/widget/drawer/widget/menu_item_tab_widget.dart';
+import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/cubit/navigation_dashboard_cubit.dart';
+import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/widget/drawer/widget/body_drawer_header.dart';
+import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/widget/drawer/widget/body_drawer_listview.dart';
+import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/widget/drawer/widget/menu_item_tab_widget.dart';
 import 'package:fastor_app_ui_widget/customWidget/camera/photo_picker_widget/shape_name/photo_picker_shape_name_widget.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class DrawableMenuCustom  extends Drawer {
     return Directionality(
         textDirection: LangApp.getTextDirection(),
         child: Drawer(
-          width:   300.w ,
+          width:   300.h,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // 👈 removes corner rounding
           ),
@@ -43,7 +43,7 @@ class DrawableMenuCustom  extends Drawer {
 
               /// tabs drawer
               Container(
-                padding: EdgeInsets.symmetric(vertical: 16.hr  ),
+                padding: EdgeInsets.symmetric(vertical: 16.h  ),
                 color: AppColors.drawerBackgroundCard,
                 // color: Colors.green,
                 height: DeviceTools.getHeight(context),

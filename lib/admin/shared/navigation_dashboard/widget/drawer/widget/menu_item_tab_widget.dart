@@ -4,7 +4,8 @@ import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
-import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
+import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class MenuItemTabWidget extends StatelessWidget {
     this.assetNameRight,
 
     this.isHideDecoration = false ,
-  });
+});
 
 
   @override
@@ -46,15 +47,15 @@ class MenuItemTabWidget extends StatelessWidget {
         textDirection: LangApp.getTextDirection(),
         child:  Container(
           margin: EdgeInsets.only(
-              top:  6.sp,
-              left:  6.sp,
-              right: 6.sp
+              top:  6.h,
+              left:  6.h,
+              right: 6.h
           ),
           decoration: isHideDecoration! ? null : AppDecoration.tapMenuWithIcon( isSelected: isSelected),
           color: isHideDecoration! ? Colors.transparent : null ,
           width: DeviceTools.getWidth(context),
           height: 64.h, // 64.h ,
-          padding: EdgeInsets.symmetric(horizontal: 20.w ),
+          padding: EdgeInsets.symmetric(horizontal: 20.h ),
           alignment: LangApp.getAlignmentGeometryStartCenter(),
           child:  Row(
             mainAxisSize: MainAxisSize.max,
@@ -67,17 +68,17 @@ class MenuItemTabWidget extends StatelessWidget {
                 // size: isSelected ? 30.h : 24.h,
                 color: AppColors.primaryDark,
               ),
-              SizedBox( width: 16.w ,),
+              SizedBox( width: 16.h ,),
 
               /// title with max height
               Container(
                 constraints: BoxConstraints(
-                    maxWidth: 180.w
+                    maxWidth: 180.h
                 ),
                 child: Directionality(
                   textDirection: TextDirection.ltr,
                   child: TextApp( title,
-                    fontSize: 16.sp ,
+                    fontSize: 16.h ,
                     fontFamily: isSelected ? FontProject.w700 : FontProject.w500,
                   ),
                 ),
@@ -107,7 +108,7 @@ class MenuItemTabWidget extends StatelessWidget {
     /// case found text like "english"
     if( ToolsValidation.isValid( textRight ) ) {
       return  TextApp( textRight??"",
-        fontSize: 14.sp ,
+        fontSize: 14.h ,
         fontFamily: FontProject.w600,
       );
     }
@@ -120,7 +121,6 @@ class MenuItemTabWidget extends StatelessWidget {
       color: isSelected ? AppColors.black : null ,
     );
   }
-
 
 
 }

@@ -1,8 +1,8 @@
-
+// navigation_dashboard_cubit.dart
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/timer/ToolsWait.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/admin/navigation_dashboard/data/menu_tab_entity.dart';
-import 'package:fastor_app_ui_widget/core/utils/timer/ToolsWait.dart';
+import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/data/menu_tab_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'navigation_dashboard_state.dart';
@@ -45,24 +45,24 @@ class NavigationDashboardCubit extends Cubit<NavigationDashboardState> {
 
   dismissDrawer({required MenuTabEntity entity,   required GlobalKey<ScaffoldState> keyDrawerScaffoldState})     {
 
-    /// close by lang
-    if( LangApp.isArabic ){
-      keyDrawerScaffoldState.currentState?.closeEndDrawer();
-    } else {
-      keyDrawerScaffoldState.currentState?.closeDrawer();
-    }
+      /// close by lang
+      if( LangApp.isArabic ){
+        keyDrawerScaffoldState.currentState?.closeEndDrawer();
+      } else {
+        keyDrawerScaffoldState.currentState?.closeDrawer();
+      }
 
-    /// validate already opened
-    if( entity.index == currentEntity.index ) {
-      Log.i("dismissDrawer() - already opened - stop");
-      return;
-    }
+      /// validate already opened
+      if( entity.index == currentEntity.index ) {
+        Log.i("dismissDrawer() - already opened - stop");
+        return;
+      }
 
-    Log.i("dismissDrawer() - start");
-    ToolsWait.waitToDo(1000, (){
-      Log.i("dismissDrawer() - end");
-      emit(  UpdateSelectedPageState(entity) );
-    } );
+      Log.i("dismissDrawer() - start");
+      ToolsWait.waitToDo(1000, (){
+        Log.i("dismissDrawer() - end");
+        emit(  UpdateSelectedPageState(entity) );
+      } );
   }
 
 

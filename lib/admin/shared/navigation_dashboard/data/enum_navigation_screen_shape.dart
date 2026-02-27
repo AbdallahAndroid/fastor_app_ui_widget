@@ -1,0 +1,1 @@
+enum NavigationScreenShape { singlePage, halfHalf }
