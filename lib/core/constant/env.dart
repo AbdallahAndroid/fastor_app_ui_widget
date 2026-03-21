@@ -8,4 +8,6 @@ class env {
 
   static var isTest = isTestEnvironment;
   static var databaseOfflineVersion = 1;
+
+  static var googleApiKeyPlaces = "";
 }

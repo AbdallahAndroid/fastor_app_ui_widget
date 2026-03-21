@@ -1,11 +1,11 @@
 //
 // import 'dart:io';
 //
-// import 'package:aqar_super/core/lang/LangApp.dart';
-// import 'package:aqar_super/core/utils/device/DeviceTools.dart';
-// import 'package:aqar_super/core/utils/log/Log.dart';
-// import 'package:aqar_super/core/values/ToolsValidation.dart';
-// import 'package:aqar_super/customWidget/toast/ToolsToast.dart';
+// import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+// import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
+// import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+// import 'package:fastor_app_ui_widget/core/values/ToolsValidation.dart';
+// import 'package:fastor_app_ui_widget/customWidget/toast/ToolsToast.dart';
 // import 'package:flutter/material.dart';
 //
 // import 'package:url_launcher/url_launcher.dart';

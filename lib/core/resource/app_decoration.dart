@@ -270,12 +270,18 @@ abstract class AppDecoration {
 
   ///------------------------------------------------------------------ textfield
 
-  static textField() {
+  ///------------------------------------------------------------------ textfield
+
+  static dropdownShapeTextField(){
+    return textFieldShapeDefault();
+  }
+
+  static textFieldShapeDefault() {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.textFieldRadiusBoarder,
         colorLine: AppColors.textFieldBoarder,
-        widthLine:   AppDimension.textFieldBoarderWidth,
-        colorBackground: AppColors.white
+        widthLine:   AppDimension.textFieldBoarderWidth  , /// why 2 ? to fix the thin line on textfield default
+        colorBackground: AppColors.textFieldBackground
     );
   }
 
@@ -284,7 +290,7 @@ abstract class AppDecoration {
     return BoarderHelper.cardView(
         radiusSize: AppDimension.textFieldRadiusBoarder,
         colorLine: AppColors.red,
-        widthLine:AppDimension.textFieldBoarderWidth,
+        widthLine:AppDimension.textFieldBoarderWidth  ,
         colorBackground: AppColors.white
     );
   }
@@ -294,6 +300,16 @@ abstract class AppDecoration {
     return BoarderHelper.cardView(
         radiusSize: 8.r,
         colorLine: AppColors.boarderLineCardItem,
+        colorBackground: AppColors.white
+    );
+  }
+
+
+  static textField() {
+    return BoarderHelper.cardView(
+        radiusSize: AppDimension.textFieldRadiusBoarder,
+        colorLine: AppColors.textFieldBoarder,
+        widthLine:   AppDimension.textFieldBoarderWidth,
         colorBackground: AppColors.white
     );
   }
