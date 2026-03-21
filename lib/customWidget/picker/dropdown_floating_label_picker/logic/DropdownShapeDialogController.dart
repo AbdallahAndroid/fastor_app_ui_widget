@@ -21,7 +21,7 @@ extension DropdownShapeDialogController on DropdownFloatingLabelWithEntityAllPic
     }
 
     /// case only one item ( entityAll )
-    if(  dataEntities!.length  == 1 ) {
+    if(  dataEntities!.length  == 0 ) {
       ToolsToast.bottom(context,  "No Items Found".tra() );
       return;
     }
