@@ -1,9 +1,10 @@
-
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
+import 'package:fastor_app_ui_widget/core/utils/globa/GlobalApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/core/utils/size/StatusBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/simple/AppBarSimple.dart';
+import 'package:fastor_app_ui_widget/customWidget/image/ImageApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/scrollview/ScrollApp.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,9 @@ class ScaffoldApp extends StatelessWidget {
 
   Color? backgroundColor;
   Widget?
-  widgetBackground; //make widget to set as fixed background while scrolling moving
+      widgetBackground; //make widget to set as fixed background while scrolling moving
+  /// example; "assets/screenshot_task/supplier_detail_01.jpg"
+  String? screenShotAssetNameOfReactNativeClone;
 
   //transparent
   bool? shapeTransparent;
@@ -41,32 +44,36 @@ class ScaffoldApp extends StatelessWidget {
 
   ScaffoldApp(
       {super.key,
-        required this.body,
-        this.putBodyInsideSafeArea = false,
-        this.putBodyInsideScroll = false,
-        this.backgroundColor,
-        this.floatingActionButton,
-        this.titleAppbar,
-        this.appBar,
-        this.appBarCustom,
-        this.appBarCustomHeight,
-        this.widgetBackground,
-        this.isShowBackButtonAppBar,
-        this.scrollController,
-        this.keyDrawer,
-        this.drawer,
-        this.onDrawerChanged,
-        this.makeStatusBarTransparent,
-        this.floatingActionButtonLocation,
+      required this.body,
+      this.putBodyInsideSafeArea = false,
+      this.putBodyInsideScroll = false,
+      this.backgroundColor,
+      this.floatingActionButton,
+      this.titleAppbar,
+      this.appBar,
+      this.appBarCustom,
+      this.appBarCustomHeight,
 
-        // status bar
-        this.statusBarColorIOSDevice,
+      /// background
+      this.widgetBackground,
+      this.screenShotAssetNameOfReactNativeClone,
+      this.isShowBackButtonAppBar,
+      this.scrollController,
+      this.keyDrawer,
+      this.drawer,
+      this.onDrawerChanged,
+      this.makeStatusBarTransparent,
+      this.floatingActionButtonLocation,
 
-        //transparent
-        this.shapeTransparent = false,
-        this.shapeTransparentColor,
-        this.bottomSheet}) {
+      // status bar
+      this.statusBarColorIOSDevice,
+
+      //transparent
+      this.shapeTransparent = false,
+      this.shapeTransparentColor,
+      this.bottomSheet}) {
     _setDefaultValues();
+    _setScreenshootImageIfFound();
   }
 
   _setDefaultValues() {
@@ -74,7 +81,7 @@ class ScaffoldApp extends StatelessWidget {
 
     statusBarColorIOSDevice ??= statusBarColorBackgroundBlackSecond;
 
-    isNeedAppBarCustom = appBarCustom != null  || titleAppbar != null;
+    isNeedAppBarCustom = appBarCustom != null || titleAppbar != null;
     if (isNeedAppBarCustom) {
       appBarCustomHeight ??= AppBarSimple.frameHeight;
     }
@@ -83,17 +90,17 @@ class ScaffoldApp extends StatelessWidget {
 
     fixUserEnterManyTypesOfAppBarAtSameTime();
 
-    isNoAppBarNormalOrAppBarCustomFound =   appBar  == null &&  appBarCustom == null && titleAppbar == null ;
+    isNoAppBarNormalOrAppBarCustomFound =
+        appBar == null && appBarCustom == null && titleAppbar == null;
   }
 
-  fixUserEnterManyTypesOfAppBarAtSameTime(){
-    if( isNeedAppBarCustom  && appBar != null ) {
+  fixUserEnterManyTypesOfAppBarAtSameTime() {
+    if (isNeedAppBarCustom && appBar != null) {
       appBarCustomHeight = null;
       appBarCustom = null;
       isNeedAppBarCustom = false;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -101,37 +108,45 @@ class ScaffoldApp extends StatelessWidget {
     return scaffoldContent(context);
   }
 
-
   Widget scaffoldContent(context) {
     return Scaffold(
       // backgroundColor: shapeTransparent! ? Colors.transparent : statusBarColorIOSDevice,
       backgroundColor: shapeTransparent! ? Colors.transparent : backgroundColor,
-      key: keyDrawer,  /// drawer
-      drawer: drawer, /// english drawer
-      endDrawerEnableOpenDragGesture: drawer != null , ///arabic drawer, used by code "      keyDrawerScaffoldState.currentState?.openEndDrawer(); "
-      endDrawer: drawer,  ///arabic drawer
+      key: keyDrawer,
+
+      /// drawer
+      drawer: drawer,
+
+      /// english drawer
+      endDrawerEnableOpenDragGesture: drawer != null,
+
+      ///arabic drawer, used by code "      keyDrawerScaffoldState.currentState?.openEndDrawer(); "
+      endDrawer: drawer,
+
+      ///arabic drawer
       onDrawerChanged: onDrawerChanged,
       floatingActionButton: floatingActionButton,
       appBar: appBar,
-      body:  bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(),
+      body: bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish(),
       resizeToAvoidBottomInset: true,
       floatingActionButtonLocation: floatingActionButtonLocation,
       bottomSheet: bottomSheet,
     );
   }
 
-
   Widget bodyChooseInsideSafeAreaOrNotAndChangeDirectionArabicEnglish() {
     return Directionality(
       textDirection: LangApp.getTextDirection(),
       child: putBodyInsideSafeArea!
           ? Container(
-        margin: EdgeInsets.only(
-          top: isNoAppBarNormalOrAppBarCustomFound ? NotchBarSizeHelper.getTop(context!) : 0 ,
-          bottom: NotchBarSizeHelper.getBottom(context!),
-        ),
-        child: bodyScaffold(context),
-      )
+              margin: EdgeInsets.only(
+                top: isNoAppBarNormalOrAppBarCustomFound
+                    ? NotchBarSizeHelper.getTop(context!)
+                    : 0,
+                bottom: NotchBarSizeHelper.getBottom(context!),
+              ),
+              child: bodyScaffold(context),
+            )
           : bodyScaffold(context),
     );
   }
@@ -140,7 +155,6 @@ class ScaffoldApp extends StatelessWidget {
     // print("bodyScaffold() - appBarCustomHeight: $appBarCustomHeight /isNeedAppBarCustom: $isNeedAppBarCustom");
     return Stack(
       children: [
-
         /// set frame size
         SizedBox(
           width: DeviceTools.getWidth(context),
@@ -163,12 +177,11 @@ class ScaffoldApp extends StatelessWidget {
     );
   }
 
-
-  EdgeInsets? getMarginTopToMakeBodyContentUnderAppBarCustom(context){
-    if( isNeedAppBarCustom == false  ) return null;
-    return EdgeInsets.only(     top: (appBarCustomHeight  ?? 0)  + NotchBarSizeHelper.getTop(context) );
+  EdgeInsets? getMarginTopToMakeBodyContentUnderAppBarCustom(context) {
+    if (isNeedAppBarCustom == false) return null;
+    return EdgeInsets.only(
+        top: (appBarCustomHeight ?? 0) + NotchBarSizeHelper.getTop(context));
   }
-
 
   //-------------------------------------------------------- background
 
@@ -241,12 +254,11 @@ class ScaffoldApp extends StatelessWidget {
   //-------------------------------------------------------- app bar
 
   Widget chooseShowAppBar() {
-
     /// case not need
-    if(isNeedAppBarCustom == false ) return SizedBox();
+    if (isNeedAppBarCustom == false) return SizedBox();
 
     /// case found normal appBar material app, skip use custom
-    if( appBar != null ) return SizedBox();
+    if (appBar != null) return SizedBox();
 
     ///case custom
     if (appBarCustom != null) {
@@ -271,5 +283,41 @@ class ScaffoldApp extends StatelessWidget {
     // return Text("app customer test", style: TextStyle(color: Colors.blue),);
   }
 
+  ///------------------------------------------------------------------- screenshot to clone
 
+  void _setScreenshootImageIfFound() {
+    if (screenShotAssetNameOfReactNativeClone != null) {
+      widgetBackground = ImageApp(
+          width: DeviceTools.getWidth(
+              context ?? GlobalApp.getContextForceUnWarp()),
+          height: DeviceTools.getHeight(
+              context ?? GlobalApp.getContextForceUnWarp()),
+          context: context ?? GlobalApp.getContextForceUnWarp(),
+          boxFitBackground: BoxFit.cover,
+          assetBackground: AssetImage(screenShotAssetNameOfReactNativeClone!));
+
+      if (isNoAppBarNormalOrAppBarCustomFound == false) {
+        double defaultAppbarHeight = AppBarSimple.frameHeight;
+        _cutPixelImageToHideAppBarForScreenshot(
+            cutTopPixel: appBarCustomHeight ?? defaultAppbarHeight);
+      }
+    }
+  }
+
+  void _cutPixelImageToHideAppBarForScreenshot({required double cutTopPixel}) {
+    double yourHeight =
+        DeviceTools.getHeight(context ?? GlobalApp.getContextForceUnWarp());
+
+    widgetBackground = ClipRect(
+      child: Align(
+        alignment: Alignment.topCenter,
+        heightFactor:
+            (yourHeight - cutTopPixel) / yourHeight, // optional if height known
+        child: Transform.translate(
+          offset: Offset(0, -cutTopPixel),
+          child: widgetBackground,
+        ),
+      ),
+    );
+  }
 }
