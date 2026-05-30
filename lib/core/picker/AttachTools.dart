@@ -22,6 +22,71 @@ class AttachTools {
 
   //-------------------------------------------------------------------- media
 
+  static Future typePickerMultiMedia( {
+    required PickerMultiMediaCallBack callBack}) async {
+    Log.i("typePickerMultiMedia() - start ");
+
+    /// permission
+    await ToolsFile.requestPermissionGalleryAndCamera();
+
+    try {
+      List<XFile> xFiles = await ImagePicker().pickMultipleMedia( );
+
+      //check mobile cancel camera image
+      if (xFiles.isEmpty) {
+        Log.i("typePickerMultiMedia() - xFiles empty - stop! ");
+        callBack(false,    null);
+        return;
+      }
+      Log.i("typePickerMultiMedia() - xFiles.len: " + xFiles.length.toString());
+
+      //success
+      callBack(true, xFiles);
+    } on PlatformException catch (e) {
+      Log.i("typePickerMultiMedia() - exc: " + e.toString());
+      //return failed
+      callBack(false,  null);
+      return;
+    }
+  }
+
+
+  static Future typePickerSingleMedia( {
+    required AssetImage placeHolder,
+    bool? isMultiFiles = false ,
+    required PickerImageCallBack callBack}) async {
+    Log.i("typePickerMedia() - start ");
+    Image placeHolderImage = Image(image: placeHolder);
+
+    /// permission
+    await ToolsFile.requestPermissionGalleryAndCamera();
+
+    try {
+      XFile? xFile = await ImagePicker().pickMedia( );
+      Log.i("typePickerMedia() - xFile " + xFile.toString());
+
+      //check mobile cancel camera image
+      if (xFile == null) {
+        Log.i("typePickerMedia() - photo == null - stop! ");
+        callBack(false, "Picker Image canceled", "", placeHolderImage, null);
+        return;
+      }
+      io.File myFile = io.File(xFile.path);
+      Log.i("typePickerMedia() - myFile: " + myFile.toString());
+      Log.i("typePickerMedia() - path: " + xFile.path.toString());
+
+      //success
+      callBack(true, "success", xFile.path, null, xFile);
+    } on PlatformException catch (e) {
+      Log.i("typePickerMedia() - exc: " + e.toString());
+      //return failed
+      callBack(false, "Picker image failed, error: " + e.toString(), "",
+          placeHolderImage, null);
+      return;
+    }
+  }
+
+
   static Future typePickerMedia(
       AssetImage placeHolder, PickerImageCallBack callBack) async {
     Log.i("_pickerFile() - start ");

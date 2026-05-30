@@ -24,6 +24,7 @@ import 'dart:io';
 typedef PickerImageUploadCallBack = Function(bool status, String msg, String filePath, Image? image, String uploadedUrl );
 typedef PickerVideoUploadCallBack = Function(bool status, String msg, String filePath,   String uploadedUrl );
 typedef PickerImageCallBack = Function(bool status, String msg, String filePath, Image? image, XFile? xFile  );
+typedef PickerMultiMediaCallBack = Function( bool status, List<XFile>? xFiles  );
 typedef PickerVideoCallBack = Function(bool status, String msg, String filePath,  XFile? xFile  );
 
 //upload image while attach

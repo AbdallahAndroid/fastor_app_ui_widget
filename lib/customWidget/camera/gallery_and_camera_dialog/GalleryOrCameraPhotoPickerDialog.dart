@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 typedef PickerResultCameraCallback = Function(XFile xFile);
+typedef PickerResultGalleryMultiFileCallback = Function( List<XFile> xFiles );
 typedef PickerResultGalleryCallback = Function(XFile xFile);
 
 class GalleryOrCameraPhotoPickerDialog {

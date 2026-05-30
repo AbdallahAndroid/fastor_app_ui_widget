@@ -1,4 +1,5 @@
 
+import 'package:fastor_app_ui_widget/core/constant/env.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/picker/AttachTools.dart';
 import 'package:fastor_app_ui_widget/core/picker/CaptureTools.dart';
@@ -9,6 +10,7 @@ import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/button/ButtonApp.dart';
 import 'package:fastor_app_ui_widget/customWidget/camera/gallery_and_camera_dialog/GalleryOrCameraPhotoPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/effect/card/glass/effect_glass_background_card.dart';
@@ -37,15 +39,55 @@ class GalleryCameraVideoDialog  {
       },
     );
   }
+
+
+  static void showTypeSingleFile ( {
+    required BuildContext context,
+    required PickerResultCameraCallback callback ,
+  } ) {
+
+    showDialog(
+      context: context,
+      barrierColor: AppColors.backgroundDialogFixingPreviousScreenInCaseWhite,
+      // barrierDismissible:  true ,
+      builder: (BuildContext context) {
+        return _GalleryCameraVideoDialog(
+          callback: callback,
+        );
+
+      },
+    );
+  }
+
+  static void showTypeMultiFile ( {
+    required BuildContext context,
+    required PickerResultCameraCallback callback ,
+    required PickerResultGalleryMultiFileCallback callbackGalleryMultiFile,
+  } ) {
+
+    showDialog(
+      context: context,
+      barrierColor: AppColors.backgroundDialogFixingPreviousScreenInCaseWhite,
+      // barrierDismissible:  true ,
+      builder: (BuildContext context) {
+        return _GalleryCameraVideoDialog(
+          callback: callback,
+          callbackGalleryMultiFile: callbackGalleryMultiFile,
+        );
+
+      },
+    );
+  }
+
 }
 
 class _GalleryCameraVideoDialog extends StatelessWidget {
 
   PickerResultCameraCallback callback ;
+  PickerResultGalleryMultiFileCallback? callbackGalleryMultiFile;
 
-  var assetPlaceholder = AssetImage( "/assets/image/placeholderTransparentLogoBlack.png");
 
-  _GalleryCameraVideoDialog( { required this.callback });
+  _GalleryCameraVideoDialog( { required this.callback ,  this.callbackGalleryMultiFile});
 
 
   @override
@@ -57,14 +99,37 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
         width: DeviceTools.getWidth(context),
         height: DeviceTools.getHeight(context),
         color: AppColors.backgroundDialogDismissAreaTypeEffectGlassPortrait , //Color(0x99000000), ///background all screen like dialog
-        alignment: Alignment.center,
-        child: cardMessage(context),
+
+        child: GestureDetector(
+            onTap: (){
+              Log.i("dismiss dialog tap outside area");
+              Navigator.pop(context);
+            },
+            child:    Container(
+                color: Colors.transparent,
+                width: DeviceTools.getWidth(context),
+                height: DeviceTools.getHeight(context),
+                alignment: Alignment.center,
+
+                /// content
+                child: Center(
+
+                  /// to prevent tap propagate to outside area
+                  child: GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      color: Colors.transparent,
+                      child: cardMessageContentUI(context),
+                    ),
+                  ),
+                )
+            )),
       ),
     );
   }
 
 
-  cardMessage(BuildContext context ) {
+  cardMessageContentUI(BuildContext context ) {
     return EffectGlassBackgroundCard(
       radiusBorder: BorderRadiusTools.get( radius_all: 40.r ),
       width: AppDimension.dialogWidth(),
@@ -87,11 +152,12 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
             SizedBox( height: 32.h ,),
 
             ///  buttons
+            buttonGallery(context),
+            SizedBox( height: 8.h ,),
             buttonCamera (context),
             SizedBox( height: 8.h ,),
             buttonVideo(context),
-            SizedBox( height: 8.h ,),
-            buttonGallery(context),
+
           ],
         ),
       ),
@@ -102,46 +168,55 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
     return _ButtonGallery(
       title: 'Camera'.tr(),
       onPressed: () async {
-        await CaptureTools.captureImageByCamera( assetPlaceholder,
-                (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
+        await CaptureTools.captureImageByCamera(
+            AssetImage( env.assetPlaceholderPickerDefault),(bool status, String msg, String filePath, Image? image, XFile? xFile) async {
 
-              //check failed picked
-              if( status == false ) {
-                ToolsToast.top(context, msg);
-                return;
-              }
+          //check failed picked
+          if( status == false ) {
+            //return failed
+            ToolsToast.top(context, msg);
+            return;
+          }
+          //check failed picked
+          if( xFile == null ) {
+            //return failed
+            ToolsToast.top(context, "Failed To Upload Image Captured".tra()  );
+            return;
+          }
 
-              //check failed picked
-              if( xFile == null ) {
-                ToolsToast.top(context, "Failed To Upload Image Captured".tra()  );
-                return;
-              }
+          /// dismiss dialog
+          Navigator.pop(context);
 
-              // success
-              callback(xFile);
+          // success
+          callback(xFile);
 
-            });
+        });
       },
     );
   }
 
   buttonVideo(BuildContext context ){
     return _ButtonGallery(
-      title: 'Video'.tr(),
+      title: 'Video'.ar("فيديو"),
       onPressed: () async {
-        await CaptureTools.captureVideo( assetPlaceholder,
+        await CaptureTools.captureVideo( AssetImage( env.assetPlaceholderPickerDefault),
                 (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
 
               //check failed picked
               if( status == false ) {
+                //return failed
                 ToolsToast.top(context, msg);
                 return;
               }
               //check failed picked
               if( xFile == null ) {
+                //return failed
                 ToolsToast.top(context, "Failed To Upload Image Captured".tra()  );
                 return;
               }
+
+              /// dismiss dialog
+              Navigator.pop(context);
 
               // success
               callback(xFile);
@@ -150,6 +225,7 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
       },
     );
   }
+
 
 
   buttonGallery(BuildContext context ){
@@ -157,26 +233,61 @@ class _GalleryCameraVideoDialog extends StatelessWidget {
       title: 'Gallery'.tr(),
       onPressed: () async {
 
-        //step : camera
-        await AttachTools.typePickerMedia(  assetPlaceholder,
-                (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
-
-              //check failed picked
-              if( status == false ) {
-                ToolsToast.top(context, msg);
-                return;
-              }
-              if( xFile ==  null ) {
-                ToolsToast.top(context, "Failed in camera file".tra() );
-                return;
-              }
-
-              // success
-              callback(xFile);
-            });
-
+        if( callbackGalleryMultiFile != null ) {
+          await _pickerTypeMediaMultiFile(context);
+        } else {
+          await _pickerTypeMediaSingleFile(context);
+        }
       },
     );
+  }
+
+
+  _pickerTypeMediaMultiFile(BuildContext context) async {
+    await AttachTools.typePickerMultiMedia(
+
+        callBack: (bool status,  List<XFile>? xFiles) async {
+
+          //check failed picked
+          if( status == false || xFiles == null || xFiles.isEmpty ) {
+            //return failed
+            // ToolsToast.top(context,  "Failed to attach media".ar("لم يتم عملية ارفاق الملفات") );
+            return;
+          }
+
+          /// dismiss dialog
+          Navigator.pop(context);
+
+          // success
+          callbackGalleryMultiFile!(xFiles);
+        });
+  }
+
+
+  _pickerTypeMediaSingleFile(BuildContext context) async {
+    await AttachTools.typePickerSingleMedia(
+        placeHolder: AssetImage( env.assetPlaceholderPickerDefault),
+        callBack:  (bool status, String msg, String filePath, Image? image, XFile? xFile) async {
+
+          //check failed picked
+          if( status == false ) {
+            //return failed
+            ToolsToast.top(context, msg);
+            return;
+          }
+          //check failed picked
+          if( xFile == null ) {
+            //return failed
+            ToolsToast.top(context, "Failed To Upload Image Captured".tra()  );
+            return;
+          }
+
+          /// dismiss dialog
+          Navigator.pop(context);
+
+          // success
+          callback(xFile);
+        });
   }
 
 }
@@ -191,14 +302,14 @@ class _ButtonGallery  extends StatelessWidget {
   _ButtonGallery({
     required this.title,
     required this.onPressed
-});
+  });
 
   @override
   Widget build(BuildContext context) {
-      return ButtonApp(   title,  onPressed,
-        width: AppDimension.dialogWidth() ,
-        height: 52.hr,
-      );
-    }
+    return ButtonApp(   title,  onPressed,
+      width: AppDimension.dialogWidth() ,
+      height: 52.hr,
+    );
+  }
 
 }

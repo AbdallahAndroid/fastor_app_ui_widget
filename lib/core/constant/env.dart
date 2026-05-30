@@ -10,4 +10,10 @@ class env {
   static var databaseOfflineVersion = 1;
 
   static var googleApiKeyPlaces = "";
+
+
+  ///----------------------------------------------------------- assets
+
+  static var  assetPlaceholderPickerDefault =  "/assets/image/placeholderTransparentLogoBlack.png" ;
+
 }
