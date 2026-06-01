@@ -1,14 +1,8 @@
 import 'package:fastor_app_ui_widget/admin/shared/text/admin_text_header.dart';
-import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
-import 'package:fastor_app_ui_widget/core/utils/ToolsKeyboard.dart';
-import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/KeyboardTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
-import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
-import 'package:fastor_app_ui_widget/customWidget/row/RowScrollApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/search/search_aqar_textfield.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/username/username_aqar_textfield.dart';
+import 'package:fastor_app_ui_widget/customWidget/textfield/search/search_textfield.dart';
 import 'package:flutter/material.dart';
 
 class HeaderBarAdminPanel extends StatelessWidget {
@@ -65,7 +59,7 @@ class HeaderBarAdminPanel extends StatelessWidget {
             if(controllerSearch != null ) SizedBox( width:  20.h ,),
             if(controllerSearch != null ) Container(
               margin: fixDropdownTitle(),
-              child: SearchAqarTextfield(
+              child: SearchTextfield(
                 hint: searchHint,
                 width:  AppDimension.adminInputfieldSearchList(context)  ,
                 textInputType: textInputType,

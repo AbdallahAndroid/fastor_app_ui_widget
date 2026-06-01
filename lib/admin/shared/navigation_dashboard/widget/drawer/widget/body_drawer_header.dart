@@ -1,4 +1,5 @@
-import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
+
+import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:fastor_app_ui_widget/core/cache/UserHelper.dart';
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
@@ -92,7 +93,7 @@ class BodyDrawerHeader extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         if(DeviceTools.isPlatformWeb() ) {
-          UserHelper.setLogout().then( (t){
+          UserHelper.logout().then( (t){
             RouterAdmin.loginAdmin(context);
           });
 

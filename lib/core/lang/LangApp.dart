@@ -157,6 +157,16 @@ class LangApp {
 
   }
 
+
+
+  static AlignmentGeometry getAlignmentGeometryStartTop(){
+    if ( LangApp.isArabic ) {
+      return Alignment.topRight;
+    } else {
+      return Alignment.topLeft;
+    }
+  }
+
   static AlignmentGeometry getAlignmentGeometryStart(){
     if ( LangApp.isArabic ) {
       return Alignment.topRight;
@@ -256,6 +266,24 @@ class LangApp {
     LangApp.isEnglish = false;
     updateActiveLanguageCode();
     await _setCacheArabic(true);
+  }
+
+  //---------------------------------------------------- image rotate
+
+  static Widget rotateIconFromTopToDown( { required Widget child } ) {
+    // Log.i( "rotateImageOrIcon() - LangApp.isArabic: ${LangApp.isArabic}");
+    return Transform.rotate(
+      angle:   LangApp.isArabic ?  sqrt2 : 0 ,
+      child:  child,
+    );
+  }
+
+  static Widget rotateIconFromArabicToEnglish( { required Widget child } ) {
+    // Log.i( "rotateIconFromArabicToEnglish() - LangApp.isArabic: ${LangApp.isArabic}");
+    return Transform.rotate(
+      angle:   LangApp.isArabic ?  0 : 3.141592653589793, // pi for left direction in English
+      child:  child,
+    );
   }
 
 

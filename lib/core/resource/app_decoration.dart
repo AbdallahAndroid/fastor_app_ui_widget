@@ -235,6 +235,16 @@ abstract class AppDecoration {
     );
   }
 
+  static selectedOrUnSelectedCardAdminPanel(bool isSelected, {required double radius}) {
+    return BoarderHelper.cardView(
+        colorBackground: isSelected ?  AppColors.white : AppColors.white,
+        colorLine:  isSelected? AppColors.primary : AppColors.shadowCardUnSelected,
+        radiusSize: radius
+    );
+  }
+
+  ///----------------------------------------------------------------- bottom sheet
+
   static dialogBottomSheet() {
     return BoarderHelper.rounded(
         colorLine: AppColors.boarderBottomSheet,

@@ -1,8 +1,8 @@
 // navigation_dashboard_cubit.dart
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/timer/ToolsWait.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/data/menu_tab_entity.dart';
+import 'package:fastor_app_ui_widget/core/utils/timer/ToolsWait.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'navigation_dashboard_state.dart';

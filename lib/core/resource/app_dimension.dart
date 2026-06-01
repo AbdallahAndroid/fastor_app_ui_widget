@@ -7,8 +7,10 @@ import 'package:flutter/material.dart';
 class AppDimension  {
 
 
+
   /// dropdown
   static double dropdownWidthDialogFilter(BuildContext context) => DeviceTools.getWidth(context) - 16.5.hTabletInputField - 16.5.hTabletInputField  ;
+  static double dropdownFloatingPaddingTopToFixTitleFloating =  12.sp /2 ;
 
   /// textField
   static var textFieldHeight = 56.sp  ;
@@ -27,7 +29,6 @@ class AppDimension  {
   static var textfieldMobileCountryCodeWidth = 110.sp  ;
   static var textfieldPaddingIcon = 16.sp  ;
   static var authInputfieldWidth = 305.sp   ;
-  static var adminInputfieldWidth = 305.sp    ;
   static var adminButtonWidth = 150.hTabletInputField  ;
 
   /// margin
@@ -43,10 +44,6 @@ class AppDimension  {
 
   /// gridview
   static var sectionGridviewBottomPadding = 4.h;
-
-
-
-
 
 
   /// specific page: filter dialog
@@ -137,5 +134,17 @@ class AppDimension  {
   /// file
   static var placeholderFileHeight = 56.h ;
   static double placeholderFileRadiusCard = 16.r;
+
+  /// paginate
+  static double paginateHeightFrame = 66.h ;
+  static double paginateHeightTapButton = 30.h;
+  static double paginateFontTapSize = 16.sp;
+  static double paginateRadius = 8.r ;
+
+  /// admin panel
+  static double adminInputfieldWidth(BuildContext context) => 305.sp;
+  static double adminInputfieldSearchList(BuildContext context)  {
+    return DeviceTools.isLandscapeOrSemiBox(context) ? 305.sp : 280.w;
+  }
 
 }

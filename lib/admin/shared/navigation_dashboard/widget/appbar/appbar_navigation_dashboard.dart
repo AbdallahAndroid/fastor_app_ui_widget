@@ -3,15 +3,13 @@ import 'package:fastor_app_ui_widget/admin/shared/responsive_half_form_half_list
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
-import 'package:fastor_app_ui_widget/core/size/NotchBarSizeHelper.dart';
-import 'package:fastor_app_ui_widget/core/utils/boarder/BorderRadiusTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
 import 'package:fastor_app_ui_widget/admin/shared/navigation_dashboard/cubit/navigation_dashboard_cubit.dart';
 import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/size/NotchBarSizeHelper.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/TitleAppBar.dart';
-import 'package:fastor_app_ui_widget/customWidget/appbar/project/project_app_bar.dart';
 import 'package:fastor_app_ui_widget/customWidget/appbar/tap_appbar/tap_appbar.dart';
 import 'package:fastor_app_ui_widget/customWidget/effect/card/glass/effect_glass_background_card.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
-
-import 'package:fastor_app_ui_widget/core/network/helper/ApiParserTools.dart';
+import 'package:fastor_app_ui_widget/core/network/parse/ApiParserApp.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/app_decoration.dart';
 import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';

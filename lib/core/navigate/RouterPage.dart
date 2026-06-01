@@ -1,5 +1,6 @@
 import 'package:fastor_app_ui_widget/core/navigate/NavigationTools.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
+import 'package:fastor_app_ui_widget/customWidget/map/picker_location/picker_location_screen.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/bottom_picker_dialog/BottomPickerDialog.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/data/DataPickerEntity.dart';
 import 'package:fastor_app_ui_widget/customWidget/picker/listener/typedef_dialog_picker.dart';
@@ -66,6 +67,10 @@ class RouterPage{
         dataSelectedPreviousLng: lng ,
         onComplete: onComplete );
     NavigationTools.pushAnimateFade(context, page);
+  }
+
+  static void profileMain(BuildContext context) {
+
   }
 
 

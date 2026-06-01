@@ -231,8 +231,8 @@ class AppColors {
   static var dividerGrey = Color(0xffB1B1B1);
   static var dividerPrimaryLight20Percentage = primary.withOpacity(0.2);
 
-  /// textField / dropdown shape inputField
-  static var textFieldDialogHint = Colors.black.withOpacity(0.60);
+  // /// textField / dropdown shape inputField
+  // static var textFieldDialogHint = Colors.black.withOpacity(0.60);
 
   /// figma
 

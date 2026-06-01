@@ -1,3 +1,4 @@
+import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog/card_message/message_bottom_sheet_screen.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog/card_message/message_card_center_screen.dart';
 import 'package:fastor_app_ui_widget/customWidget/dialog/card_message/message_effect_glass_center_screen.dart';
@@ -74,6 +75,31 @@ class DialogMessageScreenTransparentHelper {
     );
   }
 
+
+
+  static void backgroundBlackTransparentBottomSheet( {
+    required BuildContext context,
+    required String msg ,
+    String? titleOk,
+    String? titleCancel,
+    VoidCallback? onPressedOk,
+    VoidCallback? onPressedCancel } ) {
+
+    showDialog(
+      context: context,
+      barrierColor: AppColors.backgroundDialogFixingPreviousScreenInCaseWhite,
+      // b: backgroundColor??Colors.transparent,
+      builder: (BuildContext context) {
+        return   MessageBottomSheetScreen(
+            msg: msg,
+            titleOk: titleOk,
+            titleCancel: titleCancel,
+            onPressedCancel: onPressedCancel,
+            onPressedOk: onPressedOk);
+
+      },
+    );
+  }
 
 
 }
