@@ -64,7 +64,7 @@ dependencies:
   awesome_dialog: 3.1.0
 
   # chart
-  syncfusion_flutter_charts: 22.2.12
+  syncfusion_flutter_charts: 33.2.10  #flutter 3.38.10 , not workng with version ( 22.2.12 )
   fl_chart: 0.69.0
 
   #camera
@@ -110,6 +110,12 @@ dependencies:
 
   # payment - apple pay
 #  pay: 3.3.0
+
+
+dependency_overrides:
+
+  #fix timezone issue with flutter 3.38.10, with notficaiton local plugin
+  flutter_timezone: 5.1.0
 
 dev_dependencies:
   flutter_test:
