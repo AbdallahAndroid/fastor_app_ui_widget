@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'GridViewFiveColumn.dart';
-import 'GridViewFourColumn.dart';
-import 'GridViewSevenColumn.dart';
-import 'GridViewSixColumn.dart';
-import 'GridViewThreeColumn.dart';
-import 'GridViewTwoColumn.dart';
+import 'widget/GridViewFiveColumn.dart';
+import 'widget/GridViewFourColumn.dart';
+import 'widget/GridViewSevenColumn.dart';
+import 'widget/GridViewSixColumn.dart';
+import 'widget/GridViewThreeColumn.dart';
+import 'widget/GridViewTwoColumn.dart';
 // import 'package:maqsafy/core/utils/log/Log.dart';
 // import 'package:maqsafy/core/widgets/gridview/GridViewFiveColumn.dart';
 // import 'package:maqsafy/core/widgets/gridview/GridViewFourColumn.dart';
