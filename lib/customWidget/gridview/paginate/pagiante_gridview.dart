@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 typedef PageinateGridViewOnScrollBottomChange = Function(   );
 
-
+/// see example at "README.md"
  
 class PaginateGridView extends StatelessWidget {
 
