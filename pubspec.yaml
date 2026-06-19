@@ -15,8 +15,10 @@ repository: https://github.com/AbdallahAndroid/fastor_app_ui_widget
 environment:
 #  sdk: ">=2.17.3 <3.0.0"   #flutter version 3.0.2
 #  sdk: ">=2.17.0 <3.0.0"   #flutter version 3.0.0
-  sdk: '>=3.4.0 <4.0.0' #flutter sdk  3.22.0
-  flutter: ">=1.17.0"
+#  sdk: '>=3.4.0 <4.0.0' #flutter sdk  3.22.0
+  sdk: '3.7.2'  # Flutter version 3.29.3
+
+  #flutter: ">=1.17.0"
 
 TextFieldEmailOrPhoneFastor:
   dart:
@@ -54,7 +56,7 @@ dependencies:
   cross_file: # ^0.3.3+4
   intl: # ^0.18.1
   clipboard:
-  syncfusion_flutter_datepicker: 22.2.12
+  syncfusion_flutter_datepicker: 29.1.41 # 22.2.12
 
 #  carousel_slider: 4.2.1
   carousel_slider: 5.0.0
@@ -64,7 +66,7 @@ dependencies:
   awesome_dialog: 3.1.0
 
   # chart
-  syncfusion_flutter_charts: 33.2.10  #flutter 3.38.10 , not workng with version ( 22.2.12 )
+  syncfusion_flutter_charts:  30.2.6+1 #  33.2.10
   fl_chart: 0.69.0
 
   #camera
