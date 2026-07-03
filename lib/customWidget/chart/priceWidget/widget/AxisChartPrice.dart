@@ -14,7 +14,7 @@ extension AxisChartPrice on ChartPriceProductState {
   axisX() {
     // Log.i("axisX() - length: ${widget.data.length.toDouble()}");
     return  NumericAxis(
-        title: isDetailShape() ? monthTitle() : null ,
+        title:  isDetailShape() ? monthTitle() :  defaultTitle(),
         interval: 1,
         isInversed: LangApp.isArabic,
         maximum:   widget.data.length.toDouble(),
@@ -77,6 +77,17 @@ extension AxisChartPrice on ChartPriceProductState {
     );
   }
 
+
+  AxisTitle defaultTitle() {
+    return  AxisTitle(
+        text: "Axis X".tra(),
+        textStyle: TextStyle(
+          color: Colors.black,
+          fontSize: Figma.h( 14 ),
+          // fontFamily: FontResources.semiBold
+        )
+    );
+  }
 
 
 
