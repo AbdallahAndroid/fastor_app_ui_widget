@@ -69,6 +69,13 @@ class SearchProjectTextField extends StatelessWidget {
           fontSize: Figma.h( 16 ),
           fontFamily: FontProject.w400,
         ),
+
+        /// fix cursor to be first character on start typing,
+        ///    case already found old text, side for RTL (arabic) VS LTR (english)
+        textDirection: LangApp.getTextDirection(),
+        textAlign: LangApp.isArabic ? TextAlign.right : TextAlign.left,
+
+
         controller: controller,
         minLines: minLines,
         maxLength: maxLength,
