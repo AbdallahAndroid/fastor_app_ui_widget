@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fastor_app_ui_widget/core/constant/env.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
