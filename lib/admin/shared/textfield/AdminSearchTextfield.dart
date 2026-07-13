@@ -1,17 +1,15 @@
+
 import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
-import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
-import 'package:fastor_app_ui_widget/core/utils/figma/core/tablet_phone_size.dart';
-import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
-import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldParser.dart';
-import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
 import 'package:fastor_app_ui_widget/core/resource/ColorProject.dart';
 import 'package:fastor_app_ui_widget/core/resource/FontProject.dart';
+import 'package:fastor_app_ui_widget/core/resource/app_dimension.dart';
+import 'package:fastor_app_ui_widget/core/textfield_error/ErrorInputFieldParser.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
 import 'package:fastor_app_ui_widget/customWidget/text/TextApp.dart';
-import 'package:fastor_app_ui_widget/customWidget/textfield/regular/TextFieldApp.dart';
 import 'package:flutter/material.dart';
 
-
-class SearchProjectTextField extends StatelessWidget {
+class AdminSearchTextfield extends StatelessWidget {
 
 
   BuildContext? context;
@@ -33,16 +31,14 @@ class SearchProjectTextField extends StatelessWidget {
   String? errorKeySearchingInErrorMessageArray;
   Map<String, dynamic>? errorsMessageArray;
 
-  ValueChanged<String>? onChanged;
 
-  SearchProjectTextField( {
+  AdminSearchTextfield( {
 
     required this.width,
 
     required this.controller,
     required this.onClickSearch,
     this.textInputType,
-    this.onChanged,
 
     this.minLines,
     this.maxLength,
@@ -66,20 +62,22 @@ class SearchProjectTextField extends StatelessWidget {
       child: TextField(
         style: TextStyle(
           color: AppColors.textFieldText,
-          fontSize: Figma.h( 16 ),
+          fontSize: 16.sp  ,
           fontFamily: FontProject.w400,
         ),
+        controller: controller,
+        minLines: minLines,
+        maxLength: maxLength,
+        keyboardType: textInputType,// TextInputType.text,
 
         /// fix cursor to be first character on start typing,
         ///    case already found old text, side for RTL (arabic) VS LTR (english)
         textDirection: LangApp.getTextDirection(),
         textAlign: LangApp.isArabic ? TextAlign.right : TextAlign.left,
 
-
-        controller: controller,
-        minLines: minLines,
-        maxLength: maxLength,
-        onChanged:  onChanged,
+        /// submit search
+        textInputAction: TextInputAction.search,
+        onSubmitted: (_) => onClickSearch(),
         decoration: getInputDecoration(),
         // onChanged: onChanged,
       ),
@@ -140,7 +138,7 @@ class SearchProjectTextField extends StatelessWidget {
           ),
         ),
 
-        suffixIcon: GestureDetector(
+        prefixIcon: GestureDetector(
           onTap: onClickSearch,
           child: Container(
               width: 24.w,
@@ -217,69 +215,4 @@ class SearchProjectTextField extends StatelessWidget {
     );
   }
 
-
-//
-  // double width;
-  // TextEditingController? controller;
-  //
-  // /// errors
-  // String? errorMessage;
-  // String? errorKeySearchingInErrorMessageArray;
-  // Map<String, dynamic>? errorsMessageArray;
-
-  // UsernameAqarTextfield({
-  //   required this.width,
-  //   this.controller,
-  //
-  //   /// errors
-  //   this.errorsMessageArray,
-  //   this.errorKeySearchingInErrorMessageArray,
-  //   this.errorMessage,
-  // });
-  //
-  // @override
-  // Widget build(BuildContext context) {
-  //   // Log.i("AuthMobile -errorKeySearchingInErrorMessageArray: $errorKeySearchingInErrorMessageArray /array: $errorsMessageArray");
-  //   return TextFieldApp(
-  //     width: width,
-  //     controller: controller,
-  //     errorsMessageArray: errorsMessageArray,
-  //     errorKeySearchingInErrorMessageArray: errorKeySearchingInErrorMessageArray,
-  //     errorMessage: errorMessage,
-  //     hint_text: "username".tr(),
-  //     fontSize: 16.sp ,
-  //     fontFamily: FontProject.w400,
-  //     text_color: AppColor.textColor,
-  //     hint_color: AppColor.textFieldDialogHint,
-  //     showOutlineInput: true ,
-  //     decorationBackground: AppDecoration.textField(),
-  //     // decoration: InputDecoration(
-  //     //   hintText:  "username".tr(),
-  //     //   filled: true,
-  //     //   fillColor: AppColor.textFieldBackground,
-  //       enabledBorder: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(AppDimension.textFieldRadiusBoarder),
-  //         borderSide: BorderSide(
-  //           color: AppColor.textFieldBoarder, // o
-  //         ),
-  //       ),
-  //       focusedBorder: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(AppDimension.textFieldRadiusBoarder),
-  //         borderSide: BorderSide(
-  //           color: AppColor.textFieldBoarder,
-  //         ),
-  //       ),
-  //     // ),
-  //     prefixIcon: Container(
-  //       width: 24.w,
-  //       height: 56.w ,
-  //       alignment: Alignment.center,
-  //       child: Image.asset( "assets/icons/textfield_username.png",
-  //         width: 24.w,
-  //         height: 24.w,
-  //       )
-  //     ),
-  //   );
-  //
-  // }
 }
