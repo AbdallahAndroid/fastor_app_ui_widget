@@ -1,9 +1,9 @@
-import 'package:ibbil/core/utils/device/DeviceTools.dart';
-import 'package:ibbil/core/utils/figma/Figma.dart';
-import 'package:ibbil/core/utils/log/Log.dart';
-import 'package:ibbil/core/utils/timer/ToolsWait.dart';
-import 'package:ibbil/customWidget/progressView/progress_circle_container.dart';
-import 'package:ibbil/customWidget/scrollview/scroll_on_complete_controller.dart';
+import 'package:fastor_app_ui_widget/core/utils/device/DeviceTools.dart';
+import 'package:fastor_app_ui_widget/core/utils/figma/Figma.dart';
+import 'package:fastor_app_ui_widget/core/utils/log/Log.dart';
+import 'package:fastor_app_ui_widget/core/utils/timer/ToolsWait.dart';
+import 'package:fastor_app_ui_widget/customWidget/progressView/progress_circle_container.dart';
+import 'package:fastor_app_ui_widget/customWidget/scrollview/scroll_on_complete_controller.dart';
 import 'package:flutter/material.dart';
 
 
