@@ -6,9 +6,34 @@ double makeDouble(dynamic v ) => ApiParserApp.parseDoubleOrInt( v )??0;
 bool makeBoolean(dynamic v ) => ApiParserApp.parseBooleanDynamic( v )??false ;
 
 
+String? makeStringNullable(dynamic v ) => ApiParserApp.parseStringDynamic( v )??null;
+int? makeIntNullable(dynamic v ) => ApiParserApp.parseIntNullable( v );
+double? makeDoubleNullable(dynamic v ) => ApiParserApp.parseDoubleNullable( v );
+
+
 
 /// api parse status, or boolean, or double as string format
 class ApiParserApp {
+
+
+  //------------------------------------------------------------------ search
+
+  /**
+      exmaple
+      final String? directName = searchForStringWithDifferentKeys(
+      json,
+      ['store_name', 'storeName', 'shop_name', 'seller_name'],
+      );
+   */
+  static String? searchForStringWithDifferentKeys(Map<String, dynamic> json, List<String> keys) {
+    for (final String key in keys) {
+      final String? value = makeStringNullable(json[key])?.trim();
+      if (value != null && value.isNotEmpty) {
+        return value;
+      }
+    }
+    return null;
+  }
 
 //------------------------------------------------------------------ boolean read
 
@@ -162,7 +187,21 @@ class ApiParserApp {
     return result;
   }
 
+
+  static double? parseDoubleNullable( dynamic d ) {
+    if( d == null ) return null;
+    if( d.toString() == "null" ) return null;
+    return parseDoubleOrInt( d );
+  }
+
   //--------------------------------------------------------------------- parse int
+
+
+  static int? parseIntNullable( dynamic d ) {
+    if( d == null ) return null;
+    if( d.toString() == "null" ) return null;
+    return parseIntDynamic( d );
+  }
 
   /// parse IntDynamic
   static int parseIntDynamic(dynamic data) {
