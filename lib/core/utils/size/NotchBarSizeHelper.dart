@@ -23,7 +23,7 @@ class NotchBarSizeHelper {
     try {
       // Log.i(
       //     "getBottom() - viewPadding: ${MediaQuery.of(context).viewPadding.bottom}");
-      if (_paddingBottom != null) {
+      if (_paddingBottom != null &&  _paddingBottom != 0 ) {
         // Log.i("getBottom() - reuse r: $_paddingBottom");
         return _paddingBottom!;
       }
@@ -40,7 +40,7 @@ class NotchBarSizeHelper {
     try {
       // Log.i(
       //     "getBottom() - viewPadding: ${MediaQuery.of(context).viewPadding.bottom}");
-      if (_paddingBottom != null) {
+      if (_paddingBottom != null  &&  _paddingBottom != 0 ) {
         if (DeviceTools.isIOS() && _paddingBottom! > 0) {
           Log.i("getBottom() - reuse r: $_paddingBottom");
           var factorResult = _paddingBottom! * 0.75;
