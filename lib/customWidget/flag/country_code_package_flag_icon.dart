@@ -15,9 +15,10 @@ class CountryCodePackageFlagIcon extends StatelessWidget {
 
   String _flagUri = ""; //
 
-  CountryCodePackageFlagIcon({super.key, required this.countryCode, this.size = 14}) {
-    _flagUri = CountryCode.fromCountryCode('SA').flagUri!;
-  }
+   CountryCodePackageFlagIcon({super.key, required this.countryCode, this.size = 14}) {
+     _flagUri = CountryCode.fromCountryCode(countryCode).flagUri!;
+     // Log.i("CountryCodePackageFlagIcon - _flagUri: $_flagUri");
+   }
 
   @override
   Widget build(BuildContext context) {
