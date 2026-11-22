@@ -60,7 +60,8 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   cross_file: # ^0.3.3+4
   intl: # ^0.18.1
-  clipboard:
+#  clipboard:
+  clipboard: 3.0.14
   syncfusion_flutter_datepicker: 29.1.41 # 22.2.12
 
 #  carousel_slider: 4.2.1
