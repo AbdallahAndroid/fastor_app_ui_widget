@@ -94,9 +94,9 @@ dependencies:
   uni_links3: ^0.5.3
 
   # video
-  video_thumbnail: 0.5.6
-#  video_player: 2.9.2
-#  chewie: 1.8.0
+  # local copy of video_thumbnail 0.5.6: the pub.dev release calls jcenter(), which Gradle 9 removed
+  video_thumbnail:
+    path: packages/video_thumbnail
 
   # state management
   flutter_bloc: 8.1.6
@@ -121,6 +121,7 @@ dependency_overrides:
 
   #fix timezone issue with flutter 3.38.10, with notficaiton local plugin
   flutter_timezone: 5.1.0
+
 
 dev_dependencies:
   flutter_test:

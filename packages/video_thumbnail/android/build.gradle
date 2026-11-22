@@ -1,0 +1,26 @@
+group 'xyz.justsoft.video_thumbnail'
+version '1.0-SNAPSHOT'
+
+// Local copy of video_thumbnail 0.5.6 (see ../pubspec.yaml).
+// Changes vs. the pub.dev release, so it builds with Gradle 9 / AGP 9:
+//  - removed the old `buildscript {}` block (jcenter() no longer exists in Gradle 9, and it
+//    pulled in AGP 4.1.0)
+//  - removed `rootProject.allprojects { repositories { jcenter() } }` (the app already declares
+//    google() and mavenCentral())
+//  - `lintOptions` -> `lint`
+//  - minSdkVersion 16 -> 21 (the app's minSdk is 24)
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 33
+    namespace 'xyz.justsoft.video_thumbnail'
+
+    defaultConfig {
+        minSdkVersion 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lint {
+        disable 'InvalidPackage'
+    }
+}
