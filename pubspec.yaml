@@ -73,7 +73,7 @@ dependencies:
 
   #camera
   image_picker: 1.0.4
-  permission_handler: 10.4.1
+  permission_handler: 13.0.2
 
  #webview listener
   webview_flutter: 4.5.0
