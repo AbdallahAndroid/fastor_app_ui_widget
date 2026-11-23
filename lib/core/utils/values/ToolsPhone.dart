@@ -1,5 +1,6 @@
 
 
+import 'package:fastor_app_ui_widget/core/lang/LangApp.dart';
 import 'package:fastor_app_ui_widget/core/utils/values/ToolsValidation.dart';
 
 class ToolsPhone {
@@ -62,5 +63,18 @@ class ToolsPhone {
    // Log.i("fixEgyptAndSaudiZeroNumberReturnJustPhone() - fullPhone: $fullPhone /phoneOnly: $phoneOnly");
     return phoneOnly;
   }
+
+  ///----------------------------------------------------- arabic issues
+
+  static String fixFullPhoneWithPlusCountryCodeInArabic(String phone, String countryCode) {
+    String fullWithPlus = (countryCode + phone);
+    if(LangApp.isEnglish  ) return fullWithPlus;
+
+    /// arabic fix
+    String noPlus = fullWithPlus.replaceAll( "+",  "");
+    return   "$noPlus+";
+  }
+
+
 
 }
